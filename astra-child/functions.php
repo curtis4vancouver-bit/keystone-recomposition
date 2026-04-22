@@ -111,3 +111,84 @@ function keystone_noindex_search_results() {
 	}
 }
 add_action( 'wp_head', 'keystone_noindex_search_results' );
+
+/**
+ * Inject VideoObject Schema for Blog Posts to Fix GSC Video Indexing Errors
+ */
+function keystone_inject_video_schema() {
+    if ( is_single() ) {
+        global $post;
+        
+        // Only output if the post has video content or youtube link
+        $content = $post->post_content;
+        $has_video = preg_match('/youtube\.com|youtu\.be|<video/i', $content);
+        
+        if ( $has_video ) {
+            $post_url = get_permalink();
+            $post_title = get_the_title();
+            $post_date = get_the_date('c');
+            $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
+            
+            // Fallbacks
+            if ( ! $thumbnail_url ) {
+                $thumbnail_url = home_url( '/wp-content/uploads/default-thumbnail.jpg' );
+            }
+            
+            $description = wp_trim_words( strip_tags( $content ), 20 );
+            if ( empty( $description ) ) {
+                $description = $post_title;
+            }
+            
+            $schema = array(
+                '@context' => 'https://schema.org',
+                '@type'    => 'VideoObject',
+                'name'     => $post_title,
+                'description' => $description,
+                'thumbnailUrl' => array(
+                    $thumbnail_url
+                ),
+                'uploadDate' => $post_date,
+                'contentUrl' => $post_url,
+                'embedUrl'   => $post_url,
+                'publisher' => array(
+                    '@type' => 'Organization',
+                    'name'  => 'Keystone Possibility',
+                    'logo'  => array(
+                        '@type' => 'ImageObject',
+                        'url'   => home_url( '/wp-content/uploads/logo.png' )
+                    )
+                )
+            );
+            
+            echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+        }
+    }
+}
+add_action( 'wp_head', 'keystone_inject_video_schema' );
+
+/**
+ * PWA: Add Manifest and Service Worker
+ */
+function keystone_pwa_header() {
+    echo '<link rel="manifest" href="' . get_stylesheet_directory_uri() . '/manifest.json">' . "\n";
+    echo '<meta name="theme-color" content="#1a1a1a">' . "\n";
+}
+add_action( 'wp_head', 'keystone_pwa_header' );
+
+function keystone_pwa_footer() {
+    ?>
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('<?php echo get_stylesheet_directory_uri(); ?>/sw.js')
+            .then(function(registration) {
+                console.log('PWA ServiceWorker registered with scope: ', registration.scope);
+            }, function(err) {
+                console.log('PWA ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+    </script>
+    <?php
+}
+add_action( 'wp_footer', 'keystone_pwa_footer' );
