@@ -235,3 +235,22 @@ function keystone_serve_wolverine_stack_post() {
 }
 add_action( 'template_redirect', 'keystone_serve_wolverine_stack_post', 5 );
 
+/**
+ * Programmatic SEO Filters: Fix email typos in Rank Math schema metadata on the fly
+ */
+add_filter( 'rank_math/json_ld', 'keystone_possibilities_clean_json_ld', 99, 2 );
+function keystone_possibilities_clean_json_ld( $data, $jsonld ) {
+    if ( empty( $data ) ) {
+        return $data;
+    }
+
+    // Traverse and replace keystonpossibilities typo
+    array_walk_recursive( $data, function( &$value, $key ) {
+        if ( is_string( $value ) ) {
+            $value = str_replace( 'keystonpossibilities@gmail.com', 'keystonepossibilities@gmail.com', $value );
+        }
+    });
+
+    return $data;
+}
+
