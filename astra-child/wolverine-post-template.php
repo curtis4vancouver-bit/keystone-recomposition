@@ -5,7 +5,7 @@
  */
 
 // Define path to the markdown file
-$md_file_path = 'C:\\Users\\Curtis\\New folder\\construction-website\\Keystone_HQ\\00_Master_Brain\\wolverine_stack_blog_post.md';
+$md_file_path = get_stylesheet_directory() . '/wolverine_stack_blog_post.md';
 
 $content_html = '';
 $title = 'The Wolverine Stack';
