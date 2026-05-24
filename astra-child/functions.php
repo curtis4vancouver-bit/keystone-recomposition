@@ -674,3 +674,17 @@ add_action( 'template_redirect', function() {
         } );
     }
 } );
+
+/**
+ * Programmatically inject Project Management link into the primary menu just before the Contact link.
+ */
+add_filter( 'wp_nav_menu_items', 'keystone_possibilities_add_pm_menu_item', 10, 2 );
+function keystone_possibilities_add_pm_menu_item( $items, $args ) {
+    $pm_menu_html = '<li id="menu-item-pm" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-pm"><a href="/project-management/" class="menu-link">Project Management</a></li>';
+    
+    if ( strpos( $items, 'menu-item-589' ) !== false && strpos( $items, 'menu-item-pm' ) === false ) {
+        $items = str_replace( '<li id="menu-item-589"', $pm_menu_html . "\n" . '<li id="menu-item-589"', $items );
+    }
+    return $items;
+}
+
