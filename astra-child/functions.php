@@ -266,7 +266,9 @@ function keystone_possibilities_serve_sauna_pages() {
         'sunshine-coast-sauna' => 'sunshine_coast_sauna.html',
         'project-management'   => 'project_management.html',
         'wp-content/uploads/seo/master_schema.json' => 'master_schema.json',
-        'master_schema.json'   => 'master_schema.json'
+        'master_schema.json'   => 'master_schema.json',
+        'sw.js'                => 'sw.js',
+        'manifest.json'        => 'manifest.json'
     );
 
     if ( array_key_exists( $path, $sauna_map ) ) {
@@ -275,6 +277,8 @@ function keystone_possibilities_serve_sauna_pages() {
         if ( file_exists( $file_path ) ) {
             if ( strpos( $file_name, '.json' ) !== false ) {
                 header('Content-Type: application/json; charset=utf-8');
+            } elseif ( strpos( $file_name, '.js' ) !== false ) {
+                header('Content-Type: application/javascript; charset=utf-8');
             } else {
                 header('Content-Type: text/html; charset=utf-8');
             }
@@ -378,7 +382,7 @@ add_action( 'wp_head', 'keystone_noindex_search_results' );
  * PWA: Add Manifest and Service Worker
  */
 function keystone_pwa_header() {
-    echo '<link rel="manifest" href="' . get_stylesheet_directory_uri() . '/manifest.json">' . "\n";
+    echo '<link rel="manifest" href="/manifest.json">' . "\n";
     echo '<meta name="theme-color" content="#1a1a1a">' . "\n";
 }
 add_action( 'wp_head', 'keystone_pwa_header' );
@@ -388,7 +392,7 @@ function keystone_pwa_footer() {
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('<?php echo get_stylesheet_directory_uri(); ?>/sw.js')
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
             .then(function(registration) {
                 console.log('PWA ServiceWorker registered with scope: ', registration.scope);
             }, function(err) {

@@ -1,21 +1,21 @@
 {
-  "name": "Keystone Possibility",
+  "name": "Keystone Possibilities",
   "short_name": "Keystone",
-  "description": "Keystone Possibility - Biohacking and Construction PM",
+  "description": "Keystone Possibilities - Premium Custom Homes & Project Management",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1a1a1a",
+  "background_color": "#080808",
+  "theme_color": "#c4a265",
   "icons": [
     {
-      "src": "icon-192x192.png",
+      "src": "/wp-content/uploads/2023/12/image.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "/wp-content/uploads/2023/12/image.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ]
 }
