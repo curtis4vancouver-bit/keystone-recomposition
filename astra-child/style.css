@@ -70,6 +70,8 @@ Template: astra
   height: 320px !important;
   width: 100% !important;
   object-fit: cover !important;
+  object-position: center top !important; /* Forces the crop to start at the top of the image so that heads and faces are never cut off! */
+  background-color: #080808 !important;
   border-radius: 0px !important;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
@@ -383,5 +385,310 @@ Template: astra
 
 .single-post .entry-meta .author-name {
   color: #00ced1 !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   Keystone Possibilities - Quiet Luxury Header & Navigation Overhaul
+   ========================================================================== */
+
+/* Desktop Header Flex Refinement */
+@media (min-width: 922px) {
+  .ast-builder-grid-row {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 30px !important;
+  }
+  
+  /* Left Section (Branding) */
+  .site-header-primary-section-left {
+    flex: 0 1 auto !important;
+    justify-content: flex-start !important;
+    display: flex !important;
+    align-items: center !important;
+    max-width: 45% !important;
+  }
+  
+  /* Center Section (Social Icons) - Move to Far Right */
+  .site-header-primary-section-center {
+    flex: 0 0 auto !important;
+    order: 3 !important;
+    margin-left: auto !important;
+    justify-content: flex-end !important;
+  }
+  
+  /* Right Section (Menu) - Place in Middle/Right */
+  .site-header-primary-section-right {
+    flex: 1 1 auto !important;
+    order: 2 !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+  }
+  
+  /* Guarantee Menu List stays on one straight line */
+  ul#ast-hf-menu-1 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 25px !important; /* Spacious luxury gap */
+  }
+  
+  ul#ast-hf-menu-1 li {
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+  }
+  
+  ul#ast-hf-menu-1 li a {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.18em !important;
+    font-weight: 600 !important;
+    color: #a3a3a3 !important;
+    padding: 10px 0 !important;
+    transition: color 0.3s ease !important;
+  }
+  
+  ul#ast-hf-menu-1 li a:hover,
+  ul#ast-hf-menu-1 li.current-menu-item a {
+    color: #c4a265 !important;
+  }
+}
+
+/* Site Branding - Editorial Spacing */
+.site-branding {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important;
+}
+
+.site-branding img.custom-logo {
+  max-height: 55px !important;
+  width: auto !important;
+  filter: brightness(1) contrast(1.15) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.site-branding img.custom-logo:hover {
+  transform: scale(1.05) !important;
+}
+
+.ast-site-title-wrap .site-title a {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+  transition: color 0.3s ease !important;
+  display: block !important;
+}
+
+.ast-site-title-wrap .site-title a:hover {
+  color: #c4a265 !important;
+}
+
+/* Premium Social Icons far right alignment */
+.ast-header-social-1-wrap .header-social-inner-wrap {
+  display: flex !important;
+  gap: 16px !important;
+}
+
+.ast-header-social-1-wrap svg {
+  width: 16px !important;
+  height: 16px !important;
+  fill: #a3a3a3 !important;
+  transition: fill 0.3s ease, transform 0.3s ease !important;
+}
+
+.ast-header-social-1-wrap a:hover svg {
+  fill: #c4a265 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   Keystone Possibilities - Quiet Luxury Custom Footer Overhaul
+   ========================================================================== */
+
+/* Hide default Astra footer elements to replace with custom luxury footer */
+.site-footer .site-primary-footer-wrap,
+.site-footer .site-below-footer-wrap {
+  display: none !important;
+}
+
+.site-footer {
+  background-color: #080808 !important;
+  border-top: 1px solid rgba(196, 162, 101, 0.15) !important;
+  padding: 0 !important;
+}
+
+/* Custom Luxury Footer Styling */
+.luxury-footer-container {
+  background-color: #080808 !important;
+  padding: 60px 40px 30px 40px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  color: #a3a3a3 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.luxury-footer-grid {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr !important;
+  gap: 60px !important;
+  margin-bottom: 50px !important;
+}
+
+@media (max-width: 900px) {
+  .luxury-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+.luxury-footer-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.luxury-footer-logo {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  color: #c4a265 !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase !important;
+}
+
+.luxury-footer-heading {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em !important;
+  color: #ffffff !important;
+  margin-bottom: 25px !important;
+  text-transform: uppercase !important;
+}
+
+.luxury-footer-description {
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  line-height: 1.8 !important;
+  color: #737373 !important;
+  margin: 0 0 20px 0 !important;
+  letter-spacing: 0.03em !important;
+}
+
+.luxury-footer-founder {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+}
+
+.luxury-footer-founder .founder-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 0.15em !important;
+  color: #525252 !important;
+  font-weight: 600 !important;
+}
+
+.luxury-footer-founder .founder-link {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+  letter-spacing: 0.05em !important;
+}
+
+.luxury-footer-founder .founder-link:hover {
+  color: #c4a265 !important;
+}
+
+.luxury-footer-links-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.luxury-footer-links-list li a {
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  color: #737373 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+}
+
+.luxury-footer-links-list li a:hover {
+  color: #c4a265 !important;
+  transform: translateX(3px) !important;
+}
+
+.spotify-badge-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background-color: rgba(196, 162, 101, 0.03) !important;
+  border: 1px solid rgba(196, 162, 101, 0.15) !important;
+  padding: 12px 20px !important;
+  border-radius: 4px !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: all 0.3s ease !important;
+  width: fit-content !important;
+}
+
+.spotify-badge-link:hover {
+  border-color: rgba(196, 162, 101, 0.4) !important;
+  background-color: rgba(196, 162, 101, 0.06) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.spotify-footer-icon {
+  width: 18px !important;
+  height: 18px !important;
+  fill: #c4a265 !important;
+}
+
+.luxury-footer-bottom {
+  border-top: 1px solid rgba(196, 162, 101, 0.1) !important;
+  padding-top: 25px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+}
+
+.luxury-footer-bottom .footer-copyright {
+  font-size: 11px !important;
+  color: #525252 !important;
+  font-weight: 300 !important;
+}
+
+.luxury-footer-bottom .footer-bottom-badge {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 0.15em !important;
+  color: #525252 !important;
   font-weight: 600 !important;
 }

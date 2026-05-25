@@ -688,3 +688,61 @@ function keystone_possibilities_add_pm_menu_item( $items, $args ) {
     return $items;
 }
 
+/**
+ * Hook custom luxury footer to replace default footer layout on the B2B site.
+ */
+add_action( 'astra_footer', 'keystone_possibilities_render_luxury_footer', 10 );
+function keystone_possibilities_render_luxury_footer() {
+    ?>
+    <div class="luxury-footer-container">
+        <!-- Footer Columns Grid -->
+        <div class="luxury-footer-grid">
+            <!-- Brand & Founder Column -->
+            <div class="luxury-footer-col brand-col">
+                <div class="luxury-footer-logo">KEYSTONE POSSIBILITIES</div>
+                <p class="luxury-footer-description">
+                    Keystone Possibilities Ltd. is a premium licensed residential general builder (BC Builder License #52603) and civil project manager. All custom alpine saunas and luxury builds are fully certified with comprehensive WBI 2-5-10 New Home Warranty protections.
+                </p>
+                <div class="luxury-footer-founder">
+                    <span class="founder-title">FOUNDER & PRINCIPAL:</span>
+                    <a href="https://keystonerecomposition.com" target="_blank" class="founder-link">Wayne Stevenson</a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="luxury-footer-col links-col">
+                <div class="luxury-footer-heading">DIRECTORY</div>
+                <ul class="luxury-footer-links-list">
+                    <li><a href="/project-management/">Project Management</a></li>
+                    <li><a href="/keystone-possibilities-custom-homes/">Building Logs (Blog)</a></li>
+                    <li><a href="/portfolio-general-contractor-squamish/">Active Portfolio</a></li>
+                    <li><a href="/about-us-general-contractor-squamish/">About Our Firm</a></li>
+                </ul>
+            </div>
+            
+            <!-- Ecosystem Integrations (Spotify / YouTube) -->
+            <div class="luxury-footer-col music-col">
+                <div class="luxury-footer-heading">ECOSYSTEM SOUNDTRACKS</div>
+                <p class="luxury-footer-description">
+                    Melodic house and deep ambient soundscapes curated for elite structural layouts. Listen to our active releases on Spotify:
+                </p>
+                <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" class="spotify-badge-link">
+                    <svg viewBox="0 0 24 24" class="spotify-footer-icon" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.377-1.454-5.37-1.783-8.893-1.002-.336.075-.668-.138-.744-.474-.075-.336.138-.668.474-.744 3.856-.88 7.15-.503 9.813 1.13.294.18.387.563.207.857zm1.225-2.72c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.076-1.182-.413.125-.85-.107-.975-.52-.125-.413.107-.85.52-.975 3.666-1.11 8.237-.57 11.346 1.34.367.227.487.708.26 1.075zm.105-2.81c-3.262-1.937-8.644-2.115-11.758-1.17-.5.152-1.025-.133-1.176-.632-.15-.5.133-1.025.632-1.176 3.616-1.097 9.544-.89 13.3 1.342.45.267.6.846.333 1.296-.267.45-.846.6-1.296.333z"/></svg>
+                    <span>STUDY MELODIC HOUSE</span>
+                </a>
+                <p class="luxury-footer-eeat-link" style="margin-top: 15px; font-size: 11px;">
+                    Metabolic health research & biohacking files hosted at <a href="https://keystonerecomposition.com" target="_blank" style="color: #c4a265; text-decoration: underline;">Keystone Recomposition</a>.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div class="luxury-footer-bottom">
+            <div class="footer-copyright">&copy; 2026 Keystone Possibilities Ltd. All Rights Reserved.</div>
+            <div class="footer-bottom-badge">LICENSED BUILDER #52603 &bull; NATIONAL HOME WARRANTY CERTIFIED &bull; SEA-TO-SKY PM</div>
+        </div>
+    </div>
+    <?php
+}
+
+
