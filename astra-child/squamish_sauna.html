@@ -159,7 +159,94 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-    </style>
+    
+        /* High-Performance Quiet Luxury Media Facade Styling */
+        .luxury-video-facade {
+          position: relative !important;
+          width: 100% !important;
+          padding-bottom: 56.25% !important; /* 16:9 Aspect Ratio */
+          height: 0 !important;
+          overflow: hidden !important;
+          border: 2px solid rgba(196, 162, 101, 0.2) !important;
+          border-radius: 6px !important;
+          background-color: #000000 !important;
+          box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6) !important;
+          cursor: pointer !important;
+          transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease !important;
+          margin-bottom: 3rem !important;
+        }
+        .luxury-video-facade:hover {
+          border-color: rgba(196, 162, 101, 0.6) !important;
+          box-shadow: 0 20px 50px rgba(196, 162, 101, 0.1) !important;
+          transform: translateY(-2px) !important;
+        }
+        .luxury-video-facade iframe {
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          z-index: 10 !important;
+          border-radius: 4px !important;
+        }
+        .luxury-video-facade .facade-background {
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          background-size: cover !important;
+          background-position: center !important;
+          transition: opacity 0.5s ease !important;
+          z-index: 1 !important;
+        }
+        .luxury-video-facade .facade-overlay {
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%) !important;
+          transition: opacity 0.5s ease !important;
+          z-index: 2 !important;
+        }
+        .luxury-video-facade .play-button {
+          position: absolute !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          width: 54px !important;
+          height: 54px !important;
+          background: rgba(8, 8, 8, 0.85) !important;
+          border: 2px solid rgba(196, 162, 101, 0.5) !important;
+          border-radius: 50% !important;
+          color: #c4a265 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          z-index: 3 !important;
+          cursor: pointer !important;
+          outline: none !important;
+          padding: 0 !important;
+          min-width: 0 !important;
+          min-height: 0 !important;
+          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+          box-shadow: 0 0 30px rgba(0,0,0,0.5) !important;
+        }
+        .luxury-video-facade:hover .play-button {
+          background: #c4a265 !important;
+          color: #080808 !important;
+          border-color: #ffffff !important;
+          transform: translate(-50%, -50%) scale(1.1) !important;
+          box-shadow: 0 0 40px rgba(196, 162, 101, 0.4) !important;
+        }
+        .luxury-video-facade .play-icon {
+          width: 20px !important;
+          height: 20px !important;
+          margin-left: 3px !important;
+          fill: currentColor !important;
+        }
+</style>
     
     <!-- HYPER-LOCAL STRUCTURED DATA -->
     <script type="application/ld+json">
@@ -168,10 +255,10 @@
       "@graph": [
         {
           "@type": "LocalBusiness",
-          "@id": "https://www.keystonepossibilities.com/squamish-sauna/#localbusiness",
+          "@id": "https://www.keystonepossibilities.ca/squamish-sauna/#localbusiness",
           "name": "Suna Spa Squamish by Keystone Possibilities",
-          "image": "https://www.keystonepossibilities.com/wp-content/uploads/squamish-cliffside-sauna.jpg",
-          "url": "https://www.keystonepossibilities.com/squamish-sauna/",
+          "image": "https://www.keystonepossibilities.ca/wp-content/uploads/squamish-cliffside-sauna.jpg",
+          "url": "https://www.keystonepossibilities.ca/squamish-sauna/",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Watts Point / Sea-to-Sky Corridor",
@@ -193,15 +280,15 @@
           },
           "parentOrganization": {
             "@type": "Organization",
-            "@id": "https://www.keystonepossibilities.com/#organization"
+            "@id": "https://www.keystonepossibilities.ca/#organization"
           }
         },
         {
           "@type": "Service",
-          "@id": "https://www.keystonepossibilities.com/squamish-sauna/#service",
+          "@id": "https://www.keystonepossibilities.ca/squamish-sauna/#service",
           "name": "Cliffside Cantilevered Sauna & Biophilic Cabin Construction",
           "provider": {
-            "@id": "https://www.keystonepossibilities.com/#organization"
+            "@id": "https://www.keystonepossibilities.ca/#organization"
           },
           "serviceType": "Custom Wellness Construction",
           "areaServed": {
@@ -222,6 +309,22 @@
             }
           }
         }
+
+        ,{
+          "@type": "VideoObject",
+          "@id": "https://keystonepossibilities.ca/squamish-sauna/#video",
+          "name": "Bespoke Alpine Saunas Squamish Sauna | Suna Spa by Keystone",
+          "description": "Premium alpine outdoor saunas engineered for extreme snow loads and sub-zero climates. Custom timber-frame, wood-burning wellness structures.",
+          "thumbnailUrl": "https://img.youtube.com/vi/aXY9S_K88sk/maxresdefault.jpg",
+          "uploadDate": "2026-05-22T00:00:00Z",
+          "embedUrl": "https://www.youtube.com/embed/aXY9S_K88sk",
+          "contentUrl": "https://www.youtube.com/watch?v=aXY9S_K88sk",
+          "duration": "PT8M24S",
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://keystonepossibilities.ca/#organization"
+          }
+        }
       ]
     }
     </script>
@@ -239,6 +342,18 @@
         <section class="hero">
             <h1>Cantilevered Cliffside Saunas in Squamish: Watts Point Geotechnical Engineering</h1>
             <p class="lead">We engineer and construct high-performance, structural thermal sanctuaries and biophilic cabins cantilevered over high-gradient granite cliffsides overlooking Howe Sound.</p>
+
+        <!-- Cinematic YouTube Facade (Primary GSC Video) -->
+        <div class="luxury-video-facade" data-video-id="aXY9S_K88sk" data-video-type="youtube" role="region" aria-label="Video Player Placeholder">
+            <div class="facade-background" style="background-image: url('https://img.youtube.com/vi/aXY9S_K88sk/maxresdefault.jpg');"></div>
+            <div class="facade-overlay"></div>
+            <button class="play-button" aria-label="Play Embedded Video">
+                <svg class="play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+
             <a href="#cta-squamish-geotech" class="btn">Request Geotechnical Site Assessment</a>
         </section>
 
@@ -271,7 +386,7 @@
             <h2>Request a Squamish Geotechnical & Structural Assessment</h2>
             <p>Assess the structural feasibility and local zoning viability of a cliffside panoramic sauna or biophilic cabin on your Sea-to-Sky property. Wayne Stevenson will personally lead your site survey and structural analysis.</p>
             <p><strong>Includes priority courier delivery of "The Resilience Vault" physical dimensional B2B Project Management manual.</strong></p>
-            <a href="mailto:wayne@keystonepossibilities.com?subject=Squamish%20Sauna%20Geotech%20Assessment" class="btn" style="background-color: #fff; color: #000;">Book Site Assessment</a>
+            <a href="mailto:wayne@keystonepossibilities.ca?subject=Squamish%20Sauna%20Geotech%20Assessment" class="btn" style="background-color: #fff; color: #000;">Book Site Assessment</a>
         </section>
     </main>
 
@@ -297,7 +412,50 @@
             <div>&copy; 2026 Keystone Possibilities Ltd. All Rights Reserved.</div>
             <div>Engineering Rigor. Structural Integrity. Biological Restoration.</div>
         </div>
-    </footer>
+    
+        <div class="keystone-global-subscribe-buttons" style="display:flex; flex-wrap:wrap; gap:15px; margin-top:40px; margin-bottom: 40px; justify-content: center; align-items: center;">
+            <a href="https://www.youtube.com/@keystonerecomposition?sub_confirmation=1" target="_blank" rel="noopener" style="background-color:#cc0000; color:#fff; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; transition: opacity 0.3s ease;">▶ Subscribe: Keystone Recomposition</a>
+            <a href="https://www.youtube.com/@keystoneprotocols?sub_confirmation=1" target="_blank" rel="noopener" style="background-color:#cc0000; color:#fff; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; transition: opacity 0.3s ease;">▶ Subscribe: Keystone Protocols</a>
+        </div>
+</footer>
 
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const facade = document.querySelector('.luxury-video-facade');
+        if (facade) {
+            facade.addEventListener('click', function handlePlayClick(event) {
+                event.preventDefault();
+                const videoId = this.getAttribute('data-video-id');
+                if (!videoId) return;
+                const targetSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&start=0&enablejsapi=1`;
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', targetSrc);
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.setAttribute('title', 'Keystone Video Player');
+                iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
+                
+                this.removeEventListener('click', handlePlayClick);
+                
+                const background = this.querySelector('.facade-background');
+                const button = this.querySelector('.play-button');
+                const overlay = this.querySelector('.facade-overlay');
+                
+                if (background) background.style.opacity = '0';
+                if (button) button.style.opacity = '0';
+                if (overlay) overlay.style.opacity = '0';
+                
+                this.appendChild(iframe);
+                
+                setTimeout(() => {
+                    if (background) background.remove();
+                    if (button) button.remove();
+                    if (overlay) overlay.remove();
+                }, 600);
+            });
+        }
+    });
+    </script>
 </body>
 </html>

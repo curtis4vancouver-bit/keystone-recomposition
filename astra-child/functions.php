@@ -752,4 +752,200 @@ function keystone_possibilities_render_luxury_footer() {
     <?php
 }
 
+/**
+ * Custom Video Sitemap Generator (Bypasses Rank Math)
+ * Generates a Google-compliant video sitemap XML at /keystone-video-sitemap.xml
+ * Bypasses Rank Math's broken default modules while perfectly integrating into the Rank Math Sitemap Index.
+ */
+
+// Register the custom rewrite rule for clean URL
+add_action( 'init', 'keystone_video_sitemap_rewrite' );
+function keystone_video_sitemap_rewrite() {
+    add_rewrite_rule( '^keystone-video-sitemap\.xml$', 'index.php?keystone_video_sitemap=1', 'top' );
+    // Check if flushed already, if not, flush once dynamically
+    if ( ! get_option( 'keystone_vsm_flushed_v1' ) ) {
+        flush_rewrite_rules();
+        update_option( 'keystone_vsm_flushed_v1', true );
+    }
+}
+
+// Register the query variable so WordPress recognizes it
+add_filter( 'query_vars', 'keystone_video_sitemap_query_vars' );
+function keystone_video_sitemap_query_vars( $vars ) {
+    $vars[] = 'keystone_video_sitemap';
+    return $vars;
+}
+
+// Serve the video sitemap XML
+add_action( 'template_redirect', 'keystone_serve_video_sitemap' );
+function keystone_serve_video_sitemap() {
+    $is_sitemap = get_query_var( 'keystone_video_sitemap' );
+    if ( ! $is_sitemap && isset( $_GET['keystone_video_sitemap'] ) ) {
+        $is_sitemap = true;
+    }
+    if ( ! $is_sitemap ) {
+        return;
+    }
+
+    header( 'Content-Type: application/xml; charset=UTF-8' );
+    header( 'X-Robots-Tag: noindex, follow' );
+
+    $posts = get_posts( array(
+        'post_type'      => 'post',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ) );
+
+    // Build list of flat sauna pages containing embedded videos to add to sitemap dynamically
+    $flat_pages = array(
+        array(
+            'loc' => home_url( '/whistler-sauna/' ),
+            'title' => 'Bespoke Alpine Saunas Whistler | Suna Spa by Keystone',
+            'desc' => "Premium alpine outdoor saunas engineered for Whistler's extreme snow loads and sub-zero climates. Custom timber-frame, wood-burning wellness structures.",
+            'yt' => 'aXY9S_K88sk',
+            'date' => '2026-05-22T00:00:00Z'
+        ),
+        array(
+            'loc' => home_url( '/squamish-sauna/' ),
+            'title' => 'Bespoke Alpine Saunas Squamish | Suna Spa by Keystone',
+            'desc' => "Premium alpine outdoor saunas engineered for Squamish's extreme snow loads and sub-zero climates. Custom timber-frame, wood-burning wellness structures.",
+            'yt' => 'aXY9S_K88sk',
+            'date' => '2026-05-22T00:00:00Z'
+        ),
+        array(
+            'loc' => home_url( '/north-vancouver-sauna/' ),
+            'title' => 'Bespoke Alpine Saunas North Vancouver | Suna Spa by Keystone',
+            'desc' => "Premium alpine outdoor saunas engineered for North Vancouver's extreme snow loads and sub-zero climates. Custom timber-frame, wood-burning wellness structures.",
+            'yt' => 'aXY9S_K88sk',
+            'date' => '2026-05-22T00:00:00Z'
+        ),
+        array(
+            'loc' => home_url( '/west-vancouver-sauna/' ),
+            'title' => 'Bespoke Alpine Saunas West Vancouver | Suna Spa by Keystone',
+            'desc' => "Premium alpine outdoor saunas engineered for West Vancouver's extreme snow loads and sub-zero climates. Custom timber-frame, wood-burning wellness structures.",
+            'yt' => 'aXY9S_K88sk',
+            'date' => '2026-05-22T00:00:00Z'
+        ),
+        array(
+            'loc' => home_url( '/sunshine-coast-sauna/' ),
+            'title' => 'Bespoke Alpine Saunas Sunshine Coast | Suna Spa by Keystone',
+            'desc' => "Premium alpine outdoor saunas engineered for Sunshine Coast's extreme snow loads and sub-zero climates. Custom timber-frame, wood-burning wellness structures.",
+            'yt' => 'aXY9S_K88sk',
+            'date' => '2026-05-22T00:00:00Z'
+        )
+    );
+
+    echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . "\n";
+    echo '        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">' . "\n";
+
+    $video_count = 0;
+
+    // 1. Output the flat sauna landing pages first (high priority wellness authority)
+    foreach ( $flat_pages as $fp ) {
+        echo "  <url>\n";
+        echo "    <loc>" . esc_url( $fp['loc'] ) . "</loc>\n";
+        echo "    <video:video>\n";
+        echo "      <video:thumbnail_loc>" . esc_url( "https://img.youtube.com/vi/{$fp['yt']}/maxresdefault.jpg" ) . "</video:thumbnail_loc>\n";
+        echo "      <video:title><![CDATA[" . $fp['title'] . "]]></video:title>\n";
+        echo "      <video:description><![CDATA[" . $fp['desc'] . "]]></video:description>\n";
+        echo "      <video:content_loc>" . esc_url( "https://www.youtube.com/watch?v={$fp['yt']}" ) . "</video:content_loc>\n";
+        echo "      <video:player_loc>" . esc_url( "https://www.youtube.com/embed/{$fp['yt']}" ) . "</video:player_loc>\n";
+        echo "      <video:publication_date>" . esc_attr( $fp['date'] ) . "</video:publication_date>\n";
+        echo "      <video:family_friendly>yes</video:family_friendly>\n";
+        echo "      <video:uploader info=\"" . esc_url( home_url('/') ) . "\">Wayne Stevenson</video:uploader>\n";
+        echo "      <video:live>no</video:live>\n";
+        echo "    </video:video>\n";
+        echo "  </url>\n";
+        $video_count++;
+    }
+
+    // 2. Output dynamic posts containing YouTube video meta
+    foreach ( $posts as $p ) {
+        $post_id = $p->ID;
+        $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
+        if ( empty( $youtube_id ) ) {
+            if ( preg_match( '~\[keystone_video\s+id=["\']([a-zA-Z0-9_-]+)["\']]~', $p->post_content, $matches ) ) {
+                $youtube_id = $matches[1];
+            } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $p->post_content, $matches ) ) {
+                $youtube_id = $matches[1];
+            }
+        }
+        if ( empty( $youtube_id ) ) { 
+            continue; 
+        }
+
+        $permalink = get_permalink( $post_id );
+        
+        $title = get_post_meta( $post_id, 'video_title', true );
+        if ( empty( $title ) ) { 
+            $title = get_the_title( $post_id ); 
+        }
+        $title = mb_substr( wp_strip_all_tags( $title ), 0, 100 );
+
+        $description = get_post_meta( $post_id, 'video_description', true );
+        if ( empty( $description ) ) {
+            $excerpt = get_the_excerpt( $post_id );
+            if ( empty( $excerpt ) ) {
+                $excerpt = wp_trim_words( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ), 40, '...' );
+            }
+            $description = $excerpt;
+        }
+        $description = mb_substr( wp_strip_all_tags( $description ), 0, 2048 );
+        if ( empty( $description ) ) {
+            $description = $title . ' - Custom construction management and civil engineering solutions.';
+        }
+
+        $thumbnail_url = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
+        $player_url    = "https://www.youtube.com/embed/{$youtube_id}";
+        $content_url   = "https://www.youtube.com/watch?v={$youtube_id}";
+        $upload_date   = get_the_date( 'c', $post_id );
+
+        echo "  <url>\n";
+        echo "    <loc>" . esc_url( $permalink ) . "</loc>\n";
+        echo "    <video:video>\n";
+        echo "      <video:thumbnail_loc>" . esc_url( $thumbnail_url ) . "</video:thumbnail_loc>\n";
+        echo "      <video:title><![CDATA[" . $title . "]]></video:title>\n";
+        echo "      <video:description><![CDATA[" . $description . "]]></video:description>\n";
+        echo "      <video:content_loc>" . esc_url( $content_url ) . "</video:content_loc>\n";
+        echo "      <video:player_loc>" . esc_url( $player_url ) . "</video:player_loc>\n";
+        echo "      <video:publication_date>" . esc_attr( $upload_date ) . "</video:publication_date>\n";
+        echo "      <video:family_friendly>yes</video:family_friendly>\n";
+        echo "      <video:uploader info=\"" . esc_url( home_url('/') ) . "\">Wayne Stevenson</video:uploader>\n";
+        echo "      <video:live>no</video:live>\n";
+        echo "    </video:video>\n";
+        echo "  </url>\n";
+        $video_count++;
+    }
+
+    echo "</urlset>\n";
+    echo "<!-- Keystone Possibilities Video Sitemap - " . $video_count . " videos found -->\n";
+    exit;
+}
+
+// Register the video sitemap in Rank Math's main sitemap index dynamically
+add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
+function keystone_add_video_sitemap_to_index( $index ) {
+    $sitemap_url = home_url( '/keystone-video-sitemap.xml' );
+    $index .= "\t<sitemap>\n";
+    $index .= "\t\t<loc>" . esc_url( $sitemap_url ) . "</loc>\n";
+    $index .= "\t\t<lastmod>" . date( 'c' ) . "</lastmod>\n";
+    $index .= "\t</sitemap>\n";
+    return $index;
+}
+
+// Banish Rank Math's faulty built-in video sitemap generator output to prevent double sitemap conflicts
+add_filter( 'rank_math/sitemap/video/content', '__return_empty_string', 999 );
+
+// Add custom video sitemap link directly to the virtual robots.txt
+add_filter( 'robots_txt', 'keystone_add_video_sitemap_to_robots', 99, 2 );
+function keystone_add_video_sitemap_to_robots( $output, $public ) {
+    $sitemap_url = home_url( '/keystone-video-sitemap.xml' );
+    $output .= PHP_EOL . 'Sitemap: ' . $sitemap_url . PHP_EOL;
+    return $output;
+}
+
+
 
