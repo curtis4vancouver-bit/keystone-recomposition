@@ -1155,6 +1155,17 @@ if ( isset( $_GET['update_post_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
     if ( ! empty( $data['focus_keyword'] ) ) {
         update_post_meta( $post_id, 'rank_math_focus_keyword', sanitize_text_field( $data['focus_keyword'] ) );
     }
+    if ( ! empty( $data['featured_image_url'] ) ) {
+        if ( ! has_post_thumbnail( $post_id ) ) {
+            require_once( ABSPATH . 'wp-admin/includes/media.php' );
+            require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            require_once( ABSPATH . 'wp-admin/includes/image.php' );
+            $img_id = media_sideload_image( esc_url_raw( $data['featured_image_url'] ), $post_id, null, 'id' );
+            if ( ! is_wp_error( $img_id ) ) {
+                set_post_thumbnail( $post_id, $img_id );
+            }
+        }
+    }
     
     clean_post_cache( $post_id );
     if ( function_exists( 'wp_cache_flush' ) ) {
