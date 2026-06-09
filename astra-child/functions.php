@@ -1450,6 +1450,12 @@ if ( isset( $_GET['update_post_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
  */
 add_filter( 'rank_math/json_ld', 'keystone_possibilities_fix_json_ld_schema', 999, 2 );
 function keystone_possibilities_fix_json_ld_schema( $data, $jsonld ) {
+    // SITE GUARD: Only run this nuclear cleanup on Possibilities.
+    // Recomposition site needs its own entities intact.
+    if ( strpos( home_url(), 'keystonepossibilities' ) === false ) {
+        return $data;
+    }
+
     if ( ! is_array( $data ) ) {
         return $data;
     }
