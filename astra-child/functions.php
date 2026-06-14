@@ -23,6 +23,19 @@ if ( isset( $_GET['keystone_debug_env'] ) ) {
     exit;
 }
 
+if ( isset( $_GET['get_debug_log'] ) ) {
+    $log_path = WP_CONTENT_DIR . '/debug.log';
+    if ( file_exists( $log_path ) ) {
+        $content = file_get_contents( $log_path );
+        $lines = explode( "\n", $content );
+        $last_lines = array_slice( $lines, -100 );
+        echo implode( "\n", $last_lines );
+    } else {
+        echo "No debug.log file found at: " . $log_path;
+    }
+    exit;
+}
+
 if ( isset( $_GET['purge_all_caches'] ) ) {
     if ( function_exists( 'opcache_reset' ) ) {
         opcache_reset();
