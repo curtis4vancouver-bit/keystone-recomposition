@@ -12,30 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( isset( $_GET['keystone_debug_env'] ) ) {
-    global $wpdb;
-    $transients = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE '_transient_%rank_math%'" );
-    $names = array();
-    foreach ( $transients as $t ) {
-        $names[] = $t->option_name;
-    }
-    echo "KEYSTONE_DEBUG: home_url: " . home_url() . ". Transients found: " . implode( ', ', $names );
-    exit;
-}
-
-if ( isset( $_GET['get_debug_log'] ) ) {
-    $log_path = WP_CONTENT_DIR . '/debug.log';
-    if ( file_exists( $log_path ) ) {
-        $content = file_get_contents( $log_path );
-        $lines = explode( "\n", $content );
-        $last_lines = array_slice( $lines, -100 );
-        echo implode( "\n", $last_lines );
-    } else {
-        echo "No debug.log file found at: " . $log_path;
-    }
-    exit;
-}
-
 if ( isset( $_GET['purge_all_caches'] ) ) {
     if ( function_exists( 'opcache_reset' ) ) {
         opcache_reset();
@@ -43,6 +19,8 @@ if ( isset( $_GET['purge_all_caches'] ) ) {
     if ( function_exists( 'wp_cache_flush' ) ) {
         wp_cache_flush();
     }
+    global $wpdb;
+    $wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_rank_math_sitemap_%'" );
     echo "CACHES PURGED SUCCESSFULLY";
     exit;
 }
@@ -1684,11 +1662,6 @@ function keystone_possibilities_fix_json_ld_schema( $data, $jsonld ) {
         }
     }
     unset( $item );
-
-    if ( isset( $_GET['debug_schema'] ) ) {
-        var_dump( $data );
-        exit;
-    }
 
     return $data;
 }
