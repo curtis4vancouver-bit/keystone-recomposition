@@ -1880,16 +1880,216 @@ add_filter( 'rank_math/sitemap/enable_caching', '__return_false' );
 
 /**
  * =====================================================================
- * SECTION: CROSS-BRAND BACKLINK — Sister Site Partner Link
+ * SECTION: PREMIUM FOOTER — Rich, Authority-Building Footer
  * =====================================================================
- * Adds a premium, styled partner backlink in the footer to pass link authority
- * to the sister site (Keystone Recomposition - Health & Music).
+ * Renders a premium 3-tier footer matching the sister site (keystonerecomposition.com).
+ * Tier 1: Wayne's builder bio & founding story
+ * Tier 2: Business credentials, service areas, contact
+ * Tier 3: Rich copyright bar with social links & cross-brand backlink
  */
-add_action( 'wp_footer', 'keystone_possibilities_add_sister_site_backlink', 100 );
-function keystone_possibilities_add_sister_site_backlink() {
-    echo "\n<!-- Keystone Cross-Brand Backlink -->\n";
-    echo '<div class="keystone-partner-backlink" style="text-align: center; padding: 15px 0; font-size: 11px; font-family: sans-serif; letter-spacing: 1px; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,0.05); background: #000; color: #555;">';
-    echo 'Partner Brand: <a href="https://keystonerecomposition.com" target="_blank" rel="noopener" style="color: #c4a265; text-decoration: none; transition: color 0.3s ease;">Keystone Recomposition (Health & Music)</a>';
-    echo '</div>' . "\n";
+add_action( 'wp_footer', 'keystone_possibilities_premium_footer', 100 );
+function keystone_possibilities_premium_footer() {
+    echo "\n<!-- Keystone Possibilities Premium Footer -->\n";
+    ?>
+    <style>
+    .kp-premium-footer {
+        background: #0a0f1a;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #8a919e;
+        line-height: 1.7;
+    }
+    .kp-footer-tier {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 30px;
+    }
+    .kp-footer-tier-top {
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .kp-footer-tier-mid {
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: space-between;
+    }
+    .kp-footer-col {
+        flex: 1 1 250px;
+        min-width: 250px;
+    }
+    .kp-footer-col h4 {
+        font-family: 'Outfit', 'Inter', sans-serif;
+        font-size: 0.75rem;
+        color: #c4a265;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin: 0 0 14px 0;
+        font-weight: 700;
+    }
+    .kp-footer-col p,
+    .kp-footer-col li {
+        font-size: 0.82rem;
+        color: #8a919e;
+        margin: 0 0 6px 0;
+        font-weight: 300;
+    }
+    .kp-footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .kp-footer-col a {
+        color: #c4a265;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .kp-footer-col a:hover {
+        color: #e8d5a8;
+    }
+    .kp-footer-bio {
+        font-size: 0.88rem;
+        color: #a3aab5;
+        max-width: 800px;
+        font-weight: 300;
+    }
+    .kp-footer-bio strong {
+        color: #e0e4ea;
+        font-weight: 600;
+    }
+    .kp-footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 30px;
+        text-align: center;
+        font-size: 0.72rem;
+        color: #555d6b;
+        letter-spacing: 0.04em;
+    }
+    .kp-footer-bottom a {
+        color: #c4a265;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .kp-footer-bottom a:hover {
+        color: #e8d5a8;
+    }
+    .kp-footer-social {
+        display: flex;
+        gap: 12px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+    }
+    .kp-footer-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: all 0.3s ease;
+    }
+    .kp-footer-social a:hover {
+        background: rgba(196, 162, 101, 0.15);
+        border-color: rgba(196, 162, 101, 0.4);
+    }
+    .kp-footer-social a svg {
+        width: 16px;
+        height: 16px;
+        fill: #8a919e;
+        transition: fill 0.3s ease;
+    }
+    .kp-footer-social a:hover svg {
+        fill: #c4a265;
+    }
+    .kp-footer-badge {
+        display: inline-block;
+        background: rgba(196, 162, 101, 0.08);
+        border: 1px solid rgba(196, 162, 101, 0.2);
+        color: #c4a265;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 3px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-top: 10px;
+    }
+    @media (max-width: 768px) {
+        .kp-footer-tier { padding: 28px 20px; }
+        .kp-footer-tier-mid { gap: 24px; }
+        .kp-footer-col { flex: 1 1 100%; min-width: 100%; }
+    }
+    </style>
+    <div class="kp-premium-footer">
+        <!-- Tier 1: Founder Bio -->
+        <div class="kp-footer-tier kp-footer-tier-top">
+            <p class="kp-footer-bio">
+                I am <strong>Wayne Stevenson</strong> — Certified BC Licensed Residential Builder (#52603) and Founder of <strong>Keystone Possibilities Ltd.</strong>
+                With 20+ years in the construction industry, I bring transparent flat-fee project management,
+                real-time digital dashboards, and BC Energy Step Code compliance to every build across the Sea-to-Sky corridor.
+                Building is personal. Every project is a commitment to quality, safety, and your vision.
+            </p>
+        </div>
+
+        <!-- Tier 2: Business Info Grid -->
+        <div class="kp-footer-tier kp-footer-tier-mid">
+            <div class="kp-footer-col">
+                <h4>Service Areas</h4>
+                <ul>
+                    <li>Squamish, BC</li>
+                    <li>Whistler, BC</li>
+                    <li>West Vancouver, BC</li>
+                    <li>North Vancouver, BC</li>
+                    <li>Pemberton, BC</li>
+                    <li>Lions Bay, BC</li>
+                </ul>
+            </div>
+            <div class="kp-footer-col">
+                <h4>Credentials</h4>
+                <ul>
+                    <li>BC Housing Licensed Builder <strong>#52603</strong></li>
+                    <li>Registered BC Hydro Civil Contractor</li>
+                    <li>WBI 2-5-10 Home Warranty Backed</li>
+                    <li>BC Energy Step Code Compliant</li>
+                </ul>
+                <span class="kp-footer-badge">Licensed & Insured</span>
+            </div>
+            <div class="kp-footer-col">
+                <h4>Connect</h4>
+                <p>📞 <a href="tel:+16048489688">604-848-9688</a></p>
+                <p>✉️ <a href="mailto:keystonepossibilities@gmail.com">keystonepossibilities@gmail.com</a></p>
+                <p>📍 1 Watts Point Road, Squamish, BC</p>
+                <div class="kp-footer-social">
+                    <a href="https://www.youtube.com/@KeystonePossibilities" target="_blank" rel="noopener" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61554185128555" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/keystonepossibilities" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/wayne-stevenson" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tier 3: Copyright & Cross-Brand -->
+        <div class="kp-footer-bottom">
+            © 2023–2026 Keystone Possibilities Ltd | BC Builder License: #52603 | Founder: <a href="https://keystonerecomposition.com/author/keystonepossibilities/" target="_blank" rel="noopener">Wayne Stevenson</a>
+            <br>
+            Sister Brand: <a href="https://keystonerecomposition.com" target="_blank" rel="noopener">Keystone Recomposition</a> (Health & Music)
+            &nbsp;·&nbsp;
+            <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener">Spotify</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.youtube.com/@KeystonePossibilities" target="_blank" rel="noopener">YouTube</a>
+        </div>
+    </div>
+    <?php
 }
 
