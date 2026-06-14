@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( isset( $_GET['keystone_debug_env'] ) ) {
-    echo "KEYSTONE_DEBUG: functions.php is running successfully. Version: 1.0.5. GCS update hook: " . (function_exists('keystone_handle_gcs_key_update') ? 'exists' : 'does_not_exist');
+    echo "KEYSTONE_DEBUG: functions.php is running successfully. Version: 1.0.5. GCS update hook: " . (function_exists('keystone_handle_gcs_key_update') ? 'exists' : 'does_not_exist') . ". home_url: " . home_url() . ". guard: " . (strpos( home_url(), 'keystonepossibilities' ) !== false ? 'pass' : 'fail');
     exit;
 }
 
