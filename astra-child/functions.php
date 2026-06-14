@@ -1484,43 +1484,48 @@ function keystone_possibilities_fix_json_ld_schema( $data, $jsonld ) {
         return $data;
     }
 
-    // Step 1: Nuclear staging domain replacement across the ENTIRE serialized schema
+    // Step 1: Nuclear staging domain and old author URL replacement across the ENTIRE serialized schema
     $json_string = wp_json_encode( $data );
     $json_string = str_replace(
-        'staging-a826-keystonepossibilities.wpcomstaging.com',
-        'keystonepossibilities.ca',
+        array(
+            'staging-a826-keystonepossibilities.wpcomstaging.com',
+            'https://keystonepossibilities.ca/author/keystonepossibilities/'
+        ),
+        array(
+            'keystonepossibilities.ca',
+            'https://www.keystonepossibilities.com/wayne-stevenson/#person'
+        ),
         $json_string
     );
     $data = json_decode( $json_string, true );
 
-    if ( ! isset( $data['@graph'] ) || ! is_array( $data['@graph'] ) ) {
-        return $data;
-    }
+    // Step 2: Extract nodes list (either the top-level associative values or from @graph)
+    $is_graph_format = isset( $data['@graph'] ) && is_array( $data['@graph'] );
+    $nodes = $is_graph_format ? $data['@graph'] : $data;
 
-    $new_graph = array();
+    $new_nodes = array();
     $possibilities_org = null;
 
-    foreach ( $data['@graph'] as $node ) {
-        if ( ! isset( $node['@type'] ) ) {
-            $new_graph[] = $node;
+    foreach ( $nodes as $key => $node ) {
+        if ( ! is_array( $node ) ) {
+            $new_nodes[$key] = $node;
             continue;
         }
 
-        $types = (array) $node['@type'];
         $node_id = isset( $node['@id'] ) ? $node['@id'] : '';
 
         // STRIP: Remove ANY entity with a keystonerecomposition.com @id.
-        // These are music/wellness/protocol entities that do NOT belong on a B2B construction site.
-        // Their presence causes Google to confuse the Possibilities Knowledge Panel with Recomposition.
         if ( strpos( $node_id, 'keystonerecomposition.com' ) !== false ) {
             continue; // Drop this node entirely
         }
 
-        // MERGE: Consolidate all Organization/Corporation nodes for keystonepossibilities.ca
+        $types = isset( $node['@type'] ) ? (array) $node['@type'] : array();
+
+        // MERGE: Consolidate Organization/Corporation nodes
         $is_possibilities_org = false;
         foreach ( $types as $t ) {
             if ( in_array( strtolower( $t ), array( 'organization', 'corporation' ) ) ) {
-                if ( strpos( $node_id, 'keystonepossibilities.ca' ) !== false ) {
+                if ( $key === 'publisher' || strpos( $node_id, 'keystonepossibilities.ca' ) !== false ) {
                     $is_possibilities_org = true;
                     break;
                 }
@@ -1534,106 +1539,8 @@ function keystone_possibilities_fix_json_ld_schema( $data, $jsonld ) {
                 $possibilities_org = array_merge( $possibilities_org, $node );
             }
         } else {
-            $new_graph[] = $node;
-        }
-    }
-
-    // Step 2: Build the ONE authoritative Keystone Possibilities Organization entity
-    if ( $possibilities_org ) {
-        $possibilities_org['@type'] = array( 'Organization', 'Corporation' );
-        $possibilities_org['@id']  = 'https://keystonepossibilities.ca/#organization';
-        $possibilities_org['name'] = 'Keystone Possibilities Ltd';
-        $possibilities_org['legalName'] = 'Keystone Possibilities Ltd';
-        $possibilities_org['url']  = 'https://keystonepossibilities.ca';
-        $possibilities_org['email'] = 'keystonepossibilities@gmail.com';
-
-        // Explicit logo override — do NOT rely on string replace alone,
-        // because Rank Math can regenerate the ImageObject after our str_replace runs.
-        $possibilities_org['logo'] = array(
-            '@type'      => 'ImageObject',
-            '@id'        => 'https://keystonepossibilities.ca/#logo',
-            'url'        => 'https://keystonepossibilities.ca/wp-content/uploads/2023/12/screenshot-2023-12-03-at-2.30.29-pm-1.png',
-            'contentUrl' => 'https://keystonepossibilities.ca/wp-content/uploads/2023/12/screenshot-2023-12-03-at-2.30.29-pm-1.png',
-            'caption'    => 'Keystone Possibilities Ltd',
-            'inLanguage' => 'en-US',
-            'width'      => '1630',
-            'height'     => '1420'
-        );
-
-        // Correct Contact Point
-        $possibilities_org['contactPoint'] = array(
-            array(
-                '@type'       => 'ContactPoint',
-                'telephone'   => '+1-604-848-9688',
-                'contactType' => 'customer support'
-            )
-        );
-
-        // Correct Address
-        $possibilities_org['address'] = array(
-            '@type'           => 'PostalAddress',
-            'streetAddress'   => '1 Watts Point Road',
-            'addressLocality' => 'Squamish',
-            'addressRegion'   => 'BC',
-            'postalCode'      => 'V8B 0B1',
-            'addressCountry'  => 'CA'
-        );
-
-        // Correct Area Served — Sea-to-Sky corridor cities
-        $possibilities_org['areaServed'] = array(
-            array( '@type' => 'City', 'name' => 'Squamish', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
-            array( '@type' => 'City', 'name' => 'Whistler', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
-            array( '@type' => 'City', 'name' => 'West Vancouver', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
-            array( '@type' => 'City', 'name' => 'North Vancouver', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
-            array( '@type' => 'City', 'name' => 'Pemberton', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
-            array( '@type' => 'City', 'name' => 'Lions Bay', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) )
-        );
-
-        // Correct Business Description — pure B2B construction, no investor pitch
-        $possibilities_org['description'] = 'Keystone Possibilities Ltd is a licensed BC residential builder (#52603) and BC Hydro registered civil contractor providing general contracting, project management, and custom home building across the Sea-to-Sky corridor. Led by Wayne Stevenson with 20+ years of experience, we specialize in transparent flat-fee project management with real-time digital dashboards, BC Energy Step Code compliance, and WBI 2-5-10 warranty backed construction in Squamish, Whistler, West Vancouver, and North Vancouver.';
-
-        // Correct Credentials
-        $possibilities_org['hasCredential'] = array(
-            array(
-                '@type'              => 'EducationalOccupationalCredential',
-                'credentialCategory' => 'Licensed Residential Builder',
-                'identifier'         => '52603',
-                'recognizedBy'       => array( '@type' => 'Organization', 'name' => 'BC Housing' )
-            ),
-            array(
-                '@type'              => 'EducationalOccupationalCredential',
-                'credentialCategory' => 'Registered BC Hydro Civil Contractor',
-                'recognizedBy'       => array( '@type' => 'Organization', 'name' => 'BC Hydro' )
-            )
-        );
-
-        // Correct Founder (reference within this site, not recomposition)
-        $possibilities_org['founder'] = array(
-            '@type'    => 'Person',
-            'name'     => 'Wayne Stevenson',
-            'jobTitle' => 'Founder & Licensed BC Builder (#52603)'
-        );
-
-        // Clean SameAs — Possibilities social links ONLY (no Recomposition, no Spotify, no music)
-        $possibilities_org['sameAs'] = array(
-            'https://www.facebook.com/profile.php?id=61554185128555',
-            'https://www.youtube.com/@KeystonePossibilities',
-            'https://www.instagram.com/keystonepossibilities'
-        );
-
-        // Remove cross-brand contamination keys that may have been merged in
-        unset( $possibilities_org['subOrganization'] );
-        unset( $possibilities_org['identifier'] );
-        unset( $possibilities_org['location'] ); // replaced by explicit address above
-
-        $new_graph[] = $possibilities_org;
-    }
-
-    // Step 3: Clean up Person nodes — triangulate Wayne Stevenson entity
-    foreach ( $new_graph as &$node ) {
-        if ( isset( $node['@type'] ) ) {
-            $node_types = (array) $node['@type'];
-            if ( in_array( 'Person', $node_types ) && isset( $node['name'] ) && ( stripos( $node['name'], 'Wayne' ) !== false ) ) {
+            // Clean up Person nodes
+            if ( in_array( 'Person', $types ) && isset( $node['name'] ) && ( stripos( $node['name'], 'Wayne' ) !== false ) ) {
                 $node['@id'] = 'https://www.keystonepossibilities.com/wayne-stevenson/#person';
                 $node['name'] = 'Wayne Stevenson';
                 $node['alternateName'] = array( 'Keystone Recomposition', 'Keystone Protocols' );
@@ -1676,25 +1583,112 @@ function keystone_possibilities_fix_json_ld_schema( $data, $jsonld ) {
                     'https://www.tiktok.com/@keystonerecomposition'
                 );
             }
+
+            // Update nested author info in articles/etc.
+            if ( isset( $node['author'] ) && is_array( $node['author'] ) ) {
+                $node['author']['name'] = 'Wayne Stevenson';
+                $node['author']['@id'] = 'https://www.keystonepossibilities.com/wayne-stevenson/#person';
+            }
+
+            $new_nodes[$key] = $node;
         }
     }
-    unset( $node );
 
+    // Step 3: Build the ONE authoritative Organization entity
+    if ( $possibilities_org ) {
+        $possibilities_org['@type'] = array( 'Organization', 'Corporation' );
+        $possibilities_org['@id']  = 'https://keystonepossibilities.ca/#organization';
+        $possibilities_org['name'] = 'Keystone Possibilities Ltd';
+        $possibilities_org['legalName'] = 'Keystone Possibilities Ltd';
+        $possibilities_org['url']  = 'https://keystonepossibilities.ca';
+        $possibilities_org['email'] = 'keystonepossibilities@gmail.com';
+        $possibilities_org['logo'] = array(
+            '@type'      => 'ImageObject',
+            '@id'        => 'https://keystonepossibilities.ca/#logo',
+            'url'        => 'https://keystonepossibilities.ca/wp-content/uploads/2023/12/screenshot-2023-12-03-at-2.30.29-pm-1.png',
+            'contentUrl' => 'https://keystonepossibilities.ca/wp-content/uploads/2023/12/screenshot-2023-12-03-at-2.30.29-pm-1.png',
+            'caption'    => 'Keystone Possibilities Ltd',
+            'inLanguage' => 'en-US',
+            'width'      => '1630',
+            'height'     => '1420'
+        );
+        $possibilities_org['contactPoint'] = array(
+            array(
+                '@type'       => 'ContactPoint',
+                'telephone'   => '+1-604-848-9688',
+                'contactType' => 'customer support'
+            )
+        );
+        $possibilities_org['address'] = array(
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => '1 Watts Point Road',
+            'addressLocality' => 'Squamish',
+            'addressRegion'   => 'BC',
+            'postalCode'      => 'V8B 0B1',
+            'addressCountry'  => 'CA'
+        );
+        $possibilities_org['areaServed'] = array(
+            array( '@type' => 'City', 'name' => 'Squamish', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
+            array( '@type' => 'City', 'name' => 'Whistler', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
+            array( '@type' => 'City', 'name' => 'West Vancouver', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
+            array( '@type' => 'City', 'name' => 'North Vancouver', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
+            array( '@type' => 'City', 'name' => 'Pemberton', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) ),
+            array( '@type' => 'City', 'name' => 'Lions Bay', 'containedInPlace' => array( '@type' => 'AdministrativeArea', 'name' => 'British Columbia' ) )
+        );
+        $possibilities_org['description'] = 'Keystone Possibilities Ltd is a licensed BC residential builder (#52603) and BC Hydro registered civil contractor providing general contracting, project management, and custom home building across the Sea-to-Sky corridor. Led by Wayne Stevenson with 20+ years of experience, we specialize in transparent flat-fee project management with real-time digital dashboards, BC Energy Step Code compliance, and WBI 2-5-10 warranty backed construction in Squamish, Whistler, West Vancouver, and North Vancouver.';
+        $possibilities_org['hasCredential'] = array(
+            array(
+                '@type'              => 'EducationalOccupationalCredential',
+                'credentialCategory' => 'Licensed Residential Builder',
+                'identifier'         => '52603',
+                'recognizedBy'       => array( '@type' => 'Organization', 'name' => 'BC Housing' )
+            ),
+            array(
+                '@type'              => 'EducationalOccupationalCredential',
+                'credentialCategory' => 'Registered BC Hydro Civil Contractor',
+                'recognizedBy'       => array( '@type' => 'Organization', 'name' => 'BC Hydro' )
+            )
+        );
+        $possibilities_org['founder'] = array(
+            '@type'    => 'Person',
+            'name'     => 'Wayne Stevenson',
+            'jobTitle' => 'Founder & Licensed BC Builder (#52603)'
+        );
+        $possibilities_org['sameAs'] = array(
+            'https://www.facebook.com/profile.php?id=61554185128555',
+            'https://www.youtube.com/@KeystonePossibilities',
+            'https://www.instagram.com/keystonepossibilities'
+        );
+        unset( $possibilities_org['subOrganization'] );
+        unset( $possibilities_org['identifier'] );
+        unset( $possibilities_org['location'] );
 
-    // Step 4: Also strip any standalone ImageObject nodes that reference staging URLs
-    foreach ( $new_graph as &$img_node ) {
-        if ( isset( $img_node['@type'] ) && $img_node['@type'] === 'ImageObject' ) {
-            if ( isset( $img_node['@id'] ) && strpos( $img_node['@id'], 'wpcomstaging.com' ) !== false ) {
-                $img_node['@id'] = str_replace( 'staging-a826-keystonepossibilities.wpcomstaging.com', 'keystonepossibilities.ca', $img_node['@id'] );
+        if ( $is_graph_format ) {
+            $new_nodes[] = $possibilities_org;
+        } else {
+            $new_nodes['publisher'] = $possibilities_org;
+        }
+    }
+
+    // Step 4: Re-serialize and clean up ImageObject nodes referencing staging
+    if ( $is_graph_format ) {
+        $data['@graph'] = array_values( $new_nodes );
+    } else {
+        $data = $new_nodes;
+    }
+
+    foreach ( $data as $k => &$item ) {
+        if ( is_array( $item ) && isset( $item['@type'] ) && $item['@type'] === 'ImageObject' ) {
+            if ( isset( $item['@id'] ) && strpos( $item['@id'], 'wpcomstaging.com' ) !== false ) {
+                $item['@id'] = str_replace( 'staging-a826-keystonepossibilities.wpcomstaging.com', 'keystonepossibilities.ca', $item['@id'] );
             }
-            if ( isset( $img_node['url'] ) && strpos( $img_node['url'], 'wpcomstaging.com' ) !== false ) {
-                $img_node['url'] = str_replace( 'staging-a826-keystonepossibilities.wpcomstaging.com', 'keystonepossibilities.ca', $img_node['url'] );
+            if ( isset( $item['url'] ) && strpos( $item['url'], 'wpcomstaging.com' ) !== false ) {
+                $item['url'] = str_replace( 'staging-a826-keystonepossibilities.wpcomstaging.com', 'keystonepossibilities.ca', $item['url'] );
             }
         }
     }
-    unset( $img_node );
+    unset( $item );
 
-    $data['@graph'] = $new_graph;
     return $data;
 }
 
