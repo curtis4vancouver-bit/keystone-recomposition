@@ -1476,7 +1476,8 @@ add_filter( 'rank_math/json_ld', 'keystone_possibilities_fix_json_ld_schema', 99
 function keystone_possibilities_fix_json_ld_schema( $data, $jsonld ) {
     @header( 'X-Keystone-Schema-Filter-Triggered: 1' );
     if ( isset( $_GET['debug_schema'] ) ) {
-        wp_send_json( array( 'input_data' => $data ) );
+        var_dump( $data );
+        exit;
     }
     error_log( '[Keystone Debug] rank_math/json_ld filter triggered for: ' . $_SERVER['REQUEST_URI'] );
     if ( ! is_array( $data ) ) {
