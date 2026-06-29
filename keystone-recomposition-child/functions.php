@@ -364,8 +364,13 @@ if ( isset( $_GET['check_rm_options'] ) ) {
 }
 
 if ( isset( $_GET['delete_corrupt_post'] ) ) {
-    $res = wp_delete_post( 807, true );
-    echo "DELETE POST 807 RESULT: " . ($res ? "SUCCESS" : "FAILED") . "\n";
+    $id_to_del = intval( $_GET['delete_corrupt_post'] );
+    if ( $id_to_del > 0 ) {
+        $res = wp_delete_post( $id_to_del, true );
+        echo "DELETE POST $id_to_del RESULT: " . ($res ? "SUCCESS" : "FAILED") . "\n";
+    } else {
+        echo "NO VALID ID SPECIFIED\n";
+    }
     exit;
 }
 
