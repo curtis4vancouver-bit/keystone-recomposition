@@ -1783,15 +1783,20 @@ if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
         exit;
     }
     
+    $post_type = 'page';
+    if ( ! empty( $data['post_type'] ) && in_array( $data['post_type'], array( 'page', 'post' ) ) ) {
+        $post_type = $data['post_type'];
+    }
+    
     $post_id = 0;
     if ( ! empty( $data['post_id'] ) ) {
         $post_id = intval( $data['post_id'] );
     } else {
         $slug = ! empty( $data['slug'] ) ? sanitize_title( $data['slug'] ) : sanitize_title( $data['page_slug'] );
-        // Find page by slug
+        // Find page/post by slug
         $pages = get_posts( array(
             'name'        => $slug,
-            'post_type'   => 'page',
+            'post_type'   => $post_type,
             'post_status' => 'any',
             'numberposts' => 1
         ) );
@@ -1803,20 +1808,20 @@ if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
     $updated = array();
     
     $post_data = array(
-        'post_type'   => 'page',
+        'post_type'   => $post_type,
         'post_status' => ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : 'publish'
     );
     
     if ( $post_id > 0 ) {
         $post_data['ID'] = $post_id;
     } else {
-        // Create new page if not found
+        // Create new page/post if not found
         if ( ! empty( $data['slug'] ) || ! empty( $data['page_slug'] ) ) {
             $slug = ! empty( $data['slug'] ) ? sanitize_title( $data['slug'] ) : sanitize_title( $data['page_slug'] );
             $post_data['post_name'] = $slug;
         } else {
             header('Content-Type: application/json; charset=utf-8');
-            echo json_encode( array( 'error' => 'Cannot create page without slug' ) );
+            echo json_encode( array( 'error' => 'Cannot create page/post without slug' ) );
             exit;
         }
     }
@@ -1833,6 +1838,29 @@ if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
         // Fallback for new pages
         $post_data['post_title'] = ucwords( str_replace( '-', ' ', $post_data['post_name'] ) );
         $updated[] = 'title_default';
+    }
+    
+    if ( $post_type === 'post' ) {
+        if ( ! empty( $data['categories'] ) ) {
+            $cat_ids = array();
+            foreach ( (array)$data['categories'] as $cat_name ) {
+                $cat_id = get_cat_ID( $cat_name );
+                if ( ! $cat_id ) {
+                    $cat_id = wp_create_category( $cat_name );
+                }
+                if ( $cat_id ) {
+                    $cat_ids[] = $cat_id;
+                }
+            }
+            if ( ! empty( $cat_ids ) ) {
+                $post_data['post_category'] = $cat_ids;
+                $updated[] = 'categories';
+            }
+        }
+        if ( ! empty( $data['tags'] ) ) {
+            $post_data['tags_input'] = $data['tags'];
+            $updated[] = 'tags';
+        }
     }
     
     if ( isset( $data['excerpt'] ) ) {
