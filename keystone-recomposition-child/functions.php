@@ -1909,6 +1909,19 @@ if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
         $updated[] = 'og_image';
     }
     
+    // Update custom post meta if provided
+    if ( ! empty( $data['custom_meta'] ) ) {
+        foreach ( (array)$data['custom_meta'] as $meta_key => $meta_val ) {
+            update_post_meta( $post_id, sanitize_key( $meta_key ), sanitize_text_field( $meta_val ) );
+            $updated[] = 'custom_meta:' . $meta_key;
+        }
+    }
+    // Update keystone_youtube_id directly if provided
+    if ( ! empty( $data['youtube_id'] ) ) {
+        update_post_meta( $post_id, 'keystone_youtube_id', sanitize_text_field( $data['youtube_id'] ) );
+        $updated[] = 'keystone_youtube_id';
+    }
+
     // Clear page caches
     clean_post_cache( $post_id );
     
