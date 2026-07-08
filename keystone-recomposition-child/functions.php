@@ -2635,3 +2635,27 @@ function keystone_dynamic_llms_txt() {
 }
 
 
+
+/**
+ * ============================================================================
+ * RANK MATH VIDEO SITEMAP OPTIMIZATION
+ * Intercepts sitemap generation to expose [keystone_video] shortcodes to Rank Math
+ * ============================================================================
+ */
+add_filter( 'rank_math/sitemap/content_before_parse', function( $content, $post ) {
+    // Extract [keystone_video id="..."] shortcodes and append them as iframe strings
+    // so Rank Math's video detector can scrape the YouTube URLs.
+    if ( preg_match_all( '/\[keystone_video\s+id=[\''"]([a-zA-Z0-9_-]+)[\''"]\]/i', $content, $matches ) ) {
+        foreach ( $matches[1] as $yt_id ) {
+            $content .= '<iframe src="https://www.youtube.com/embed/' . esc_attr( $yt_id ) . '"></iframe>';
+        }
+    }
+    
+    // Also inject any videos explicitly saved in the post meta
+    $meta_yt = get_post_meta( $post->ID, 'keystone_youtube_id', true );
+    if ( ! empty( $meta_yt ) ) {
+         $content .= '<iframe src="https://www.youtube.com/embed/' . esc_attr( $meta_yt ) . '"></iframe>';
+    }
+    
+    return $content;
+}, 10, 2 );
