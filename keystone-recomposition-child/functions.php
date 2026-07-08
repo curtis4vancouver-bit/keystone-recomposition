@@ -2642,20 +2642,57 @@ function keystone_dynamic_llms_txt() {
  * Intercepts sitemap generation to expose [keystone_video] shortcodes to Rank Math
  * ============================================================================
  */
-add_filter( 'rank_math/sitemap/content_before_parse', function( $content, $post ) {
-    // Extract [keystone_video id="..."] shortcodes and append them as iframe strings
-    // so Rank Math's video detector can scrape the YouTube URLs.
-    if ( preg_match_all( '/\[keystone_video\s+id=[\''"]([a-zA-Z0-9_-]+)[\''"]\]/i', $content, $matches ) ) {
-        foreach ( $matches[1] as $yt_id ) {
-            $content .= '<iframe src="https://www.youtube.com/embed/' . esc_attr( $yt_id ) . '"></iframe>';
-        }
-    }
-    
-    // Also inject any videos explicitly saved in the post meta
-    $meta_yt = get_post_meta( $post->ID, 'keystone_youtube_id', true );
-    if ( ! empty( $meta_yt ) ) {
-         $content .= '<iframe src="https://www.youtube.com/embed/' . esc_attr( $meta_yt ) . '"></iframe>';
-    }
-    
-    return $content;
-}, 10, 2 );
+/**
+ * Force Rank Math Video Sitemap to detect [keystone_video] shortcodes
+ * and the keystone_youtube_id post meta by injecting standard YouTube
+ * iframes into the content before Rank Math parses it.
+ *
+ * Hook: rank_math/sitemap/content_before_parse
+ */
+add_filter( 'rank_math/sitemap/content_before_parse', 'keystone_rank_math_inject_youtube_embeds', 10, 2 );
+
+function keystone_rank_math_inject_youtube_embeds( $content, $post ) {
+
+	if ( empty( $post ) || ! isset( $post->ID ) ) {
+		return $content;
+	}
+
+	$iframe_template = '<iframe width="560" height="315" src="https://www.youtube.com/embed/%s" title="%s" frameborder="0" allowfullscreen></iframe>';
+
+	$collected_ids = array();
+
+	// 1. Convert every [keystone_video id="YOUTUBE_ID"] shortcode into a real iframe.
+	if ( has_shortcode( $content, 'keystone_video' ) ) {
+		$content = preg_replace_callback(
+			'/\[keystone_video\s+[^\]]*id\s*=\s*["\']?([a-zA-Z0-9_-]{6,15})["\']?[^\]]*\]/i',
+			function ( $matches ) use ( $iframe_template, $post, &$collected_ids ) {
+				$video_id        = sanitize_text_field( $matches[1] );
+				$collected_ids[] = $video_id;
+
+				return sprintf(
+					$iframe_template,
+					esc_attr( $video_id ),
+					esc_attr( get_the_title( $post->ID ) )
+				);
+			},
+			$content
+		);
+	}
+
+	// 2. Inject an iframe for the keystone_youtube_id post meta (if not already added).
+	$meta_video_id = get_post_meta( $post->ID, 'keystone_youtube_id', true );
+
+	if ( ! empty( $meta_video_id ) ) {
+		$meta_video_id = sanitize_text_field( $meta_video_id );
+
+		if ( ! in_array( $meta_video_id, $collected_ids, true ) ) {
+			$content .= "\n" . sprintf(
+				$iframe_template,
+				esc_attr( $meta_video_id ),
+				esc_attr( get_the_title( $post->ID ) )
+			);
+		}
+	}
+
+	return $content;
+}
