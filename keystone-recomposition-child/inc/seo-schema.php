@@ -463,7 +463,7 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
 
     $video_thumbnail = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
 
-    $data['richSnippetVideo'] = array(
+    $data['VideoObject'] = array(
         '@type' => 'VideoObject',
         'name' => esc_attr( $video_name ),
         'description' => esc_attr( $video_description ),
