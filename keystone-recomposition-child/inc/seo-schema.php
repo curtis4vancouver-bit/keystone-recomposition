@@ -210,9 +210,14 @@ function keystone_recomposition_child_youtube_schema() {
     $post_id = $post->ID;
     if ( $is_watch_page ) {
         $blog_slug = str_replace( 'watch-', '', $post->post_name );
-        $blog_post = get_page_by_path( $blog_slug, OBJECT, 'post' );
-        if ( $blog_post ) {
-            $post_id = $blog_post->ID;
+        $blog_posts = get_posts( array(
+            'name'        => $blog_slug,
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'numberposts' => 1
+        ) );
+        if ( ! empty( $blog_posts ) ) {
+            $post_id = $blog_posts[0]->ID;
         }
     }
 
@@ -346,15 +351,6 @@ add_action( 'wp_head', 'keystone_recomposition_child_youtube_schema', 20 );
  */
 add_filter( 'rank_math/json_ld', 'keystone_recomposition_integrate_video_schema', 99, 2 );
 function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
-    if ( isset( $_GET['debug_rank_math'] ) ) {
-        wp_send_json( array(
-            'has_post' => isset($GLOBALS['post']),
-            'post_type' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_type : null,
-            'post_name' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_name : null,
-            'data_keys' => array_keys($data),
-            'raw_data' => $data
-        ) );
-    }
     global $post;
     if ( ! $post ) {
         return $data;
@@ -366,9 +362,14 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
     $post_id = $post->ID;
     if ( $is_watch_page ) {
         $blog_slug = str_replace( 'watch-', '', $post->post_name );
-        $blog_post = get_page_by_path( $blog_slug, OBJECT, 'post' );
-        if ( $blog_post ) {
-            $post_id = $blog_post->ID;
+        $blog_posts = get_posts( array(
+            'name'        => $blog_slug,
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'numberposts' => 1
+        ) );
+        if ( ! empty( $blog_posts ) ) {
+            $post_id = $blog_posts[0]->ID;
         }
     }
 
@@ -476,6 +477,16 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
             '@id' => 'https://keystonerecomposition.com/#person'
         )
     );
+
+    if ( isset( $_GET['debug_rank_math'] ) ) {
+        wp_send_json( array(
+            'has_post' => isset($GLOBALS['post']),
+            'post_type' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_type : null,
+            'post_name' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_name : null,
+            'data_keys' => array_keys($data),
+            'raw_data' => $data
+        ) );
+    }
 
     return $data;
 }
