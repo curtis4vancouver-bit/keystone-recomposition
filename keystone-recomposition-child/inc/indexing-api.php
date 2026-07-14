@@ -898,7 +898,7 @@ add_action( 'init', function() {
         $slug = sanitize_text_field( $_GET['run_db_query'] );
         $posts = $wpdb->get_results(
             $wpdb->prepare(
-                "SELECT ID, post_title, post_name, post_type, post_status FROM $wpdb->posts WHERE post_name LIKE %s",
+                "SELECT ID, post_title, post_name, post_type, post_status, post_content FROM $wpdb->posts WHERE post_name LIKE %s",
                 '%' . $slug . '%'
             )
         );
