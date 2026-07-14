@@ -346,6 +346,15 @@ add_action( 'wp_head', 'keystone_recomposition_child_youtube_schema', 20 );
  */
 add_filter( 'rank_math/json_ld', 'keystone_recomposition_integrate_video_schema', 99, 2 );
 function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
+    if ( isset( $_GET['debug_rank_math'] ) ) {
+        wp_send_json( array(
+            'has_post' => isset($GLOBALS['post']),
+            'post_type' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_type : null,
+            'post_name' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_name : null,
+            'data_keys' => array_keys($data),
+            'raw_data' => $data
+        ) );
+    }
     global $post;
     if ( ! $post ) {
         return $data;
