@@ -66,7 +66,7 @@ if ( isset( $_GET['get_post_inventory'] ) && $_GET['get_post_inventory'] === 'so
     foreach ( $posts as $p ) {
         $youtube_id = '';
         // Check shortcode first (migration converted embeds to shortcodes)
-        if ( preg_match( '~\[keystone_video\s+id=["\']([a-zA-Z0-9_-]+)["\']\]~', $p->post_content, $matches ) ) {
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p->post_content, $matches ) ) {
             $youtube_id = $matches[1];
         } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $p->post_content, $matches ) ) {
             $youtube_id = $matches[1];

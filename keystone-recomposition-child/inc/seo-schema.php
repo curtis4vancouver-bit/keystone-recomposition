@@ -543,7 +543,7 @@ function keystone_recomposition_inject_og_video() {
 
     // Fallback: extract from shortcode in content
     if ( empty( $youtube_id ) ) {
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']\]~i', $post->post_content, $m ) ) {
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $post->post_content, $m ) ) {
             $youtube_id = $m[1];
         }
     }

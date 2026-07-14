@@ -49,7 +49,7 @@ if ( isset( $_GET['heal_video_meta'] ) && $_GET['heal_video_meta'] === 'sovereig
         
         // Extract YouTube ID from content
         $youtube_id = '';
-        if ( preg_match( '~\[keystone_video\s+id=["\']([a-zA-Z0-9_-]+)["\']\]~', $p->post_content, $matches ) ) {
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p->post_content, $matches ) ) {
             $youtube_id = $matches[1];
         } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $p->post_content, $matches ) ) {
             $youtube_id = $matches[1];
