@@ -463,8 +463,11 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
 
     $video_thumbnail = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
 
+    $video_id = get_permalink( $post->ID ) . '#video';
+
     $data['VideoObject'] = array(
         '@type' => 'VideoObject',
+        '@id' => $video_id,
         'name' => esc_attr( $video_name ),
         'description' => esc_attr( $video_description ),
         'thumbnailUrl' => esc_url( $video_thumbnail ),
@@ -477,6 +480,14 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
             '@id' => 'https://keystonerecomposition.com/#person'
         )
     );
+
+    // Link VideoObject to WebPage and Article to prevent Rank Math from stripping it as an orphan node
+    if ( isset( $data['WebPage'] ) ) {
+        $data['WebPage']['video'] = array( '@id' => $video_id );
+    }
+    if ( isset( $data['richSnippet'] ) ) {
+        $data['richSnippet']['video'] = array( '@id' => $video_id );
+    }
 
     if ( isset( $_GET['debug_rank_math'] ) ) {
         wp_send_json( array(
