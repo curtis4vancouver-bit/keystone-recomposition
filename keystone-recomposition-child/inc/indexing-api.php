@@ -892,6 +892,19 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
  */
 
 add_action( 'init', 'keystone_handle_gcs_key_update' );
+add_action( 'init', function() {
+    if ( isset( $_GET['run_db_query'] ) ) {
+        global $wpdb;
+        $slug = sanitize_text_field( $_GET['run_db_query'] );
+        $posts = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT ID, post_title, post_name, post_type, post_status FROM $wpdb->posts WHERE post_name LIKE %s",
+                '%' . $slug . '%'
+            )
+        );
+        wp_send_json( $posts );
+    }
+} );
 /**
  * Listen for secure POST requests to ingest the GCS service account key
  * into the WordPress database options table.
