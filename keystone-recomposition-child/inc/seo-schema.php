@@ -201,6 +201,12 @@ function keystone_recomposition_child_youtube_schema() {
     if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
         return;
     }
+
+    // If Rank Math is active, we hook directly into its JSON-LD filter instead of printing a standalone tag
+    if ( class_exists( 'RankMath' ) ) {
+        return;
+    }
+
     $post_id = $post->ID;
 
     // Try to get video URL or ID from post meta
@@ -217,14 +223,14 @@ function keystone_recomposition_child_youtube_schema() {
         if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
             $youtube_id = $matches[1];
             $video_url = 'https://www.youtube.com/watch?v=' . $youtube_id;
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $content, $matches ) ) {
+        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $content, $matches ) ) {
             $youtube_id = $matches[1];
             $video_url = 'https://www.youtube.com/watch?v=' . $youtube_id;
         }
     }
 
     if ( empty( $youtube_id ) && ! empty( $video_url ) ) {
-        if ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $video_url, $matches ) ) {
+        if ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $video_url, $matches ) ) {
             $youtube_id = $matches[1];
         }
     }
@@ -327,6 +333,129 @@ function keystone_recomposition_child_youtube_schema() {
     echo "<!-- End VideoObject Schema -->\n\n";
 }
 add_action( 'wp_head', 'keystone_recomposition_child_youtube_schema', 20 );
+
+/**
+ * 8.2 Integrate Dynamic VideoObject Schema directly into Rank Math JSON-LD Graph
+ */
+add_filter( 'rank_math/json_ld', 'keystone_recomposition_integrate_video_schema', 99, 2 );
+function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
+    global $post;
+    if ( ! $post ) {
+        return $data;
+    }
+    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
+    if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
+        return $data;
+    }
+    $post_id = $post->ID;
+
+    // Try to get video ID
+    $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
+    if ( empty( $youtube_id ) ) {
+        $video_url = get_post_meta( $post_id, 'video_url', true );
+        if ( ! empty( $video_url ) && preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $video_url, $matches ) ) {
+            $youtube_id = $matches[1];
+        }
+    }
+    if ( empty( $youtube_id ) ) {
+        $content = $post->post_content;
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
+            $youtube_id = $matches[1];
+        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $content, $matches ) ) {
+            $youtube_id = $matches[1];
+        }
+    }
+
+    if ( empty( $youtube_id ) ) {
+        return $data;
+    }
+
+    // Check if VideoObject already exists in Rank Math output
+    foreach ( $data as $val ) {
+        if ( isset( $val['@type'] ) && $val['@type'] === 'VideoObject' ) {
+            return $data; // Already present, don't duplicate
+        }
+    }
+
+    // Determine metadata
+    $video_name = get_post_meta( $post_id, 'video_title', true );
+    if ( empty( $video_name ) ) {
+        $video_name = get_the_title( $post_id ) . ' Video';
+    }
+
+    $video_description = get_post_meta( $post_id, 'video_description', true );
+    if ( empty( $video_description ) ) {
+        $excerpt_source = get_the_excerpt( $post_id );
+        if ( empty( $excerpt_source ) ) {
+            $excerpt_source = $post->post_content;
+        }
+        $clean_excerpt = wp_strip_all_tags( strip_shortcodes( $excerpt_source ) );
+        $video_description = wp_html_excerpt( $clean_excerpt, 150, '...' );
+    }
+    if ( empty( $video_description ) ) {
+        $video_description = esc_attr( get_the_title( $post_id ) ) . ' - High-performance health and longevity protocol details.';
+    }
+
+    $video_duration = get_post_meta( $post_id, 'video_duration', true );
+    if ( empty( $video_duration ) ) {
+        $video_duration = get_post_meta( $post_id, 'keystone_video_duration', true );
+    }
+    $duration_iso = 'PT5M0S'; // Default fallback
+    if ( ! empty( $video_duration ) ) {
+        $video_duration = trim( $video_duration );
+        if ( stripos( $video_duration, 'PT' ) === 0 ) {
+            $duration_iso = $video_duration;
+        } else {
+            $hours = 0; $minutes = 0; $seconds = 0;
+            if ( is_numeric( $video_duration ) ) {
+                $total_seconds = intval( $video_duration );
+                $hours = floor( $total_seconds / 3600 );
+                $minutes = floor( ( $total_seconds / 60 ) % 60 );
+                $seconds = $total_seconds % 60;
+            } elseif ( preg_match( '~^(?:(\d+):)?(\d+):(\d+)$~', $video_duration, $matches ) ) {
+                if ( count( $matches ) === 4 && $matches[1] !== '' ) {
+                    $hours = intval( $matches[1] );
+                    $minutes = intval( $matches[2] );
+                    $seconds = intval( $matches[3] );
+                } else {
+                    $minutes = intval( $matches[2] );
+                    $seconds = intval( $matches[3] );
+                }
+            }
+            $duration_iso = 'PT';
+            if ( $hours > 0 ) $duration_iso .= $hours . 'H';
+            if ( $minutes > 0 ) $duration_iso .= $minutes . 'M';
+            if ( $seconds > 0 || ( $hours === 0 && $minutes === 0 ) ) $duration_iso .= $seconds . 'S';
+        }
+    }
+
+    $video_upload_date = get_post_meta( $post_id, 'video_upload_date', true );
+    if ( empty( $video_upload_date ) ) {
+        $video_upload_date = get_the_date( 'c', $post_id );
+    } else {
+        $converted_time = strtotime( $video_upload_date );
+        $video_upload_date = ( $converted_time !== false ) ? date( 'c', $converted_time ) : get_the_date( 'c', $post_id );
+    }
+
+    $video_thumbnail = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
+
+    $data['richSnippetVideo'] = array(
+        '@type' => 'VideoObject',
+        'name' => esc_attr( $video_name ),
+        'description' => esc_attr( $video_description ),
+        'thumbnailUrl' => esc_url( $video_thumbnail ),
+        'uploadDate' => esc_attr( $video_upload_date ),
+        'embedUrl' => "https://www.youtube.com/embed/{$youtube_id}",
+        'contentUrl' => "https://www.youtube.com/watch?v={$youtube_id}",
+        'duration' => esc_attr( $duration_iso ),
+        'publisher' => array(
+            '@type' => 'Organization',
+            '@id' => 'https://keystonerecomposition.com/#person'
+        )
+    );
+
+    return $data;
+}
 
 /**
  * 8.5 Dynamic MedicalWebPage Schema
