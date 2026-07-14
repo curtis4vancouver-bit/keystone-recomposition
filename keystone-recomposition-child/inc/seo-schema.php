@@ -193,12 +193,12 @@ add_action( 'wp_head', 'keystone_recomposition_child_inject_schema' );
  * Extracts the primary article video and outputs exactly ONE premium schema object.
  */
 function keystone_recomposition_child_youtube_schema() {
-    if ( ! is_singular( 'post' ) ) {
-        return;
-    }
-
     global $post;
     if ( ! $post ) {
+        return;
+    }
+    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
+    if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
         return;
     }
     $post_id = $post->ID;
@@ -530,15 +530,14 @@ add_action( 'wp_footer', function() {
  * with a YouTube video get the og:video signals Google needs for video indexing.
  */
 function keystone_recomposition_inject_og_video() {
-    if ( ! is_singular( 'post' ) ) {
-        return;
-    }
-
     global $post;
     if ( ! $post ) {
         return;
     }
-
+    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
+    if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
+        return;
+    }
     $youtube_id = get_post_meta( $post->ID, 'keystone_youtube_id', true );
 
     // Fallback: extract from shortcode in content
