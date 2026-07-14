@@ -349,7 +349,7 @@ add_action( 'wp_head', 'keystone_recomposition_child_youtube_schema', 20 );
 /**
  * 8.2 Integrate Dynamic VideoObject Schema directly into Rank Math JSON-LD Graph
  */
-add_filter( 'rank_math/json_ld', 'keystone_recomposition_integrate_video_schema', 99, 2 );
+add_filter( 'rank_math/json_ld', 'keystone_recomposition_integrate_video_schema', 100000, 2 );
 function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
     global $post;
     if ( ! $post ) {
