@@ -208,6 +208,13 @@ function keystone_recomposition_child_youtube_schema() {
     }
 
     $post_id = $post->ID;
+    if ( $is_watch_page ) {
+        $blog_slug = str_replace( 'watch-', '', $post->post_name );
+        $blog_post = get_page_by_path( $blog_slug, OBJECT, 'post' );
+        if ( $blog_post ) {
+            $post_id = $blog_post->ID;
+        }
+    }
 
     // Try to get video URL or ID from post meta
     $video_url = get_post_meta( $post_id, 'video_url', true );
@@ -348,6 +355,13 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
         return $data;
     }
     $post_id = $post->ID;
+    if ( $is_watch_page ) {
+        $blog_slug = str_replace( 'watch-', '', $post->post_name );
+        $blog_post = get_page_by_path( $blog_slug, OBJECT, 'post' );
+        if ( $blog_post ) {
+            $post_id = $blog_post->ID;
+        }
+    }
 
     // Try to get video ID
     $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
