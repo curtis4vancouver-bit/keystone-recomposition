@@ -489,16 +489,6 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
         $data['richSnippet']['video'] = array( '@id' => $video_id );
     }
 
-    if ( isset( $_GET['debug_rank_math'] ) ) {
-        wp_send_json( array(
-            'has_post' => isset($GLOBALS['post']),
-            'post_type' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_type : null,
-            'post_name' => isset($GLOBALS['post']) ? $GLOBALS['post']->post_name : null,
-            'data_keys' => array_keys($data),
-            'raw_data' => $data
-        ) );
-    }
-
     return $data;
 }
 
