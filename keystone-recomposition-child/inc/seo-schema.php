@@ -68,7 +68,7 @@ function keystone_recomposition_child_inject_schema() {
             'value' => 'TOOLOST3000939655'
         ),
         'founder' => array(
-            '@id' => 'https://www.keystonepossibilities.com/wayne-stevenson/#person'
+            '@id' => 'https://keystonepossibilities.ca/#person'
         )
     );
 
@@ -86,7 +86,7 @@ function keystone_recomposition_child_inject_schema() {
         '@graph' => array(
             array(
                 '@type' => 'Person',
-                '@id' => 'https://www.keystonepossibilities.com/wayne-stevenson/#person',
+                '@id' => 'https://keystonepossibilities.ca/#person',
                 'name' => 'Wayne Stevenson',
                 'alternateName' => array( 'Keystone Recomposition', 'Keystone Protocols' ),
                 'url' => 'https://keystonerecomposition.com/about/',
@@ -137,7 +137,7 @@ function keystone_recomposition_child_inject_schema() {
                         '@type' => 'OrganizationRole',
                         'worksFor' => array(
                             '@type' => 'Organization',
-                            '@id' => 'https://www.keystonepossibilities.com/#organization',
+                            '@id' => 'https://keystonepossibilities.ca/#organization',
                             'name' => 'Keystone Possibilities Ltd.'
                         ),
                         'roleName' => 'Managing Director & Chief Builder',
@@ -155,12 +155,12 @@ function keystone_recomposition_child_inject_schema() {
                     )
                 ),
                 'hasCredential' => array(
-                    '@id' => 'https://www.keystonepossibilities.com/wayne-stevenson/#license-52603'
+                    '@id' => 'https://keystonepossibilities.ca/#license-52603'
                 )
             ),
             array(
                 '@type' => 'EducationalOccupationalCredential',
-                '@id' => 'https://www.keystonepossibilities.com/wayne-stevenson/#license-52603',
+                '@id' => 'https://keystonepossibilities.ca/#license-52603',
                 'name' => 'BC Residential Builder License #52603',
                 'credentialCategory' => 'Professional Provincial License',
                 'credentialNumber' => '52603',
