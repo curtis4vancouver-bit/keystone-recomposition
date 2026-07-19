@@ -120,6 +120,22 @@ if ( file_exists( $wp_load_path ) ) {
     update_post_meta( $post_id, 'video_duration', 'PT8M15S' );
     update_post_meta( $post_id, 'video_upload_date', '2026-05-22T20:04:10-07:00' );
     echo "POST_1149_META_UPDATE: SUCCESS\n";
+    $p1516 = get_post( 1516 );
+    if ( $p1516 ) {
+        echo "POST 1516 STATUS: " . $p1516->post_status . " | TYPE: " . $p1516->post_type . "\n";
+        $youtube_id = get_post_meta( 1516, 'keystone_youtube_id', true );
+        echo "POST 1516 keystone_youtube_id meta: " . ($youtube_id ? $youtube_id : 'empty') . "\n";
+        // Run sitemap match checks
+        $matched_yt = '';
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p1516->post_content, $matches ) ) {
+            $matched_yt = 'shortcode: ' . $matches[1];
+        } elseif ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p1516->post_content, $matches ) ) {
+            $matched_yt = 'regex: ' . $matches[1];
+        }
+        echo "POST 1516 matched youtube: " . ($matched_yt ? $matched_yt : 'none') . "\n";
+    } else {
+        echo "POST 1516 NOT FOUND\n";
+    }
 } else {
     echo "WP-LOAD NOT FOUND AT: " . $wp_load_path . "\n";
 }
