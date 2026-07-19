@@ -472,11 +472,6 @@ add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
  */
 add_action( 'init', 'keystone_recomposition_heal_watch_pages_trigger' );
 function keystone_recomposition_heal_watch_pages_trigger() {
-    if ( isset( $_GET['run_diagnostics'] ) ) {
-        header('Content-Type: text/plain');
-        echo get_post( 1498 )->post_content;
-        exit;
-    }
     if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration'] === 'sovereign_execute_watch_heal' ) {
         global $wpdb;
         
@@ -500,7 +495,13 @@ function keystone_recomposition_heal_watch_pages_trigger() {
                 }
             }
             if ( empty( $youtube_id ) ) {
-                // Fallback: parse embedded YouTube links from post content directly
+                // 1. Try parsing shortcode [keystone_video id='...']
+                if ( preg_match( '~\[keystone_video\s+id=[\'\"]([^\'\"]{11})[\'\"]\]~i', $p->post_content, $matches ) ) {
+                    $youtube_id = $matches[1];
+                }
+            }
+            if ( empty( $youtube_id ) ) {
+                // 2. Try parsing standard YouTube URL embeds from content
                 if ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
                     $youtube_id = $matches[1];
                 }
