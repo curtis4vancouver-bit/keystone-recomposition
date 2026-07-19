@@ -486,9 +486,17 @@ function keystone_recomposition_heal_watch_pages_trigger() {
         
         foreach ( $posts as $p ) {
             $youtube_id = get_post_meta( $p->ID, 'keystone_youtube_id', true );
-            $video_url = get_post_meta( $p->ID, 'video_url', true );
-            if ( empty( $youtube_id ) && ! empty( $video_url ) ) {
-                if ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $video_url, $matches ) ) {
+            if ( empty( $youtube_id ) ) {
+                $video_url = get_post_meta( $p->ID, 'video_url', true );
+                if ( ! empty( $video_url ) ) {
+                    if ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $video_url, $matches ) ) {
+                        $youtube_id = $matches[1];
+                    }
+                }
+            }
+            if ( empty( $youtube_id ) ) {
+                // Fallback: parse embedded YouTube links from post content directly
+                if ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
                     $youtube_id = $matches[1];
                 }
             }
