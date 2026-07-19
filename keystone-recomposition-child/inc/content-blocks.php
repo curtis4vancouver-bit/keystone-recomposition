@@ -465,3 +465,91 @@ function keystone_serve_video_sitemap() {
 
 // Register the video sitemap in Rank Math's main sitemap index dynamically
 add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
+
+/**
+ * Programmatic watch page content healer & missing watch page creator
+ * Stamped: 2026-07-18
+ */
+add_action( 'init', 'keystone_recomposition_heal_watch_pages_trigger' );
+function keystone_recomposition_heal_watch_pages_trigger() {
+    if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration'] === 'sovereign_execute_watch_heal' ) {
+        global $wpdb;
+        
+        $posts = $wpdb->get_results(
+            "SELECT ID, post_title, post_name, post_content FROM $wpdb->posts 
+             WHERE post_type = 'post' AND post_status = 'publish'"
+        );
+        
+        $healed = 0;
+        $created = 0;
+        $reports = array();
+        
+        foreach ( $posts as $p ) {
+            $youtube_id = get_post_meta( $p->ID, 'keystone_youtube_id', true );
+            $video_url = get_post_meta( $p->ID, 'video_url', true );
+            if ( empty( $youtube_id ) && ! empty( $video_url ) ) {
+                if ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $video_url, $matches ) ) {
+                    $youtube_id = $matches[1];
+                }
+            }
+            if ( empty( $youtube_id ) ) {
+                continue;
+            }
+            
+            $watch_page_id = $wpdb->get_var( $wpdb->prepare(
+                "SELECT ID FROM $wpdb->posts 
+                 WHERE post_type = 'page' AND post_status = 'publish' 
+                 AND ( post_name = %s OR %s LIKE CONCAT(post_name, '%%') ) LIMIT 1",
+                'watch-' . $p->post_name,
+                'watch-' . $p->post_name
+            ) );
+            
+            if ( ! $watch_page_id ) {
+                $watch_title = 'Watch: ' . $p->post_title;
+                $watch_slug = 'watch-' . $p->post_name;
+                
+                $new_page_id = wp_insert_post( array(
+                    'post_title'    => $watch_title,
+                    'post_name'     => $watch_slug,
+                    'post_content'  => $p->post_content,
+                    'post_status'   => 'publish',
+                    'post_type'     => 'page',
+                ) );
+                
+                if ( $new_page_id && ! is_wp_error( $new_page_id ) ) {
+                    update_post_meta( $new_page_id, '_wp_page_template', 'template-wolverine-stack.php' );
+                    update_post_meta( $new_page_id, 'video_url', 'https://www.youtube.com/watch?v=' . $youtube_id );
+                    update_post_meta( $new_page_id, 'keystone_youtube_id', $youtube_id );
+                    $created++;
+                    $reports[] = "Created watch page for post: " . $p->post_name . " (ID: $new_page_id)";
+                }
+            } else {
+                $watch_page = get_post( $watch_page_id );
+                if ( $watch_page ) {
+                    $watch_len = strlen( trim( $watch_page->post_content ) );
+                    $parent_len = strlen( trim( $p->post_content ) );
+                    
+                    if ( $watch_len < 1000 && $parent_len > $watch_len ) {
+                        wp_update_post( array(
+                            'ID'           => $watch_page_id,
+                            'post_content' => $p->post_content
+                        ) );
+                        update_post_meta( $watch_page_id, 'video_url', 'https://www.youtube.com/watch?v=' . $youtube_id );
+                        update_post_meta( $watch_page_id, 'keystone_youtube_id', $youtube_id );
+                        $healed++;
+                        $reports[] = "Healed thin watch page content for slug: " . $watch_page->post_name . " (ID: $watch_page_id)";
+                    }
+                }
+            }
+        }
+        
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode( array(
+            'status' => 'success',
+            'created_count' => $created,
+            'healed_count' => $healed,
+            'log' => $reports
+        ), JSON_PRETTY_PRINT );
+        exit;
+    }
+}
