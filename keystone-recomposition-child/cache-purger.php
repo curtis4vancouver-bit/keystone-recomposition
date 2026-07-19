@@ -106,15 +106,6 @@ if ( file_exists( $wp_load_path ) ) {
         echo "TOTAL OPTIONS UPDATED: " . $options_updated . "\n\n";
     }
 
-    // 3. Clean Rank Math Redirections
-    if ( isset( $_GET['clean_redirections'] ) ) {
-        global $wpdb;
-        echo "=== CLEANING RANK MATH REDIRECTIONS ===\n\n";
-        $rm_table = $wpdb->prefix . 'rank_math_redirections';
-        $res2 = $wpdb->query( "DELETE FROM $rm_table WHERE id IN (2, 6)" );
-        echo "DELETED Rank Math Redirections rows: " . $res2 . "\n\n";
-    }
-
     if ( function_exists( 'wp_cache_flush' ) ) {
         wp_cache_flush();
         echo "WP_CACHE_FLUSH: SUCCESS\n";
@@ -129,36 +120,6 @@ if ( file_exists( $wp_load_path ) ) {
     update_post_meta( $post_id, 'video_duration', 'PT8M15S' );
     update_post_meta( $post_id, 'video_upload_date', '2026-05-22T20:04:10-07:00' );
     echo "POST_1149_META_UPDATE: SUCCESS\n";
-    // Inspect Rank Math Redirections
-    global $wpdb;
-    $rm_table = $wpdb->prefix . 'rank_math_redirections';
-    $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$rm_table'");
-    if ( $table_exists ) {
-        echo "\n=== RANK MATH REDIRECTIONS ===\n";
-        $redirections = $wpdb->get_results("SELECT id, sources, header_code, url_to, status FROM $rm_table");
-        foreach ($redirections as $r) {
-            echo "ID: " . $r->id . " | Status: " . $r->status . " | Code: " . $r->header_code . " | Targets: " . $r->url_to . " | Sources: " . $r->sources . "\n";
-        }
-    } else {
-        echo "\nRank Math redirections table does not exist: $rm_table\n";
-    }
-
-    $p1516 = get_post( 1516 );
-    if ( $p1516 ) {
-        echo "POST 1516 STATUS: " . $p1516->post_status . " | TYPE: " . $p1516->post_type . "\n";
-        $youtube_id = get_post_meta( 1516, 'keystone_youtube_id', true );
-        echo "POST 1516 keystone_youtube_id meta: " . ($youtube_id ? $youtube_id : 'empty') . "\n";
-        // Run sitemap match checks
-        $matched_yt = '';
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p1516->post_content, $matches ) ) {
-            $matched_yt = 'shortcode: ' . $matches[1];
-        } elseif ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p1516->post_content, $matches ) ) {
-            $matched_yt = 'regex: ' . $matches[1];
-        }
-        echo "POST 1516 matched youtube: " . ($matched_yt ? $matched_yt : 'none') . "\n";
-    } else {
-        echo "POST 1516 NOT FOUND\n";
-    }
 } else {
     echo "WP-LOAD NOT FOUND AT: " . $wp_load_path . "\n";
 }
