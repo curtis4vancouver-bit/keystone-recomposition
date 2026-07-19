@@ -106,6 +106,15 @@ if ( file_exists( $wp_load_path ) ) {
         echo "TOTAL OPTIONS UPDATED: " . $options_updated . "\n\n";
     }
 
+    // 3. Clean Rank Math Redirections
+    if ( isset( $_GET['clean_redirections'] ) ) {
+        global $wpdb;
+        echo "=== CLEANING RANK MATH REDIRECTIONS ===\n\n";
+        $rm_table = $wpdb->prefix . 'rank_math_redirections';
+        $res2 = $wpdb->query( "DELETE FROM $rm_table WHERE id IN (2, 6)" );
+        echo "DELETED Rank Math Redirections rows: " . $res2 . "\n\n";
+    }
+
     if ( function_exists( 'wp_cache_flush' ) ) {
         wp_cache_flush();
         echo "WP_CACHE_FLUSH: SUCCESS\n";
