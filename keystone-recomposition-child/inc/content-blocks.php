@@ -472,23 +472,6 @@ add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
  */
 add_action( 'init', 'keystone_recomposition_heal_watch_pages_trigger' );
 function keystone_recomposition_heal_watch_pages_trigger() {
-    if ( isset( $_GET['run_diagnostics'] ) ) {
-        global $wpdb;
-        $pages = $wpdb->get_results("SELECT ID, post_title, post_name FROM $wpdb->posts WHERE post_type = 'page' AND post_status = 'publish' AND post_name LIKE 'watch-%'");
-        $report = array();
-        foreach ($pages as $p) {
-            $template = get_post_meta($p->ID, '_wp_page_template', true);
-            $report[] = array(
-                'id' => $p->ID,
-                'title' => $p->post_title,
-                'slug' => $p->post_name,
-                'template' => $template
-            );
-        }
-        header('Content-Type: application/json');
-        echo json_encode($report, JSON_PRETTY_PRINT);
-        exit;
-    }
     if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration'] === 'sovereign_execute_watch_heal' ) {
         global $wpdb;
         
@@ -548,7 +531,7 @@ function keystone_recomposition_heal_watch_pages_trigger() {
                 ) );
                 
                 if ( $new_page_id && ! is_wp_error( $new_page_id ) ) {
-                    update_post_meta( $new_page_id, '_wp_page_template', 'template-wolverine-stack.php' );
+                    update_post_meta( $new_page_id, '_wp_page_template', 'default' );
                     update_post_meta( $new_page_id, 'video_url', 'https://www.youtube.com/watch?v=' . $youtube_id );
                     update_post_meta( $new_page_id, 'keystone_youtube_id', $youtube_id );
                     $created++;
@@ -557,6 +540,9 @@ function keystone_recomposition_heal_watch_pages_trigger() {
             } else {
                 $watch_page = get_post( $watch_page_id );
                 if ( $watch_page ) {
+                    // Force default page template to prevent hardcoded wolverine layout overwrite
+                    update_post_meta( $watch_page_id, '_wp_page_template', 'default' );
+                    
                     $watch_len = strlen( trim( $watch_page->post_content ) );
                     $parent_len = strlen( trim( $p->post_content ) );
                     
