@@ -780,20 +780,35 @@ function keystone_recomposition_child_404_redirect() {
     $path = '/' . trim( $path, '/' ) . '/'; // Standardize slashes
     $path = str_replace( '//', '/', $path );
 
-    $redirects = array(
+    $redirects_301 = array(
         '/2026/01/23/mounjaro-kwikpen-the-official-click-to-mg-math-bible/' => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
         '/2026/05/07/wolverine-stack-bpc-157-tb500-builder-blueprint/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-builder-blueprint/',
-        '/keystone_recomposition_/' => '/',
-        '/logo/' => '/',
-        '/keystone-recomposition-ltd/' => '/',
-        '/keystone_recomposition_ltd_invert-removebg-preview/' => '/',
-        '/logout/' => '/',
-        '/the-journey/' => '/',
     );
 
-    // Exact matches
-    if ( isset( $redirects[ $path ] ) ) {
-        wp_redirect( home_url( $redirects[ $path ] ), 301 );
+    $gone_paths = array(
+        '/keystone_recomposition_/',
+        '/logo/',
+        '/keystone-recomposition-ltd/',
+        '/keystone_recomposition_ltd_invert-removebg-preview/',
+        '/logout/',
+        '/the-journey/',
+    );
+
+    // Exact 301 redirects
+    if ( isset( $redirects_301[ $path ] ) ) {
+        wp_redirect( home_url( $redirects_301[ $path ] ), 301 );
+        exit;
+    }
+
+    // Exact 410 Gone statuses
+    if ( in_array( $path, $gone_paths, true ) ) {
+        status_header( 410 );
+        nocache_headers();
+        if ( file_exists( get_query_template( '404' ) ) ) {
+            include( get_query_template( '404' ) );
+        } else {
+            echo '410 Gone - This resource is permanently removed.';
+        }
         exit;
     }
     

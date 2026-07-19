@@ -387,9 +387,31 @@ function keystone_serve_video_sitemap() {
         }
 
         // Try to locate a corresponding watch page (slug: watch-{post_slug})
-        $watch_page = get_page_by_path( 'watch-' . $p->post_name, OBJECT, 'page' );
+        global $wpdb;
+        $watch_page_id = 0;
+        $watch_slug = 'watch-' . $p->post_name;
+        
+        $watch_page = get_page_by_path( $watch_slug, OBJECT, 'page' );
         if ( $watch_page && 'publish' === $watch_page->post_status ) {
-            $permalink = get_permalink( $watch_page->ID );
+            $watch_page_id = $watch_page->ID;
+        } else {
+            // Direct SQL fallback for truncated slugs or numerical suffixes
+            $truncated_slug = substr( $watch_slug, 0, 200 );
+            $watch_page_id = (int) $wpdb->get_var( $wpdb->prepare(
+                "SELECT ID FROM $wpdb->posts 
+                 WHERE post_type = 'page' 
+                 AND post_status = 'publish' 
+                 AND (post_name = %s OR post_name = %s OR post_name LIKE %s)
+                 ORDER BY LENGTH(post_name) ASC
+                 LIMIT 1",
+                $watch_slug,
+                $truncated_slug,
+                $wpdb->esc_like( substr( $watch_slug, 0, 190 ) ) . '%'
+            ) );
+        }
+
+        if ( $watch_page_id > 0 ) {
+            $permalink = get_permalink( $watch_page_id );
         } else {
             $permalink = get_permalink( $post_id );
         }

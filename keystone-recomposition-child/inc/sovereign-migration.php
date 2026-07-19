@@ -95,6 +95,10 @@ if ( isset( $_GET['get_post_inventory'] ) && $_GET['get_post_inventory'] === 'so
 if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration'] === 'sovereign_execute' ) {
     global $wpdb;
     
+    // Set safety guards for execution environment
+    @ini_set( 'memory_limit', '512M' );
+    @set_time_limit( 300 );
+    
     // Fetch all published posts
     $posts = $wpdb->get_results( 
         "SELECT ID, post_title, post_name, post_date, post_content 
@@ -199,7 +203,8 @@ if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration']
         clean_post_cache( $post_id );
         
         // 7. Inject GSC Video Object Metadata using WordPress Custom Fields
-        $video_desc = wp_html_excerpt( wp_strip_all_tags( strip_shortcodes( $cleaned_content ) ), 150, '...' );
+        // Extract description from original content to prevent the medical disclaimer from bleeding in
+        $video_desc = wp_html_excerpt( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ), 150, '...' );
         if ( empty( $video_desc ) ) {
             $video_desc = esc_attr( $p->post_title ) . ' - High-performance health and longevity protocol details.';
         }
