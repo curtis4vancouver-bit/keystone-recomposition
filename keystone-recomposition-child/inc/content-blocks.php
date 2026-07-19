@@ -472,6 +472,23 @@ add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
  */
 add_action( 'init', 'keystone_recomposition_heal_watch_pages_trigger' );
 function keystone_recomposition_heal_watch_pages_trigger() {
+    if ( isset( $_GET['run_diagnostics'] ) ) {
+        global $wpdb;
+        $pages = $wpdb->get_results("SELECT ID, post_title, post_name FROM $wpdb->posts WHERE post_type = 'page' AND post_status = 'publish' AND post_name LIKE 'watch-%'");
+        $report = array();
+        foreach ($pages as $p) {
+            $template = get_post_meta($p->ID, '_wp_page_template', true);
+            $report[] = array(
+                'id' => $p->ID,
+                'title' => $p->post_title,
+                'slug' => $p->post_name,
+                'template' => $template
+            );
+        }
+        header('Content-Type: application/json');
+        echo json_encode($report, JSON_PRETTY_PRINT);
+        exit;
+    }
     if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration'] === 'sovereign_execute_watch_heal' ) {
         global $wpdb;
         
