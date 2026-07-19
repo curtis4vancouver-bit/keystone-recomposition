@@ -472,6 +472,26 @@ add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
  */
 add_action( 'init', 'keystone_recomposition_heal_watch_pages_trigger' );
 function keystone_recomposition_heal_watch_pages_trigger() {
+    if ( isset( $_GET['run_diagnostics'] ) ) {
+        global $wpdb;
+        $posts = $wpdb->get_results("SELECT ID, post_title, post_name, post_content FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish'");
+        $report = array();
+        foreach ($posts as $p) {
+            $youtube_id = '';
+            if ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
+                $youtube_id = $matches[1];
+            }
+            $report[] = array(
+                'id' => $p->ID,
+                'title' => $p->post_title,
+                'slug' => $p->post_name,
+                'youtube_id' => $youtube_id
+            );
+        }
+        header('Content-Type: application/json');
+        echo json_encode($report, JSON_PRETTY_PRINT);
+        exit;
+    }
     if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration'] === 'sovereign_execute_watch_heal' ) {
         global $wpdb;
         
