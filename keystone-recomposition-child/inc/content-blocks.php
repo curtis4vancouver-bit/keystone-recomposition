@@ -378,7 +378,7 @@ function keystone_serve_video_sitemap() {
         if ( empty( $youtube_id ) ) {
             if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p->post_content, $matches ) ) {
                 $youtube_id = $matches[1];
-            } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $p->post_content, $matches ) ) {
+            } elseif ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
                 $youtube_id = $matches[1];
             }
         }
