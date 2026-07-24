@@ -50,6 +50,65 @@ function keystone_lazy_video_shortcode( $atts ) {
 add_shortcode( 'keystone_video', 'keystone_lazy_video_shortcode' );
 
 /**
+ * 13.5 Deduplicate Video Facades (Google Search Fix)
+ * Prevents Google from detecting multiple VideoObject signals on the same page.
+ * Root cause: the Watch page healer copies parent post content that contains both
+ * a [keystone_video] shortcode AND raw facade HTML pasted in the editor.
+ * This filter keeps only the FIRST luxury-video-facade block per YouTube video ID.
+ * Safe: only affects rendering, does NOT modify stored post content.
+ * Stamped: 2026-07-23
+ */
+function keystone_deduplicate_video_facades( $content ) {
+    if ( ! is_singular() ) {
+        return $content;
+    }
+
+    // Quick bail: if 0-1 facade blocks exist, no dedup needed
+    if ( substr_count( $content, 'luxury-video-facade' ) <= 1 ) {
+        return $content;
+    }
+
+    $seen = array();
+    $content = preg_replace_callback(
+        '#<div\s[^>]*?luxury-video-facade[^>]*?data-video-id=["\']([^"\']+)["\'][^>]*>.*?</noscript>\s*</div>#si',
+        function ( $m ) use ( &$seen ) {
+            if ( isset( $seen[ $m[1] ] ) ) {
+                return '<!-- keystone-dedup: removed duplicate facade for ' . esc_attr( $m[1] ) . ' -->';
+            }
+            $seen[ $m[1] ] = true;
+            return $m[0];
+        },
+        $content
+    );
+
+    return $content;
+}
+add_filter( 'the_content', 'keystone_deduplicate_video_facades', 5 );
+
+/**
+ * Helper: Strip duplicate facade HTML blocks from a raw content string.
+ * Used by the Watch page healer to prevent duplicates when copying parent post content.
+ */
+function keystone_strip_duplicate_facades( $content ) {
+    if ( substr_count( $content, 'luxury-video-facade' ) <= 1 ) {
+        return $content;
+    }
+    $seen = array();
+    $content = preg_replace_callback(
+        '#<div\s[^>]*?luxury-video-facade[^>]*?data-video-id=["\']([^"\']+)["\'][^>]*>.*?</noscript>\s*</div>#si',
+        function ( $m ) use ( &$seen ) {
+            if ( isset( $seen[ $m[1] ] ) ) {
+                return '';
+            }
+            $seen[ $m[1] ] = true;
+            return $m[0];
+        },
+        $content
+    );
+    return $content;
+}
+
+/**
  * 14. Inject Premium Grid Alignment Custom CSS directly in wp_head
  */
 function keystone_recomposition_child_inject_custom_css() {
@@ -525,7 +584,7 @@ function keystone_recomposition_heal_watch_pages_trigger() {
                 $new_page_id = wp_insert_post( array(
                     'post_title'    => $watch_title,
                     'post_name'     => $watch_slug,
-                    'post_content'  => $p->post_content,
+                    'post_content'  => keystone_strip_duplicate_facades( $p->post_content ),
                     'post_status'   => 'publish',
                     'post_type'     => 'page',
                 ) );
@@ -549,7 +608,7 @@ function keystone_recomposition_heal_watch_pages_trigger() {
                     if ( $watch_len < 1000 && $parent_len > $watch_len ) {
                         wp_update_post( array(
                             'ID'           => $watch_page_id,
-                            'post_content' => $p->post_content
+                            'post_content' => keystone_strip_duplicate_facades( $p->post_content )
                         ) );
                         update_post_meta( $watch_page_id, 'video_url', 'https://www.youtube.com/watch?v=' . $youtube_id );
                         update_post_meta( $watch_page_id, 'keystone_youtube_id', $youtube_id );
