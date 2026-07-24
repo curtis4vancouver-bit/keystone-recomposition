@@ -68,18 +68,55 @@ function keystone_deduplicate_video_facades( $content ) {
         return $content;
     }
 
-    $seen = array();
-    $content = preg_replace_callback(
-        '#<div\s[^>]*?luxury-video-facade[^>]*?data-video-id=["\']([^"\']+)["\'][^>]*>.*?</noscript>\s*</div>#si',
-        function ( $m ) use ( &$seen ) {
-            if ( isset( $seen[ $m[1] ] ) ) {
-                return '<!-- keystone-dedup: removed duplicate facade for ' . esc_attr( $m[1] ) . ' -->';
-            }
-            $seen[ $m[1] ] = true;
-            return $m[0];
-        },
-        $content
-    );
+    // Position-based approach: find all facade opening tags, extract video IDs,
+    // then remove everything from duplicate opening tags through the next </noscript> + closing </div>
+    $seen_ids = array();
+    $offset = 0;
+    $marker = 'luxury-video-facade';
+
+    while ( ( $pos = strpos( $content, $marker, $offset ) ) !== false ) {
+        // Find the opening <div that contains this marker
+        $div_start = strrpos( $content, '<div', $pos - strlen( $content ) );
+        if ( $div_start === false ) {
+            $offset = $pos + strlen( $marker );
+            continue;
+        }
+
+        // Extract video ID from data-video-id attribute
+        $chunk = substr( $content, $pos, 300 );
+        if ( ! preg_match( '/data-video-id=["\']([^"\']+)/', $chunk, $id_match ) ) {
+            $offset = $pos + strlen( $marker );
+            continue;
+        }
+        $video_id = $id_match[1];
+
+        // Find the end of this facade block: search for </noscript> after current position
+        $noscript_end = strpos( $content, '</noscript>', $pos );
+        if ( $noscript_end === false ) {
+            $offset = $pos + strlen( $marker );
+            continue;
+        }
+        $noscript_end += strlen( '</noscript>' );
+
+        // Find the next </div> after </noscript>
+        $div_end = strpos( $content, '</div>', $noscript_end );
+        if ( $div_end === false ) {
+            $offset = $pos + strlen( $marker );
+            continue;
+        }
+        $div_end += strlen( '</div>' );
+
+        if ( isset( $seen_ids[ $video_id ] ) ) {
+            // Remove this duplicate block
+            $content = substr( $content, 0, $div_start )
+                     . '<!-- keystone-dedup: removed duplicate facade for ' . $video_id . ' -->'
+                     . substr( $content, $div_end );
+            // Don't advance offset since content shifted
+        } else {
+            $seen_ids[ $video_id ] = true;
+            $offset = $div_end;
+        }
+    }
 
     return $content;
 }
@@ -93,18 +130,35 @@ function keystone_strip_duplicate_facades( $content ) {
     if ( substr_count( $content, 'luxury-video-facade' ) <= 1 ) {
         return $content;
     }
-    $seen = array();
-    $content = preg_replace_callback(
-        '#<div\s[^>]*?luxury-video-facade[^>]*?data-video-id=["\']([^"\']+)["\'][^>]*>.*?</noscript>\s*</div>#si',
-        function ( $m ) use ( &$seen ) {
-            if ( isset( $seen[ $m[1] ] ) ) {
-                return '';
-            }
-            $seen[ $m[1] ] = true;
-            return $m[0];
-        },
-        $content
-    );
+    $seen_ids = array();
+    $offset = 0;
+    $marker = 'luxury-video-facade';
+
+    while ( ( $pos = strpos( $content, $marker, $offset ) ) !== false ) {
+        $div_start = strrpos( $content, '<div', $pos - strlen( $content ) );
+        if ( $div_start === false ) { $offset = $pos + strlen( $marker ); continue; }
+
+        $chunk = substr( $content, $pos, 300 );
+        if ( ! preg_match( '/data-video-id=["\']([^"\']+)/', $chunk, $id_match ) ) {
+            $offset = $pos + strlen( $marker ); continue;
+        }
+        $video_id = $id_match[1];
+
+        $noscript_end = strpos( $content, '</noscript>', $pos );
+        if ( $noscript_end === false ) { $offset = $pos + strlen( $marker ); continue; }
+        $noscript_end += strlen( '</noscript>' );
+
+        $div_end = strpos( $content, '</div>', $noscript_end );
+        if ( $div_end === false ) { $offset = $pos + strlen( $marker ); continue; }
+        $div_end += strlen( '</div>' );
+
+        if ( isset( $seen_ids[ $video_id ] ) ) {
+            $content = substr( $content, 0, $div_start ) . substr( $content, $div_end );
+        } else {
+            $seen_ids[ $video_id ] = true;
+            $offset = $div_end;
+        }
+    }
     return $content;
 }
 
