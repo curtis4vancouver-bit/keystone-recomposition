@@ -120,7 +120,7 @@ function keystone_deduplicate_video_facades( $content ) {
 
     return $content;
 }
-add_filter( 'the_content', 'keystone_deduplicate_video_facades', 5 );
+add_filter( 'the_content', 'keystone_deduplicate_video_facades', 15 );
 
 /**
  * Helper: Strip duplicate facade HTML blocks from a raw content string.
