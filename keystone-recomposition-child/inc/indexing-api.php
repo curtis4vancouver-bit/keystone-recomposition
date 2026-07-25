@@ -74,6 +74,77 @@ if ( isset( $_GET['purge_all_caches'] ) && $_GET['purge_all_caches'] === 'sovere
 }
 
 /**
+ * 17.6 Sovereign Auto-Create Missing Watch Pages Endpoint
+ * Trigger: https://keystonerecomposition.com/?create_missing_watch_pages=sovereign_execute
+ */
+if ( isset( $_GET['create_missing_watch_pages'] ) && $_GET['create_missing_watch_pages'] === 'sovereign_execute' ) {
+    global $wpdb;
+    $posts = $wpdb->get_results(
+        "SELECT ID, post_title, post_name, post_content, post_author 
+         FROM $wpdb->posts 
+         WHERE post_type = 'post' AND post_status = 'publish'"
+    );
+    
+    $created = array();
+    $already_exists = array();
+    
+    foreach ( $posts as $p ) {
+        $youtube_id = get_post_meta( $p->ID, 'keystone_youtube_id', true );
+        if ( empty( $youtube_id ) ) {
+            if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p->post_content, $matches ) ) {
+                $youtube_id = $matches[1];
+            } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
+                $youtube_id = $matches[1];
+            }
+        }
+        if ( empty( $youtube_id ) ) {
+            continue;
+        }
+        
+        $watch_slug = 'watch-' . $p->post_name;
+        $existing = get_page_by_path( $watch_slug, OBJECT, 'page' );
+        if ( $existing ) {
+            $already_exists[] = array( 'id' => $existing->ID, 'slug' => $watch_slug );
+            continue;
+        }
+        
+        $blog_permalink = get_permalink( $p->ID );
+        $clean_content = preg_replace( '~\[keystone_video[^\]]*\]~i', '', $p->post_content );
+        $content = '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n";
+        $content .= $clean_content . "\n\n";
+        $content .= '<p class="wp-block-paragraph" style="text-align:center; margin-top:45px; margin-bottom:45px;">';
+        $content .= '<a href="' . esc_url( $blog_permalink ) . '" style="background-color: #c4a265; color: #000; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; font-family: \'Outfit\', sans-serif; display: inline-block; text-transform: uppercase; letter-spacing: 1px;">Read the Full Protocol →</a>';
+        $content .= '</p>';
+        
+        $page_id = wp_insert_post( array(
+            'post_title'    => 'Watch: ' . $p->post_title,
+            'post_name'     => $watch_slug,
+            'post_content'  => $content,
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
+            'post_author'   => $p->post_author
+        ) );
+        
+        if ( ! is_wp_error( $page_id ) ) {
+            update_post_meta( $page_id, 'keystone_youtube_id', $youtube_id );
+            $created[] = array( 'page_id' => $page_id, 'slug' => $watch_slug, 'youtube_id' => $youtube_id );
+        }
+    }
+    
+    if ( function_exists( 'wp_cache_flush' ) ) { wp_cache_flush(); }
+    if ( function_exists( 'opcache_reset' ) ) { @opcache_reset(); }
+    
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode( array(
+        'status' => 'success',
+        'created_count' => count( $created ),
+        'already_exists_count' => count( $already_exists ),
+        'created_pages' => $created
+    ), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+    exit;
+}
+
+/**
  * 18. Auto-Heal Video Meta — Backfills keystone_youtube_id for ALL posts
  * Trigger: https://keystonerecomposition.com/?heal_video_meta=sovereign_execute
  * Scans every published post, extracts YouTube ID from [keystone_video] shortcode
