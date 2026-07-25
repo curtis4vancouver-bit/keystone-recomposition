@@ -23,6 +23,57 @@ function keystone_add_video_sitemap_to_robots( $output, $public ) {
 }
 
 /**
+ * 17.5 Sovereign Remote Cache Purge Endpoint
+ * Trigger: https://keystonerecomposition.com/?purge_all_caches=sovereign_execute
+ */
+if ( isset( $_GET['purge_all_caches'] ) && $_GET['purge_all_caches'] === 'sovereign_execute' ) {
+    $cleared = array();
+    
+    if ( function_exists( 'wp_cache_flush' ) ) {
+        wp_cache_flush();
+        $cleared[] = 'wp_cache_flush';
+    }
+    if ( function_exists( 'opcache_reset' ) ) {
+        @opcache_reset();
+        $cleared[] = 'opcache_reset';
+    }
+    if ( function_exists( 'wp_cache_clear_cache' ) ) {
+        wp_cache_clear_cache();
+        $cleared[] = 'wp_super_cache';
+    }
+    if ( function_exists( 'w3tc_flush_all' ) ) {
+        w3tc_flush_all();
+        $cleared[] = 'w3tc';
+    }
+    if ( function_exists( 'rocket_clean_domain' ) ) {
+        rocket_clean_domain();
+        $cleared[] = 'wp_rocket';
+    }
+    if ( class_exists( 'LiteSpeed_Cache_API' ) && method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
+        LiteSpeed_Cache_API::purge_all();
+        $cleared[] = 'litespeed';
+    }
+    if ( class_exists( 'autoptimizeCache' ) && method_exists( 'autoptimizeCache', 'clearall' ) ) {
+        autoptimizeCache::clearall();
+        $cleared[] = 'autoptimize';
+    }
+    if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+        sg_cachepress_purge_cache();
+        $cleared[] = 'sg_cachepress';
+    }
+    delete_transient( 'rank_math_sitemap_cache' );
+    
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode( array(
+        'status' => 'success',
+        'message' => 'All Site & Server Caches Purged Successfully',
+        'cleared_engines' => $cleared,
+        'timestamp' => date('c')
+    ), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+    exit;
+}
+
+/**
  * 18. Auto-Heal Video Meta — Backfills keystone_youtube_id for ALL posts
  * Trigger: https://keystonerecomposition.com/?heal_video_meta=sovereign_execute
  * Scans every published post, extracts YouTube ID from [keystone_video] shortcode

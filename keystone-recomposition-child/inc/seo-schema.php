@@ -68,7 +68,7 @@ function keystone_recomposition_child_inject_schema() {
             'value' => 'TOOLOST3000939655'
         ),
         'founder' => array(
-            '@id' => 'https://keystonepossibilities.ca/#person'
+            '@id' => 'https://keystonerecomposition.com/#person'
         )
     );
 
@@ -86,7 +86,7 @@ function keystone_recomposition_child_inject_schema() {
         '@graph' => array(
             array(
                 '@type' => 'Person',
-                '@id' => 'https://keystonepossibilities.ca/#person',
+                '@id' => 'https://keystonerecomposition.com/#person',
                 'name' => 'Wayne Stevenson',
                 'alternateName' => array( 'Keystone Recomposition', 'Keystone Protocols' ),
                 'url' => 'https://keystonerecomposition.com/about/',
@@ -155,12 +155,12 @@ function keystone_recomposition_child_inject_schema() {
                     )
                 ),
                 'hasCredential' => array(
-                    '@id' => 'https://keystonepossibilities.ca/#license-52603'
+                    '@id' => 'https://keystonerecomposition.com/#license-52603'
                 )
             ),
             array(
                 '@type' => 'EducationalOccupationalCredential',
-                '@id' => 'https://keystonepossibilities.ca/#license-52603',
+                '@id' => 'https://keystonerecomposition.com/#license-52603',
                 'name' => 'BC Residential Builder License #52603',
                 'credentialCategory' => 'Professional Provincial License',
                 'credentialNumber' => '52603',
@@ -218,6 +218,26 @@ function keystone_recomposition_child_youtube_schema() {
         ) );
         if ( ! empty( $blog_posts ) ) {
             $post_id = $blog_posts[0]->ID;
+        } else {
+            // Fuzzy fallback: search for blog posts whose slug CONTAINS the watch slug
+            global $wpdb;
+            $like_slug = '%' . $wpdb->esc_like( $blog_slug ) . '%';
+            $fuzzy_post = $wpdb->get_row( $wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND post_name LIKE %s LIMIT 1",
+                $like_slug
+            ) );
+            if ( $fuzzy_post ) {
+                $post_id = $fuzzy_post->ID;
+            } else {
+                // Reverse fuzzy: search for blog posts whose slug is CONTAINED IN the watch slug
+                $fuzzy_post2 = $wpdb->get_row( $wpdb->prepare(
+                    "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND %s LIKE CONCAT('%%', post_name, '%%') LIMIT 1",
+                    $blog_slug
+                ) );
+                if ( $fuzzy_post2 ) {
+                    $post_id = $fuzzy_post2->ID;
+                }
+            }
         }
     }
 
@@ -370,6 +390,26 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
         ) );
         if ( ! empty( $blog_posts ) ) {
             $post_id = $blog_posts[0]->ID;
+        } else {
+            // Fuzzy fallback: search for blog posts whose slug CONTAINS the watch slug
+            global $wpdb;
+            $like_slug = '%' . $wpdb->esc_like( $blog_slug ) . '%';
+            $fuzzy_post = $wpdb->get_row( $wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND post_name LIKE %s LIMIT 1",
+                $like_slug
+            ) );
+            if ( $fuzzy_post ) {
+                $post_id = $fuzzy_post->ID;
+            } else {
+                // Reverse fuzzy: search for blog posts whose slug is CONTAINED IN the watch slug
+                $fuzzy_post2 = $wpdb->get_row( $wpdb->prepare(
+                    "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND %s LIKE CONCAT('%%', post_name, '%%') LIMIT 1",
+                    $blog_slug
+                ) );
+                if ( $fuzzy_post2 ) {
+                    $post_id = $fuzzy_post2->ID;
+                }
+            }
         }
     }
 
@@ -702,11 +742,38 @@ function keystone_recomposition_inject_og_video() {
     if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
         return;
     }
-    $youtube_id = get_post_meta( $post->ID, 'keystone_youtube_id', true );
+
+    // Resolve the correct post ID for watch pages
+    $resolved_id = $post->ID;
+    if ( $is_watch_page ) {
+        $blog_slug = str_replace( 'watch-', '', $post->post_name );
+        $blog_posts = get_posts( array(
+            'name'        => $blog_slug,
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'numberposts' => 1
+        ) );
+        if ( ! empty( $blog_posts ) ) {
+            $resolved_id = $blog_posts[0]->ID;
+        } else {
+            global $wpdb;
+            $like_slug = '%' . $wpdb->esc_like( $blog_slug ) . '%';
+            $fuzzy_post = $wpdb->get_row( $wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND post_name LIKE %s LIMIT 1",
+                $like_slug
+            ) );
+            if ( $fuzzy_post ) {
+                $resolved_id = $fuzzy_post->ID;
+            }
+        }
+    }
+
+    $youtube_id = get_post_meta( $resolved_id, 'keystone_youtube_id', true );
 
     // Fallback: extract from shortcode in content
     if ( empty( $youtube_id ) ) {
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $post->post_content, $m ) ) {
+        $resolved_post = get_post( $resolved_id );
+        if ( $resolved_post && preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $resolved_post->post_content, $m ) ) {
             $youtube_id = $m[1];
         }
     }
