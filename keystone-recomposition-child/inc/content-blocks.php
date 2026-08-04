@@ -349,6 +349,10 @@ add_filter( 'the_content', 'keystone_recomposition_child_eeat_author_block', 98 
  * 15. Automatically Append YouTube Subscribe Buttons to All Pages and Posts
  */
 function keystone_recomposition_child_append_subscribe_buttons( $content ) {
+    $host = isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : '';
+    if ( strpos( $host, 'possibilities' ) !== false ) {
+        return $content;
+    }
     if ( is_singular() && is_main_query() ) {
         if ( strpos( $content, 'sub_confirmation=1' ) === false ) {
             $subscribe_html = '
