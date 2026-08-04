@@ -189,6 +189,56 @@ function keystone_recomposition_child_inject_schema() {
 add_action( 'wp_head', 'keystone_recomposition_child_inject_schema' );
 
 /**
+ * 7.5 Inject MusicGroup & MusicAlbum JSON-LD Schema Nodes
+ */
+function keystone_recomposition_child_music_schema() {
+    $music_schema = array(
+        '@context' => 'https://schema.org',
+        '@graph' => array(
+            array(
+                '@type' => 'MusicGroup',
+                '@id' => 'https://keystonerecomposition.com/#musicgroup',
+                'name' => 'Keystone Recomposition',
+                'url' => 'https://keystonerecomposition.com',
+                'genre' => array( 'Deep House', 'Solfeggio Frequencies', 'Ambient Fitness' ),
+                'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
+                'sameAs' => array(
+                    'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+                    'https://musicbrainz.org/artist/52v3Qe6Jo0hg764driOl5Y',
+                    'https://audiomack.com/keystone-recomposition'
+                )
+            ),
+            array(
+                '@type' => 'MusicAlbum',
+                '@id' => 'https://keystonerecomposition.com/#musicalbum',
+                'name' => 'Keystone Recomposition Vol. 1',
+                'byArtist' => array(
+                    '@type' => 'MusicGroup',
+                    '@id' => 'https://keystonerecomposition.com/#musicgroup',
+                    'name' => 'Keystone Recomposition',
+                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y'
+                ),
+                'musicbrainzId' => '30027d0e-6aeb-4704-8792-a031c936c62a',
+                'recordLabel' => array(
+                    '@type' => 'Organization',
+                    'name' => 'Keystone Music Ledger',
+                    'sameAs' => 'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a'
+                )
+            )
+        )
+    );
+
+    $json_music = wp_json_encode( $music_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+
+    echo "<!-- Keystone MusicGroup & MusicAlbum JSON-LD Schema -->\n";
+    echo "<script type=\"application/ld+json\">\n";
+    echo $json_music . "\n";
+    echo "</script>\n";
+    echo "<!-- End Keystone Music Schema -->\n";
+}
+add_action( 'wp_head', 'keystone_recomposition_child_music_schema' );
+
+/**
  * 8. Dynamic, Robust, GSC-Compliant Standalone VideoObject Schema (Stored XSS Secure)
  * Extracts the primary article video and outputs exactly ONE premium schema object.
  */
