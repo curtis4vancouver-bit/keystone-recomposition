@@ -8,6 +8,9 @@ function astra_child_keystone_enqueue_styles() {
     
     // Load typography fonts (Montserrat, Inter, Outfit)
     wp_enqueue_style( 'keystone-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&family=Outfit:wght@400;600;700;800&display=swap', array(), null );
+
+    // Enqueue Lead Consultation Form Handler JS
+    wp_enqueue_script( 'keystone-lead-form-handler', get_stylesheet_directory_uri() . '/js/lead-form-handler.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'astra_child_keystone_enqueue_styles' );
 
