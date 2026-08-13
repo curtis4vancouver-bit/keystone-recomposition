@@ -1604,6 +1604,201 @@ a.gold-action-btn.full-width,
 }
 
 .yt-link-btn {
+.recipe-type {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: var(--ks-gold-primary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+
+.recipe-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin: 6px 0 15px 0 !important;
+}
+
+.macro-bar {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  background: #181818 !important;
+  border-radius: 6px !important;
+  padding: 10px !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+}
+
+.macro-item {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.m-val {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: var(--ks-gold-primary) !important;
+}
+
+.m-lbl {
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  color: #9CA3AF !important;
+  letter-spacing: 0.05em !important;
+}
+
+.recipe-body h4 {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin: 15px 0 8px 0 !important;
+  text-transform: uppercase !important;
+}
+
+.recipe-body ul {
+  padding-left: 18px !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.recipe-body li {
+  font-size: 13px !important;
+  color: #D1D5DB !important;
+  margin-bottom: 5px !important;
+  line-height: 1.4 !important;
+}
+
+.recipe-body p {
+  font-size: 13px !important;
+  color: var(--ks-text-muted) !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+/* Founder Profile */
+.founder-hero-grid {
+  display: grid !important;
+  grid-template-columns: 360px 1fr !important;
+  gap: 40px !important;
+  align-items: start !important;
+}
+
+@media (max-width: 860px) {
+  .founder-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.founder-main-img {
+  width: 100% !important;
+  height: 380px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--ks-card-border) !important;
+}
+
+.founder-stat-bar {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+  margin-top: 15px !important;
+}
+
+.f-stat {
+  background: #141414 !important;
+  border: 1px solid rgba(196, 162, 101, 0.2) !important;
+  border-radius: 6px !important;
+  padding: 10px 5px !important;
+  text-align: center !important;
+}
+
+.f-num {
+  display: block !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  color: var(--ks-gold-primary) !important;
+}
+
+.f-lbl {
+  display: block !important;
+  font-size: 8px !important;
+  font-weight: 700 !important;
+  color: #9CA3AF !important;
+  letter-spacing: 0.05em !important;
+}
+
+.founder-name {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 6px 0 !important;
+  text-transform: uppercase !important;
+}
+
+.founder-creds {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--ks-gold-primary) !important;
+  margin-bottom: 20px !important;
+}
+
+.founder-bio-text p {
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: #D1D5DB !important;
+  margin-bottom: 16px !important;
+}
+
+.founder-bio-text a {
+  color: var(--ks-gold-primary) !important;
+  text-decoration: underline !important;
+}
+
+.founder-ecosystem-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin-top: 25px !important;
+}
+
+.gold-link-btn,
+.spotify-link-btn,
+.yt-link-btn {
+  padding: 12px 18px !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  display: block !important;
+  transition: all 0.2s ease !important;
+}
+
+.gold-link-btn {
+  background: var(--ks-gold-dim) !important;
+  color: var(--ks-gold-primary) !important;
+  border: 1px solid var(--ks-gold-primary) !important;
+}
+
+.gold-link-btn:hover {
+  background: var(--ks-gold-primary) !important;
+  color: #000000 !important;
+}
+
+.spotify-link-btn {
+  background: rgba(29, 185, 84, 0.15) !important;
+  color: #1DB954 !important;
+  border: 1px solid #1DB954 !important;
+}
+
+.spotify-link-btn:hover {
+  background: #1DB954 !important;
+  color: #000000 !important;
+}
+
+.yt-link-btn {
   background: rgba(255, 0, 0, 0.15) !important;
   color: #FF4D4D !important;
   border: 1px solid #FF0000 !important;
@@ -1612,4 +1807,26 @@ a.gold-action-btn.full-width,
 .yt-link-btn:hover {
   background: #FF0000 !important;
   color: #FFFFFF !important;
+}
+
+/* Master Specificity Button Text Color Overrides */
+html body div.entry-content a.gold-action-btn,
+html body article a.gold-action-btn,
+html body .gear-card a.gold-action-btn,
+html body .keystone-gear-portal a.gold-action-btn,
+html body a.gold-action-btn,
+html body .gold-action-btn {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+html body div.entry-content a.gold-action-btn:hover,
+html body article a.gold-action-btn:hover,
+html body .gear-card a.gold-action-btn:hover,
+html body .keystone-gear-portal a.gold-action-btn:hover,
+html body a.gold-action-btn:hover,
+html body .gold-action-btn:hover {
+  color: #000000 !important;
+  text-decoration: none !important;
 }
