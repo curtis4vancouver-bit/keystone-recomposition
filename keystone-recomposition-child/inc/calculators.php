@@ -157,8 +157,8 @@ function keystone_glp1_calculator_shortcode() {
 
         <!-- Legal & Fiduciary Disclaimer -->
         <div class="keystone-disclaimer-box">
-            <h4 class="disclaimer-title">⚠️ Fiduciary Educational & Observational Research Disclaimer</h4>
-            <p class="disclaimer-text">This calculator, mathematical formulas, and data tables represent personal observational case-study modeling and laboratory pharmacokinetic calculations documented by Wayne Stevenson. This tool is published strictly for educational, scientific, and mathematical demonstration purposes. It does not constitute medical advice, diagnosis, treatment recommendations, or prescription administration guidelines. Counting clicks on multi-dose pens is not endorsed by the pharmaceutical manufacturer. Always consult a licensed medical physician or endocrinologist before modifying any prescription regimen.</p>
+            <h4 class="disclaimer-title">⚠️ Personal Case Study &amp; Educational Tool Only — Talk to Your Doctor</h4>
+            <p class="disclaimer-text">This calculator, mathematical formulas, and data tables represent <strong>personal observational case-study modeling</strong> and pharmacokinetic calculations documented by Wayne Stevenson. <strong>This tool is published strictly for educational and mathematical demonstration purposes and does NOT constitute medical advice, diagnosis, treatment recommendations, or prescription administration guidelines.</strong> Counting clicks on multi-dose pens is an off-label case study technique and is not endorsed by pharmaceutical manufacturers. <strong>Always talk to your licensed medical doctor or endocrinologist before modifying, starting, or administering any prescription medication or metabolic protocol.</strong></p>
         </div>
     </div>
     <?php
@@ -287,8 +287,8 @@ function keystone_peptide_calculator_shortcode() {
 
         <!-- Disclaimer -->
         <div class="keystone-disclaimer-box">
-            <h4 class="disclaimer-title">⚠️ Laboratory Observational Research Disclaimer</h4>
-            <p class="disclaimer-text">This calculator and dilution reference table are provided strictly for educational, biochemical, and in-vitro laboratory calculation modeling. Under 21 CFR § 312.160 and FDA compounding frameworks, experimental peptide compounds are evaluated for scientific research purposes. This tool is not intended for clinical human self-administration or diagnosis. Store reconstituted solutions at 2–8°C in sterile conditions.</p>
+            <h4 class="disclaimer-title">⚠️ Personal Case Study &amp; Educational Benchmark Only — Talk to Your Doctor</h4>
+            <p class="disclaimer-text">This calculator and dilution reference table are provided strictly for <strong>educational, biochemical, and in-vitro laboratory calculation modeling</strong>. <strong>This tool does NOT provide medical advice, diagnosis, or self-administration dosing.</strong> Under 21 CFR § 312.160 and FDA compounding frameworks, experimental peptide compounds are evaluated for scientific research purposes. <strong>Always talk to your licensed physician or medical doctor before starting, handling, or administering any peptide, cellular, or pharmacological protocol.</strong> Store reconstituted solutions at 2–8°C in sterile conditions.</p>
         </div>
     </div>
     <?php
