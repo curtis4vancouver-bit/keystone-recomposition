@@ -39,11 +39,11 @@ function keystone_glp1_calculator_shortcode() {
                     <div class="protocol-interval-grid">
                         <button type="button" class="compound-btn active" data-compound="tirzepatide" data-halflife="5.0">
                             <strong>Tirzepatide (Mounjaro® / Zepbound®)</strong>
-                            <span>Mean $t_{1/2} \approx 5.0\text{ Days}$ (120 Hours)</span>
+                            <span>Mean Half-Life ≈ 5.0 Days (120 Hours)</span>
                         </button>
                         <button type="button" class="compound-btn" data-compound="semaglutide" data-halflife="7.0">
                             <strong>Semaglutide (Ozempic® / Wegovy®)</strong>
-                            <span>Mean $t_{1/2} \approx 7.0\text{ Days}$ (168 Hours)</span>
+                            <span>Mean Half-Life ≈ 7.0 Days (168 Hours)</span>
                         </button>
                     </div>
                 </div>
