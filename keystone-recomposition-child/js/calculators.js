@@ -1,54 +1,117 @@
 /**
  * Keystone Recomposition - Interactive Calculators Engine
  * Real-time math for GLP-1 KwikPen clicks & FDA Category 1 Peptide Reconstitution
- * Stamped: August 2026
+ * Stamped: August 2026 - Wayne Stevenson
  */
 
 document.addEventListener('DOMContentLoaded', function () {
     // =========================================================================
-    // 1. GLP-1 KWIKPEN CLICK CALCULATOR
+    // 1. GLP-1 KWIKPEN CLICK CALCULATOR (5-Day vs 7-Day & Half-Life Engine)
     // =========================================================================
     const glp1Container = document.getElementById('glp1-calculator');
     if (glp1Container) {
         let currentPenStrength = 5.0; // default 5.0 mg pen
         let currentClicks = 30; // default 30 clicks
+        let currentInterval = 5; // default 5-day microdose protocol
+        let currentHalfLife = 5.0; // default Tirzepatide (5.0 days)
+        let currentCompound = 'tirzepatide';
 
+        const compoundBtns = glp1Container.querySelectorAll('.compound-btn');
+        const intervalBtns = glp1Container.querySelectorAll('.interval-btn');
         const strengthBtns = glp1Container.querySelectorAll('.strength-btn');
         const clickSlider = document.getElementById('click-slider');
         const clickDisplay = document.getElementById('click-val-display');
         const targetDoseInput = document.getElementById('target-dose-input');
         const calcClicksBtn = document.getElementById('calc-clicks-btn');
-
-        const weeklyDoseInput = document.getElementById('weekly-dose-input');
-        const calc5dayBtn = document.getElementById('calc-5day-btn');
+        const targetMatcherHint = document.getElementById('target-matcher-hint');
 
         // Result DOM Elements
         const resDeliveredMg = document.getElementById('res-delivered-mg');
+        const resWeeklyEquivalent = document.getElementById('res-weekly-equivalent');
         const resDeliveredMl = document.getElementById('res-delivered-ml');
-        const resDoseFraction = document.getElementById('res-dose-fraction');
         const resSingleClick = document.getElementById('res-single-click');
         const resCartridgeDoses = document.getElementById('res-cartridge-doses');
 
-        const res5dayDose = document.getElementById('res-5day-dose');
-        const resSplitDose = document.getElementById('res-split-dose');
+        const pkDynamicsTitle = document.getElementById('pk-dynamics-title');
+        const resActiveSchedule = document.getElementById('res-active-schedule');
         const resTroughRetention = document.getElementById('res-trough-retention');
+        const resPeakTrough = document.getElementById('res-peak-trough');
+        const resHungerStatus = document.getElementById('res-hunger-status');
 
         function updateGlp1Math() {
             // Formula: Delivered Dose = Clicks * (Strength / 60)
-            const deliveredMg = (currentClicks * (currentPenStrength / 60)).toFixed(2);
-            const deliveredMl = (currentClicks * 0.01).toFixed(2);
+            const deliveredMg = currentClicks * (currentPenStrength / 60);
+            const deliveredMl = currentClicks * 0.01;
             const syringeUnits = Math.round(currentClicks);
-            const fraction = ((currentClicks / 60) * 100).toFixed(1);
-            const singleClickMg = (currentPenStrength / 60).toFixed(4);
+            const singleClickMg = currentPenStrength / 60;
             const remainingDoses = currentClicks > 0 ? (240 / currentClicks).toFixed(1) : '∞';
 
+            // Weekly Equivalent Load = Injected Dose * (7 / Interval)
+            const weeklyEquivalentMg = deliveredMg * (7 / currentInterval);
+
+            // Pharmacokinetic First-Order Decay: Fraction Remaining = 2^(-Interval / HalfLife)
+            const troughFraction = Math.pow(2, -(currentInterval / currentHalfLife));
+            const troughPercent = (troughFraction * 100).toFixed(1);
+            const peakTroughRatio = (1 / troughFraction).toFixed(2);
+
+            // Update DOM
             clickDisplay.textContent = currentClicks + ' Clicks';
-            resDeliveredMg.textContent = deliveredMg + ' mg';
-            resDeliveredMl.textContent = deliveredMl + ' mL (' + syringeUnits + ' units)';
-            resDoseFraction.textContent = fraction + '% of full dose';
-            resSingleClick.textContent = singleClickMg + ' mg / click';
-            resCartridgeDoses.textContent = remainingDoses + ' doses at this setting';
+            resDeliveredMg.textContent = deliveredMg.toFixed(2) + ' mg';
+            resWeeklyEquivalent.textContent = weeklyEquivalentMg.toFixed(2) + ' mg / week';
+            resDeliveredMl.textContent = deliveredMl.toFixed(2) + ' mL (' + syringeUnits + ' units)';
+            resSingleClick.textContent = singleClickMg.toFixed(4) + ' mg / click';
+            resCartridgeDoses.textContent = remainingDoses + ' shots at this setting';
+
+            if (currentInterval === 5) {
+                pkDynamicsTitle.textContent = '⚡ 5-Day Micro-Dose Protocol Dynamics';
+                resActiveSchedule.textContent = 'Every 5 Days (⚡ Micro-Dose)';
+                resActiveSchedule.style.color = '#C4A265';
+                resTroughRetention.textContent = troughPercent + '% Remaining (Stable)';
+                resTroughRetention.style.color = '#10B981';
+                resPeakTrough.textContent = peakTroughRatio + 'x Fluctuation';
+                resHungerStatus.textContent = 'Zero Late Food Noise';
+                resHungerStatus.style.color = '#10B981';
+            } else {
+                pkDynamicsTitle.textContent = '📅 7-Day Standard Schedule Dynamics';
+                resActiveSchedule.textContent = 'Every 7 Days (📅 Standard Weekly)';
+                resActiveSchedule.style.color = '#9CA3AF';
+                resTroughRetention.textContent = troughPercent + '% Remaining (Trough Drop)';
+                resTroughRetention.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
+                resPeakTrough.textContent = peakTroughRatio + 'x Fluctuation';
+                resHungerStatus.textContent = currentHalfLife <= 5.0 ? 'Day 6–7 Food Noise Common' : 'Moderate Appetite Drift';
+                resHungerStatus.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
+            }
+
+            // Update Hint
+            if (targetMatcherHint) {
+                if (currentInterval === 5) {
+                    targetMatcherHint.textContent = 'Auto-calculates 5-day injection: e.g. 5.0 mg/wk equivalent → ' + (5.0 * (5 / 7)).toFixed(2) + ' mg every 5 days (' + Math.round(((5.0 * (5 / 7)) / currentPenStrength) * 60) + ' clicks on this pen).';
+                } else {
+                    targetMatcherHint.textContent = 'Auto-calculates 7-day injection: e.g. 5.0 mg/wk → 5.00 mg every 7 days (' + Math.round((5.0 / currentPenStrength) * 60) + ' clicks on this pen).';
+                }
+            }
         }
+
+        // Compound Selection
+        compoundBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                compoundBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCompound = this.getAttribute('data-compound');
+                currentHalfLife = parseFloat(this.getAttribute('data-halflife'));
+                updateGlp1Math();
+            });
+        });
+
+        // Interval Selection (5-Day vs 7-Day)
+        intervalBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                intervalBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentInterval = parseInt(this.getAttribute('data-interval'), 10);
+                updateGlp1Math();
+            });
+        });
 
         // Strength Button Clicks
         strengthBtns.forEach(btn => {
@@ -68,42 +131,26 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Calculate Clicks from Target Dose
+        // Calculate Clicks from Target Weekly Dose
         if (calcClicksBtn && targetDoseInput) {
             calcClicksBtn.addEventListener('click', function () {
-                const targetMg = parseFloat(targetDoseInput.value);
-                if (isNaN(targetMg) || targetMg <= 0) return;
+                const targetWeeklyMg = parseFloat(targetDoseInput.value);
+                if (isNaN(targetWeeklyMg) || targetWeeklyMg <= 0) return;
                 
-                // Formula: Required Clicks = (Target / Strength) * 60
-                const calculatedClicks = Math.min(60, Math.max(1, Math.round((targetMg / currentPenStrength) * 60)));
+                // If 5-day cycle: Target Injected Dose = Target Weekly * (5 / 7)
+                // If 7-day cycle: Target Injected Dose = Target Weekly
+                const targetInjectedMg = currentInterval === 5 ? (targetWeeklyMg * (5 / 7)) : targetWeeklyMg;
+                
+                // Formula: Required Clicks = (TargetInjected / Strength) * 60
+                const calculatedClicks = Math.min(60, Math.max(1, Math.round((targetInjectedMg / currentPenStrength) * 60)));
                 currentClicks = calculatedClicks;
                 if (clickSlider) clickSlider.value = calculatedClicks;
                 updateGlp1Math();
             });
         }
 
-        // 5-Day Scaler
-        function update5DayScaler() {
-            const weeklyMg = parseFloat(weeklyDoseInput.value);
-            if (isNaN(weeklyMg) || weeklyMg <= 0) return;
-
-            // Tirzepatide 5-day steady-state AUC formula: Weekly Dose * (5 / 7)
-            const fiveDayMg = (weeklyMg * (5 / 7)).toFixed(2);
-            const splitMg = (weeklyMg * 0.5).toFixed(2);
-
-            res5dayDose.textContent = fiveDayMg + ' mg every 5 days';
-            resSplitDose.textContent = splitMg + ' mg every 3.5 days';
-            resTroughRetention.textContent = '50.0% retention (vs 37.9% weekly)';
-        }
-
-        if (calc5dayBtn && weeklyDoseInput) {
-            calc5dayBtn.addEventListener('click', update5DayScaler);
-            weeklyDoseInput.addEventListener('input', update5DayScaler);
-        }
-
         // Initial Run
         updateGlp1Math();
-        update5DayScaler();
     }
 
     // =========================================================================
@@ -118,50 +165,48 @@ document.addEventListener('DOMContentLoaded', function () {
         const vialBtns = pepContainer.querySelectorAll('.vial-btn');
         const bacSlider = document.getElementById('bac-slider');
         const bacDisplay = document.getElementById('bac-val-display');
-        const targetDoseInput = document.getElementById('peptide-target-dose');
+        const targetSlider = document.getElementById('target-slider');
+        const targetDisplay = document.getElementById('target-val-display');
 
-        // Results
+        // Result DOM Elements
+        const resConcentration = document.getElementById('res-concentration');
         const resSyringeUnits = document.getElementById('res-syringe-units');
-        const resPepVolume = document.getElementById('res-pep-volume');
-        const resPepConcentration = document.getElementById('res-pep-concentration');
-        const resPepUnitValue = document.getElementById('res-pep-unit-value');
-        const resPepTotalDoses = document.getElementById('res-pep-total-doses');
-
-        const syringeFillBar = document.getElementById('syringe-fill-bar');
-        const syringeCaptionUnits = document.getElementById('syringe-caption-units');
+        const resDoseVolume = document.getElementById('res-dose-volume');
+        const resDosesPerVial = document.getElementById('res-doses-per-vial');
+        const syringeFill = document.getElementById('syringe-fill');
+        const syringeLabel = document.getElementById('syringe-label');
 
         function updatePeptideMath() {
-            // Formula: Concentration (mcg/mL) = (Vial mg * 1000) / BAC mL
-            const totalMcg = currentVialMg * 1000;
-            const concentrationMcgPerMl = totalMcg / currentBacMl;
-            const concentrationMgPerMl = (currentVialMg / currentBacMl).toFixed(1);
+            // Concentration = (Vial mg * 1000) / Bac mL  [mcg/mL]
+            const concMcgPerMl = (currentVialMg * 1000) / currentBacMl;
+            const concMgPerMl = (currentVialMg / currentBacMl).toFixed(2);
 
-            // Formula: Volume (mL) = Target mcg / Concentration
-            const volumeMl = currentTargetMcg / concentrationMcgPerMl;
-
-            // Formula: Syringe Units on U-100 (100 units = 1 mL) = Volume * 100
+            // Syringe Units on 100-Unit (1.0 mL) U-100 Syringe:
+            // Units = (Target mcg / Concentration mcg/mL) * 100
+            const volumeMl = currentTargetMcg / concMcgPerMl;
             const units = (volumeMl * 100).toFixed(1);
-            const mcgPerUnit = (concentrationMcgPerMl / 100).toFixed(1);
-            const totalDoses = Math.floor(totalMcg / currentTargetMcg);
+            const totalDoses = Math.floor((currentVialMg * 1000) / currentTargetMcg);
+
+            // Visual Syringe Fill (Max 100 Units = 100% width)
+            const fillPercent = Math.min(100, Math.max(0, (units / 100) * 100));
 
             bacDisplay.textContent = currentBacMl.toFixed(1) + ' mL';
-            resSyringeUnits.textContent = units + ' Units';
-            resPepVolume.textContent = volumeMl.toFixed(3) + ' mL';
-            resPepConcentration.textContent = Math.round(concentrationMcgPerMl).toLocaleString() + ' mcg/mL (' + concentrationMgPerMl + ' mg/mL)';
-            resPepUnitValue.textContent = mcgPerUnit + ' mcg / unit';
-            resPepTotalDoses.textContent = totalDoses + ' doses at ' + currentTargetMcg + ' mcg';
+            targetDisplay.textContent = currentTargetMcg + ' mcg (' + (currentTargetMcg / 1000).toFixed(2) + ' mg)';
 
-            // Update Syringe Fill Graphic
-            if (syringeFillBar) {
-                const fillPercent = Math.min(100, Math.max(0, parseFloat(units)));
-                syringeFillBar.style.width = fillPercent + '%';
+            resConcentration.textContent = concMgPerMl + ' mg/mL (' + Math.round(concMcgPerMl) + ' mcg/mL)';
+            resSyringeUnits.textContent = units + ' Units';
+            resDoseVolume.textContent = volumeMl.toFixed(3) + ' mL';
+            resDosesPerVial.textContent = totalDoses + ' doses per vial';
+
+            if (syringeFill) {
+                syringeFill.style.width = fillPercent + '%';
             }
-            if (syringeCaptionUnits) {
-                syringeCaptionUnits.textContent = units + ' Units';
+            if (syringeLabel) {
+                syringeLabel.textContent = units + ' Units (' + volumeMl.toFixed(2) + ' mL)';
             }
         }
 
-        // Vial Buttons
+        // Vial Selection
         vialBtns.forEach(btn => {
             btn.addEventListener('click', function () {
                 vialBtns.forEach(b => b.classList.remove('active'));
@@ -171,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // BAC Slider
+        // Bac Water Slider
         if (bacSlider) {
             bacSlider.addEventListener('input', function () {
                 currentBacMl = parseFloat(this.value);
@@ -179,14 +224,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Target Dose Input
-        if (targetDoseInput) {
-            targetDoseInput.addEventListener('input', function () {
-                const val = parseFloat(this.value);
-                if (!isNaN(val) && val > 0) {
-                    currentTargetMcg = val;
-                    updatePeptideMath();
-                }
+        // Target Dose Slider
+        if (targetSlider) {
+            targetSlider.addEventListener('input', function () {
+                currentTargetMcg = parseFloat(this.value);
+                updatePeptideMath();
             });
         }
 

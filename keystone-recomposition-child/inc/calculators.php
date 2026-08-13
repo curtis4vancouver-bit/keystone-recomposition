@@ -33,6 +33,39 @@ function keystone_glp1_calculator_shortcode() {
         <div class="calculator-grid">
             <!-- Left Column: Interactive Inputs -->
             <div class="calc-control-panel">
+                <!-- Compound Selector -->
+                <div class="calc-group">
+                    <label class="calc-label">Select Active Compound &amp; Half-Life:</label>
+                    <div class="protocol-interval-grid">
+                        <button type="button" class="compound-btn active" data-compound="tirzepatide" data-halflife="5.0">
+                            <strong>Tirzepatide (Mounjaro® / Zepbound®)</strong>
+                            <span>Mean $t_{1/2} \approx 5.0\text{ Days}$ (120 Hours)</span>
+                        </button>
+                        <button type="button" class="compound-btn" data-compound="semaglutide" data-halflife="7.0">
+                            <strong>Semaglutide (Ozempic® / Wegovy®)</strong>
+                            <span>Mean $t_{1/2} \approx 7.0\text{ Days}$ (168 Hours)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dosing Interval Selector (5-Day vs 7-Day) -->
+                <div class="calc-group">
+                    <label class="calc-label">Select Dosing Schedule / Cycle Interval:</label>
+                    <div class="schedule-selector-grid">
+                        <button type="button" class="interval-btn active" data-interval="5">
+                            <span class="interval-icon">⚡</span>
+                            <strong>5-Day Micro-Dose Protocol</strong>
+                            <small>Smooth Trough &amp; Zero Hunger Spikes</small>
+                        </button>
+                        <button type="button" class="interval-btn" data-interval="7">
+                            <span class="interval-icon">📅</span>
+                            <strong>7-Day Standard Weekly Protocol</strong>
+                            <small>Conventional Once-Weekly Schedule</small>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pen Strength Selector -->
                 <div class="calc-group">
                     <label for="pen-strength" class="calc-label">Select Pen Strength (Labeled mg per full dose):</label>
                     <div class="strength-selector-grid">
@@ -45,6 +78,7 @@ function keystone_glp1_calculator_shortcode() {
                     </div>
                 </div>
 
+                <!-- Click Slider -->
                 <div class="calc-group">
                     <div class="label-row">
                         <label for="click-slider" class="calc-label">Dial Clicks (0 to 60 Clicks):</label>
@@ -60,66 +94,62 @@ function keystone_glp1_calculator_shortcode() {
                     </div>
                 </div>
 
+                <!-- Target Dose Matcher -->
                 <div class="calc-group">
-                    <label class="calc-label">Or Calculate Clicks from Desired Target Dose (mg):</label>
+                    <label class="calc-label">Or Dial Clicks to Match Desired Weekly Target Dose (mg):</label>
                     <div class="input-with-button">
-                        <input type="number" id="target-dose-input" min="0.1" max="15.0" step="0.25" placeholder="e.g. 2.5" class="gold-input">
+                        <input type="number" id="target-dose-input" min="0.5" max="15.0" step="0.25" placeholder="e.g. 5.0" class="gold-input">
                         <button type="button" id="calc-clicks-btn" class="gold-action-btn">Calculate Clicks</button>
                     </div>
-                </div>
-
-                <!-- 5-Day vs 7-Day Protocol Scaler -->
-                <div class="calc-group microdose-box">
-                    <h3 class="microdose-title">5-Day Pharmacokinetic Half-Life Scaler (Tirzepatide $t_{1/2}=5\text{d}$)</h3>
-                    <p class="microdose-desc">Standard once-weekly dosing experiences a 62% trough drop on day 6–7. Enter your standard weekly dose to calculate an equivalent 5-day steady-state micro-dose:</p>
-                    <div class="input-with-button">
-                        <input type="number" id="weekly-dose-input" min="1.0" max="15.0" step="0.5" value="5.0" class="gold-input">
-                        <button type="button" id="calc-5day-btn" class="gold-action-btn">Scale to 5-Day</button>
-                    </div>
+                    <small style="display:block; color:#9CA3AF; margin-top:6px; font-size:11px;" id="target-matcher-hint">Auto-scales injection dose for 5-day cycle: 5.0 mg/wk → 3.57 mg every 5 days (43 clicks).</small>
                 </div>
             </div>
 
-            <!-- Right Column: Real-Time Results & Dial -->
+            <!-- Right Column: Real-Time Results & Pharmacokinetic Dial -->
             <div class="calc-results-panel">
                 <div class="results-card">
-                    <h3 class="results-header">Calculated Injection Metrics</h3>
+                    <h3 class="results-header">Calculated Injection &amp; Pharmacokinetic Metrics</h3>
                     
                     <div class="metric-row highlight-metric">
-                        <span class="metric-label">Delivered Dose:</span>
+                        <span class="metric-label">Injected Dose per Shot:</span>
                         <span class="metric-value gold-text" id="res-delivered-mg">2.50 mg</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Equivalent 7-Day Exposure:</span>
+                        <span class="metric-value gold-text" id="res-weekly-equivalent">3.50 mg / week</span>
                     </div>
                     <div class="metric-row">
                         <span class="metric-label">Injection Volume:</span>
                         <span class="metric-value" id="res-delivered-ml">0.30 mL (30 units)</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-label">Dose Fraction:</span>
-                        <span class="metric-value" id="res-dose-fraction">50.0% of full dose</span>
-                    </div>
-                    <div class="metric-row">
                         <span class="metric-label">Single Click Value:</span>
                         <span class="metric-value" id="res-single-click">0.0833 mg / click</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-label">Remaining Doses in Cartridge:</span>
-                        <span class="metric-value" id="res-cartridge-doses">8.0 doses at this setting</span>
+                        <span class="metric-label">Cartridge Capacity:</span>
+                        <span class="metric-value" id="res-cartridge-doses">8.0 shots at this setting</span>
                     </div>
                 </div>
 
-                <!-- 5-Day Scaler Results -->
-                <div class="results-card secondary-card" id="five-day-results-card">
-                    <h3 class="results-header">5-Day Steady-State Conversion</h3>
+                <!-- Pharmacokinetic Dynamics Card -->
+                <div class="results-card secondary-card">
+                    <h3 class="results-header" id="pk-dynamics-title">⚡ 5-Day Pharmacokinetic Advantage</h3>
                     <div class="metric-row">
-                        <span class="metric-label">Equivalent 5-Day Dose:</span>
-                        <span class="metric-value gold-text" id="res-5day-dose">3.57 mg every 5 days</span>
+                        <span class="metric-label">Active Schedule:</span>
+                        <span class="metric-value" id="res-active-schedule" style="color:#C4A265; font-weight:700;">Every 5 Days (⚡ Micro-Dose)</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-label">Twice-Weekly Split:</span>
-                        <span class="metric-value" id="res-split-dose">2.50 mg every 3.5 days</span>
+                        <span class="metric-label">Trough Level at Next Shot:</span>
+                        <span class="metric-value" id="res-trough-retention" style="color:#10B981; font-weight:700;">50.0% Remaining (Stable)</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-label">Trough Retention:</span>
-                        <span class="metric-value" id="res-trough-retention">50.0% (vs 37.9% weekly)</span>
+                        <span class="metric-label">Peak-to-Trough Ratio:</span>
+                        <span class="metric-value" id="res-peak-trough">2.00x Fluctuation</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Late-Cycle Hunger Fluctuation:</span>
+                        <span class="metric-value" id="res-hunger-status" style="color:#10B981;">Zero Late Food Noise</span>
                     </div>
                 </div>
             </div>

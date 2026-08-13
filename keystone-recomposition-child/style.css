@@ -1612,6 +1612,74 @@ a.gold-action-btn.full-width,
   letter-spacing: 0.12em !important;
 }
 
+/* Compound and Schedule Selector Grids */
+.protocol-interval-grid,
+.schedule-selector-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+
+@media (max-width: 600px) {
+  .protocol-interval-grid,
+  .schedule-selector-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.compound-btn,
+.interval-btn {
+  background: #181818 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px !important;
+  padding: 12px 14px !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.compound-btn strong,
+.interval-btn strong {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+.compound-btn span,
+.interval-btn small {
+  font-size: 11px !important;
+  color: #9CA3AF !important;
+  line-height: 1.3 !important;
+}
+
+.interval-icon {
+  font-size: 14px !important;
+  margin-bottom: 2px !important;
+}
+
+.compound-btn.active,
+.interval-btn.active {
+  background: rgba(196, 162, 101, 0.15) !important;
+  border-color: var(--ks-gold-primary) !important;
+  box-shadow: 0 0 12px rgba(196, 162, 101, 0.25) !important;
+}
+
+.compound-btn.active strong,
+.interval-btn.active strong {
+  color: var(--ks-gold-primary) !important;
+}
+
+.compound-btn.active span,
+.interval-btn.active small {
+  color: #E5E7EB !important;
+}
+
+/* Results Panel */
+
 .recipe-title {
   font-family: 'Outfit', sans-serif !important;
   font-size: 18px !important;
