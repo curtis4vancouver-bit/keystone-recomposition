@@ -42,7 +42,7 @@ get_header();
 			<div class="wp-block-column" style="background-color: rgba(245, 158, 11, 0.03); border: 1px solid rgba(245, 158, 11, 0.15); padding: 25px; border-radius: 4px;">
 				<h3 style="font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: #f59e0b; margin-top: 0; margin-bottom: 10px; letter-spacing: 0.08em; text-transform: uppercase;">⚠️ Medical Disclaimer</h3>
 				<p style="font-size: 0.8rem; color: #a3a3a3; line-height: 1.6; margin: 0; font-weight: 300;">
-					This article is a personal case study for educational and scientific research purposes only. The author is a metabolic researcher and construction superintendent, not a licensed physician. Nothing here constitutes medical advice. Therapeutic peptides are highly powerful, prescription substances. Always consult your licensed physician before starting or modifying any protocol.
+					This article is a personal case study for educational and scientific research purposes only. The author is a metabolic researcher and performance specialist, not a licensed physician. Nothing here constitutes medical advice. Therapeutic peptides are highly powerful, prescription substances. Always consult your licensed physician before starting or modifying any protocol.
 				</p>
 			</div>
 
@@ -66,11 +66,11 @@ get_header();
 
 			<!-- Heading 2 -->
 			<h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; color: #C4A265; margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid #2a2a2a; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">
-				1. The Mechanism of Action: The Cellular Construction Site
+				1. The Mechanism of Action: The Cellular Repair Site
 			</h2>
 
 			<p style="margin-bottom: 25px;">
-				To understand the healing capacity of these peptides, one must first view the process of tissue repair as a highly coordinated construction project. In this metaphor, the injury site is a "vascular desert" or a "ruined infrastructure" that requires both a master architect to signal the construction of new supply lines (angiogenesis) and a specialized workforce to rebuild the structural scaffolding (fibroblasts and stem cells). BPC-157 and Thymosin Beta-4 serve as the molecular messengers that coordinate these disparate biological efforts.
+				To understand the healing capacity of these peptides, one must first view the process of tissue repair as a highly coordinated cellular repair project. In this metaphor, the injury site is a "vascular desert" or a "ruined infrastructure" that requires both a master architect to signal the assembly of new supply lines (angiogenesis) and a specialized workforce to rebuild the structural scaffolding (fibroblasts and stem cells). BPC-157 and Thymosin Beta-4 serve as the molecular messengers that coordinate these disparate biological efforts.
 			</p>
 
 			<div class="wp-block-columns" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
@@ -179,7 +179,7 @@ get_header();
 			</p>
 
 			<p style="margin-bottom: 25px;">
-				For the educator, scientist, or builder, the story of these peptides is not just one of faster recovery for athletes. It is a story about the frontier of molecular medicine, where we are learning to hijack the body's own ancient gastric and thymic defense systems to perform feats of regeneration that were once thought impossible.
+				For the educator, scientist, or performance researcher, the story of these peptides is not just one of faster recovery for athletes. It is a story about the frontier of molecular medicine, where we are learning to hijack the body's own ancient gastric and thymic defense systems to perform feats of regeneration that were once thought impossible.
 			</p>
 		</div>
 

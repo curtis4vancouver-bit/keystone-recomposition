@@ -29,7 +29,7 @@ get_header();
 			
 			<h1 class="entry-title" style="font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 3.2vw, 2.2rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.025em; color: #ffffff; margin-bottom: 15px; line-height: 1.25;">
 				The Structural Integrity of Weight Loss: <br>
-				<span style="color: #C4A265; font-weight: 400;">A Builder's Blueprint for Preventing Mounjaro Muscle Loss</span>
+				<span style="color: #C4A265; font-weight: 400;">A High-Performance Blueprint for Preventing Mounjaro Muscle Loss</span>
 			</h1>
 
 			<p class="subtitle" style="font-family: 'Outfit', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin: 0;">
@@ -51,11 +51,11 @@ get_header();
 			</p>
 
 			<blockquote style="border-left: 3px solid #C4A265; padding-left: 20px; font-style: italic; color: #a3a3a3; margin: 30px 0; font-size: 1.1rem; line-height: 1.7;">
-				"In the engineering and construction world, we operate under a non-negotiable law: <strong>you cannot compromise the load-bearing structural integrity of a building to make the facade lighter.</strong>"
+				"In the engineering and biomechanical world, we operate under a non-negotiable law: <strong>you cannot compromise the load-bearing structural integrity of a physical system to make the facade lighter.</strong>"
 			</blockquote>
 
 			<p style="margin-bottom: 25px;">
-				As a 43-year-old construction superintendent who has spent over twenty years carrying heavy framing lumber, swinging framing hammers, and operating heavy machinery on mountain job sites in Squamish, British Columbia, my body is the single most important tool I own. When I lost <strong>48 pounds</strong> using Mounjaro, I had to look past the scale and inspect the structural scaffolding underneath. What I discovered in the footnotes of the published clinical data was alarming—and it is a crisis that almost no one is talking about.
+				As a 43-year-old metabolic researcher and performance specialist who has spent over twenty years studying high-output physical performance and biomechanics in Squamish, British Columbia, my body is the single most important tool I own. When I lost <strong>48 pounds</strong> using Mounjaro, I had to look past the scale and inspect the structural scaffolding underneath. What I discovered in the footnotes of the published clinical data was alarming—and it is a crisis that almost no one is talking about.
 			</p>
 
 			<!-- Heading 2 -->
@@ -106,7 +106,7 @@ get_header();
 			</div>
 
 			<p style="margin-bottom: 25px;">
-				For an active builder, a software developer, or anyone over 40, these numbers represent a catastrophe. Sarcopenia—the natural, age-related loss of muscle mass and function—normally strips <strong>3% to 8% of skeletal muscle per decade</strong> after age 30. Compounding that natural biological decline with a rapid, peptide-induced muscle drawdown is equivalent to aging your musculoskeletal system by fifteen years in a single twelve-month span.
+				For an active individual, a high-performer, or anyone over 40, these numbers represent a catastrophe. Sarcopenia—the natural, age-related loss of muscle mass and function—normally strips <strong>3% to 8% of skeletal muscle per decade</strong> after age 30. Compounding that natural biological decline with a rapid, peptide-induced muscle drawdown is equivalent to aging your musculoskeletal system by fifteen years in a single twelve-month span.
 			</p>
 
 			<!-- Heading 2 -->
@@ -137,7 +137,7 @@ get_header();
 
 			<!-- Heading 2 -->
 			<h2 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; color: #C4A265; margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid #2a2a2a; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">
-				3. The Builder's Recomposition Protocol: 4 Pillars of Prevention
+				3. The High-Performance Recomposition Protocol: 4 Pillars of Prevention
 			</h2>
 
 			<p style="margin-bottom: 25px;">
@@ -162,7 +162,7 @@ get_header();
 					<div style="background-color: #111; padding: 12px; border-radius: 4px; margin-top: 15px; font-family: 'Outfit', sans-serif; font-size: 0.75rem; border-left: 2px solid #C4A265;">
 						<span style="color: #C4A265; font-weight: 600;">TARGET DOSAGE:</span><br>
 						1.2 to 1.5 grams per kg of bodyweight daily.<br>
-						For a 200-lb builder, this is 136g to 200g daily.
+						For a 200-lb individual, this is 136g to 200g daily.
 					</div>
 				</div>
 
@@ -247,7 +247,7 @@ get_header();
 				<h4 style="font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: #C4A265; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.08em;">Documented Structural Outcome:</h4>
 				<ul style="font-size: 0.85rem; color: #a3a3a3; line-height: 1.7; margin: 0; padding-left: 20px; font-weight: 300;">
 					<li style="margin-bottom: 10px;"><strong>Recovery Time Compression:</strong> Documented joint and muscle recovery between active shifts and gym sessions compressed from 5 days down to 48 hours.</li>
-					<li style="margin-bottom: 10px;"><strong>Joint Performance:</strong> The persistent morning knee and shoulder stiffness that typically greets a veteran carpenter after decades of manual labor was completely resolved.</li>
+					<li style="margin-bottom: 10px;"><strong>Joint Performance:</strong> The persistent morning knee and shoulder stiffness that typically greets a veteran athlete after decades of heavy physical labor was completely resolved.</li>
 					<li style="margin-bottom: 10px;"><strong>Muscular Fullness:</strong> Despite a total weight reduction of <strong>48 pounds</strong>, skeletal muscle measurements remained full, proving that the weight lost was ectopic and visceral fat—not my physical structural toolset.</li>
 				</ul>
 			</div>
@@ -257,7 +257,7 @@ get_header();
 			</h2>
 
 			<p style="margin-bottom: 25px;">
-				If you work with your hands, or if you are serious about your long-term health and mobility over 40, do not let the scale blind you. Weight loss without muscle preservation is not health—it is the systemic deconstruction of your body's load-bearing frame.
+				If you push your body physically, or if you are serious about your long-term health and mobility over 40, do not let the scale blind you. Weight loss without muscle preservation is not health—it is the systemic breakdown of your body's load-bearing frame.
 			</p>
 
 			<p style="margin-bottom: 25px;">
@@ -267,7 +267,7 @@ get_header();
 			<div class="wp-block-group" style="background-color: rgba(0, 206, 209, 0.03); border: 1px solid rgba(0, 206, 209, 0.15); padding: 30px; border-radius: 4px;">
 				<h4 style="font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: #00CED1; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.08em;">⏭️ NEXT EPISODE PREVIEW</h4>
 				<p style="font-size: 0.85rem; color: #a3a3a3; line-height: 1.7; margin: 0; font-weight: 300;">
-					<strong>Next week, in Episode 2 of our Recomposition Series, I am going deep into the regenerative peptide stack that completely changed my recovery on the job site: BPC-157 and Thymosin Beta-4 (The Wolverine Stack). We will analyze the molecular pathways, the clinical evidence, the legal regulatory landscape, and my personal research protocols.</strong>
+					<strong>Next week, in Episode 2 of our Recomposition Series, I am going deep into the regenerative peptide stack that completely changed my recovery during high-output training: BPC-157 and Thymosin Beta-4 (The Wolverine Stack). We will analyze the molecular pathways, the clinical evidence, the legal regulatory landscape, and my personal research protocols.</strong>
 				</p>
 			</div>
 		</div>
@@ -277,13 +277,13 @@ get_header();
 			<div class="kr-disclaimer-box medical">
 				<div class="kr-disclaimer-title">⚠️ Medical Disclaimer</div>
 				<p class="kr-disclaimer-text">
-					This article is a personal case study for educational purposes only. Wayne Stevenson is a construction superintendent and metabolic researcher, not a doctor. Nothing here constitutes medical advice. GLP-1 / GIP therapies are powerful prescription drugs—always consult your licensed physician before starting or modifying any protocol.
+					This article is a personal case study for educational purposes only. Wayne Stevenson is a metabolic researcher and performance specialist, not a doctor. Nothing here constitutes medical advice. GLP-1 / GIP therapies are powerful prescription drugs—always consult your licensed physician before starting or modifying any protocol.
 				</p>
 			</div>
 			<div class="kr-disclaimer-box twin">
 				<div class="kr-disclaimer-title">⚠️ Digital Twin Disclosure</div>
 				<p class="kr-disclaimer-text">
-					The video content accompanying the Keystone Recomposition brand is hosted by a photorealistic, synthetic visual network representation (AI Digital Twin) of Wayne Stevenson. All real-world job site footage, personal clinical lab work, physical training logs, and research data are authentic and fully documented by the human creator.
+					The video content accompanying the Keystone Recomposition brand is hosted by a photorealistic, synthetic visual network representation (AI Digital Twin) of Wayne Stevenson. All real-world performance footage, personal clinical lab work, physical training logs, and research data are authentic and fully documented by the human creator.
 				</p>
 			</div>
 		</div>

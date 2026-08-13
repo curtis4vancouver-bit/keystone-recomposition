@@ -1899,10 +1899,33 @@ html body .gold-action-btn:hover {
   text-decoration: none !important;
 }
 
-/* Header Navigation Polish - Zero Letter Wrapping */
+/* Header Navigation Polish — Quiet Luxury Floating Glassmorphism & Zero Letter Wrapping */
+.site-header,
+.ast-primary-header-bar,
+.main-header-bar,
+#ast-desktop-header,
+.ast-above-header,
+.ast-main-header-wrap,
+header.site-header,
+.ast-header-break-point .ast-primary-header-bar {
+  background: rgba(10, 15, 25, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+.nav-menu,
+.main-navigation a,
+.site-header nav,
+.site-header nav a,
 .main-header-menu .menu-item a,
 .ast-desktop-header .main-header-menu .menu-item a,
-.main-header-menu .menu-link {
+.main-header-menu .menu-link,
+.ast-nav-menu a,
+.ast-header-sections-navigation a {
   white-space: nowrap !important;
   word-break: keep-all !important;
   padding: 0 8px !important;
@@ -1910,7 +1933,99 @@ html body .gold-action-btn:hover {
   letter-spacing: 0.05em !important;
 }
 
+@media (min-width: 922px) {
+  .site-header nav,
+  .main-navigation,
+  .nav-menu,
+  .main-header-menu,
+  .ast-nav-menu,
+  .ast-builder-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+  }
+}
+
 .ast-desktop-header .ast-builder-menu-1 {
   flex-grow: 1 !important;
 }
+
+/* ==========================================================================
+   2026 QUIET LUXURY DESIGN SYSTEM — PILL BUTTONS & CARD DEPTH OVERRIDES
+   ========================================================================== */
+.wp-block-button .wp-block-button__link,
+.wp-block-button a,
+a.wp-block-button__link,
+.ast-custom-button,
+button.wp-element-button,
+.gold-action-btn,
+.cta-toggle-btn,
+.kp-btn-gold,
+.kp-btn-cyan,
+.kp-btn-outline,
+.btn,
+.button,
+input[type="submit"],
+button[type="submit"],
+.cta-button,
+a.cta-btn {
+  border-radius: 9999px !important;
+  transition: all 0.3s ease !important;
+}
+
+.wp-block-button .wp-block-button__link:hover,
+.wp-block-button a:hover,
+a.wp-block-button__link:hover,
+.ast-custom-button:hover,
+button.wp-element-button:hover,
+.gold-action-btn:hover,
+.cta-toggle-btn:hover,
+.kp-btn-gold:hover,
+.kp-btn-cyan:hover,
+.kp-btn-outline:hover,
+.btn:hover,
+.button:hover,
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.cta-button:hover,
+a.cta-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4) !important;
+}
+
+.wp-block-group.has-background,
+.wp-block-columns.has-background,
+.ast-article-post,
+.ast-article-inner,
+article.post,
+.keystone-tool-card,
+.glass-card,
+.glass-card-gold,
+.kp-glass,
+.kp-glass-gold,
+.keystone-card,
+.card {
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 70%), #1a1a1a !important;
+  border-radius: 16px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.wp-block-group.has-background:hover,
+.wp-block-columns.has-background:hover,
+.ast-article-post:hover,
+.ast-article-inner:hover,
+article.post:hover,
+.keystone-tool-card:hover,
+.glass-card:hover,
+.glass-card-gold:hover,
+.kp-glass:hover,
+.kp-glass-gold:hover,
+.keystone-card:hover,
+.card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
 

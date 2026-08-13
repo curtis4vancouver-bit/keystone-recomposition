@@ -99,11 +99,6 @@ function keystone_recomposition_child_inject_schema() {
                 'knowsAbout' => array(
                     array(
                         '@type' => 'Thing',
-                        'name' => 'Custom Luxury Home Construction',
-                        'sameAs' => 'https://en.wikipedia.org/wiki/General_contractor'
-                    ),
-                    array(
-                        '@type' => 'Thing',
                         'name' => 'Metabolic Health Optimization',
                         'sameAs' => 'https://en.wikipedia.org/wiki/Metabolism'
                     ),
@@ -140,7 +135,7 @@ function keystone_recomposition_child_inject_schema() {
                             '@id' => 'https://keystonepossibilities.ca/#organization',
                             'name' => 'Keystone Possibilities Ltd.'
                         ),
-                        'roleName' => 'Managing Director & Chief Builder',
+                        'roleName' => 'Managing Director',
                         'startDate' => '2018'
                     ),
                     array(
@@ -153,26 +148,6 @@ function keystone_recomposition_child_inject_schema() {
                         'roleName' => 'Founder & Metabolic Health Researcher',
                         'startDate' => '2021'
                     )
-                ),
-                'hasCredential' => array(
-                    '@id' => 'https://keystonerecomposition.com/#license-52603'
-                )
-            ),
-            array(
-                '@type' => 'EducationalOccupationalCredential',
-                '@id' => 'https://keystonerecomposition.com/#license-52603',
-                'name' => 'BC Residential Builder License #52603',
-                'credentialCategory' => 'Professional Provincial License',
-                'credentialNumber' => '52603',
-                'recognizedBy' => array(
-                    '@type' => 'GovernmentOrganization',
-                    'name' => 'BC Housing Licensing and Consumer Services',
-                    'url' => 'https://www.bchousing.org/'
-                ),
-                'validIn' => array(
-                    '@type' => 'AdministrativeArea',
-                    'name' => 'British Columbia',
-                    'sameAs' => 'https://en.wikipedia.org/wiki/British_Columbia'
                 )
             )
         )
@@ -921,7 +896,7 @@ function keystone_recomposition_child_404_redirect() {
 
     $redirects_301 = array(
         '/2026/01/23/mounjaro-kwikpen-the-official-click-to-mg-math-bible/' => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
-        '/2026/05/07/wolverine-stack-bpc-157-tb500-builder-blueprint/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-builder-blueprint/',
+        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
     );
 
     $gone_paths = array(

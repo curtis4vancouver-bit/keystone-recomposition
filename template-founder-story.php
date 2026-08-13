@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Keystone Founder Story
- * Description: Wayne Stevenson Master Profile - Master Builder, Recomposition Practitioner, & Music Producer
+ * Description: Wayne Stevenson Master Profile - Performance Specialist, Recomposition Practitioner, & Music Producer
  * Stamped: August 2026
  */
 

@@ -64,12 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const steadySwingMg = steadyHighMg - steadyLowMg;
 
             // Update DOM
-            clickDisplay.textContent = currentClicks + ' Clicks';
-            resDeliveredMg.textContent = deliveredMg.toFixed(2) + ' mg';
-            resWeeklyEquivalent.textContent = weeklyEquivalentMg.toFixed(2) + ' mg / week';
-            resDeliveredMl.textContent = deliveredMl.toFixed(2) + ' mL (' + syringeUnits + ' units)';
-            resSingleClick.textContent = singleClickMg.toFixed(4) + ' mg / click';
-            resCartridgeDoses.textContent = remainingDoses + ' shots at this setting';
+            if (clickDisplay) clickDisplay.textContent = currentClicks + ' Clicks';
+            if (resDeliveredMg) resDeliveredMg.textContent = deliveredMg.toFixed(2) + ' mg';
+            if (resWeeklyEquivalent) resWeeklyEquivalent.textContent = weeklyEquivalentMg.toFixed(2) + ' mg / week';
+            if (resDeliveredMl) resDeliveredMl.textContent = deliveredMl.toFixed(2) + ' mL (' + syringeUnits + ' units)';
+            if (resSingleClick) resSingleClick.textContent = singleClickMg.toFixed(4) + ' mg / click';
+            if (resCartridgeDoses) resCartridgeDoses.textContent = remainingDoses + ' shots at this setting';
 
             // Steady-State High & Low
             if (resSteadyHigh) {
@@ -82,22 +82,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 resSteadySwing.textContent = 'Δ ' + steadySwingMg.toFixed(2) + ' mg (' + peakTroughRatio + 'x Peak/Trough)';
             }
 
-            if (currentInterval === 5) {
-                pkDynamicsTitle.textContent = '⚡ 5-Day Micro-Dose Protocol Dynamics';
-                resActiveSchedule.textContent = 'Every 5 Days (⚡ Micro-Dose)';
-                resActiveSchedule.style.color = '#C4A265';
-                resTroughRetention.textContent = troughPercent + '% Remaining (Stable)';
-                resTroughRetention.style.color = '#10B981';
-                resHungerStatus.textContent = 'Zero Late Food Noise';
-                resHungerStatus.style.color = '#10B981';
-            } else {
-                pkDynamicsTitle.textContent = '📅 7-Day Standard Schedule Dynamics';
-                resActiveSchedule.textContent = 'Every 7 Days (📅 Standard Weekly)';
-                resActiveSchedule.style.color = '#9CA3AF';
-                resTroughRetention.textContent = troughPercent + '% Remaining (Trough Drop)';
-                resTroughRetention.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
-                resHungerStatus.textContent = currentHalfLife <= 5.0 ? 'Day 6–7 Food Noise Common' : 'Moderate Appetite Drift';
-                resHungerStatus.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
+            if (pkDynamicsTitle && resActiveSchedule && resTroughRetention && resHungerStatus) {
+                if (currentInterval === 5) {
+                    pkDynamicsTitle.textContent = '⚡ 5-Day Micro-Dose Protocol Dynamics';
+                    resActiveSchedule.textContent = 'Every 5 Days (⚡ Micro-Dose)';
+                    resActiveSchedule.style.color = '#C4A265';
+                    resTroughRetention.textContent = troughPercent + '% Remaining (Stable)';
+                    resTroughRetention.style.color = '#10B981';
+                    resHungerStatus.textContent = 'Zero Late Food Noise';
+                    resHungerStatus.style.color = '#10B981';
+                } else {
+                    pkDynamicsTitle.textContent = '📅 7-Day Standard Schedule Dynamics';
+                    resActiveSchedule.textContent = 'Every 7 Days (📅 Standard Weekly)';
+                    resActiveSchedule.style.color = '#9CA3AF';
+                    resTroughRetention.textContent = troughPercent + '% Remaining (Trough Drop)';
+                    resTroughRetention.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
+                    resHungerStatus.textContent = currentHalfLife <= 5.0 ? 'Day 6–7 Food Noise Common' : 'Moderate Appetite Drift';
+                    resHungerStatus.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
+                }
             }
 
             // Update Hint
@@ -173,6 +175,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // =========================================================================
     // 2. PEPTIDE RECONSTITUTION CALCULATOR
+    // DOM IDs aligned to inc/calculators.php:
+    // - res-pep-concentration (calculated peptide concentration text output)
+    // - res-pep-volume (calculated dose volume text output)
+    // - syringe-fill-bar (U-100 visualizer width percentage)
+    // - peptide-target-dose (target dose slider/input)
     // =========================================================================
     const pepContainer = document.getElementById('peptide-calculator');
     if (pepContainer) {
@@ -183,16 +190,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const vialBtns = pepContainer.querySelectorAll('.vial-btn');
         const bacSlider = document.getElementById('bac-slider');
         const bacDisplay = document.getElementById('bac-val-display');
-        const targetSlider = document.getElementById('target-slider');
-        const targetDisplay = document.getElementById('target-val-display');
+        const targetDoseInput = document.getElementById('peptide-target-dose');
 
-        // Result DOM Elements
-        const resConcentration = document.getElementById('res-concentration');
+        // Result DOM Elements (Aligned with inc/calculators.php)
+        const resConcentration = document.getElementById('res-pep-concentration');
         const resSyringeUnits = document.getElementById('res-syringe-units');
-        const resDoseVolume = document.getElementById('res-dose-volume');
-        const resDosesPerVial = document.getElementById('res-doses-per-vial');
-        const syringeFill = document.getElementById('syringe-fill');
-        const syringeLabel = document.getElementById('syringe-label');
+        const resDoseVolume = document.getElementById('res-pep-volume');
+        const resUnitValue = document.getElementById('res-pep-unit-value');
+        const resTotalDoses = document.getElementById('res-pep-total-doses');
+        const syringeFillBar = document.getElementById('syringe-fill-bar');
+        const syringeCaptionUnits = document.getElementById('syringe-caption-units');
 
         function updatePeptideMath() {
             // Concentration = (Vial mg * 1000) / Bac mL  [mcg/mL]
@@ -203,24 +210,37 @@ document.addEventListener('DOMContentLoaded', function () {
             // Units = (Target mcg / Concentration mcg/mL) * 100
             const volumeMl = currentTargetMcg / concMcgPerMl;
             const units = (volumeMl * 100).toFixed(1);
+            const mcgPerUnit = (concMcgPerMl / 100).toFixed(1);
             const totalDoses = Math.floor((currentVialMg * 1000) / currentTargetMcg);
 
             // Visual Syringe Fill (Max 100 Units = 100% width)
-            const fillPercent = Math.min(100, Math.max(0, (units / 100) * 100));
+            const fillPercent = Math.min(100, Math.max(0, (parseFloat(units) / 100) * 100));
 
-            bacDisplay.textContent = currentBacMl.toFixed(1) + ' mL';
-            targetDisplay.textContent = currentTargetMcg + ' mcg (' + (currentTargetMcg / 1000).toFixed(2) + ' mg)';
-
-            resConcentration.textContent = concMgPerMl + ' mg/mL (' + Math.round(concMcgPerMl) + ' mcg/mL)';
-            resSyringeUnits.textContent = units + ' Units';
-            resDoseVolume.textContent = volumeMl.toFixed(3) + ' mL';
-            resDosesPerVial.textContent = totalDoses + ' doses per vial';
-
-            if (syringeFill) {
-                syringeFill.style.width = fillPercent + '%';
+            if (bacDisplay) {
+                bacDisplay.textContent = currentBacMl.toFixed(1) + ' mL';
             }
-            if (syringeLabel) {
-                syringeLabel.textContent = units + ' Units (' + volumeMl.toFixed(2) + ' mL)';
+
+            if (resConcentration) {
+                resConcentration.textContent = Math.round(concMcgPerMl).toLocaleString() + ' mcg/mL (' + concMgPerMl + ' mg/mL)';
+            }
+            if (resSyringeUnits) {
+                resSyringeUnits.textContent = units + ' Units';
+            }
+            if (resDoseVolume) {
+                resDoseVolume.textContent = volumeMl.toFixed(2) + ' mL';
+            }
+            if (resUnitValue) {
+                resUnitValue.textContent = mcgPerUnit + ' mcg / unit';
+            }
+            if (resTotalDoses) {
+                resTotalDoses.textContent = totalDoses + ' doses at ' + currentTargetMcg + ' mcg';
+            }
+
+            if (syringeFillBar) {
+                syringeFillBar.style.width = fillPercent + '%';
+            }
+            if (syringeCaptionUnits) {
+                syringeCaptionUnits.textContent = units + ' Units';
             }
         }
 
@@ -242,15 +262,75 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Target Dose Slider
-        if (targetSlider) {
-            targetSlider.addEventListener('input', function () {
-                currentTargetMcg = parseFloat(this.value);
-                updatePeptideMath();
-            });
+        // Target Dose Input
+        if (targetDoseInput) {
+            const handleTargetInput = function () {
+                const val = parseFloat(this.value);
+                if (!isNaN(val) && val > 0) {
+                    currentTargetMcg = val;
+                    updatePeptideMath();
+                }
+            };
+            targetDoseInput.addEventListener('input', handleTargetInput);
+            targetDoseInput.addEventListener('change', handleTargetInput);
         }
 
         // Initial Run
         updatePeptideMath();
+    }
+
+    // =========================================================================
+    // 3. CALCULATOR TAB SWITCHER ENGINE (GLP-1 vs PEPTIDE RECONSTITUTION)
+    // Dynamic tab switching without page reloads
+    // =========================================================================
+    const tabBtns = document.querySelectorAll('.calc-tab-btn');
+    const glp1Wrap = document.getElementById('calc-glp1-wrap');
+    const pepWrap = document.getElementById('calc-peptide-wrap');
+
+    if (tabBtns.length > 0) {
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = this.getAttribute('data-tab') || 
+                               (this.id && this.id.includes('glp1') ? 'glp1' : 
+                               (this.id && this.id.includes('peptide') ? 'peptide' : 
+                               (this.getAttribute('href') && this.getAttribute('href').includes('glp1') ? 'glp1' : 'peptide')));
+
+                const glp1Btn = document.getElementById('tab-btn-glp1') || document.querySelector('.calc-tab-btn[data-tab="glp1"]');
+                const pepBtn = document.getElementById('tab-btn-peptide') || document.querySelector('.calc-tab-btn[data-tab="peptide"]');
+
+                if (target === 'glp1') {
+                    if (glp1Wrap) glp1Wrap.style.display = 'block';
+                    if (pepWrap) pepWrap.style.display = 'none';
+
+                    if (glp1Btn) {
+                        glp1Btn.classList.add('active');
+                        glp1Btn.style.background = '#C4A265';
+                        glp1Btn.style.color = '#000000';
+                    }
+                    if (pepBtn) {
+                        pepBtn.classList.remove('active');
+                        pepBtn.style.background = '#141414';
+                        pepBtn.style.color = '#C4A265';
+                        pepBtn.style.border = '1px solid rgba(196,162,101,0.4)';
+                    }
+                } else if (target === 'peptide') {
+                    if (glp1Wrap) glp1Wrap.style.display = 'none';
+                    if (pepWrap) pepWrap.style.display = 'block';
+
+                    if (pepBtn) {
+                        pepBtn.classList.add('active');
+                        pepBtn.style.background = '#C4A265';
+                        pepBtn.style.color = '#000000';
+                    }
+                    if (glp1Btn) {
+                        glp1Btn.classList.remove('active');
+                        glp1Btn.style.background = '#141414';
+                        glp1Btn.style.color = '#C4A265';
+                        glp1Btn.style.border = '1px solid rgba(196,162,101,0.4)';
+                    }
+                }
+            });
+        });
     }
 });

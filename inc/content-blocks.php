@@ -334,7 +334,7 @@ function keystone_recomposition_child_eeat_author_block( $content ) {
                 <img src="https://keystonerecomposition.com/wp-content/uploads/logo.png" alt="Wayne Stevenson" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
                 <div>
                     <h3 style="color: #ffffff; font-family: \'Outfit\', sans-serif; font-size: 1.2rem; margin: 0 0 5px 0;">Wayne Stevenson</h3>
-                    <p style="color: #c4a265; font-family: \'Outfit\', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0;">Certified BC Builder & Metabolic Researcher</p>
+                    <p style="color: #c4a265; font-family: \'Outfit\', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0;">Metabolic Researcher &amp; Performance Specialist</p>
                     <p style="color: #a3a3a3; font-family: \'Inter\', sans-serif; font-size: 0.85rem; line-height: 1.6; margin: 0;">This content is meticulously researched and documented for the preservation of male health and longevity. Operating under strict E-E-A-T principles for high-quality health information.</p>
                 </div>
             </div>

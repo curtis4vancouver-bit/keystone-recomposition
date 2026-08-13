@@ -609,25 +609,25 @@ function keystone_founder_story_shortcode() {
                 <div class="founder-stat-bar">
                     <div class="f-stat"><span class="f-num">-48 LBS</span><span class="f-lbl">TOTAL WEIGHT LOSS</span></div>
                     <div class="f-stat"><span class="f-num">210 LBS</span><span class="f-lbl">MAINTAINED SET-POINT</span></div>
-                    <div class="f-stat"><span class="f-num">#52603</span><span class="f-lbl">BC BUILDER LICENSE</span></div>
+                    <div class="f-stat"><span class="f-num">5-DAY / 7-DAY</span><span class="f-lbl">PK SCHEDULING</span></div>
                 </div>
             </div>
 
             <div class="founder-text-col">
                 <span class="tool-badge">FOUNDER &amp; PRODUCER</span>
                 <h2 class="founder-name">Wayne Stevenson</h2>
-                <p class="founder-creds">Certified BC Residential Builder (#52603) • Recomposition Practitioner • Electronic Music Producer</p>
+                <p class="founder-creds">Metabolic Researcher &amp; Performance Specialist • Recomposition Practitioner • Electronic Music Producer</p>
                 
                 <div class="founder-bio-text">
                     <p>I view human physiology through the exact same lens as structural engineering: <strong>if the foundation is compromised, the superstructure will inevitably collapse.</strong></p>
                     
-                    <p>After decades leading high-stakes civil utility contracting and architectural estate builds across the Sea-to-Sky corridor, I applied structural engineering principles to my own biology—dropping <strong>48 lbs</strong>, locking in a permanent <strong>210-lb athletic set-point</strong>, and decoding the exact pharmacokinetic math behind GLP-1 agonists, peptide science, and high-intensity resistance training.</p>
+                    <p>After years of intensive research and real-world protocol testing, I applied bio-rigorous engineering principles to my own biology—dropping <strong>48 lbs</strong>, locking in a permanent <strong>210-lb athletic set-point</strong>, and decoding the exact pharmacokinetic math behind GLP-1 agonists, peptide science, and high-intensity resistance training.</p>
                     
-                    <p>Through the <strong>Keystone Master Universe</strong>, I compose original electronic music on Spotify, document rigorous biological protocols on YouTube (<a href="https://www.youtube.com/@keystoneprotocols" target="_blank" rel="noopener">@KeystoneProtocols</a>), and lead the design and construction of future luxury alpine wellness retreats through <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd.</a></p>
+                    <p>Through the <strong>Keystone Master Universe</strong>, I compose original electronic music on Spotify, document rigorous biological protocols on YouTube (<a href="https://www.youtube.com/@keystoneprotocols" target="_blank" rel="noopener">@KeystoneProtocols</a>), and lead the design of future luxury alpine wellness retreats through <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd.</a></p>
                 </div>
 
                 <div class="founder-ecosystem-links">
-                    <a href="https://keystonepossibilities.ca" class="gold-link-btn" target="_blank" rel="noopener">🏛️ Keystone Possibilities Ltd. (Luxury Estates &amp; Civil) →</a>
+                    <a href="https://keystonepossibilities.ca" class="gold-link-btn" target="_blank" rel="noopener">🏛️ Keystone Possibilities Ltd. (Partner Brand) →</a>
                     <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" class="spotify-link-btn" target="_blank" rel="noopener">🎵 Spotify Official Artist Channel →</a>
                     <a href="https://www.youtube.com/@keystoneprotocols" class="yt-link-btn" target="_blank" rel="noopener">▶ YouTube: @KeystoneProtocols →</a>
                 </div>

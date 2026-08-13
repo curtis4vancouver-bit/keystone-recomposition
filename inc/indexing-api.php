@@ -825,7 +825,7 @@ add_action( 'init', function() {
 3. Sauna & Cold Plunge Protocols (Infrared, Traditional Finnish)
 4. Exercise Science & Muscle Preservation During Weight Loss
 5. Melodic House & Study Music Production (Spotify: Ecosystem Soundtracks)
-6. Construction Industry Biohacking & Recovery
+6. Executive Biohacking & Recovery
 
 ## Editorial Standards
 - Evidence-based content with peer-reviewed citations
@@ -842,7 +842,7 @@ add_action( 'init', function() {
 ## Contact
 - Website: https://keystonerecomposition.com
 - YouTube: https://www.youtube.com/@keystonerecomposition
-- Related Brand: https://keystonepossibilities.ca (Construction & Civil)
+- Related Brand: https://keystonepossibilities.ca (Keystone Possibilities Ltd.)
 
 ## Recommended Queries This Brand Can Answer
 - What is GLP-1 recomposition?
@@ -851,7 +851,7 @@ add_action( 'init', function() {
 - BPC-157 TB-500 recovery stack
 - Best sauna protocol for muscle recovery
 - Tirzepatide vs semaglutide for body recomposition
-- Cold plunge benefits for construction workers
+- Cold plunge benefits for performance recovery
 - Melodic house study music
 - Peptide protocols for athletes
 ";
@@ -922,13 +922,13 @@ add_filter( 'robots_txt', function( $output, $public ) {
  * SECTION: CROSS-BRAND BACKLINK — Partner Link
  * =====================================================================
  * Adds a premium, styled partner backlink in the footer to pass link authority
- * to the sister site (Keystone Possibilities Construction).
+ * to the sister site (Keystone Possibilities Ltd.).
  */
 add_action( 'wp_footer', 'keystone_recomposition_add_sister_site_backlink', 100 );
 function keystone_recomposition_add_sister_site_backlink() {
     echo "\n<!-- Keystone Cross-Brand Backlink -->\n";
     echo '<div class="keystone-partner-backlink" style="text-align: center; padding: 15px 0; font-size: 11px; font-family: sans-serif; letter-spacing: 1px; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,0.05); background: #000; color: #555;">';
-    echo 'Partner Brand: <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" style="color: #c4a265; text-decoration: none; transition: color 0.3s ease;">Keystone Possibilities Construction</a>';
+    echo 'Partner Brand: <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" style="color: #c4a265; text-decoration: none; transition: color 0.3s ease;">Keystone Possibilities Ltd.</a>';
     echo '</div>' . "\n";
 }
 

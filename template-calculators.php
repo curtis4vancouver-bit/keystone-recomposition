@@ -41,7 +41,7 @@ get_header(); ?>
                         <?php echo do_shortcode( '[keystone_glp1_calculator]' ); ?>
                     </div>
 
-                    <div id="calc-peptide-wrap" class="calc-view-section" style="margin-top: 50px;">
+                    <div id="calc-peptide-wrap" class="calc-view-section" style="display: none; margin-top: 0;">
                         <?php echo do_shortcode( '[keystone_peptide_calculator]' ); ?>
                     </div>
 
@@ -54,17 +54,33 @@ get_header(); ?>
                         var pepBtn = document.getElementById('tab-btn-peptide');
                         
                         if (type === 'glp1') {
-                            glp1Wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            glp1Btn.style.background = '#C4A265';
-                            glp1Btn.style.color = '#000000';
-                            pepBtn.style.background = '#141414';
-                            pepBtn.style.color = '#C4A265';
+                            if (glp1Wrap) glp1Wrap.style.display = 'block';
+                            if (pepWrap) pepWrap.style.display = 'none';
+                            if (glp1Btn) {
+                                glp1Btn.classList.add('active');
+                                glp1Btn.style.background = '#C4A265';
+                                glp1Btn.style.color = '#000000';
+                            }
+                            if (pepBtn) {
+                                pepBtn.classList.remove('active');
+                                pepBtn.style.background = '#141414';
+                                pepBtn.style.color = '#C4A265';
+                                pepBtn.style.border = '1px solid rgba(196,162,101,0.4)';
+                            }
                         } else {
-                            pepWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            pepBtn.style.background = '#C4A265';
-                            pepBtn.style.color = '#000000';
-                            glp1Btn.style.background = '#141414';
-                            glp1Btn.style.color = '#C4A265';
+                            if (glp1Wrap) glp1Wrap.style.display = 'none';
+                            if (pepWrap) pepWrap.style.display = 'block';
+                            if (pepBtn) {
+                                pepBtn.classList.add('active');
+                                pepBtn.style.background = '#C4A265';
+                                pepBtn.style.color = '#000000';
+                            }
+                            if (glp1Btn) {
+                                glp1Btn.classList.remove('active');
+                                glp1Btn.style.background = '#141414';
+                                glp1Btn.style.color = '#C4A265';
+                                glp1Btn.style.border = '1px solid rgba(196,162,101,0.4)';
+                            }
                         }
                     }
                     </script>
