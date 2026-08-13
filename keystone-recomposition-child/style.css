@@ -889,12 +889,14 @@ Template: astra
   box-shadow: 0 0 0 2px var(--ks-gold-dim) !important;
 }
 
-.gold-action-btn {
+.gold-action-btn,
+a.gold-action-btn,
+.gear-card a.gold-action-btn,
+.keystone-gear-portal a.gold-action-btn,
+.ast-container a.gold-action-btn {
   background: var(--ks-gold-primary) !important;
   color: #000000 !important;
   border: none !important;
-  padding: 10px 18px !important;
-  border-radius: 6px !important;
   padding: 12px 18px !important;
   border-radius: 6px !important;
   font-weight: 800 !important;
@@ -911,14 +913,18 @@ Template: astra
 }
 
 .gold-action-btn:hover,
-a.gold-action-btn:hover {
+a.gold-action-btn:hover,
+.gear-card a.gold-action-btn:hover,
+.keystone-gear-portal a.gold-action-btn:hover,
+.ast-container a.gold-action-btn:hover {
   background: var(--ks-gold-hover) !important;
   color: #000000 !important;
   transform: translateY(-1px) !important;
 }
 
 .gold-action-btn.full-width,
-a.gold-action-btn.full-width {
+a.gold-action-btn.full-width,
+.gear-card a.gold-action-btn.full-width {
   width: 100% !important;
   box-sizing: border-box !important;
 }
