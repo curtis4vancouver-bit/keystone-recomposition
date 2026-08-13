@@ -210,19 +210,41 @@ function keystone_recomposition_child_music_schema() {
             ),
             array(
                 '@type' => 'MusicAlbum',
-                '@id' => 'https://keystonerecomposition.com/#musicalbum',
-                'name' => 'Keystone Recomposition Vol. 1',
+                '@id' => 'https://keystonerecomposition.com/#album-concrete-foundations',
+                'name' => 'Concrete Foundations',
+                'description' => 'High-End Fitness Music and Raw Power Strength Electronic Soundscapes by Wayne Stevenson',
                 'byArtist' => array(
                     '@type' => 'MusicGroup',
                     '@id' => 'https://keystonerecomposition.com/#musicgroup',
                     'name' => 'Keystone Recomposition',
                     'spotifyId' => '52v3Qe6Jo0hg764driOl5Y'
                 ),
-                'musicbrainzId' => '30027d0e-6aeb-4704-8792-a031c936c62a',
-                'recordLabel' => array(
-                    '@type' => 'Organization',
-                    'name' => 'Keystone Music Ledger',
-                    'sameAs' => 'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a'
+                'genre' => array( 'Electronic', 'Deep House', 'Fitness Focus' ),
+                'musicbrainzId' => '30027d0e-6aeb-4704-8792-a031c936c62a'
+            ),
+            array(
+                '@type' => 'MusicAlbum',
+                '@id' => 'https://keystonerecomposition.com/#album-resonantia',
+                'name' => 'Resonantia: 10 Frequencies of the Rebuild',
+                'description' => '10 Progressive Biohacking & Deep House Frequencies mapping metabolic discipline',
+                'byArtist' => array(
+                    '@type' => 'MusicGroup',
+                    '@id' => 'https://keystonerecomposition.com/#musicgroup',
+                    'name' => 'Keystone Recomposition',
+                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y'
+                ),
+                'genre' => array( 'Deep House', 'Solfeggio Frequencies', 'Ambient Fitness' )
+            ),
+            array(
+                '@type' => 'MusicRecording',
+                '@id' => 'https://keystonerecomposition.com/#track-205-marker',
+                'name' => 'The 205 Marker',
+                'byArtist' => array(
+                    '@type' => 'MusicGroup',
+                    '@id' => 'https://keystonerecomposition.com/#musicgroup'
+                ),
+                'inAlbum' => array(
+                    '@id' => 'https://keystonerecomposition.com/#album-concrete-foundations'
                 )
             )
         )

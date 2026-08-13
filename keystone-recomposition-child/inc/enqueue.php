@@ -11,6 +11,9 @@ function astra_child_keystone_enqueue_styles() {
 
     // Enqueue Lead Consultation Form Handler JS
     wp_enqueue_script( 'keystone-lead-form-handler', get_stylesheet_directory_uri() . '/js/lead-form-handler.js', array(), '1.0.0', true );
+
+    // Enqueue Interactive Calculators Engine
+    wp_enqueue_script( 'keystone-calculators-js', get_stylesheet_directory_uri() . '/js/calculators.js', array(), '2.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'astra_child_keystone_enqueue_styles' );
 
