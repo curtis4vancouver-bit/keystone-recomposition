@@ -320,7 +320,7 @@ function keystone_gear_portal_shortcode() {
                     <span class="code-value">KEYSTONE20</span>
                 </div>
                 <div class="gear-footer">
-                    <a href="https://keystonerecomposition.com/cgm-protocol" class="gold-action-btn full-width" target="_blank" rel="nofollow noopener">View Sensor Protocol →</a>
+                    <a href="https://keystonerecomposition.com/cgm-protocol" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="nofollow noopener">View Sensor Protocol →</a>
                 </div>
             </div>
 
@@ -334,7 +334,7 @@ function keystone_gear_portal_shortcode() {
                     <span class="code-value">KEYSTONELAB</span>
                 </div>
                 <div class="gear-footer">
-                    <a href="https://keystonerecomposition.com/lab-gear" class="gold-action-btn full-width" target="_blank" rel="nofollow noopener">View Sterile Supplies →</a>
+                    <a href="https://keystonerecomposition.com/lab-gear" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="nofollow noopener">View Sterile Supplies →</a>
                 </div>
             </div>
 
@@ -348,7 +348,7 @@ function keystone_gear_portal_shortcode() {
                     <span class="code-value">KEYSTONEPLUNGE</span>
                 </div>
                 <div class="gear-footer">
-                    <a href="https://keystonerecomposition.com/cold-plunge" class="gold-action-btn full-width" target="_blank" rel="nofollow noopener">Explore Cold Tubs →</a>
+                    <a href="https://keystonerecomposition.com/cold-plunge" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="nofollow noopener">Explore Cold Tubs →</a>
                 </div>
             </div>
 
@@ -362,7 +362,7 @@ function keystone_gear_portal_shortcode() {
                     <span class="code-value">KEYSTONESOUND</span>
                 </div>
                 <div class="gear-footer">
-                    <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" class="gold-action-btn full-width" target="_blank" rel="noopener">Listen on Spotify →</a>
+                    <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="noopener">Listen on Spotify →</a>
                 </div>
             </div>
         </div>
