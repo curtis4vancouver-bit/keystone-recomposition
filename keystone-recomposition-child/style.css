@@ -1598,12 +1598,12 @@ a.gold-action-btn.full-width,
   border: 1px solid #1DB954 !important;
 }
 
-.spotify-link-btn:hover {
-  background: #1DB954 !important;
-  color: #000000 !important;
+  background: #111111 !important;
+  border: 1px solid var(--ks-card-border) !important;
+  border-radius: 10px !important;
+  padding: 25px !important;
 }
 
-.yt-link-btn {
 .recipe-type {
   font-size: 10px !important;
   font-weight: 700 !important;
@@ -1830,3 +1830,19 @@ html body .gold-action-btn:hover {
   color: #000000 !important;
   text-decoration: none !important;
 }
+
+/* Header Navigation Polish - Zero Letter Wrapping */
+.main-header-menu .menu-item a,
+.ast-desktop-header .main-header-menu .menu-item a,
+.main-header-menu .menu-link {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  padding: 0 8px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+}
+
+.ast-desktop-header .ast-builder-menu-1 {
+  flex-grow: 1 !important;
+}
+
