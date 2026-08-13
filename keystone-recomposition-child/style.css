@@ -895,24 +895,32 @@ Template: astra
   border: none !important;
   padding: 10px 18px !important;
   border-radius: 6px !important;
-  font-weight: 700 !important;
+  padding: 12px 18px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
   font-size: 13px !important;
   cursor: pointer !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.06em !important;
   transition: all 0.2s ease !important;
   text-align: center !important;
   text-decoration: none !important;
   display: inline-block !important;
+  text-shadow: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
 }
 
-.gold-action-btn:hover {
+.gold-action-btn:hover,
+a.gold-action-btn:hover {
   background: var(--ks-gold-hover) !important;
+  color: #000000 !important;
   transform: translateY(-1px) !important;
 }
 
-.gold-action-btn.full-width {
+.gold-action-btn.full-width,
+a.gold-action-btn.full-width {
   width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .input-suffix {
