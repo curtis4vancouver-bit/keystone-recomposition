@@ -139,16 +139,24 @@ function keystone_glp1_calculator_shortcode() {
                         <span class="metric-label">Active Schedule:</span>
                         <span class="metric-value" id="res-active-schedule" style="color:#C4A265; font-weight:700;">Every 5 Days (⚡ Micro-Dose)</span>
                     </div>
+                    <div class="metric-row highlight-metric">
+                        <span class="metric-label">Stabilized HIGH (Peak in Body):</span>
+                        <span class="metric-value" id="res-steady-high" style="color:#F59E0B; font-weight:800; font-size:16px;">5.00 mg (Peak)</span>
+                    </div>
+                    <div class="metric-row highlight-metric">
+                        <span class="metric-label">Stabilized LOW (Trough in Body):</span>
+                        <span class="metric-value" id="res-steady-low" style="color:#10B981; font-weight:800; font-size:16px;">2.50 mg (Trough)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Peak-to-Trough Swing:</span>
+                        <span class="metric-value" id="res-steady-swing">Δ 2.50 mg (2.00x)</span>
+                    </div>
                     <div class="metric-row">
                         <span class="metric-label">Trough Level at Next Shot:</span>
                         <span class="metric-value" id="res-trough-retention" style="color:#10B981; font-weight:700;">50.0% Remaining (Stable)</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-label">Peak-to-Trough Ratio:</span>
-                        <span class="metric-value" id="res-peak-trough">2.00x Fluctuation</span>
-                    </div>
-                    <div class="metric-row">
-                        <span class="metric-label">Late-Cycle Hunger Fluctuation:</span>
+                        <span class="metric-label">Late-Cycle Hunger Status:</span>
                         <span class="metric-value" id="res-hunger-status" style="color:#10B981;">Zero Late Food Noise</span>
                     </div>
                 </div>

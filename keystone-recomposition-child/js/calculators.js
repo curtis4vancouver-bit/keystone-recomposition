@@ -34,8 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const pkDynamicsTitle = document.getElementById('pk-dynamics-title');
         const resActiveSchedule = document.getElementById('res-active-schedule');
+        const resSteadyHigh = document.getElementById('res-steady-high');
+        const resSteadyLow = document.getElementById('res-steady-low');
+        const resSteadySwing = document.getElementById('res-steady-swing');
         const resTroughRetention = document.getElementById('res-trough-retention');
-        const resPeakTrough = document.getElementById('res-peak-trough');
         const resHungerStatus = document.getElementById('res-hunger-status');
 
         function updateGlp1Math() {
@@ -49,10 +51,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // Weekly Equivalent Load = Injected Dose * (7 / Interval)
             const weeklyEquivalentMg = deliveredMg * (7 / currentInterval);
 
-            // Pharmacokinetic First-Order Decay: Fraction Remaining = 2^(-Interval / HalfLife)
+            // Pharmacokinetic First-Order Decay & Steady-State Accumulation:
+            // Trough Fraction R = 2^(-Interval / HalfLife)
             const troughFraction = Math.pow(2, -(currentInterval / currentHalfLife));
             const troughPercent = (troughFraction * 100).toFixed(1);
             const peakTroughRatio = (1 / troughFraction).toFixed(2);
+
+            // Steady-State Accumulation Factor: A_max = Dose / (1 - R)
+            const accumulationFactor = 1 / (1 - troughFraction);
+            const steadyHighMg = deliveredMg * accumulationFactor;
+            const steadyLowMg = steadyHighMg * troughFraction;
+            const steadySwingMg = steadyHighMg - steadyLowMg;
 
             // Update DOM
             clickDisplay.textContent = currentClicks + ' Clicks';
@@ -62,13 +71,23 @@ document.addEventListener('DOMContentLoaded', function () {
             resSingleClick.textContent = singleClickMg.toFixed(4) + ' mg / click';
             resCartridgeDoses.textContent = remainingDoses + ' shots at this setting';
 
+            // Steady-State High & Low
+            if (resSteadyHigh) {
+                resSteadyHigh.textContent = steadyHighMg.toFixed(2) + ' mg (Peak in Body)';
+            }
+            if (resSteadyLow) {
+                resSteadyLow.textContent = steadyLowMg.toFixed(2) + ' mg (Trough Baseline)';
+            }
+            if (resSteadySwing) {
+                resSteadySwing.textContent = 'Δ ' + steadySwingMg.toFixed(2) + ' mg (' + peakTroughRatio + 'x Peak/Trough)';
+            }
+
             if (currentInterval === 5) {
                 pkDynamicsTitle.textContent = '⚡ 5-Day Micro-Dose Protocol Dynamics';
                 resActiveSchedule.textContent = 'Every 5 Days (⚡ Micro-Dose)';
                 resActiveSchedule.style.color = '#C4A265';
                 resTroughRetention.textContent = troughPercent + '% Remaining (Stable)';
                 resTroughRetention.style.color = '#10B981';
-                resPeakTrough.textContent = peakTroughRatio + 'x Fluctuation';
                 resHungerStatus.textContent = 'Zero Late Food Noise';
                 resHungerStatus.style.color = '#10B981';
             } else {
@@ -77,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 resActiveSchedule.style.color = '#9CA3AF';
                 resTroughRetention.textContent = troughPercent + '% Remaining (Trough Drop)';
                 resTroughRetention.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
-                resPeakTrough.textContent = peakTroughRatio + 'x Fluctuation';
                 resHungerStatus.textContent = currentHalfLife <= 5.0 ? 'Day 6–7 Food Noise Common' : 'Moderate Appetite Drift';
                 resHungerStatus.style.color = currentHalfLife <= 5.0 ? '#EF4444' : '#F59E0B';
             }
