@@ -2030,17 +2030,22 @@ article.post:hover,
 }
 
 /* Header Social Icons — Single Row Horizontal Flex & Gold Accent */
+.ast-desktop-header .site-header-focus-item.ast-header-social-1,
+.ast-desktop-header .ast-header-social-1-wrap,
+.ast-desktop-header .header-social-inner-wrap,
+.ast-social-color-type-custom,
 .ast-header-social-wrap,
 .ast-header-social-1-wrap,
 .header-social-inner-wrap,
 .element-social-inner-wrap {
-  display: flex !important;
+  display: inline-flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
   justify-content: flex-end !important;
   gap: 14px !important;
-  min-width: 110px !important;
+  width: auto !important;
+  min-width: 120px !important;
 }
 
 .header-social-inner-wrap .header-social-item,
