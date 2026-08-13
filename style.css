@@ -2029,4 +2029,66 @@ article.post:hover,
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
 }
 
+/* Header Social Icons — Single Row Horizontal Flex & Gold Accent */
+.ast-header-social-wrap,
+.ast-header-social-1-wrap,
+.header-social-inner-wrap,
+.element-social-inner-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 14px !important;
+  min-width: 110px !important;
+}
+
+.header-social-inner-wrap .header-social-item,
+.ast-builder-social-element {
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+  opacity: 0.85 !important;
+}
+
+.header-social-inner-wrap .header-social-item:hover,
+.ast-builder-social-element:hover {
+  transform: translateY(-2px) scale(1.1) !important;
+  opacity: 1.0 !important;
+}
+
+.header-social-inner-wrap .header-social-item svg,
+.ast-builder-social-element svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: var(--ks-gold-primary, #C4A265) !important;
+  transition: fill 0.2s ease, filter 0.2s ease !important;
+}
+
+.header-social-inner-wrap .header-social-item:hover svg,
+.ast-builder-social-element:hover svg {
+  fill: #FFFFFF !important;
+  filter: drop-shadow(0 0 6px rgba(196, 162, 101, 0.6)) !important;
+}
+
+/* Header Logo Polish */
+.site-logo-img,
+.custom-logo-link img,
+.ast-site-identity img,
+.site-branding img {
+  max-height: 48px !important;
+  width: auto !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.site-logo-img:hover,
+.custom-logo-link img:hover,
+.ast-site-identity img:hover {
+  transform: scale(1.03) !important;
+}
+
+
 
