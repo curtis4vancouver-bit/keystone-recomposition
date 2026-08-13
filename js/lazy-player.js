@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (videoType === 'youtube') {
                     // YouTube optimized no-cookie domain with strict relational constraints
                     targetSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&start=0&enablejsapi=1`;
+                } else if (videoType === 'vimeo') {
+                    targetSrc = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`;
                 } else if (videoType === 'spotify') {
                     // Spotify video podcast embed format with deep-link time mapping
                     targetSrc = `https://open.spotify.com/embed/episode/${videoId}?utm_source=generator&t=0`;
@@ -59,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.appendChild(iframe);
                     
                     // Clean up and destroy unneeded DOM nodes after fade animation is finished
-                    // Shifting graphics entirely to iframe to avoid heavy multi-layer drawing CPU limits on mobile
                     setTimeout(() => {
                         if (background) background.remove();
                         if (button) button.remove();

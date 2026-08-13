@@ -53,7 +53,34 @@ function keystone_recomposition_child_inject_schema() {
         'description' => 'Specializing in high-performance metabolic health, biohacking, and deep house music protocols.',
         'keywords' => 'Keystone Recomposition, GLP-1, health, beauty, wellness, weight loss, fitness, deep house music',
         'logo' => $logo_url,
+        'parentOrganization' => array(
+            '@type' => 'Organization',
+            '@id' => 'https://keystonepossibilities.ca/#parent-organization',
+            'name' => 'Keystone Empire',
+            'alternateName' => 'Keystone Group',
+            'url' => 'https://keystonepossibilities.ca',
+            'description' => 'Master parent organization network governing Keystone Possibilities Ltd. and Keystone Recomposition.',
+            'subOrganization' => array(
+                array(
+                    '@type' => 'Organization',
+                    '@id' => 'https://keystonepossibilities.ca/#organization',
+                    'name' => 'Keystone Possibilities Ltd.',
+                    'url' => 'https://keystonepossibilities.ca'
+                ),
+                array(
+                    '@type' => 'Organization',
+                    '@id' => 'https://keystonerecomposition.com/#organization',
+                    'name' => 'Keystone Recomposition',
+                    'url' => 'https://keystonerecomposition.com'
+                )
+            ),
+            'sameAs' => array(
+                'https://keystonepossibilities.ca',
+                'https://keystonerecomposition.com'
+            )
+        ),
         'sameAs' => array(
+            'https://keystonepossibilities.ca',
             'https://www.youtube.com/@KeystoneRecomposition',
             'https://www.youtube.com/@KeystoneProtocols',
             'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
@@ -79,6 +106,43 @@ function keystone_recomposition_child_inject_schema() {
     echo $json_schema . "\n";
     echo "</script>\n";
     echo "<!-- End Keystone Digital JSON-LD Schema -->\n";
+
+    // === Parent Organization Schema (Keystone Empire / Keystone Group) ===
+    $parent_org_schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        '@id' => 'https://keystonepossibilities.ca/#parent-organization',
+        'name' => 'Keystone Empire',
+        'alternateName' => 'Keystone Group',
+        'url' => 'https://keystonepossibilities.ca',
+        'description' => 'Master parent organization network governing Keystone Possibilities Ltd. and Keystone Recomposition.',
+        'subOrganization' => array(
+            array(
+                '@type' => 'Organization',
+                '@id' => 'https://keystonepossibilities.ca/#organization',
+                'name' => 'Keystone Possibilities Ltd.',
+                'url' => 'https://keystonepossibilities.ca'
+            ),
+            array(
+                '@type' => 'Organization',
+                '@id' => 'https://keystonerecomposition.com/#organization',
+                'name' => 'Keystone Recomposition',
+                'url' => 'https://keystonerecomposition.com'
+            )
+        ),
+        'sameAs' => array(
+            'https://keystonepossibilities.ca',
+            'https://keystonerecomposition.com'
+        )
+    );
+
+    $json_parent_org = wp_json_encode( $parent_org_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+
+    echo "<!-- Keystone Empire Network ParentOrganization Schema -->\n";
+    echo "<script type=\"application/ld+json\">\n";
+    echo $json_parent_org . "\n";
+    echo "</script>\n";
+    echo "<!-- End Keystone Empire Network Schema -->\n";
 
     // === Person Schema (Wayne Stevenson - Knowledge Panel Anchor) ===
     $person_schema = array(
@@ -844,6 +908,36 @@ function keystone_recomposition_inject_og_video() {
     echo '<!-- End Keystone og:video -->' . "\n";
 }
 add_action( 'wp_head', 'keystone_recomposition_inject_og_video', 5 );
+
+/**
+ * 10.8 Rank Math XML Sitemap Sanitizer (Eliminates GSC 301s and 404s)
+ */
+add_filter( 'rank_math/sitemap/entry', 'keystone_recomposition_sanitize_rank_math_sitemap', 10, 3 );
+function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object ) {
+    $excluded_patterns = array(
+        'sample-page',
+        'test',
+        'demo',
+        'wp-admin',
+        'squamish-general-contractor',
+        'whistler-luxury-home-builder',
+        'bc-hydro-registered-civil-contractor',
+        'north-vancouver-home-builder',
+        'west-vancouver-luxury-builder',
+        'pemberton-luxury-builder',
+        '52603',
+        '.html'
+    );
+
+    if ( isset( $url['loc'] ) ) {
+        foreach ( $excluded_patterns as $pat ) {
+            if ( strpos( $url['loc'], $pat ) !== false ) {
+                return false;
+            }
+        }
+    }
+    return $url;
+}
 
 /**
  * 11. General SEO Fixes: output noindex for tag, date, author archives and query parameters

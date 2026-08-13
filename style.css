@@ -1598,6 +1598,7 @@ a.gold-action-btn.full-width,
   border: 1px solid #1DB954 !important;
 }
 
+.recipe-card {
   background: #111111 !important;
   border: 1px solid var(--ks-card-border) !important;
   border-radius: 10px !important;

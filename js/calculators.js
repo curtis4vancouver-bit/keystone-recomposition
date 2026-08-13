@@ -36,12 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const resActiveSchedule = document.getElementById('res-active-schedule');
         const resSteadyHigh = document.getElementById('res-steady-high');
         const resSteadyLow = document.getElementById('res-steady-low');
+        const resAccumulationFactor = document.getElementById('res-accumulation-factor');
         const resSteadySwing = document.getElementById('res-steady-swing');
         const resTroughRetention = document.getElementById('res-trough-retention');
         const resHungerStatus = document.getElementById('res-hunger-status');
 
         function updateGlp1Math() {
-            // Formula: Delivered Dose = Clicks * (Strength / 60)
+            // Formula: Delivered Dose (D) = Clicks * (Strength / 60)
             const deliveredMg = currentClicks * (currentPenStrength / 60);
             const deliveredMl = currentClicks * 0.01;
             const syringeUnits = Math.round(currentClicks);
@@ -51,16 +52,25 @@ document.addEventListener('DOMContentLoaded', function () {
             // Weekly Equivalent Load = Injected Dose * (7 / Interval)
             const weeklyEquivalentMg = deliveredMg * (7 / currentInterval);
 
-            // Pharmacokinetic First-Order Decay & Steady-State Accumulation:
-            // Trough Fraction R = 2^(-Interval / HalfLife)
-            const troughFraction = Math.pow(2, -(currentInterval / currentHalfLife));
+            // 1-Compartment Pharmacokinetic First-Order Superposition:
+            // 1. Elimination Rate Constant: k = ln(2) / t_1/2
+            const k = Math.LN2 / currentHalfLife;
+            // 2. Dosing Interval: tau = currentInterval (days)
+            const tau = currentInterval;
+            // 3. Trough Residual Retention Fraction: R = e^(-k * tau) = 2^(-tau / t_1/2)
+            const troughFraction = Math.exp(-k * tau);
             const troughPercent = (troughFraction * 100).toFixed(1);
-            const peakTroughRatio = (1 / troughFraction).toFixed(2);
+            // 4. Peak-to-Trough Fluctuation Ratio = C_max / C_min = e^(k * tau) = 1 / R
+            const fluctuationRatio = Math.exp(k * tau);
+            const peakTroughRatio = fluctuationRatio.toFixed(2);
 
-            // Steady-State Accumulation Factor: A_max = Dose / (1 - R)
+            // 5. Accumulation Factor (R_acc) = 1 / (1 - e^(-k * tau))
             const accumulationFactor = 1 / (1 - troughFraction);
+            // 6. Stabilized Peak C_max = D * (1 / (1 - e^(-k * tau)))
             const steadyHighMg = deliveredMg * accumulationFactor;
-            const steadyLowMg = steadyHighMg * troughFraction;
+            // 7. Stabilized Trough C_min = D * (e^(-k * tau) / (1 - e^(-k * tau))) = C_max * R
+            const steadyLowMg = deliveredMg * (troughFraction / (1 - troughFraction));
+            // 8. Peak-to-Trough Swing (C_max - C_min) = D
             const steadySwingMg = steadyHighMg - steadyLowMg;
 
             // Update DOM
@@ -71,15 +81,18 @@ document.addEventListener('DOMContentLoaded', function () {
             if (resSingleClick) resSingleClick.textContent = singleClickMg.toFixed(4) + ' mg / click';
             if (resCartridgeDoses) resCartridgeDoses.textContent = remainingDoses + ' shots at this setting';
 
-            // Steady-State High & Low
+            // Steady-State High (C_max), Low (C_min), Accumulation Factor & Fluctuation
             if (resSteadyHigh) {
-                resSteadyHigh.textContent = steadyHighMg.toFixed(2) + ' mg (Peak in Body)';
+                resSteadyHigh.textContent = steadyHighMg.toFixed(2) + ' mg (C_max Peak)';
             }
             if (resSteadyLow) {
-                resSteadyLow.textContent = steadyLowMg.toFixed(2) + ' mg (Trough Baseline)';
+                resSteadyLow.textContent = steadyLowMg.toFixed(2) + ' mg (C_min Trough)';
+            }
+            if (resAccumulationFactor) {
+                resAccumulationFactor.textContent = accumulationFactor.toFixed(2) + 'x';
             }
             if (resSteadySwing) {
-                resSteadySwing.textContent = 'Δ ' + steadySwingMg.toFixed(2) + ' mg (' + peakTroughRatio + 'x Peak/Trough)';
+                resSteadySwing.textContent = 'Δ ' + steadySwingMg.toFixed(2) + ' mg (' + peakTroughRatio + 'x Fluctuation)';
             }
 
             if (pkDynamicsTitle && resActiveSchedule && resTroughRetention && resHungerStatus) {

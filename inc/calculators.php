@@ -30,6 +30,16 @@ function keystone_glp1_calculator_shortcode() {
             <p class="tool-subtitle">Precision click conversion, dose concentration math, and 5-day vs. 7-day half-life micro-dosing modeling for Mounjaro®, Zepbound®, and Ozempic® multi-dose pens.</p>
         </div>
 
+        <!-- Prominent Legally Binding Medical Disclaimer Banner -->
+        <div class="keystone-disclaimer-banner" style="background: rgba(196,162,101,0.08); border: 1px solid rgba(196,162,101,0.4); border-left: 4px solid #C4A265; border-radius: 8px; padding: 14px 20px; margin: 0 0 24px 0;">
+            <h4 style="font-family:'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: #C4A265; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0; display:flex; align-items:center; gap:8px;">
+                <span>⚠️</span> MEDICAL DISCLAIMER &amp; RESEARCH VERIFICATION NOTICE
+            </h4>
+            <p style="font-size: 13px; line-height: 1.6; color: #D1D5DB; margin: 0; font-weight: 600;">
+                For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician.
+            </p>
+        </div>
+
         <div class="calculator-grid">
             <!-- Left Column: Interactive Inputs -->
             <div class="calc-control-panel">
@@ -140,15 +150,19 @@ function keystone_glp1_calculator_shortcode() {
                         <span class="metric-value" id="res-active-schedule" style="color:#C4A265; font-weight:700;">Every 5 Days (⚡ Micro-Dose)</span>
                     </div>
                     <div class="metric-row highlight-metric">
-                        <span class="metric-label">Stabilized HIGH (Peak in Body):</span>
+                        <span class="metric-label">Stabilized HIGH (Peak C_max):</span>
                         <span class="metric-value" id="res-steady-high" style="color:#F59E0B; font-weight:800; font-size:16px;">5.00 mg (Peak)</span>
                     </div>
                     <div class="metric-row highlight-metric">
-                        <span class="metric-label">Stabilized LOW (Trough in Body):</span>
+                        <span class="metric-label">Stabilized LOW (Trough C_min):</span>
                         <span class="metric-value" id="res-steady-low" style="color:#10B981; font-weight:800; font-size:16px;">2.50 mg (Trough)</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-label">Peak-to-Trough Swing:</span>
+                        <span class="metric-label">Accumulation Factor (R_acc):</span>
+                        <span class="metric-value" id="res-accumulation-factor" style="color:#C4A265; font-weight:700;">2.00x</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Peak-to-Trough Fluctuation:</span>
                         <span class="metric-value" id="res-steady-swing">Δ 2.50 mg (2.00x)</span>
                     </div>
                     <div class="metric-row">
@@ -196,7 +210,7 @@ function keystone_glp1_calculator_shortcode() {
         <!-- Legal & Fiduciary Disclaimer -->
         <div class="keystone-disclaimer-box">
             <h4 class="disclaimer-title">⚠️ Personal Case Study &amp; Educational Tool Only — Talk to Your Doctor</h4>
-            <p class="disclaimer-text">This calculator, mathematical formulas, and data tables represent <strong>personal observational case-study modeling</strong> and pharmacokinetic calculations documented by Wayne Stevenson. <strong>This tool is published strictly for educational and mathematical demonstration purposes and does NOT constitute medical advice, diagnosis, treatment recommendations, or prescription administration guidelines.</strong> Counting clicks on multi-dose pens is an off-label case study technique and is not endorsed by pharmaceutical manufacturers. <strong>Always talk to your licensed medical doctor or endocrinologist before modifying, starting, or administering any prescription medication or metabolic protocol.</strong></p>
+            <p class="disclaimer-text"><strong>For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician.</strong> This calculator, mathematical formulas, and data tables represent <strong>personal observational case-study modeling</strong> and pharmacokinetic calculations documented by Wayne Stevenson. <strong>This tool is published strictly for educational and mathematical demonstration purposes and does NOT constitute medical advice, diagnosis, treatment recommendations, or prescription administration guidelines.</strong> Counting clicks on multi-dose pens is an off-label case study technique and is not endorsed by pharmaceutical manufacturers. <strong>Always talk to your licensed medical doctor or endocrinologist before modifying, starting, or administering any prescription medication or metabolic protocol.</strong></p>
         </div>
     </div>
     <?php
@@ -215,6 +229,16 @@ function keystone_peptide_calculator_shortcode() {
             <span class="tool-badge">LABORATORY MATHEMATICAL BENCHMARK</span>
             <h2 class="tool-title">Peptide Reconstitution &amp; U-100 Syringe Calculator</h2>
             <p class="tool-subtitle">Accurate dilution math, concentration curves, and insulin syringe unit calibrations for FDA Category 1 review peptides (BPC-157, TB-500, CJC-1295, Ipamorelin, GHK-Cu, NAD+, Glutathione).</p>
+        </div>
+
+        <!-- Prominent Legally Binding Medical Disclaimer Banner -->
+        <div class="keystone-disclaimer-banner" style="background: rgba(196,162,101,0.08); border: 1px solid rgba(196,162,101,0.4); border-left: 4px solid #C4A265; border-radius: 8px; padding: 14px 20px; margin: 0 0 24px 0;">
+            <h4 style="font-family:'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: #C4A265; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0; display:flex; align-items:center; gap:8px;">
+                <span>⚠️</span> MEDICAL DISCLAIMER &amp; RESEARCH NOTICE
+            </h4>
+            <p style="font-size: 13px; line-height: 1.6; color: #D1D5DB; margin: 0; font-weight: 600;">
+                For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician.
+            </p>
         </div>
 
         <div class="calculator-grid">
@@ -326,7 +350,7 @@ function keystone_peptide_calculator_shortcode() {
         <!-- Disclaimer -->
         <div class="keystone-disclaimer-box">
             <h4 class="disclaimer-title">⚠️ Personal Case Study &amp; Educational Benchmark Only — Talk to Your Doctor</h4>
-            <p class="disclaimer-text">This calculator and dilution reference table are provided strictly for <strong>educational, biochemical, and in-vitro laboratory calculation modeling</strong>. <strong>This tool does NOT provide medical advice, diagnosis, or self-administration dosing.</strong> Under 21 CFR § 312.160 and FDA compounding frameworks, experimental peptide compounds are evaluated for scientific research purposes. <strong>Always talk to your licensed physician or medical doctor before starting, handling, or administering any peptide, cellular, or pharmacological protocol.</strong> Store reconstituted solutions at 2–8°C in sterile conditions.</p>
+            <p class="disclaimer-text"><strong>For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician.</strong> This calculator and dilution reference table are provided strictly for <strong>educational, biochemical, and in-vitro laboratory calculation modeling</strong>. <strong>This tool does NOT provide medical advice, diagnosis, or self-administration dosing.</strong> Under 21 CFR § 312.160 and FDA compounding frameworks, experimental peptide compounds are evaluated for scientific research purposes. <strong>Always talk to your licensed physician or medical doctor before starting, handling, or administering any peptide, cellular, or pharmacological protocol.</strong> Store reconstituted solutions at 2–8°C in sterile conditions.</p>
         </div>
     </div>
     <?php

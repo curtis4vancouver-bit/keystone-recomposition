@@ -29,10 +29,10 @@ get_header(); ?>
                     <!-- Prominent Case Study Medical Disclaimer Banner -->
                     <div style="background: rgba(196,162,101,0.08); border: 1px solid rgba(196,162,101,0.4); border-left: 4px solid #C4A265; border-radius: 8px; padding: 18px 24px; margin: 0 auto 40px auto; max-width: 900px;">
                         <h4 style="font-family:'Outfit', sans-serif; font-size: 14px; font-weight: 800; color: #C4A265; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 8px 0; display:flex; align-items:center; gap:8px;">
-                            <span>⚠️</span> PERSONAL CASE STUDY &amp; MATHEMATICAL MODELING ONLY — CONSULT YOUR LICENSED DOCTOR
+                            <span>⚠️</span> MEDICAL DISCLAIMER &amp; RESEARCH VERIFICATION NOTICE
                         </h4>
                         <p style="font-size: 13px; line-height: 1.6; color: #D1D5DB; margin: 0;">
-                            These calculators represent <strong>observational case study data</strong> and educational pharmacokinetic mathematics compiled by Wayne Stevenson during his personal 48-lb body recomposition protocol. <strong>This tool does NOT provide medical advice, diagnosis, treatment, or prescription dosing.</strong> Counting clicks or off-label micro-dosing is not endorsed by pharmaceutical manufacturers. <strong>Always talk to your licensed medical doctor or endocrinologist before starting, modifying, or administering any medication, GLP-1 agonist, or peptide protocol.</strong>
+                            <strong>For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician.</strong> These calculators represent <strong>observational case study data</strong> and educational pharmacokinetic mathematics compiled by Wayne Stevenson during his personal 48-lb body recomposition protocol. <strong>This tool does NOT provide medical advice, diagnosis, treatment, or prescription dosing.</strong> Counting clicks or off-label micro-dosing is not endorsed by pharmaceutical manufacturers. <strong>Always talk to your licensed medical doctor or endocrinologist before starting, modifying, or administering any medication, GLP-1 agonist, or peptide protocol.</strong>
                         </p>
                     </div>
 

@@ -926,10 +926,27 @@ add_filter( 'robots_txt', function( $output, $public ) {
  */
 add_action( 'wp_footer', 'keystone_recomposition_add_sister_site_backlink', 100 );
 function keystone_recomposition_add_sister_site_backlink() {
-    echo "\n<!-- Keystone Cross-Brand Backlink -->\n";
-    echo '<div class="keystone-partner-backlink" style="text-align: center; padding: 15px 0; font-size: 11px; font-family: sans-serif; letter-spacing: 1px; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,0.05); background: #000; color: #555;">';
-    echo 'Partner Brand: <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" style="color: #c4a265; text-decoration: none; transition: color 0.3s ease;">Keystone Possibilities Ltd.</a>';
-    echo '</div>' . "\n";
+    ?>
+    <!-- Keystone Empire Network Standardized Footer Bar -->
+    <div class="keystone-empire-footer-bar" style="background:#04070d; border-top:1px solid rgba(196,162,101,0.25); padding:16px 20px; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:#94a3b8; font-size:0.82rem;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+            <div style="display:flex; align-items:center; gap:10px; text-align:left;">
+                <span style="color:#c4a265; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; font-size:0.78rem; display:inline-flex; align-items:center; gap:6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c4a265" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    KEYSTONE EMPIRE NETWORK
+                </span>
+                <span style="color:rgba(255,255,255,0.2);">|</span>
+                <span style="color:#cbd5e1; font-size:0.8rem; font-weight:500;">Keystone Recomposition — Evidence-Based Clinical Peptides &amp; Protocol Analytics</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; font-size:0.8rem;">
+                <span style="color:#64748b;">Sister Flagship:</span>
+                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" style="color:#c4a265; font-weight:600; text-decoration:none; transition:color 0.2s; display:inline-flex; align-items:center; gap:4px;">
+                    Keystone Possibilities — BC Building Code &amp; Construction Consulting &#8594;
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php
 }
 
 /**
