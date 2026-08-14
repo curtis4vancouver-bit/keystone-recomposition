@@ -452,7 +452,7 @@ function keystone_sonic_universe_shortcode() {
             <div class="album-card">
                 <div class="album-art-wrap">
                     <img src="https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1" alt="Concrete Foundations Album Cover" class="album-art">
-                    <span class="album-tag">ALBUM RELEASE</span>
+                        <span class="album-tag">ALBUM RELEASE</span>
                 </div>
                 <div class="album-info">
                     <h3 class="album-title">Concrete Foundations</h3>
@@ -460,10 +460,10 @@ function keystone_sonic_universe_shortcode() {
                     <p class="album-desc">Heavy basslines, driving synth arpeggios, and 126 BPM focus cadences engineered to lock in maximum motor unit recruitment during compound resistance training.</p>
                     <div class="album-actions">
                         <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" class="spotify-btn" target="_blank" rel="noopener">
-                            <span class="spotify-icon">🟢</span> Stream on Spotify
+                            <span class="spotify-icon" style="color: #1DB954; font-size: 14px;">▶</span> Stream on Spotify
                         </a>
                         <a href="https://www.youtube.com/@KeyStoneRecomposition" class="youtube-btn" target="_blank" rel="noopener">
-                            <span class="yt-icon">▶</span> Watch on YouTube OAC
+                            <span class="yt-icon" style="color: #C4A265; font-size: 14px;">▶</span> Watch on YouTube
                         </a>
                     </div>
                 </div>
@@ -481,10 +481,10 @@ function keystone_sonic_universe_shortcode() {
                     <p class="album-desc">10 atmospheric tracks mapping the psychological journey through metabolic discipline, fasting windows, and high-stakes executive execution.</p>
                     <div class="album-actions">
                         <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" class="spotify-btn" target="_blank" rel="noopener">
-                            <span class="spotify-icon">🟢</span> Stream on Spotify
+                            <span class="spotify-icon" style="color: #1DB954; font-size: 14px;">▶</span> Stream on Spotify
                         </a>
                         <a href="https://www.youtube.com/@KeyStoneRecomposition" class="youtube-btn" target="_blank" rel="noopener">
-                            <span class="yt-icon">▶</span> Watch on YouTube OAC
+                            <span class="yt-icon" style="color: #C4A265; font-size: 14px;">▶</span> Watch on YouTube
                         </a>
                     </div>
                 </div>
@@ -621,19 +621,18 @@ function keystone_kitchen_recipes_shortcode() {
 add_shortcode( 'keystone_kitchen_recipes', 'keystone_kitchen_recipes_shortcode' );
 
 /**
- * 6. Wayne Stevenson Master Profile Shortcode
+ * 6. Founder Story / Master Blueprint Shortcode
  */
 function keystone_founder_story_shortcode() {
     ob_start();
     ?>
-    <div class="keystone-founder-profile" id="founder-master-story">
-        <div class="founder-hero-grid">
-            <div class="founder-image-col">
-                <img src="https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_performing_overhead_press4_202605021316.jpeg?w=800&ssl=1" alt="Wayne Stevenson - Keystone Founder" class="founder-main-img">
-                <div class="founder-stat-bar">
-                    <div class="f-stat"><span class="f-num">-48 LBS</span><span class="f-lbl">TOTAL WEIGHT LOSS</span></div>
-                    <div class="f-stat"><span class="f-num">210 LBS</span><span class="f-lbl">MAINTAINED SET-POINT</span></div>
-                    <div class="f-stat"><span class="f-num">5-DAY / 7-DAY</span><span class="f-lbl">PK SCHEDULING</span></div>
+    <div class="keystone-founder-hub" id="founder-blueprint-hub">
+        <div class="founder-card-layout">
+            <div class="founder-photo-col">
+                <img src="https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_reaching_for_pepper_grinder11_202605021316.jpeg?w=600&ssl=1" alt="Wayne Stevenson - Keystone Founder" class="founder-img">
+                <div class="founder-stat-badge">
+                    <span class="stat-num">-48 LBS</span>
+                    <span class="stat-sub">205-LB LEAN SET-POINT</span>
                 </div>
             </div>
 
@@ -647,7 +646,7 @@ function keystone_founder_story_shortcode() {
                     
                     <p>After years of intensive research and real-world protocol testing, I applied bio-rigorous engineering principles to my own biology—dropping <strong>48 lbs</strong>, locking in a permanent <strong>210-lb athletic set-point</strong>, and decoding the exact pharmacokinetic math behind GLP-1 agonists, peptide science, and high-intensity resistance training.</p>
                     
-                    <p>Through the <strong>Keystone Master Universe</strong>, I compose original electronic music on Spotify, document rigorous biological protocols on YouTube (<a href="https://www.youtube.com/@keystoneprotocols" target="_blank" rel="noopener">@KeystoneProtocols</a>), and lead the design of future luxury alpine wellness retreats through <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd.</a></p>
+                    <p>Through the <strong>Keystone Master Universe</strong>, I compose original electronic music on Spotify, document rigorous biological protocols on YouTube, and lead the design of future luxury alpine wellness retreats through <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd.</a></p>
                 </div>
 
                 <div class="founder-ecosystem-links">

@@ -1878,6 +1878,62 @@ a.gold-action-btn.full-width,
   color: #FFFFFF !important;
 }
 
+.album-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 18px !important;
+}
+
+.spotify-btn,
+.youtube-btn {
+  flex: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  height: 42px !important;
+  padding: 0 16px !important;
+  border-radius: 9999px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  transition: all 0.3s ease !important;
+}
+
+.spotify-btn {
+  background: rgba(29, 185, 84, 0.15) !important;
+  border: 1px solid #1DB954 !important;
+  color: #1DB954 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+.spotify-btn:hover {
+  background: #1DB954 !important;
+  color: #000000 !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4) !important;
+}
+
+.youtube-btn {
+  background: rgba(196, 162, 101, 0.15) !important;
+  border: 1px solid #C4A265 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+.youtube-btn:hover {
+  background: #C4A265 !important;
+  color: #000000 !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 6px 20px rgba(196, 162, 101, 0.4) !important;
+}
+
 /* Master Specificity Button Text Color Overrides */
 html body div.entry-content a.gold-action-btn,
 html body article a.gold-action-btn,
@@ -2426,11 +2482,12 @@ footer.site-footer,
   display: none !important;
 }
 
-/* Luxury Pill Buttons for CTA / Subscribe links */
-.entry-content a[href*="youtube.com"],
-.entry-content a[href*="sub_confirmation"],
+/* Luxury Pill Buttons for CTA / Subscribe links (Scoped to Button Blocks only) */
 .wp-block-button a[href*="youtube.com"],
-.wp-block-buttons a[href*="youtube.com"] {
+.wp-block-buttons a[href*="youtube.com"],
+.wp-block-button__link[href*="youtube.com"],
+.founder-ecosystem-links a,
+.footer-cta-row a {
   border-radius: 9999px !important;
   background: linear-gradient(135deg, rgba(196, 162, 101, 0.25), rgba(15, 15, 15, 0.95)) !important;
   border: 1px solid #C4A265 !important;
@@ -2449,13 +2506,38 @@ footer.site-footer,
   text-decoration: none !important;
 }
 
-.entry-content a[href*="youtube.com"]:hover,
 .wp-block-button a[href*="youtube.com"]:hover,
-.wp-block-buttons a[href*="youtube.com"]:hover {
+.wp-block-buttons a[href*="youtube.com"]:hover,
+.wp-block-button__link[href*="youtube.com"]:hover,
+.founder-ecosystem-links a:hover,
+.footer-cta-row a:hover {
   background: #C4A265 !important;
   color: #000000 !important;
   transform: translateY(-2px) scale(1.02) !important;
   box-shadow: 0 8px 25px rgba(196, 162, 101, 0.4) !important;
+}
+
+/* Ensure inline text links in paragraphs stay clean inline gold text */
+.founder-bio-text p a,
+.entry-content p a {
+  display: inline !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #C4A265 !important;
+  text-decoration: underline !important;
+  font-weight: 600 !important;
+  font-size: inherit !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.founder-bio-text p a:hover,
+.entry-content p a:hover {
+  color: #FFFFFF !important;
 }
 
 
