@@ -2030,15 +2030,19 @@ article.post:hover,
 }
 
 /* Header Social Icons — Single Row Horizontal Flex & Gold Accent */
+.site-header-primary-section-right,
+.site-header-primary-section-right .ast-builder-layout-element,
 .ast-desktop-header .site-header-focus-item.ast-header-social-1,
 .ast-desktop-header .ast-header-social-1-wrap,
 .ast-desktop-header .header-social-inner-wrap,
+.header-social-inner-wrap.element-social-inner-wrap,
+.header-social-inner-wrap.ast-social-color-type-custom,
 .ast-social-color-type-custom,
 .ast-header-social-wrap,
 .ast-header-social-1-wrap,
 .header-social-inner-wrap,
 .element-social-inner-wrap {
-  display: inline-flex !important;
+  display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap !important;
   align-items: center !important;
@@ -2049,8 +2053,10 @@ article.post:hover,
 }
 
 .header-social-inner-wrap .header-social-item,
+.header-social-inner-wrap a.header-social-item,
 .ast-builder-social-element {
   margin: 0 !important;
+  padding: 4px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
