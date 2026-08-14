@@ -2277,13 +2277,45 @@ ul.wp-block-latest-posts__list > li:hover {
   margin: 0 !important;
 }
 
-.wp-block-latest-posts li a[class*="more"],
-.wp-block-latest-posts__post-excerpt a {
-  color: #C4A265 !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
+.wp-block-latest-posts li a[class*="more"]:hover,
+.wp-block-latest-posts__post-excerpt a:hover {
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
 }
+
+/* ==========================================================================
+   PAGE HERO BANNER TITLES — GLOWING GOLD ACCENTS (HIGH CONTRAST)
+   ========================================================================== */
+.wp-block-cover h1,
+.wp-block-cover h2,
+.wp-block-cover h3,
+.wp-block-cover .wp-block-heading,
+.entry-content .wp-block-cover h1,
+.entry-content .wp-block-cover h2,
+.entry-content .wp-block-cover .wp-block-heading {
+  color: #C4A265 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.95), 0 0 25px rgba(196, 162, 101, 0.4) !important;
+}
+
+.wp-block-cover p,
+.wp-block-cover .wp-block-cover__inner-container p {
+  color: #E5E7EB !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* ==========================================================================
+   QUIET LUXURY FOOTER PILL BUTTONS & HOVER
+   ========================================================================== */
+.footer-pill-btn:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  border-color: #C4A265 !important;
+  box-shadow: 0 8px 25px rgba(196, 162, 101, 0.35) !important;
+}
+
 
 
 
