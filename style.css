@@ -2316,6 +2316,26 @@ ul.wp-block-latest-posts__list > li:hover {
   box-shadow: 0 8px 25px rgba(196, 162, 101, 0.35) !important;
 }
 
+/* Master Footer Full-Width Clear */
+.site-footer,
+footer.site-footer,
+#colophon.site-footer,
+.keystone-luxury-footer {
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin-top: 60px !important;
+  box-sizing: border-box !important;
+}
+
+.keystone-luxury-footer .footer-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+
 
 
 
