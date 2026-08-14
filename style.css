@@ -2101,5 +2101,190 @@ article.post:hover,
   transform: scale(1.03) !important;
 }
 
+/* ==========================================================================
+   HOMEPAGE 4-PILLAR EQUAL HEIGHT & BASELINE BUTTON ALIGNMENT
+   ========================================================================== */
+.wp-block-columns .wp-block-column {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+.wp-block-columns .wp-block-column figure.wp-block-image {
+  width: 100% !important;
+  height: 190px !important;
+  max-height: 190px !important;
+  margin: 0 0 16px 0 !important;
+  overflow: hidden !important;
+  border-radius: 10px !important;
+}
+
+.wp-block-columns .wp-block-column figure.wp-block-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 10px !important;
+  transition: transform 0.4s ease !important;
+}
+
+.wp-block-columns .wp-block-column:hover figure.wp-block-image img {
+  transform: scale(1.05) !important;
+}
+
+.wp-block-columns .wp-block-column h3.wp-block-heading {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0.05em !important;
+  margin: 12px 0 10px 0 !important;
+  min-height: 28px !important;
+}
+
+.wp-block-columns .wp-block-column p.wp-block-paragraph {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #9CA3AF !important;
+  margin: 0 0 20px 0 !important;
+  flex-grow: 1 !important;
+}
+
+.wp-block-columns .wp-block-column .wp-block-buttons {
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+  width: 100% !important;
+}
+
+.wp-block-columns .wp-block-column .wp-block-button__link {
+  width: 100% !important;
+  text-align: center !important;
+  border-radius: 9999px !important;
+  padding: 10px 20px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+.wp-block-columns .wp-block-column .wp-block-button__link:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(196, 162, 101, 0.4) !important;
+}
+
+/* ==========================================================================
+   HOMEPAGE 3-COLUMN LUXURY LATEST POSTS BLOCK
+   ========================================================================== */
+.wp-block-latest-posts,
+ul.wp-block-latest-posts__list,
+.wp-block-latest-posts.wp-block-latest-posts__list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 28px !important;
+  padding: 0 !important;
+  margin: 30px 0 50px 0 !important;
+  list-style: none !important;
+}
+
+@media (min-width: 992px) {
+  .wp-block-latest-posts,
+  ul.wp-block-latest-posts__list {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+.wp-block-latest-posts li,
+ul.wp-block-latest-posts__list > li {
+  background: #111111 !important;
+  border: 1px solid rgba(196, 162, 101, 0.22) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+.wp-block-latest-posts li:hover,
+ul.wp-block-latest-posts__list > li:hover {
+  transform: translateY(-6px) !important;
+  border-color: rgba(196, 162, 101, 0.5) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(196, 162, 101, 0.15) !important;
+}
+
+.wp-block-latest-posts__featured-image,
+.wp-block-latest-posts li .wp-block-latest-posts__featured-image {
+  position: relative !important;
+  width: 100% !important;
+  height: 200px !important;
+  max-height: 200px !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+}
+
+.wp-block-latest-posts__featured-image img,
+.wp-block-latest-posts li .wp-block-latest-posts__featured-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.4s ease !important;
+  display: block !important;
+}
+
+.wp-block-latest-posts li:hover .wp-block-latest-posts__featured-image img {
+  transform: scale(1.05) !important;
+}
+
+.wp-block-latest-posts__post-title,
+.wp-block-latest-posts li a.wp-block-latest-posts__post-title {
+  display: block !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  padding: 20px 20px 8px 20px !important;
+  transition: color 0.2s ease !important;
+}
+
+.wp-block-latest-posts li:hover a.wp-block-latest-posts__post-title {
+  color: #C4A265 !important;
+}
+
+.wp-block-latest-posts__post-date,
+.wp-block-latest-posts li time.wp-block-latest-posts__post-date {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #C4A265 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  padding: 0 20px 12px 20px !important;
+}
+
+.wp-block-latest-posts__post-excerpt,
+.wp-block-latest-posts li .wp-block-latest-posts__post-excerpt {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #9CA3AF !important;
+  padding: 0 20px 20px 20px !important;
+  flex-grow: 1 !important;
+  margin: 0 !important;
+}
+
+.wp-block-latest-posts li a[class*="more"],
+.wp-block-latest-posts__post-excerpt a {
+  color: #C4A265 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+
 
 
