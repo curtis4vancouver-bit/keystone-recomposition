@@ -128,8 +128,11 @@ function astra_child_keystone_sanitize_footer_output( $content ) {
     }
     // Sanitize builder license #52603 out of Recomposition footer
     $content = str_replace( 'Certified BC Builder.', 'Metabolic Researcher & Recomposition Practitioner.', $content );
+    $content = str_replace( 'Certified BC Builder', 'Metabolic Researcher & Recomposition Practitioner', $content );
     $content = str_replace( 'BC Builder License: #52603 | ', '', $content );
+    $content = str_replace( 'BC Builder License: #52603', '', $content );
     $content = str_replace( 'Site Supervision portfolio at Keystone Possibilities | ', '', $content );
+    $content = str_replace( 'Site Supervision portfolio at Keystone Possibilities', '', $content );
     $content = str_replace( 'just a builder auditing', 'just an evidence-based researcher auditing', $content );
     $content = str_replace( 'I’m the site lead on the ground', 'I’m documenting the data on the ground', $content );
     return $content;
@@ -137,5 +140,21 @@ function astra_child_keystone_sanitize_footer_output( $content ) {
 add_filter( 'astra_footer_html_1_item', 'astra_child_keystone_sanitize_footer_output' );
 add_filter( 'astra_footer_html_2_item', 'astra_child_keystone_sanitize_footer_output' );
 add_filter( 'astra_footer_copyright_item', 'astra_child_keystone_sanitize_footer_output' );
+add_filter( 'astra_get_option_footer-html-1', 'astra_child_keystone_sanitize_footer_output' );
+add_filter( 'astra_get_option_footer-html-2', 'astra_child_keystone_sanitize_footer_output' );
+add_filter( 'astra_get_option_footer-copyright-editor', 'astra_child_keystone_sanitize_footer_output' );
+add_filter( 'astra_get_option_footer-sml-layout', 'astra_child_keystone_sanitize_footer_output' );
+
+// Start output buffer before footer to catch any raw widget renders
+add_action( 'astra_footer_before', function() {
+    ob_start( 'astra_child_keystone_sanitize_footer_output' );
+}, 1 );
+
+add_action( 'astra_footer_after', function() {
+    if ( ob_get_level() > 0 ) {
+        ob_end_flush();
+    }
+}, 9999 );
+
 
 
