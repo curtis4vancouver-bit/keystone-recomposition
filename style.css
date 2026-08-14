@@ -2414,6 +2414,51 @@ footer.site-footer,
   color: #FFFFFF !important;
 }
 
+/* ==========================================================================
+   PAGE HERO & HEADER CLEANUP (REMOVE DUPLICATES & LOW-RES THUMBNAILS)
+   ========================================================================== */
+.page .ast-single-post-featured-section,
+.page .post-thumb-img-content,
+.page .entry-header .post-thumb,
+.page .entry-header .entry-title,
+.page .entry-header,
+.ast-separate-container .ast-article-single .entry-header {
+  display: none !important;
+}
+
+/* Luxury Pill Buttons for CTA / Subscribe links */
+.entry-content a[href*="youtube.com"],
+.entry-content a[href*="sub_confirmation"],
+.wp-block-button a[href*="youtube.com"],
+.wp-block-buttons a[href*="youtube.com"] {
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, rgba(196, 162, 101, 0.25), rgba(15, 15, 15, 0.95)) !important;
+  border: 1px solid #C4A265 !important;
+  color: #FFFFFF !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  padding: 12px 28px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  text-decoration: none !important;
+}
+
+.entry-content a[href*="youtube.com"]:hover,
+.wp-block-button a[href*="youtube.com"]:hover,
+.wp-block-buttons a[href*="youtube.com"]:hover {
+  background: #C4A265 !important;
+  color: #000000 !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(196, 162, 101, 0.4) !important;
+}
+
+
 
 
 
