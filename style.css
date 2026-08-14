@@ -2308,32 +2308,112 @@ ul.wp-block-latest-posts__list > li:hover {
 }
 
 /* ==========================================================================
-   QUIET LUXURY FOOTER PILL BUTTONS & HOVER
+   ASTRA NATIVE FOOTER — QUIET LUXURY OVERHAUL
    ========================================================================== */
-.footer-pill-btn:hover {
-  transform: translateY(-3px) scale(1.02) !important;
-  border-color: #C4A265 !important;
-  box-shadow: 0 8px 25px rgba(196, 162, 101, 0.35) !important;
-}
-
-/* Master Footer Full-Width Clear */
-.site-footer,
 footer.site-footer,
-#colophon.site-footer,
-.keystone-luxury-footer {
-  display: block !important;
+.site-footer,
+#colophon {
+  background: #080808 !important;
+  border-top: 1px solid rgba(196, 162, 101, 0.25) !important;
+  color: #D1D5DB !important;
+  font-family: 'Inter', sans-serif !important;
   width: 100% !important;
   clear: both !important;
+  display: block !important;
   position: relative !important;
   z-index: 10 !important;
   margin-top: 60px !important;
+  padding: 40px 20px 20px 20px !important;
   box-sizing: border-box !important;
 }
 
-.keystone-luxury-footer .footer-container {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
+/* Subscribe & CTA Buttons in Footer */
+.site-footer a[href*="youtube.com"],
+.site-footer a[href*="sub_confirmation"],
+.site-footer .wp-block-button__link,
+.site-footer a[style*="background: red"],
+.site-footer a[style*="background:#ff0000"],
+.site-footer a[style*="background: #e62117"] {
+  background: rgba(196, 162, 101, 0.12) !important;
+  border: 1px solid #C4A265 !important;
+  border-radius: 9999px !important;
+  color: #FFFFFF !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 12px 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 6px 10px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+  text-decoration: none !important;
 }
+
+.site-footer a[href*="youtube.com"]:hover,
+.site-footer a[href*="sub_confirmation"]:hover,
+.site-footer .wp-block-button__link:hover {
+  background: #C4A265 !important;
+  color: #000000 !important;
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 8px 25px rgba(196, 162, 101, 0.4) !important;
+}
+
+/* Founder Card in Footer */
+.site-footer .ast-footer-html-2,
+.site-footer .site-footer-above-section-1 {
+  text-align: center !important;
+  max-width: 900px !important;
+  margin: 0 auto 20px auto !important;
+  line-height: 1.7 !important;
+  color: #9CA3AF !important;
+  font-size: 14px !important;
+}
+
+.site-footer .ast-footer-html-2 p {
+  margin-bottom: 10px !important;
+}
+
+/* Medical Disclaimer in Footer */
+.site-footer .site-footer-primary-section-1,
+.site-footer .ast-footer-html-1 {
+  text-align: center !important;
+  max-width: 850px !important;
+  margin: 0 auto 20px auto !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  color: #9CA3AF !important;
+  border: 1px solid rgba(196, 162, 101, 0.15) !important;
+  background: rgba(196, 162, 101, 0.03) !important;
+  padding: 16px 20px !important;
+  border-radius: 12px !important;
+}
+
+/* Copyright & Links in Footer */
+.site-footer .ast-footer-copyright,
+.site-footer .site-footer-below-section-1 {
+  text-align: center !important;
+  font-size: 12px !important;
+  color: #6B7280 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding-top: 20px !important;
+  margin-top: 20px !important;
+}
+
+.site-footer a {
+  color: #C4A265 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.site-footer a:hover {
+  color: #FFFFFF !important;
+}
+
 
 
 

@@ -119,3 +119,23 @@ function astra_child_keystone_header_overrides() {
 }
 add_action( 'wp_head', 'astra_child_keystone_header_overrides', 9999 );
 
+/**
+ * 7. Master Footer Content Sanitizer (Zero Overlap & Quiet Luxury Formatting)
+ */
+function astra_child_keystone_sanitize_footer_output( $content ) {
+    if ( empty( $content ) || ! is_string( $content ) ) {
+        return $content;
+    }
+    // Sanitize builder license #52603 out of Recomposition footer
+    $content = str_replace( 'Certified BC Builder.', 'Metabolic Researcher & Recomposition Practitioner.', $content );
+    $content = str_replace( 'BC Builder License: #52603 | ', '', $content );
+    $content = str_replace( 'Site Supervision portfolio at Keystone Possibilities | ', '', $content );
+    $content = str_replace( 'just a builder auditing', 'just an evidence-based researcher auditing', $content );
+    $content = str_replace( 'I’m the site lead on the ground', 'I’m documenting the data on the ground', $content );
+    return $content;
+}
+add_filter( 'astra_footer_html_1_item', 'astra_child_keystone_sanitize_footer_output' );
+add_filter( 'astra_footer_html_2_item', 'astra_child_keystone_sanitize_footer_output' );
+add_filter( 'astra_footer_copyright_item', 'astra_child_keystone_sanitize_footer_output' );
+
+
