@@ -68,3 +68,54 @@ add_filter( 'script_loader_tag', 'astra_child_keystone_add_defer_attribute', 10,
  * 5. Filter the single post title wrapper to ensure it's strictly an H1.
  */
 add_filter( 'astra_the_title_before', 'keystone_recomposition_child_title_before', 10, 1 );
+
+/**
+ * 6. High-Priority Header Overrides (Single-Row Social Icons & Logo Polish)
+ */
+function astra_child_keystone_header_overrides() {
+    ?>
+    <style id="keystone-header-social-lock">
+    .ast-desktop-header .site-header-primary-section-right,
+    .ast-desktop-header .site-header-primary-section-right .ast-builder-layout-element,
+    .ast-desktop-header .ast-header-social-1-wrap,
+    .ast-desktop-header .header-social-inner-wrap,
+    .ast-desktop-header .header-social-inner-wrap.element-social-inner-wrap,
+    .ast-desktop-header .header-social-inner-wrap.ast-social-color-type-custom,
+    .ast-desktop-header .ast-social-color-type-custom {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 12px !important;
+      width: auto !important;
+      min-width: 120px !important;
+    }
+    .ast-desktop-header .header-social-inner-wrap a.header-social-item,
+    .ast-desktop-header .ast-builder-social-element {
+      display: inline-flex !important;
+      margin: 0 !important;
+      padding: 4px !important;
+      vertical-align: middle !important;
+    }
+    .ast-desktop-header .header-social-inner-wrap svg {
+      width: 18px !important;
+      height: 18px !important;
+      fill: #C4A265 !important;
+      transition: fill 0.2s ease, filter 0.2s ease !important;
+    }
+    .ast-desktop-header .header-social-inner-wrap a:hover svg {
+      fill: #FFFFFF !important;
+      filter: drop-shadow(0 0 6px rgba(196, 162, 101, 0.6)) !important;
+    }
+    .ast-desktop-header .site-branding img,
+    .ast-desktop-header .custom-logo-link img {
+      max-height: 48px !important;
+      width: auto !important;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
+    }
+    </style>
+    <?php
+}
+add_action( 'wp_head', 'astra_child_keystone_header_overrides', 9999 );
+
