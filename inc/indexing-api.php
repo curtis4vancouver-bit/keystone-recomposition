@@ -1302,3 +1302,49 @@ function keystone_rank_math_inject_youtube_embeds( $content, $post ) {
 
 	return $content;
 }
+
+/**
+ * ============================================================================
+ * 2026 PROGRAMMATIC XML SITEMAP SANITIZER
+ * Programmatically purges 301 redirects, 404s, drafts, and 'noindex' pages
+ * from Rank Math XML Sitemaps to ensure 100% Google Search Console compliance.
+ * ============================================================================
+ */
+add_filter( 'rank_math/sitemap/entry', 'keystone_sanitize_sitemap_entry', 10, 3 );
+function keystone_sanitize_sitemap_entry( $url, $type, $object ) {
+	if ( empty( $url ) || ! is_array( $url ) ) {
+		return $url;
+	}
+
+	if ( isset( $object->ID ) ) {
+		$post_id = (int) $object->ID;
+		$post_status = get_post_status( $post_id );
+
+		// 1. Discard non-published posts
+		if ( 'publish' !== $post_status ) {
+			return false;
+		}
+
+		// 2. Discard posts with explicit noindex robots meta
+		$robots = get_post_meta( $post_id, 'rank_math_robots', true );
+		if ( is_array( $robots ) && in_array( 'noindex', $robots, true ) ) {
+			return false;
+		}
+
+		// 3. Discard posts that are 301 redirects
+		$is_redirect = get_post_meta( $post_id, 'rank_math_redirection_id', true );
+		if ( ! empty( $is_redirect ) ) {
+			return false;
+		}
+	}
+
+	// 4. Discard URLs containing trash or trashed slug markers
+	if ( isset( $url['loc'] ) ) {
+		$loc = (string) $url['loc'];
+		if ( false !== strpos( $loc, '__trashed' ) || false !== strpos( $loc, '/trash/' ) ) {
+			return false;
+		}
+	}
+
+	return $url;
+}

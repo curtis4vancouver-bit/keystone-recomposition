@@ -2540,6 +2540,60 @@ footer.site-footer,
   color: #FFFFFF !important;
 }
 
+/* ==========================================================================
+   RANK MATH ANALYTICS STATS BAR — DARK LUXURY HUD THEME
+   ========================================================================== */
+#rank-math-analytics-stats-wrapper {
+  background: rgba(4, 7, 13, 0.96) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(196, 162, 101, 0.3) !important;
+  color: #e5e7eb !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+  transition: all 0.3s ease !important;
+}
+
+#rank-math-analytics-stats-wrapper .rank-math-item {
+  background: rgba(12, 18, 30, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  padding: 8px 14px !important;
+  color: #e5e7eb !important;
+}
+
+#rank-math-analytics-stats-wrapper .rank-math-item h3 {
+  color: #9ca3af !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+#rank-math-analytics-stats-wrapper .rank-math-item strong {
+  color: #c4a265 !important;
+  font-family: inherit !important;
+}
+
+#rank-math-analytics-stats-wrapper .rank-math-item.seo-score strong span {
+  color: #00ced1 !important;
+  text-shadow: 0 0 10px rgba(0, 206, 209, 0.4) !important;
+}
+
+#rank-math-analytics-stats-wrapper .rank-math-pagespeed-box {
+  background: transparent !important;
+  border: none !important;
+}
+
+#rank-math-analytics-stats-wrapper .top-icons a,
+#rank-math-analytics-stats-wrapper .rank-math-analytics-close-stats {
+  color: #9ca3af !important;
+  transition: color 0.2s ease !important;
+}
+
+#rank-math-analytics-stats-wrapper .top-icons a:hover,
+#rank-math-analytics-stats-wrapper .rank-math-analytics-close-stats:hover {
+  color: #c4a265 !important;
+}
+
 
 
 
