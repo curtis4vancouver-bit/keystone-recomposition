@@ -1038,3 +1038,84 @@ add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );
 /**
  * 13. Shortcode to render our fast, PageSpeed-optimized lazy YouTube/Spotify media facade
  */
+
+/**
+ * 14. Inject 2026 WebApplication & FAQPage Schema for Calculator Pages
+ * Maximizes global Google Rich Results in US, UK, CA, and AU for high-intent queries.
+ */
+add_action( 'wp_head', 'keystone_inject_calculator_web_app_schema', 15 );
+function keystone_inject_calculator_web_app_schema() {
+    if ( ! is_page() ) {
+        return;
+    }
+
+    global $post;
+    $slug = isset( $post->post_name ) ? $post->post_name : '';
+    $template = get_page_template_slug( $post->ID );
+
+    if ( 'calculators' === $slug || false !== strpos( $template, 'calculators' ) || false !== strpos( $template, 'glp1' ) || false !== strpos( $template, 'peptide' ) ) {
+        $calc_schema = array(
+            '@context' => 'https://schema.org',
+            '@graph' => array(
+                array(
+                    '@type' => 'WebApplication',
+                    '@id' => home_url( '/calculators/#webapp' ),
+                    'name' => 'Keystone Master Protocol Calculators Hub',
+                    'alternateName' => 'GLP-1 KwikPen & Peptide Reconstitution Calculator',
+                    'url' => home_url( '/calculators/' ),
+                    'description' => 'Precision GLP-1 KwikPen click-to-mg dose math, 5-day pharmacokinetic half-life modeling, and FDA Category 1 peptide reconstitution calculator with visual U-100 syringe rendering.',
+                    'applicationCategory' => 'HealthApplication',
+                    'operatingSystem' => 'All',
+                    'browserRequirements' => 'Requires JavaScript. Requires HTML5.',
+                    'offers' => array(
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'USD',
+                        'availability' => 'https://schema.org/InStock'
+                    ),
+                    'author' => array(
+                        '@id' => 'https://keystonerecomposition.com/#person'
+                    ),
+                    'publisher' => array(
+                        '@id' => 'https://keystonerecomposition.com/#organization'
+                    )
+                ),
+                array(
+                    '@type' => 'FAQPage',
+                    '@id' => home_url( '/calculators/#faq' ),
+                    'mainEntity' => array(
+                        array(
+                            '@type' => 'Question',
+                            'name' => 'How do I calculate peptide reconstitution dosage with bacteriostatic water?',
+                            'acceptedAnswer' => array(
+                                '@type' => 'Answer',
+                                'text' => 'Peptide reconstitution concentration is calculated using the formula: Concentration (mcg/unit) = (Vial Mass in mg × 1,000) ÷ (BAC Water Volume in mL × 100). For example, adding 2 mL of bacteriostatic water to a 10 mg vial yields 50 mcg per 1 unit tick on a standard U-100 insulin syringe.'
+                            )
+                        ),
+                        array(
+                            '@type' => 'Question',
+                            'name' => 'How many clicks on a Mounjaro or Ozempic KwikPen equal a micro-dose?',
+                            'acceptedAnswer' => array(
+                                '@type' => 'Answer',
+                                'text' => 'A full standard dose on a multi-dose KwikPen dial corresponds to 60 clicks. Each single click delivers 1/60th of the labeled dose volume (0.01 mL). For a 5.0 mg pen, 30 clicks equals 2.5 mg, and 12 clicks equals 1.0 mg.'
+                            )
+                        ),
+                        array(
+                            '@type' => 'Question',
+                            'name' => 'Why use a 5-day GLP-1 dosing interval instead of a 7-day schedule?',
+                            'acceptedAnswer' => array(
+                                '@type' => 'Answer',
+                                'text' => 'Tirzepatide has an approximate pharmacokinetic elimination half-life of 5.0 days (120 hours). A 5-day micro-dosing schedule reduces plasma trough concentration drops on days 6 and 7, helping prevent breakthrough hunger spikes and minimizing peak-associated GI side effects.'
+                            )
+                        )
+                    )
+                )
+            )
+        );
+
+        echo "\n<!-- Keystone 2026 WebApplication & FAQPage JSON-LD Schema -->\n";
+        echo "<script type=\"application/ld+json\">\n";
+        echo wp_json_encode( $calc_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
+        echo "</script>\n<!-- End Calculator Schema -->\n\n";
+    }
+}
