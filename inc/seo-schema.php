@@ -938,6 +938,15 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
     }
     return $url;
 }
+add_filter( 'rank_math/sitemap/enable_caching', '__return_false' );
+
+/**
+ * 10.9 Sanitize robots.txt & Expose AI Crawler Directives (/llms.txt)
+ */
+add_filter( 'robots_txt', function( $output, $public ) {
+    $custom = "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nAllow: /wp-content/uploads/\nAllow: /wp-content/themes/\nAllow: /wp-includes/\n\n# AI Search Engine Crawlers\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: https://keystonerecomposition.com/sitemap_index.xml\n";
+    return $custom;
+}, 99, 2 );
 
 /**
  * 11. General SEO Fixes: output noindex for tag, date, author archives and query parameters
