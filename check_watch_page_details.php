@@ -1,5 +1,14 @@
 <?php
-require_once( dirname(__FILE__) . '/../keystonerecomposition/wp-load.php' );
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
+if ( ! current_user_can( 'manage_options' ) ) {
+    exit( 'Unauthorized' );
+}
+
 global $wpdb;
 
 $slug = 'watch-fda-peptides-bpc-157-tb-500-update-2026';

@@ -1,5 +1,14 @@
 <?php
-require_once( dirname(__FILE__) . '/../keystonerecomposition/wp-load.php' );
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
+if ( ! current_user_can( 'manage_options' ) ) {
+    exit( 'Unauthorized' );
+}
+
 global $wpdb;
 
 $post = $wpdb->get_row("SELECT ID, post_title, post_name, post_date, post_content FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' ORDER BY post_date DESC LIMIT 1");

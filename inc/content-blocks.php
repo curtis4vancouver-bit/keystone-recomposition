@@ -1,4 +1,10 @@
 <?php
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
 function keystone_lazy_video_shortcode( $atts ) {
     $args = shortcode_atts( array(
         'id'   => '',
@@ -349,7 +355,7 @@ add_filter( 'the_content', 'keystone_recomposition_child_eeat_author_block', 98 
  * 15. Automatically Append YouTube Subscribe Buttons to All Pages and Posts
  */
 function keystone_recomposition_child_append_subscribe_buttons( $content ) {
-    $host = isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : '';
+    $host = $_SERVER['HTTP_HOST'] ?? '';
     if ( strpos( $host, 'possibilities' ) !== false ) {
         return $content;
     }
@@ -421,7 +427,7 @@ function keystone_fake_thumbnail_image( $html, $attachment_id, $size, $icon, $at
     if ( $attachment_id < 0 && isset( $keystone_fake_thumbnails[ $attachment_id ] ) ) {
         $youtube_id = $keystone_fake_thumbnails[ $attachment_id ];
         $url = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
-        $alt = isset($attr['alt']) ? $attr['alt'] : '';
+        $alt = ! empty( $attr['alt'] ) ? (string) $attr['alt'] : get_the_title( abs( $attachment_id ) );
         $class = isset($attr['class']) ? $attr['class'] : 'attachment-post-thumbnail size-post-thumbnail wp-post-image';
         return '<img src="' . esc_url( $url ) . '" alt="' . esc_attr( $alt ) . '" class="' . esc_attr( $class ) . '" decoding="async" loading="lazy" style="width:100%; height:100%; object-fit:cover;" />';
     }
@@ -451,9 +457,10 @@ function keystone_video_sitemap_query_vars( $vars ) {
 }
 
 // Serve the video sitemap XML via early interception
+// Serve the video sitemap XML via early interception
 add_action( 'template_redirect', 'keystone_serve_video_sitemap', 1 ); // priority 1 to intercept before anything else
 function keystone_serve_video_sitemap() {
-    $uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+    $uri = $_SERVER['REQUEST_URI'] ?? '';
     $is_sitemap = false;
     
     // 1. Bulletproof check: Does the URL strictly contain the filename?
@@ -488,19 +495,13 @@ function keystone_serve_video_sitemap() {
 
     $video_count = 0;
     foreach ( $posts as $p ) {
-        $post_id = $p->ID;
-        
-        // Skip specific page/posts if needed
-        $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
-        if ( empty( $youtube_id ) ) {
-            if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p->post_content, $matches ) ) {
-                $youtube_id = $matches[1];
-            } elseif ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
-                $youtube_id = $matches[1];
-            }
+        if ( ! is_object( $p ) || empty( $p->ID ) ) {
+            continue;
         }
-        if ( empty( $youtube_id ) ) { 
-            continue; 
+
+        $meta = function_exists( 'keystone_get_post_video_metadata' ) ? keystone_get_post_video_metadata( $p ) : null;
+        if ( ! $meta ) {
+            continue;
         }
 
         // Try to locate a corresponding watch page (slug: watch-{post_slug})
@@ -508,10 +509,14 @@ function keystone_serve_video_sitemap() {
         $watch_page_id = 0;
         $watch_slug = 'watch-' . $p->post_name;
         
-        $watch_page = get_page_by_path( $watch_slug, OBJECT, 'page' );
-        if ( $watch_page && 'publish' === $watch_page->post_status ) {
-            $watch_page_id = $watch_page->ID;
-        } else {
+        if ( function_exists( 'get_page_by_path' ) ) {
+            $watch_page = get_page_by_path( $watch_slug, OBJECT, 'page' );
+            if ( $watch_page && 'publish' === $watch_page->post_status ) {
+                $watch_page_id = $watch_page->ID;
+            }
+        }
+        
+        if ( ! $watch_page_id && isset( $wpdb ) && is_object( $wpdb ) && isset( $wpdb->posts ) ) {
             // Direct SQL fallback for truncated slugs or numerical suffixes
             $truncated_slug = substr( $watch_slug, 0, 200 );
             $watch_page_id = (int) $wpdb->get_var( $wpdb->prepare(
@@ -530,43 +535,22 @@ function keystone_serve_video_sitemap() {
         if ( $watch_page_id > 0 ) {
             $permalink = get_permalink( $watch_page_id );
         } else {
-            $permalink = get_permalink( $post_id );
-        }
-        
-        // Symmetrical metadata extraction
-        $title = get_post_meta( $post_id, 'video_title', true );
-        if ( empty( $title ) ) { 
-            $title = get_the_title( $post_id ); 
-        }
-        $title = mb_substr( wp_strip_all_tags( $title ), 0, 100 );
-
-        $description = get_post_meta( $post_id, 'video_description', true );
-        if ( empty( $description ) ) {
-            $excerpt = get_the_excerpt( $post_id );
-            if ( empty( $excerpt ) ) {
-                $excerpt = wp_trim_words( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ), 40, '...' );
-            }
-            $description = $excerpt;
-        }
-        $description = mb_substr( wp_strip_all_tags( $description ), 0, 2048 );
-        if ( empty( $description ) ) {
-            $description = $title . ' - High-performance health and longevity protocol details.';
+            $permalink = get_permalink( $p->ID );
         }
 
-        $thumbnail_url = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
-        $player_url    = "https://www.youtube.com/embed/{$youtube_id}";
-        $content_url   = "https://www.youtube.com/watch?v={$youtube_id}";
-        $upload_date   = get_the_date( 'c', $post_id );
+        $title       = mb_substr( (string) $meta['title'], 0, 100 );
+        $description = mb_substr( (string) $meta['description'], 0, 2048 );
 
         echo "  <url>\n";
         echo "    <loc>" . esc_url( $permalink ) . "</loc>\n";
         echo "    <video:video>\n";
-        echo "      <video:thumbnail_loc>" . esc_url( $thumbnail_url ) . "</video:thumbnail_loc>\n";
+        echo "      <video:thumbnail_loc>" . esc_url( $meta['thumbnail_url'] ) . "</video:thumbnail_loc>\n";
         echo "      <video:title><![CDATA[" . $title . "]]></video:title>\n";
         echo "      <video:description><![CDATA[" . $description . "]]></video:description>\n";
-        echo "      <video:content_loc>" . esc_url( $content_url ) . "</video:content_loc>\n";
-        echo "      <video:player_loc>" . esc_url( $player_url ) . "</video:player_loc>\n";
-        echo "      <video:publication_date>" . esc_attr( $upload_date ) . "</video:publication_date>\n";
+        echo "      <video:content_loc>" . esc_url( $meta['content_url'] ) . "</video:content_loc>\n";
+        echo "      <video:player_loc>" . esc_url( $meta['embed_url'] ) . "</video:player_loc>\n";
+        echo "      <video:duration>" . (int) $meta['duration_seconds'] . "</video:duration>\n";
+        echo "      <video:publication_date>" . esc_attr( $meta['upload_date'] ) . "</video:publication_date>\n";
         echo "      <video:family_friendly>yes</video:family_friendly>\n";
         echo "      <video:uploader info=\"https://keystonerecomposition.com/\">Wayne Stevenson</video:uploader>\n";
         echo "      <video:live>no</video:live>\n";
@@ -580,9 +564,6 @@ function keystone_serve_video_sitemap() {
     exit;
 }
 
-// Register the video sitemap in Rank Math's main sitemap index dynamically
-add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
-
 /**
  * Programmatic watch page content healer & missing watch page creator
  * Stamped: 2026-07-18
@@ -590,6 +571,9 @@ add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
 add_action( 'init', 'keystone_recomposition_heal_watch_pages_trigger' );
 function keystone_recomposition_heal_watch_pages_trigger() {
     if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration'] === 'sovereign_execute_watch_heal' ) {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+        }
         global $wpdb;
         
         $posts = $wpdb->get_results(

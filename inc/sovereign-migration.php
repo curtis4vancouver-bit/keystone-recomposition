@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Astra Child Theme functions and definitions
  *
@@ -12,16 +14,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+// Security Check: Gate all sovereign migration & debugging actions behind admin authorization
+$keystone_sovereign_actions = array(
+    'dump_server',
+    'purge_all_caches',
+    'get_post_inventory',
+    'run_keystone_migration',
+    'restore_mounjaro_post',
+    'list_revisions',
+    'restore_revision_id',
+    'check_rm_options',
+    'delete_corrupt_post'
+);
+
+foreach ( $keystone_sovereign_actions as $action_key ) {
+    if ( isset( $_GET[ $action_key ] ) ) {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+        }
+        break;
+    }
+}
+
 add_action( 'init', function() {
+    $doc_root = $_SERVER['DOCUMENT_ROOT'] ?? '';
     if ( isset( $_GET['dump_server'] ) ) {
         header('Content-Type: text/plain; charset=utf-8');
-        echo "DOCUMENT_ROOT: " . $_SERVER['DOCUMENT_ROOT'] . "\n";
+        echo "DOCUMENT_ROOT: " . $doc_root . "\n";
         echo "ABSPATH: " . ABSPATH . "\n";
         
-        $p1 = $_SERVER['DOCUMENT_ROOT'] . '/llms.txt';
+        $p1 = $doc_root . '/llms.txt';
         $p2 = ABSPATH . 'llms.txt';
         $p3 = ABSPATH . '../llms.txt';
-        $p4 = $_SERVER['DOCUMENT_ROOT'] . '/robots.txt';
+        $p4 = $doc_root . '/robots.txt';
         
         echo "p1 ($p1): exists=" . (file_exists($p1)?'yes':'no') . ", writable=" . (is_writable(dirname($p1))?'yes':'no') . "\n";
         echo "p2 ($p2): exists=" . (file_exists($p2)?'yes':'no') . ", writable=" . (is_writable(dirname($p2))?'yes':'no') . "\n";
@@ -43,8 +68,8 @@ add_action( 'init', function() {
         if ( function_exists( 'wp_cache_flush' ) ) {
             wp_cache_flush();
         }
-        $p1 = $_SERVER['DOCUMENT_ROOT'] . '/llms.txt';
-        $p4 = $_SERVER['DOCUMENT_ROOT'] . '/robots.txt';
+        $p1 = $doc_root . '/llms.txt';
+        $p4 = $doc_root . '/robots.txt';
         $u1 = file_exists( $p1 ) ? (unlink( $p1 ) ? 'deleted' : 'failed') : 'not found';
         $u4 = file_exists( $p4 ) ? (unlink( $p4 ) ? 'deleted' : 'failed') : 'not found';
 

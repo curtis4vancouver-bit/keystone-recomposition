@@ -1,4 +1,14 @@
 <?php
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
+/**
+ * Register the video sitemap in Rank Math's main sitemap index dynamically
+ */
+add_filter( 'rank_math/sitemap/index', 'keystone_add_video_sitemap_to_index' );
 function keystone_add_video_sitemap_to_index( $index ) {
     $sitemap_url = home_url( '/keystone-video-sitemap.xml' );
     $index .= "\t<sitemap>\n";
@@ -8,25 +18,17 @@ function keystone_add_video_sitemap_to_index( $index ) {
     return $index;
 }
 
-// Disable Rank Math sitemap caching completely to ensure dynamic updates reflect immediately
-add_filter( 'rank_math/sitemap/enable_caching', '__return_false' );
-
 // Banish Rank Math's faulty built-in video sitemap generator output to prevent double sitemap conflicts
 add_filter( 'rank_math/sitemap/video/content', '__return_empty_string', 999 );
-
-// Add custom video sitemap link directly to the virtual robots.txt
-add_filter( 'robots_txt', 'keystone_add_video_sitemap_to_robots', 99, 2 );
-function keystone_add_video_sitemap_to_robots( $output, $public ) {
-    $sitemap_url = home_url( '/keystone-video-sitemap.xml' );
-    $output .= PHP_EOL . 'Sitemap: ' . $sitemap_url . PHP_EOL;
-    return $output;
-}
 
 /**
  * 17.5 Sovereign Remote Cache Purge Endpoint
  * Trigger: https://keystonerecomposition.com/?purge_all_caches=sovereign_execute
  */
 if ( isset( $_GET['purge_all_caches'] ) && $_GET['purge_all_caches'] === 'sovereign_execute' ) {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+    }
     $cleared = array();
     
     if ( function_exists( 'wp_cache_flush' ) ) {
@@ -78,6 +80,9 @@ if ( isset( $_GET['purge_all_caches'] ) && $_GET['purge_all_caches'] === 'sovere
  * Trigger: https://keystonerecomposition.com/?create_missing_watch_pages=sovereign_execute
  */
 if ( isset( $_GET['create_missing_watch_pages'] ) && $_GET['create_missing_watch_pages'] === 'sovereign_execute' ) {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+    }
     global $wpdb;
     $posts = $wpdb->get_results(
         "SELECT ID, post_title, post_name, post_content, post_author 
@@ -152,6 +157,9 @@ if ( isset( $_GET['create_missing_watch_pages'] ) && $_GET['create_missing_watch
  * and video sitemap for posts that were missed during migration.
  */
 if ( isset( $_GET['heal_video_meta'] ) && $_GET['heal_video_meta'] === 'sovereign_execute' ) {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+    }
     global $wpdb;
     
     $posts = $wpdb->get_results(
@@ -277,6 +285,9 @@ if ( isset( $_GET['read_post_full'] ) ) {
  *       video_duration, video_description, og_image
  */
 if ( isset( $_GET['update_post_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+    }
     $raw = file_get_contents('php://input');
     $data = json_decode( $raw, true );
     
@@ -367,6 +378,9 @@ if ( isset( $_GET['update_post_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
  *       meta_description, focus_keyword, og_image, status
  */
 if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+    }
     $raw = file_get_contents('php://input');
     $data = json_decode( $raw, true );
     
@@ -898,12 +912,13 @@ add_action( 'init', function() {
 
 /**
  * =====================================================================
- * SECTION: ROBOTS.TXT — AI Bot Permissions
+ * SECTION: ROBOTS.TXT — Master AI Bot Permissions & Sitemaps
  * =====================================================================
- * Explicitly allows LLM crawler bots to access the site and references
- * the /llms.txt identity file for structured business data.
+ * Explicitly allows LLM crawler bots to access the site, unblocks theme assets,
+ * references /llms.txt identity file, and declares all XML sitemaps.
  */
-add_filter( 'robots_txt', function( $output, $public ) {
+add_filter( 'robots_txt', 'keystone_master_robots_txt', 99999, 2 );
+function keystone_master_robots_txt( string $output, bool $public ): string {
     $ai_rules = "\n# AI / LLM Crawler Permissions — Keystone Recomposition\n";
     $ai_rules .= "User-agent: GPTBot\nAllow: /\n\n";
     $ai_rules .= "User-agent: ChatGPT-User\nAllow: /\n\n";
@@ -912,10 +927,12 @@ add_filter( 'robots_txt', function( $output, $public ) {
     $ai_rules .= "User-agent: Google-Extended\nAllow: /\n\n";
     $ai_rules .= "User-agent: Gemini\nAllow: /\n\n";
     $ai_rules .= "# Machine-readable business identity for LLM agents\n";
-    $ai_rules .= "# See: https://keystonerecomposition.com/llms.txt\n";
+    $ai_rules .= "# See: https://keystonerecomposition.com/llms.txt\n\n";
+    $ai_rules .= "Sitemap: " . home_url( '/sitemap_index.xml' ) . "\n";
+    $ai_rules .= "Sitemap: " . home_url( '/keystone-video-sitemap.xml' ) . "\n";
 
     return $output . $ai_rules;
-}, 99999, 2 );
+}
 
 /**
  * =====================================================================
@@ -1224,7 +1241,7 @@ function keystone_index_on_post_update( $post_id, $post_after, $post_before ) {
  */
 add_action('init', 'keystone_dynamic_llms_txt');
 function keystone_dynamic_llms_txt() {
-    $request = $_SERVER['REQUEST_URI'];
+    $request = $_SERVER['REQUEST_URI'] ?? '';
     if (strpos($request, '/llms.txt') !== false) {
         header('Content-Type: text/plain; charset=utf-8');
         echo "# Keystone Recomposition - AI LLM Context\n\n";
@@ -1239,8 +1256,6 @@ function keystone_dynamic_llms_txt() {
         exit;
     }
 }
-
-
 
 /**
  * ============================================================================
@@ -1301,50 +1316,4 @@ function keystone_rank_math_inject_youtube_embeds( $content, $post ) {
 	}
 
 	return $content;
-}
-
-/**
- * ============================================================================
- * 2026 PROGRAMMATIC XML SITEMAP SANITIZER
- * Programmatically purges 301 redirects, 404s, drafts, and 'noindex' pages
- * from Rank Math XML Sitemaps to ensure 100% Google Search Console compliance.
- * ============================================================================
- */
-add_filter( 'rank_math/sitemap/entry', 'keystone_sanitize_sitemap_entry', 10, 3 );
-function keystone_sanitize_sitemap_entry( $url, $type, $object ) {
-	if ( empty( $url ) || ! is_array( $url ) ) {
-		return $url;
-	}
-
-	if ( isset( $object->ID ) ) {
-		$post_id = (int) $object->ID;
-		$post_status = get_post_status( $post_id );
-
-		// 1. Discard non-published posts
-		if ( 'publish' !== $post_status ) {
-			return false;
-		}
-
-		// 2. Discard posts with explicit noindex robots meta
-		$robots = get_post_meta( $post_id, 'rank_math_robots', true );
-		if ( is_array( $robots ) && in_array( 'noindex', $robots, true ) ) {
-			return false;
-		}
-
-		// 3. Discard posts that are 301 redirects
-		$is_redirect = get_post_meta( $post_id, 'rank_math_redirection_id', true );
-		if ( ! empty( $is_redirect ) ) {
-			return false;
-		}
-	}
-
-	// 4. Discard URLs containing trash or trashed slug markers
-	if ( isset( $url['loc'] ) ) {
-		$loc = (string) $url['loc'];
-		if ( false !== strpos( $loc, '__trashed' ) || false !== strpos( $loc, '/trash/' ) ) {
-			return false;
-		}
-	}
-
-	return $url;
 }

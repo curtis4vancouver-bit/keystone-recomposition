@@ -1,4 +1,11 @@
 <?php
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
+add_filter( 'astra_the_title_before', 'keystone_recomposition_child_title_before', 10, 1 );
 function keystone_recomposition_child_title_before( $before ) {
     if ( is_singular() ) {
         return preg_replace('~^<h[1-6]~i', '<h1', $before);
@@ -300,6 +307,183 @@ function keystone_recomposition_child_music_schema() {
 add_action( 'wp_head', 'keystone_recomposition_child_music_schema' );
 
 /**
+ * 7.8 Keystone Centralized Post Video Metadata Helper
+ * Safely extracts authentic 11-char YouTube ID and complete Schema.org video metadata.
+ * Explicitly validates ID against /^[a-zA-Z0-9_-]{11}$/ to eliminate maxresdefau corruption.
+ *
+ * @param int|WP_Post $post_or_id Post object or ID.
+ * @return array|null Metadata array or null if no valid video found.
+ */
+function keystone_get_post_video_metadata( $post_or_id = null ) {
+    $post = get_post( $post_or_id );
+    if ( ! $post ) {
+        return null;
+    }
+
+    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
+    $post_id = $post->ID;
+
+    if ( $is_watch_page ) {
+        $blog_slug = str_replace( 'watch-', '', $post->post_name );
+        $blog_posts = get_posts( array(
+            'name'        => $blog_slug,
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'numberposts' => 1,
+        ) );
+        if ( ! empty( $blog_posts ) ) {
+            $post_id = $blog_posts[0]->ID;
+        } else {
+            global $wpdb;
+            $like_slug = '%' . $wpdb->esc_like( $blog_slug ) . '%';
+            $fuzzy_post = $wpdb->get_row( $wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND post_name LIKE %s LIMIT 1",
+                $like_slug
+            ) );
+            if ( $fuzzy_post ) {
+                $post_id = (int) $fuzzy_post->ID;
+            } else {
+                $fuzzy_post2 = $wpdb->get_row( $wpdb->prepare(
+                    "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND %s LIKE CONCAT('%%', post_name, '%%') LIMIT 1",
+                    $blog_slug
+                ) );
+                if ( $fuzzy_post2 ) {
+                    $post_id = (int) $fuzzy_post2->ID;
+                }
+            }
+        }
+    }
+
+    // Extract YouTube ID
+    $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
+    $video_url = get_post_meta( $post_id, 'video_url', true );
+
+    if ( empty( $youtube_id ) && ! empty( $video_url ) ) {
+        if ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/|youtube-nocookie\.com/embed/)([^"&?/ ]{11})~i', (string) $video_url, $matches ) ) {
+            $youtube_id = $matches[1];
+        }
+    }
+
+    if ( empty( $youtube_id ) ) {
+        $source_post = ( $post_id !== $post->ID ) ? get_post( $post_id ) : $post;
+        $content = $source_post ? $source_post->post_content : $post->post_content;
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
+            $youtube_id = $matches[1];
+        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/|youtube-nocookie\.com/embed/)([^"&?/ ]{11})~i', $content, $matches ) ) {
+            $youtube_id = $matches[1];
+        }
+    }
+
+    // Strict validation: Must be authentic 11-char ID and MUST NOT be 'maxresdefau'
+    if ( empty( $youtube_id ) || ! preg_match( '/^[a-zA-Z0-9_-]{11}$/', (string) $youtube_id ) || 'maxresdefau' === $youtube_id ) {
+        return null;
+    }
+
+    // Determine metadata
+    $video_name = get_post_meta( $post_id, 'video_title', true );
+    if ( empty( $video_name ) ) {
+        $video_name = get_the_title( $post_id );
+    }
+
+    $video_description = get_post_meta( $post_id, 'video_description', true );
+    if ( empty( $video_description ) ) {
+        $excerpt_source = get_the_excerpt( $post_id );
+        if ( empty( $excerpt_source ) ) {
+            $source_p = get_post( $post_id );
+            $excerpt_source = $source_p ? $source_p->post_content : '';
+        }
+        $clean_excerpt = wp_strip_all_tags( strip_shortcodes( (string) $excerpt_source ) );
+        $video_description = wp_html_excerpt( $clean_excerpt, 150, '...' );
+    }
+    if ( empty( $video_description ) ) {
+        $video_description = esc_attr( get_the_title( $post_id ) ) . ' - High-performance metabolic health and protocol blueprint.';
+    }
+
+    $video_duration = get_post_meta( $post_id, 'video_duration', true );
+    if ( empty( $video_duration ) ) {
+        $video_duration = get_post_meta( $post_id, 'keystone_video_duration', true );
+    }
+
+    $duration_iso = 'PT5M0S';
+    $duration_seconds = 300;
+
+    if ( ! empty( $video_duration ) ) {
+        $video_duration = trim( (string) $video_duration );
+        if ( stripos( $video_duration, 'PT' ) === 0 ) {
+            $duration_iso = $video_duration;
+            $sec = 0;
+            if ( preg_match( '/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/i', $video_duration, $dm ) ) {
+                $h = ! empty( $dm[1] ) ? (int) $dm[1] : 0;
+                $m = ! empty( $dm[2] ) ? (int) $dm[2] : 0;
+                $s = ! empty( $dm[3] ) ? (int) $dm[3] : 0;
+                $sec = ( $h * 3600 ) + ( $m * 60 ) + $s;
+            }
+            $duration_seconds = $sec > 0 ? $sec : 300;
+        } else {
+            $hours = 0; $minutes = 0; $seconds = 0;
+            if ( is_numeric( $video_duration ) ) {
+                $total_seconds = intval( $video_duration );
+                $hours = (int) floor( $total_seconds / 3600 );
+                $minutes = (int) floor( ( $total_seconds / 60 ) % 60 );
+                $seconds = $total_seconds % 60;
+                $duration_seconds = $total_seconds;
+            } elseif ( preg_match( '~^(?:(\d+):)?(\d+):(\d+)$~', $video_duration, $matches ) ) {
+                if ( count( $matches ) === 4 && $matches[1] !== '' ) {
+                    $hours = intval( $matches[1] );
+                    $minutes = intval( $matches[2] );
+                    $seconds = intval( $matches[3] );
+                } else {
+                    $minutes = intval( $matches[2] );
+                    $seconds = intval( $matches[3] );
+                }
+                $duration_seconds = ( $hours * 3600 ) + ( $minutes * 60 ) + $seconds;
+            }
+            $duration_iso = 'PT';
+            if ( $hours > 0 ) $duration_iso .= $hours . 'H';
+            if ( $minutes > 0 ) $duration_iso .= $minutes . 'M';
+            if ( $seconds > 0 || ( $hours === 0 && $minutes === 0 ) ) $duration_iso .= $seconds . 'S';
+        }
+    }
+
+    $video_upload_date = get_post_meta( $post_id, 'video_upload_date', true );
+    if ( empty( $video_upload_date ) ) {
+        $video_upload_date = get_the_date( 'c', $post_id );
+    } else {
+        $converted_time = strtotime( (string) $video_upload_date );
+        $video_upload_date = ( $converted_time !== false ) ? date( 'c', $converted_time ) : get_the_date( 'c', $post_id );
+    }
+
+    $thumbnail_url = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
+    $embed_url     = "https://www.youtube.com/embed/{$youtube_id}";
+    $content_url   = "https://www.youtube.com/watch?v={$youtube_id}";
+
+    $publisher = array(
+        '@type' => 'Organization',
+        '@id'   => 'https://keystonerecomposition.com/#organization',
+        'name'  => 'Keystone Recomposition',
+        'url'   => 'https://keystonerecomposition.com',
+        'logo'  => array(
+            '@type' => 'ImageObject',
+            'url'   => 'https://keystonerecomposition.com/wp-content/uploads/logo.png',
+        ),
+    );
+
+    return array(
+        'post_id'          => $post_id,
+        'youtube_id'       => $youtube_id,
+        'title'            => $video_name,
+        'description'      => $video_description,
+        'duration_iso'     => $duration_iso,
+        'duration_seconds' => $duration_seconds,
+        'upload_date'      => $video_upload_date,
+        'thumbnail_url'    => $thumbnail_url,
+        'embed_url'        => $embed_url,
+        'content_url'      => $content_url,
+        'publisher'        => $publisher,
+    );
+}
+
+/**
  * 8. Dynamic, Robust, GSC-Compliant Standalone VideoObject Schema (Stored XSS Secure)
  * Extracts the primary article video and outputs exactly ONE premium schema object.
  */
@@ -318,153 +502,23 @@ function keystone_recomposition_child_youtube_schema() {
         return;
     }
 
-    $post_id = $post->ID;
-    if ( $is_watch_page ) {
-        $blog_slug = str_replace( 'watch-', '', $post->post_name );
-        $blog_posts = get_posts( array(
-            'name'        => $blog_slug,
-            'post_type'   => 'post',
-            'post_status' => 'publish',
-            'numberposts' => 1
-        ) );
-        if ( ! empty( $blog_posts ) ) {
-            $post_id = $blog_posts[0]->ID;
-        } else {
-            // Fuzzy fallback: search for blog posts whose slug CONTAINS the watch slug
-            global $wpdb;
-            $like_slug = '%' . $wpdb->esc_like( $blog_slug ) . '%';
-            $fuzzy_post = $wpdb->get_row( $wpdb->prepare(
-                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND post_name LIKE %s LIMIT 1",
-                $like_slug
-            ) );
-            if ( $fuzzy_post ) {
-                $post_id = $fuzzy_post->ID;
-            } else {
-                // Reverse fuzzy: search for blog posts whose slug is CONTAINED IN the watch slug
-                $fuzzy_post2 = $wpdb->get_row( $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND %s LIKE CONCAT('%%', post_name, '%%') LIMIT 1",
-                    $blog_slug
-                ) );
-                if ( $fuzzy_post2 ) {
-                    $post_id = $fuzzy_post2->ID;
-                }
-            }
-        }
-    }
-
-    // Try to get video URL or ID from post meta
-    $video_url = get_post_meta( $post_id, 'video_url', true );
-    $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
-    
-    if ( empty( $video_url ) && ! empty( $youtube_id ) ) {
-        $video_url = 'https://www.youtube.com/watch?v=' . $youtube_id;
-    }
-
-    // Fallback: search for [keystone_video id="..."] or plain youtube URL in content
-    if ( empty( $video_url ) ) {
-        $content = $post->post_content;
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
-            $youtube_id = $matches[1];
-            $video_url = 'https://www.youtube.com/watch?v=' . $youtube_id;
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $content, $matches ) ) {
-            $youtube_id = $matches[1];
-            $video_url = 'https://www.youtube.com/watch?v=' . $youtube_id;
-        }
-    }
-
-    if ( empty( $youtube_id ) && ! empty( $video_url ) ) {
-        if ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $video_url, $matches ) ) {
-            $youtube_id = $matches[1];
-        }
-    }
-
-    // If no video was detected at all, do not output schema
-    if ( empty( $youtube_id ) ) {
+    $meta = keystone_get_post_video_metadata( $post );
+    if ( ! $meta ) {
         return;
     }
 
-    // Determine high-resolution maxresdefault thumbnail
-    $video_thumbnail = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
-    
-    // Get custom video details or fall back gracefully
-    $video_name = get_post_meta( $post_id, 'video_title', true );
-    if ( empty( $video_name ) ) {
-        $video_name = get_the_title( $post_id ) . ' Video';
-    }
-
-    $video_description = get_post_meta( $post_id, 'video_description', true );
-    if ( empty( $video_description ) ) {
-        $excerpt_source = get_the_excerpt( $post_id );
-        if ( empty( $excerpt_source ) ) {
-            $excerpt_source = $post->post_content;
-        }
-        $clean_excerpt = wp_strip_all_tags( strip_shortcodes( $excerpt_source ) );
-        $video_description = wp_html_excerpt( $clean_excerpt, 150, '...' );
-    }
-    if ( empty( $video_description ) ) {
-        $video_description = esc_attr( get_the_title( $post_id ) ) . ' - High-performance health and longevity protocol details.';
-    }
-
-    $video_duration = get_post_meta( $post_id, 'video_duration', true );
-    if ( empty( $video_duration ) ) {
-        $video_duration = get_post_meta( $post_id, 'keystone_video_duration', true );
-    }
-    $duration_iso = 'PT5M0S'; // Default fallback 5 minutes
-    if ( ! empty( $video_duration ) ) {
-        // Parse time to ISO 8601
-        $video_duration = trim( $video_duration );
-        if ( stripos( $video_duration, 'PT' ) === 0 ) {
-            $duration_iso = $video_duration;
-        } else {
-            $hours = 0; $minutes = 0; $seconds = 0;
-            if ( is_numeric( $video_duration ) ) {
-                $total_seconds = intval( $video_duration );
-                $hours = floor( $total_seconds / 3600 );
-                $minutes = floor( ( $total_seconds / 60 ) % 60 );
-                $seconds = $total_seconds % 60;
-            } elseif ( preg_match( '~^(?:(\d+):)?(\d+):(\d+)$~', $video_duration, $matches ) ) {
-                if ( count( $matches ) === 4 && $matches[1] !== '' ) {
-                    $hours = intval( $matches[1] );
-                    $minutes = intval( $matches[2] );
-                    $seconds = intval( $matches[3] );
-                } else {
-                    $minutes = intval( $matches[2] );
-                    $seconds = intval( $matches[3] );
-                }
-            }
-            $duration_iso = 'PT';
-            if ( $hours > 0 ) $duration_iso .= $hours . 'H';
-            if ( $minutes > 0 ) $duration_iso .= $minutes . 'M';
-            if ( $seconds > 0 || ( $hours === 0 && $minutes === 0 ) ) $duration_iso .= $seconds . 'S';
-        }
-    }
-
-    $video_upload_date = get_post_meta( $post_id, 'video_upload_date', true );
-    if ( empty( $video_upload_date ) ) {
-        $video_upload_date = get_the_date( 'c', $post_id );
-    } else {
-        $converted_time = strtotime( $video_upload_date );
-        $video_upload_date = ( $converted_time !== false ) ? date( 'c', $converted_time ) : get_the_date( 'c', $post_id );
-    }
-
     $video_schema = array(
-        '@context' => 'https://schema.org',
-        '@type' => 'VideoObject',
-        'name' => esc_attr( $video_name ),
-        'description' => esc_attr( $video_description ),
-        'thumbnailUrl' => esc_url( $video_thumbnail ),
-        'uploadDate' => esc_attr( $video_upload_date ),
-        'embedUrl' => "https://www.youtube.com/embed/{$youtube_id}",
-        'contentUrl' => "https://www.youtube.com/watch?v={$youtube_id}",
-        'duration' => esc_attr( $duration_iso ),
-        'publisher' => array(
-            '@type' => 'Organization',
-            'name' => 'Keystone Protocols',
-            'logo' => array(
-                '@type' => 'ImageObject',
-                'url' => 'https://keystonerecomposition.com/wp-content/uploads/logo.png'
-            )
-        )
+        '@context'      => 'https://schema.org',
+        '@type'         => 'VideoObject',
+        '@id'           => get_permalink( $post->ID ) . '#video',
+        'name'          => esc_attr( $meta['title'] ),
+        'description'   => esc_attr( $meta['description'] ),
+        'thumbnailUrl'  => esc_url( $meta['thumbnail_url'] ),
+        'uploadDate'    => esc_attr( $meta['upload_date'] ),
+        'embedUrl'      => esc_url( $meta['embed_url'] ),
+        'contentUrl'    => esc_url( $meta['content_url'] ),
+        'duration'      => esc_attr( $meta['duration_iso'] ),
+        'publisher'     => $meta['publisher'],
     );
 
     $json_video_schema = wp_json_encode( $video_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT );
@@ -490,58 +544,9 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
     if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
         return $data;
     }
-    $post_id = $post->ID;
-    if ( $is_watch_page ) {
-        $blog_slug = str_replace( 'watch-', '', $post->post_name );
-        $blog_posts = get_posts( array(
-            'name'        => $blog_slug,
-            'post_type'   => 'post',
-            'post_status' => 'publish',
-            'numberposts' => 1
-        ) );
-        if ( ! empty( $blog_posts ) ) {
-            $post_id = $blog_posts[0]->ID;
-        } else {
-            // Fuzzy fallback: search for blog posts whose slug CONTAINS the watch slug
-            global $wpdb;
-            $like_slug = '%' . $wpdb->esc_like( $blog_slug ) . '%';
-            $fuzzy_post = $wpdb->get_row( $wpdb->prepare(
-                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND post_name LIKE %s LIMIT 1",
-                $like_slug
-            ) );
-            if ( $fuzzy_post ) {
-                $post_id = $fuzzy_post->ID;
-            } else {
-                // Reverse fuzzy: search for blog posts whose slug is CONTAINED IN the watch slug
-                $fuzzy_post2 = $wpdb->get_row( $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND %s LIKE CONCAT('%%', post_name, '%%') LIMIT 1",
-                    $blog_slug
-                ) );
-                if ( $fuzzy_post2 ) {
-                    $post_id = $fuzzy_post2->ID;
-                }
-            }
-        }
-    }
 
-    // Try to get video ID
-    $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
-    if ( empty( $youtube_id ) ) {
-        $video_url = get_post_meta( $post_id, 'video_url', true );
-        if ( ! empty( $video_url ) && preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $video_url, $matches ) ) {
-            $youtube_id = $matches[1];
-        }
-    }
-    if ( empty( $youtube_id ) ) {
-        $content = $post->post_content;
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
-            $youtube_id = $matches[1];
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $content, $matches ) ) {
-            $youtube_id = $matches[1];
-        }
-    }
-
-    if ( empty( $youtube_id ) ) {
+    $meta = keystone_get_post_video_metadata( $post );
+    if ( ! $meta ) {
         return $data;
     }
 
@@ -552,84 +557,19 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
         }
     }
 
-    // Determine metadata
-    $video_name = get_post_meta( $post_id, 'video_title', true );
-    if ( empty( $video_name ) ) {
-        $video_name = get_the_title( $post_id ) . ' Video';
-    }
-
-    $video_description = get_post_meta( $post_id, 'video_description', true );
-    if ( empty( $video_description ) ) {
-        $excerpt_source = get_the_excerpt( $post_id );
-        if ( empty( $excerpt_source ) ) {
-            $excerpt_source = $post->post_content;
-        }
-        $clean_excerpt = wp_strip_all_tags( strip_shortcodes( $excerpt_source ) );
-        $video_description = wp_html_excerpt( $clean_excerpt, 150, '...' );
-    }
-    if ( empty( $video_description ) ) {
-        $video_description = esc_attr( get_the_title( $post_id ) ) . ' - High-performance health and longevity protocol details.';
-    }
-
-    $video_duration = get_post_meta( $post_id, 'video_duration', true );
-    if ( empty( $video_duration ) ) {
-        $video_duration = get_post_meta( $post_id, 'keystone_video_duration', true );
-    }
-    $duration_iso = 'PT5M0S'; // Default fallback
-    if ( ! empty( $video_duration ) ) {
-        $video_duration = trim( $video_duration );
-        if ( stripos( $video_duration, 'PT' ) === 0 ) {
-            $duration_iso = $video_duration;
-        } else {
-            $hours = 0; $minutes = 0; $seconds = 0;
-            if ( is_numeric( $video_duration ) ) {
-                $total_seconds = intval( $video_duration );
-                $hours = floor( $total_seconds / 3600 );
-                $minutes = floor( ( $total_seconds / 60 ) % 60 );
-                $seconds = $total_seconds % 60;
-            } elseif ( preg_match( '~^(?:(\d+):)?(\d+):(\d+)$~', $video_duration, $matches ) ) {
-                if ( count( $matches ) === 4 && $matches[1] !== '' ) {
-                    $hours = intval( $matches[1] );
-                    $minutes = intval( $matches[2] );
-                    $seconds = intval( $matches[3] );
-                } else {
-                    $minutes = intval( $matches[2] );
-                    $seconds = intval( $matches[3] );
-                }
-            }
-            $duration_iso = 'PT';
-            if ( $hours > 0 ) $duration_iso .= $hours . 'H';
-            if ( $minutes > 0 ) $duration_iso .= $minutes . 'M';
-            if ( $seconds > 0 || ( $hours === 0 && $minutes === 0 ) ) $duration_iso .= $seconds . 'S';
-        }
-    }
-
-    $video_upload_date = get_post_meta( $post_id, 'video_upload_date', true );
-    if ( empty( $video_upload_date ) ) {
-        $video_upload_date = get_the_date( 'c', $post_id );
-    } else {
-        $converted_time = strtotime( $video_upload_date );
-        $video_upload_date = ( $converted_time !== false ) ? date( 'c', $converted_time ) : get_the_date( 'c', $post_id );
-    }
-
-    $video_thumbnail = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
-
     $video_id = get_permalink( $post->ID ) . '#video';
 
     $data['VideoObject'] = array(
-        '@type' => 'VideoObject',
-        '@id' => $video_id,
-        'name' => esc_attr( $video_name ),
-        'description' => esc_attr( $video_description ),
-        'thumbnailUrl' => esc_url( $video_thumbnail ),
-        'uploadDate' => esc_attr( $video_upload_date ),
-        'embedUrl' => "https://www.youtube.com/embed/{$youtube_id}",
-        'contentUrl' => "https://www.youtube.com/watch?v={$youtube_id}",
-        'duration' => esc_attr( $duration_iso ),
-        'publisher' => array(
-            '@type' => 'Organization',
-            '@id' => 'https://keystonerecomposition.com/#person'
-        )
+        '@type'        => 'VideoObject',
+        '@id'          => $video_id,
+        'name'         => esc_attr( $meta['title'] ),
+        'description'  => esc_attr( $meta['description'] ),
+        'thumbnailUrl' => esc_url( $meta['thumbnail_url'] ),
+        'uploadDate'   => esc_attr( $meta['upload_date'] ),
+        'embedUrl'     => esc_url( $meta['embed_url'] ),
+        'contentUrl'   => esc_url( $meta['content_url'] ),
+        'duration'     => esc_attr( $meta['duration_iso'] ),
+        'publisher'    => $meta['publisher'],
     );
 
     // Link VideoObject to WebPage and Article to prevent Rank Math from stripping it as an orphan node
@@ -686,37 +626,17 @@ add_filter( 'rank_math/sitemap/video/post', function( $video, $post_id ) {
     if ( ! is_array( $video ) ) {
         return $video;
     }
-    $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
-    
-    // Fallback: search for [keystone_video id="..."] or youtube embed in content
-    if ( empty( $youtube_id ) ) {
-        $post = get_post( $post_id );
-        if ( $post ) {
-            if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $post->post_content, $matches ) ) {
-                $youtube_id = $matches[1];
-            } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $post->post_content, $matches ) ) {
-                $youtube_id = $matches[1];
-            }
-        }
+    $meta = keystone_get_post_video_metadata( (int) $post_id );
+    if ( $meta ) {
+        $video['thumbnail_loc'] = $meta['thumbnail_url'];
+        $video['title']         = mb_substr( $meta['title'], 0, 100 );
+        $video['description']   = mb_substr( $meta['description'], 0, 2048 );
+        $video['content_loc']   = $meta['content_url'];
+        $video['player_loc']    = $meta['embed_url'];
+        $video['duration']      = $meta['duration_seconds'];
+        $video['uploader']      = 'Wayne Stevenson';
+        $video['uploader_info'] = 'https://keystonerecomposition.com/';
     }
-    
-    if ( ! empty( $youtube_id ) ) {
-        $video['thumbnail_loc'] = "https://img.youtube.com/vi/{$youtube_id}/maxresdefault.jpg";
-        $video['title']         = get_the_title( $post_id );
-        
-        $excerpt = get_the_excerpt( $post_id );
-        if ( empty( $excerpt ) ) {
-            $post = get_post( $post_id );
-            if ( $post ) {
-                $excerpt = wp_trim_words( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), 40, '...' );
-            }
-        }
-        $video['description']   = $excerpt;
-        $video['player_loc']    = "https://www.youtube-nocookie.com/embed/{$youtube_id}";
-        $video['uploader']      = "Wayne Stevenson";
-        $video['uploader_info'] = "https://keystonerecomposition.com/";
-    }
-    
     return $video;
 }, 10, 2 );
 
@@ -728,14 +648,14 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
         return $data;
     }
     foreach ( $data as $key => $val ) {
-        if ( in_array( strtolower( $key ), array( 'video', 'videoobject' ) ) ) {
-            unset( $data[$key] );
+        if ( in_array( strtolower( (string) $key ), array( 'video', 'videoobject' ), true ) ) {
+            unset( $data[ $key ] );
         }
         if ( is_array( $val ) && isset( $val['@type'] ) ) {
             $types = (array) $val['@type'];
             foreach ( $types as $t ) {
-                if ( strtolower( $t ) === 'videoobject' ) {
-                    unset( $data[$key] );
+                if ( strtolower( (string) $t ) === 'videoobject' ) {
+                    unset( $data[ $key ] );
                     break;
                 }
             }
@@ -748,7 +668,7 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
                 $types = (array) $node['@type'];
                 $has_video = false;
                 foreach ( $types as $t ) {
-                    if ( strtolower( $t ) === 'videoobject' ) {
+                    if ( strtolower( (string) $t ) === 'videoobject' ) {
                         $has_video = true;
                         break;
                     }
@@ -792,7 +712,7 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
         if ( isset( $val['@type'] ) ) {
             $types = (array) $val['@type'];
             foreach ( $types as $t ) {
-                if ( strtolower( $t ) === 'videoobject' ) {
+                if ( strtolower( (string) $t ) === 'videoobject' ) {
                     unset( $data[ $key ] );
                     break;
                 }
@@ -802,11 +722,11 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
     return $data;
 }, 9999, 2 );
 
-// Output buffer safety net: strip broken VideoObject schemas from Rank Math
-// Uses a robust approach that handles nested JSON and escaped slashes
+// Output buffer safety net: strip broken VideoObject schemas from Rank Math & DOM
+// Uses a robust approach that handles both top-level VideoObjects and @graph nested VideoObjects
 add_action( 'wp_head', function() {
     ob_start( function( $output ) {
-        // Strategy: find all JSON-LD script tags, decode, check for broken VideoObject, remove
+        // Strategy: find all JSON-LD script tags, decode, check for broken VideoObject, clean or remove
         $output = preg_replace_callback(
             '~(<script\s+type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)~is',
             function( $matches ) {
@@ -814,17 +734,42 @@ add_action( 'wp_head', function() {
                 if ( ! is_array( $json ) ) {
                     return $matches[0]; // Can't parse, leave alone
                 }
-                // Check if this is a VideoObject
-                if ( isset( $json['@type'] ) && $json['@type'] === 'VideoObject' ) {
-                    // Kill it if embedUrl contains 'maxresdefau' (broken Rank Math detection)
-                    if ( isset( $json['embedUrl'] ) && strpos( $json['embedUrl'], 'maxresdefau' ) !== false ) {
-                        return '<!-- Keystone: Removed broken VideoObject with maxresdefau fake ID -->';
+
+                // 1. Single Top-Level VideoObject check
+                if ( isset( $json['@type'] ) && ( $json['@type'] === 'VideoObject' || in_array( 'VideoObject', (array) $json['@type'], true ) ) ) {
+                    // Kill it if embedUrl or contentUrl contains 'maxresdefau' (broken Rank Math detection)
+                    $embed = $json['embedUrl'] ?? '';
+                    $content = $json['contentUrl'] ?? '';
+                    if ( strpos( (string) $embed, 'maxresdefau' ) !== false || strpos( (string) $content, 'maxresdefau' ) !== false ) {
+                        return '<!-- Keystone: Removed corrupt VideoObject with invalid fake ID -->';
                     }
                     // Kill it if it has no publisher field (our custom schema always has publisher)
                     if ( ! isset( $json['publisher'] ) ) {
                         return '<!-- Keystone: Removed duplicate VideoObject without publisher -->';
                     }
                 }
+
+                // 2. Nested @graph VideoObject check
+                if ( isset( $json['@graph'] ) && is_array( $json['@graph'] ) ) {
+                    $filtered_graph = array();
+                    $graph_modified = false;
+                    foreach ( $json['@graph'] as $node ) {
+                        if ( isset( $node['@type'] ) && ( $node['@type'] === 'VideoObject' || in_array( 'VideoObject', (array) $node['@type'], true ) ) ) {
+                            $embed = $node['embedUrl'] ?? '';
+                            $content = $node['contentUrl'] ?? '';
+                            if ( strpos( (string) $embed, 'maxresdefau' ) !== false || strpos( (string) $content, 'maxresdefau' ) !== false || ! isset( $node['publisher'] ) ) {
+                                $graph_modified = true;
+                                continue; // Strip corrupt / duplicate node
+                            }
+                        }
+                        $filtered_graph[] = $node;
+                    }
+                    if ( $graph_modified ) {
+                        $json['@graph'] = $filtered_graph;
+                        return $matches[1] . "\n" . wp_json_encode( $json, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE ) . "\n" . $matches[3];
+                    }
+                }
+
                 return $matches[0];
             },
             $output
@@ -854,49 +799,12 @@ function keystone_recomposition_inject_og_video() {
         return;
     }
 
-    // Resolve the correct post ID for watch pages
-    $resolved_id = $post->ID;
-    if ( $is_watch_page ) {
-        $blog_slug = str_replace( 'watch-', '', $post->post_name );
-        $blog_posts = get_posts( array(
-            'name'        => $blog_slug,
-            'post_type'   => 'post',
-            'post_status' => 'publish',
-            'numberposts' => 1
-        ) );
-        if ( ! empty( $blog_posts ) ) {
-            $resolved_id = $blog_posts[0]->ID;
-        } else {
-            global $wpdb;
-            $like_slug = '%' . $wpdb->esc_like( $blog_slug ) . '%';
-            $fuzzy_post = $wpdb->get_row( $wpdb->prepare(
-                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' AND post_name LIKE %s LIMIT 1",
-                $like_slug
-            ) );
-            if ( $fuzzy_post ) {
-                $resolved_id = $fuzzy_post->ID;
-            }
-        }
-    }
-
-    $youtube_id = get_post_meta( $resolved_id, 'keystone_youtube_id', true );
-
-    // Fallback: extract from shortcode in content
-    if ( empty( $youtube_id ) ) {
-        $resolved_post = get_post( $resolved_id );
-        if ( $resolved_post && preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $resolved_post->post_content, $m ) ) {
-            $youtube_id = $m[1];
-        }
-    }
-
-    if ( empty( $youtube_id ) ) {
+    $meta = keystone_get_post_video_metadata( $post );
+    if ( ! $meta ) {
         return;
     }
 
-    // Check if Rank Math already output og:video (don't duplicate)
-    // We hook at priority 5 which runs before Rank Math (priority 30+)
-    // but Rank Math uses its own filter system, so we use a simple flag approach
-    $embed_url = 'https://www.youtube.com/embed/' . esc_attr( $youtube_id );
+    $embed_url = esc_url( $meta['embed_url'] );
 
     echo '<!-- Keystone og:video Meta Tags -->' . "\n";
     echo '<meta property="og:video" content="' . $embed_url . '" />' . "\n";
@@ -910,46 +818,156 @@ function keystone_recomposition_inject_og_video() {
 add_action( 'wp_head', 'keystone_recomposition_inject_og_video', 5 );
 
 /**
- * 10.8 Rank Math XML Sitemap Sanitizer (Eliminates GSC 301s and 404s)
+ * 10.8 Rank Math XML Sitemap Sanitizer (Eliminates GSC 301s, 404s, Thin Archives, Transients)
  */
 add_filter( 'rank_math/sitemap/entry', 'keystone_recomposition_sanitize_rank_math_sitemap', 10, 3 );
 function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object ) {
+    if ( empty( $url ) || ! is_array( $url ) ) {
+        return $url;
+    }
+
     $excluded_patterns = array(
         'sample-page',
         'test',
         'demo',
         'wp-admin',
         'squamish-general-contractor',
+        'west-vancouver-custom-homes',
         'whistler-luxury-home-builder',
         'bc-hydro-registered-civil-contractor',
         'north-vancouver-home-builder',
         'west-vancouver-luxury-builder',
         'pemberton-luxury-builder',
         '52603',
-        '.html'
+        '.html',
+        '/tag/',
+        '/author/',
+        '/date/',
+        '__trashed',
+        '/trash/',
+        'check_rm_options',
+        'run_instant_indexing',
+        'purge_all_caches',
+        'heal_video_meta',
+        'run_keystone_migration',
+        'keystone_video_sitemap',
+    );
+
+    $known_301_sources = array(
+        '/2026/01/23/mounjaro-kwikpen-the-official-click-to-mg-math-bible/',
+        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/',
+        '/mounjaro-muscle-loss.html',
+        '/wolverine-stack.html',
     );
 
     if ( isset( $url['loc'] ) ) {
+        $loc = (string) $url['loc'];
         foreach ( $excluded_patterns as $pat ) {
-            if ( strpos( $url['loc'], $pat ) !== false ) {
+            if ( stripos( $loc, $pat ) !== false ) {
                 return false;
             }
         }
+        foreach ( $known_301_sources as $redirect_src ) {
+            if ( stripos( $loc, trim( $redirect_src, '/' ) ) !== false ) {
+                return false;
+            }
+        }
+        // Filter pure date archives (e.g. https://domain.com/2026/ or /2026/05/)
+        if ( preg_match( '~^https?://[^/]+/\d{4}/(?:\d{2}/)?$~i', $loc ) ) {
+            return false;
+        }
     }
+
+    if ( is_object( $object ) && isset( $object->ID ) ) {
+        $post_id = (int) $object->ID;
+        $post_status = get_post_status( $post_id );
+
+        // 1. Discard non-published posts
+        if ( 'publish' !== $post_status ) {
+            return false;
+        }
+
+        // 2. Discard posts with explicit noindex robots meta
+        $robots = get_post_meta( $post_id, 'rank_math_robots', true );
+        if ( is_array( $robots ) && in_array( 'noindex', $robots, true ) ) {
+            return false;
+        }
+        if ( is_string( $robots ) && stripos( $robots, 'noindex' ) !== false ) {
+            return false;
+        }
+
+        // 3. Discard posts that are 301 redirects
+        $is_redirect = get_post_meta( $post_id, 'rank_math_redirection_id', true );
+        if ( ! empty( $is_redirect ) ) {
+            return false;
+        }
+        $redirect_to = get_post_meta( $post_id, 'rank_math_redirection_url', true );
+        if ( ! empty( $redirect_to ) ) {
+            return false;
+        }
+    }
+
     return $url;
 }
 add_filter( 'rank_math/sitemap/enable_caching', '__return_false' );
 
-/**
- * 10.9 Sanitize robots.txt & Expose AI Crawler Directives (/llms.txt)
- */
-add_filter( 'robots_txt', function( $output, $public ) {
-    $custom = "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nAllow: /wp-content/uploads/\nAllow: /wp-content/themes/\nAllow: /wp-includes/\n\n# AI Search Engine Crawlers\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: https://keystonerecomposition.com/sitemap_index.xml\n";
-    return $custom;
-}, 99, 2 );
+// Exclude tag taxonomy sitemaps to prevent index bloat
+add_filter( 'rank_math/sitemap/exclude_taxonomy', function( $exclude, $taxonomy ) {
+    if ( 'post_tag' === $taxonomy ) {
+        return true;
+    }
+    return $exclude;
+}, 10, 2 );
 
 /**
- * 11. General SEO Fixes: output noindex for tag, date, author archives and query parameters
+ * 11. Dynamic Robots.txt Sanitizer
+ * Resolves 8 "Blocked by robots.txt" issues in GSC by allowing critical theme/upload assets,
+ * explicitly unblocking AI search crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended),
+ * and referencing the primary sitemap index.
+ */
+add_filter( 'robots_txt', 'keystone_recomposition_sanitize_robots_txt', 10, 2 );
+function keystone_recomposition_sanitize_robots_txt( $output, $public ) {
+    $sitemap_url = home_url( '/sitemap_index.xml' );
+    $video_sitemap_url = home_url( '/keystone-video-sitemap.xml' );
+
+    $robots = "User-agent: *\n";
+    $robots .= "Disallow: /wp-admin/\n";
+    $robots .= "Allow: /wp-admin/admin-ajax.php\n";
+    $robots .= "Allow: /wp-content/uploads/\n";
+    $robots .= "Allow: /wp-content/themes/\n";
+    $robots .= "Allow: /wp-includes/\n";
+    $robots .= "Disallow: /wp-content/plugins/\n";
+    $robots .= "Disallow: /readme.html\n";
+    $robots .= "Disallow: /license.txt\n";
+    $robots .= "Disallow: /search/\n";
+    $robots .= "Disallow: /?s=\n";
+    $robots .= "Disallow: /*.html$\n";
+    $robots .= "\n";
+
+    // AI Search Crawlers Explicit Directives
+    $robots .= "User-agent: GPTBot\n";
+    $robots .= "Allow: /\n\n";
+
+    $robots .= "User-agent: ClaudeBot\n";
+    $robots .= "Allow: /\n\n";
+
+    $robots .= "User-agent: PerplexityBot\n";
+    $robots .= "Allow: /\n\n";
+
+    $robots .= "User-agent: Google-Extended\n";
+    $robots .= "Allow: /\n\n";
+
+    $robots .= "User-agent: CCBot\n";
+    $robots .= "Allow: /\n\n";
+
+    $robots .= "Sitemap: " . esc_url( $sitemap_url ) . "\n";
+    $robots .= "Sitemap: " . esc_url( $video_sitemap_url ) . "\n";
+
+    return $robots;
+}
+
+/**
+ * 11.5 General SEO Fixes: output noindex for tag, date, author archives and query parameters
  */
 function keystone_recomposition_child_seo_noindex() {
     $should_noindex = false;
@@ -987,19 +1005,24 @@ function keystone_recomposition_child_seo_noindex() {
 add_action( 'wp_head', 'keystone_recomposition_child_seo_noindex', 1 );
 
 /**
- * 12. Patch Structural Site Leaks (404/Redirect Errors)
+ * 12. Patch Structural Site Leaks (404/Redirect Errors & 410 Gone Interceptor)
  */
 function keystone_recomposition_child_404_redirect() {
-    $request_uri = $_SERVER['REQUEST_URI'];
-    
+    $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+    if ( empty( $request_uri ) ) {
+        return;
+    }
+
     // Normalize request URI
     $path = strtok( $request_uri, '?' ); // Strip query parameters
-    $path = '/' . trim( $path, '/' ) . '/'; // Standardize slashes
+    $path = '/' . trim( (string) $path, '/' ) . '/'; // Standardize slashes
     $path = str_replace( '//', '/', $path );
 
     $redirects_301 = array(
         '/2026/01/23/mounjaro-kwikpen-the-official-click-to-mg-math-bible/' => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
-        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
+        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/'     => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
+        '/mounjaro-muscle-loss.html/'                                       => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
+        '/wolverine-stack.html/'                                            => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
     );
 
     $gone_paths = array(
@@ -1009,6 +1032,17 @@ function keystone_recomposition_child_404_redirect() {
         '/keystone_recomposition_ltd_invert-removebg-preview/',
         '/logout/',
         '/the-journey/',
+        '/sample-page/',
+        '/test/',
+        '/demo/',
+        '/52603/',
+        '/squamish-general-contractor/',
+        '/west-vancouver-custom-homes/',
+        '/whistler-luxury-home-builder/',
+        '/bc-hydro-registered-civil-contractor/',
+        '/north-vancouver-home-builder/',
+        '/west-vancouver-luxury-builder/',
+        '/pemberton-luxury-builder/',
     );
 
     // Exact 301 redirects
@@ -1017,19 +1051,27 @@ function keystone_recomposition_child_404_redirect() {
         exit;
     }
 
-    // Exact 410 Gone statuses
-    if ( in_array( $path, $gone_paths, true ) ) {
+    // Exact and prefix 410 Gone statuses
+    $is_gone = false;
+    foreach ( $gone_paths as $gone_target ) {
+        if ( $path === $gone_target || ( '/' !== $gone_target && 0 === strpos( $path, $gone_target ) ) ) {
+            $is_gone = true;
+            break;
+        }
+    }
+
+    if ( $is_gone ) {
         status_header( 410 );
         nocache_headers();
-        if ( file_exists( get_query_template( '404' ) ) ) {
+        if ( function_exists( 'get_query_template' ) && file_exists( (string) get_query_template( '404' ) ) ) {
             include( get_query_template( '404' ) );
         } else {
             echo '410 Gone - This resource is permanently removed.';
         }
         exit;
     }
-    
-    // Wildcard matches
+
+    // Wildcard matches for rogue PHP file requests
     if ( strpos( $path, '/wp-content/themes/keystone-recomposition-child' ) !== false ||
          preg_match( '~^/wp-.*\.php$~i', $path ) ||
          ( strpos( $path, '/wp-admin' ) === false && preg_match( '~\.php$~i', $path ) ) ) {

@@ -1,22 +1,28 @@
 <?php
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
+if ( ! current_user_can( 'manage_options' ) ) {
+    wp_die( 'Unauthorized: Keystone Administrator privileges required.', 'Unauthorized', array( 'response' => 403 ) );
+}
+
 /**
- * Standalone Master OPcache and WordPress Cache Purger
- * Bypasses cached PHP compiles and resets all cache layers live.
+ * Master OPcache and WordPress Cache Purger
+ * Resets all cache layers and database spotify links.
  */
 
 header('Content-Type: text/plain');
 
-// Bootstrap WordPress
-$wp_load_path = dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . '/wp-load.php';
-if ( file_exists( $wp_load_path ) ) {
-    require_once( $wp_load_path );
-    
-    // 1. Scan Spotify Links
-    if ( isset( $_GET['scan'] ) ) {
-        global $wpdb;
-        echo "FRONT PAGE ID: " . get_option('page_on_front') . "\n\n";
-        echo "=== DB POSTS SCAN FOR SPOTIFY ===\n\n";
-        $posts = $wpdb->get_results( "SELECT ID, post_title, post_name, post_status, post_type, post_content FROM $wpdb->posts WHERE post_content LIKE '%spotify%'" );
+// 1. Scan Spotify Links
+if ( isset( $_GET['scan'] ) ) {
+    global $wpdb;
+    echo "FRONT PAGE ID: " . get_option('page_on_front') . "\n\n";
+    echo "=== DB POSTS SCAN FOR SPOTIFY ===\n\n";
+    $posts = $wpdb->get_results( "SELECT ID, post_title, post_name, post_status, post_type, post_content FROM $wpdb->posts WHERE post_content LIKE '%spotify%'" );
+    if ( $posts ) {
         foreach ( $posts as $p ) {
             echo "POST ID: " . $p->ID . " | TITLE: " . $p->post_title . " | SLUG: " . $p->post_name . " | STATUS: " . $p->post_status . " | TYPE: " . $p->post_type . "\n";
             preg_match_all( '~https://open\.spotify\.com/[^\s\"\'<>]*~i', $p->post_content, $matches );
@@ -26,9 +32,11 @@ if ( file_exists( $wp_load_path ) ) {
                 }
             }
         }
-        
-        echo "\n=== DB OPTIONS SCAN FOR SPOTIFY ===\n\n";
-        $options = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options WHERE option_value LIKE '%spotify%'" );
+    }
+    
+    echo "\n=== DB OPTIONS SCAN FOR SPOTIFY ===\n\n";
+    $options = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options WHERE option_value LIKE '%spotify%'" );
+    if ( $options ) {
         foreach ( $options as $o ) {
             echo "OPTION: " . $o->option_name . "\n";
             preg_match_all( '~https://open\.spotify\.com/[^\s\"\'<>]*~i', $o->option_value, $matches );
@@ -38,26 +46,28 @@ if ( file_exists( $wp_load_path ) ) {
                 }
             }
         }
-        exit;
     }
+    exit;
+}
 
-    // 2. Fix Spotify Links
-    if ( isset( $_GET['fix'] ) ) {
-        global $wpdb;
-        echo "=== FIXING SPOTIFY LINKS ===\n\n";
-        
-        $wrong_urls = array(
-            'https://open.spotify.com/artist/keystone-recomposition',
-            'https://open.spotify.com/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
-            'https://open.spotify.com/artist/0',
-            'https://open.spotify.com/artist/3hXpKBxUlhgoYkxGtzYNdU',
-            'https://open.spotify.com/artist/6P2k3S7n9jN3XQ8z4B1m5V'
-        );
-        $correct_url = 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y';
-        
-        // Fix in posts
-        $posts = $wpdb->get_results( "SELECT ID, post_content FROM $wpdb->posts WHERE post_content LIKE '%spotify%'" );
-        $posts_updated = 0;
+// 2. Fix Spotify Links
+if ( isset( $_GET['fix'] ) ) {
+    global $wpdb;
+    echo "=== FIXING SPOTIFY LINKS ===\n\n";
+    
+    $wrong_urls = array(
+        'https://open.spotify.com/artist/keystone-recomposition',
+        'https://open.spotify.com/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
+        'https://open.spotify.com/artist/0',
+        'https://open.spotify.com/artist/3hXpKBxUlhgoYkxGtzYNdU',
+        'https://open.spotify.com/artist/6P2k3S7n9jN3XQ8z4B1m5V'
+    );
+    $correct_url = 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y';
+    
+    // Fix in posts
+    $posts = $wpdb->get_results( "SELECT ID, post_content FROM $wpdb->posts WHERE post_content LIKE '%spotify%'" );
+    $posts_updated = 0;
+    if ( $posts ) {
         foreach ( $posts as $p ) {
             $updated_content = $p->post_content;
             $needs_update = false;
@@ -83,11 +93,13 @@ if ( file_exists( $wp_load_path ) ) {
                 }
             }
         }
-        echo "TOTAL POSTS UPDATED: " . $posts_updated . "\n\n";
-        
-        // Fix in options
-        $options = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options WHERE option_value LIKE '%spotify%'" );
-        $options_updated = 0;
+    }
+    echo "TOTAL POSTS UPDATED: " . $posts_updated . "\n\n";
+    
+    // Fix in options
+    $options = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options WHERE option_value LIKE '%spotify%'" );
+    $options_updated = 0;
+    if ( $options ) {
         foreach ( $options as $o ) {
             $updated_value = $o->option_value;
             $needs_update = false;
@@ -103,26 +115,24 @@ if ( file_exists( $wp_load_path ) ) {
                 $options_updated++;
             }
         }
-        echo "TOTAL OPTIONS UPDATED: " . $options_updated . "\n\n";
     }
-
-    if ( function_exists( 'wp_cache_flush' ) ) {
-        wp_cache_flush();
-        echo "WP_CACHE_FLUSH: SUCCESS\n";
-    }
-    
-    // Programmatically set exact metadata for Post 1149 to feed GSC Video Schema
-    $post_id = 1149;
-    update_post_meta( $post_id, 'keystone_youtube_id', 'aXY9S_K88sk' );
-    update_post_meta( $post_id, 'video_url', 'https://www.youtube.com/watch?v=aXY9S_K88sk' );
-    update_post_meta( $post_id, 'video_title', 'I LOST 48 LBS ON MOUNJARO — HERE’S HOW MUCH WAS MUSCLE | MEN OVER 40' );
-    update_post_meta( $post_id, 'video_description', 'Wayne Stevenson lost 48 lbs on Mounjaro. Learn how much was actual muscle loss vs visceral organ shrinkage, and the exact 4-Pillars Protocol to prevent it.' );
-    update_post_meta( $post_id, 'video_duration', 'PT8M15S' );
-    update_post_meta( $post_id, 'video_upload_date', '2026-05-22T20:04:10-07:00' );
-    echo "POST_1149_META_UPDATE: SUCCESS\n";
-} else {
-    echo "WP-LOAD NOT FOUND AT: " . $wp_load_path . "\n";
+    echo "TOTAL OPTIONS UPDATED: " . $options_updated . "\n\n";
 }
+
+if ( function_exists( 'wp_cache_flush' ) ) {
+    wp_cache_flush();
+    echo "WP_CACHE_FLUSH: SUCCESS\n";
+}
+
+// Programmatically set exact metadata for Post 1149 to feed GSC Video Schema
+$post_id = 1149;
+update_post_meta( $post_id, 'keystone_youtube_id', 'aXY9S_K88sk' );
+update_post_meta( $post_id, 'video_url', 'https://www.youtube.com/watch?v=aXY9S_K88sk' );
+update_post_meta( $post_id, 'video_title', 'I LOST 48 LBS ON MOUNJARO — HERE’S HOW MUCH WAS MUSCLE | MEN OVER 40' );
+update_post_meta( $post_id, 'video_description', 'Wayne Stevenson lost 48 lbs on Mounjaro. Learn how much was actual muscle loss vs visceral organ shrinkage, and the exact 4-Pillars Protocol to prevent it.' );
+update_post_meta( $post_id, 'video_duration', 'PT8M15S' );
+update_post_meta( $post_id, 'video_upload_date', '2026-05-22T20:04:10-07:00' );
+echo "POST_1149_META_UPDATE: SUCCESS\n";
 
 // Flush OPcache if supported
 if ( function_exists( 'opcache_reset' ) ) {

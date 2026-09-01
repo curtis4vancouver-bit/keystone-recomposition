@@ -6,6 +6,38 @@ Template: astra
 */
 
 /* ==========================================================================
+   Keystone Dark Quiet Luxury System Tokens & Variables
+   ========================================================================== */
+:root {
+  --bg-primary: #04070d;
+  --bg-surface: rgba(15, 23, 42, 0.95);
+  --bg-card: rgba(10, 15, 25, 0.85);
+  --gold-primary: #d4af37;
+  --gold-secondary: #c4a265;
+  --gold-light: #f6d365;
+  --gold-border: rgba(212, 175, 55, 0.45);
+  --gold-glow: 0 0 20px rgba(212, 175, 55, 0.25);
+  --cyan-neon: #00f0ff;
+  --cyan-dim: #00ced1;
+  --cyan-glow: 0 0 12px rgba(0, 240, 255, 0.4);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --radius-card: 18px;
+  --radius-pill: 9999px;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Legacy Alias Mapping for Full Backward Compatibility */
+  --ks-gold-primary: var(--gold-secondary);
+  --ks-gold-hover: var(--gold-primary);
+  --ks-gold-dim: rgba(196, 162, 101, 0.15);
+  --ks-bg-black: #080808;
+  --ks-card-black: #111111;
+  --ks-card-border: rgba(196, 162, 101, 0.2);
+  --ks-text-muted: var(--text-secondary);
+}
+
+/* ==========================================================================
    Keystone Protocols - Premium Blog Archive Grid Layout Adjustments
    ========================================================================== */
 
@@ -2541,57 +2573,162 @@ footer.site-footer,
 }
 
 /* ==========================================================================
-   RANK MATH ANALYTICS STATS BAR — DARK LUXURY HUD THEME
+   RANK MATH ANALYTICS STATS BAR — DARK LUXURY HUD THEME (COMPLETE COVERAGE)
    ========================================================================== */
-#rank-math-analytics-stats-wrapper {
+#rank-math-analytics-stats-wrapper,
+#rank-math-analytics-stats-bar,
+.rank-math-analytics-stats-bar {
   background: rgba(4, 7, 13, 0.96) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(196, 162, 101, 0.3) !important;
-  color: #e5e7eb !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+  border-bottom: 1px solid var(--gold-border) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+  z-index: 99999 !important;
   transition: all 0.3s ease !important;
 }
 
-#rank-math-analytics-stats-wrapper .rank-math-item {
-  background: rgba(12, 18, 30, 0.8) !important;
+#rank-math-analytics-stats-wrapper .rank-math-item,
+#rank-math-analytics-stats-bar .rank-math-item {
+  background: rgba(12, 18, 30, 0.85) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 8px !important;
   padding: 8px 14px !important;
-  color: #e5e7eb !important;
+  color: var(--text-primary) !important;
 }
 
-#rank-math-analytics-stats-wrapper .rank-math-item h3 {
-  color: #9ca3af !important;
+#rank-math-analytics-stats-wrapper .rank-math-item h3,
+#rank-math-analytics-stats-bar .rank-math-item h3 {
+  color: var(--text-secondary) !important;
   font-size: 11px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
 }
 
-#rank-math-analytics-stats-wrapper .rank-math-item strong {
-  color: #c4a265 !important;
-  font-family: inherit !important;
+#rank-math-analytics-stats-wrapper .rank-math-item strong,
+#rank-math-analytics-stats-bar .stat-value {
+  color: var(--gold-light) !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
 }
 
 #rank-math-analytics-stats-wrapper .rank-math-item.seo-score strong span {
-  color: #00ced1 !important;
-  text-shadow: 0 0 10px rgba(0, 206, 209, 0.4) !important;
+  color: var(--cyan-neon) !important;
+  text-shadow: var(--cyan-glow) !important;
 }
 
-#rank-math-analytics-stats-wrapper .rank-math-pagespeed-box {
+#rank-math-analytics-stats-wrapper .rank-math-pagespeed-box,
+#rank-math-analytics-stats-bar .rank-math-pagespeed-box {
   background: transparent !important;
   border: none !important;
 }
 
-#rank-math-analytics-stats-wrapper .top-icons a,
-#rank-math-analytics-stats-wrapper .rank-math-analytics-close-stats {
-  color: #9ca3af !important;
-  transition: color 0.2s ease !important;
+#rank-math-analytics-stats-wrapper a,
+#rank-math-analytics-stats-bar a,
+#rank-math-analytics-stats-bar .stat-label {
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
 }
 
+#rank-math-analytics-stats-wrapper a:hover,
+#rank-math-analytics-stats-bar a:hover,
 #rank-math-analytics-stats-wrapper .top-icons a:hover,
 #rank-math-analytics-stats-wrapper .rank-math-analytics-close-stats:hover {
-  color: #c4a265 !important;
+  color: var(--cyan-neon) !important;
+  text-shadow: var(--cyan-glow) !important;
+}
+
+/* ==========================================================================
+   Above-The-Fold Video Theater Box Container (Google Watch Page Compliant)
+   ========================================================================== */
+.wp-block-embed-youtube.aligncenter,
+.luxury-video-theater {
+  max-width: 880px !important;
+  margin: 25px auto 35px auto !important;
+  border-radius: var(--radius-card) !important;
+  overflow: hidden !important;
+  border: 1px solid var(--gold-border) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), var(--gold-glow) !important;
+  background: #000000 !important;
+}
+
+.wp-block-embed-youtube .wp-block-embed__wrapper {
+  position: relative !important;
+  padding-bottom: 56.25% !important; /* 16:9 Aspect Ratio */
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.wp-block-embed-youtube iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+
+/* ==========================================================================
+   18px Glassmorphic Matrix Comparison Table Utility
+   ========================================================================== */
+.glassmorphic-matrix-table {
+  max-width: 920px !important;
+  margin: 30px auto !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--gold-border) !important;
+  border-radius: var(--radius-card) !important;
+  padding: 24px !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.glassmorphic-matrix-table table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  text-align: left !important;
+  color: var(--text-primary) !important;
+  font-size: 0.95rem !important;
+}
+
+.glassmorphic-matrix-table th {
+  padding: 12px 14px !important;
+  border-bottom: 1px solid var(--gold-border) !important;
+  color: var(--text-secondary) !important;
+  text-transform: uppercase !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+.glassmorphic-matrix-table td {
+  padding: 14px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ==========================================================================
+   3D Gold Pill CTA Button Utility
+   ========================================================================== */
+.gold-pill-cta,
+.luxury-3d-pill {
+  display: inline-block !important;
+  background: linear-gradient(135deg, #d4af37 0%, #f6d365 50%, #aa820a 100%) !important;
+  color: #04070d !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 1.1rem !important;
+  padding: 16px 38px !important;
+  border-radius: var(--radius-pill) !important;
+  text-decoration: none !important;
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+.gold-pill-cta:hover,
+.luxury-3d-pill:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  color: #04070d !important;
 }
 
 

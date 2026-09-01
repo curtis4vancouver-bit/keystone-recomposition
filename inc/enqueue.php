@@ -1,4 +1,10 @@
 <?php
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
 function astra_child_keystone_enqueue_styles() {
     // Enqueue parent Astra style
     wp_enqueue_style( 'astra-parent-theme-css', get_template_directory_uri() . '/style.css' );
@@ -63,11 +69,6 @@ function astra_child_keystone_add_defer_attribute( $tag, $handle ) {
     return str_replace( ' src', ' defer="defer" src', $tag );
 }
 add_filter( 'script_loader_tag', 'astra_child_keystone_add_defer_attribute', 10, 2 );
-
-/**
- * 5. Filter the single post title wrapper to ensure it's strictly an H1.
- */
-add_filter( 'astra_the_title_before', 'keystone_recomposition_child_title_before', 10, 1 );
 
 /**
  * 6. High-Priority Header Overrides (Single-Row Social Icons & Logo Polish)

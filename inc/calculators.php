@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Keystone Recomposition - Custom Interactive Calculators & Content Shortcodes
  * 
