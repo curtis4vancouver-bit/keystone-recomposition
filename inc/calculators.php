@@ -369,7 +369,7 @@ function keystone_gear_portal_shortcode() {
     <div class="keystone-gear-portal" id="recommended-gear">
         <div class="tool-header text-center">
             <span class="tool-badge">TESTED INFRASTRUCTURE</span>
-            <h2 class="tool-title">Curated Gear, Biohacking Hardware &amp; Partner Codes</h2>
+            <h1 class="tool-title">Curated Gear, Biohacking Hardware &amp; Partner Codes</h1>
             <p class="tool-subtitle">The exact tools, metabolic monitors, laboratory reconstitution supplies, and audio hardware Wayne Stevenson uses daily across the 48-lb recomposition protocol.</p>
         </div>
 

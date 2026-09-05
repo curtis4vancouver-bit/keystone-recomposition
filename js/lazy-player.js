@@ -13,12 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const facades = document.querySelectorAll('.luxury-video-facade');
         
         facades.forEach(facade => {
+            const videoId = facade.getAttribute('data-video-id');
+            const videoType = (facade.getAttribute('data-video-type') || 'youtube').toLowerCase();
+
+            // Add aesthetic gold "Watch on YouTube ↗" button for YouTube videos
+            if (videoType === 'youtube' && videoId && !facade.querySelector('.watch-on-youtube-btn')) {
+                const ytLink = document.createElement('a');
+                ytLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+                ytLink.target = '_blank';
+                ytLink.rel = 'noopener noreferrer';
+                ytLink.className = 'watch-on-youtube-btn';
+                ytLink.textContent = 'Watch on YouTube ↗';
+                ytLink.setAttribute('aria-label', 'Watch on YouTube');
+                ytLink.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+                facade.appendChild(ytLink);
+            }
+
             // Register isolated play click trigger
             facade.addEventListener('click', function handlePlayClick(event) {
+                if (event.target.closest('.watch-on-youtube-btn')) {
+                    return;
+                }
                 event.preventDefault();
-                
-                const videoId = this.getAttribute('data-video-id');
-                const videoType = (this.getAttribute('data-video-type') || 'youtube').toLowerCase();
                 
                 if (!videoId) return;
                 
@@ -26,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Configure parameters to guarantee immediate autoplay within standard browser policy controls
                 if (videoType === 'youtube') {
-                    // YouTube optimized no-cookie domain with strict relational constraints
-                    targetSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&rel=0&start=0&enablejsapi=1`;
+                    // YouTube optimized no-cookie domain with strict relational constraints (unmuted on user click)
+                    targetSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&start=0&enablejsapi=1`;
                 } else if (videoType === 'vimeo') {
                     targetSrc = `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1`;
                 } else if (videoType === 'spotify') {
@@ -52,10 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const background = this.querySelector('.facade-background');
                     const button = this.querySelector('.play-button');
                     const overlay = this.querySelector('.facade-overlay');
+                    const ytBtn = this.querySelector('.watch-on-youtube-btn');
                     
                     if (background) background.style.opacity = '0';
                     if (button) button.style.opacity = '0';
                     if (overlay) overlay.style.opacity = '0';
+                    if (ytBtn) ytBtn.style.opacity = '0';
                     
                     // Mount dynamic iframe structure
                     this.appendChild(iframe);
@@ -65,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (background) background.remove();
                         if (button) button.remove();
                         if (overlay) overlay.remove();
+                        if (ytBtn) ytBtn.remove();
                         console.log('[Keystone Player] Lazy media elements destroyed successfully.');
                     }, 600);
                 }

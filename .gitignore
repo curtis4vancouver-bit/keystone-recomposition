@@ -1,2 +1,5 @@
 00_INDEX.md
 *.lock
+__pycache__/
+tests/__pycache__/
+*.pyc

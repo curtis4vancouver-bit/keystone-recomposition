@@ -32,7 +32,7 @@ get_header(); ?>
                                 <h3 style="font-family:'Outfit', sans-serif; font-size:20px; font-weight:700; color:#FFFFFF; margin:10px 0 12px 0;">New York Quiet Luxury Longevity</h3>
                                 <p style="font-size:13px; color:#D1D5DB; line-height:1.6; margin-bottom:20px;">Elite GLP-1 micro-dosing and biohacking protocols tailored for Manhattan executives, Wall Street founders, and high-performance leaders.</p>
                             </div>
-                            <a href="/new-york-quiet-luxury-longevity-coaching-peptide-protocols/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore New York Hub →</a>
+                            <a href="/newyork-longevity-coaching/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore New York Hub →</a>
                         </div>
 
                         <!-- Card 2: Los Angeles -->
@@ -42,7 +42,7 @@ get_header(); ?>
                                 <h3 style="font-family:'Outfit', sans-serif; font-size:20px; font-weight:700; color:#FFFFFF; margin:10px 0 12px 0;">Los Angeles &amp; Beverly Hills</h3>
                                 <p style="font-size:13px; color:#D1D5DB; line-height:1.6; margin-bottom:20px;">Body recomposition science, hormone optimization, and discrete concierge coaching for California entertainment and tech founders.</p>
                             </div>
-                            <a href="/los-angeles-quiet-luxury-longevity-coaching-peptide-protocols/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore Los Angeles Hub →</a>
+                            <a href="/la-longevity-coaching/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore Los Angeles Hub →</a>
                         </div>
 
                         <!-- Card 3: London -->
@@ -52,7 +52,7 @@ get_header(); ?>
                                 <h3 style="font-family:'Outfit', sans-serif; font-size:20px; font-weight:700; color:#FFFFFF; margin:10px 0 12px 0;">London Mayfair &amp; Chelsea Advisory</h3>
                                 <p style="font-size:13px; color:#D1D5DB; line-height:1.6; margin-bottom:20px;">Precision metabolic architectures, peptide science, and private health infrastructure consulting for London's executive circle.</p>
                             </div>
-                            <a href="/london-quiet-luxury-longevity-coaching-peptide-protocols/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore London Hub →</a>
+                            <a href="/london-longevity-coaching/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore London Hub →</a>
                         </div>
 
                         <!-- Card 4: Switzerland & Europe -->
@@ -62,7 +62,7 @@ get_header(); ?>
                                 <h3 style="font-family:'Outfit', sans-serif; font-size:20px; font-weight:700; color:#FFFFFF; margin:10px 0 12px 0;">European Executive Longevity Guide</h3>
                                 <p style="font-size:13px; color:#D1D5DB; line-height:1.6; margin-bottom:20px;">Swiss clinic sourcing, European regulatory frameworks, and advanced cellular longevity therapies for international investors.</p>
                             </div>
-                            <a href="/european-executive-longevity-guide-switzerland-sourcing/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore European Guide →</a>
+                            <a href="/europe-longevity-wellness-guide/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore European Guide →</a>
                         </div>
 
                         <!-- Card 5: Mexico Retreats -->
@@ -72,7 +72,7 @@ get_header(); ?>
                                 <h3 style="font-family:'Outfit', sans-serif; font-size:20px; font-weight:700; color:#FFFFFF; margin:10px 0 12px 0;">Mexico Longevity Retreat &amp; Compounds</h3>
                                 <p style="font-size:13px; color:#D1D5DB; line-height:1.6; margin-bottom:20px;">Private luxury recovery sanctuaries, coastal biohacking compounds, and high-yield real estate development opportunities.</p>
                             </div>
-                            <a href="/mexico-longevity-retreat-luxury-compound-investment/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore Mexico Retreats →</a>
+                            <a href="/mexico-longevity-retreat-investment/" class="gold-action-btn full-width" style="color:#000000 !important; font-weight:800 !important; text-decoration:none !important;">Explore Mexico Retreats →</a>
                         </div>
 
                     </div>

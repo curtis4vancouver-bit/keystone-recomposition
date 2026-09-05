@@ -60,6 +60,45 @@ function keystone_recomposition_child_inject_schema() {
         'description' => 'Specializing in high-performance metabolic health, biohacking, and deep house music protocols.',
         'keywords' => 'Keystone Recomposition, GLP-1, health, beauty, wellness, weight loss, fitness, deep house music',
         'logo' => $logo_url,
+        'areaServed' => array(
+            array(
+                '@type' => 'Country',
+                'name' => 'United States'
+            ),
+            array(
+                '@type' => 'Country',
+                'name' => 'United Kingdom'
+            ),
+            array(
+                '@type' => 'Country',
+                'name' => 'Canada'
+            ),
+            array(
+                '@type' => 'Country',
+                'name' => 'Switzerland'
+            ),
+            array(
+                '@type' => 'Country',
+                'name' => 'Mexico'
+            ),
+            array(
+                '@type' => 'City',
+                'name' => 'New York',
+                'sameAs' => 'https://en.wikipedia.org/wiki/New_York_City'
+            ),
+            array(
+                '@type' => 'City',
+                'name' => 'Los Angeles',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Los_Angeles'
+            ),
+            array(
+                '@type' => 'City',
+                'name' => 'London',
+                'sameAs' => 'https://en.wikipedia.org/wiki/London'
+            )
+        ),
+        'currenciesAccepted' => 'USD, GBP, CAD, EUR',
+        'availableLanguage' => array( 'en-US', 'en-GB', 'en-CA' ),
         'parentOrganization' => array(
             '@type' => 'Organization',
             '@id' => 'https://keystonepossibilities.ca/#parent-organization',
@@ -159,11 +198,11 @@ function keystone_recomposition_child_inject_schema() {
                 '@type' => 'Person',
                 '@id' => 'https://keystonerecomposition.com/#person',
                 'name' => 'Wayne Stevenson',
-                'alternateName' => array( 'Keystone Recomposition', 'Keystone Protocols' ),
-                'url' => 'https://keystonerecomposition.com/about/',
+                'alternateName' => array( 'Wayne Stevens', 'Keystone Recomposition', 'Keystone Protocols' ),
+                'url' => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
                 'image' => array(
                     '@type' => 'ImageObject',
-                    'url' => $logo_url
+                    'url' => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_reaching_for_pepper_grinder11_202605021316.jpeg'
                 ),
                 'jobTitle' => 'Founder & Managing Director',
                 'description' => 'Founder of Keystone Recomposition. Documents the intersection of GLP-1 metabolic health, peptide science, body recomposition, and longevity for men over 40. Also produces deep house music protocols.',
@@ -862,6 +901,15 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
 
     if ( isset( $url['loc'] ) ) {
         $loc = (string) $url['loc'];
+
+        // Filter duplicate watch pages (/watch-*) from page-sitemap.xml and general sitemaps
+        if ( 'page' === $type && ( stripos( $loc, '/watch-' ) !== false || ( is_object( $object ) && isset( $object->post_name ) && 0 === strpos( (string) $object->post_name, 'watch-' ) ) ) ) {
+            return false;
+        }
+        if ( stripos( $loc, '/watch-' ) !== false ) {
+            return false;
+        }
+
         foreach ( $excluded_patterns as $pat ) {
             if ( stripos( $loc, $pat ) !== false ) {
                 return false;
@@ -1079,10 +1127,6 @@ function keystone_recomposition_child_404_redirect() {
         exit;
     }
 
-    if ( is_404() ) {
-        wp_redirect( home_url(), 301 );
-        exit;
-    }
 }
 add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );
 
@@ -1170,3 +1214,103 @@ function keystone_inject_calculator_web_app_schema() {
         echo "</script>\n<!-- End Calculator Schema -->\n\n";
     }
 }
+
+/**
+ * 15. Inject Localized GeoCoordinates / Place Schema for City Landing Pages
+ * Provides high-trust local entity signals for New York, Los Angeles, and London.
+ */
+add_action( 'wp_head', 'keystone_inject_city_landing_pages_geo_schema', 16 );
+function keystone_inject_city_landing_pages_geo_schema() {
+    if ( ! is_page() && ! is_singular() ) {
+        return;
+    }
+
+    global $post;
+    $slug = isset( $post->post_name ) ? $post->post_name : '';
+    $uri  = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+
+    $city_configs = array(
+        'newyork' => array(
+            'slugs'       => array( 'newyork-longevity-coaching', 'new-york-quiet-luxury-longevity-coaching-peptide-protocols' ),
+            'name'        => 'Keystone Recomposition — New York Executive Longevity Hub',
+            'description' => 'Elite GLP-1 micro-dosing, cellular longevity, and biohacking protocols tailored for Manhattan executives and Wall Street leaders.',
+            'url'         => home_url( '/newyork-longevity-coaching/' ),
+            'locality'    => 'New York',
+            'region'      => 'NY',
+            'country'     => 'US',
+            'latitude'    => 40.7128,
+            'longitude'   => -74.0060,
+        ),
+        'losangeles' => array(
+            'slugs'       => array( 'la-longevity-coaching', 'los-angeles-quiet-luxury-longevity-coaching-peptide-protocols' ),
+            'name'        => 'Keystone Recomposition — Los Angeles Executive Longevity Hub',
+            'description' => 'Body recomposition science, hormone optimization, and discrete concierge coaching for California entertainment and tech founders.',
+            'url'         => home_url( '/la-longevity-coaching/' ),
+            'locality'    => 'Los Angeles',
+            'region'      => 'CA',
+            'country'     => 'US',
+            'latitude'    => 34.0522,
+            'longitude'   => -118.2437,
+        ),
+        'london' => array(
+            'slugs'       => array( 'london-longevity-coaching', 'london-quiet-luxury-longevity-coaching-peptide-protocols' ),
+            'name'        => 'Keystone Recomposition — London Mayfair & Chelsea Longevity Hub',
+            'description' => 'Precision metabolic architectures, peptide science, and private health infrastructure consulting for London\'s executive circle.',
+            'url'         => home_url( '/london-longevity-coaching/' ),
+            'locality'    => 'London',
+            'region'      => 'Greater London',
+            'country'     => 'GB',
+            'latitude'    => 51.5074,
+            'longitude'   => -0.1278,
+        ),
+    );
+
+    foreach ( $city_configs as $city_key => $config ) {
+        $matched = false;
+        foreach ( $config['slugs'] as $s ) {
+            if ( $slug === $s || false !== strpos( $uri, '/' . $s ) ) {
+                $matched = true;
+                break;
+            }
+        }
+
+        if ( $matched ) {
+            $place_schema = array(
+                '@context' => 'https://schema.org',
+                '@graph'   => array(
+                    array(
+                        '@type'       => array( 'Place', 'HealthAndBeautyBusiness' ),
+                        '@id'         => $config['url'] . '#place',
+                        'name'        => $config['name'],
+                        'description' => $config['description'],
+                        'url'         => $config['url'],
+                        'address'     => array(
+                            '@type'           => 'PostalAddress',
+                            'addressLocality' => $config['locality'],
+                            'addressRegion'   => $config['region'],
+                            'addressCountry'  => $config['country'],
+                        ),
+                        'geo'         => array(
+                            '@type'     => 'GeoCoordinates',
+                            'latitude'  => $config['latitude'],
+                            'longitude' => $config['longitude'],
+                        ),
+                        'parentOrganization' => array(
+                            '@id' => 'https://keystonerecomposition.com/#organization',
+                        ),
+                        'founder' => array(
+                            '@id' => 'https://keystonerecomposition.com/#person',
+                        ),
+                    ),
+                ),
+            );
+
+            echo "\n<!-- Keystone Localized City Hub Geo JSON-LD Schema -->\n";
+            echo "<script type=\"application/ld+json\">\n";
+            echo wp_json_encode( $place_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
+            echo "</script>\n<!-- End Localized City Hub Schema -->\n\n";
+            break;
+        }
+    }
+}
+
