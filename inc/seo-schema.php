@@ -200,6 +200,7 @@ function keystone_recomposition_child_inject_schema() {
                 'name' => 'Wayne Stevenson',
                 'alternateName' => array( 'Wayne Stevens', 'Keystone Recomposition', 'Keystone Protocols' ),
                 'url' => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
+                'mainEntityOfPage' => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
                 'image' => array(
                     '@type' => 'ImageObject',
                     'url' => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_reaching_for_pepper_grinder11_202605021316.jpeg'
@@ -640,6 +641,7 @@ function keystone_recomposition_child_medical_schema() {
         'lastReviewed' => esc_attr( get_the_modified_date( 'Y-m-d', $post->ID ) ),
         'reviewedBy' => array(
             '@type' => 'Person',
+            '@id'   => 'https://keystonerecomposition.com/#person',
             'name' => 'Wayne Stevenson',
             'jobTitle' => 'Metabolic Researcher'
         ),
@@ -903,10 +905,7 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
         $loc = (string) $url['loc'];
 
         // Filter duplicate watch pages (/watch-*) from page-sitemap.xml and general sitemaps
-        if ( 'page' === $type && ( stripos( $loc, '/watch-' ) !== false || ( is_object( $object ) && isset( $object->post_name ) && 0 === strpos( (string) $object->post_name, 'watch-' ) ) ) ) {
-            return false;
-        }
-        if ( stripos( $loc, '/watch-' ) !== false ) {
+        if ( stripos( $loc, '/watch-' ) !== false || ( is_object( $object ) && isset( $object->post_name ) && 0 === strpos( (string) $object->post_name, 'watch-' ) ) ) {
             return false;
         }
 
@@ -1262,6 +1261,28 @@ function keystone_inject_city_landing_pages_geo_schema() {
             'country'     => 'GB',
             'latitude'    => 51.5074,
             'longitude'   => -0.1278,
+        ),
+        'switzerland' => array(
+            'slugs'       => array( 'europe-longevity-wellness-guide', 'european-executive-longevity-guide-switzerland-sourcing' ),
+            'name'        => 'Keystone Recomposition — European Longevity & Swiss Clinic Sourcing Hub',
+            'description' => 'Swiss clinic sourcing, European regulatory frameworks, and advanced cellular longevity therapies for international investors.',
+            'url'         => home_url( '/europe-longevity-wellness-guide/' ),
+            'locality'    => 'Zurich',
+            'region'      => 'Zurich',
+            'country'     => 'CH',
+            'latitude'    => 47.3769,
+            'longitude'   => 8.5417,
+        ),
+        'mexico' => array(
+            'slugs'       => array( 'mexico-longevity-retreat-investment', 'mexico-longevity-retreat-luxury-compound-investment' ),
+            'name'        => 'Keystone Recomposition — Mexico Longevity Retreat & Recovery Hub',
+            'description' => 'Private luxury recovery sanctuaries, coastal biohacking compounds, and high-yield real estate development opportunities.',
+            'url'         => home_url( '/mexico-longevity-retreat-investment/' ),
+            'locality'    => 'Tulum',
+            'region'      => 'Quintana Roo',
+            'country'     => 'MX',
+            'latitude'    => 20.2114,
+            'longitude'   => -87.4654,
         ),
     );
 

@@ -17,18 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const videoType = (facade.getAttribute('data-video-type') || 'youtube').toLowerCase();
 
             // Add aesthetic gold "Watch on YouTube ↗" button for YouTube videos
-            if (videoType === 'youtube' && videoId && !facade.querySelector('.watch-on-youtube-btn')) {
-                const ytLink = document.createElement('a');
-                ytLink.href = `https://www.youtube.com/watch?v=${videoId}`;
-                ytLink.target = '_blank';
-                ytLink.rel = 'noopener noreferrer';
-                ytLink.className = 'watch-on-youtube-btn';
-                ytLink.textContent = 'Watch on YouTube ↗';
-                ytLink.setAttribute('aria-label', 'Watch on YouTube');
-                ytLink.addEventListener('click', (e) => {
+            let ytBtn = facade.querySelector('.watch-on-youtube-btn');
+            if (videoType === 'youtube' && videoId && !ytBtn) {
+                ytBtn = document.createElement('a');
+                ytBtn.href = `https://www.youtube.com/watch?v=${videoId}`;
+                ytBtn.target = '_blank';
+                ytBtn.rel = 'noopener noreferrer';
+                ytBtn.className = 'watch-on-youtube-btn';
+                ytBtn.textContent = 'Watch on YouTube ↗';
+                ytBtn.setAttribute('aria-label', 'Watch on YouTube');
+                facade.appendChild(ytBtn);
+            }
+            if (ytBtn) {
+                ytBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                 });
-                facade.appendChild(ytLink);
             }
 
             // Register isolated play click trigger
@@ -61,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     iframe.setAttribute('title', 'Keystone Video Player');
                     
                     // Hardware accelerated browser capability authorizations
-                    iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
+                    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
                     
                     // Remove current click handler to prevent double execution triggers
                     this.removeEventListener('click', handlePlayClick);

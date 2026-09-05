@@ -57,6 +57,7 @@ class TestAuditRemediationAndGeoEnhancements:
             code = f.read()
         assert "'Wayne Stevens'" in code
         assert "https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/" in code
+        assert "'mainEntityOfPage'" in code
         assert "Man_reaching_for_pepper_grinder11_202605021316.jpeg" in code
         assert "'url' => 'https://keystonerecomposition.com/about/'" not in code
 
@@ -78,6 +79,11 @@ class TestAuditRemediationAndGeoEnhancements:
         assert "-118.2437" in code
         assert "51.5074" in code
         assert "-0.1278" in code
+        # 5-hub complete global coverage
+        assert "47.3769" in code  # Zurich
+        assert "8.5417" in code
+        assert "20.2114" in code  # Tulum
+        assert "-87.4654" in code
 
     def test_lazy_player_unmuted_and_youtube_button(self):
         with open(LAZY_PLAYER_JS, "r", encoding="utf-8") as f:
@@ -105,3 +111,10 @@ class TestAuditRemediationAndGeoEnhancements:
             code = f.read()
         assert "/watch-" in code
         assert "keystone_recomposition_sanitize_rank_math_sitemap" in code
+
+    def test_asset_cache_busting_versions(self):
+        enqueue_path = os.path.join(CHILD_THEME_DIR, "inc", "enqueue.php")
+        with open(enqueue_path, "r", encoding="utf-8") as f:
+            code = f.read()
+        assert "'astra-child-keystone-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-parent-theme-css' ), '2.6.0'" in code
+        assert "'keystone-lazy-player', get_stylesheet_directory_uri() . '/js/lazy-player.js', array(), '1.1.0'" in code

@@ -10,7 +10,7 @@ function astra_child_keystone_enqueue_styles() {
     wp_enqueue_style( 'astra-parent-theme-css', get_template_directory_uri() . '/style.css' );
     
     // Enqueue Child customized style (Cache busted)
-    wp_enqueue_style( 'astra-child-keystone-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-parent-theme-css' ), '2.5.0' );
+    wp_enqueue_style( 'astra-child-keystone-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-parent-theme-css' ), '2.6.0' );
     
     // Load typography fonts (Montserrat, Inter, Outfit)
     wp_enqueue_style( 'keystone-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&family=Outfit:wght@400;600;700;800&display=swap', array(), null );
@@ -22,7 +22,7 @@ function astra_child_keystone_enqueue_styles() {
     wp_enqueue_script( 'keystone-calculators-js', get_stylesheet_directory_uri() . '/js/calculators.js', array(), '2.0.0', true );
 
     // Enqueue WebP Video Facade Engine
-    wp_enqueue_script( 'keystone-lazy-player', get_stylesheet_directory_uri() . '/js/lazy-player.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'keystone-lazy-player', get_stylesheet_directory_uri() . '/js/lazy-player.js', array(), '1.1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'astra_child_keystone_enqueue_styles' );
 

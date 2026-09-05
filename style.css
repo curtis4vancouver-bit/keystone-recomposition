@@ -340,12 +340,22 @@ Template: astra
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(212, 175, 55, 0.4) !important;
   transition: all 0.25s ease-in-out !important;
   pointer-events: auto !important;
+  cursor: pointer !important;
 }
 
 .luxury-video-facade .watch-on-youtube-btn:hover {
   transform: translateY(-2px) scale(1.03) !important;
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
   color: #04070d !important;
+}
+
+@media (max-width: 480px) {
+  .luxury-video-facade .watch-on-youtube-btn {
+    padding: 6px 12px !important;
+    font-size: 0.7rem !important;
+    bottom: 8px !important;
+    right: 8px !important;
+  }
 }
 
 .luxury-video-facade .facade-background {

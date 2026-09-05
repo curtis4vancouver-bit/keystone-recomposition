@@ -28,7 +28,7 @@ function keystone_lazy_video_shortcode( $atts ) {
         $bg_img = 'https://keystonerecomposition.com/wp-content/uploads/video-placeholder.jpg';
     }
 
-    wp_enqueue_script( 'keystone-lazy-player', get_stylesheet_directory_uri() . '/js/lazy-player.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'keystone-lazy-player', get_stylesheet_directory_uri() . '/js/lazy-player.js', array(), '1.1.0', true );
 
     ob_start();
     ?>
