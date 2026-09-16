@@ -190,83 +190,17 @@ function keystone_recomposition_child_inject_schema() {
     echo "</script>\n";
     echo "<!-- End Keystone Empire Network Schema -->\n";
 
-    // === Person Schema (Wayne Stevenson - Knowledge Panel Anchor) ===
+    // === Person Schema (Wayne Stevenson - Multi-Domain Entity Mesh) ===
     $person_schema = array(
         '@context' => 'https://schema.org',
-        '@graph' => array(
-            array(
-                '@type' => 'Person',
-                '@id' => 'https://keystonerecomposition.com/#person',
-                'name' => 'Wayne Stevenson',
-                'alternateName' => array( 'Wayne Stevens', 'Keystone Recomposition', 'Keystone Protocols' ),
-                'url' => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
-                'mainEntityOfPage' => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
-                'image' => array(
-                    '@type' => 'ImageObject',
-                    'url' => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_reaching_for_pepper_grinder11_202605021316.jpeg'
-                ),
-                'jobTitle' => 'Founder & Managing Director',
-                'description' => 'Founder of Keystone Recomposition. Documents the intersection of GLP-1 metabolic health, peptide science, body recomposition, and longevity for men over 40. Also produces deep house music protocols.',
-                'knowsAbout' => array(
-                    array(
-                        '@type' => 'Thing',
-                        'name' => 'Metabolic Health Optimization',
-                        'sameAs' => 'https://en.wikipedia.org/wiki/Metabolism'
-                    ),
-                    array(
-                        '@type' => 'Thing',
-                        'name' => 'Peptide Therapeutics',
-                        'sameAs' => 'https://en.wikipedia.org/wiki/Peptide'
-                    ),
-                    array(
-                        '@type' => 'Thing',
-                        'name' => 'Solfeggio Soundscapes',
-                        'sameAs' => 'https://en.wikipedia.org/wiki/Solfeggio'
-                    )
-                ),
-                'sameAs' => array(
-                    'https://www.linkedin.com/in/wayne-stevenson',
-                    'https://open.spotify.com/artist/4zV1iPj3R9g16B3WwM7Y5m',
-                    'https://www.youtube.com/channel/UCMn1f9DTF_iybKmv5WlTm9Q',
-                    'https://keystonepossibilities.ca',
-                    'https://www.youtube.com/@KeystoneRecomposition',
-                    'https://www.youtube.com/@KeystoneProtocols',
-                    'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
-                    'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
-                    'https://audiomack.com/keystone-recomposition',
-                    'https://www.facebook.com/profile.php?id=61554185128555',
-                    'https://www.instagram.com/p/DO9FsCKj5Cb/',
-                    'https://www.tiktok.com/@keystonerecomposition'
-                ),
-                'worksFor' => array(
-                    array(
-                        '@type' => 'OrganizationRole',
-                        'worksFor' => array(
-                            '@type' => 'Organization',
-                            '@id' => 'https://keystonepossibilities.ca/#organization',
-                            'name' => 'Keystone Possibilities Ltd.'
-                        ),
-                        'roleName' => 'Managing Director',
-                        'startDate' => '2018'
-                    ),
-                    array(
-                        '@type' => 'OrganizationRole',
-                        'worksFor' => array(
-                            '@type' => 'Organization',
-                            '@id' => 'https://keystonerecomposition.com/#organization',
-                            'name' => 'Keystone Recomposition'
-                        ),
-                        'roleName' => 'Founder & Metabolic Health Researcher',
-                        'startDate' => '2021'
-                    )
-                )
-            )
+        '@graph'   => array(
+            keystone_get_wayne_stevenson_person_schema()
         )
     );
 
     $json_person = wp_json_encode( $person_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
 
-    echo "<!-- Keystone Person Schema (Knowledge Panel) -->\n";
+    echo "<!-- Keystone Person Schema (Knowledge Panel Anchor) -->\n";
     echo "<script type=\"application/ld+json\">\n";
     echo $json_person . "\n";
     echo "</script>\n";
@@ -275,65 +209,214 @@ function keystone_recomposition_child_inject_schema() {
 add_action( 'wp_head', 'keystone_recomposition_child_inject_schema' );
 
 /**
+ * 7.2 Master Wayne Stevenson Schema.org Person Definition
+ * Multi-domain entity mesh spanning BC Housing builder licensing (#52603),
+ * longevity protocol research, and functional bio-acoustic audio engineering.
+ *
+ * @return array Schema.org Person definition.
+ */
+function keystone_get_wayne_stevenson_person_schema(): array {
+    return array(
+        '@type'            => 'Person',
+        '@id'              => 'https://keystonerecomposition.com/#person',
+        'name'             => 'Wayne Stevenson',
+        'alternateName'    => array( 'Wayne Stevens', 'Keystone Recomposition', 'Keystone Protocols' ),
+        'url'              => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
+        'mainEntityOfPage' => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
+        'image'            => array(
+            '@type' => 'ImageObject',
+            'url'   => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_reaching_for_pepper_grinder11_202605021316.jpeg',
+        ),
+        'jobTitle'         => array(
+            'Founder & Managing Director',
+            'Founder & Lead Protocol Architect',
+            'Licensed Residential Builder',
+            'Functional Audio Producer',
+        ),
+        'description'      => 'Founder and Lead Protocol Architect of Keystone Recomposition, certified BC Housing Licensed Residential Builder (Licence #52603), and Functional Audio Producer. Wayne Stevenson documents the intersection of GLP-1 metabolic health, peptide science, body recomposition, and cellular longevity for high-performance living. His music catalog is functional bio-acoustic engineering composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.',
+        'hasCredential'    => array(
+            array(
+                '@type'              => 'EducationalOccupationalCredential',
+                'name'               => 'BC Housing Licensed Residential Builder (Licence #52603)',
+                'credentialCategory' => 'Professional License',
+                'recognizedBy'       => array(
+                    '@type' => 'GovernmentOrganization',
+                    'name'  => 'BC Housing Licensing and Consumer Services',
+                    'url'   => 'https://www.bchousing.org',
+                ),
+                'validIn'            => array(
+                    '@type' => 'AdministrativeArea',
+                    'name'  => 'British Columbia, Canada',
+                ),
+                'url'                => 'https://lims.bchousing.org/LicenceExpiryPortal/licence/52603',
+            ),
+        ),
+        'hasOccupation'    => array(
+            array(
+                '@type'                => 'Occupation',
+                'name'                 => 'Licensed Residential Builder & Fiduciary Construction Consultant',
+                'description'          => 'Builder consultant specializing in BC Bill 44 multiplex conversions, high-performance Step Code engineering, and fiduciary construction management in British Columbia.',
+                'occupationalCategory' => 'Construction Management & Residential Building',
+                'occupationLocation'   => array(
+                    '@type' => 'AdministrativeArea',
+                    'name'  => 'British Columbia, Canada',
+                ),
+            ),
+            array(
+                '@type'                => 'Occupation',
+                'name'                 => 'Longevity & Recomposition Protocol Researcher',
+                'description'          => 'Lead Protocol Architect researching GLP-1 micro-dosing, peptide therapies, metabolic optimization, and cellular longevity protocols.',
+                'occupationalCategory' => 'Health Science & Protocol Engineering',
+            ),
+            array(
+                '@type'                => 'Occupation',
+                'name'                 => 'Electronic Music Producer & Functional Bio-Acoustic Engineer',
+                'description'          => 'Electronic music producer engineering functional bio-acoustic soundscapes for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.',
+                'occupationalCategory' => 'Audio Production & Functional Acoustics',
+            ),
+        ),
+        'knowsAbout'       => array(
+            array(
+                '@type'  => 'Thing',
+                'name'   => 'Metabolic Health Optimization',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Metabolism',
+            ),
+            array(
+                '@type'  => 'Thing',
+                'name'   => 'Peptide Therapeutics',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Peptide',
+            ),
+            array(
+                '@type'  => 'Thing',
+                'name'   => 'Solfeggio Soundscapes',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Solfeggio',
+            ),
+            array(
+                '@type'  => 'Thing',
+                'name'   => 'Residential Construction & Building Codes',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Building_code',
+            ),
+        ),
+        'sameAs'           => array(
+            'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+            'https://musicbrainz.org/artist/52v3Qe6Jo0hg764driOl5Y',
+            'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+            'https://pro.musixmatch.com',
+            'https://www.musixmatch.com/artist/Wayne-Stevenson',
+            'https://www.youtube.com/@KeystoneProtocols',
+            'https://www.youtube.com/@KeystoneRecomposition',
+            'https://keystonepossibilities.ca',
+            'https://lims.bchousing.org/LicenceExpiryPortal/licence/52603',
+            'https://audiomack.com/keystone-recomposition',
+            'https://www.linkedin.com/in/wayne-stevenson',
+            'https://www.facebook.com/profile.php?id=61554185128555',
+            'https://www.tiktok.com/@keystonerecomposition',
+        ),
+        'producerOf'       => array(
+            array(
+                '@type'       => 'MusicAlbum',
+                '@id'         => 'https://keystonerecomposition.com/#album-concrete-foundations',
+                'name'        => 'Concrete Foundations',
+                'description' => 'Functional bio-acoustic engineering and high-end electronic soundscapes composed by Wayne Stevenson for training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
+            ),
+            array(
+                '@type'       => 'MusicAlbum',
+                '@id'         => 'https://keystonerecomposition.com/#album-resonantia',
+                'name'        => 'Resonantia: 10 Frequencies of the Rebuild',
+                'description' => '10 progressive functional bio-acoustic frequencies and deep house soundscapes engineered for circadian entrainment, metabolic focus, and autonomic state regulation in Keystone Protocols.',
+            ),
+        ),
+        'worksFor'         => array(
+            array(
+                '@type'    => 'OrganizationRole',
+                'worksFor' => array(
+                    '@type' => 'Organization',
+                    '@id'   => 'https://keystonepossibilities.ca/#organization',
+                    'name'  => 'Keystone Possibilities Ltd.',
+                ),
+                'roleName'  => 'Managing Director & Licensed Residential Builder',
+                'startDate' => '2018',
+            ),
+            array(
+                '@type'    => 'OrganizationRole',
+                'worksFor' => array(
+                    '@type' => 'Organization',
+                    '@id'   => 'https://keystonerecomposition.com/#organization',
+                    'name'  => 'Keystone Recomposition',
+                ),
+                'roleName'  => 'Founder & Lead Protocol Architect',
+                'startDate' => '2021',
+            ),
+        ),
+    );
+}
+
+/**
  * 7.5 Inject MusicGroup & MusicAlbum JSON-LD Schema Nodes
+ * Documents Wayne's music catalog as functional bio-acoustic engineering
+ * composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.
  */
 function keystone_recomposition_child_music_schema() {
     $music_schema = array(
         '@context' => 'https://schema.org',
-        '@graph' => array(
+        '@graph'   => array(
             array(
-                '@type' => 'MusicGroup',
-                '@id' => 'https://keystonerecomposition.com/#musicgroup',
-                'name' => 'Keystone Recomposition',
-                'url' => 'https://keystonerecomposition.com',
-                'genre' => array( 'Deep House', 'Solfeggio Frequencies', 'Ambient Fitness' ),
+                '@type'     => 'MusicGroup',
+                '@id'       => 'https://keystonerecomposition.com/#musicgroup',
+                'name'      => 'Keystone Recomposition',
+                'url'       => 'https://keystonerecomposition.com',
+                'genre'     => array( 'Deep House', 'Solfeggio Frequencies', 'Ambient Fitness', 'Bio-Acoustic Functional Audio' ),
                 'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
-                'sameAs' => array(
+                'sameAs'    => array(
                     'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
                     'https://musicbrainz.org/artist/52v3Qe6Jo0hg764driOl5Y',
-                    'https://audiomack.com/keystone-recomposition'
-                )
+                    'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+                    'https://pro.musixmatch.com',
+                    'https://www.musixmatch.com/artist/Wayne-Stevenson',
+                    'https://audiomack.com/keystone-recomposition',
+                ),
             ),
             array(
-                '@type' => 'MusicAlbum',
-                '@id' => 'https://keystonerecomposition.com/#album-concrete-foundations',
-                'name' => 'Concrete Foundations',
-                'description' => 'High-End Fitness Music and Raw Power Strength Electronic Soundscapes by Wayne Stevenson',
-                'byArtist' => array(
-                    '@type' => 'MusicGroup',
-                    '@id' => 'https://keystonerecomposition.com/#musicgroup',
-                    'name' => 'Keystone Recomposition',
-                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y'
+                '@type'         => 'MusicAlbum',
+                '@id'           => 'https://keystonerecomposition.com/#album-concrete-foundations',
+                'name'          => 'Concrete Foundations',
+                'description'   => 'Functional bio-acoustic engineering and high-end electronic soundscapes composed by Wayne Stevenson for training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
+                'byArtist'      => array(
+                    '@type'     => 'MusicGroup',
+                    '@id'       => 'https://keystonerecomposition.com/#musicgroup',
+                    'name'      => 'Keystone Recomposition',
+                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
                 ),
-                'genre' => array( 'Electronic', 'Deep House', 'Fitness Focus' ),
-                'musicbrainzId' => '30027d0e-6aeb-4704-8792-a031c936c62a'
+                'genre'         => array( 'Electronic', 'Deep House', 'Functional Fitness Audio' ),
+                'musicbrainzId' => '30027d0e-6aeb-4704-8792-a031c936c62a',
             ),
             array(
-                '@type' => 'MusicAlbum',
-                '@id' => 'https://keystonerecomposition.com/#album-resonantia',
-                'name' => 'Resonantia: 10 Frequencies of the Rebuild',
-                'description' => '10 Progressive Biohacking & Deep House Frequencies mapping metabolic discipline',
-                'byArtist' => array(
-                    '@type' => 'MusicGroup',
-                    '@id' => 'https://keystonerecomposition.com/#musicgroup',
-                    'name' => 'Keystone Recomposition',
-                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y'
+                '@type'       => 'MusicAlbum',
+                '@id'         => 'https://keystonerecomposition.com/#album-resonantia',
+                'name'        => 'Resonantia: 10 Frequencies of the Rebuild',
+                'description' => '10 progressive functional bio-acoustic frequencies and deep house soundscapes engineered for circadian entrainment, metabolic focus, and autonomic state regulation in Keystone Protocols.',
+                'byArtist'    => array(
+                    '@type'     => 'MusicGroup',
+                    '@id'       => 'https://keystonerecomposition.com/#musicgroup',
+                    'name'      => 'Keystone Recomposition',
+                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
                 ),
-                'genre' => array( 'Deep House', 'Solfeggio Frequencies', 'Ambient Fitness' )
+                'genre'       => array( 'Deep House', 'Solfeggio Frequencies', 'Circadian Entrainment' ),
             ),
             array(
-                '@type' => 'MusicRecording',
-                '@id' => 'https://keystonerecomposition.com/#track-205-marker',
-                'name' => 'The 205 Marker',
-                'byArtist' => array(
+                '@type'        => 'MusicRecording',
+                '@id'          => 'https://keystonerecomposition.com/#track-205-marker',
+                'name'         => 'The 205 Marker',
+                'description'  => 'Functional bio-acoustic composition engineered for circadian entrainment, cadence synchronization, and autonomic state regulation in Keystone Protocols.',
+                'byArtist'     => array(
                     '@type' => 'MusicGroup',
-                    '@id' => 'https://keystonerecomposition.com/#musicgroup'
+                    '@id'   => 'https://keystonerecomposition.com/#musicgroup',
                 ),
-                'inAlbum' => array(
-                    '@id' => 'https://keystonerecomposition.com/#album-concrete-foundations'
-                )
-            )
-        )
+                'inAlbum'      => array(
+                    '@id' => 'https://keystonerecomposition.com/#album-concrete-foundations',
+                ),
+            ),
+        ),
     );
 
     $json_music = wp_json_encode( $music_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
@@ -345,6 +428,72 @@ function keystone_recomposition_child_music_schema() {
     echo "<!-- End Keystone Music Schema -->\n";
 }
 add_action( 'wp_head', 'keystone_recomposition_child_music_schema' );
+
+/**
+ * 7.6 Inject Wayne Stevenson Multi-Domain Entity Mesh into Rank Math JSON-LD Graph
+ * Seamlessly integrates Person schema into Rank Math's @graph and links all authored content.
+ */
+add_filter( 'rank_math/json_ld', 'keystone_inject_wayne_stevenson_rank_math_entity_mesh', 90, 2 );
+function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $jsonld ): array {
+    $person_node = keystone_get_wayne_stevenson_person_schema();
+    $person_id   = 'https://keystonerecomposition.com/#person';
+
+    // 1. If Rank Math uses @graph array, enrich existing Person or inject new node
+    if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
+        $found_person = false;
+        foreach ( $data['@graph'] as $idx => $node ) {
+            if ( isset( $node['@type'] ) ) {
+                $types = (array) $node['@type'];
+                if ( in_array( 'Person', $types, true ) ) {
+                    $data['@graph'][ $idx ] = array_merge( $node, $person_node );
+                    $found_person = true;
+                    break;
+                }
+            }
+        }
+        if ( ! $found_person ) {
+            $data['@graph'][] = $person_node;
+        }
+
+        // Connect Article, NewsArticle, BlogPosting, MedicalWebPage, WebPage author to Wayne's Person ID
+        // and attach extracted PubMed citations to Article/MedicalWebPage nodes
+        $citations = array();
+        if ( is_singular( 'post' ) && function_exists( 'keystone_extract_pubmed_citations' ) ) {
+            global $post;
+            if ( $post && ! empty( $post->post_content ) ) {
+                $citations = keystone_extract_pubmed_citations( (string) $post->post_content );
+            }
+        }
+
+        foreach ( $data['@graph'] as $idx => $node ) {
+            if ( isset( $node['@type'] ) ) {
+                $types = (array) $node['@type'];
+                if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'MedicalWebPage', 'WebPage' ) ) ) {
+                    if ( empty( $node['author'] ) || ( isset( $node['author']['@type'] ) && 'Person' === $node['author']['@type'] ) ) {
+                        $data['@graph'][ $idx ]['author'] = array( '@id' => $person_id );
+                    }
+                    if ( ! empty( $citations ) && array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'MedicalWebPage' ) ) ) {
+                        $existing_citations = isset( $node['citation'] ) ? (array) $node['citation'] : array();
+                        $data['@graph'][ $idx ]['citation'] = array_merge( $existing_citations, $citations );
+                    }
+                }
+            }
+        }
+    }
+
+    // 2. Also inject into named Person entity and publisher node
+    $data['Person'] = $person_node;
+    if ( isset( $data['publisher'] ) && is_array( $data['publisher'] ) && isset( $data['publisher']['@type'] ) && 'Person' === $data['publisher']['@type'] ) {
+        $data['publisher'] = array_merge( $data['publisher'], $person_node );
+    }
+
+    if ( is_singular( 'post' ) && ! empty( $citations ) && isset( $data['Article'] ) && is_array( $data['Article'] ) ) {
+        $existing_citations = isset( $data['Article']['citation'] ) ? (array) $data['Article']['citation'] : array();
+        $data['Article']['citation'] = array_merge( $existing_citations, $citations );
+    }
+
+    return $data;
+}
 
 /**
  * 7.8 Keystone Centralized Post Video Metadata Helper
@@ -533,7 +682,9 @@ function keystone_recomposition_child_youtube_schema() {
         return;
     }
     $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
-    if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
+    // GSC Video Indexing Separation: ONLY emit VideoObject schema on dedicated watch-* pages
+    // where the video is the dominant hero element above the fold. Blog posts emit Article/MedicalWebPage.
+    if ( ! $is_watch_page ) {
         return;
     }
 
@@ -573,6 +724,7 @@ add_action( 'wp_head', 'keystone_recomposition_child_youtube_schema', 20 );
 
 /**
  * 8.2 Integrate Dynamic VideoObject Schema directly into Rank Math JSON-LD Graph
+ * Strictly limited to dedicated watch-* pages to prevent GSC video prominence warnings.
  */
 add_filter( 'rank_math/json_ld', 'keystone_recomposition_integrate_video_schema', 100000, 2 );
 function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
@@ -581,7 +733,8 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
         return $data;
     }
     $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
-    if ( ! is_singular( 'post' ) && ! $is_watch_page ) {
+    // GSC Video Indexing Separation: ONLY emit VideoObject schema on dedicated watch-* pages
+    if ( ! $is_watch_page ) {
         return $data;
     }
 
@@ -624,7 +777,49 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
 }
 
 /**
- * 8.5 Dynamic MedicalWebPage Schema
+ * 8.3 Automated PubMed PMID Citation Extractor
+ * Parses content for PubMed URLs (pubmed.ncbi.nlm.nih.gov/{pmid}) or PMID: {pmid} notations
+ * and formats them as Schema.org ScholarlyArticle citation objects.
+ *
+ * @param string $content Post content HTML or raw string.
+ * @return array List of Schema.org ScholarlyArticle citation arrays.
+ */
+function keystone_extract_pubmed_citations( string $content ): array {
+    if ( empty( $content ) ) {
+        return array();
+    }
+
+    $citations = array();
+    $pmids     = array();
+
+    if ( preg_match_all( '~(?:pubmed\.ncbi\.nlm\.nih\.gov/(\d+)|PMID[:\s]+(\d+))~i', $content, $matches, PREG_SET_ORDER ) ) {
+        foreach ( $matches as $match ) {
+            $pmid = ! empty( $match[1] ) ? trim( $match[1] ) : ( ! empty( $match[2] ) ? trim( $match[2] ) : '' );
+            if ( ! empty( $pmid ) && is_numeric( $pmid ) && ! in_array( $pmid, $pmids, true ) ) {
+                $pmids[] = $pmid;
+            }
+        }
+    }
+
+    foreach ( $pmids as $pmid ) {
+        $citations[] = array(
+            '@type'      => 'ScholarlyArticle',
+            '@id'        => 'https://pubmed.ncbi.nlm.nih.gov/' . $pmid . '/#article',
+            'url'        => 'https://pubmed.ncbi.nlm.nih.gov/' . $pmid . '/',
+            'identifier' => array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'PMID',
+                'value'      => (string) $pmid,
+            ),
+            'name'       => 'PubMed Clinical Reference PMID:' . $pmid,
+        );
+    }
+
+    return $citations;
+}
+
+/**
+ * 8.5 Dynamic MedicalWebPage Schema with Automated PubMed Citations
  */
 function keystone_recomposition_child_medical_schema() {
     if ( ! is_singular( 'post' ) ) {
@@ -632,27 +827,36 @@ function keystone_recomposition_child_medical_schema() {
     }
     
     global $post;
+    if ( ! $post ) {
+        return;
+    }
+
+    $citations = keystone_extract_pubmed_citations( (string) $post->post_content );
     
     $medical_schema = array(
-        '@context' => 'https://schema.org',
-        '@type' => 'MedicalWebPage',
-        'name' => esc_attr( get_the_title( $post->ID ) ),
-        'url' => esc_url( get_permalink( $post->ID ) ),
+        '@context'     => 'https://schema.org',
+        '@type'        => 'MedicalWebPage',
+        'name'         => esc_attr( get_the_title( $post->ID ) ),
+        'url'          => esc_url( get_permalink( $post->ID ) ),
         'lastReviewed' => esc_attr( get_the_modified_date( 'Y-m-d', $post->ID ) ),
-        'reviewedBy' => array(
-            '@type' => 'Person',
-            '@id'   => 'https://keystonerecomposition.com/#person',
-            'name' => 'Wayne Stevenson',
-            'jobTitle' => 'Metabolic Researcher'
+        'reviewedBy'   => array(
+            '@type'    => 'Person',
+            '@id'      => 'https://keystonerecomposition.com/#person',
+            'name'     => 'Wayne Stevenson',
+            'jobTitle' => 'Founder & Lead Protocol Architect',
         ),
-        'specialty' => 'https://schema.org/Endocrine',
-        'audience' => array(
-            '@type' => 'MedicalAudience',
-            'audienceType' => 'Health Enthusiasts and Patients'
-        )
+        'specialty'    => 'https://schema.org/Endocrine',
+        'audience'     => array(
+            '@type'        => 'MedicalAudience',
+            'audienceType' => 'Health Enthusiasts and Patients',
+        ),
     );
+
+    if ( ! empty( $citations ) ) {
+        $medical_schema['citation'] = $citations;
+    }
     
-    echo "\n<!-- Keystone MedicalWebPage Schema -->\n";
+    echo "\n<!-- Keystone MedicalWebPage Schema with PubMed Citations -->\n";
     echo "<script type=\"application/ld+json\">\n";
     echo wp_json_encode( $medical_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ) . "\n";
     echo "</script>\n";
@@ -958,13 +1162,27 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
 }
 add_filter( 'rank_math/sitemap/enable_caching', '__return_false' );
 
-// Exclude tag taxonomy sitemaps to prevent index bloat
-add_filter( 'rank_math/sitemap/exclude_taxonomy', function( $exclude, $taxonomy ) {
-    if ( 'post_tag' === $taxonomy ) {
+// Exclude thin taxonomies ('post_tag' and 'post_format') from Rank Math XML sitemaps to prevent index bloat
+add_filter( 'rank_math/sitemap/exclude_taxonomy', function( bool $exclude, string $taxonomy ): bool {
+    if ( in_array( $taxonomy, array( 'post_tag', 'post_format' ), true ) ) {
         return true;
     }
     return $exclude;
 }, 10, 2 );
+
+/**
+ * 10.9 Eliminate Archive Bloat via Rank Math Meta Robots
+ * Enforces 'noindex, follow' on tag archives, category archives, date archives, search results, and paginated pages (/page/2/).
+ * Prevents crawl bloat and resolves Google Search Console 'Crawled - currently not indexed' notices.
+ */
+add_filter( 'rank_math/frontend/robots', function( array $robots ): array {
+    if ( is_tag() || is_category() || is_date() || is_search() || is_paged() ) {
+        $robots['index']  = 'noindex';
+        $robots['follow'] = 'follow';
+        unset( $robots['noindex'] );
+    }
+    return $robots;
+}, 10, 1 );
 
 /**
  * 11. Dynamic Robots.txt Sanitizer
@@ -1014,13 +1232,13 @@ function keystone_recomposition_sanitize_robots_txt( $output, $public ) {
 }
 
 /**
- * 11.5 General SEO Fixes: output noindex for tag, date, author archives and query parameters
+ * 11.5 General SEO Fixes: output noindex for tag, category, date, author, search, and paginated archives
  */
 function keystone_recomposition_child_seo_noindex() {
     $should_noindex = false;
 
-    // Only noindex archive types that create duplicate content
-    if ( is_date() || is_author() || is_tag() || is_search() ) {
+    // Only noindex archive types and paginated pages that create duplicate content
+    if ( is_date() || is_author() || is_tag() || is_category() || is_search() || is_paged() ) {
         $should_noindex = true;
     }
 
@@ -1067,9 +1285,58 @@ function keystone_recomposition_child_404_redirect() {
 
     $redirects_301 = array(
         '/2026/01/23/mounjaro-kwikpen-the-official-click-to-mg-math-bible/' => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
-        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/'     => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
-        '/mounjaro-muscle-loss.html/'                                       => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
-        '/wolverine-stack.html/'                                            => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
+        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
+        '/mounjaro-muscle-loss.html/' => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
+        '/wolverine-stack.html/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
+        '/watch-12-solfeggio-protocols-for-total-cellular-rebuild/' => '/watch-solfeggio-cellular-rebuild/',
+        '/watch-2026-body-recomposition-protocol/' => '/watch-the-ultimate-2026-body-recompo/',
+        '/watch-219-lbs-how-i-broke-the-mounjaro-stall-the-week-18-protocol/' => '/watch-how-to-break-mounjaro-stall/',
+        '/watch-33lbs-down-glp1-muscle-infrastructure/' => '/watch-muscle-infrastructure-glp1-33lbs/',
+        '/watch-36lbs-fat-8lbs-muscle-the-recomposition-blueprint/' => '/watch-36lbs-fat-loss-8lbs-muscle-gain/',
+        '/watch-beyond-the-scale-the-2026-strategy-for-biological-age-reversal/' => '/watch-biological-age-reversal-2026/',
+        '/watch-biological-overdrive/' => '/watch-biological-overdrive-album/',
+        '/watch-biological-structural-refit/' => '/watch-biological-structural-refit-skinny/',
+        '/watch-body-recomposition-on-mounjaro/' => '/watch-mounjaro-body-recomposition-40/',
+        '/watch-cjc-1295-dac-vs-tesamorelin-the-visceral-belly-fat-battle/' => '/watch-cjc-1295-dac-vs-tesamorelin-th/',
+        '/watch-cjc-1295-ipamorelin-glp-1-fatigue/' => '/watch-cjc-1295-ipamorelin-glp-1-fati/',
+        '/watch-dangerous-mistake-cjc-1295/' => '/watch-the-dangerous-mistake-i-made-s/',
+        '/watch-fda-ban-tirzepatide-access/' => '/watch-fda-ban-tirzepatide/',
+        '/watch-fda-peptide-ban-11-peptides-saved/' => '/watch-fda-peptide-ban-ending-2026/',
+        '/watch-fda-peptide-ban-july-update/' => '/watch-fda-peptide-ban-the-july-compo/',
+        '/watch-fda-peptide-ban-the-july-compounding-hearings-update-bpc-157-tb-500/' => '/watch-fda-peptide-ban-the-july-compo/',
+        '/watch-fda-peptides-bpc-157-tb-500-update-2026/' => '/watch-fda-peptides-bpc-157-tb-500-up/',
+        '/watch-fighting-glp-1-fatigue-my-personal-otc-energy-stack-recovery-case-study/' => '/watch-fighting-glp-1-fatigue-my-pers/',
+        '/watch-fighting-glp-1-fatigue-otc/' => '/watch-fighting-glp-1-fatigue-my-pers/',
+        '/watch-glp-1-muscle-preservation-protocol/' => '/watch-glp-1-muscle-preservation-48lb/',
+        '/watch-glp-1-results-stalled/' => '/watch-glp-1-results-stalled-13-week/',
+        '/watch-i-lost-48-lbs-on-mounjaro-heres-how-much-was-muscle-men-over-40/' => '/watch-i-lost-48-lbs-on-mounjaro-here/',
+        '/watch-iron-ice-the-54-minute-deep-house-blueprint-for-high-intensity-training/' => '/watch-iron-ice-deep-house-hit/',
+        '/watch-klow-vs-glow-peptide-stacks-science/' => '/watch-klow-vs-glow-peptide-stacks-sc/',
+        '/watch-mounjaro-26-week-results-construction-worker/' => '/watch-mounjaro-26-week-results-const/',
+        '/watch-mounjaro-maintenance-proven-phase-2-audit/' => '/watch-mounjaro-maintenance-audit/',
+        '/watch-mounjaro-whoosh-effect/' => '/watch-mounjaro-whoosh-effect-5-signs/',
+        '/watch-nad-injection-trend-anti-aging/' => '/watch-the-nad-injection-trend-anti-a/',
+        '/watch-pulse-of-the-forge-deep-house-chill/' => '/watch-pulse-of-the-forge-deep-house/',
+        '/watch-safe-mounjaro-injection-guide-2026-my-pain-free-30-second-routine/' => '/watch-mounjaro-injection-guide-2026/',
+        '/watch-stacking-mots-c-and-tirzepatide/' => '/watch-stacking-mots-c-and-tirzepatid/',
+        '/watch-stacking-mots-c-tirzepatide/' => '/watch-stacking-mots-c-and-tirzepatid/',
+        '/watch-stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/' => '/watch-kwikpen-click-protocol-249/',
+        '/watch-stop-glp-1-nausea-my-200g-protein-staple-meal/' => '/watch-glp-1-nausea-management-200g/',
+        '/watch-stop-glp1-weight-regain/' => '/watch-stop-glp1-weight-regain-reset/',
+        '/watch-structural-rebuild-protocol/' => '/watch-structural-rebuild-protocol-35/',
+        '/watch-the-2026-glp-1-muscle-leak-why-infrastructure-matters/' => '/watch-2026-glp-1-muscle-leak/',
+        '/watch-the-dangerous-mistake-i-made-stacking-cjc-1295-with-ghk-cu/' => '/watch-the-dangerous-mistake-i-made-s/',
+        '/watch-the-dopamine-reset-how-glp-1s-silence-the-beer-noise-2026-science-audit/' => '/watch-dopamine-reset-silence-beer-noise/',
+        '/watch-the-nad-injection-trend-anti-aging-breakthrough-or-cellular-wild-west/' => '/watch-the-nad-injection-trend-anti-a/',
+        '/watch-the-new-metabolic-system-kwikpen-logistics-cardio-protection-and-the-phase/' => '/watch-phase-2-stabilization-kwikpen/',
+        '/watch-the-resonance-suite-healing-frequencies-deep-house/' => '/watch-the-resonance-suite-healing-fr/',
+        '/watch-the-ultimate-2026-body-recomposition-protocol-tirzepatide-cjc-1295-explained/' => '/watch-the-ultimate-2026-body-recompo/',
+        '/watch-tirzepatide-titration-schedule-sarcopenia/' => '/watch-tirzepatide-titration-schedule/',
+        '/watch-week-12-sunday-plunge-building-the-mental-infrastructure-for-205-lbs/' => '/watch-week-12-sunday-plunge-205lbs/',
+        '/watch-week-21-216-lbs-the-5mg-metabolic-cadence-recomposition-blueprint/' => '/watch-week-21-mounjaro-5mg-cadence/',
+        '/watch-why-is-the-fda-banning-this-10-year-age-reversal-peptide-epitalon-facts/' => '/watch-fda-epitalon-ban/',
+        '/watch-wolverine-peptide-protocol-bpc-157-tb-500/' => '/watch-wolverine-peptide-protocol-bpc/',
+        '/watch-wolverine-stack-bpc-157-tb-500-builder-blueprint/' => '/watch-wolverine-stack-bpc-157-tb-500/',
     );
 
     $gone_paths = array(

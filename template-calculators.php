@@ -21,8 +21,9 @@ get_header(); ?>
                         <span class="tool-badge" style="display:inline-block; font-size:11px; font-weight:800; letter-spacing:0.15em; color:#C4A265; text-transform:uppercase; margin-bottom:12px; background:rgba(196,162,101,0.12); padding:6px 14px; border-radius:4px; border:1px solid rgba(196,162,101,0.3);">RESEARCH PROTOCOL ENGINES</span>
                         <h1 style="font-family:'Outfit', sans-serif; font-size:clamp(24px, 4vw, 36px); font-weight:800; color:#FFFFFF; text-transform:uppercase; margin-bottom:20px; letter-spacing:0.02em;">Protocol Calculators</h1>
                         <div class="calc-tab-buttons" style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-                            <a href="#glp1-section" class="calc-tab-btn active" onclick="showCalcSection('glp1', event)" id="tab-btn-glp1" style="background:#C4A265 !important; color:#000000 !important; font-weight:800 !important; padding:12px 24px !important; border-radius:6px !important; text-decoration:none !important; text-transform:uppercase !important; font-size:13px !important; letter-spacing:0.05em !important; display:inline-block !important;">1. GLP-1 KwikPen Dialer</a>
-                            <a href="#peptide-section" class="calc-tab-btn" onclick="showCalcSection('peptide', event)" id="tab-btn-peptide" style="background:#141414 !important; color:#C4A265 !important; border:1px solid rgba(196,162,101,0.4) !important; font-weight:800 !important; padding:12px 24px !important; border-radius:6px !important; text-decoration:none !important; text-transform:uppercase !important; font-size:13px !important; letter-spacing:0.05em !important; display:inline-block !important;">2. Peptide Reconstitution</a>
+                            <a href="#glp1-section" class="calc-tab-btn active" onclick="showCalcSection('glp1', event)" id="tab-btn-glp1" data-tab="glp1" style="background:#C4A265 !important; color:#000000 !important; font-weight:800 !important; padding:12px 24px !important; border-radius:6px !important; text-decoration:none !important; text-transform:uppercase !important; font-size:13px !important; letter-spacing:0.05em !important; display:inline-flex !important; align-items:center; justify-content:center; min-height:44px; min-width:44px;">1. GLP-1 KwikPen Dialer</a>
+                            <a href="#peptide-section" class="calc-tab-btn" onclick="showCalcSection('peptide', event)" id="tab-btn-peptide" data-tab="peptide" style="background:#141414 !important; color:#C4A265 !important; border:1px solid rgba(196,162,101,0.4) !important; font-weight:800 !important; padding:12px 24px !important; border-radius:6px !important; text-decoration:none !important; text-transform:uppercase !important; font-size:13px !important; letter-spacing:0.05em !important; display:inline-flex !important; align-items:center; justify-content:center; min-height:44px; min-width:44px;">2. Peptide Reconstitution</a>
+                            <a href="#protein-section" class="calc-tab-btn" onclick="showCalcSection('protein', event)" id="tab-btn-protein" data-tab="protein" style="background:#141414 !important; color:#C4A265 !important; border:1px solid rgba(196,162,101,0.4) !important; font-weight:800 !important; padding:12px 24px !important; border-radius:6px !important; text-decoration:none !important; text-transform:uppercase !important; font-size:13px !important; letter-spacing:0.05em !important; display:inline-flex !important; align-items:center; justify-content:center; min-height:44px; min-width:44px;">3. Protein Floor &amp; Timing</a>
                         </div>
                     </div>
 
@@ -45,41 +46,56 @@ get_header(); ?>
                         <?php echo do_shortcode( '[keystone_peptide_calculator]' ); ?>
                     </div>
 
+                    <div id="calc-protein-wrap" class="calc-view-section" style="display: none; margin-top: 0;">
+                        <?php echo do_shortcode( '[keystone_protein_calculator]' ); ?>
+                    </div>
+
                     <script>
                     function showCalcSection(type, e) {
                         if (e) e.preventDefault();
                         var glp1Wrap = document.getElementById('calc-glp1-wrap');
                         var pepWrap = document.getElementById('calc-peptide-wrap');
+                        var proteinWrap = document.getElementById('calc-protein-wrap');
                         var glp1Btn = document.getElementById('tab-btn-glp1');
                         var pepBtn = document.getElementById('tab-btn-peptide');
+                        var proteinBtn = document.getElementById('tab-btn-protein');
                         
+                        var wraps = [glp1Wrap, pepWrap, proteinWrap];
+                        var btns = [glp1Btn, pepBtn, proteinBtn];
+                        
+                        wraps.forEach(function(w) { if (w) w.style.display = 'none'; });
+                        btns.forEach(function(b) {
+                            if (b) {
+                                b.classList.remove('active');
+                                b.style.background = '#141414';
+                                b.style.color = '#C4A265';
+                                b.style.border = '1px solid rgba(196,162,101,0.4)';
+                            }
+                        });
+
                         if (type === 'glp1') {
                             if (glp1Wrap) glp1Wrap.style.display = 'block';
-                            if (pepWrap) pepWrap.style.display = 'none';
                             if (glp1Btn) {
                                 glp1Btn.classList.add('active');
                                 glp1Btn.style.background = '#C4A265';
                                 glp1Btn.style.color = '#000000';
+                                glp1Btn.style.border = 'none';
                             }
-                            if (pepBtn) {
-                                pepBtn.classList.remove('active');
-                                pepBtn.style.background = '#141414';
-                                pepBtn.style.color = '#C4A265';
-                                pepBtn.style.border = '1px solid rgba(196,162,101,0.4)';
-                            }
-                        } else {
-                            if (glp1Wrap) glp1Wrap.style.display = 'none';
+                        } else if (type === 'peptide') {
                             if (pepWrap) pepWrap.style.display = 'block';
                             if (pepBtn) {
                                 pepBtn.classList.add('active');
                                 pepBtn.style.background = '#C4A265';
                                 pepBtn.style.color = '#000000';
+                                pepBtn.style.border = 'none';
                             }
-                            if (glp1Btn) {
-                                glp1Btn.classList.remove('active');
-                                glp1Btn.style.background = '#141414';
-                                glp1Btn.style.color = '#C4A265';
-                                glp1Btn.style.border = '1px solid rgba(196,162,101,0.4)';
+                        } else if (type === 'protein') {
+                            if (proteinWrap) proteinWrap.style.display = 'block';
+                            if (proteinBtn) {
+                                proteinBtn.classList.add('active');
+                                proteinBtn.style.background = '#C4A265';
+                                proteinBtn.style.color = '#000000';
+                                proteinBtn.style.border = 'none';
                             }
                         }
                     }

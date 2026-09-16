@@ -2770,6 +2770,426 @@ footer.site-footer,
   color: #04070d !important;
 }
 
+/* ==========================================================================
+   Keystone Recomposition - Evidence Base & Clinical Citations Ledger
+   Glassmorphic container, high-contrast typography, gold badges & cyan links
+   ========================================================================== */
+.keystone-evidence-card {
+  background: rgba(10, 15, 25, 0.85) !important;
+  border: 1px solid rgba(196, 162, 101, 0.35) !important;
+  border-radius: 18px !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 35px 30px !important;
+  margin: 40px auto !important;
+  max-width: 1000px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+  color: #e2e8f0 !important;
+  box-sizing: border-box !important;
+}
+
+.evidence-header {
+  margin-bottom: 25px !important;
+  border-bottom: 1px solid rgba(196, 162, 101, 0.2) !important;
+  padding-bottom: 20px !important;
+}
+
+.evidence-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: clamp(20px, 3.2vw, 28px) !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  margin: 0 0 8px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.evidence-subtitle {
+  font-size: 14px !important;
+  color: #94a3b8 !important;
+  margin: 0 !important;
+  line-height: 1.6 !important;
+}
+
+.evidence-citations-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+.evidence-citation-row {
+  background: rgba(15, 23, 42, 0.7) !important;
+  border: 1px solid rgba(196, 162, 101, 0.2) !important;
+  border-left: 4px solid #c4a265 !important;
+  border-radius: 10px !important;
+  padding: 18px 22px !important;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
+  box-sizing: border-box !important;
+}
+
+.evidence-citation-row:hover {
+  border-color: rgba(196, 162, 101, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.evidence-citation-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-bottom: 8px !important;
+}
+
+.evidence-authors {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #c4a265 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.evidence-paper-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+  margin: 0 0 6px 0 !important;
+}
+
+.evidence-journal {
+  font-size: 13px !important;
+  color: #94a3b8 !important;
+  font-style: italic !important;
+  margin: 0 0 10px 0 !important;
+}
+
+.evidence-takeaway {
+  font-size: 13px !important;
+  color: #e2e8f0 !important;
+  line-height: 1.6 !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 10px 14px !important;
+  margin: 8px 0 12px 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.evidence-takeaway strong {
+  color: #c4a265 !important;
+}
+
+.pmid-pill-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(196, 162, 101, 0.15) !important;
+  color: #d4af37 !important;
+  border: 1px solid rgba(212, 175, 55, 0.5) !important;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  min-height: 28px !important;
+}
+
+.pmid-pill-badge:hover {
+  background: #c4a265 !important;
+  color: #000000 !important;
+  border-color: #c4a265 !important;
+  box-shadow: 0 0 12px rgba(196, 162, 101, 0.4) !important;
+}
+
+.evidence-links-row {
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 8px !important;
+}
+
+.evidence-cyan-link {
+  color: #00f0ff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+.evidence-cyan-link:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7) !important;
+}
+
+.evidence-disclaimer {
+  padding: 16px 20px !important;
+  border-radius: 8px !important;
+  margin-top: 18px !important;
+  box-sizing: border-box !important;
+}
+
+.evidence-disclaimer.amber-disclaimer {
+  border-left: 4px solid #f59e0b !important;
+  background: rgba(245, 158, 11, 0.08) !important;
+  border-top: 1px solid rgba(245, 158, 11, 0.2) !important;
+  border-right: 1px solid rgba(245, 158, 11, 0.2) !important;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2) !important;
+}
+
+.disclaimer-heading-amber {
+  color: #f59e0b !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin: 0 0 6px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.evidence-disclaimer.cyan-disclaimer {
+  border-left: 4px solid #00f0ff !important;
+  background: rgba(0, 240, 255, 0.06) !important;
+  border-top: 1px solid rgba(0, 240, 255, 0.2) !important;
+  border-right: 1px solid rgba(0, 240, 255, 0.2) !important;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important;
+}
+
+.disclaimer-heading-cyan {
+  color: #00f0ff !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin: 0 0 6px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.disclaimer-body-text {
+  color: #e2e8f0 !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   Keystone Recomposition - Protein Floor & Anabolic Timing Calculator Styles
+   ========================================================================== */
+.protein-calculator-card {
+  box-sizing: border-box !important;
+}
+
+.unit-toggle-group {
+  display: inline-flex !important;
+  background: #1a1a1a !important;
+  border-radius: 6px !important;
+  padding: 2px !important;
+  border: 1px solid rgba(196, 162, 101, 0.3) !important;
+}
+
+.unit-toggle-btn {
+  background: transparent !important;
+  color: #9ca3af !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  min-height: 44px !important;
+  min-width: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.unit-toggle-btn.active {
+  background: #c4a265 !important;
+  color: #000000 !important;
+}
+
+.meals-selector-grid,
+.intensity-selector-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px !important;
+  margin-top: 8px !important;
+}
+
+.meals-btn,
+.intensity-btn {
+  background: #1a1a1a !important;
+  color: #d1d5db !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 12px 10px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  min-height: 48px !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.meals-btn strong,
+.intensity-btn strong {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+.meals-btn small,
+.intensity-btn small {
+  font-size: 10px !important;
+  color: #9ca3af !important;
+  text-align: center !important;
+  line-height: 1.3 !important;
+}
+
+.meals-btn:hover,
+.intensity-btn:hover {
+  border-color: #c4a265 !important;
+  color: #ffffff !important;
+}
+
+.meals-btn.active,
+.intensity-btn.active {
+  background: #c4a265 !important;
+  border-color: #c4a265 !important;
+  color: #000000 !important;
+}
+
+.meals-btn.active strong,
+.intensity-btn.active strong {
+  color: #000000 !important;
+}
+
+.meals-btn.active small,
+.intensity-btn.active small {
+  color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.calc-tab-btn {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   Mobile Media Queries for 390px Viewports (iPhone 12/13/14 Pro & Modern Android)
+   Enforces min 44px touch targets, zero horizontal scroll, and responsive layout
+   ========================================================================== */
+@media (max-width: 480px), (max-width: 390px) {
+  .keystone-evidence-card,
+  .protein-calculator-card,
+  .keystone-tool-card {
+    padding: 24px 16px !important;
+    margin: 20px auto !important;
+    border-radius: 12px !important;
+  }
+
+  .evidence-title {
+    font-size: 20px !important;
+  }
+
+  .evidence-citation-row {
+    padding: 14px 14px !important;
+  }
+
+  .evidence-citation-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .pmid-pill-badge {
+    min-height: 44px !important;
+    padding: 6px 14px !important;
+  }
+
+  .evidence-cyan-link {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .meals-selector-grid,
+  .intensity-selector-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .meals-btn,
+  .intensity-btn {
+    min-height: 48px !important;
+    padding: 12px 14px !important;
+  }
+
+  .strength-selector-grid,
+  .vial-selector-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .strength-btn,
+  .vial-btn {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .gold-range-slider {
+    height: 10px !important;
+  }
+
+  .gold-range-slider::-webkit-slider-thumb {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .gold-range-slider::-moz-range-thumb {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .calc-tab-buttons {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .calc-tab-btn {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+
 
 
 

@@ -1014,13 +1014,9 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
         return;
     }
 
-    $watch_slug = 'watch-' . $post->post_name;
-
-    // Check if the watch page already exists (to prevent duplicates)
-    $existing = get_page_by_path( $watch_slug, OBJECT, 'page' );
-    if ( $existing ) {
-        return;
-    }
+    // Ensure the generated slug is always strictly watch-[post-slug]
+    $post_slug = ! empty( $post->post_name ) ? sanitize_title( $post->post_name ) : sanitize_title( $post->post_title );
+    $watch_slug = 'watch-' . $post_slug;
 
     // Build the watch page content
     $blog_permalink = get_permalink( $post->ID );
@@ -1038,17 +1034,56 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
     // Unhook this action to prevent infinite loops
     remove_action( 'transition_post_status', 'keystone_auto_create_watch_page', 10 );
 
-    // Insert the watch page
-    $page_id = wp_insert_post( array(
-        'post_title'    => 'Watch: ' . $post->post_title,
-        'post_name'     => $watch_slug,
-        'post_content'  => $content,
-        'post_status'   => 'publish',
-        'post_type'     => 'page',
-        'post_author'   => $post->post_author
+    // Check if a page with keystone_youtube_id === $youtube_id already exists
+    $existing_page_id = 0;
+    $existing_query = new WP_Query( array(
+        'post_type'      => 'page',
+        'post_status'    => array( 'publish', 'draft', 'pending' ),
+        'posts_per_page' => 1,
+        'meta_query'     => array(
+            array(
+                'key'     => 'keystone_youtube_id',
+                'value'   => $youtube_id,
+                'compare' => '=',
+            ),
+        ),
+        'fields'         => 'ids',
+        'no_found_rows'  => true,
     ) );
 
-    if ( ! is_wp_error( $page_id ) ) {
+    if ( ! empty( $existing_query->posts ) ) {
+        $existing_page_id = (int) $existing_query->posts[0];
+    } else {
+        // Fallback: check by exact watch slug
+        $page_by_path = get_page_by_path( $watch_slug, OBJECT, 'page' );
+        if ( $page_by_path && ! empty( $page_by_path->ID ) ) {
+            $existing_page_id = (int) $page_by_path->ID;
+        }
+    }
+
+    if ( $existing_page_id > 0 ) {
+        // Update existing page rather than inserting a duplicate
+        wp_update_post( array(
+            'ID'           => $existing_page_id,
+            'post_title'   => 'Watch: ' . $post->post_title,
+            'post_name'    => $watch_slug,
+            'post_content' => $content,
+            'post_status'  => 'publish',
+        ) );
+        $page_id = $existing_page_id;
+    } else {
+        // Insert the watch page
+        $page_id = wp_insert_post( array(
+            'post_title'   => 'Watch: ' . $post->post_title,
+            'post_name'    => $watch_slug,
+            'post_content' => $content,
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+            'post_author'  => $post->post_author,
+        ) );
+    }
+
+    if ( ! is_wp_error( $page_id ) && $page_id > 0 ) {
         update_post_meta( $page_id, 'keystone_youtube_id', $youtube_id );
         // Force-clear cache if purger function exists
         if ( function_exists( 'purge_all_caches' ) ) {

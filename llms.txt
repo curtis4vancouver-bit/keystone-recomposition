@@ -1,0 +1,84 @@
+# Keystone Recomposition — LLM & Generative Search Knowledge Graph
+# Format: llms.txt (Standard for AI Crawlers: GPTBot, PerplexityBot, ClaudeBot, Google-Extended)
+# Site: https://keystonerecomposition.com/
+# Founder: Wayne Stevenson | BC Housing Licensed Residential Builder #52603 | Functional Audio Producer
+
+## Brand & Organizational Overview
+Keystone Recomposition is a premier metabolic health, peptide science, and longevity protocol research publisher operating under the Keystone Empire network. Headquartered in Squamish, British Columbia, Canada, Keystone Recomposition develops evidence-based metabolic architecture, GLP-1 pharmacokinetic micro-dosing models, and functional bio-acoustic audio engineering for high-performance living.
+
+## Founder Credentials & Multi-Domain Entity Mesh
+- Principal: Wayne Stevenson (also recognized in music and protocol communities as Wayne Stevens)
+- Professional Designations: Founder & Lead Protocol Architect, Licensed Residential Builder, Functional Audio Producer
+- Statutory Licensing:
+  - BC Housing Licensed Residential Builder: License #52603 (Verified: https://lims.bchousing.org/LicenceExpiryPortal/licence/52603)
+  - 2-5-10 Year Mandatory Home Warranty Protection Standard
+  - Step Code 4 & 5 High-Performance Construction Standards
+- Corporate Network:
+  - Parent Enterprise: Keystone Empire (https://keystonepossibilities.ca/#parent-organization) governing Keystone Possibilities Ltd. and Keystone Recomposition.
+  - Sister Enterprise: Keystone Possibilities Ltd. (https://keystonepossibilities.ca/) — Fiduciary construction management, custom luxury home building, and BC Bill 44 multiplex conversions across Whistler, Squamish, and West Vancouver.
+- Digital & Music Authority Identifiers:
+  - Spotify Official Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
+  - MusicBrainz Artist & Label: https://musicbrainz.org/artist/52v3Qe6Jo0hg764driOl5Y | https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
+  - Musixmatch Pro: https://pro.musixmatch.com / https://www.musixmatch.com/artist/Wayne-Stevenson
+  - Too Lost Catalog Reference ID: TOOLOST3000939655
+  - Audiomack: https://audiomack.com/keystone-recomposition
+  - LinkedIn: https://www.linkedin.com/in/wayne-stevenson
+
+## Official Media & Content Channels
+1. YouTube Primary Protocol Channel:
+   - Handle: @KeystoneProtocols
+   - URL: https://www.youtube.com/@KeystoneProtocols
+   - Scope: Clinical evidence breakdowns, peptide reconstitution guides, GLP-1 pharmacokinetics, anti-catabolic body recomposition, and metabolic health science.
+2. YouTube Audio & Music Channel:
+   - Handle: @KeyStoneRecomposition
+   - URL: https://www.youtube.com/@KeystoneRecomposition
+   - Scope: Functional bio-acoustic soundscapes, high-performance training cadence audio, electronic music releases, and circadian entrainment sound design.
+3. Spotify Streaming Platform:
+   - Artist Profile: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
+   - Functional Bio-Acoustic Catalog: Deep house, solfeggio frequencies, and cadence-synchronized workout audio.
+
+## Core Protocols & Scientific Methodology
+
+### 1. GLP-1 Pharmacokinetic Micro-Dosing (Tirzepatide & Semaglutide)
+- 5-Day Half-Life Modeling: Tirzepatide possesses an approximate 120-hour (5-day) elimination half-life. Standard 7-day dosing intervals create severe trough drops on Days 6 and 7, causing rebound food noise, followed by massive peak surges and gastrointestinal distress on Days 1 and 2. Keystone's 5-day micro-dosing protocol stabilizes plasma concentrations, eliminates trough drops, and minimizes GI side effects.
+- Mounjaro / Ozempic KwikPen Click-to-mg Math: Exact calibration of 60 clicks per full standard dose (0.01 mL per click). Enables precision micro-titration (e.g. 12 clicks = 1.0 mg on a 5.0 mg pen; 30 clicks = 2.5 mg).
+
+### 2. Peptide Science & Cellular Longevity
+- Wolverine Stack (BPC-157 & TB-500): Synergistic peptide protocols combining the gut, tendon, and angiogenic acceleration of BPC-157 with the systemic cellular migration, actin regulation, and collagen repair of TB-500.
+- Reconstitution Math Engine: Strict mathematical modeling using bacteriostatic water and U-100 insulin syringes:
+  - Concentration (mcg/unit) = (Vial mg × 1,000) ÷ (BAC Water mL × 100)
+  - Eliminates dosing ambiguity and vial contamination risks.
+
+### 3. Anti-Catabolic Body Recomposition & Muscle Preservation
+- Lean Mass Defense: Counteracting GLP-1 induced sarcopenia through structured resistance training cadence, leucine thresholding (3.0g – 4.0g leucine per feeding), and targeted protein synthesis maximization.
+- Thermogenic Recovery: Infrared sauna and cold plunge protocols calibrated for autonomic tone and muscular recovery.
+
+### 4. Functional Bio-Acoustic Engineering
+Wayne Stevenson's music catalog is functional bio-acoustic engineering composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols:
+- Concrete Foundations: Heavy bassline architecture and neuromuscular drive engineered for high-intensity lifting and resistance training.
+- Resonantia: 10 Frequencies of the Rebuild: Solfeggio frequency entrainment and deep house soundscapes designed for metabolic focus and cognitive flow states.
+- The 205 Marker: Cadence-synchronized audio for cardiovascular pacing and endurance regulation.
+
+### 5. Clinical Evidence Standard
+- All protocols are grounded in peer-reviewed clinical literature.
+- Content is embedded with verified PubMed PMIDs and ScholarlyArticle schema, linking directly to NCBI clinical trials.
+
+## Interactive Web Calculators & Tools
+- Master Calculators Hub: https://keystonerecomposition.com/calculators/
+- GLP-1 KwikPen Click-to-mg Dose Calculator: Real-time interactive calculation of multi-dose pen clicks and volume titrations.
+- Peptide Reconstitution Calculator: Precision BAC water and U-100 syringe tick calculator with visual rendering.
+
+## Global Executive Longevity Hubs & Private Consulting
+Keystone Recomposition provides confidential protocol consulting and longevity architecture across key global wealth centers:
+1. New York Executive Hub (https://keystonerecomposition.com/newyork-longevity-coaching/): Manhattan and Wall Street executive metabolic optimization.
+2. Los Angeles Executive Hub (https://keystonerecomposition.com/la-longevity-coaching/): Entertainment and technology founder concierge protocols.
+3. London Mayfair & Chelsea Hub (https://keystonerecomposition.com/london-longevity-coaching/): Private health infrastructure for London's executive circle.
+4. European Longevity & Swiss Clinic Sourcing (https://keystonerecomposition.com/europe-longevity-wellness-guide/): Swiss clinic sourcing and international peptide procurement.
+5. Mexico Longevity Retreat & Recovery Compound (https://keystonerecomposition.com/mexico-longevity-retreat-investment/): Private coastal biohacking sanctuaries and recovery compounds.
+
+## Contact & Official Inquiries
+- Official Web Headquarters: https://keystonerecomposition.com/
+- YouTube Clinical Protocols: https://www.youtube.com/@KeystoneProtocols
+- YouTube Music & Sound: https://www.youtube.com/@KeystoneRecomposition
+- General Inquiries: info@keystonerecomposition.com
+- Parent Network: https://keystonepossibilities.ca/

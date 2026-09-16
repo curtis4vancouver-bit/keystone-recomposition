@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Provides:
  * - [keystone_glp1_calculator] : Mounjaro / Zepbound / Ozempic KwikPen Click-to-mg Math & 5-Day PK Scaler
  * - [keystone_peptide_calculator] : FDA Category 1 Peptide Reconstitution & U-100 Syringe Visualizer
+ * - [keystone_protein_calculator] : Daily Protein Floor, Meal Distribution & Leucine Threshold Engine
  * - [keystone_gear_portal] : Curated Biohacking, Equipment & Discount Codes Portal
  * - [keystone_sonic_universe] : Spotify Discography & YouTube OAC Media Center
  * - [keystone_kitchen_recipes] : High-Protein Metabolic Recomposition Recipes
@@ -361,7 +362,222 @@ function keystone_peptide_calculator_shortcode() {
 add_shortcode( 'keystone_peptide_calculator', 'keystone_peptide_calculator_shortcode' );
 
 /**
- * 3. Curated Gear, Biohacking Tools & Discount Codes Portal Shortcode
+ * 3. Daily Protein Floor & Anabolic Timing Calculator Shortcode
+ */
+function keystone_protein_calculator_shortcode() {
+    ob_start();
+    ?>
+    <div class="keystone-tool-card protein-calculator-card" id="protein-calculator">
+        <div class="tool-header">
+            <span class="tool-badge">METABOLIC PRESERVATION SUITE</span>
+            <h2 class="tool-title">Protein Floor, Meal Distribution &amp; Leucine Threshold Engine</h2>
+            <p class="tool-subtitle">Dynamic calculation of daily anabolic protein floors (1.2g/lb minimum vs. 1.5g/lb optimal body recomposition), per-meal bolus distribution, and Sestrin2 mTORC1 leucine threshold saturation.</p>
+        </div>
+
+        <!-- Prominent Legally Binding Medical Disclaimer Banner -->
+        <div class="keystone-disclaimer-banner" style="background: rgba(196,162,101,0.08); border: 1px solid rgba(196,162,101,0.4); border-left: 4px solid #C4A265; border-radius: 8px; padding: 14px 20px; margin: 0 0 24px 0;">
+            <h4 style="font-family:'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: #C4A265; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px 0; display:flex; align-items:center; gap:8px;">
+                <span>⚠️</span> NUTRITION RESEARCH &amp; MEDICAL DISCLAIMER NOTICE
+            </h4>
+            <p style="font-size: 13px; line-height: 1.6; color: #D1D5DB; margin: 0; font-weight: 600;">
+                For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician or Dietitian.
+            </p>
+        </div>
+
+        <div class="calculator-grid">
+            <!-- Left Column: Interactive Inputs -->
+            <div class="calc-control-panel">
+                <!-- Unit & Body Weight Control -->
+                <div class="calc-group">
+                    <div class="label-row">
+                        <label for="protein-weight-slider" class="calc-label" style="margin-bottom:0;">Current Body Weight:</label>
+                        <div class="unit-toggle-group">
+                            <button type="button" class="unit-toggle-btn active" data-unit="lbs" id="unit-btn-lbs">LBS</button>
+                            <button type="button" class="unit-toggle-btn" data-unit="kg" id="unit-btn-kg">KG</button>
+                        </div>
+                    </div>
+                    <div class="label-row" style="margin-top:10px;">
+                        <span class="calc-subtext" id="weight-range-hint" style="font-size:12px; color:#9CA3AF;">Slide or dial weight:</span>
+                        <span class="click-display" id="protein-weight-display">200 lbs</span>
+                    </div>
+                    <input type="range" id="protein-weight-slider" min="100" max="350" value="200" step="1" class="gold-range-slider" aria-label="Body Weight Slider">
+                    <div class="slider-ticks" id="weight-ticks">
+                        <span>100 lbs</span>
+                        <span>160 lbs</span>
+                        <span>200 lbs</span>
+                        <span>260 lbs</span>
+                        <span>350 lbs</span>
+                    </div>
+                </div>
+
+                <!-- Meal Frequency Selector (3, 4, 5 meals/day) -->
+                <div class="calc-group">
+                    <div class="label-row">
+                        <label class="calc-label" style="margin-bottom:0;">Meal Frequency (Per Day):</label>
+                        <span class="click-display" id="protein-meals-display">4 Meals / Day</span>
+                    </div>
+                    <p style="font-size:12px; color:#9CA3AF; margin:6px 0 12px 0;">Select daily bolus cadence to optimize refractory muscle protein synthesis (MPS):</p>
+                    <div class="meals-selector-grid">
+                        <button type="button" class="meals-btn" data-meals="3">
+                            <strong>3 Meals</strong>
+                            <small>Intermittent / Compact</small>
+                        </button>
+                        <button type="button" class="meals-btn active" data-meals="4">
+                            <strong>4 Meals</strong>
+                            <small>Optimal Anabolic Cadence</small>
+                        </button>
+                        <button type="button" class="meals-btn" data-meals="5">
+                            <strong>5 Meals</strong>
+                            <small>Satiety / High-Volume</small>
+                        </button>
+                    </div>
+                    <input type="range" id="protein-meals-slider" min="3" max="5" value="4" step="1" class="gold-range-slider" style="margin-top:14px;" aria-label="Meal Frequency Slider">
+                    <div class="slider-ticks">
+                        <span>3 Meals (5h Gap)</span>
+                        <span>4 Meals (4h Gap)</span>
+                        <span>5 Meals (3h Gap)</span>
+                    </div>
+                </div>
+
+                <!-- Activity & Training Intensity Selector -->
+                <div class="calc-group">
+                    <div class="label-row">
+                        <label class="calc-label" style="margin-bottom:0;">Activity &amp; Training Intensity:</label>
+                        <span class="click-display" id="protein-intensity-display">1.50 g/lb (Optimal)</span>
+                    </div>
+                    <p style="font-size:12px; color:#9CA3AF; margin:6px 0 12px 0;">Calibrate multiplier against caloric deficit depth, GLP-1 therapy, and hypertrophy volume:</p>
+                    <div class="intensity-selector-grid">
+                        <button type="button" class="intensity-btn" data-multiplier="1.2">
+                            <strong>1.20 g/lb (Floor)</strong>
+                            <small>Sedentary / Baseline Maintenance</small>
+                        </button>
+                        <button type="button" class="intensity-btn" data-multiplier="1.35">
+                            <strong>1.35 g/lb (Moderate)</strong>
+                            <small>Resistance Training 3-4x/wk</small>
+                        </button>
+                        <button type="button" class="intensity-btn active" data-multiplier="1.5">
+                            <strong>1.50 g/lb (Recomp Target)</strong>
+                            <small>Heavy Hypertrophy + GLP-1 Cut</small>
+                        </button>
+                    </div>
+                    <input type="range" id="protein-intensity-slider" min="1.0" max="1.8" value="1.5" step="0.05" class="gold-range-slider" style="margin-top:14px;" aria-label="Training Intensity Slider">
+                    <div class="slider-ticks">
+                        <span>1.0 g/lb (Low)</span>
+                        <span>1.2 g/lb (Floor)</span>
+                        <span>1.5 g/lb (Recomp)</span>
+                        <span>1.8 g/lb (Peak)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Real-Time Results & Leucine Dynamics -->
+            <div class="calc-results-panel">
+                <!-- Daily Protein Floors Card -->
+                <div class="results-card">
+                    <h3 class="results-header">Daily Anabolic Protein Targets</h3>
+                    
+                    <div class="metric-row highlight-metric">
+                        <span class="metric-label">Selected Daily Target:</span>
+                        <span class="metric-value gold-text" id="res-protein-daily-target">300 g / day</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Minimum Daily Floor (1.2 g/lb):</span>
+                        <span class="metric-value" id="res-protein-floor-min">240 g / day</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Optimal Recomposition Floor (1.5 g/lb):</span>
+                        <span class="metric-value" id="res-protein-floor-opt">300 g / day</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Relative Intake (g/kg):</span>
+                        <span class="metric-value" id="res-protein-g-kg">3.30 g / kg</span>
+                    </div>
+                </div>
+
+                <!-- Per-Meal Bolus & Leucine Kinetics Card -->
+                <div class="results-card secondary-card">
+                    <h3 class="results-header">Per-Meal Bolus &amp; Leucine Kinetics</h3>
+                    
+                    <div class="metric-row highlight-metric">
+                        <span class="metric-label">Per-Meal Protein Bolus:</span>
+                        <span class="metric-value gold-text" id="res-meal-bolus">75.0 g / meal</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Estimated Leucine Yield:</span>
+                        <span class="metric-value" id="res-leucine-yield" style="color:#00F0FF; font-weight:700;">6.6 g Leucine</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Leucine Threshold Benchmark:</span>
+                        <span class="metric-value" id="res-leucine-target" style="color:#C4A265; font-weight:700;">3.0 – 4.0 g / meal</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">mTORC1 Sestrin2 Trigger:</span>
+                        <span class="metric-value" id="res-mtor-status" style="color:#10B981; font-weight:800;">✓ Fully Saturated</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Optimal Anabolic Cadence:</span>
+                        <span class="metric-value" id="res-meal-cadence" style="color:#D1D5DB;">Every 3.5 – 4.5 Hours</span>
+                    </div>
+                </div>
+
+                <!-- Lean Mass Protection (LMP) Index Card -->
+                <div class="results-card">
+                    <div class="label-row" style="margin-bottom:8px;">
+                        <h3 class="results-header" style="border:none; padding:0; margin:0;">Lean Mass Protection (LMP) Index</h3>
+                        <span class="metric-value gold-text" id="res-lmp-score" style="font-size:16px;">98% • Elite</span>
+                    </div>
+                    <p style="font-size:12px; color:#9CA3AF; margin:0 0 10px 0;">Evaluates resistance against skeletal muscle catabolism under hypocaloric states and GLP-1 receptor agonist therapy.</p>
+                    <div class="lmp-progress-bar" style="background:#262626; border-radius:9999px; height:8px; overflow:hidden; border:1px solid rgba(196,162,101,0.3); margin-bottom:10px;">
+                        <div id="res-lmp-bar" style="width: 98%; height:100%; background:linear-gradient(90deg, #C4A265 0%, #10B981 100%); transition:width 0.3s ease;"></div>
+                    </div>
+                    <div class="metric-row" style="border:none; padding-top:4px;">
+                        <span class="metric-label">Sarcopenia Risk Rating:</span>
+                        <span class="metric-value" id="res-lmp-rating" style="color:#10B981; font-weight:700;">Minimal / Protected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Master Leucine & Bolus Matrix Table -->
+        <div class="table-container">
+            <h3 class="table-title">Evidence-Based Protein Floor &amp; Leucine Threshold Matrix</h3>
+            <div class="table-responsive">
+                <table class="keystone-table">
+                    <thead>
+                        <tr>
+                            <th>Body Weight</th>
+                            <th>Min Floor (1.2g/lb)</th>
+                            <th>Optimal Recomp (1.5g/lb)</th>
+                            <th>3 Meals / Day</th>
+                            <th>4 Meals / Day</th>
+                            <th>5 Meals / Day</th>
+                            <th>Leucine / Bolus (4-Meal)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>160 lbs (72.6 kg)</strong></td><td>192 g/day</td><td>240 g/day</td><td>80.0 g/meal</td><td>60.0 g/meal</td><td>48.0 g/meal</td><td><span class="gold-badge">5.3 g Leucine</span></td></tr>
+                        <tr><td><strong>180 lbs (81.6 kg)</strong></td><td>216 g/day</td><td>270 g/day</td><td>90.0 g/meal</td><td>67.5 g/meal</td><td>54.0 g/meal</td><td><span class="gold-badge">5.9 g Leucine</span></td></tr>
+                        <tr><td><strong>200 lbs (90.7 kg)</strong></td><td>240 g/day</td><td>300 g/day</td><td>100.0 g/meal</td><td>75.0 g/meal</td><td>60.0 g/meal</td><td><span class="gold-badge">6.6 g Leucine</span></td></tr>
+                        <tr><td><strong>220 lbs (99.8 kg)</strong></td><td>264 g/day</td><td>330 g/day</td><td>110.0 g/meal</td><td>82.5 g/meal</td><td>66.0 g/meal</td><td><span class="gold-badge">7.3 g Leucine</span></td></tr>
+                        <tr><td><strong>240 lbs (108.9 kg)</strong></td><td>288 g/day</td><td>360 g/day</td><td>120.0 g/meal</td><td>90.0 g/meal</td><td>72.0 g/meal</td><td><span class="gold-badge">7.9 g Leucine</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Fiduciary Disclaimer -->
+        <div class="keystone-disclaimer-box">
+            <h4 class="disclaimer-title">⚠️ Nutritional Case Study &amp; Bioenergetic Modeling — Consult Your Physician</h4>
+            <p class="disclaimer-text"><strong>For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician.</strong> Daily protein floors, leucine threshold targets, and Lean Mass Protection (LMP) indices reflect <strong>observational case-study modeling</strong> documented by Wayne Stevenson during the Keystone Recomposition protocol. Individual amino acid turnover, renal glomerular filtration capacity, and digestive tolerability vary significantly. <strong>This tool is published strictly for educational and mathematical research purposes. Individuals with pre-existing renal disease, impaired glomerular filtration, or metabolic disorders must consult their nephrologist or licensed physician before implementing elevated protein protocols.</strong></p>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'keystone_protein_calculator', 'keystone_protein_calculator_shortcode' );
+
+/**
+ * 4. Curated Gear, Biohacking Tools & Discount Codes Portal Shortcode
  */
 function keystone_gear_portal_shortcode() {
     ob_start();
