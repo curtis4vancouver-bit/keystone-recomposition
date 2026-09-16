@@ -1381,16 +1381,21 @@ function keystone_recomposition_child_404_redirect() {
         '/pemberton-luxury-builder/',
     );
 
-    // Exact 301 redirects
-    if ( isset( $redirects_301[ $path ] ) ) {
-        wp_redirect( home_url( $redirects_301[ $path ] ), 301 );
+    $trimmed_path = '/' . trim( (string) $path, '/' );
+    $slashed_path = $trimmed_path . '/';
+
+    // Exact 301 redirects (checking both with and without trailing slash)
+    $target = $redirects_301[ $slashed_path ] ?? $redirects_301[ $trimmed_path ] ?? null;
+    if ( $target !== null ) {
+        wp_redirect( home_url( $target ), 301 );
         exit;
     }
 
     // Exact and prefix 410 Gone statuses
     $is_gone = false;
     foreach ( $gone_paths as $gone_target ) {
-        if ( $path === $gone_target || ( '/' !== $gone_target && 0 === strpos( $path, $gone_target ) ) ) {
+        $clean_target = '/' . trim( $gone_target, '/' );
+        if ( $slashed_path === $gone_target || $trimmed_path === $clean_target || ( '/' !== $clean_target && 0 === strpos( $trimmed_path, $clean_target . '/' ) ) ) {
             $is_gone = true;
             break;
         }
@@ -1416,6 +1421,7 @@ function keystone_recomposition_child_404_redirect() {
     }
 
 }
+add_action( 'init', 'keystone_recomposition_child_404_redirect', 1 );
 add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );
 
 /**
