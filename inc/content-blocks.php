@@ -480,13 +480,34 @@ function keystone_serve_video_sitemap() {
     header( 'Content-Type: application/xml; charset=UTF-8' );
     header( 'X-Robots-Tag: noindex, follow' );
 
-    $posts = get_posts( array(
-        'post_type'      => 'post',
+    // Direct query for all published watch pages to guarantee 100% complete coverage of all canonical watch URLs
+    $pages = get_posts( array(
+        'post_type'      => 'page',
         'post_status'    => 'publish',
         'posts_per_page' => -1,
         'orderby'        => 'date',
         'order'          => 'DESC',
     ) );
+
+    $target_items = array();
+    if ( ! empty( $pages ) ) {
+        foreach ( $pages as $pg ) {
+            if ( is_object( $pg ) && 0 === strpos( $pg->post_name, 'watch-' ) ) {
+                $target_items[] = $pg;
+            }
+        }
+    }
+
+    // Fallback if no watch pages exist (e.g. initial install or test environment)
+    if ( empty( $target_items ) ) {
+        $target_items = get_posts( array(
+            'post_type'      => 'post',
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ) );
+    }
 
     echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
     echo '<?xml-stylesheet type="text/xsl" href="//keystonerecomposition.com/main-sitemap.xsl"?>' . "\n";
@@ -494,7 +515,8 @@ function keystone_serve_video_sitemap() {
     echo '        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">' . "\n";
 
     $video_count = 0;
-    foreach ( $posts as $p ) {
+    $seen_locs   = array();
+    foreach ( $target_items as $p ) {
         if ( ! is_object( $p ) || empty( $p->ID ) ) {
             continue;
         }
@@ -504,39 +526,48 @@ function keystone_serve_video_sitemap() {
             continue;
         }
 
-        // Try to locate a corresponding watch page (slug: watch-{post_slug})
-        global $wpdb;
-        $watch_page_id = 0;
-        $watch_slug = 'watch-' . $p->post_name;
-        
-        if ( function_exists( 'get_page_by_path' ) ) {
-            $watch_page = get_page_by_path( $watch_slug, OBJECT, 'page' );
-            if ( $watch_page && 'publish' === $watch_page->post_status ) {
-                $watch_page_id = $watch_page->ID;
+        // If $p is a watch page, its permalink is already the canonical watch page
+        if ( 'page' === $p->post_type && 0 === strpos( $p->post_name, 'watch-' ) ) {
+            $permalink = get_permalink( $p->ID );
+        } else {
+            // Locate corresponding watch page for blog post
+            global $wpdb;
+            $watch_page_id = 0;
+            $watch_slug = 'watch-' . $p->post_name;
+            
+            if ( function_exists( 'get_page_by_path' ) ) {
+                $watch_page = get_page_by_path( $watch_slug, OBJECT, 'page' );
+                if ( $watch_page && 'publish' === $watch_page->post_status ) {
+                    $watch_page_id = $watch_page->ID;
+                }
+            }
+            
+            if ( ! $watch_page_id && isset( $wpdb ) && is_object( $wpdb ) && isset( $wpdb->posts ) ) {
+                $truncated_slug = substr( $watch_slug, 0, 200 );
+                $watch_page_id = (int) $wpdb->get_var( $wpdb->prepare(
+                    "SELECT ID FROM $wpdb->posts 
+                     WHERE post_type = 'page' 
+                     AND post_status = 'publish' 
+                     AND (post_name = %s OR post_name = %s OR post_name LIKE %s)
+                     ORDER BY LENGTH(post_name) ASC
+                     LIMIT 1",
+                    $watch_slug,
+                    $truncated_slug,
+                    $wpdb->esc_like( substr( $watch_slug, 0, 190 ) ) . '%'
+                ) );
+            }
+
+            if ( $watch_page_id > 0 ) {
+                $permalink = get_permalink( $watch_page_id );
+            } else {
+                $permalink = get_permalink( $p->ID );
             }
         }
-        
-        if ( ! $watch_page_id && isset( $wpdb ) && is_object( $wpdb ) && isset( $wpdb->posts ) ) {
-            // Direct SQL fallback for truncated slugs or numerical suffixes
-            $truncated_slug = substr( $watch_slug, 0, 200 );
-            $watch_page_id = (int) $wpdb->get_var( $wpdb->prepare(
-                "SELECT ID FROM $wpdb->posts 
-                 WHERE post_type = 'page' 
-                 AND post_status = 'publish' 
-                 AND (post_name = %s OR post_name = %s OR post_name LIKE %s)
-                 ORDER BY LENGTH(post_name) ASC
-                 LIMIT 1",
-                $watch_slug,
-                $truncated_slug,
-                $wpdb->esc_like( substr( $watch_slug, 0, 190 ) ) . '%'
-            ) );
-        }
 
-        if ( $watch_page_id > 0 ) {
-            $permalink = get_permalink( $watch_page_id );
-        } else {
-            $permalink = get_permalink( $p->ID );
+        if ( isset( $seen_locs[ $permalink ] ) ) {
+            continue;
         }
+        $seen_locs[ $permalink ] = true;
 
         $title       = mb_substr( (string) $meta['title'], 0, 100 );
         $description = mb_substr( (string) $meta['description'], 0, 2048 );

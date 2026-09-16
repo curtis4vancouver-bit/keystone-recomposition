@@ -558,7 +558,20 @@ function keystone_get_post_video_metadata( $post_or_id = null ) {
         $content = $source_post ? $source_post->post_content : $post->post_content;
         if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
             $youtube_id = $matches[1];
+        } elseif ( preg_match( '~data-video-id=["\']([a-zA-Z0-9_-]{11})["\']~i', $content, $matches ) ) {
+            $youtube_id = $matches[1];
         } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/|youtube-nocookie\.com/embed/)([^"&?/ ]{11})~i', $content, $matches ) ) {
+            $youtube_id = $matches[1];
+        }
+    }
+
+    // Direct fallback on original post content if source post had no match
+    if ( empty( $youtube_id ) && ! empty( $post->post_content ) ) {
+        if ( preg_match( '~data-video-id=["\']([a-zA-Z0-9_-]{11})["\']~i', $post->post_content, $matches ) ) {
+            $youtube_id = $matches[1];
+        } elseif ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $post->post_content, $matches ) ) {
+            $youtube_id = $matches[1];
+        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/|youtube-nocookie\.com/embed/)([^"&?/ ]{11})~i', $post->post_content, $matches ) ) {
             $youtube_id = $matches[1];
         }
     }
