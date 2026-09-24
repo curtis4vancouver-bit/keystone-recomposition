@@ -94,11 +94,12 @@ if ( isset( $_GET['create_missing_watch_pages'] ) && $_GET['create_missing_watch
     $already_exists = array();
     
     foreach ( $posts as $p ) {
+        $p_content = (string) ( $p->post_content ?? '' );
         $youtube_id = get_post_meta( $p->ID, 'keystone_youtube_id', true );
         if ( empty( $youtube_id ) ) {
-            if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p->post_content, $matches ) ) {
+            if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p_content, $matches ) ) {
                 $youtube_id = $matches[1];
-            } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
+            } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $p_content, $matches ) ) {
                 $youtube_id = $matches[1];
             }
         }
@@ -114,7 +115,7 @@ if ( isset( $_GET['create_missing_watch_pages'] ) && $_GET['create_missing_watch
         }
         
         $blog_permalink = get_permalink( $p->ID );
-        $clean_content = preg_replace( '~\[keystone_video[^\]]*\]~i', '', $p->post_content );
+        $clean_content = preg_replace( '~\[keystone_video[^\]]*\]~i', '', $p_content );
         $content = '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n";
         $content .= $clean_content . "\n\n";
         $content .= '<p class="wp-block-paragraph" style="text-align:center; margin-top:45px; margin-bottom:45px;">';
@@ -176,12 +177,13 @@ if ( isset( $_GET['heal_video_meta'] ) && $_GET['heal_video_meta'] === 'sovereig
     foreach ( $posts as $p ) {
         $post_id = intval( $p->ID );
         $existing_yt = get_post_meta( $post_id, 'keystone_youtube_id', true );
+        $p_content = (string) ( $p->post_content ?? '' );
         
         // Extract YouTube ID from content
         $youtube_id = '';
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p->post_content, $matches ) ) {
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p_content, $matches ) ) {
             $youtube_id = $matches[1];
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $p->post_content, $matches ) ) {
+        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $p_content, $matches ) ) {
             $youtube_id = $matches[1];
         }
         
@@ -196,7 +198,7 @@ if ( isset( $_GET['heal_video_meta'] ) && $_GET['heal_video_meta'] === 'sovereig
         }
         
         // Backfill all video meta
-        $video_desc = wp_html_excerpt( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ), 150, '...' );
+        $video_desc = wp_html_excerpt( wp_strip_all_tags( strip_shortcodes( $p_content ) ), 150, '...' );
         if ( empty( $video_desc ) ) {
             $video_desc = esc_attr( $p->post_title ) . ' - High-performance health and longevity protocol details.';
         }
@@ -1022,7 +1024,8 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
     $blog_permalink = get_permalink( $post->ID );
     
     // Strip any existing [keystone_video ...] shortcodes from copied content
-    $clean_content = preg_replace( '~\[keystone_video[^\]]*\]~i', '', $post->post_content );
+    $post_raw_content = (string) ( $post->post_content ?? '' );
+    $clean_content = preg_replace( '~\[keystone_video[^\]]*\]~i', '', $post_raw_content );
     
     $content = '';
     $content .= '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n";

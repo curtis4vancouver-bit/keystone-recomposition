@@ -37,6 +37,71 @@ Template: astra
   --ks-text-muted: var(--text-secondary);
 }
 
+/* --------------------------------------------------------------------------
+   Rank Math Analytics Bar Dark Luxury Override (#rank-math-analytics-stats-wrapper)
+   -------------------------------------------------------------------------- */
+#rank-math-analytics-stats-wrapper,
+#rank-math-analytics-stats-bar,
+.rank-math-analytics-stats-bar {
+    background: rgba(10, 15, 25, 0.95) !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+    color: #e2e8f0 !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    z-index: 99999 !important;
+}
+
+#rank-math-analytics-stats-wrapper span,
+#rank-math-analytics-stats-wrapper strong,
+#rank-math-analytics-stats-bar .stat-value {
+    color: var(--gold-light, #f6d365) !important;
+    font-family: var(--font-heading, 'Outfit', sans-serif) !important;
+    font-weight: 700 !important;
+}
+
+#rank-math-analytics-stats-wrapper a,
+#rank-math-analytics-stats-bar .stat-label {
+    color: var(--text-secondary, #94a3b8) !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease-in-out !important;
+}
+
+#rank-math-analytics-stats-wrapper a:hover {
+    color: var(--cyan-neon, #00f0ff) !important;
+    text-shadow: var(--cyan-glow, 0 0 12px rgba(0, 240, 255, 0.4)) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Above-The-Fold Video Theater Box Container (Zero GSC Video Watch Failures)
+   -------------------------------------------------------------------------- */
+.wp-block-embed-youtube.aligncenter,
+.luxury-video-theater {
+    max-width: 880px !important;
+    margin: 25px auto 35px auto !important;
+    border-radius: var(--radius-card, 18px) !important;
+    overflow: hidden !important;
+    border: 1px solid var(--gold-border, rgba(212, 175, 55, 0.45)) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), var(--gold-glow, 0 0 20px rgba(212, 175, 55, 0.25)) !important;
+    background: #000000 !important;
+}
+
+.wp-block-embed-youtube .wp-block-embed__wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.wp-block-embed-youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 /* ==========================================================================
    Keystone Protocols - Premium Blog Archive Grid Layout Adjustments
    ========================================================================== */
@@ -292,15 +357,24 @@ Template: astra
 .luxury-video-facade {
   position: relative !important;
   width: 100% !important;
-  padding-bottom: 56.25% !important; /* 16:9 Aspect Ratio */
-  height: 0 !important;
+  max-width: 880px !important;
+  margin: 25px auto 35px auto !important;
+  min-height: 480px !important;
+  aspect-ratio: 16 / 9 !important;
   overflow: hidden !important;
-  border: 2px solid rgba(196, 162, 101, 0.2) !important;
-  border-radius: 6px !important;
+  border: 1px solid var(--gold-border, rgba(212, 175, 55, 0.45)) !important;
+  border-radius: var(--radius-card, 18px) !important;
   background-color: #000000 !important;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), var(--gold-glow, 0 0 20px rgba(212, 175, 55, 0.25)) !important;
   cursor: pointer !important;
   transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease !important;
+}
+
+@media (max-width: 768px) {
+  .luxury-video-facade {
+    min-height: 220px !important;
+    margin: 15px auto 25px auto !important;
+  }
 }
 
 .luxury-video-facade:hover {

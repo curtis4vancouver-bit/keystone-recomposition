@@ -65,7 +65,7 @@ add_shortcode( 'keystone_video', 'keystone_lazy_video_shortcode' );
  * Stamped: 2026-07-23
  */
 function keystone_deduplicate_video_facades( $content ) {
-    if ( ! is_singular() ) {
+    if ( ! is_string( $content ) || ! is_singular() ) {
         return $content;
     }
 
@@ -133,8 +133,8 @@ add_filter( 'the_content', 'keystone_deduplicate_video_facades', 15 );
  * Used by the Watch page healer to prevent duplicates when copying parent post content.
  */
 function keystone_strip_duplicate_facades( $content ) {
-    if ( substr_count( $content, 'luxury-video-facade' ) <= 1 ) {
-        return $content;
+    if ( ! is_string( $content ) || substr_count( $content, 'luxury-video-facade' ) <= 1 ) {
+        return (string) $content;
     }
     $seen_ids = array();
     $offset = 0;
@@ -617,6 +617,7 @@ function keystone_recomposition_heal_watch_pages_trigger() {
         $reports = array();
         
         foreach ( $posts as $p ) {
+            $p_content = (string) ( $p->post_content ?? '' );
             $youtube_id = get_post_meta( $p->ID, 'keystone_youtube_id', true );
             if ( empty( $youtube_id ) ) {
                 $video_url = get_post_meta( $p->ID, 'video_url', true );
@@ -628,13 +629,13 @@ function keystone_recomposition_heal_watch_pages_trigger() {
             }
             if ( empty( $youtube_id ) ) {
                 // 1. Try parsing shortcode [keystone_video id='...']
-                if ( preg_match( '~\[keystone_video\s+id=[\'\"]([^\'\"]{11})[\'\"]\]~i', $p->post_content, $matches ) ) {
+                if ( preg_match( '~\[keystone_video\s+id=[\'\"]([^\'\"]{11})[\'\"]\]~i', $p_content, $matches ) ) {
                     $youtube_id = $matches[1];
                 }
             }
             if ( empty( $youtube_id ) ) {
                 // 2. Try parsing standard YouTube URL embeds from content
-                if ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p->post_content, $matches ) ) {
+                if ( preg_match( '~(?:youtube\.com/(?:embed/|v/|watch\?v=|shorts/)|youtu\.be/)([^\"&?/ ]{11})~i', $p_content, $matches ) ) {
                     $youtube_id = $matches[1];
                 }
             }
@@ -675,13 +676,13 @@ function keystone_recomposition_heal_watch_pages_trigger() {
                     // Force default page template to prevent hardcoded wolverine layout overwrite
                     update_post_meta( $watch_page_id, '_wp_page_template', 'default' );
                     
-                    $watch_len = strlen( trim( $watch_page->post_content ) );
-                    $parent_len = strlen( trim( $p->post_content ) );
+                    $watch_len = strlen( trim( (string) ( $watch_page->post_content ?? '' ) ) );
+                    $parent_len = strlen( trim( $p_content ) );
                     
                     if ( $watch_len < 1000 && $parent_len > $watch_len ) {
                         wp_update_post( array(
                             'ID'           => $watch_page_id,
-                            'post_content' => keystone_strip_duplicate_facades( $p->post_content )
+                            'post_content' => keystone_strip_duplicate_facades( $p_content )
                         ) );
                         update_post_meta( $watch_page_id, 'video_url', 'https://www.youtube.com/watch?v=' . $youtube_id );
                         update_post_meta( $watch_page_id, 'keystone_youtube_id', $youtube_id );

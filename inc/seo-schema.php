@@ -509,11 +509,12 @@ function keystone_get_post_video_metadata( $post_or_id = null ) {
         return null;
     }
 
-    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
+    $post_name = (string) ( $post->post_name ?? '' );
+    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post_name, 'watch-' ) );
     $post_id = $post->ID;
 
     if ( $is_watch_page ) {
-        $blog_slug = str_replace( 'watch-', '', $post->post_name );
+        $blog_slug = str_replace( 'watch-', '', $post_name );
         $blog_posts = get_posts( array(
             'name'        => $blog_slug,
             'post_type'   => 'post',
@@ -555,7 +556,7 @@ function keystone_get_post_video_metadata( $post_or_id = null ) {
 
     if ( empty( $youtube_id ) ) {
         $source_post = ( $post_id !== $post->ID ) ? get_post( $post_id ) : $post;
-        $content = $source_post ? $source_post->post_content : $post->post_content;
+        $content = (string) ( $source_post ? $source_post->post_content : $post->post_content );
         if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
             $youtube_id = $matches[1];
         } elseif ( preg_match( '~data-video-id=["\']([a-zA-Z0-9_-]{11})["\']~i', $content, $matches ) ) {
