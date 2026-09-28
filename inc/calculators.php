@@ -578,77 +578,10 @@ add_shortcode( 'keystone_protein_calculator', 'keystone_protein_calculator_short
 
 /**
  * 4. Curated Gear, Biohacking Tools & Discount Codes Portal Shortcode
+ * [SCRUBBED] Disabled and scrubbed per Wayne's instruction (dead promo links & unlinked codes).
  */
 function keystone_gear_portal_shortcode() {
-    ob_start();
-    ?>
-    <div class="keystone-gear-portal" id="recommended-gear">
-        <div class="tool-header text-center">
-            <span class="tool-badge">TESTED INFRASTRUCTURE</span>
-            <h1 class="tool-title">Curated Gear, Biohacking Hardware &amp; Partner Codes</h1>
-            <p class="tool-subtitle">The exact tools, metabolic monitors, laboratory reconstitution supplies, and audio hardware Wayne Stevenson uses daily across the 48-lb recomposition protocol.</p>
-        </div>
-
-        <div class="gear-categories-grid">
-            <!-- Card 1: CGM & Metabolic Scanners -->
-            <div class="gear-card">
-                <div class="gear-badge">METABOLIC TRACKING</div>
-                <h3 class="gear-card-title">Continuous Glucose Monitors &amp; Ketone Scanners</h3>
-                <p class="gear-card-desc">Real-time interstitial glucose telemetry for pinpointing insulin sensitivity spikes, post-workout glycemic clearance, and GLP-1 carb thresholds.</p>
-                <div class="gear-code-box">
-                    <span class="code-label">Exclusive Partner Code:</span>
-                    <span class="code-value">KEYSTONE20</span>
-                </div>
-                <div class="gear-footer">
-                    <a href="https://keystonerecomposition.com/cgm-protocol" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="nofollow noopener">View Sensor Protocol →</a>
-                </div>
-            </div>
-
-            <!-- Card 2: Laboratory Reconstitution Accessories -->
-            <div class="gear-card">
-                <div class="gear-badge">LABORATORY ACCESSORIES</div>
-                <h3 class="gear-card-title">Sterile Reconstitution &amp; Precision Micro-Syringes</h3>
-                <p class="gear-card-desc">USP-grade bacteriostatic water, 31-gauge ultra-fine U-100 precision syringes, sterile amber storage vials, and alcohol prep cartridges.</p>
-                <div class="gear-code-box">
-                    <span class="code-label">Exclusive Partner Code:</span>
-                    <span class="code-value">KEYSTONELAB</span>
-                </div>
-                <div class="gear-footer">
-                    <a href="https://keystonerecomposition.com/lab-gear" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="nofollow noopener">View Sterile Supplies →</a>
-                </div>
-            </div>
-
-            <!-- Card 3: Cold Plunge & Contrast Recovery -->
-            <div class="gear-card">
-                <div class="gear-badge">COLD THERAPY</div>
-                <h3 class="gear-card-title">Alpine Cold Plunge &amp; Infrared Contrast Systems</h3>
-                <p class="gear-card-desc">Commercial 0.5 HP chilling systems maintaining 38°F (3.3°C) for dopamine upregulation, brown adipose tissue (BAT) thermogenesis, and rapid CNS recovery.</p>
-                <div class="gear-code-box">
-                    <span class="code-label">Exclusive Partner Code:</span>
-                    <span class="code-value">KEYSTONEPLUNGE</span>
-                </div>
-                <div class="gear-footer">
-                    <a href="https://keystonerecomposition.com/cold-plunge" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="nofollow noopener">Explore Cold Tubs →</a>
-                </div>
-            </div>
-
-            <!-- Card 4: Audio Hardware & Training Monitors -->
-            <div class="gear-card">
-                <div class="gear-badge">SOUND DESIGN</div>
-                <h3 class="gear-card-title">Studio Reference Monitors &amp; Gym Acoustic Headphones</h3>
-                <p class="gear-card-desc">High-output planar magnetic headphones and studio subwoofers engineered for deep work focus and heavy compound lifts with the Keystone Spotify catalog.</p>
-                <div class="gear-code-box">
-                    <span class="code-label">Exclusive Partner Code:</span>
-                    <span class="code-value">KEYSTONESOUND</span>
-                </div>
-                <div class="gear-footer">
-                    <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" class="gold-action-btn full-width" style="color: #000000 !important; font-weight: 800 !important; text-decoration: none !important;" target="_blank" rel="noopener">Listen on Spotify →</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
-    return ob_get_clean();
+    return '';
 }
 add_shortcode( 'keystone_gear_portal', 'keystone_gear_portal_shortcode' );
 
