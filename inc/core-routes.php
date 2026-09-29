@@ -213,25 +213,8 @@ function keystone_execute_sovereign_reset_pipeline(): array {
                 continue;
             }
 
-            // Check if post matches legacy peptide, metabolic, or obsolete topics
-            $is_legacy = false;
-            $patterns  = array_merge(
-                keystone_get_purged_slug_patterns(),
-                array(
-                    'day-', 'protein', 'stall', 'whoosh', 'plateau', 'fat-loss', 'muscle-loss',
-                    'muscle-gain', 'muscle-preservation', 'rebuild-begins', 'sunday-plunge',
-                    'kwikpen', 'nausea', 'dopamine', 'cadence', 'titration', 'refit', 'glitch',
-                    'nad-injection', 'rfk-jr', 'biological-age', 'stacking', 'klow-vs-glow',
-                    'visceral-fat', 'biohacking', 'weight-regain'
-                )
-            );
-
-            foreach ( $patterns as $pat ) {
-                if ( str_contains( $slug, $pat ) || str_contains( $title, $pat ) ) {
-                    $is_legacy = true;
-                    break;
-                }
-            }
+            // If post is not an approved Sovereign AI/Music article, trash it
+            $is_legacy = true;
 
             if ( $is_legacy ) {
                 wp_trash_post( (int) $p->ID );
