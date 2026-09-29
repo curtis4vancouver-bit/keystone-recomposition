@@ -10,21 +10,18 @@ function astra_child_keystone_enqueue_styles() {
     wp_enqueue_style( 'astra-parent-theme-css', get_template_directory_uri() . '/style.css' );
     
     // Enqueue Child customized style (Cache busted)
-    wp_enqueue_style( 'astra-child-keystone-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-parent-theme-css' ), '2.6.0' );
+    wp_enqueue_style( 'astra-child-keystone-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-parent-theme-css' ), '3.0.0' );
     
-    // Load typography fonts (Montserrat, Inter, Outfit)
-    wp_enqueue_style( 'keystone-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&family=Outfit:wght@400;600;700;800&display=swap', array(), null );
+    // Load typography fonts (Inter, Outfit, Montserrat, JetBrains Mono)
+    wp_enqueue_style( 'keystone-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700&family=Outfit:wght@400;600;700;800&display=swap', array(), null );
 
     // Enqueue Lead Consultation Form Handler JS
     wp_enqueue_script( 'keystone-lead-form-handler', get_stylesheet_directory_uri() . '/js/lead-form-handler.js', array(), '1.0.0', true );
 
-    // Enqueue Interactive Calculators Engine
-    wp_enqueue_script( 'keystone-calculators-js', get_stylesheet_directory_uri() . '/js/calculators.js', array(), '2.0.0', true );
-
     // Enqueue WebP Video Facade Engine
     wp_enqueue_script( 'keystone-lazy-player', get_stylesheet_directory_uri() . '/js/lazy-player.js', array(), '1.1.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'astra_child_keystone_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'astra_child_keystone_enqueue_styles', 20 );
 
 /**
  * 3. Preconnecting Web Fonts (Performance GSC optimization)

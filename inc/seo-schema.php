@@ -57,8 +57,8 @@ function keystone_recomposition_child_inject_schema() {
         '@id' => 'https://keystonerecomposition.com/#organization',
         'name' => 'Keystone Recomposition',
         'url' => 'https://keystonerecomposition.com',
-        'description' => 'Specializing in high-performance metabolic health, biohacking, and deep house music protocols.',
-        'keywords' => 'Keystone Recomposition, GLP-1, health, beauty, wellness, weight loss, fitness, deep house music',
+        'description' => 'Specializing in Autonomous AI Multi-Agent Systems, FastMCP Server Architecture, and High-Performance Electronic Music Production.',
+        'keywords' => 'Keystone Recomposition, Autonomous AI, FastMCP, DevTools, Deep House Music, Sound Design, Recomposition Architecture',
         'logo' => $logo_url,
         'areaServed' => array(
             array(
@@ -264,9 +264,9 @@ function keystone_get_wayne_stevenson_person_schema(): array {
             ),
             array(
                 '@type'                => 'Occupation',
-                'name'                 => 'Longevity & Recomposition Protocol Researcher',
-                'description'          => 'Lead Protocol Architect researching GLP-1 micro-dosing, peptide therapies, metabolic optimization, and cellular longevity protocols.',
-                'occupationalCategory' => 'Health Science & Protocol Engineering',
+                'name'                 => 'Autonomous AI Systems Architect & Multi-Agent Engineer',
+                'description'          => 'Lead Systems Architect engineering 16-agent autonomous swarms, FastMCP server infrastructure, and Chrome DevTools Protocol automation.',
+                'occupationalCategory' => 'Autonomous Software Engineering & AI Architecture',
             ),
             array(
                 '@type'                => 'Occupation',
@@ -283,8 +283,13 @@ function keystone_get_wayne_stevenson_person_schema(): array {
             ),
             array(
                 '@type'  => 'Thing',
-                'name'   => 'Peptide Therapeutics',
-                'sameAs' => 'https://en.wikipedia.org/wiki/Peptide',
+                'name'   => 'Autonomous AI Agent Swarms',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Multi-agent_system',
+            ),
+            array(
+                '@type'  => 'Thing',
+                'name'   => 'Model Context Protocol (FastMCP)',
+                'sameAs' => 'https://modelcontextprotocol.io',
             ),
             array(
                 '@type'  => 'Thing',
@@ -357,75 +362,100 @@ function keystone_get_wayne_stevenson_person_schema(): array {
  * composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.
  */
 function keystone_recomposition_child_music_schema() {
-    $music_schema = array(
-        '@context' => 'https://schema.org',
-        '@graph'   => array(
-            array(
-                '@type'     => 'MusicGroup',
-                '@id'       => 'https://keystonerecomposition.com/#musicgroup',
-                'name'      => 'Keystone Recomposition',
-                'url'       => 'https://keystonerecomposition.com',
-                'genre'     => array( 'Deep House', 'Solfeggio Frequencies', 'Ambient Fitness', 'Bio-Acoustic Functional Audio' ),
-                'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
-                'sameAs'    => array(
-                    'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
-                    'https://musicbrainz.org/artist/52v3Qe6Jo0hg764driOl5Y',
-                    'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
-                    'https://pro.musixmatch.com',
-                    'https://www.musixmatch.com/artist/Wayne-Stevenson',
-                    'https://audiomack.com/keystone-recomposition',
-                ),
-            ),
-            array(
-                '@type'         => 'MusicAlbum',
-                '@id'           => 'https://keystonerecomposition.com/#album-concrete-foundations',
-                'name'          => 'Concrete Foundations',
-                'description'   => 'Functional bio-acoustic engineering and high-end electronic soundscapes composed by Wayne Stevenson for training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
-                'byArtist'      => array(
-                    '@type'     => 'MusicGroup',
-                    '@id'       => 'https://keystonerecomposition.com/#musicgroup',
-                    'name'      => 'Keystone Recomposition',
-                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
-                ),
-                'genre'         => array( 'Electronic', 'Deep House', 'Functional Fitness Audio' ),
-                'musicbrainzId' => '30027d0e-6aeb-4704-8792-a031c936c62a',
-            ),
-            array(
-                '@type'       => 'MusicAlbum',
-                '@id'         => 'https://keystonerecomposition.com/#album-resonantia',
-                'name'        => 'Resonantia: 10 Frequencies of the Rebuild',
-                'description' => '10 progressive functional bio-acoustic frequencies and deep house soundscapes engineered for circadian entrainment, metabolic focus, and autonomic state regulation in Keystone Protocols.',
-                'byArtist'    => array(
-                    '@type'     => 'MusicGroup',
-                    '@id'       => 'https://keystonerecomposition.com/#musicgroup',
-                    'name'      => 'Keystone Recomposition',
-                    'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
-                ),
-                'genre'       => array( 'Deep House', 'Solfeggio Frequencies', 'Circadian Entrainment' ),
-            ),
-            array(
-                '@type'        => 'MusicRecording',
-                '@id'          => 'https://keystonerecomposition.com/#track-205-marker',
-                'name'         => 'The 205 Marker',
-                'description'  => 'Functional bio-acoustic composition engineered for circadian entrainment, cadence synchronization, and autonomic state regulation in Keystone Protocols.',
-                'byArtist'     => array(
-                    '@type' => 'MusicGroup',
-                    '@id'   => 'https://keystonerecomposition.com/#musicgroup',
-                ),
-                'inAlbum'      => array(
-                    '@id' => 'https://keystonerecomposition.com/#album-concrete-foundations',
-                ),
-            ),
+    if ( ! function_exists( 'keystone_get_all_albums' ) ) {
+        $catalog_file = get_stylesheet_directory() . '/inc/sonic-catalog-data.php';
+        if ( file_exists( $catalog_file ) ) {
+            require_once $catalog_file;
+        } else {
+            return;
+        }
+    }
+
+    $albums_data = keystone_get_all_albums();
+    $graph = array();
+
+    // 1. MusicGroup Node
+    $graph[] = array(
+        '@type'     => 'MusicGroup',
+        '@id'       => 'https://keystonerecomposition.com/#musicgroup',
+        'name'      => 'Keystone Recomposition',
+        'url'       => 'https://keystonerecomposition.com',
+        'genre'     => array( 'Deep House', 'Melodic Techno', 'Organic Downtempo', 'Solfeggio Frequencies', 'Bio-Acoustic Functional Audio' ),
+        'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
+        'sameAs'    => array(
+            'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+            'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
+            'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+            'https://pro.musixmatch.com/roster/artist/72648585',
+            'https://www.youtube.com/@KeyStoneRecomposition',
         ),
     );
 
-    $json_music = wp_json_encode( $music_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+    // 2. All 18+ MusicAlbum Nodes with Embedded Tracks & Canonical ISRCs
+    foreach ( $albums_data as $album ) {
+        $album_slug = sanitize_title( $album['title'] );
+        $album_node = array(
+            '@type'         => 'MusicAlbum',
+            '@id'           => 'https://keystonerecomposition.com/album/' . $album_slug . '/#album',
+            'name'          => $album['title'],
+            'datePublished' => $album['release_date'],
+            'numTracks'     => (int) $album['track_count'],
+            'genre'         => $album['genre'],
+            'byArtist'      => array(
+                '@type' => 'MusicGroup',
+                '@id'   => 'https://keystonerecomposition.com/#musicgroup',
+            ),
+            'image'         => $album['cover_image'],
+            'url'           => home_url( '/sonic-universe/#' . $album_slug ),
+        );
 
-    echo "<!-- Keystone MusicGroup & MusicAlbum JSON-LD Schema -->\n";
-    echo "<script type=\"application/ld+json\">\n";
-    echo $json_music . "\n";
-    echo "</script>\n";
-    echo "<!-- End Keystone Music Schema -->\n";
+        if ( ! empty( $album['tracks'] ) && is_array( $album['tracks'] ) ) {
+            $track_items = array();
+            foreach ( $album['tracks'] as $t ) {
+                $track_items[] = array(
+                    '@type'          => 'ListItem',
+                    'position'       => (int) $t['pos'],
+                    'item'           => array(
+                        '@type'         => 'MusicRecording',
+                        '@id'           => 'https://keystonerecomposition.com/track/' . sanitize_title( $t['title'] ) . '/#recording',
+                        'name'          => $t['title'],
+                        'isrcCode'      => $t['isrc'],
+                        'duration'      => $t['duration'] ?? 'PT4M00S',
+                        'byArtist'      => array(
+                            '@id' => 'https://keystonerecomposition.com/#musicgroup',
+                        ),
+                        'inAlbum'       => array(
+                            '@id' => 'https://keystonerecomposition.com/album/' . $album_slug . '/#album',
+                        ),
+                    ),
+                );
+            }
+            $album_node['track'] = array(
+                '@type'           => 'ItemList',
+                'numberOfItems'   => count( $track_items ),
+                'itemListElement' => $track_items,
+            );
+        }
+
+        $graph[] = $album_node;
+    }
+
+    $schema_payload = array(
+        '@context' => 'https://schema.org',
+        '@graph'   => $graph,
+    );
+
+    echo "
+<!-- Keystone 18-Album Master MusicGroup & MusicAlbum JSON-LD Graph -->
+";
+    echo "<script type=\"application/ld+json\">
+";
+    echo wp_json_encode( $schema_payload, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "
+";
+    echo "</script>
+<!-- End Keystone Music Graph -->
+
+";
 }
 add_action( 'wp_head', 'keystone_recomposition_child_music_schema' );
 
@@ -876,7 +906,7 @@ function keystone_recomposition_child_medical_schema() {
     echo "</script>\n";
     echo "<!-- End MedicalWebPage Schema -->\n\n";
 }
-add_action( 'wp_head', 'keystone_recomposition_child_medical_schema', 25 );
+// Retired: add_action( 'wp_head', 'keystone_recomposition_child_medical_schema', 25 );
 
 /**
  * 9. Hook custom media metadata into Rank Math PRO's Video Sitemap Generator
@@ -1433,7 +1463,7 @@ add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );
  * 14. Inject 2026 WebApplication & FAQPage Schema for Calculator Pages
  * Maximizes global Google Rich Results in US, UK, CA, and AU for high-intent queries.
  */
-add_action( 'wp_head', 'keystone_inject_calculator_web_app_schema', 15 );
+// Retired: add_action( 'wp_head', 'keystone_inject_calculator_web_app_schema', 15 );
 function keystone_inject_calculator_web_app_schema() {
     if ( ! is_page() ) {
         return;
