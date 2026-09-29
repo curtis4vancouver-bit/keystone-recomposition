@@ -96,15 +96,18 @@ function astra_child_keystone_header_overrides() {
       padding: 4px !important;
       vertical-align: middle !important;
     }
-    .ast-desktop-header .header-social-inner-wrap svg {
+    .ast-desktop-header .header-social-inner-wrap svg,
+    .ast-desktop-header .header-social-inner-wrap svg path {
       width: 18px !important;
       height: 18px !important;
-      fill: #C4A265 !important;
+      fill: #38bdf8 !important;
       transition: fill 0.2s ease, filter 0.2s ease !important;
+      filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.5)) !important;
     }
-    .ast-desktop-header .header-social-inner-wrap a:hover svg {
-      fill: #FFFFFF !important;
-      filter: drop-shadow(0 0 6px rgba(196, 162, 101, 0.6)) !important;
+    .ast-desktop-header .header-social-inner-wrap a:hover svg,
+    .ast-desktop-header .header-social-inner-wrap a:hover svg path {
+      fill: #00f0ff !important;
+      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.9)) !important;
     }
     .ast-desktop-header .site-branding img,
     .ast-desktop-header .custom-logo-link img {
