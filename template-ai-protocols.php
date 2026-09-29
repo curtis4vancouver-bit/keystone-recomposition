@@ -2,7 +2,7 @@
 /**
  * Template Name: Keystone AI Protocols
  * Description: Autonomous 16-Agent Swarms, FastMCP Servers & Chrome CDP Infrastructure Hub
- * Version: 3.0.0
+ * Version: 3.2.0 (High-End Dark Quiet Luxury Edition)
  * Stamped: September 2026
  */
 
@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
+
+$theme_uri = get_stylesheet_directory_uri();
 ?>
 
 <div id="primary" class="content-area primary keystone-ai-protocols-page">
@@ -21,10 +23,27 @@ get_header();
 
             <!-- PAGE HERO -->
             <header class="ai-hero-header text-center">
-                <span class="gold-badge-pill">⚡ AUTONOMOUS MULTI-AGENT SWARMS • FASTMCP ARCHITECTURE</span>
+                
+                <!-- LEAD ARCHITECT CHIP -->
+                <div class="hero-founder-chip" style="margin-bottom: 24px;">
+                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
+                         alt="Wayne Stevenson — Lead Systems Architect" 
+                         class="founder-chip-avatar" />
+                    <div class="founder-chip-meta">
+                        <span class="chip-name">Wayne Stevenson</span>
+                        <span class="chip-role">Lead Systems Architect • Autonomous Swarm Engineering</span>
+                    </div>
+                    <span class="chip-verified-badge">✔ LOCAL AGENTS</span>
+                </div>
+
+                <div class="gold-badge-pill">
+                    ⚡ AUTONOMOUS MULTI-AGENT SWARMS • FASTMCP ARCHITECTURE
+                </div>
+                
                 <h1 class="page-title">
                     Keystone AI Protocols: <span class="gold-gradient-text">Autonomous Multi-Agent Systems</span>
                 </h1>
+                
                 <p class="page-subtitle">
                     The engineering blueprint behind Wayne Stevenson's local 16-agent swarms, FastMCP tool servers, and Chrome DevTools Protocol (CDP Port 9222) automation. High-throughput, sub-second execution with zero cloud lock-in.
                 </p>
@@ -36,6 +55,14 @@ get_header();
                     <a href="https://skool.com" target="_blank" rel="noopener" class="btn-secondary-glass">
                         🚀 Access Skool Builder Vault ($49/mo)
                     </a>
+                </div>
+
+                <!-- HERO HIGH-TECH SHOWCASE BANNER -->
+                <div class="hero-banner-frame" style="margin-top: 40px;">
+                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
+                         alt="Keystone AI Protocols 16-Agent Swarm Topology" 
+                         class="hero-banner-image" />
+                    <div class="banner-glass-reflection"></div>
                 </div>
             </header>
 
@@ -88,100 +115,127 @@ get_header();
                     <div class="stage-card">
                         <div class="stage-num">06</div>
                         <h4 class="stage-title">Adversarial Quality Gate</h4>
-                        <p class="stage-agents"><strong>Agents:</strong> <code>B3_code_reviewer</code>, <code>B4_integration_tester</code></p>
-                        <p class="stage-desc">Conducts adversarial AST audits for zero stubs, zero mocks, and zero security regressions before releasing to production.</p>
+                        <p class="stage-agents"><strong>Agent:</strong> <code>B3_code_reviewer</code></p>
+                        <p class="stage-desc">Adversarial gatekeeper auditing race conditions, AST types, and memory leaks. Zero regressions permitted before integration.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. MODEL CONTEXT PROTOCOL (FASTMCP) -->
+            <!-- 2. FASTMCP TYPED CONTRACTS -->
             <section class="ai-section">
-                <div class="fastmcp-card">
-                    <div class="fastmcp-text">
-                        <span class="section-tag">FASTMCP STANDARD</span>
-                        <h3 class="fastmcp-title">Model Context Protocol: Type-Safe Tool Contracts</h3>
-                        <p>
-                            We standardize on Anthropic's open Model Context Protocol (MCP) using Python <code>fastmcp</code>. Every daemon, script, and external API is exposed through strongly-typed, schema-validated tool endpoints.
-                        </p>
-                        <ul class="fastmcp-bullets">
-                            <li><strong>Zero Cloud Overhead:</strong> Local stdio and SSE socket transports executing in sub-5ms latency.</li>
-                            <li><strong>Self-Documenting:</strong> Pydantic v2 schemas generated automatically for LLM tool selection.</li>
-                            <li><strong>Isolated Failures:</strong> Process crashes in one tool never destabilize the main conversation memory.</li>
-                        </ul>
-                    </div>
-
-                    <div class="fastmcp-code">
-                        <div class="code-header">
-                            <span class="code-dot red"></span>
-                            <span class="code-dot yellow"></span>
-                            <span class="code-dot green"></span>
-                            <span class="code-title">keystone_fastmcp_server.py</span>
-                        </div>
-                        <pre><code>from fastmcp import FastMCP
-from pydantic import BaseModel, Field
-
-mcp = FastMCP("KeystoneSwarm")
-
-class SwarmTaskEnvelope(BaseModel):
-    task_id: str = Field(description="Unique UUID")
-    action: str = Field(description="Target tool method")
-    params: dict = Field(default_factory=dict)
-
-@mcp.tool()
-def execute_swarm_step(envelope: SwarmTaskEnvelope) -> dict:
-    """Execute typed child agent step with zero chat pollution."""
-    return {"status": "SUCCESS", "task_id": envelope.task_id}
-
-if __name__ == "__main__":
-    mcp.run()</code></pre>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3. CHROME DEVTOOLS PROTOCOL (CDP PORT 9222) -->
-            <section class="ai-section">
-                <div class="cdp-box">
-                    <div class="section-title-wrap text-center">
-                        <span class="section-tag">HEADLESS BROWSER MASTERY</span>
-                        <h2 class="section-heading">Live Chrome DevTools Protocol (CDP Port 9222)</h2>
-                        <p class="section-sub">
-                            Flaky browser extensions and selenium drivers are banned. Keystone agents attach directly to Wayne's active Chrome browser via WebSocket on Port 9222.
-                        </p>
-                    </div>
-
-                    <div class="cdp-features-grid">
-                        <div class="cdp-feature">
-                            <span class="cdp-icon">⚡</span>
-                            <h4>Sub-Second DOM Evaluation</h4>
-                            <p>Direct <code>Runtime.evaluate</code> and <code>Page.bringToFront</code> calls executing in under 150 milliseconds.</p>
-                        </div>
-                        <div class="cdp-feature">
-                            <span class="cdp-icon">🔍</span>
-                            <h4>Instant GSC Indexation</h4>
-                            <p>Automated URL inspection and priority indexing requests submitted straight into Google Search Console.</p>
-                        </div>
-                        <div class="cdp-feature">
-                            <span class="cdp-icon">📺</span>
-                            <h4>YouTube Studio Publishing</h4>
-                            <p>Streamlined video uploads, Julian Goldie description injection, and 480-tag calibration via live CDP session.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. SKOOL BUILDER GUILD BANNER -->
-            <section class="ai-section">
-                <div class="guild-banner-card">
-                    <div class="guild-badge-wrap">
-                        <span class="gold-badge-pill">PRIVATE BUILDER VAULT</span>
-                    </div>
-                    <h2 class="guild-heading">Join the Autonomous Builder Guild ($49/mo)</h2>
-                    <p class="guild-copy">
-                        Download Wayne Stevenson's production FastMCP servers, local Faster-Whisper STT daemons, and Vector Brain templates. Participate in bi-weekly architecture teardowns and build your own autonomous workstations.
+                <div class="section-title-wrap text-center">
+                    <span class="section-tag">TOOL INFRASTRUCTURE</span>
+                    <h2 class="section-heading">Model Context Protocol (FastMCP) Tools</h2>
+                    <p class="section-sub">
+                        Zero bash terminal hallucinations. All external actions run through typed FastMCP servers over stdio and SSE.
                     </p>
-                    <div class="guild-cta-wrap">
-                        <a href="https://skool.com" target="_blank" rel="noopener" class="btn-primary-gold btn-large">
-                            Join the Guild Today — $49/mo →
+                </div>
+
+                <div class="fastmcp-servers-grid">
+                    <div class="server-card">
+                        <div class="server-header">
+                            <span class="server-icon">🎬</span>
+                            <div class="server-title-wrap">
+                                <h4>davinci-resolve-mcp</h4>
+                                <span class="server-badge">PRODUCTION</span>
+                            </div>
+                        </div>
+                        <p class="server-desc">Automated 2-track master timeline assembly, -18dB background audio ducking, marker injection, and 4K rendering pipelines.</p>
+                        <div class="server-tags">
+                            <code>timeline.create</code>
+                            <code>audio.duck</code>
+                            <code>render.start</code>
+                        </div>
+                    </div>
+
+                    <div class="server-card">
+                        <div class="server-header">
+                            <span class="server-icon">🔍</span>
+                            <div class="server-title-wrap">
+                                <h4>brave-search-mcp</h4>
+                                <span class="server-badge">VERIFIED</span>
+                            </div>
+                        </div>
+                        <p class="server-desc">Tri-scout evidential search executing parallel queries to enforce the 3-source truth verification gate.</p>
+                        <div class="server-tags">
+                            <code>brave_web_search</code>
+                            <code>brave_local_search</code>
+                        </div>
+                    </div>
+
+                    <div class="server-card">
+                        <div class="server-header">
+                            <span class="server-icon">⚡</span>
+                            <div class="server-title-wrap">
+                                <h4>chrome-devtools-mcp</h4>
+                                <span class="server-badge">CDP :9222</span>
+                            </div>
+                        </div>
+                        <p class="server-desc">Auto-attach to Wayne's authenticated Google Chrome browser on Port 9222. Zero broken child browser spawns.</p>
+                        <div class="server-tags">
+                            <code>Runtime.evaluate</code>
+                            <code>Page.navigate</code>
+                            <code>DOM.query</code>
+                        </div>
+                    </div>
+
+                    <div class="server-card">
+                        <div class="server-header">
+                            <span class="server-icon">🎵</span>
+                            <div class="server-title-wrap">
+                                <h4>keystone-music-manager</h4>
+                                <span class="server-badge">TOOLOST</span>
+                            </div>
+                        </div>
+                        <p class="server-desc">TooLost ISRC database indexing, Musixmatch Pro synced lyrics pipeline, and MusicBrainz catalog synchronizer.</p>
+                        <div class="server-tags">
+                            <code>isrc.lookup</code>
+                            <code>lyrics.sync</code>
+                            <code>album.metadata</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. CHROME CDP PORT 9222 SPECIFICATION -->
+            <section class="ai-section">
+                <div class="cdp-spec-box">
+                    <div class="cdp-header">
+                        <span class="cdp-pill">ZERO-CLOUD AUTOMATION</span>
+                        <h3 class="cdp-title">The Chrome CDP Port 9222 Standard</h3>
+                        <p class="cdp-desc">
+                            We never use headless Playwright or cloud browser VMs that fail captchas and cost hundreds per month. Antigravity connects directly to Wayne's daily-driver Chrome profile over local loopback WebSockets:
+                        </p>
+                    </div>
+
+                    <div class="code-terminal-card">
+                        <div class="terminal-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="terminal-title">powershell — Chrome Remote Debugging Launch</span>
+                        </div>
+                        <pre class="terminal-body"><code>&amp; "C:\Program Files\Google\Chrome\Application\chrome.exe" `
+    --remote-debugging-port=9222 `
+    --user-data-dir="C:\ChromeProfile" `
+    --restore-last-session</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. YOUTUBE & SKOOL CTA SECTION -->
+            <section class="ai-section text-center">
+                <div class="cta-vault-card">
+                    <h2 class="vault-heading">Build With Us: Code, Architecture &amp; Live Teardowns</h2>
+                    <p class="vault-sub">
+                        Subscribe to <strong>@KeystoneAIProtocols</strong> on YouTube or join the private Skool Builder Guild for source repositories and live FastMCP server blueprints.
+                    </p>
+                    <div class="vault-btn-group">
+                        <a href="https://youtube.com/@KeystoneAIProtocols" target="_blank" rel="noopener" class="btn-primary-gold">
+                            ▶ Subscribe to @KeystoneAIProtocols on YouTube
+                        </a>
+                        <a href="https://skool.com" target="_blank" rel="noopener" class="btn-secondary-glass">
+                            🚀 Join Skool Builder Guild ($49/mo)
                         </a>
                     </div>
                 </div>

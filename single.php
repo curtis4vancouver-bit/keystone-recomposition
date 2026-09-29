@@ -56,10 +56,13 @@ get_header(); ?>
                     <footer class="entry-footer">
                         <div class="author-dossier-card">
                             <div class="author-avatar-wrap">
-                                <img src="https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_reaching_for_pepper_grinder11_202605021316.jpeg?w=300&ssl=1" alt="Wayne Stevenson" class="author-avatar-img" />
+                                <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/wayne_avatar.jpg' ); ?>" alt="Wayne Stevenson" class="author-avatar-img" />
                             </div>
                             <div class="author-dossier-info">
-                                <span class="author-role-badge">FOUNDER &amp; ARCHITECT</span>
+                                <div class="author-badge-row">
+                                    <span class="author-role-badge">FOUNDER &amp; ARCHITECT</span>
+                                    <span class="author-badge-pill">BC BUILDER #52603</span>
+                                </div>
                                 <h3 class="author-dossier-name">Wayne Stevenson</h3>
                                 <p class="author-dossier-bio">
                                     Certified BC Housing Licensed Residential Builder (#52603), electronic music producer with 18 studio albums on TooLost, and lead architect of autonomous FastMCP swarm workstations. Operating across Squamish, Whistler, and Greater Vancouver.
