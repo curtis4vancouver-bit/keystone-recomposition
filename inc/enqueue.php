@@ -216,8 +216,11 @@ add_filter( 'astra_get_option_footer-html-2', 'astra_child_keystone_sanitize_foo
 add_filter( 'astra_get_option_footer-copyright-editor', 'astra_child_keystone_sanitize_footer_output', 9999 );
 add_filter( 'astra_get_option_footer-sml-layout', 'astra_child_keystone_sanitize_footer_output', 9999 );
 
-// Completely unhook Astra footer across all pages
+// Completely unhook Astra default header & footer across all pages
 add_action( 'template_redirect', function() {
+    remove_all_actions( 'astra_header' );
+    remove_all_actions( 'astra_header_before' );
+    remove_all_actions( 'astra_header_after' );
     remove_all_actions( 'astra_footer' );
     remove_all_actions( 'astra_footer_before' );
     remove_all_actions( 'astra_footer_after' );
