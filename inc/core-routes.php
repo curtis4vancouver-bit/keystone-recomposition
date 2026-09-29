@@ -248,6 +248,21 @@ function keystone_execute_sovereign_reset_pipeline(): array {
          )"
     );
 
+    // Also trash any legacy peptide/calculator pages
+    $wpdb->query(
+        "UPDATE {$wpdb->posts} SET post_status = 'trash' 
+         WHERE post_type = 'page' 
+         AND post_status = 'publish'
+         AND post_name IN (
+             'wolverine-protocol',
+             'calculators',
+             'peptide-calculator',
+             'glp1-calculator',
+             'the-kitchen',
+             'keystone-kitchen'
+         )"
+    );
+
     // C. Seed Cornerstone AI & Music Intel Articles
     $seeded_posts = keystone_seed_cornerstone_intel_articles();
 

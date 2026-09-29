@@ -26,6 +26,8 @@ function keystone_get_purged_slug_patterns(): array {
         'bpc-157',
         'bpc157',
         'wolverine-stack',
+        'wolverine-protocol',
+        'wolverine',
         'retatrutide',
         'epithalon',
         'ipamorelin',
@@ -43,8 +45,11 @@ function keystone_get_purged_slug_patterns(): array {
         'reconstitution',
         'peptide-calculator',
         'glp1-calculator',
+        'calculator',
+        'calculators',
         'keystone-kitchen',
         'the-kitchen',
+        'kitchen',
         'watch-',
     );
 }
