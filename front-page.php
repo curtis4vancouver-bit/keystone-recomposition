@@ -260,7 +260,7 @@ $theme_uri = get_stylesheet_directory_uri();
                 
                 <div class="section-header text-center">
                     <span class="cyber-section-tag">OFFICIAL ARTIST CATALOG</span>
-                    <h2 class="cyber-section-title">Latest Master Studio Releases</h2>
+                    <h2 class="cyber-section-title">Latest Master <span class="cyan-gold-gradient-text">Studio Releases</span></h2>
                     <p class="cyber-section-desc">
                         22 Official Releases • 20 Full Studio Albums | 216 Registered Master Recordings registered with TooLost Digital &amp; distributed worldwide on Spotify, Apple Music &amp; YouTube Music.
                     </p>
@@ -357,73 +357,350 @@ $theme_uri = get_stylesheet_directory_uri();
             </div>
         </section>
 
-        <!-- 4. TECHNICAL INTEL ARTICLES PREVIEW -->
-        <section class="cyber-intel-section">
+        <!-- 4. ROTATING CAROUSEL: TECHNICAL INTEL & ARCHITECTURAL PROTOCOLS -->
+        <section class="cyber-intel-carousel-section">
             <div class="ast-container">
                 <div class="section-header text-center">
-                    <span class="cyber-section-tag">ENGINEERING DISPATCHES</span>
-                    <h2 class="cyber-section-title">Technical Protocols &amp; Intelligence</h2>
+                    <span class="cyber-section-tag">ENGINEERING DISPATCHES • 2026 ARCHITECTURAL INTEL</span>
+                    <h2 class="cyber-section-title">Technical Intel &amp; <span class="cyan-gold-gradient-text">Architectural Protocols</span></h2>
                     <p class="cyber-section-desc">
-                        Deep architectural breakdowns on agentic coding, Chrome CDP automation, and bio-acoustic sound design.
+                        Production FastMCP server patterns, local multi-agent swarm case studies, and Chrome DevTools Protocol automation. Staged for master video releases.
                     </p>
                 </div>
 
-                <div class="intel-articles-grid">
-                    
-                    <!-- Article 1 -->
-                    <article class="cyber-intel-card">
-                        <div class="intel-card-meta">
-                            <span class="intel-category">AUTONOMOUS AGENTS</span>
-                            <span class="intel-date">SEPT 2026</span>
-                        </div>
-                        <h3 class="intel-title">
-                            <a href="/intel/">Architecting 16-Agent Concurrency Swarms on Port 9879</a>
-                        </h3>
-                        <p class="intel-excerpt">
-                            How we isolate research scouts, test-driven engineers, and live browsers across detached background daemons without thread collisions.
-                        </p>
-                        <div class="intel-card-footer">
-                            <a href="/intel/" class="intel-read-more">Read Technical Protocol →</a>
-                        </div>
-                    </article>
+                <?php
+                // Wayne's 3 Staged Video Drops for fallback/population
+                $staged_drops = array(
+                    array(
+                        'title'    => 'Autonomous Multi-Agent Swarms: Architecting 16-Agent Concurrency on Port 9879',
+                        'category' => 'AUTONOMOUS AGENTS',
+                        'date'     => 'SEPT 2026',
+                        'excerpt'  => 'How we isolate research scouts, test-driven engineers, and live browsers across detached background daemons without thread collisions.',
+                        'url'      => home_url( '/ai-protocols/' ),
+                        'image'    => '',
+                    ),
+                    array(
+                        'title'    => 'Zero-Cloud Chrome CDP Automation: Headless DOM Control & Instant Indexing',
+                        'category' => 'CHROME CDP AUTOMATION',
+                        'date'     => 'SEPT 2026',
+                        'excerpt'  => 'Bypassing brittle web drivers: connecting autonomous subagents directly to Chrome Port 9222 for zero-fallback publishing and instant GSC indexing.',
+                        'url'      => home_url( '/ai-protocols/' ),
+                        'image'    => '',
+                    ),
+                    array(
+                        'title'    => 'Bio-Acoustic Frequency Synthesis: Engineering Analog Harmonics for High-Cadence Focus',
+                        'category' => 'BIO-ACOUSTIC SOUND',
+                        'date'     => 'SEPT 2026',
+                        'excerpt'  => 'Designing 96kHz master electronic frequencies and Moog basslines to sustain cognitive focus during complex full-stack architectural sprints.',
+                        'url'      => home_url( '/sonic-universe/' ),
+                        'image'    => '',
+                    ),
+                );
 
-                    <!-- Article 2 -->
-                    <article class="cyber-intel-card">
-                        <div class="intel-card-meta">
-                            <span class="intel-category">DEVTOOLS CDP</span>
-                            <span class="intel-date">SEPT 2026</span>
-                        </div>
-                        <h3 class="intel-title">
-                            <a href="/intel/">Headless DOM Automation &amp; Instant Google Indexing</a>
-                        </h3>
-                        <p class="intel-excerpt">
-                            Bypassing brittle web drivers: connecting autonomous subagents directly to Chrome Port 9222 for zero-fallback publishing.
-                        </p>
-                        <div class="intel-card-footer">
-                            <a href="/intel/" class="intel-read-more">Read Technical Protocol →</a>
-                        </div>
-                    </article>
+                $carousel_items = array();
 
-                    <!-- Article 3 -->
-                    <article class="cyber-intel-card">
-                        <div class="intel-card-meta">
-                            <span class="intel-category">BIO-ACOUSTIC SOUND</span>
-                            <span class="intel-date">SEPT 2026</span>
-                        </div>
-                        <h3 class="intel-title">
-                            <a href="/intel/">Binaural Audio Synthesis for Sustained High-Cadence Focus</a>
-                        </h3>
-                        <p class="intel-excerpt">
-                            Engineering deep-house frequency harmonics and analog Moog basslines to prevent cognitive fatigue during complex builds.
-                        </p>
-                        <div class="intel-card-footer">
-                            <a href="/intel/" class="intel-read-more">Read Technical Protocol →</a>
-                        </div>
-                    </article>
+                // Query latest 6 published posts via WP_Query
+                $intel_query = new WP_Query( array(
+                    'post_type'           => 'post',
+                    'post_status'         => 'publish',
+                    'posts_per_page'      => 6,
+                    'ignore_sticky_posts' => 1,
+                ) );
 
+                if ( $intel_query->have_posts() ) {
+                    while ( $intel_query->have_posts() ) {
+                        $intel_query->the_post();
+                        $cats      = get_the_category();
+                        $cat_name  = ! empty( $cats ) ? strtoupper( $cats[0]->name ) : 'TECHNICAL INTEL';
+                        $thumb_url = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'large' ) : '';
+                        $raw_exp   = get_the_excerpt();
+                        if ( empty( $raw_exp ) ) {
+                            $raw_exp = wp_trim_words( wp_strip_all_tags( get_the_content() ), 24, '...' );
+                        }
+                        $carousel_items[] = array(
+                            'title'    => get_the_title(),
+                            'category' => $cat_name,
+                            'date'     => get_the_date( 'M Y' ),
+                            'excerpt'  => wp_trim_words( wp_strip_all_tags( $raw_exp ), 22, '...' ),
+                            'url'      => get_permalink(),
+                            'image'    => $thumb_url ?: '',
+                        );
+                    }
+                    wp_reset_postdata();
+                }
+
+                // If fewer than 3 posts exist, merge with Wayne's staged video drops so exactly >= 3 cards are populated
+                if ( count( $carousel_items ) < 3 ) {
+                    $needed = 3 - count( $carousel_items );
+                    for ( $i = 0; $i < $needed; $i++ ) {
+                        if ( isset( $staged_drops[ $i ] ) ) {
+                            $carousel_items[] = $staged_drops[ $i ];
+                        }
+                    }
+                }
+                ?>
+
+                <div class="intel-carousel-wrapper" id="intelCarousel">
+                    <!-- Glassmorphic Prev/Next Controls -->
+                    <button type="button" class="intel-carousel-nav-btn prev-btn" id="intelCarouselPrev" aria-label="Previous Slide">‹</button>
+                    <button type="button" class="intel-carousel-nav-btn next-btn" id="intelCarouselNext" aria-label="Next Slide">›</button>
+
+                    <!-- Carousel Viewport & Track -->
+                    <div class="intel-carousel-viewport">
+                        <div class="intel-carousel-track" id="intelCarouselTrack">
+                            <?php foreach ( $carousel_items as $item ) : ?>
+                                <div class="intel-carousel-slide">
+                                    <article class="cyber-intel-card intel-slide-card">
+                                        <!-- 16:9 Widescreen Video Preview Container -->
+                                        <div class="intel-video-preview-slot">
+                                            <a href="<?php echo esc_url( $item['url'] ); ?>" class="video-preview-link" tabindex="-1" aria-label="<?php echo esc_attr( $item['title'] ); ?>">
+                                                <?php if ( ! empty( $item['image'] ) ) : ?>
+                                                    <img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" class="video-preview-thumb" loading="lazy" decoding="async" />
+                                                <?php else : ?>
+                                                    <div class="video-preview-fallback">
+                                                        <div class="fallback-grid-lines"></div>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <div class="video-preview-overlay">
+                                                    <div class="video-play-badge">
+                                                        <span class="play-arrow">▶</span>
+                                                    </div>
+                                                </div>
+                                                <span class="video-runtime-pill">16:9 4K VIDEO SLOT // STAGED</span>
+                                            </a>
+                                        </div>
+
+                                        <!-- Card Content -->
+                                        <div class="intel-card-content">
+                                            <div>
+                                                <div class="intel-card-meta">
+                                                    <span class="intel-category"><?php echo esc_html( $item['category'] ); ?></span>
+                                                    <span class="intel-date"><?php echo esc_html( $item['date'] ); ?></span>
+                                                </div>
+                                                <h3 class="intel-title">
+                                                    <a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a>
+                                                </h3>
+                                                <p class="intel-excerpt">
+                                                    <?php echo esc_html( $item['excerpt'] ); ?>
+                                                </p>
+                                            </div>
+                                            <div class="intel-card-footer">
+                                                <a href="<?php echo esc_url( $item['url'] ); ?>" class="intel-read-more">Read Technical Protocol →</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <!-- Pagination Dots -->
+                    <div class="intel-carousel-dots" id="intelCarouselDots"></div>
                 </div>
+
             </div>
         </section>
+
+        <!-- Embedded JavaScript for Rotating Carousel -->
+        <script>
+        (function() {
+            function initIntelCarousel() {
+                const carousel = document.getElementById('intelCarousel');
+                const track = document.getElementById('intelCarouselTrack');
+                const prevBtn = document.getElementById('intelCarouselPrev');
+                const nextBtn = document.getElementById('intelCarouselNext');
+                const dotsContainer = document.getElementById('intelCarouselDots');
+
+                if (!carousel || !track) return;
+
+                const slides = track.querySelectorAll('.intel-carousel-slide');
+                const totalSlides = slides.length;
+                if (totalSlides === 0) return;
+
+                let currentIndex = 0;
+                let autoSlideTimer = null;
+                const autoSlideDelay = 6000;
+
+                function getVisibleCount() {
+                    if (window.innerWidth < 640) return 1;
+                    if (window.innerWidth < 1024) return 2;
+                    return 3;
+                }
+
+                function getMaxIndex() {
+                    return Math.max(0, totalSlides - getVisibleCount());
+                }
+
+                function renderDots() {
+                    if (!dotsContainer) return;
+                    dotsContainer.innerHTML = '';
+                    const maxIdx = getMaxIndex();
+                    const dotCount = maxIdx + 1;
+                    if (dotCount <= 1) {
+                        dotsContainer.style.display = 'none';
+                        return;
+                    }
+                    dotsContainer.style.display = 'flex';
+
+                    for (let i = 0; i < dotCount; i++) {
+                        const dot = document.createElement('button');
+                        dot.type = 'button';
+                        dot.className = 'dot-btn' + (i === currentIndex ? ' active' : '');
+                        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                        dot.addEventListener('click', function() {
+                            goToSlide(i);
+                            restartAutoplay();
+                        });
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+
+                function updateDots() {
+                    if (!dotsContainer) return;
+                    const dots = dotsContainer.querySelectorAll('.dot-btn');
+                    dots.forEach(function(dot, idx) {
+                        if (idx === currentIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+
+                function updateSlidePosition() {
+                    const visible = getVisibleCount();
+                    const slidePercent = 100 / visible;
+                    const offset = currentIndex * slidePercent;
+                    track.style.transform = 'translateX(-' + offset + '%)';
+                    updateDots();
+                }
+
+                function goToSlide(index) {
+                    const maxIdx = getMaxIndex();
+                    if (index < 0) {
+                        currentIndex = maxIdx;
+                    } else if (index > maxIdx) {
+                        currentIndex = 0;
+                    } else {
+                        currentIndex = index;
+                    }
+                    updateSlidePosition();
+                }
+
+                function nextSlide() {
+                    const maxIdx = getMaxIndex();
+                    if (currentIndex >= maxIdx) {
+                        currentIndex = 0;
+                    } else {
+                        currentIndex++;
+                    }
+                    updateSlidePosition();
+                }
+
+                function prevSlide() {
+                    const maxIdx = getMaxIndex();
+                    if (currentIndex <= 0) {
+                        currentIndex = maxIdx;
+                    } else {
+                        currentIndex--;
+                    }
+                    updateSlidePosition();
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', function() {
+                        nextSlide();
+                        restartAutoplay();
+                    });
+                }
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', function() {
+                        prevSlide();
+                        restartAutoplay();
+                    });
+                }
+
+                function startAutoplay() {
+                    stopAutoplay();
+                    if (getMaxIndex() > 0) {
+                        autoSlideTimer = setInterval(nextSlide, autoSlideDelay);
+                    }
+                }
+
+                function stopAutoplay() {
+                    if (autoSlideTimer) {
+                        clearInterval(autoSlideTimer);
+                        autoSlideTimer = null;
+                    }
+                }
+
+                function restartAutoplay() {
+                    stopAutoplay();
+                    startAutoplay();
+                }
+
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+
+                // Touch drag / swipe support
+                let startX = 0;
+                let deltaX = 0;
+                let isTouching = false;
+
+                carousel.addEventListener('touchstart', function(e) {
+                    if (!e.touches || e.touches.length === 0) return;
+                    startX = e.touches[0].clientX;
+                    deltaX = 0;
+                    isTouching = true;
+                    stopAutoplay();
+                }, { passive: true });
+
+                carousel.addEventListener('touchmove', function(e) {
+                    if (!isTouching || !e.touches || e.touches.length === 0) return;
+                    deltaX = e.touches[0].clientX - startX;
+                }, { passive: true });
+
+                carousel.addEventListener('touchend', function() {
+                    if (!isTouching) return;
+                    isTouching = false;
+                    const threshold = 40;
+                    if (deltaX < -threshold) {
+                        nextSlide();
+                    } else if (deltaX > threshold) {
+                        prevSlide();
+                    }
+                    startX = 0;
+                    deltaX = 0;
+                    startAutoplay();
+                });
+
+                let resizeTimer = null;
+                window.addEventListener('resize', function() {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function() {
+                        const maxIdx = getMaxIndex();
+                        if (currentIndex > maxIdx) {
+                            currentIndex = maxIdx;
+                        }
+                        renderDots();
+                        updateSlidePosition();
+                        restartAutoplay();
+                    }, 120);
+                });
+
+                renderDots();
+                updateSlidePosition();
+                startAutoplay();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initIntelCarousel);
+            } else {
+                initIntelCarousel();
+            }
+        })();
+        </script>
 
         <!-- 5. FOUNDER PROFILE & DUAL-PILLAR DOSSIER (RETRACTABLE ANCHOR) -->
         <section id="builder-dossier" class="cyber-founder-section">

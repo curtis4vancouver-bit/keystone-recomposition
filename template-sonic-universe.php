@@ -40,9 +40,7 @@ $total_tracks = $stats['total_tracks'];
                         OFFICIAL ARTIST CHANNEL &bull; TOOLOST DIGITAL DISTRIBUTION
                     </div>
                     
-                    <h1 class="page-title">
-                        The Sonic Universe: <span class="gold-gradient-text"><?php echo esc_html( (string) $total_albums ); ?> Official Releases</span>
-                    </h1>
+                    <h1 class="sonic-hero-title">The Sonic Universe:<br><span class="cyan-gold-gradient-text">22 Official Releases</span></h1>
                     
                     <p class="page-subtitle">
                         Original electronic compositions, melodic progressive house, and bio-frequency soundscapes produced by Wayne Stevenson. Fully cataloged with <?php echo esc_html( (string) $total_tracks ); ?> registered ISRCs across <?php echo esc_html( (string) $studio_count ); ?> studio albums and 2 singles on Spotify, Apple Music, and YouTube Music.
