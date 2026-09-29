@@ -28,7 +28,10 @@ require_once __DIR__ . '/inc/content-blocks.php';
 // 6. Indexing API & Post Management
 require_once __DIR__ . '/inc/indexing-api.php';
 
-// 7. Sovereign Database Migration
+// 7. Core System Routes, Dynamic Template Routing & Sovereign Reset
+require_once __DIR__ . '/inc/core-routes.php';
+
+// 8. Sovereign Database Migration
 if ( file_exists( __DIR__ . '/inc/sovereign-migration.php' ) ) {
 	require_once __DIR__ . '/inc/sovereign-migration.php';
 }
