@@ -6268,22 +6268,45 @@ body.page-template-template-ai-protocols #content > .ast-container {
   padding: 55px 0 40px 0 !important;
   color: #94a3b8 !important;
   font-family: 'Inter', sans-serif !important;
+  width: 100% !important;
+}
+
+.keystone-geo-footer-mesh .ast-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+}
+
+.footer-social-row {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-bottom: 15px !important;
+  width: 100% !important;
 }
 
 .footer-copyright-center {
-  text-align: center;
-  font-size: 0.82rem;
-  color: #64748b;
-  margin-bottom: 35px;
-  letter-spacing: 0.05em;
+  text-align: center !important;
+  font-size: 0.82rem !important;
+  color: #64748b !important;
+  margin-bottom: 30px !important;
+  letter-spacing: 0.05em !important;
+  width: 100% !important;
 }
 
 .regional-divisions-wrap {
+  width: 100% !important;
   background: rgba(10, 15, 25, 0.7);
   border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 16px;
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  box-sizing: border-box !important;
 }
 
 .regional-header-cyan {
