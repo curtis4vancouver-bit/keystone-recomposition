@@ -966,6 +966,10 @@ function keystone_master_robots_txt( string $output, bool $public ): string {
  */
 add_action( 'wp_footer', 'keystone_recomposition_add_sister_site_backlink', 100 );
 function keystone_recomposition_add_sister_site_backlink() {
+    // Avoid duplicate footer bar on front page where keystone-geo-footer-mesh is already rendered
+    if ( is_front_page() || is_home() ) {
+        return;
+    }
     ?>
     <!-- Keystone Empire Network Standardized Footer Bar -->
     <div class="keystone-empire-footer-bar" style="background:#04070d; border-top:1px solid rgba(196,162,101,0.25); padding:16px 20px; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:#94a3b8; font-size:0.82rem;">
@@ -976,12 +980,12 @@ function keystone_recomposition_add_sister_site_backlink() {
                     KEYSTONE EMPIRE NETWORK
                 </span>
                 <span style="color:rgba(255,255,255,0.2);">|</span>
-                <span style="color:#cbd5e1; font-size:0.8rem; font-weight:500;">Keystone Recomposition — Evidence-Based Clinical Peptides &amp; Protocol Analytics</span>
+                <span style="color:#cbd5e1; font-size:0.8rem; font-weight:500;">Keystone Recomposition — Autonomous AI Systems &amp; Sonic Architecture</span>
             </div>
             <div style="display:flex; align-items:center; gap:8px; font-size:0.8rem;">
                 <span style="color:#64748b;">Sister Flagship:</span>
                 <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" style="color:#c4a265; font-weight:600; text-decoration:none; transition:color 0.2s; display:inline-flex; align-items:center; gap:4px;">
-                    Keystone Possibilities — BC Building Code &amp; Construction Consulting &#8594;
+                    Keystone Possibilities — Licensed Residential Builder #52603 &amp; BC Hydro Contractor &#8594;
                 </a>
             </div>
         </div>
