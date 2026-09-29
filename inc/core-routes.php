@@ -217,7 +217,14 @@ function keystone_execute_sovereign_reset_pipeline(): array {
             $is_legacy = true;
 
             if ( $is_legacy ) {
+                wp_set_current_user( 1 );
                 wp_trash_post( (int) $p->ID );
+                $wpdb->update(
+                    $wpdb->posts,
+                    array( 'post_status' => 'trash' ),
+                    array( 'ID' => (int) $p->ID )
+                );
+                clean_post_cache( (int) $p->ID );
                 $purged_ids[] = array(
                     'id'    => $p->ID,
                     'slug'  => $slug,
@@ -228,6 +235,18 @@ function keystone_execute_sovereign_reset_pipeline(): array {
             }
         }
     }
+
+    // Direct atomic enforcement: any remaining non-cornerstone post goes to trash
+    $wpdb->query(
+        "UPDATE {$wpdb->posts} SET post_status = 'trash' 
+         WHERE post_type = 'post' 
+         AND post_status = 'publish'
+         AND post_name NOT IN (
+             'autonomous-multi-agent-swarms-fastmcp-architecture',
+             'sovereign-reverb-functional-frequency-architecture',
+             'chrome-devtools-protocol-cdp-port-9222-automation'
+         )"
+    );
 
     // C. Seed Cornerstone AI & Music Intel Articles
     $seeded_posts = keystone_seed_cornerstone_intel_articles();
