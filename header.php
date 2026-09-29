@@ -46,11 +46,14 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- Desktop Navigation Menu -->
             <nav aria-label="Main Navigation">
                 <ul class="nav-links-menu">
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-link-item <?php echo ( is_front_page() || is_home() ) ? 'active' : ''; ?>">HOME</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="nav-link-item <?php echo is_page( 'ai-protocols' ) ? 'active' : ''; ?>">AI PROTOCOLS</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="nav-link-item <?php echo is_page( 'intel' ) ? 'active' : ''; ?>">INTEL</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="nav-link-item <?php echo is_page( 'sonic-universe' ) ? 'active' : ''; ?>">SONIC UNIVERSE</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/about-the-founder/' ) ); ?>" class="nav-link-item <?php echo is_page( 'about-the-founder' ) ? 'active' : ''; ?>">FOUNDER</a></li>
+                    <?php 
+                    $current_path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ?: '', '/' );
+                    ?>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-link-item <?php echo ( $current_path === '' ) ? 'active' : ''; ?>">HOME</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'ai-protocols' ) !== false ) ? 'active' : ''; ?>">AI PROTOCOLS</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || is_singular( 'post' ) ) ? 'active' : ''; ?>">INTEL</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'sonic-universe' ) !== false ) ? 'active' : ''; ?>">SONIC UNIVERSE</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/about-the-founder/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'about-the-founder' ) !== false ) ? 'active' : ''; ?>">FOUNDER</a></li>
                 </ul>
             </nav>
 
@@ -75,11 +78,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <!-- MOBILE NAVIGATION DRAWER -->
     <div class="mobile-menu-drawer" id="mobileDrawer">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo ( is_front_page() || is_home() ) ? 'active' : ''; ?>">HOME</a>
-        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="<?php echo is_page( 'ai-protocols' ) ? 'active' : ''; ?>">AI PROTOCOLS</a>
-        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="<?php echo is_page( 'intel' ) ? 'active' : ''; ?>">INTEL</a>
-        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="<?php echo is_page( 'sonic-universe' ) ? 'active' : ''; ?>">SONIC UNIVERSE</a>
-        <a href="<?php echo esc_url( home_url( '/about-the-founder/' ) ); ?>" class="<?php echo is_page( 'about-the-founder' ) ? 'active' : ''; ?>">FOUNDER</a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo ( $current_path === '' ) ? 'active' : ''; ?>">HOME</a>
+        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'ai-protocols' ) !== false ) ? 'active' : ''; ?>">AI PROTOCOLS</a>
+        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || is_singular( 'post' ) ) ? 'active' : ''; ?>">INTEL</a>
+        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'sonic-universe' ) !== false ) ? 'active' : ''; ?>">SONIC UNIVERSE</a>
+        <a href="<?php echo esc_url( home_url( '/about-the-founder/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'about-the-founder' ) !== false ) ? 'active' : ''; ?>">FOUNDER</a>
     </div>
 
     <!-- SCRIPT FOR MOBILE DRAWER TOGGLE -->
