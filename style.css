@@ -3720,8 +3720,9 @@ footer.site-footer,
    2. SONIC UNIVERSE 22-RELEASE STYLES (BANG & OLUFSEN QUIET LUXURY)
    -------------------------------------------------------------------------- */
 .keystone-sonic-universe-page {
-  padding: 60px 20px 120px 20px;
-  background: #04070d !important;
+  padding: 40px 20px 120px 20px;
+  background: #000000 !important;
+  margin-top: 0 !important;
 }
 
 .sonic-header {
@@ -7131,7 +7132,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   position: sticky;
   top: 0;
   z-index: 10000;
-  background: rgba(4, 7, 13, 0.95);
+  background: #000000 !important;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -8631,6 +8632,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   position: sticky !important;
   top: 0 !important;
   z-index: 10000 !important;
+  background: #000000 !important;
 }
 
 .site-nav-header .nav-container {
@@ -9581,3 +9583,581 @@ body.page-template-template-ai-protocols #content > .ast-container {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   UNIVERSAL PURE BLACK CONTINUITY (Wayne Stevenson Absolute Black Standard)
+   Zero Blue/Navy Gap Below Header • Seamless Page-to-Footer Flow
+   ========================================================================== */
+html,
+body,
+#page,
+#content,
+.site-content,
+#primary,
+.content-area,
+.site-footer,
+.wayne-preferred-footer,
+.keystone-sonic-universe-page,
+.keystone-investments-page,
+.keystone-lifestyle-page,
+.keystone-contact-page,
+.keystone-founder-page,
+.keystone-home-orchestrator,
+.ast-container {
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+.site-nav-header {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.keystone-sonic-universe-page,
+.keystone-investments-page,
+.keystone-lifestyle-page,
+.keystone-contact-page {
+  margin-top: 0 !important;
+  padding-top: 30px !important;
+}
+
+/* ==========================================================================
+   WAYNE'S HIGH-END FOOTER STYLING (media_1790724616752.png Standard)
+   Dual YouTube Subscribe Buttons • Certified Builder #52603 • 4-Column Grid
+   ========================================================================== */
+.wayne-preferred-footer {
+  background: #000000 !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.25) !important;
+  padding: 45px 24px 30px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.footer-social-subscribe-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 24px !important;
+}
+
+.footer-social-icons-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.footer-social-circle-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: rgba(15, 23, 42, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #94a3b8 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.footer-social-circle-btn:hover {
+  color: #38bdf8 !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Luxury Subscribe Pills */
+.footer-luxury-subscribe-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 18px !important;
+  border-radius: 9999px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.footer-luxury-subscribe-pill.gold-border {
+  background: rgba(246, 211, 101, 0.08) !important;
+  border: 1px solid rgba(246, 211, 101, 0.5) !important;
+  color: #f6d365 !important;
+  box-shadow: 0 0 12px rgba(246, 211, 101, 0.15) !important;
+}
+
+.footer-luxury-subscribe-pill.gold-border:hover {
+  background: #f6d365 !important;
+  color: #030712 !important;
+  box-shadow: 0 0 20px rgba(246, 211, 101, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+.footer-luxury-subscribe-pill.cyan-border {
+  background: rgba(56, 189, 248, 0.08) !important;
+  border: 1px solid rgba(56, 189, 248, 0.5) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15) !important;
+}
+
+.footer-luxury-subscribe-pill.cyan-border:hover {
+  background: #38bdf8 !important;
+  color: #030712 !important;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6) !important;
+  transform: translateY(-2px) !important;
+}
+
+.footer-luxury-subscribe-pill .yt-badge-dot {
+  font-size: 0.85rem !important;
+  line-height: 1 !important;
+}
+
+/* Footer Copyright & Credentials */
+.footer-copyright-center {
+  text-align: center !important;
+  margin-bottom: 30px !important;
+}
+
+.footer-copyright-center .copyright-line-main {
+  color: #cbd5e1 !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  margin: 0 0 4px !important;
+}
+
+.footer-copyright-center .copyright-line-sub {
+  color: #94a3b8 !important;
+  font-size: 0.74rem !important;
+  margin: 0 !important;
+}
+
+.regional-header-gold {
+  color: #d4af37 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.74rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 22px !important;
+  text-align: center !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+  padding-bottom: 12px !important;
+}
+
+.builder-name-gold {
+  color: #f6d365 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.84rem !important;
+  display: block !important;
+}
+
+.license-spec {
+  color: #e2e8f0 !important;
+  font-size: 0.78rem !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+}
+
+.footer-email-link {
+  color: #38bdf8 !important;
+  text-decoration: none !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-email-link:hover {
+  color: #00f0ff !important;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5) !important;
+}
+
+/* ==========================================================================
+   HIGH-CONVICTION INVESTMENTS PAGE STYLING
+   ========================================================================== */
+.investments-spotlight-card {
+  background: rgba(8, 14, 26, 0.85) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  border-radius: 24px !important;
+  padding: 44px 36px !important;
+  margin: 30px 0 60px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.1) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.spotlight-image-container {
+  position: relative !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  margin: 32px 0 !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+.spotlight-hero-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+  aspect-ratio: 16/9 !important;
+}
+
+.image-overlay-badge {
+  position: absolute !important;
+  bottom: 16px !important;
+  left: 16px !important;
+  background: rgba(3, 7, 18, 0.85) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  color: #38bdf8 !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.image-overlay-badge .badge-dot {
+  color: #00f0ff !important;
+  margin-right: 4px !important;
+}
+
+.quant-pillars-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  margin: 28px 0 !important;
+}
+
+.quant-pillar-item {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 14px !important;
+  padding: 20px 16px !important;
+  text-align: center !important;
+}
+
+.quant-icon-wrap {
+  font-size: 1.5rem !important;
+  margin-bottom: 10px !important;
+}
+
+.quant-pillar-item h4 {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 800 !important;
+  color: #f8fafc !important;
+  margin-bottom: 8px !important;
+}
+
+.quant-pillar-item p {
+  font-size: 0.78rem !important;
+  color: #94a3b8 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.fiduciary-treasury-notice {
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  border-radius: 14px !important;
+  padding: 22px 24px !important;
+  background: rgba(10, 14, 24, 0.75) !important;
+  color: #cbd5e1 !important;
+  font-size: 0.82rem !important;
+  line-height: 1.6 !important;
+  margin-top: 30px !important;
+}
+
+.fiduciary-treasury-notice .notice-badge {
+  color: #f6d365 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 10px !important;
+}
+
+.pillar-image-wrap {
+  position: relative !important;
+  width: 100% !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  margin-bottom: 18px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.pillar-hero-img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.pillar-badge-float {
+  position: absolute !important;
+  top: 12px !important;
+  left: 12px !important;
+  background: rgba(3, 7, 18, 0.85) !important;
+  border: 1px solid rgba(246, 211, 101, 0.4) !important;
+  color: #f6d365 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  padding: 3px 10px !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.06em !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.business-section-card {
+  background: rgba(8, 14, 26, 0.75) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  border-radius: 20px !important;
+  padding: 40px !important;
+  margin: 40px 0 60px !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.business-grid-two {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  margin-top: 32px !important;
+}
+
+.business-subcard {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 14px !important;
+  padding: 26px 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.subcard-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 14px !important;
+}
+
+.subcard-tag-gold {
+  color: #f6d365 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+}
+
+.subcard-tag-cyan {
+  color: #00f0ff !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+}
+
+.subcard-icon {
+  font-size: 1.4rem !important;
+}
+
+.subcard-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 1.20rem !important;
+  font-weight: 800 !important;
+  color: #f8fafc !important;
+  margin-bottom: 12px !important;
+}
+
+.subcard-desc {
+  font-size: 0.84rem !important;
+  color: #94a3b8 !important;
+  line-height: 1.55 !important;
+  margin-bottom: 16px !important;
+}
+
+.subcard-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  font-size: 0.80rem !important;
+  color: #cbd5e1 !important;
+}
+
+.direct-email-gateway-box {
+  background: rgba(10, 16, 28, 0.85) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  border-radius: 16px !important;
+  padding: 28px 24px !important;
+  margin: 30px auto !important;
+  max-width: 640px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+  text-align: center !important;
+}
+
+.gateway-email-label {
+  display: block !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.70rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  color: #f6d365 !important;
+  margin-bottom: 8px !important;
+}
+
+.gateway-email-address {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 1.45rem !important;
+  font-weight: 800 !important;
+  color: #38bdf8 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  display: inline-block !important;
+}
+
+.gateway-email-address:hover {
+  color: #00f0ff !important;
+  text-shadow: 0 0 14px rgba(0, 240, 255, 0.6) !important;
+  transform: scale(1.02) !important;
+}
+
+.gateway-email-notice {
+  font-size: 0.80rem !important;
+  color: #94a3b8 !important;
+  line-height: 1.5 !important;
+  margin: 12px 0 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .quant-pillars-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .business-grid-two {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .quant-pillars-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .gateway-email-address {
+    font-size: 1.15rem !important;
+  }
+  .footer-social-subscribe-row {
+    flex-direction: column !important;
+  }
+}
+
+/* ==========================================================================
+   WAYNE'S SPECIFIC FOOTER SUBSCRIBE & INVESTMENTS PRINCIPLES TOKENS
+   ========================================================================== */
+.footer-subscribe-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  min-height: 48px !important;
+  padding: 10px 22px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.80rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  transition: all 0.25s ease !important;
+}
+
+.footer-subscribe-btn-gold {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+  border: 1.5px solid #d4af37 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.22) !important;
+}
+
+.footer-subscribe-btn-gold:hover {
+  background: #f6d365 !important;
+  color: #030712 !important;
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.7) !important;
+  border-color: #f6d365 !important;
+  transform: translateY(-2px) !important;
+}
+
+.footer-subscribe-btn-cyan {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+  border: 1.5px solid #00f0ff !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.22) !important;
+}
+
+.footer-subscribe-btn-cyan:hover {
+  background: #00f0ff !important;
+  color: #030712 !important;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.7) !important;
+  border-color: #38bdf8 !important;
+  transform: translateY(-2px) !important;
+}
+
+.footer-btn-play-svg {
+  filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.6)) !important;
+  flex-shrink: 0 !important;
+}
+
+.footer-social-circle {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 50% !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
+  color: #f6d365 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+.footer-social-circle:hover {
+  color: #00f0ff !important;
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.5) !important;
+  transform: scale(1.08) !important;
+}
+
+.quant-principles-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  margin: 28px 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .quant-principles-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .quant-principles-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
