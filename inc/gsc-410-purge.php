@@ -22,6 +22,7 @@ function keystone_get_purged_slug_patterns(): array {
     return array(
         'mounjaro',
         'tirzepatide',
+        'ozempic',
         'semaglutide',
         'cjc-1295',
         'cjc1295',
