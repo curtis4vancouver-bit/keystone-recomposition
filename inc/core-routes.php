@@ -55,9 +55,51 @@ function keystone_dynamic_core_template_router( string $template ): string {
         }
     }
 
-    // Route: /about-the-founder/ & legacy alias
-    if ( $slug === 'about-the-founder' || $slug === 'about-the-founder-the-keystone-blueprint' ) {
+    // Route: /investments/
+    if ( $slug === 'investments' ) {
+        $file = get_stylesheet_directory() . '/template-investments.php';
+        if ( file_exists( $file ) ) {
+            global $wp_query;
+            if ( $wp_query ) {
+                $wp_query->is_404  = false;
+                $wp_query->is_page = true;
+            }
+            status_header( 200 );
+            return $file;
+        }
+    }
+
+    // Route: /lifestyle/
+    if ( $slug === 'lifestyle' ) {
+        $file = get_stylesheet_directory() . '/template-lifestyle.php';
+        if ( file_exists( $file ) ) {
+            global $wp_query;
+            if ( $wp_query ) {
+                $wp_query->is_404  = false;
+                $wp_query->is_page = true;
+            }
+            status_header( 200 );
+            return $file;
+        }
+    }
+
+    // Route: /founder/ & /about-the-founder/
+    if ( $slug === 'founder' || $slug === 'about-the-founder' || $slug === 'about-the-founder-the-keystone-blueprint' ) {
         $file = get_stylesheet_directory() . '/template-founder-story.php';
+        if ( file_exists( $file ) ) {
+            global $wp_query;
+            if ( $wp_query ) {
+                $wp_query->is_404  = false;
+                $wp_query->is_page = true;
+            }
+            status_header( 200 );
+            return $file;
+        }
+    }
+
+    // Route: /contact/
+    if ( $slug === 'contact' ) {
+        $file = get_stylesheet_directory() . '/template-contact.php';
         if ( file_exists( $file ) ) {
             global $wp_query;
             if ( $wp_query ) {
@@ -113,10 +155,50 @@ function keystone_ensure_core_pages_exist(): void {
             'template' => 'template-founder-story.php',
             'content'  => '<!-- wp:paragraph --><p>Wayne Stevenson: Licensed Residential Builder #52603, Electronic Music Producer &amp; Systems Architect.</p><!-- /wp:paragraph -->',
         ),
+        'founder' => array(
+            'title'    => 'About the Founder — Wayne Stevenson Builder Blueprint',
+            'template' => 'template-founder-story.php',
+            'content'  => '<!-- wp:paragraph --><p>Wayne Stevenson: Licensed Residential Builder #52603, Electronic Music Producer &amp; Systems Architect.</p><!-- /wp:paragraph -->',
+        ),
+        'investments' => array(
+            'title'    => 'Keystone Investments — High-Conviction Capital & Sovereign Infrastructure',
+            'template' => 'template-investments.php',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: Bill 44 Physical Infill, Algorithmic Risk Models &amp; Sovereign Computational Infrastructure.</p><!-- /wp:paragraph -->',
+        ),
+        'lifestyle' => array(
+            'title'    => 'Keystone Lifestyle — Alpine Performance & Biological Architecture',
+            'template' => 'template-lifestyle.php',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Lifestyle: Sea-to-Sky Mountain Expeditions, 205-lb Set-Point &amp; Sonic Flow.</p><!-- /wp:paragraph -->',
+        ),
+        'contact' => array(
+            'title'    => 'Keystone Contact — Executive Inquiries & Private Consultations',
+            'template' => 'template-contact.php',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Contact: Executive Consultations, BC Builder #52603 Contracting &amp; TooLost Sync Licensing.</p><!-- /wp:paragraph -->',
+        ),
         'intel' => array(
             'title'    => 'Technical Intel & Architectural Protocols',
             'template' => 'default',
             'content'  => '',
+        ),
+        'investments' => array(
+            'title'    => 'Strategic Capital & High-Cadence Investments',
+            'template' => 'template-investments.php',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: High-Conviction Capital Allocation, Bill 44 Infill, Algorithmic Markets &amp; Sovereign Infrastructure.</p><!-- /wp:paragraph -->',
+        ),
+        'lifestyle' => array(
+            'title'    => 'Alpine Performance & Biological Architecture',
+            'template' => 'template-lifestyle.php',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Lifestyle: High-Performance Alpine Living, Sea-to-Sky Mountain Expeditions, 205-lb Set-Point &amp; Sonic Flow.</p><!-- /wp:paragraph -->',
+        ),
+        'founder' => array(
+            'title'    => 'About the Founder — Wayne Stevenson Builder Blueprint',
+            'template' => 'template-founder-story.php',
+            'content'  => '<!-- wp:paragraph --><p>Wayne Stevenson: Licensed Residential Builder #52603, Electronic Music Producer &amp; Systems Architect.</p><!-- /wp:paragraph -->',
+        ),
+        'contact' => array(
+            'title'    => 'Executive Contact & Consultation Gateway',
+            'template' => 'template-contact.php',
+            'content'  => '<!-- wp:paragraph --><p>Executive Contact: Direct Consultation, General Contracting BC #52603 &amp; TooLost Licensing Inquiries.</p><!-- /wp:paragraph -->',
         ),
     );
 

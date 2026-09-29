@@ -64,10 +64,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <!-- Column 3: The Intelligent Architect & Lifestyle Investments -->
                 <div class="regional-col">
                     <strong>The Intelligent Architect:</strong>
-                    <a href="/about-the-founder/">• Wayne Stevenson Builder Dossier</a>
-                    <a href="/investments-lifestyle/">• Investments &amp; Lifestyle (Upcoming Tab)</a>
-                    <a href="/intel/">• Predictive Intelligence &amp; Compounding</a>
-                    <a href="/intel/">• Bio-Acoustic Frequency Research</a>
+                    <a href="/founder/">• Wayne Stevenson Builder Dossier</a>
+                    <a href="/investments/">• Investments &amp; Strategic Allocation</a>
+                    <a href="/lifestyle/">• Alpine Performance &amp; Lifestyle</a>
+                    <a href="/contact/">• Private Consultation &amp; Booking</a>
                 </div>
 
                 <!-- Column 4: Governance & Sister Flagship -->

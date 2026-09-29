@@ -37,8 +37,8 @@ function keystone_provision_sovereign_nav_menu(): array {
         $menu_id = (int) $menu_obj->term_id;
     }
 
-    // Canonical 6-item navigation manifest strictly conforming to Wayne Stevenson's directive:
-    // AI Protocols & Music first, with clean notes/links back to licensed builder company
+    // Canonical 8-item navigation manifest strictly conforming to Wayne Stevenson's directive:
+    // Home, AI Protocols, INTEL, Sonic Universe, Investments, Lifestyle, Founder, Contact
     $desired_items = array(
         array(
             'title'  => 'Home',
@@ -51,18 +51,33 @@ function keystone_provision_sovereign_nav_menu(): array {
             'target' => '',
         ),
         array(
+            'title'  => 'INTEL',
+            'url'    => home_url( '/intel/' ),
+            'target' => '',
+        ),
+        array(
             'title'  => 'Sonic Universe',
             'url'    => home_url( '/sonic-universe/' ),
             'target' => '',
         ),
         array(
-            'title'  => 'Founder',
-            'url'    => home_url( '/about-the-founder/' ),
+            'title'  => 'Investments',
+            'url'    => home_url( '/investments/' ),
             'target' => '',
         ),
         array(
-            'title'  => 'INTEL',
-            'url'    => home_url( '/intel/' ),
+            'title'  => 'Lifestyle',
+            'url'    => home_url( '/lifestyle/' ),
+            'target' => '',
+        ),
+        array(
+            'title'  => 'Founder',
+            'url'    => home_url( '/founder/' ),
+            'target' => '',
+        ),
+        array(
+            'title'  => 'Contact',
+            'url'    => home_url( '/contact/' ),
             'target' => '',
         ),
     );
@@ -268,10 +283,14 @@ function keystone_purge_all_legacy_pages(): array {
     $preserved_page_slugs = array(
         'home',
         'ai-protocols',
+        'intel',
         'sonic-universe',
+        'investments',
+        'lifestyle',
+        'founder',
         'about-the-founder',
         'about-the-founder-the-keystone-blueprint',
-        'intel',
+        'contact',
     );
 
     $front_id = (int) get_option( 'page_on_front' );

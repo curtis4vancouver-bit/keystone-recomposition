@@ -49,11 +49,14 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php 
                     $current_path = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ?: '', '/' );
                     ?>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-link-item <?php echo ( $current_path === '' ) ? 'active' : ''; ?>">HOME</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'ai-protocols' ) !== false ) ? 'active' : ''; ?>">AI PROTOCOLS</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || is_singular( 'post' ) ) ? 'active' : ''; ?>">INTEL</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'sonic-universe' ) !== false ) ? 'active' : ''; ?>">SONIC UNIVERSE</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/about-the-founder/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'about-the-founder' ) !== false ) ? 'active' : ''; ?>">FOUNDER</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-link-item <?php echo ( $current_path === '' || is_front_page() ) ? 'active' : ''; ?>">HOME</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'ai-protocols' ) !== false || ( function_exists( 'is_page' ) && is_page( 'ai-protocols' ) ) ) ? 'active' : ''; ?>">AI PROTOCOLS</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || ( function_exists( 'is_singular' ) && is_singular( 'post' ) ) || ( function_exists( 'is_home' ) && is_home() ) ) ? 'active' : ''; ?>">INTEL</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'sonic-universe' ) !== false || ( function_exists( 'is_page' ) && is_page( 'sonic-universe' ) ) ) ? 'active' : ''; ?>">SONIC UNIVERSE</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'investments' ) !== false || ( function_exists( 'is_page' ) && is_page( 'investments' ) ) ) ? 'active' : ''; ?>">INVESTMENTS</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/lifestyle/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'lifestyle' ) !== false || ( function_exists( 'is_page' ) && is_page( 'lifestyle' ) ) ) ? 'active' : ''; ?>">LIFESTYLE</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'founder' ) !== false || strpos( $current_path, 'about-the-founder' ) !== false || ( function_exists( 'is_page' ) && ( is_page( 'founder' ) || is_page( 'about-the-founder' ) ) ) ) ? 'active' : ''; ?>">FOUNDER</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="nav-link-item <?php echo ( strpos( $current_path, 'contact' ) !== false || ( function_exists( 'is_page' ) && is_page( 'contact' ) ) ) ? 'active' : ''; ?>">CONTACT</a></li>
                 </ul>
             </nav>
 
@@ -78,11 +81,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <!-- MOBILE NAVIGATION DRAWER -->
     <div class="mobile-menu-drawer" id="mobileDrawer">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo ( $current_path === '' ) ? 'active' : ''; ?>">HOME</a>
-        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'ai-protocols' ) !== false ) ? 'active' : ''; ?>">AI PROTOCOLS</a>
-        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || is_singular( 'post' ) ) ? 'active' : ''; ?>">INTEL</a>
-        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'sonic-universe' ) !== false ) ? 'active' : ''; ?>">SONIC UNIVERSE</a>
-        <a href="<?php echo esc_url( home_url( '/about-the-founder/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'about-the-founder' ) !== false ) ? 'active' : ''; ?>">FOUNDER</a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo ( $current_path === '' || is_front_page() ) ? 'active' : ''; ?>">HOME</a>
+        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'ai-protocols' ) !== false || ( function_exists( 'is_page' ) && is_page( 'ai-protocols' ) ) ) ? 'active' : ''; ?>">AI PROTOCOLS</a>
+        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || ( function_exists( 'is_singular' ) && is_singular( 'post' ) ) || ( function_exists( 'is_home' ) && is_home() ) ) ? 'active' : ''; ?>">INTEL</a>
+        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'sonic-universe' ) !== false || ( function_exists( 'is_page' ) && is_page( 'sonic-universe' ) ) ) ? 'active' : ''; ?>">SONIC UNIVERSE</a>
+        <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'investments' ) !== false || ( function_exists( 'is_page' ) && is_page( 'investments' ) ) ) ? 'active' : ''; ?>">INVESTMENTS</a>
+        <a href="<?php echo esc_url( home_url( '/lifestyle/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'lifestyle' ) !== false || ( function_exists( 'is_page' ) && is_page( 'lifestyle' ) ) ) ? 'active' : ''; ?>">LIFESTYLE</a>
+        <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'founder' ) !== false || strpos( $current_path, 'about-the-founder' ) !== false || ( function_exists( 'is_page' ) && ( is_page( 'founder' ) || is_page( 'about-the-founder' ) ) ) ) ? 'active' : ''; ?>">FOUNDER</a>
+        <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'contact' ) !== false || ( function_exists( 'is_page' ) && is_page( 'contact' ) ) ) ? 'active' : ''; ?>">CONTACT</a>
     </div>
 
     <!-- SCRIPT FOR MOBILE DRAWER TOGGLE -->
