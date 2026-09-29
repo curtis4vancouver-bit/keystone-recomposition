@@ -7421,13 +7421,16 @@ body.page-template-template-ai-protocols #content > .ast-container {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  padding: 10px 6px;
+  padding: 10px 6px 12px;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 98px;
+  box-sizing: border-box;
 }
 
 .tier-select-btn:hover {
@@ -7446,6 +7449,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   font-weight: 700;
   color: #94a3b8;
   letter-spacing: 0.05em;
+  margin-bottom: 2px;
 }
 
 .tier-select-btn.active .btn-tier-num {
@@ -7456,13 +7460,21 @@ body.page-template-template-ai-protocols #content > .ast-container {
   font-size: 0.72rem;
   font-weight: 600;
   color: #f8fafc;
-  line-height: 1.2;
+  line-height: 1.22;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 .btn-tier-price {
   font-size: 0.95rem;
   font-weight: 800;
   color: #f6d365;
+  margin-top: auto;
+  line-height: 1;
 }
 
 /* Promo Code Box */
