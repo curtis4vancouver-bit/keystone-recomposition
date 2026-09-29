@@ -28,7 +28,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     <!-- FastMCP Telemetry Pill -->
                     <div class="cyber-telemetry-pill">
                         <span class="telemetry-pulse"></span>
-                        <span class="telemetry-text">// 196 MASTER TRACKS REGISTERED • 16 AUTONOMOUS AGENTS ACTIVE</span>
+                        <span class="telemetry-text">// AUTONOMOUS AI ARCHITECTURE • 16 AGENTS ACTIVE • HIGH-CADENCE BUILDER</span>
                     </div>
 
                     <!-- Founder Verification Chip -->
@@ -46,11 +46,11 @@ $theme_uri = get_stylesheet_directory_uri();
                     
                     <h1 class="cyber-hero-title">
                         Where Autonomous Machine Intelligence<br/>
-                        <span class="cyan-gradient-text">Meets Bio-Acoustic Frequency Architecture</span>
+                        <span class="cyan-gradient-text">Meets Real-World Building &amp; Sound</span>
                     </h1>
                     
                     <p class="cyber-hero-subtitle">
-                        The sovereign digital headquarters of Wayne Stevenson — bridging autonomous multi-agent engineering, FastMCP server infrastructure, and an 18-album electronic music universe.
+                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and an 18-album electronic music universe to scale high-cadence companies.
                     </p>
 
                     <div class="cyber-cta-group">
@@ -427,7 +427,7 @@ $theme_uri = get_stylesheet_directory_uri();
             </div>
         </section>
 
-        <!-- 7. WAYNE'S PREFERRED 4-COLUMN REGIONAL DIVISIONS & EMPIRE NETWORK FOOTER -->
+        <!-- 7. SOVEREIGN AI & MUSIC ECOSYSTEM FOOTER -->
         <section class="keystone-geo-footer-mesh">
             <div class="ast-container">
                 
@@ -436,43 +436,47 @@ $theme_uri = get_stylesheet_directory_uri();
                     Copyright Keystone Possibilities Ltd &amp; Keystone Recomposition 2023-2026, All Rights Reserved.
                 </div>
 
-                <!-- 4-Column Regional Divisions Matrix -->
+                <!-- 4-Column Sovereign AI & Music Matrix -->
                 <div class="regional-divisions-wrap">
                     <div class="regional-header-cyan">
-                        <span>🏛️</span> KEYSTONE POSSIBILITIES — REGIONAL DIVISIONS &amp; SPECIALIZED SERVICES
+                        <span>⚡</span> KEYSTONE RECOMPOSITION — AUTONOMOUS AI &amp; SONIC ARCHITECTURE
                     </div>
                     <div class="regional-divisions-grid">
                         
-                        <!-- Column 1: Sea-to-Sky -->
+                        <!-- Column 1: Autonomous AI Protocols -->
                         <div class="regional-col">
-                            <strong>Sea-to-Sky Corridor:</strong>
-                            <a href="https://keystonepossibilities.ca/squamish-custom-homes/" target="_blank" rel="noopener">• Squamish Custom Home Builder</a>
-                            <a href="https://keystonepossibilities.ca/whistler-custom-homes/" target="_blank" rel="noopener">• Whistler Luxury Estate Builder</a>
-                            <a href="https://keystonepossibilities.ca/pemberton-luxury-builder/" target="_blank" rel="noopener">• Pemberton Acreage Builder</a>
+                            <strong>Autonomous AI Protocols:</strong>
+                            <a href="/ai-protocols/">• Antigravity Workstation Blueprint</a>
+                            <a href="/ai-protocols/">• 16-Agent FastMCP Swarms</a>
+                            <a href="/ai-protocols/">• Chrome CDP Stream Automation</a>
+                            <a href="/ai-protocols/">• High-Cadence Builder Workflows</a>
                         </div>
 
-                        <!-- Column 2: Metro Vancouver -->
+                        <!-- Column 2: Sonic Universe Discography -->
                         <div class="regional-col">
-                            <strong>Metro Vancouver:</strong>
-                            <a href="https://keystonepossibilities.ca/north-vancouver-custom-homes/" target="_blank" rel="noopener">• North Vancouver Luxury Builder</a>
-                            <a href="https://keystonepossibilities.ca/north-vancouver-multiplex-conversions/" target="_blank" rel="noopener">• North Vancouver Bill 44 Multiplex</a>
-                            <a href="https://keystonepossibilities.ca/west-vancouver-custom-homes/" target="_blank" rel="noopener">• West Vancouver Steep Slope Builds</a>
+                            <strong>Sonic Universe Discography:</strong>
+                            <a href="/sonic-universe/">• Builder in the Pines (Deep House)</a>
+                            <a href="/sonic-universe/">• Squamish Monolith (Melodic Techno)</a>
+                            <a href="/sonic-universe/">• Antigravity Chronicles (Ambient Brain)</a>
+                            <a href="/sonic-universe/">• TooLost Worldwide Distribution</a>
                         </div>
 
-                        <!-- Column 3: Civil & Fiduciary PM -->
+                        <!-- Column 3: Intelligence & Architecture -->
                         <div class="regional-col">
-                            <strong>Civil &amp; Fiduciary PM:</strong>
-                            <a href="https://keystonepossibilities.ca/bc-hydro-registered-civil-contractor/" target="_blank" rel="noopener">• BC Hydro Civil Utility Contractor</a>
-                            <a href="https://keystonepossibilities.ca/feasibility-plan/" target="_blank" rel="noopener">• Construction Feasibility Studies</a>
-                            <a href="https://keystonepossibilities.ca/private-investors/" target="_blank" rel="noopener">• Private Investor Joint Ventures</a>
+                            <strong>Intelligence &amp; Architecture:</strong>
+                            <a href="/intel/">• INTEL Technical Protocol Dispatches</a>
+                            <a href="/about-the-founder/">• The Architect Dossier</a>
+                            <a href="/ai-protocols/">• Multi-Agent Systems Consulting</a>
+                            <a href="/intel/">• Bio-Acoustic Frequency Research</a>
                         </div>
 
-                        <!-- Column 4: Direct Authority & Contact (NO PHONE NUMBER) -->
+                        <!-- Column 4: Governance & Sister Flagship -->
                         <div class="regional-col">
-                            <strong>Direct Authority &amp; Contact:</strong>
-                            <span class="authority-badge-text">BC Housing License #52603</span>
-                            <span class="verification-status-text">Direct Field Verification: Active</span>
-                            <a href="/contact/" class="consultation-link">• Schedule Fiduciary Consultation</a>
+                            <strong>Governance &amp; Sister Flagship:</strong>
+                            <span class="authority-badge-text">Wayne Stevenson // Architect</span>
+                            <span class="verification-status-text">BC Housing Builder #52603</span>
+                            <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" style="color: #f6d365 !important; font-weight: 600;">• Keystone Possibilities Ltd. ↗</a>
+                            <a href="/contact/" class="consultation-link">• Schedule Private Consultation</a>
                         </div>
 
                     </div>
@@ -481,10 +485,10 @@ $theme_uri = get_stylesheet_directory_uri();
                 <!-- Bottom Keystone Empire Network Bar -->
                 <div class="empire-network-bar">
                     <div class="network-title-line">
-                        <span class="network-title-gold">⚔️ KEYSTONE EMPIRE NETWORK</span> | Keystone Possibilities — BC Building Code &amp; Construction Consulting
+                        <span class="network-title-gold">⚔️ KEYSTONE EMPIRE NETWORK</span> | Keystone Recomposition — Evidence-Based AI Systems &amp; Sonic Architecture
                     </div>
                     <div class="network-sister-link">
-                        Sister Flagship: <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities — Licensed Residential Builder #52603 &amp; BC Hydro Utility Contractor →</a>
+                        Sister Flagship: <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd. — Licensed Residential Builder #52603 &amp; BC Hydro Utility Contractor →</a>
                     </div>
                 </div>
 
@@ -527,45 +531,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let isPlaying = false;
     let audioCtx = null;
-    let currentOsc = null;
+    let currentOsc1 = null;
+    let currentOsc2 = null;
     let currentGain = null;
     let currentFreq = 220;
 
     function renderFrame() {
         ctx.clearRect(0, 0, width, height);
 
-        // Draw connections
+        const time = Date.now() * 0.004;
+
+        // Draw dynamic reactive frequency bars at bottom when active
+        if (isPlaying) {
+            const barCount = 48;
+            const barWidth = width / barCount;
+            for (let b = 0; b < barCount; b++) {
+                const barHeight = Math.abs(Math.sin(time * 2.5 + b * 0.35)) * 45 + Math.cos(time + b * 0.2) * 15 + 10;
+                const grad = ctx.createLinearGradient(0, height, 0, height - barHeight);
+                grad.addColorStop(0, 'rgba(56, 189, 248, 0.4)');
+                grad.addColorStop(1, 'rgba(0, 240, 255, 0.0)');
+                ctx.fillStyle = grad;
+                ctx.fillRect(b * barWidth, height - barHeight, barWidth - 2, barHeight);
+            }
+        }
+
+        // Draw connections with dynamic bounce
         for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
+                const bounceI = isPlaying ? Math.sin(time * 3 + nodes[i].pulse) * 14 : 0;
+                const bounceJ = isPlaying ? Math.sin(time * 3 + nodes[j].pulse) * 14 : 0;
+                const yI = nodes[i].y + bounceI;
+                const yJ = nodes[j].y + bounceJ;
+
                 const dx = nodes[i].x - nodes[j].x;
-                const dy = nodes[i].y - nodes[j].y;
+                const dy = yI - yJ;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    const alpha = (1 - dist / 120) * (isPlaying ? 0.7 : 0.25);
+                if (dist < 130) {
+                    const alpha = (1 - dist / 130) * (isPlaying ? 0.75 : 0.25);
                     ctx.strokeStyle = 'rgba(56, 189, 248, ' + alpha + ')';
-                    ctx.lineWidth = 1;
+                    ctx.lineWidth = isPlaying ? 1.5 : 1;
                     ctx.beginPath();
-                    ctx.moveTo(nodes[i].x, nodes[i].y);
-                    ctx.lineTo(nodes[j].x, nodes[j].y);
+                    ctx.moveTo(nodes[i].x, yI);
+                    ctx.lineTo(nodes[j].x, yJ);
                     ctx.stroke();
                 }
             }
         }
 
-        // Draw nodes
+        // Draw bouncing nodes
         for (let i = 0; i < nodes.length; i++) {
             const n = nodes[i];
-            n.x += n.vx * (isPlaying ? 2.0 : 0.8);
-            n.y += n.vy * (isPlaying ? 2.0 : 0.8);
+            n.x += n.vx * (isPlaying ? 1.8 : 0.8);
+            n.y += n.vy * (isPlaying ? 1.8 : 0.8);
 
             if (n.x < 0 || n.x > width) n.vx *= -1;
             if (n.y < 0 || n.y > height) n.vy *= -1;
 
+            const bounce = isPlaying ? Math.sin(time * 3 + n.pulse) * 14 : 0;
+            const currentY = Math.max(10, Math.min(height - 10, n.y + bounce));
+            const currentRadius = n.radius * (isPlaying ? (1.3 + Math.sin(time * 4 + n.pulse) * 0.3) : 1.0);
+
             ctx.beginPath();
-            ctx.arc(n.x, n.y, n.radius * (isPlaying ? 1.4 : 1.0), 0, Math.PI * 2);
+            ctx.arc(n.x, currentY, currentRadius, 0, Math.PI * 2);
             ctx.fillStyle = isPlaying ? '#38bdf8' : 'rgba(56, 189, 248, 0.4)';
-            ctx.shadowColor = '#38bdf8';
-            ctx.shadowBlur = isPlaying ? 12 : 4;
+            ctx.shadowColor = '#00f0ff';
+            ctx.shadowBlur = isPlaying ? 14 : 4;
             ctx.fill();
             ctx.shadowBlur = 0;
         }
@@ -586,23 +616,29 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!audioCtx) audioCtx = new AudioContext();
             if (audioCtx.state === 'suspended') audioCtx.resume();
 
-            if (currentOsc) {
-                currentOsc.stop();
-                currentOsc.disconnect();
-            }
+            if (currentOsc1) { currentOsc1.stop(); currentOsc1.disconnect(); }
+            if (currentOsc2) { currentOsc2.stop(); currentOsc2.disconnect(); }
 
-            currentOsc = audioCtx.createOscillator();
+            currentOsc1 = audioCtx.createOscillator();
+            currentOsc2 = audioCtx.createOscillator();
             currentGain = audioCtx.createGain();
 
-            currentOsc.type = 'sine';
-            currentOsc.frequency.setValueAtTime(currentFreq, audioCtx.currentTime);
+            // Warm dual-harmonic tone
+            currentOsc1.type = 'sine';
+            currentOsc1.frequency.setValueAtTime(currentFreq, audioCtx.currentTime);
+
+            currentOsc2.type = 'triangle';
+            currentOsc2.frequency.setValueAtTime(currentFreq * 0.5, audioCtx.currentTime); // Sub octave
 
             currentGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-            currentGain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.15);
+            currentGain.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 0.15);
 
-            currentOsc.connect(currentGain);
+            currentOsc1.connect(currentGain);
+            currentOsc2.connect(currentGain);
             currentGain.connect(audioCtx.destination);
-            currentOsc.start();
+
+            currentOsc1.start();
+            currentOsc2.start();
         } catch (e) {
             console.log('Audio Tone initialized:', e);
         }
@@ -613,11 +649,8 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 currentGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
                 setTimeout(function() {
-                    if (currentOsc) {
-                        currentOsc.stop();
-                        currentOsc.disconnect();
-                        currentOsc = null;
-                    }
+                    if (currentOsc1) { currentOsc1.stop(); currentOsc1.disconnect(); currentOsc1 = null; }
+                    if (currentOsc2) { currentOsc2.stop(); currentOsc2.disconnect(); currentOsc2 = null; }
                 }, 120);
             } catch (e) {}
         }
