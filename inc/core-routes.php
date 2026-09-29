@@ -248,20 +248,28 @@ function keystone_execute_sovereign_reset_pipeline(): array {
          )"
     );
 
-    // Also trash any legacy peptide/calculator pages
+    // Also trash all legacy workout/peptide/calculator/watch pages
     $wpdb->query(
         "UPDATE {$wpdb->posts} SET post_status = 'trash' 
          WHERE post_type = 'page' 
          AND post_status = 'publish'
-         AND post_name IN (
-             'wolverine-protocol',
-             'calculators',
-             'peptide-calculator',
-             'glp1-calculator',
-             'the-kitchen',
-             'keystone-kitchen'
+         AND post_name NOT IN (
+             'home',
+             'ai-protocols',
+             'sonic-universe',
+             'about-the-founder',
+             'about-the-founder-the-keystone-blueprint',
+             'intel'
          )"
     );
+
+    // Synchronize sovereign nav menu and site identity
+    if ( function_exists( 'keystone_provision_sovereign_nav_menu' ) ) {
+        keystone_provision_sovereign_nav_menu();
+    }
+    if ( function_exists( 'keystone_sync_sovereign_site_identity' ) ) {
+        keystone_sync_sovereign_site_identity();
+    }
 
     // C. Seed Cornerstone AI & Music Intel Articles
     $seeded_posts = keystone_seed_cornerstone_intel_articles();

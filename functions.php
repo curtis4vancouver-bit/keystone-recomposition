@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 /**
  * Keystone Recomposition Child Theme — Modular Architecture
- * Version: 3.0.0 (PHP 8.2+ Strict Types)
+ * Version: 3.2.0 (PHP 8.2+ Strict Types)
  * Author: Keystone Architecture
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-// 1. Google Search Console Reset & HTTP 410 Gone Legacy Purge Engine
+// 1. Google Search Console Reset & HTTP 301/410 Legacy Purge Engine
 require_once __DIR__ . '/inc/gsc-410-purge.php';
 
 // 2. Master Sonic Catalog Data Store (18 Albums, 196 Tracks & Canonical ISRCs)
@@ -34,4 +34,9 @@ require_once __DIR__ . '/inc/core-routes.php';
 // 8. Sovereign Database Migration
 if ( file_exists( __DIR__ . '/inc/sovereign-migration.php' ) ) {
 	require_once __DIR__ . '/inc/sovereign-migration.php';
+}
+
+// 9. Sovereign Navigation Menu, Site Identity & Page Purge Engine
+if ( file_exists( __DIR__ . '/inc/sovereign-nav-options.php' ) ) {
+	require_once __DIR__ . '/inc/sovereign-nav-options.php';
 }

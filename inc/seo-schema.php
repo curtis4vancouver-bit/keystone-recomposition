@@ -1433,13 +1433,7 @@ function keystone_recomposition_child_404_redirect() {
     }
 
     if ( $is_gone ) {
-        status_header( 410 );
-        nocache_headers();
-        if ( function_exists( 'get_query_template' ) && file_exists( (string) get_query_template( '404' ) ) ) {
-            include( get_query_template( '404' ) );
-        } else {
-            echo '410 Gone - This resource is permanently removed.';
-        }
+        wp_safe_redirect( home_url( '/' ), 301 );
         exit;
     }
 
