@@ -6477,6 +6477,11 @@ body.page-template-template-ai-protocols #content > .ast-container {
   gap: 12px;
   text-decoration: none !important;
   flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.brand-edge-logo:hover {
+  transform: translateY(-1px);
 }
 
 .kp-badge-mark {
@@ -6484,12 +6489,20 @@ body.page-template-template-ai-protocols #content > .ast-container {
   height: 40px;
   border-radius: 9px;
   overflow: hidden;
-  box-shadow: 0 0 16px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5), 0 0 30px rgba(0, 240, 255, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.brand-edge-logo:hover .kp-badge-mark {
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.8), 0 0 40px rgba(0, 240, 255, 0.4);
+  border-color: #00f0ff;
+  transform: scale(1.05);
 }
 
 .kp-badge-img {
@@ -6502,23 +6515,41 @@ body.page-template-template-ai-protocols #content > .ast-container {
 .brand-title-wrap {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .brand-title-wrap .title-main {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #FFFFFF;
   line-height: 1.15;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.35), 0 0 24px rgba(56, 189, 248, 0.25);
+  transition: text-shadow 0.3s ease;
+}
+
+.brand-edge-logo:hover .title-main {
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.5);
 }
 
 .brand-title-wrap .title-sub {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #c4a265;
-  line-height: 1.2;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  background: linear-gradient(135deg, #FFFFFF 0%, #38bdf8 55%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  line-height: 1.25;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.65));
+  transition: filter 0.3s ease;
+}
+
+.brand-edge-logo:hover .title-sub {
+  filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.95));
 }
 
 .nav-links-menu {
