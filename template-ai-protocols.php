@@ -57,7 +57,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="protocols-quick-nav">
                             <a href="#tier-blueprint" class="quick-nav-pill">01 • $49 Website Blueprint</a>
                             <a href="#tier-swarm" class="quick-nav-pill">02 • $199 16-Agent Swarm</a>
-                            <a href="#tier-workstation" class="quick-nav-pill">03 • $800 Custom Tory Workstation</a>
+                            <a href="#tier-workstation" class="quick-nav-pill">03 • $800 Custom Tauri Workstation</a>
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     </button>
                                     <button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-url="/contact/">
                                         <span class="btn-tier-num">TIER 03</span>
-                                        <span class="btn-tier-name">Custom Tory Workstation</span>
+                                        <span class="btn-tier-name">Custom Tauri Workstation</span>
                                         <span class="btn-tier-price">$800</span>
                                     </button>
                                 </div>
@@ -141,7 +141,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <div class="video-card-meta">
                                     <span class="video-title">The Autonomous Website Machine</span>
-                                    <span class="video-desc">Watch 16 AI agents rewrite and deploy a complete production site in minutes.</span>
+                                    <span class="video-desc">Watch 16 AI agents rewrite and deploy a complete production site in minutes. (Staged preview player — ready for custom recording).</span>
                                 </div>
                             </div>
                         </div>
@@ -204,7 +204,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <div class="video-card-meta">
                                     <span class="video-title">16-Agent Swarm Concurrency</span>
-                                    <span class="video-desc">How specialized trade crews prevent context window collapse.</span>
+                                    <span class="video-desc">How specialized trade crews prevent context window collapse. (Staged preview player — ready for custom recording).</span>
                                 </div>
                             </div>
                         </div>
@@ -248,7 +248,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </div>
                 </div>
 
-                <!-- PRODUCT 3: $800 CUSTOM TORY HUD & SOVEREIGN WORKSTATION ARCHITECTURE -->
+                <!-- PRODUCT 3: $800 CUSTOM TAURI HUD & SOVEREIGN WORKSTATION ARCHITECTURE -->
                 <div id="tier-workstation" class="protocol-product-block featured-product">
                     <div class="product-grid">
                         
@@ -260,12 +260,12 @@ $theme_uri = get_stylesheet_directory_uri();
                                          class="video-thumb-img" loading="lazy" />
                                     <div class="video-play-overlay">
                                         <div class="play-circle-btn">▶</div>
-                                        <span class="video-runtime-tag">15-MIN COMPREHENSIVE ARCHITECTURE MASTERCLASS</span>
+                                        <span class="video-runtime-tag">15-MIN ARCHITECTURE MASTERCLASS</span>
                                     </div>
                                 </div>
                                 <div class="video-card-meta">
                                     <span class="video-title">The Sovereign Builder Workstation: Physical Building &amp; Machine Intelligence</span>
-                                    <span class="video-desc">Comprehensive deep-dive with Wayne Stevenson on custom Tory workstations, background daemons, and physical construction workflows. (Preview player — staged for Wayne's upcoming custom video release).</span>
+                                    <span class="video-desc">Comprehensive deep-dive with Wayne Stevenson on custom Tauri workstations, background daemons, and physical construction workflows. (Staged preview player — ready for custom recording).</span>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +275,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <span class="badge-tier-cyan">TIER 03 // PRIVATE ARCHITECTURE</span>
                                 <span class="badge-capacity-alert">STRICTLY CAPPED: 4 CLIENTS / MONTH</span>
                             </div>
-                            <h2 class="product-title">Custom Tory HUD &amp; Sovereign Workstation</h2>
+                            <h2 class="product-title">Custom Tauri HUD &amp; Sovereign Workstation</h2>
                             <div class="product-price-row">
                                 <span class="price-symbol">$</span>
                                 <span class="price-val">800</span>
@@ -288,8 +288,8 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="product-deliverables-box">
                                 <h4>🏛️ What You Receive with Wayne:</h4>
                                 <ul>
-                                    <li><strong>Two 90-Minute Private Engineering Sessions:</strong> Direct screen-share architecture and live deployment with Wayne Stevenson.</li>
-                                    <li><strong>Bespoke Tory HUD Desktop Binary:</strong> Custom Tauri v2 / Rust / Vite desktop interface compiled specifically for your PC.</li>
+                                    <li><strong>One 60-Minute Focused Architecture Masterclass:</strong> Direct 1-on-1 screen-share architecture and live deployment with Wayne Stevenson (plus dedicated async follow-up deployment support).</li>
+                                    <li><strong>Bespoke Tauri Desktop Binary:</strong> Custom Tauri v2 / Rust / Vite desktop interface compiled specifically for your PC.</li>
                                     <li><strong>5 Win32 Detached Background Daemons:</strong> Ports 9876 (STT), 9877 (TTS), 9878 (Vector Brain), 9879 (CDP Overlay), and 9891 (Janitor) running resiliently across restarts.</li>
                                     <li><strong>Local CUDA Faster-Whisper + F9 Push-to-Talk:</strong> Zero-latency voice interface mapped directly to your hardware with zero monthly subscription fees.</li>
                                     <li><strong>Tailored Business Integration:</strong> Calibrated to your exact industry (construction estimates, CAD analysis, video production, or financial workflows).</li>

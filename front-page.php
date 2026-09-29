@@ -127,7 +127,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <div class="company-ai-cta-row">
                                 <a href="/ai-protocols/" class="btn-cyan-primary">
-                                    ⚡ View Full AI Protocols &amp; Tory Workstations →
+                                    ⚡ View Full AI Protocols &amp; Tauri Workstations →
                                 </a>
                                 <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-glass-secondary">
                                     Visit Keystone Possibilities Ltd. ↗
@@ -182,16 +182,61 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <span id="playLabel">INITIATE REAL MUSIC STREAM</span>
                                 </button>
 
-                                <div class="track-chips-matrix">
-                                    <button class="track-chip active" onclick="switchTrack('Builder in the Pines', 'Deep House • 122 BPM • Organic Cello', 0)">
-                                        01 • Builder in the Pines
-                                    </button>
-                                    <button class="track-chip" onclick="switchTrack('Squamish Monolith', 'Melodic Techno • 124 BPM • Analog Moog', 1)">
-                                        02 • Squamish Monolith
-                                    </button>
-                                    <button class="track-chip" onclick="switchTrack('Antigravity Chronicles', 'Ambient Brain • 118 BPM • FastMCP Core', 2)">
-                                        03 • Antigravity Chronicles
-                                    </button>
+                                <div class="sound-lab-playlist-deck">
+                                    <div class="playlist-header">
+                                        <span class="playlist-title">SELECT FREQUENCY STREAM:</span>
+                                        <span class="playlist-count">6 MASTER TRACKS</span>
+                                    </div>
+                                    <div class="playlist-scroll-container">
+                                        <button type="button" class="playlist-track-row active" onclick="switchTrack('Builder in the Pines', 'Deep House • 122 BPM • Organic Cello', 0)">
+                                            <span class="track-num">01</span>
+                                            <span class="track-details">
+                                                <span class="track-name-main">Builder in the Pines</span>
+                                                <span class="track-meta-sub">Deep House • 122 BPM • Organic Cello</span>
+                                            </span>
+                                            <span class="track-play-indicator">▶</span>
+                                        </button>
+                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Squamish Monolith', 'Melodic Techno • 124 BPM • Analog Moog', 1)">
+                                            <span class="track-num">02</span>
+                                            <span class="track-details">
+                                                <span class="track-name-main">Squamish Monolith</span>
+                                                <span class="track-meta-sub">Melodic Techno • 124 BPM • Analog Moog</span>
+                                            </span>
+                                            <span class="track-play-indicator">▶</span>
+                                        </button>
+                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Antigravity Chronicles', 'Ambient Brain • 118 BPM • FastMCP Core', 2)">
+                                            <span class="track-num">03</span>
+                                            <span class="track-details">
+                                                <span class="track-name-main">Antigravity Chronicles</span>
+                                                <span class="track-meta-sub">Ambient Brain • 118 BPM • FastMCP Core</span>
+                                            </span>
+                                            <span class="track-play-indicator">▶</span>
+                                        </button>
+                                        <button type="button" class="playlist-track-row" onclick="switchTrack('The Midday Push', 'Heavy Focus • 120 BPM • Deep Bass', 3)">
+                                            <span class="track-num">04</span>
+                                            <span class="track-details">
+                                                <span class="track-name-main">The Midday Push</span>
+                                                <span class="track-meta-sub">Heavy Focus • 120 BPM • Deep Bass</span>
+                                            </span>
+                                            <span class="track-play-indicator">▶</span>
+                                        </button>
+                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Kinetic Peace', 'Melodic Downtempo • 115 BPM • Strings', 4)">
+                                            <span class="track-num">05</span>
+                                            <span class="track-details">
+                                                <span class="track-name-main">Kinetic Peace</span>
+                                                <span class="track-meta-sub">Melodic Downtempo • 115 BPM • Strings</span>
+                                            </span>
+                                            <span class="track-play-indicator">▶</span>
+                                        </button>
+                                        <button type="button" class="playlist-track-row" onclick="switchTrack('The Long Game', 'Progressive Flow • 124 BPM • Modular Synth', 5)">
+                                            <span class="track-num">06</span>
+                                            <span class="track-details">
+                                                <span class="track-name-main">The Long Game</span>
+                                                <span class="track-meta-sub">Progressive Flow • 124 BPM • Modular Synth</span>
+                                            </span>
+                                            <span class="track-play-indicator">▶</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -499,7 +544,7 @@ $theme_uri = get_stylesheet_directory_uri();
 <!-- Web Audio API Interactive Sound Lab Engine Script (Real Music Streaming & Reactive Analyser) -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Audio Tracks Configuration
+    // 1. Audio Tracks Configuration (6 Master Studio Tracks)
     const trackList = [
         {
             title: 'Builder in the Pines',
@@ -518,6 +563,24 @@ document.addEventListener('DOMContentLoaded', function() {
             meta: 'Ambient Brain • 118 BPM • FastMCP Core',
             url: '<?php echo esc_url( $theme_uri . "/assets/audio/track3_tier_one_flow.mp3" ); ?>',
             freq: 528
+        },
+        {
+            title: 'The Midday Push',
+            meta: 'Heavy Focus • 120 BPM • Deep Bass',
+            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track4_the_midday_push.mp3" ); ?>',
+            freq: 330
+        },
+        {
+            title: 'Kinetic Peace',
+            meta: 'Melodic Downtempo • 115 BPM • Strings',
+            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track5_kinetic_peace.mp3" ); ?>',
+            freq: 440
+        },
+        {
+            title: 'The Long Game',
+            meta: 'Progressive Flow • 124 BPM • Modular Synth',
+            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track6_the_long_game.mp3" ); ?>',
+            freq: 260
         }
     ];
 
@@ -536,7 +599,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const playLabel = document.getElementById('playLabel');
     const trackTitleEl = document.getElementById('currentTrackTitle');
     const engineBadge = document.getElementById('engineStateBadge');
-    const trackChips = document.querySelectorAll('.track-chip');
     const canvas = document.getElementById('cyberVisualizer');
     const ctx = canvas ? canvas.getContext('2d') : null;
 
@@ -566,9 +628,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const track = trackList[index];
         audioEl.src = track.url;
         trackTitleEl.textContent = track.title + ' (' + track.meta + ')';
-        trackChips.forEach((chip, i) => {
-            if (i === index) chip.classList.add('active');
-            else chip.classList.remove('active');
+        const trackRows = document.querySelectorAll('.playlist-track-row');
+        trackRows.forEach((row, i) => {
+            if (i === index) row.classList.add('active');
+            else row.classList.remove('active');
         });
     }
 
