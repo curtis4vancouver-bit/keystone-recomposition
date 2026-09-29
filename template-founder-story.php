@@ -59,7 +59,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <div class="stat-badge">
                                     <span class="stat-value">22 RELEASES</span>
-                                    <span class="stat-label">196 TRACKS LIVE</span>
+                                    <span class="stat-label">216 TRACKS LIVE</span>
                                 </div>
                                 <div class="stat-badge">
                                     <span class="stat-value">#52603</span>
@@ -174,7 +174,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 High-performance execution demands acoustic architecture. Operating under <strong>Keystone Recomposition</strong>, I compose and produce original electronic music engineered specifically for deep flow states, structural focus, and high-intensity resistance training.
                             </p>
                             <p>
-                                Our catalog spans <strong>22 official releases (20 full studio albums)</strong> (196 master recordings) distributed worldwide on Spotify, Apple Music, and YouTube Music via TooLost Digital, featuring our signature -18dB ambient OST beds.
+                                Our catalog spans <strong>22 official releases (20 full studio albums)</strong> (216 Master Recordings) distributed worldwide on Spotify, Apple Music, and YouTube Music via TooLost Digital, featuring our signature -18dB ambient OST beds.
                             </p>
 
                             <!-- MUSIC SHOWCASE BANNER -->

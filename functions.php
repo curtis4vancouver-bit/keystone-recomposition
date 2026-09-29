@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // 1. Google Search Console Reset & HTTP 301/410 Legacy Purge Engine
 require_once __DIR__ . '/inc/gsc-410-purge.php';
 
-// 2. Master Sonic Catalog Data Store (22 Releases, 196 Tracks & Canonical ISRCs)
+// 2. Master Sonic Catalog Data Store (22 Releases, 216 Tracks & Canonical ISRCs)
 require_once __DIR__ . '/inc/sonic-catalog-data.php';
 
 // 3. Asset Pipeline & Fonts

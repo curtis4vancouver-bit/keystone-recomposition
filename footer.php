@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <strong>Sonic Universe Releases:</strong>
                     <a href="/sonic-universe/">• Sovereign Reverb (10-Track Album)</a>
                     <a href="/sonic-universe/">• APOLLO Protocol (Deep House)</a>
-                    <a href="/sonic-universe/">• 22 Official Releases (20 Studio Albums) (196 Masters)</a>
+                    <a href="/sonic-universe/">• 22 Official Releases (20 Studio Albums) (216 Masters)</a>
                     <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener" class="footer-cyan-link">• TooLost Global Distribution ↗</a>
                 </div>
 

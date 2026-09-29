@@ -51,7 +51,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
                     
                     <p class="cyber-hero-subtitle">
-                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and an 22-release electronic music universe to scale high-cadence operations.
+                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and a 22-release electronic music universe to scale high-cadence operations.
                     </p>
 
                     <div class="cyber-cta-group">
@@ -167,7 +167,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <div class="visualizer-hud-overlay">
                                     <div class="track-info">
                                         <span class="track-label">NOW STREAMING:</span>
-                                        <span id="currentTrackTitle" class="track-name">Builder in the Pines (Deep House)</span>
+                                        <span id="currentTrackTitle" class="track-name">Sovereign Reverb (Organic Downtempo Chill House)</span>
                                     </div>
                                     <div class="engine-state">
                                         <span id="engineStateBadge" class="engine-idle">STANDBY</span>
@@ -188,27 +188,27 @@ $theme_uri = get_stylesheet_directory_uri();
                                         <span class="playlist-count">6 MASTER TRACKS</span>
                                     </div>
                                     <div class="playlist-scroll-container">
-                                        <button type="button" class="playlist-track-row active" onclick="switchTrack('Builder in the Pines', 'Deep House • 122 BPM • Organic Cello', 0)">
+                                        <button type="button" class="playlist-track-row active" onclick="switchTrack('Sovereign Reverb', 'Organic Downtempo Chill House • 115 BPM', 0)">
                                             <span class="track-num">01</span>
                                             <span class="track-details">
-                                                <span class="track-name-main">Builder in the Pines</span>
-                                                <span class="track-meta-sub">Deep House • 122 BPM • Organic Cello</span>
+                                                <span class="track-name-main">Sovereign Reverb</span>
+                                                <span class="track-meta-sub">Organic Downtempo Chill House • 115 BPM</span>
                                             </span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
-                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Squamish Monolith', 'Melodic Techno • 124 BPM • Analog Moog', 1)">
+                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Apollo Protocol', 'Progressive Ambient Melodic • 120 BPM', 1)">
                                             <span class="track-num">02</span>
                                             <span class="track-details">
-                                                <span class="track-name-main">Squamish Monolith</span>
-                                                <span class="track-meta-sub">Melodic Techno • 124 BPM • Analog Moog</span>
+                                                <span class="track-name-main">Apollo Protocol</span>
+                                                <span class="track-meta-sub">Progressive Ambient Melodic • 120 BPM</span>
                                             </span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
-                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Antigravity Chronicles', 'Ambient Brain • 118 BPM • FastMCP Core', 2)">
+                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Blue Collar Symphony', 'Deep Melodic House • 122 BPM', 2)">
                                             <span class="track-num">03</span>
                                             <span class="track-details">
-                                                <span class="track-name-main">Antigravity Chronicles</span>
-                                                <span class="track-meta-sub">Ambient Brain • 118 BPM • FastMCP Core</span>
+                                                <span class="track-name-main">Blue Collar Symphony</span>
+                                                <span class="track-meta-sub">Deep Melodic House • 122 BPM</span>
                                             </span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
@@ -262,17 +262,17 @@ $theme_uri = get_stylesheet_directory_uri();
                     <span class="cyber-section-tag">OFFICIAL ARTIST CATALOG</span>
                     <h2 class="cyber-section-title">Latest Master Studio Releases</h2>
                     <p class="cyber-section-desc">
-                        18 complete albums | 196 canonical tracks registered with TooLost Digital &amp; distributed worldwide on Spotify, Apple Music &amp; YouTube Music.
+                        22 Official Releases • 20 Full Studio Albums | 216 Registered Master Recordings registered with TooLost Digital &amp; distributed worldwide on Spotify, Apple Music &amp; YouTube Music.
                     </p>
                 </div>
 
                 <div class="albums-grid">
                     
-                    <!-- Album 1: Builder in the Pines -->
-                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(0, 'Builder in the Pines', 'Deep House • 122 BPM • Organic Cello')">
+                    <!-- Album 1: Sovereign Reverb -->
+                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(0, 'Sovereign Reverb', 'Organic Downtempo Chill House • 115 BPM')">
                         <div class="album-media-box">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/sonic_universe_banner.png' ); ?>" 
-                                 alt="Builder in the Pines Album Cover Art" 
+                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/sovereign_reverb.jpg' ); ?>" 
+                                 alt="Sovereign Reverb Album Cover Art" 
                                  class="album-cover-img" loading="lazy" decoding="async" />
                             <div class="album-media-overlay"></div>
                             <span class="album-format-pill">VOL. 01 • 96kHz</span>
@@ -280,25 +280,25 @@ $theme_uri = get_stylesheet_directory_uri();
                         </div>
                         <div class="album-card-body">
                             <div class="album-genre-meta">
-                                <span class="genre-tag">DEEP HOUSE • 122 BPM</span>
+                                <span class="genre-tag">ORGANIC DOWNTEMPO CHILL HOUSE • 115 BPM</span>
                                 <span class="lossless-tag">★ LOSSLESS</span>
                             </div>
-                            <h3 class="album-card-title">Builder in the Pines</h3>
+                            <h3 class="album-card-title">Sovereign Reverb</h3>
                             <p class="album-card-desc">
-                                Organic cello and soaring violin arrangements recorded against old-growth timber, engineered for sustained creative focus.
+                                Deep organic acoustic warmth, soothing chord progressions, and ambient frequencies engineered for restorative nervous system equilibrium.
                             </p>
                             <div class="album-action-row">
                                 <span class="album-stream-prompt">⚡ Play Real Stream</span>
-                                <a href="/intel/" class="album-details-link">Read Intel Protocol →</a>
+                                <a href="/sonic-universe/#sovereign-reverb" class="album-details-link">Explore Master Release →</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Album 2: Squamish Monolith -->
-                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(1, 'Squamish Monolith', 'Melodic Techno • 124 BPM • Analog Moog')">
+                    <!-- Album 2: Apollo Protocol -->
+                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(1, 'Apollo Protocol', 'Progressive Ambient Melodic • 120 BPM')">
                         <div class="album-media-box">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
-                                 alt="Squamish Monolith Album Cover Art" 
+                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/apollo_protocol.jpg' ); ?>" 
+                                 alt="Apollo Protocol Album Cover Art" 
                                  class="album-cover-img" loading="lazy" decoding="async" />
                             <div class="album-media-overlay"></div>
                             <span class="album-format-pill">VOL. 02 • 96kHz</span>
@@ -306,25 +306,25 @@ $theme_uri = get_stylesheet_directory_uri();
                         </div>
                         <div class="album-card-body">
                             <div class="album-genre-meta">
-                                <span class="genre-tag">MELODIC TECHNO • 124 BPM</span>
+                                <span class="genre-tag">PROGRESSIVE AMBIENT MELODIC • 120 BPM</span>
                                 <span class="lossless-tag">★ LOSSLESS</span>
                             </div>
-                            <h3 class="album-card-title">Squamish Monolith</h3>
+                            <h3 class="album-card-title">Apollo Protocol</h3>
                             <p class="album-card-desc">
-                                Heavy analog sub-bass and kinetic synth arpeggios reflecting the sheer granite faces of the Pacific Northwest.
+                                High-cadence kinetic rhythms and soaring synth atmospheres designed for intense multi-agent coding sessions and focus states.
                             </p>
                             <div class="album-action-row">
                                 <span class="album-stream-prompt">⚡ Play Real Stream</span>
-                                <a href="/intel/" class="album-details-link">Read Intel Protocol →</a>
+                                <a href="/sonic-universe/#apollo-protocol" class="album-details-link">Explore Master Release →</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Album 3: Antigravity Chronicles -->
-                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(2, 'Antigravity Chronicles', 'Ambient Brain • 118 BPM • FastMCP Core')">
+                    <!-- Album 3: Blue Collar Symphony -->
+                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(2, 'Blue Collar Symphony', 'Deep Melodic House • 122 BPM')">
                         <div class="album-media-box">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/sonic_universe_banner.png' ); ?>" 
-                                 alt="Antigravity Chronicles Album Cover Art" 
+                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/blue_collar_symphony.jpg' ); ?>" 
+                                 alt="Blue Collar Symphony Album Cover Art" 
                                  class="album-cover-img" loading="lazy" decoding="async" />
                             <div class="album-media-overlay"></div>
                             <span class="album-format-pill">VOL. 03 • 96kHz</span>
@@ -332,16 +332,16 @@ $theme_uri = get_stylesheet_directory_uri();
                         </div>
                         <div class="album-card-body">
                             <div class="album-genre-meta">
-                                <span class="genre-tag">AMBIENT BRAIN • 118 BPM</span>
+                                <span class="genre-tag">DEEP MELODIC HOUSE • 122 BPM</span>
                                 <span class="lossless-tag">★ LOSSLESS</span>
                             </div>
-                            <h3 class="album-card-title">Antigravity Chronicles</h3>
+                            <h3 class="album-card-title">Blue Collar Symphony</h3>
                             <p class="album-card-desc">
-                                Binaural algorithmic pulses and modular synth pads calibrated specifically for multi-agent autonomous software development.
+                                Driving basslines and textured percussive drive reflecting the raw work ethic of high-altitude Pacific Northwest building sites.
                             </p>
                             <div class="album-action-row">
                                 <span class="album-stream-prompt">⚡ Play Real Stream</span>
-                                <a href="/intel/" class="album-details-link">Read Intel Protocol →</a>
+                                <a href="/sonic-universe/#blue-collar-symphony" class="album-details-link">Explore Master Release →</a>
                             </div>
                         </div>
                     </div>
@@ -453,7 +453,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 "Machine intelligence without physical grounding is hallucination. Every line of code, every agentic swarm, and every bio-acoustic frequency I engineer is rooted in the rigorous discipline of real-world master building."
                             </p>
                             <p class="founder-detail-para">
-                                Beyond autonomous software engineering and 196 registered electronic master recordings, Wayne Stevenson is the founder of <strong>Keystone Possibilities Ltd.</strong>, a licensed British Columbia residential builder delivering high-performance custom mountain residences and municipal infill across the Sea-to-Sky corridor.
+                                Beyond autonomous software engineering and 216 registered electronic master recordings, Wayne Stevenson is the founder of <strong>Keystone Possibilities Ltd.</strong>, a licensed British Columbia residential builder delivering high-performance custom mountain residences and municipal infill across the Sea-to-Sky corridor.
                             </p>
                             <div class="founder-actions-row">
                                 <a href="/about-the-founder/" class="btn-cyan-primary">
@@ -478,20 +478,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // 1. Audio Tracks Configuration (6 Master Studio Tracks)
     const trackList = [
         {
-            title: 'Builder in the Pines',
-            meta: 'Deep House • 122 BPM • Organic Cello',
+            title: 'Sovereign Reverb',
+            meta: 'Organic Downtempo Chill House • 115 BPM',
             url: '<?php echo esc_url( $theme_uri . "/assets/audio/track1_steady_incline.mp3" ); ?>',
             freq: 220
         },
         {
-            title: 'Squamish Monolith',
-            meta: 'Melodic Techno • 124 BPM • Analog Moog',
+            title: 'Apollo Protocol',
+            meta: 'Progressive Ambient Melodic • 120 BPM',
             url: '<?php echo esc_url( $theme_uri . "/assets/audio/track2_fluid_dynamics.mp3" ); ?>',
             freq: 174
         },
         {
-            title: 'Antigravity Chronicles',
-            meta: 'Ambient Brain • 118 BPM • FastMCP Core',
+            title: 'Blue Collar Symphony',
+            meta: 'Deep Melodic House • 122 BPM',
             url: '<?php echo esc_url( $theme_uri . "/assets/audio/track3_tier_one_flow.mp3" ); ?>',
             freq: 528
         },

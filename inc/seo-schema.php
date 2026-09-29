@@ -391,7 +391,7 @@ function keystone_recomposition_child_music_schema() {
         ),
     );
 
-    // 2. All 18+ MusicAlbum Nodes with Embedded Tracks & Canonical ISRCs
+    // 2. All 22 MusicAlbum Nodes with Embedded Tracks & Canonical ISRCs
     foreach ( $albums_data as $album ) {
         $album_slug = sanitize_title( $album['title'] );
         $album_node = array(

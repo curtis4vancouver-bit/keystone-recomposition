@@ -62,7 +62,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="luxury-metric-card">
                             <span class="metric-label">ACOUSTIC ARCHITECTURE</span>
                             <span class="metric-value-cyan">22 RELEASES</span>
-                            <span class="metric-caption">196 Master Recordings Distributed</span>
+                            <span class="metric-caption">216 Master Recordings Distributed</span>
                         </div>
                     </div>
                 </header>
@@ -206,7 +206,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <span class="detail-icon">🌐</span>
                                     <div>
                                         <strong>Worldwide Streaming Catalog:</strong>
-                                        <span>196 master recordings registered across Spotify, Apple Music, and YouTube Music via TooLost Digital, establishing a permanent acoustic legacy.</span>
+                                        <span>216 master recordings registered across Spotify, Apple Music, and YouTube Music via TooLost Digital, establishing a permanent acoustic legacy.</span>
                                     </div>
                                 </div>
                                 <div class="pillar-detail-item">

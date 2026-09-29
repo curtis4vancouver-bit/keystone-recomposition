@@ -181,7 +181,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <span class="detail-icon">🎵</span>
                                     <div>
                                         <strong>Catalog Asset Compounding:</strong>
-                                        <span>Wayne Stevenson's 22 official releases (20 studio albums) and 196 master recordings distributed globally through TooLost Digital provide an enduring stream of streaming and sync royalties.</span>
+                                        <span>Wayne Stevenson's 22 official releases (20 studio albums) and 216 master recordings distributed globally through TooLost Digital provide an enduring stream of streaming and sync royalties.</span>
                                     </div>
                                 </div>
                                 <div class="pillar-detail-item">

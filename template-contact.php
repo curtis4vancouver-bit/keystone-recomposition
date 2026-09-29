@@ -153,7 +153,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                             <h3 class="channel-title">Commercial Sync &amp; Master Licensing</h3>
                             <p class="channel-desc">
-                                Commercial synchronization and master use licensing across Wayne Stevenson's catalog of 22 official releases (20 studio albums) (196 master recordings) distributed worldwide by TooLost Digital.
+                                Commercial synchronization and master use licensing across Wayne Stevenson's catalog of 22 official releases (20 studio albums) (216 master recordings) distributed worldwide by TooLost Digital.
                             </p>
                             <ul class="channel-features">
                                 <li>&bull; Film, Television, Commercial &amp; Video Game Placements</li>

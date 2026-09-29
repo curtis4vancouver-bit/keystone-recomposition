@@ -414,7 +414,7 @@ function keystone_seed_cornerstone_intel_articles(): array {
         array(
             'title'   => 'Sovereign Reverb: How Functional Frequency Architecture Bridges Electronic Music & Human Performance',
             'slug'    => 'sovereign-reverb-functional-frequency-architecture',
-            'excerpt' => 'Inside the 196-track TooLost music universe by Wayne Stevenson. Composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.',
+            'excerpt' => 'Inside the 216-track TooLost music universe by Wayne Stevenson. Composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.',
             'content' => keystone_get_article_content_sovereign_reverb(),
         ),
         array(
@@ -561,7 +561,7 @@ HTML;
 function keystone_get_article_content_sovereign_reverb(): string {
     return <<<'HTML'
 <!-- wp:paragraph {"className":"lead-paragraph"} -->
-<p class="lead-paragraph">Sound is not background decoration—it is neurochemical architecture. In high-performance engineering, deep creative flow states and sustained autonomic regulation require precise acoustic frequencies. Across 22 official releases (20 studio albums) and 196 cataloged tracks, Wayne Stevenson’s TooLost discography bridges electronic dance music, ambient soundscapes, and cellular circadian entrainment.</p>
+<p class="lead-paragraph">Sound is not background decoration—it is neurochemical architecture. In high-performance engineering, deep creative flow states and sustained autonomic regulation require precise acoustic frequencies. Across 22 official releases (20 studio albums) and 216 cataloged tracks, Wayne Stevenson’s TooLost discography bridges electronic dance music, ambient soundscapes, and cellular circadian entrainment.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":2} -->
