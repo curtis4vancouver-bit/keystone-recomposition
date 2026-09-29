@@ -446,7 +446,7 @@ function keystone_recomposition_child_music_schema() {
     );
 
     echo "
-<!-- Keystone 18-Album Master MusicGroup & MusicAlbum JSON-LD Graph -->
+<!-- Keystone 22-Release Master MusicGroup & MusicAlbum JSON-LD Graph -->
 ";
     echo "<script type=\"application/ld+json\">
 ";

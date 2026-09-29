@@ -28,7 +28,7 @@ get_header();
                 </h1>
                 
                 <p class="lead-text" style="color: #94a3b8; font-size: 1.15rem; line-height: 1.85; margin: 0 auto 40px auto; max-width: 660px;">
-                    As part of Keystone Recomposition's 2026 architectural evolution, all legacy metabolic and peptide case studies have been permanently removed from our digital index under RFC 9110. We invite you to explore our Autonomous AI Systems or stream our 18-Album Sonic Universe.
+                    As part of Keystone Recomposition's 2026 architectural evolution, all legacy metabolic and peptide case studies have been permanently removed from our digital index under RFC 9110. We invite you to explore our Autonomous AI Systems or stream our 22-Release Sonic Universe.
                 </p>
 
                 <div class="action-grid" style="display: flex; flex-direction: column; gap: 16px; justify-content: center; align-items: center;">
@@ -37,7 +37,7 @@ get_header();
                             Explore AI Protocols &amp; Swarms →
                         </a>
                         <a href="/sonic-universe/" class="btn-luxury-glass" style="display: inline-block; background: rgba(15, 23, 42, 0.8); color: #f8fafc; border: 1px solid rgba(212, 175, 55, 0.35); font-weight: 700; font-size: 1.05rem; padding: 16px 36px; border-radius: 9999px; text-decoration: none; backdrop-filter: blur(12px);">
-                            🎵 Stream Sonic Universe (18 Albums) →
+                            🎵 Stream Sonic Universe (22 Releases) →
                         </a>
                     </div>
                     <a href="/about-the-founder/" style="color: #00f0ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; margin-top: 10px;">

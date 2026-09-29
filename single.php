@@ -65,12 +65,12 @@ get_header(); ?>
                                 </div>
                                 <h3 class="author-dossier-name">Wayne Stevenson</h3>
                                 <p class="author-dossier-bio">
-                                    Certified BC Housing Licensed Residential Builder (#52603), electronic music producer with 18 studio albums on TooLost, and lead architect of autonomous FastMCP swarm workstations. Operating across Squamish, Whistler, and Greater Vancouver.
+                                    Certified BC Housing Licensed Residential Builder (#52603), electronic music producer with 22 official releases (20 studio albums) on TooLost, and lead architect of autonomous FastMCP swarm workstations. Operating across Squamish, Whistler, and Greater Vancouver.
                                 </p>
                                 <div class="author-dossier-links">
                                     <a href="/about-the-founder/" class="dossier-link">Full Founder Dossier →</a>
                                     <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="dossier-link">Keystone Possibilities Ltd. →</a>
-                                    <a href="/sonic-universe/" class="dossier-link">18-Album Sonic Universe →</a>
+                                    <a href="/sonic-universe/" class="dossier-link">22-Release Sonic Universe →</a>
                                 </div>
                             </div>
                         </div>

@@ -33,7 +33,7 @@ get_header();
                 
                 <!-- Subtitle / Body Copy -->
                 <p class="lead-text" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #94a3b8; font-size: 1.12rem; line-height: 1.8; margin: 0 auto 44px auto; max-width: 660px; font-weight: 300;">
-                    You have arrived at an unmapped coordinate within the Keystone Recomposition infrastructure. Navigate directly to Wayne Stevenson's autonomous agent swarm protocols, stream the 18-album sonic discography, or explore the founder blueprint below.
+                    You have arrived at an unmapped coordinate within the Keystone Recomposition infrastructure. Navigate directly to Wayne Stevenson's autonomous agent swarm protocols, stream the 22-release sonic discography, or explore the founder blueprint below.
                 </p>
 
                 <!-- Primary CTAs -->
@@ -43,7 +43,7 @@ get_header();
                             Explore AI Protocols &amp; Swarms →
                         </a>
                         <a href="/sonic-universe/" class="btn-luxury-glass" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: rgba(15, 23, 42, 0.85); color: #f8fafc; border: 1px solid rgba(212, 175, 55, 0.35); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; padding: 15px 34px; border-radius: 9999px; text-decoration: none; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
-                            🎵 Stream Sonic Universe (18 Albums) →
+                            🎵 Stream Sonic Universe (22 Releases) →
                         </a>
                     </div>
                     

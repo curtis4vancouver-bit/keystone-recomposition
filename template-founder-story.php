@@ -58,7 +58,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <span class="stat-label">LEAN SET-POINT</span>
                                 </div>
                                 <div class="stat-badge">
-                                    <span class="stat-value">18 ALBUMS</span>
+                                    <span class="stat-value">22 RELEASES</span>
                                     <span class="stat-label">196 TRACKS LIVE</span>
                                 </div>
                                 <div class="stat-badge">
@@ -169,12 +169,12 @@ $theme_uri = get_stylesheet_directory_uri();
                         </section>
 
                         <section class="narrative-section">
-                            <h2 class="section-heading">3. The Sonic Universe: 18 Studio Albums</h2>
+                            <h2 class="section-heading">3. The Sonic Universe: 22 Official Releases (20 Studio Albums)</h2>
                             <p>
                                 High-performance execution demands acoustic architecture. Operating under <strong>Keystone Recomposition</strong>, I compose and produce original electronic music engineered specifically for deep flow states, structural focus, and high-intensity resistance training.
                             </p>
                             <p>
-                                Our catalog spans <strong>18 full studio albums</strong> (196 master recordings) distributed worldwide on Spotify, Apple Music, and YouTube Music via TooLost Digital, featuring our signature -18dB ambient OST beds.
+                                Our catalog spans <strong>22 official releases (20 full studio albums)</strong> (196 master recordings) distributed worldwide on Spotify, Apple Music, and YouTube Music via TooLost Digital, featuring our signature -18dB ambient OST beds.
                             </p>
 
                             <!-- MUSIC SHOWCASE BANNER -->
@@ -188,7 +188,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <p>
                                 <a href="/sonic-universe/" class="btn-secondary-glass">
-                                    🎵 Explore Wayne's 18-Album Sonic Universe Hub →
+                                    🎵 Explore Wayne's 22-Release Sonic Universe Hub →
                                 </a>
                             </p>
                         </section>
@@ -231,7 +231,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <span class="eco-icon">🎵</span>
                                 <div class="eco-info">
                                     <span class="eco-title">Spotify Official Artist</span>
-                                    <span class="eco-desc">18 Albums • Wayne Stevenson OAC</span>
+                                    <span class="eco-desc">22 Releases • Wayne Stevenson OAC</span>
                                 </div>
                             </a>
                             <a href="/ai-protocols/" class="eco-card">

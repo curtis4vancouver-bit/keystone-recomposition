@@ -32,7 +32,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Organic Downtempo Chill House',
             'bpm'          => 115,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/sovereign_reverb.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -106,7 +106,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Progressive Deep House',
             'bpm'          => 124,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/apollo_protocol.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -180,7 +180,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Melodic Deep House',
             'bpm'          => 120,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/blue_collar_symphony.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -254,7 +254,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Industrial Tech House',
             'bpm'          => 122,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/sarcopenic_threshold.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -328,7 +328,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Deep Tech House',
             'bpm'          => 126,
             'track_count'  => 11,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/concrete_foundations.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -408,7 +408,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Melodic Progressive House',
             'bpm'          => 124,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/the_architects_groove.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -482,7 +482,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Solfeggio & Ambient House',
             'bpm'          => 120,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/resonantia.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -556,7 +556,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Cinematic Synth House',
             'bpm'          => 122,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/l_architettura_del_domani.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -630,7 +630,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Electro Deep House',
             'bpm'          => 125,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/the_gilded_pulse.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -704,7 +704,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Minimal Deep Tech',
             'bpm'          => 123,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/the_stabilization_frame.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -778,7 +778,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Downtempo Electronic',
             'bpm'          => 118,
             'track_count'  => 9,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/the_blueprint_reset.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -846,7 +846,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Progressive Tech House',
             'bpm'          => 124,
             'track_count'  => 10,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/structural_rhythm.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -920,7 +920,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Body Recomposition House',
             'bpm'          => 126,
             'track_count'  => 13,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/the_set_point_shift.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1012,7 +1012,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Deep Melodic House',
             'bpm'          => 122,
             'track_count'  => 12,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/foundation_and_flux.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1098,7 +1098,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Organic Downtempo',
             'bpm'          => 116,
             'track_count'  => 12,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/structural_shift.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1184,7 +1184,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Heavy Industrial House',
             'bpm'          => 128,
             'track_count'  => 13,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/pulse_of_the_forge.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1276,7 +1276,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Cellular Rebuild Frequencies',
             'bpm'          => 110,
             'track_count'  => 12,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/solfeggio_protocols.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1362,7 +1362,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'High-Energy Fitness Electronic',
             'bpm'          => 130,
             'track_count'  => 11,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/biological_overdrive.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1442,7 +1442,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Cinematic Single',
             'bpm'          => 110,
             'track_count'  => 1,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/the_unseen.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1462,7 +1462,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Winter Arc Anthem',
             'bpm'          => 128,
             'track_count'  => 1,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/the_winter_arc.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1482,7 +1482,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Alpine Deep House',
             'bpm'          => 124,
             'track_count'  => 13,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/iron_and_ice.jpg',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1574,7 +1574,7 @@ function keystone_get_all_albums(): array {
             'genre'        => 'Northern Electronic Saga',
             'bpm'          => 120,
             'track_count'  => 8,
-            'cover_image'  => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Barbell_on_squat_rack35_202605021316.jpeg?w=600&ssl=1',
+            'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/keystone_the_northern_saga.png',
             'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'tracks'       => array(
@@ -1666,4 +1666,36 @@ function keystone_get_total_tracks_count(): int {
         $count += (int) $album['track_count'];
     }
     return $count;
+}
+/**
+ * Dynamic Catalog Metrics & Synchronization Helper.
+ * Returns exact counts across 22 official releases and 20 studio albums.
+ *
+ * @return array<string, mixed>
+ */
+function keystone_get_catalog_stats(): array {
+    $albums = keystone_get_all_albums();
+    $total_releases = count( $albums );
+    $studio_albums  = 0;
+    $singles        = 0;
+    $total_tracks   = 0;
+
+    foreach ( $albums as $album ) {
+        $track_count = isset( $album['track_count'] ) ? (int) $album['track_count'] : 0;
+        $total_tracks += $track_count;
+        if ( $track_count <= 2 ) {
+            $singles++;
+        } else {
+            $studio_albums++;
+        }
+    }
+
+    return array(
+        'total_releases' => $total_releases, // 22
+        'studio_albums'  => $studio_albums,  // 20
+        'singles'        => $singles,        // 2
+        'total_tracks'   => $total_tracks,   // 201
+        'display_label'  => $total_releases . ' Official Releases • ' . $studio_albums . ' Studio Albums',
+        'short_label'    => $total_releases . ' Releases',
+    );
 }

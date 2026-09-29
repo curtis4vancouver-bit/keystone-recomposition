@@ -30,7 +30,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     <div class="hero-badge-row">
                         <span class="gold-badge-pill">HIGH-PERFORMANCE BIOLOGICAL ARCHITECTURE</span>
                         <span class="license-badge-pill">SEA-TO-SKY CORRIDOR &bull; SQUAMISH &amp; WHISTLER</span>
-                        <span class="music-badge-pill">18 ALBUMS &bull; ACOUSTIC FLOW</span>
+                        <span class="music-badge-pill">22 RELEASES &bull; ACOUSTIC FLOW</span>
                     </div>
 
                     <h1 class="lifestyle-main-title">
@@ -61,7 +61,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         </div>
                         <div class="luxury-metric-card">
                             <span class="metric-label">ACOUSTIC ARCHITECTURE</span>
-                            <span class="metric-value-cyan">18 ALBUMS</span>
+                            <span class="metric-value-cyan">22 RELEASES</span>
                             <span class="metric-caption">196 Master Recordings Distributed</span>
                         </div>
                     </div>
@@ -192,7 +192,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                             <h3 class="pillar-title">Sonic Studio Flow State &amp; Audio Architecture</h3>
                             <p class="pillar-summary">
-                                Sound as cognitive enhancement: composing, arranging, and releasing 18 studio albums engineered specifically to induce unbroken flow states and elevated focus.
+                                Sound as cognitive enhancement: composing, arranging, and releasing 22 official releases (20 studio albums) engineered specifically to induce unbroken flow states and elevated focus.
                             </p>
                             <div class="pillar-detail-list">
                                 <div class="pillar-detail-item">
@@ -219,7 +219,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                             <div class="pillar-card-footer">
                                 <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="pillar-link-btn">
-                                    Listen to the 18-Album Sonic Universe &rarr;
+                                    Listen to the 22-Release Sonic Universe &rarr;
                                 </a>
                             </div>
                         </div>
@@ -273,7 +273,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         </p>
                         <div class="cta-button-group">
                             <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="btn-primary-gold">
-                                🎵 Sonic Universe (18 Albums) &rarr;
+                                🎵 Sonic Universe (22 Releases) &rarr;
                             </a>
                             <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-secondary-glass">
                                 ⚡ AI Workstation Protocols &rarr;

@@ -171,7 +171,7 @@ function keystone_ensure_core_pages_exist(): void {
         'sonic-universe' => array(
             'title'    => 'Keystone Sonic Universe — Sovereign Reverb Discography & ISRC Registry',
             'template' => 'template-sonic-universe.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Sonic Universe: Complete 18-Album Discography and Canonical ISRC Registry by Wayne Stevenson.</p><!-- /wp:paragraph -->',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Sonic Universe: Complete 22-Release Discography and Canonical ISRC Registry by Wayne Stevenson.</p><!-- /wp:paragraph -->',
         ),
         'about-the-founder' => array(
             'title'    => 'About the Founder — Wayne Stevenson Builder Blueprint',
@@ -561,7 +561,7 @@ HTML;
 function keystone_get_article_content_sovereign_reverb(): string {
     return <<<'HTML'
 <!-- wp:paragraph {"className":"lead-paragraph"} -->
-<p class="lead-paragraph">Sound is not background decoration—it is neurochemical architecture. In high-performance engineering, deep creative flow states and sustained autonomic regulation require precise acoustic frequencies. Across 18 studio albums and 196 cataloged tracks, Wayne Stevenson’s TooLost discography bridges electronic dance music, ambient soundscapes, and cellular circadian entrainment.</p>
+<p class="lead-paragraph">Sound is not background decoration—it is neurochemical architecture. In high-performance engineering, deep creative flow states and sustained autonomic regulation require precise acoustic frequencies. Across 22 official releases (20 studio albums) and 196 cataloged tracks, Wayne Stevenson’s TooLost discography bridges electronic dance music, ambient soundscapes, and cellular circadian entrainment.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":2} -->
@@ -581,7 +581,7 @@ function keystone_get_article_content_sovereign_reverb(): string {
 <!-- /wp:list -->
 
 <!-- wp:heading {"level":2} -->
-<h2>The 18-Album TooLost Catalog Registry</h2>
+<h2>The 22-Release TooLost Catalog Registry</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->

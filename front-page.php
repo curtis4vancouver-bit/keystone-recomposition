@@ -51,7 +51,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
                     
                     <p class="cyber-hero-subtitle">
-                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and an 18-album electronic music universe to scale high-cadence operations.
+                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and an 22-release electronic music universe to scale high-cadence operations.
                     </p>
 
                     <div class="cyber-cta-group">
@@ -157,7 +157,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <h3 class="sound-lab-title">Bio-Acoustic Synthesizer</h3>
                                 <p class="sound-lab-desc">
-                                    Real master recordings from Wayne Stevenson's 18-album electronic catalog, paired with a 60fps frequency spectrum visualizer.
+                                    Real master recordings from Wayne Stevenson's 22-release electronic catalog, paired with a 60fps frequency spectrum visualizer.
                                 </p>
                             </div>
 
@@ -242,7 +242,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <div class="music-lab-footer-link text-center" style="margin-top: 20px;">
                                 <a href="/sonic-universe/" class="btn-glass-secondary" style="width: 100%; display: block; text-align: center;">
-                                    🎵 Explore All 18 Studio Albums →
+                                    🎵 Explore All 22 Official Releases (20 Studio Albums) →
                                 </a>
                             </div>
 
@@ -350,7 +350,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                 <div class="albums-footer-cta text-center">
                     <a href="/sonic-universe/" class="btn-glass-secondary">
-                        🎵 Explore All 18 Studio Albums in Sonic Universe →
+                        🎵 Explore All 22 Official Releases (20 Studio Albums) in Sonic Universe →
                     </a>
                 </div>
 
@@ -442,7 +442,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="founder-credentials-stack">
                                 <span class="cred-pill">🏛️ BC Housing Builder #52603</span>
                                 <span class="cred-pill">⚡ FastMCP Architect</span>
-                                <span class="cred-pill">🎵 18 Studio Albums</span>
+                                <span class="cred-pill">🎵 22 Official Releases (20 Studio Albums)</span>
                             </div>
                         </div>
 

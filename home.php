@@ -61,7 +61,7 @@ get_header(); ?>
                         'tier'    => 'STAGED INTEL DROP 03',
                         'cat'     => 'SONIC ARCHITECTURE',
                         'title'   => 'Sovereign Reverb: Functional Frequency Architecture &amp; High-Cadence Focus',
-                        'desc'    => 'Engineering electronic audio frequencies to sustain deep flow state during intensive building sprints. Complete 18-album studio master telemetry. Staged for master video release.',
+                        'desc'    => 'Engineering electronic audio frequencies to sustain deep flow state during intensive building sprints. Complete 22-release studio master telemetry. Staged for master video release.',
                         'runtime' => '16:9 4K VIDEO SLOT // STAGED',
                     ),
                 );

@@ -153,7 +153,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                             <h3 class="channel-title">Commercial Sync &amp; Master Licensing</h3>
                             <p class="channel-desc">
-                                Commercial synchronization and master use licensing across Wayne Stevenson's catalog of 18 studio albums (196 master recordings) distributed worldwide by TooLost Digital.
+                                Commercial synchronization and master use licensing across Wayne Stevenson's catalog of 22 official releases (20 studio albums) (196 master recordings) distributed worldwide by TooLost Digital.
                             </p>
                             <ul class="channel-features">
                                 <li>&bull; Film, Television, Commercial &amp; Video Game Placements</li>
@@ -162,7 +162,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </ul>
                             <div class="channel-action">
                                 <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="channel-btn-gold">
-                                    Browse 18-Album Catalog &rarr;
+                                    Browse 22-Release Catalog &rarr;
                                 </a>
                             </div>
                         </div>
