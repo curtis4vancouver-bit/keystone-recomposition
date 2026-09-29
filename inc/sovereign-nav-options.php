@@ -224,6 +224,33 @@ function keystone_sync_sovereign_site_identity(): array {
         }
     }
 
+    // 2.4 Scrub Astra Footer HTML of any medical disclaimer
+    $astra_settings = get_option( 'astra-settings' );
+    if ( is_array( $astra_settings ) ) {
+        $modified_settings = false;
+        if ( isset( $astra_settings['footer-html-1'] ) && stripos( (string) $astra_settings['footer-html-1'], 'Medical' ) !== false ) {
+            $astra_settings['footer-html-1'] = '';
+            $modified_settings = true;
+            $changes['astra_settings_footer_html_1'] = 'Scrubbed Medical Disclaimer';
+        }
+        if ( $modified_settings ) {
+            update_option( 'astra-settings', $astra_settings );
+        }
+    }
+
+    $astra_mods = get_option( 'theme_mods_astra' );
+    if ( is_array( $astra_mods ) ) {
+        $mod_changed = false;
+        if ( isset( $astra_mods['footer-html-1'] ) && stripos( (string) $astra_mods['footer-html-1'], 'Medical' ) !== false ) {
+            $astra_mods['footer-html-1'] = '';
+            $mod_changed = true;
+            $changes['theme_mods_astra_footer_html_1'] = 'Scrubbed Medical Disclaimer';
+        }
+        if ( $mod_changed ) {
+            update_option( 'theme_mods_astra', $astra_mods );
+        }
+    }
+
     return array(
         'status'  => 'success',
         'changes' => $changes,
@@ -313,14 +340,14 @@ function keystone_filter_sovereign_nav_menu_items( string $items, $args ): strin
 add_action( 'init', 'keystone_run_sovereign_nav_and_options_sync', 15 );
 function keystone_run_sovereign_nav_and_options_sync(): void {
     $manual_trigger = isset( $_GET['keystone_sync_sovereign'] );
-    $synced_flag    = get_option( 'keystone_sovereign_nav_synced_v3_5_no_kp_tab' );
+    $synced_flag    = get_option( 'keystone_sovereign_nav_synced_v3_6_no_medical' );
 
     if ( ! $synced_flag || $manual_trigger ) {
         $nav_res      = keystone_provision_sovereign_nav_menu();
         $identity_res = keystone_sync_sovereign_site_identity();
         $purge_res    = keystone_purge_all_legacy_pages();
 
-        update_option( 'keystone_sovereign_nav_synced_v3_5_no_kp_tab', '1' );
+        update_option( 'keystone_sovereign_nav_synced_v3_6_no_medical', '1' );
 
         if ( $manual_trigger ) {
             header( 'Content-Type: application/json; charset=utf-8' );

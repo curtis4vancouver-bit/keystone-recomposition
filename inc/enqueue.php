@@ -68,7 +68,7 @@ function astra_child_keystone_add_defer_attribute( $tag, $handle ) {
 add_filter( 'script_loader_tag', 'astra_child_keystone_add_defer_attribute', 10, 2 );
 
 /**
- * 6. High-Priority Header Overrides (Single-Row Social Icons & Logo Polish)
+ * 6. High-Priority Header Overrides (Single-Row Social Icons, Logo Polish & Footer Suppression)
  */
 function astra_child_keystone_header_overrides() {
     ?>
@@ -110,7 +110,13 @@ function astra_child_keystone_header_overrides() {
     .ast-desktop-header .custom-logo-link img {
       max-height: 48px !important;
       width: auto !important;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6)) !important;
+    }
+    /* Suppress Astra default footer on homepage in favor of Wayne's 4-column Regional Divisions footer */
+    body.home .site-footer,
+    body.home #colophon,
+    .ast-footer-html-1 {
+      display: none !important;
     }
     </style>
     <?php
@@ -123,6 +129,15 @@ add_action( 'wp_head', 'astra_child_keystone_header_overrides', 9999 );
 function astra_child_keystone_sanitize_footer_output( $content ) {
     if ( empty( $content ) || ! is_string( $content ) ) {
         return $content;
+    }
+    // On the home page, Astra's default footer is completely suppressed in favor of Wayne's 4-column Regional Divisions footer
+    if ( is_front_page() || is_home() ) {
+        return '';
+    }
+    // Scrub any medical disclaimer completely per Rule 11 and Wayne Stevenson directive
+    if ( stripos( $content, 'Medical Disclaimer' ) !== false || stripos( $content, 'not medical advice' ) !== false ) {
+        $content = preg_replace( '/<p[^>]*>.*?Medical Disclaimer.*?<\/p>/is', '', $content );
+        $content = str_ireplace( 'Medical Disclaimer:', '', $content );
     }
     // Sanitize builder license #52603 out of Recomposition footer
     $content = str_replace( 'Certified BC Builder.', 'Metabolic Researcher & Recomposition Practitioner.', $content );
@@ -142,6 +157,13 @@ add_filter( 'astra_get_option_footer-html-1', 'astra_child_keystone_sanitize_foo
 add_filter( 'astra_get_option_footer-html-2', 'astra_child_keystone_sanitize_footer_output' );
 add_filter( 'astra_get_option_footer-copyright-editor', 'astra_child_keystone_sanitize_footer_output' );
 add_filter( 'astra_get_option_footer-sml-layout', 'astra_child_keystone_sanitize_footer_output' );
+
+// Completely unhook Astra footer on front-page
+add_action( 'template_redirect', function() {
+    if ( is_front_page() || is_home() ) {
+        remove_all_actions( 'astra_footer' );
+    }
+}, 5 );
 
 // Start output buffer before footer to catch any raw widget renders
 add_action( 'astra_footer_before', function() {
