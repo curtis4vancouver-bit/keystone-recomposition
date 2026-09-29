@@ -5189,16 +5189,21 @@ footer.site-footer,
    Dark Space Midnight (#030712), Luminous Cyan (#38bdf8), Liquid Gold (#d4af37)
    ========================================================================== */
 
-/* Global Home Page Container Reset */
-.keystone-cyber-home {
+/* Global Home Page & Protocols Page Container Reset */
+.keystone-cyber-home,
+.keystone-cyber-protocols {
   background-color: #030712 !important;
   color: #f8fafc !important;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   position: relative;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.keystone-cyber-home .ast-container {
+.keystone-cyber-home .ast-container,
+.keystone-cyber-protocols .ast-container {
   display: block !important;
   width: 100% !important;
   max-width: 1240px !important;
@@ -5207,15 +5212,24 @@ footer.site-footer,
   padding-right: 20px !important;
 }
 
-/* Hide legacy Astra footer and unnecessary container padding on cyber home */
+/* Hide legacy Astra footer and unnecessary container padding on cyber home and protocols */
 body.home .site-footer,
+body.page-template-template-ai-protocols .site-footer,
 .keystone-cyber-home ~ .site-footer,
-body.home .ast-footer-overlay {
+.keystone-cyber-protocols ~ .site-footer,
+body.home .ast-footer-overlay,
+body.page-template-template-ai-protocols .ast-footer-overlay {
   display: none !important;
 }
 
-body.home .site-content {
-  padding-bottom: 0 !important;
+body.home .site-content,
+body.page-template-template-ai-protocols .site-content,
+body.page-template-template-ai-protocols #primary,
+body.page-template-template-ai-protocols #content > .ast-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Header Logo & Navigation Enhancements */
