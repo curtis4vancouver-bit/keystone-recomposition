@@ -205,17 +205,7 @@ if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration']
             $cleaned_content
         );
         
-        // 5. Append the clean centered Real Wayne Medical Disclaimer card at the bottom
-        $disclaimer_card = "\n\n" . '<!-- KEYSTONE_SOVEREIGN_MEDICAL_DISCLAIMER_START -->' . "\n" .
-                           '<div class="kr-medical-disclaimer-card" style="background-color: rgba(245, 158, 11, 0.03); border: 1px solid rgba(245, 158, 11, 0.15); padding: 25px; border-radius: 4px; margin-top: 50px; margin-bottom: 30px; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">' . "\n" .
-                           '    <h3 style="font-family: \'Outfit\', sans-serif; font-size: 0.95rem; color: #f59e0b; margin-top: 0; margin-bottom: 12px; letter-spacing: 0.08em; text-transform: uppercase;">⚠️ Medical Disclaimer</h3>' . "\n" .
-                           '    <p style="font-family: \'Inter\', sans-serif; font-size: 0.85rem; color: #a3a3a3; line-height: 1.6; margin: 0; font-weight: 300; max-width: 750px; margin-left: auto; margin-right: auto;">' . "\n" .
-                           '        This article is a personal case study for educational purposes only. Wayne Stevenson is a metabolic researcher and performance specialist, not a doctor. Nothing here constitutes medical advice. GLP-1 / GIP therapies are powerful prescription drugs—always consult your licensed physician before starting or modifying any protocol.' . "\n" .
-                           '    </p>' . "\n" .
-                           '</div>' . "\n" .
-                           '<!-- KEYSTONE_SOVEREIGN_MEDICAL_DISCLAIMER_END -->';
-        
-        $cleaned_content .= $disclaimer_card;
+        // 5. Medical disclaimer removed per Rule 11 and Wayne Stevenson directive
         
         // 6. Update wp_posts table with restructured content
         $wpdb->update(

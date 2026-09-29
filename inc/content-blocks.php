@@ -825,16 +825,7 @@ function keystone_evidence_base_shortcode( $atts = array(), $content = null ) {
             <?php endif; ?>
         </div>
 
-        <?php if ( $show_disclaimer ) : ?>
-            <div class="evidence-disclaimer amber-disclaimer">
-                <h5 class="disclaimer-heading-amber">
-                    <span>⚠️</span> MEDICAL RESEARCH &amp; CLINICAL VERIFICATION NOTICE
-                </h5>
-                <p class="disclaimer-body-text">
-                    <strong>For Educational and Research Verification Only. Not Medical Advice. Consult a Licensed Physician.</strong> Primary clinical literature citations and trial outcome references are provided solely for scientific verification, pharmacokinetic modeling, and academic review. This information does not constitute medical advice, clinical diagnosis, or prescriptive guidelines. Always consult a licensed healthcare physician before modifying or administering any therapeutic, pharmacological, or nutritional protocol.
-                </p>
-            </div>
-        <?php endif; ?>
+        <?php /* Medical disclaimer removed per Rule 11 and Wayne Stevenson directive */ ?>
 
         <?php if ( $show_twin ) : ?>
             <div class="evidence-disclaimer cyan-disclaimer">

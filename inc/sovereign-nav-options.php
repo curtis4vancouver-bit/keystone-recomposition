@@ -65,11 +65,6 @@ function keystone_provision_sovereign_nav_menu(): array {
             'url'    => home_url( '/intel/' ),
             'target' => '',
         ),
-        array(
-            'title'  => 'Keystone Possibilities',
-            'url'    => 'https://keystonepossibilities.ca/',
-            'target' => '_blank',
-        ),
     );
 
     // Audit existing menu items
@@ -300,7 +295,6 @@ function keystone_filter_sovereign_nav_menu_items( string $items, $args ): strin
     // If the rendered menu items do not contain AI Protocols, inject our canonical sovereign menu
     if ( ! str_contains( $items, 'ai-protocols' ) && ! str_contains( $items, 'AI Protocols' ) ) {
         $ai_item  = '<li class="menu-item menu-item-type-custom"><a href="' . esc_url( home_url( '/ai-protocols/' ) ) . '" class="menu-link"><span class="menu-text">AI Protocols</span></a></li>';
-        $kp_item  = '<li class="menu-item menu-item-type-custom"><a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" class="menu-link"><span class="menu-text">Keystone Possibilities</span></a></li>';
         
         // Insert AI Protocols right after Home
         $first_close = strpos( $items, '</li>' );
@@ -309,9 +303,6 @@ function keystone_filter_sovereign_nav_menu_items( string $items, $args ): strin
         } else {
             $items = $ai_item . $items;
         }
-        
-        // Append Keystone Possibilities
-        $items .= $kp_item;
     }
     return $items;
 }
@@ -322,14 +313,14 @@ function keystone_filter_sovereign_nav_menu_items( string $items, $args ): strin
 add_action( 'init', 'keystone_run_sovereign_nav_and_options_sync', 15 );
 function keystone_run_sovereign_nav_and_options_sync(): void {
     $manual_trigger = isset( $_GET['keystone_sync_sovereign'] );
-    $synced_flag    = get_option( 'keystone_sovereign_nav_synced_v3_2_force' );
+    $synced_flag    = get_option( 'keystone_sovereign_nav_synced_v3_5_no_kp_tab' );
 
     if ( ! $synced_flag || $manual_trigger ) {
         $nav_res      = keystone_provision_sovereign_nav_menu();
         $identity_res = keystone_sync_sovereign_site_identity();
         $purge_res    = keystone_purge_all_legacy_pages();
 
-        update_option( 'keystone_sovereign_nav_synced_v3_2_force', '1' );
+        update_option( 'keystone_sovereign_nav_synced_v3_5_no_kp_tab', '1' );
 
         if ( $manual_trigger ) {
             header( 'Content-Type: application/json; charset=utf-8' );
