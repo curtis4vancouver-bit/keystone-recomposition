@@ -205,54 +205,23 @@ add_action( 'wp_head', 'astra_child_keystone_header_overrides', 9999 );
  * 7. Master Footer Content Sanitizer (Zero Overlap & Quiet Luxury Formatting)
  */
 function astra_child_keystone_sanitize_footer_output( $content ) {
-    if ( empty( $content ) || ! is_string( $content ) ) {
-        return $content;
-    }
-    // On the home page, Astra's default footer is completely suppressed in favor of Wayne's 4-column Regional Divisions footer
-    if ( is_front_page() || is_home() ) {
-        return '';
-    }
-    // Scrub any medical disclaimer completely per Rule 11 and Wayne Stevenson directive
-    if ( stripos( $content, 'Medical Disclaimer' ) !== false || stripos( $content, 'not medical advice' ) !== false ) {
-        $content = preg_replace( '/<p[^>]*>.*?Medical Disclaimer.*?<\/p>/is', '', $content );
-        $content = str_ireplace( 'Medical Disclaimer:', '', $content );
-    }
-    // Sanitize builder license #52603 out of Recomposition footer
-    $content = str_replace( 'Certified BC Builder.', 'Metabolic Researcher & Recomposition Practitioner.', $content );
-    $content = str_replace( 'Certified BC Builder', 'Metabolic Researcher & Recomposition Practitioner', $content );
-    $content = str_replace( 'BC Builder License: #52603 | ', '', $content );
-    $content = str_replace( 'BC Builder License: #52603', '', $content );
-    $content = str_replace( 'Site Supervision portfolio at Keystone Possibilities | ', '', $content );
-    $content = str_replace( 'Site Supervision portfolio at Keystone Possibilities', '', $content );
-    $content = str_replace( 'just a builder auditing', 'just an evidence-based researcher auditing', $content );
-    $content = str_replace( 'I’m the site lead on the ground', 'I’m documenting the data on the ground', $content );
-    return $content;
+    // Completely suppress Astra default footer widgets in favor of Wayne's sovereign 4-column matrix
+    return '';
 }
-add_filter( 'astra_footer_html_1_item', 'astra_child_keystone_sanitize_footer_output' );
-add_filter( 'astra_footer_html_2_item', 'astra_child_keystone_sanitize_footer_output' );
-add_filter( 'astra_footer_copyright_item', 'astra_child_keystone_sanitize_footer_output' );
-add_filter( 'astra_get_option_footer-html-1', 'astra_child_keystone_sanitize_footer_output' );
-add_filter( 'astra_get_option_footer-html-2', 'astra_child_keystone_sanitize_footer_output' );
-add_filter( 'astra_get_option_footer-copyright-editor', 'astra_child_keystone_sanitize_footer_output' );
-add_filter( 'astra_get_option_footer-sml-layout', 'astra_child_keystone_sanitize_footer_output' );
+add_filter( 'astra_footer_html_1_item', 'astra_child_keystone_sanitize_footer_output', 9999 );
+add_filter( 'astra_footer_html_2_item', 'astra_child_keystone_sanitize_footer_output', 9999 );
+add_filter( 'astra_footer_copyright_item', 'astra_child_keystone_sanitize_footer_output', 9999 );
+add_filter( 'astra_get_option_footer-html-1', 'astra_child_keystone_sanitize_footer_output', 9999 );
+add_filter( 'astra_get_option_footer-html-2', 'astra_child_keystone_sanitize_footer_output', 9999 );
+add_filter( 'astra_get_option_footer-copyright-editor', 'astra_child_keystone_sanitize_footer_output', 9999 );
+add_filter( 'astra_get_option_footer-sml-layout', 'astra_child_keystone_sanitize_footer_output', 9999 );
 
-// Completely unhook Astra footer on front-page
+// Completely unhook Astra footer across all pages
 add_action( 'template_redirect', function() {
-    if ( is_front_page() || is_home() ) {
-        remove_all_actions( 'astra_footer' );
-    }
+    remove_all_actions( 'astra_footer' );
+    remove_all_actions( 'astra_footer_before' );
+    remove_all_actions( 'astra_footer_after' );
 }, 5 );
-
-// Start output buffer before footer to catch any raw widget renders
-add_action( 'astra_footer_before', function() {
-    ob_start( 'astra_child_keystone_sanitize_footer_output' );
-}, 1 );
-
-add_action( 'astra_footer_after', function() {
-    if ( ob_get_level() > 0 ) {
-        ob_end_flush();
-    }
-}, 9999 );
 
 
 
