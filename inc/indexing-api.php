@@ -966,10 +966,8 @@ function keystone_master_robots_txt( string $output, bool $public ): string {
  */
 add_action( 'wp_footer', 'keystone_recomposition_add_sister_site_backlink', 100 );
 function keystone_recomposition_add_sister_site_backlink() {
-    // Avoid duplicate footer bar on front page where keystone-geo-footer-mesh is already rendered
-    if ( is_front_page() || is_home() ) {
-        return;
-    }
+    // Suppressed: footer.php renders the sovereign Keystone Empire Network bar site-wide
+    return;
     ?>
     <!-- Keystone Empire Network Standardized Footer Bar -->
     <div class="keystone-empire-footer-bar" style="background:#04070d; border-top:1px solid rgba(196,162,101,0.25); padding:16px 20px; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:#94a3b8; font-size:0.82rem;">
