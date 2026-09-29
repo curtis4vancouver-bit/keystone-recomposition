@@ -1,9 +1,10 @@
 <?php
 /**
  * Template Name: Keystone AI Protocols
- * Description: Autonomous 16-Agent Swarms, FastMCP Servers & Chrome CDP Infrastructure Hub
- * Version: 3.3.0 (High-End Dark Quiet Luxury Edition)
- * Stamped: September 2026
+ * Description: Dedicated 3-Tier Monetization & Video Breakdown Landing Page for Keystone Recomposition
+ *
+ * @package Keystone Recomposition Child
+ * @since 3.4.0
  */
 
 declare(strict_types=1);
@@ -17,236 +18,323 @@ get_header();
 $theme_uri = get_stylesheet_directory_uri();
 ?>
 
-<div id="primary" class="content-area primary keystone-ai-protocols-page">
+<div id="primary" class="content-area primary keystone-cyber-protocols">
     <main id="main" class="site-main">
 
-        <!-- 1. PAGE HERO -->
-        <section class="ai-hero-section">
+        <!-- 1. LANDING HERO SECTION -->
+        <section class="cyber-hero-section protocols-hero">
             <div class="ast-container">
-                <header class="ai-hero-header text-center">
+                <div class="cyber-hero-wrap text-center">
                     
-                    <!-- LEAD ARCHITECT CHIP -->
-                    <div class="hero-founder-chip" style="margin-bottom: 24px;">
+                    <div class="cyber-telemetry-pill">
+                        <span class="telemetry-pulse"></span>
+                        <span class="telemetry-text">// 2026 SOVEREIGN AI SUITE • FAST-TRACK YOUR WORKSTATION</span>
+                    </div>
+
+                    <div class="cyber-founder-chip">
                         <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
-                             alt="Wayne Stevenson — Lead Systems Architect" 
-                             class="founder-chip-avatar" />
+                             alt="Wayne Stevenson — Founder &amp; Architect" 
+                             class="founder-chip-avatar" 
+                             width="52" height="52" loading="eager" decoding="async" />
                         <div class="founder-chip-meta">
                             <span class="chip-name">Wayne Stevenson</span>
-                            <span class="chip-role">Lead Systems Architect • Autonomous Swarm Engineering</span>
+                            <span class="chip-role">Licensed BC Builder #52603 • FastMCP Systems Architect</span>
                         </div>
-                        <span class="chip-verified-badge">✔ LOCAL AGENTS</span>
+                        <span class="chip-verified-badge">✔ VERIFIED</span>
                     </div>
 
-                    <div class="gold-badge-pill">
-                        ⚡ AUTONOMOUS MULTI-AGENT SWARMS • FASTMCP ARCHITECTURE
-                    </div>
-                    
-                    <h1 class="page-title">
-                        Keystone AI Protocols: <span class="gold-gradient-text">Autonomous Multi-Agent Systems</span>
+                    <h1 class="cyber-hero-title">
+                        Deploy Production AI Workstations<br/>
+                        <span class="cyan-gradient-text">Engineered for High-Cadence Execution</span>
                     </h1>
-                    
-                    <p class="page-subtitle">
-                        The engineering blueprint behind Wayne Stevenson's local 16-agent swarms, FastMCP tool servers, and Chrome DevTools Protocol (CDP Port 9222) automation. High-throughput, sub-second execution with zero cloud lock-in.
+
+                    <p class="cyber-hero-subtitle">
+                        Step-by-step blueprints, production 16-agent swarms, and bespoke 1-on-1 workstation architecture. Built by a licensed British Columbia residential builder who runs physical multi-million dollar operations and high-velocity digital media on sovereign AI.
                     </p>
 
-                    <div class="ai-hero-actions">
-                        <a href="https://youtube.com/@KeystoneAIProtocols" target="_blank" rel="noopener" class="btn-primary-gold">
-                            ▶ Subscribe to @KeystoneAIProtocols
-                        </a>
-                        <a href="https://skool.com" target="_blank" rel="noopener" class="btn-secondary-glass">
-                            🚀 Access Skool Builder Vault ($49/mo)
-                        </a>
+                    <div class="protocols-quick-nav">
+                        <a href="#tier-blueprint" class="quick-nav-pill">01 • $49 Website Blueprint</a>
+                        <a href="#tier-swarm" class="quick-nav-pill">02 • $199 16-Agent Swarm</a>
+                        <a href="#tier-workstation" class="quick-nav-pill">03 • $800 Private Workstation</a>
                     </div>
 
-                    <!-- HERO HIGH-TECH SHOWCASE BANNER -->
-                    <div class="hero-banner-frame" style="margin-top: 40px;">
-                        <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
-                             alt="Keystone AI Protocols 16-Agent Swarm Topology" 
-                             class="hero-banner-image" />
-                        <div class="banner-glass-reflection"></div>
-                    </div>
-                </header>
-            </div>
-        </section>
-
-        <!-- 2. THE 16-AGENT SWARM LIFECYCLE -->
-        <section class="ai-section">
-            <div class="ast-container">
-                <div class="section-title-wrap text-center">
-                    <span class="section-tag">ENGINEERING LIFECYCLE</span>
-                    <h2 class="section-heading">The Autonomous 16-Agent Swarm Topology</h2>
-                    <p class="section-sub">
-                        Monolithic LLMs hallucinate. The Keystone engine orchestrates specialized child agents in isolated ephemeral contexts, strictly enforcing the 100% Working-Backwards standard.
-                    </p>
-                </div>
-
-                <div class="swarm-stages-grid">
-                    <div class="stage-card">
-                        <div class="stage-num">01</div>
-                        <h4 class="stage-title">Discovery &amp; Intent</h4>
-                        <p class="stage-agents"><strong>Agent:</strong> <code>S0_discovery_elicitor</code></p>
-                        <p class="stage-desc">Interactively clarifies ambiguity, parses user constraints, and locks the acceptance criteria before a single line of research begins.</p>
-                    </div>
-
-                    <div class="stage-card">
-                        <div class="stage-num">02</div>
-                        <h4 class="stage-title">Evidential Research Swarm</h4>
-                        <p class="stage-agents"><strong>Agents:</strong> <code>R1_scout_alpha</code>, <code>R2_bravo</code>, <code>R3_charlie</code>, <code>R4_auditor</code></p>
-                        <p class="stage-desc">Parallel Brave Search scouts extract developer ground truth. R4 gatekeeper mandates minimum 3 independent references before approval.</p>
-                    </div>
-
-                    <div class="stage-card">
-                        <div class="stage-num">03</div>
-                        <h4 class="stage-title">Technical Architecture</h4>
-                        <p class="stage-agents"><strong>Agent:</strong> <code>B1_architect</code></p>
-                        <p class="stage-desc">Authors 100% working-backwards system specifications, component DAGs, and FastMCP contracts with strictly zero unapproved production code.</p>
-                    </div>
-
-                    <div class="stage-card">
-                        <div class="stage-num">04</div>
-                        <h4 class="stage-title">TDD Red-to-Green Harness</h4>
-                        <p class="stage-agents"><strong>Agent:</strong> <code>B0_test_engineer</code></p>
-                        <p class="stage-desc">Writes comprehensive, failing (RED) unit and integration test suites upfront, verifying invariants before implementation code is touched.</p>
-                    </div>
-
-                    <div class="stage-card">
-                        <div class="stage-num">05</div>
-                        <h4 class="stage-title">Production Code Builders</h4>
-                        <p class="stage-agents"><strong>Agents:</strong> <code>B2_builder</code>, <code>W1_web_engineer</code>, <code>B5_daemon_engineer</code></p>
-                        <p class="stage-desc">Implements clean, fully typed, production-grade source code to satisfy B0's failing tests, backed by local syntax validation.</p>
-                    </div>
-
-                    <div class="stage-card">
-                        <div class="stage-num">06</div>
-                        <h4 class="stage-title">Adversarial Quality Gate</h4>
-                        <p class="stage-agents"><strong>Agent:</strong> <code>B3_code_reviewer</code></p>
-                        <p class="stage-desc">Adversarial gatekeeper auditing race conditions, AST types, and memory leaks. Zero regressions permitted before integration.</p>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. FASTMCP TYPED CONTRACTS -->
-        <section class="ai-section">
+        <!-- 2. THE 3 DEDICATED PRODUCT LANDING SECTIONS -->
+        <section class="protocols-showcase-section">
             <div class="ast-container">
-                <div class="section-title-wrap text-center">
-                    <span class="section-tag">TOOL INFRASTRUCTURE</span>
-                    <h2 class="section-heading">Model Context Protocol (FastMCP) Tools</h2>
-                    <p class="section-sub">
-                        Zero bash terminal hallucinations. All external actions run through typed FastMCP servers over stdio and SSE.
-                    </p>
-                </div>
 
-                <div class="fastmcp-servers-grid">
-                    <div class="server-card">
-                        <div class="server-header">
-                            <span class="server-icon">🎬</span>
-                            <div class="server-title-wrap">
-                                <h4>davinci-resolve-mcp</h4>
-                                <span class="server-badge">PRODUCTION</span>
+                <!-- PRODUCT 1: $49 ANTIGRAVITY WEBSITE FAST-TRACK BLUEPRINT -->
+                <div id="tier-blueprint" class="protocol-product-block">
+                    <div class="product-grid">
+                        
+                        <div class="product-media-col">
+                            <div class="video-preview-card">
+                                <div class="video-thumb-wrap">
+                                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
+                                         alt="Antigravity Website Fast-Track Video Preview" 
+                                         class="video-thumb-img" loading="lazy" />
+                                    <div class="video-play-overlay">
+                                        <div class="play-circle-btn">▶</div>
+                                        <span class="video-runtime-tag">3-MIN BREAKDOWN</span>
+                                    </div>
+                                </div>
+                                <div class="video-card-meta">
+                                    <span class="video-title">The Autonomous Website Machine</span>
+                                    <span class="video-desc">Watch 16 AI agents rewrite and deploy a complete production site in minutes.</span>
+                                </div>
                             </div>
                         </div>
-                        <p class="server-desc">Automated 2-track master timeline assembly, -18dB background audio ducking, marker injection, and 4K rendering pipelines.</p>
-                        <div class="server-tags">
-                            <code>timeline.create</code>
-                            <code>audio.duck</code>
-                            <code>render.start</code>
-                        </div>
-                    </div>
 
-                    <div class="server-card">
-                        <div class="server-header">
-                            <span class="server-icon">🔍</span>
-                            <div class="server-title-wrap">
-                                <h4>brave-search-mcp</h4>
-                                <span class="server-badge">VERIFIED</span>
+                        <div class="product-info-col">
+                            <div class="product-badge-row">
+                                <span class="badge-tier-cyan">TIER 01 // STARTER BLUEPRINT</span>
+                                <span class="badge-discount-gold">50% OFF LAUNCH SPECIAL</span>
+                            </div>
+                            <h2 class="product-title">Antigravity Autonomous Website Fast-Track</h2>
+                            <div class="product-price-row">
+                                <span class="price-symbol">$</span>
+                                <span class="price-val">49</span>
+                                <span class="price-currency">USD</span>
+                                <span class="price-original"><del>$100</del></span>
+                            </div>
+                            <p class="product-lead-copy">
+                                Stop paying agencies $5,000 to $15,000 for slow template websites. In this comprehensive blueprint and video walkthrough, Wayne reveals how to configure Google Antigravity and autonomous subagents to deploy custom, high-speed, SEO-dominating web platforms in hours.
+                            </p>
+                            
+                            <div class="product-deliverables-box">
+                                <h4>📦 What You Receive Instantly:</h4>
+                                <ul>
+                                    <li><strong>The Multi-Agent Website Prompt Stack:</strong> The exact system prompts that convert raw requirements into production-ready child themes.</li>
+                                    <li><strong>Gutenberg AST &amp; Static Templates:</strong> High-performance Gutenberg block patterns and dark luxury CSS design tokens.</li>
+                                    <li><strong>Headless Google Search Console Indexing:</strong> Automated Chrome CDP script to request priority indexing in under 60 seconds.</li>
+                                    <li><strong>GitHub-to-WordPress Auto-Deploy Pipeline:</strong> Step-by-step WP Pusher webhook deployment guide.</li>
+                                    <li><strong>Complete Video Blueprint Walkthrough:</strong> Full recorded masterclass breaking down the architecture.</li>
+                                </ul>
+                            </div>
+
+                            <div class="product-checkout-box">
+                                <a href="https://buy.stripe.com/test_keystone_tier1_49" target="_blank" rel="noopener" class="btn-cyan-buy">
+                                    ⚡ GET INSTANT ACCESS ($49 USD) →
+                                </a>
+                                <div class="checkout-trust-line">
+                                    💳 Apple Pay • Google Pay • Visa / MC • 100% Secure Stripe Checkout
+                                </div>
+                                <span class="delivery-time-tag">⚡ Immediate digital download &amp; license sent to your email</span>
                             </div>
                         </div>
-                        <p class="server-desc">Tri-scout evidential search executing parallel queries to enforce the 3-source truth verification gate.</p>
-                        <div class="server-tags">
-                            <code>brave_web_search</code>
-                            <code>brave_local_search</code>
-                        </div>
-                    </div>
 
-                    <div class="server-card">
-                        <div class="server-header">
-                            <span class="server-icon">⚡</span>
-                            <div class="server-title-wrap">
-                                <h4>chrome-devtools-mcp</h4>
-                                <span class="server-badge">CDP :9222</span>
-                            </div>
-                        </div>
-                        <p class="server-desc">Auto-attach to Wayne's authenticated Google Chrome browser on Port 9222. Zero broken child browser spawns.</p>
-                        <div class="server-tags">
-                            <code>Runtime.evaluate</code>
-                            <code>Page.navigate</code>
-                            <code>DOM.query</code>
-                        </div>
-                    </div>
-
-                    <div class="server-card">
-                        <div class="server-header">
-                            <span class="server-icon">🎵</span>
-                            <div class="server-title-wrap">
-                                <h4>keystone-music-manager</h4>
-                                <span class="server-badge">TOOLOST</span>
-                            </div>
-                        </div>
-                        <p class="server-desc">TooLost ISRC database indexing, Musixmatch Pro synced lyrics pipeline, and MusicBrainz catalog synchronizer.</p>
-                        <div class="server-tags">
-                            <code>isrc.lookup</code>
-                            <code>lyrics.sync</code>
-                            <code>album.metadata</code>
-                        </div>
                     </div>
                 </div>
+
+                <!-- PRODUCT 2: $199 AUTONOMOUS 16-AGENT SWARM & B2B OUTREACH ENGINE -->
+                <div id="tier-swarm" class="protocol-product-block">
+                    <div class="product-grid reverse-on-desktop">
+                        
+                        <div class="product-media-col">
+                            <div class="video-preview-card">
+                                <div class="video-thumb-wrap">
+                                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_logo.png' ); ?>" 
+                                         alt="16-Agent Swarm Concurrency Video Preview" 
+                                         class="video-thumb-img" loading="lazy" />
+                                    <div class="video-play-overlay">
+                                        <div class="play-circle-btn">▶</div>
+                                        <span class="video-runtime-tag">5-MIN BREAKDOWN</span>
+                                    </div>
+                                </div>
+                                <div class="video-card-meta">
+                                    <span class="video-title">16-Agent Swarm Concurrency</span>
+                                    <span class="video-desc">How specialized trade crews prevent context window collapse.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-info-col">
+                            <div class="product-badge-row">
+                                <span class="badge-tier-cyan">TIER 02 // PRO BUILDER SUITE</span>
+                            </div>
+                            <h2 class="product-title">Autonomous 16-Agent Swarm &amp; B2B Engine</h2>
+                            <div class="product-price-row">
+                                <span class="price-symbol">$</span>
+                                <span class="price-val">199</span>
+                                <span class="price-currency">USD</span>
+                            </div>
+                            <p class="product-lead-copy">
+                                Single-prompt chatbots suffer from context rot: after a few turns, they forget instructions and emit broken code. This turnkey engine provides the full 16-agent concurrency architecture Wayne uses to research municipal permits, execute test-driven code, and automate B2B outreach in parallel.
+                            </p>
+                            
+                            <div class="product-deliverables-box">
+                                <h4>📦 What You Receive:</h4>
+                                <ul>
+                                    <li><strong>The 16-Agent Role Definitions:</strong> Complete configurations for Research Scouts (R1-R3), Test Engineers (B0), Builders (B1-B5), and Outreach Swarms (O1-O5).</li>
+                                    <li><strong>FastMCP Typed Tool Contracts:</strong> Zero-hallucination JSON-RPC schemas connecting agents to local files, databases, and APIs.</li>
+                                    <li><strong>B2B Lead Engine &amp; DNS MX Verification:</strong> Multi-tier socket verifier that inspects mail exchangers before sending, protecting your domain reputation.</li>
+                                    <li><strong>6-Phase TDD Lifecycle Harness:</strong> Forces subagents to write failing unit tests before building, guaranteeing 100% bug-free delivery.</li>
+                                    <li><strong>Full Turn-Key GitHub Repository:</strong> Clone, configure your environment, and launch your first swarm in under 15 minutes.</li>
+                                </ul>
+                            </div>
+
+                            <div class="product-checkout-box">
+                                <a href="https://buy.stripe.com/test_keystone_tier2_199" target="_blank" rel="noopener" class="btn-cyan-buy">
+                                    🚀 DEPLOY 16-AGENT SWARM ($199 USD) →
+                                </a>
+                                <div class="checkout-trust-line">
+                                    💳 Apple Pay • Google Pay • Visa / MC • 100% Secure Stripe Checkout
+                                </div>
+                                <span class="delivery-time-tag">⚡ Immediate GitHub repository access &amp; documentation</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- PRODUCT 3: $800 CUSTOM TORII HUD & SOVEREIGN WORKSTATION ARCHITECTURE -->
+                <div id="tier-workstation" class="protocol-product-block featured-product">
+                    <div class="product-grid">
+                        
+                        <div class="product-media-col">
+                            <div class="video-preview-card">
+                                <div class="video-thumb-wrap">
+                                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
+                                         alt="Sovereign Builder Workstation Tour" 
+                                         class="video-thumb-img" loading="lazy" />
+                                    <div class="video-play-overlay">
+                                        <div class="play-circle-btn">▶</div>
+                                        <span class="video-runtime-tag">4-MIN MASTERCLASS</span>
+                                    </div>
+                                </div>
+                                <div class="video-card-meta">
+                                    <span class="video-title">The Sovereign Builder Workstation</span>
+                                    <span class="video-desc">Behind the scenes with Wayne Stevenson: physical building, video pipelines, and local voice.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-info-col">
+                            <div class="product-badge-row">
+                                <span class="badge-tier-cyan">TIER 03 // PRIVATE ARCHITECTURE</span>
+                                <span class="badge-capacity-alert">STRICTLY CAPPED: 4 CLIENTS / MONTH</span>
+                            </div>
+                            <h2 class="product-title">Custom Torii HUD &amp; Sovereign Workstation</h2>
+                            <div class="product-price-row">
+                                <span class="price-symbol">$</span>
+                                <span class="price-val">800</span>
+                                <span class="price-currency">USD</span>
+                            </div>
+                            <p class="product-lead-copy">
+                                Relying on cloud AI platforms is like running extension cords to your neighbor's house: when their power trips, your job site goes dark. In this private 1-on-1 engagement, Wayne Stevenson personally configures, compiles, and deploys a bespoke sovereign AI workstation directly onto your local machine.
+                            </p>
+                            
+                            <div class="product-deliverables-box">
+                                <h4>🏛️ What You Receive with Wayne:</h4>
+                                <ul>
+                                    <li><strong>Two 90-Minute Private Engineering Sessions:</strong> Direct screen-share architecture and live deployment with Wayne Stevenson.</li>
+                                    <li><strong>Bespoke Torii HUD Desktop Binary:</strong> Custom Tauri v2 / Rust / Vite desktop interface compiled specifically for your PC.</li>
+                                    <li><strong>5 Win32 Detached Background Daemons:</strong> Ports 9876 (STT), 9877 (TTS), 9878 (Vector Brain), 9879 (CDP Overlay), and 9891 (Janitor) running resiliently across restarts.</li>
+                                    <li><strong>Local CUDA Faster-Whisper + F9 Push-to-Talk:</strong> Zero-latency voice interface mapped directly to your hardware with zero monthly subscription fees.</li>
+                                    <li><strong>Tailored Business Integration:</strong> Calibrated to your exact industry (construction estimates, CAD analysis, video production, or financial workflows).</li>
+                                </ul>
+                            </div>
+
+                            <div class="product-checkout-box">
+                                <a href="/contact/" class="btn-gold-buy">
+                                    🤝 APPLY FOR PRIVATE ARCHITECTURE ($800 USD) →
+                                </a>
+                                <div class="checkout-trust-line">
+                                    🏛️ Private intake application reviewed directly by Wayne Stevenson
+                                </div>
+                                <span class="delivery-time-tag">Direct scheduling link sent immediately upon acceptance</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- 4. CHROME CDP PORT 9222 SPECIFICATION -->
-        <section class="ai-section">
+        <!-- 3. COMPETITIVE ARCHITECTURE CALLOUT -->
+        <section class="protocols-benchmark-section">
             <div class="ast-container">
-                <div class="cdp-spec-box">
-                    <div class="cdp-header">
-                        <span class="cdp-pill">ZERO-CLOUD AUTOMATION</span>
-                        <h3 class="cdp-title">The Chrome CDP Port 9222 Standard</h3>
-                        <p class="cdp-desc">
-                            We never use headless Playwright or cloud browser VMs that fail captchas and cost hundreds per month. Antigravity connects directly to Wayne's daily-driver Chrome profile over local loopback WebSockets:
+                <div class="competitive-matrix-card">
+                    <div class="matrix-header">
+                        <span class="matrix-tag">THE BUILDER BENCHMARK</span>
+                        <h3 class="matrix-title">Why We Choose Google Antigravity &amp; FastMCP over Claude Code</h3>
+                        <p class="matrix-desc">
+                            "When you pour concrete or frame high-load timber structures, you learn that unreliable tools cost fortunes. In software and AI swarms, the principle is identical." — Wayne Stevenson
                         </p>
                     </div>
-
-                    <div class="code-terminal-card">
-                        <div class="terminal-header">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                            <span class="terminal-title">powershell — Chrome Remote Debugging Launch</span>
+                    <div class="matrix-grid">
+                        <div class="matrix-col">
+                            <h4>⚡ Context Capacity (2,000,000 Tokens)</h4>
+                            <p>Gemini provides up to <strong>2M tokens of context</strong>, allowing you to feed entire building code books, 50-page blueprints, and complete multi-folder repositories simultaneously. Claude Code is constrained to 200k tokens, forcing lossy file exclusions.</p>
                         </div>
-                        <pre class="terminal-body"><code>&amp; "C:\Program Files\Google\Chrome\Application\chrome.exe" `
-    --remote-debugging-port=9222 `
-    --user-data-dir="C:\ChromeProfile" `
-    --restore-last-session</code></pre>
+                        <div class="matrix-col">
+                            <h4>🛡️ Zero Rate-Limit Lockouts</h4>
+                            <p>High-cadence builders cannot afford Claude's infamous <strong>5-hour rolling lockouts</strong> in the middle of a project sprint. Antigravity's generous tiers keep your agent swarms executing continuously.</p>
+                        </div>
+                        <div class="matrix-col">
+                            <h4>💰 10x to 30x Token Economics</h4>
+                            <p>Gemini Flash costs <strong>$0.10 to $0.30 per million tokens</strong> ($0.03 cached) compared to Claude Sonnet's $3.00 input and $15.00 output. Running complex 16-agent swarms is mathematically viable instead of a financial drain.</p>
+                        </div>
+                        <div class="matrix-col">
+                            <h4>🌐 Native Browser &amp; Google Ecosystem</h4>
+                            <p>Direct <strong>Chrome CDP (Port 9222)</strong> headless automation, automated Google Search Console submission, and native Google Drive, Docs, and Calendar tools that isolated terminal CLIs cannot touch.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. YOUTUBE & SKOOL CTA SECTION -->
-        <section class="ai-section text-center">
+        <!-- 4. SOVEREIGN FOOTER -->
+        <section class="keystone-geo-footer-mesh">
             <div class="ast-container">
-                <div class="cta-vault-card">
-                    <h2 class="vault-heading">Build With Us: Code, Architecture &amp; Live Teardowns</h2>
-                    <p class="vault-sub">
-                        Subscribe to <strong>@KeystoneAIProtocols</strong> on YouTube or join the private Skool Builder Guild for source repositories and live FastMCP server blueprints.
-                    </p>
-                    <div class="vault-btn-group">
-                        <a href="https://youtube.com/@KeystoneAIProtocols" target="_blank" rel="noopener" class="btn-primary-gold">
-                            ▶ Subscribe to @KeystoneAIProtocols on YouTube
-                        </a>
-                        <a href="https://skool.com" target="_blank" rel="noopener" class="btn-secondary-glass">
-                            🚀 Join Skool Builder Guild ($49/mo)
-                        </a>
+                <div class="footer-copyright-center">
+                    Copyright Keystone Possibilities Ltd &amp; Keystone Recomposition 2023-2026, All Rights Reserved.
+                </div>
+                <div class="regional-divisions-wrap">
+                    <div class="regional-header-cyan">
+                        <span>⚡</span> KEYSTONE RECOMPOSITION — AUTONOMOUS AI &amp; SONIC ARCHITECTURE
+                    </div>
+                    <div class="regional-divisions-grid">
+                        <div class="regional-col">
+                            <strong>Autonomous AI Protocols:</strong>
+                            <a href="/ai-protocols/">• Antigravity Workstation Blueprint</a>
+                            <a href="/ai-protocols/">• 16-Agent FastMCP Swarms</a>
+                            <a href="/ai-protocols/">• Chrome CDP Stream Automation</a>
+                            <a href="/ai-protocols/">• High-Cadence Builder Workflows</a>
+                        </div>
+                        <div class="regional-col">
+                            <strong>Sonic Universe Discography:</strong>
+                            <a href="/sonic-universe/">• Builder in the Pines (Deep House)</a>
+                            <a href="/sonic-universe/">• Squamish Monolith (Melodic Techno)</a>
+                            <a href="/sonic-universe/">• Antigravity Chronicles (Ambient Brain)</a>
+                            <a href="/sonic-universe/">• TooLost Worldwide Distribution</a>
+                        </div>
+                        <div class="regional-col">
+                            <strong>Intelligence &amp; Architecture:</strong>
+                            <a href="/intel/">• INTEL Technical Protocol Dispatches</a>
+                            <a href="/about-the-founder/">• The Architect Dossier</a>
+                            <a href="/ai-protocols/">• Multi-Agent Systems Consulting</a>
+                            <a href="/intel/">• Bio-Acoustic Frequency Research</a>
+                        </div>
+                        <div class="regional-col">
+                            <strong>Governance &amp; Sister Flagship:</strong>
+                            <span class="authority-badge-text">Wayne Stevenson // Architect</span>
+                            <span class="verification-status-text">BC Housing Builder #52603</span>
+                            <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" style="color: #f6d365 !important; font-weight: 600;">• Keystone Possibilities Ltd. ↗</a>
+                            <a href="/contact/" class="consultation-link">• Schedule Private Consultation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="empire-network-bar">
+                    <div class="network-title-line">
+                        <span class="network-title-gold">⚔️ KEYSTONE EMPIRE NETWORK</span> | Keystone Recomposition — Evidence-Based AI Systems &amp; Sonic Architecture
+                    </div>
+                    <div class="network-sister-link">
+                        Sister Flagship: <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd. — Licensed Residential Builder #52603 &amp; BC Hydro Utility Contractor →</a>
                     </div>
                 </div>
             </div>
