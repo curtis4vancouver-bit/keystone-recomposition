@@ -78,6 +78,14 @@ function keystone_get_purged_slug_patterns(): array {
 function keystone_is_purged_url( string $uri ): bool {
     $uri_clean = strtolower( trim( $uri, '/' ) );
     
+    // Explicit whitelist for core sovereign ecosystem pages
+    $whitelist = array( 'founder', 'about-the-founder', 'investments', 'lifestyle', 'contact', 'ai-protocols', 'intel', 'sonic-universe' );
+    foreach ( $whitelist as $allowed ) {
+        if ( $uri_clean === $allowed || str_starts_with( $uri_clean, $allowed . '/' ) ) {
+            return false;
+        }
+    }
+
     // Check watch- prefix
     if ( str_starts_with( $uri_clean, 'watch-' ) || str_contains( $uri_clean, '/watch-' ) ) {
         return true;

@@ -15,6 +15,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * 0. Fast Route Interceptor (template_redirect priority 0)
+ * Guarantees sovereign routes render directly before canonical redirects can intervene.
+ */
+add_action( 'template_redirect', 'keystone_fast_core_routes_interceptor', 0 );
+function keystone_fast_core_routes_interceptor(): void {
+    if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+        return;
+    }
+
+    $request_uri = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ?: '', '/' );
+    $slug        = strtolower( $request_uri );
+
+    if ( $slug === 'founder' || $slug === 'about-the-founder' || $slug === 'about-the-founder-the-keystone-blueprint' ) {
+        $file = get_stylesheet_directory() . '/template-founder-story.php';
+        if ( file_exists( $file ) ) {
+            status_header( 200 );
+            include $file;
+            exit;
+        }
+    }
+}
+
+/**
  * 1. Dynamic Route Interceptor (template_include)
  * Intercepts incoming URIs to guarantee custom page templates render with HTTP 200 OK.
  */
