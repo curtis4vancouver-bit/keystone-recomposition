@@ -81,7 +81,7 @@ function keystone_is_purged_url( string $uri ): bool {
     // Explicit whitelist for core sovereign ecosystem pages
     $whitelist = array( 'founder', 'about-the-founder', 'investments', 'lifestyle', 'contact', 'ai-protocols', 'intel', 'sonic-universe' );
     foreach ( $whitelist as $allowed ) {
-        if ( $uri_clean === $allowed || str_starts_with( $uri_clean, $allowed . '/' ) ) {
+        if ( $uri_clean === $allowed || str_starts_with( $uri_clean, $allowed . '/' ) || str_contains( $uri_clean, 'founder' ) ) {
             return false;
         }
     }
@@ -116,13 +116,28 @@ function keystone_intercept_purged_urls(): void {
         return;
     }
 
+    // Never redirect core sovereign ecosystem pages
+    $path = strtolower( trim( parse_url( $request_uri, PHP_URL_PATH ) ?: '', '/' ) );
+    $core_slugs = array( 'founder', 'about-the-founder', 'investments', 'lifestyle', 'contact', 'ai-protocols', 'intel', 'sonic-universe' );
+    foreach ( $core_slugs as $core_slug ) {
+        if ( $path === $core_slug || str_starts_with( $path, $core_slug . '/' ) || str_contains( $path, 'founder' ) ) {
+            return;
+        }
+    }
+
     // Check current URI or queried post against canonical purged patterns
     $is_match = keystone_is_purged_url( $request_uri );
     
     if ( ! $is_match && is_singular() ) {
         $post = get_post();
-        if ( $post && ( keystone_is_purged_url( (string) $post->post_name ) || keystone_is_purged_url( (string) $post->post_title ) ) ) {
-            $is_match = true;
+        if ( $post ) {
+            $post_slug = strtolower( (string) $post->post_name );
+            if ( in_array( $post_slug, $core_slugs, true ) || str_contains( $post_slug, 'founder' ) ) {
+                return;
+            }
+            if ( keystone_is_purged_url( (string) $post->post_name ) || keystone_is_purged_url( (string) $post->post_title ) ) {
+                $is_match = true;
+            }
         }
     }
 
