@@ -5168,3 +5168,16 @@ footer.site-footer,
   border-radius: 9999px;
   letter-spacing: 0.05em;
 }
+
+
+/* Fix Astra container flex row distortion on custom sovereign pages */
+.keystone-sonic-universe-page .ast-container,
+.keystone-ai-protocols-page .ast-container,
+.keystone-founder-page .ast-container {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}

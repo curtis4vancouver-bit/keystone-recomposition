@@ -2,7 +2,7 @@
 /**
  * Template Name: Keystone AI Protocols
  * Description: Autonomous 16-Agent Swarms, FastMCP Servers & Chrome CDP Infrastructure Hub
- * Version: 3.2.0 (High-End Dark Quiet Luxury Edition)
+ * Version: 3.3.0 (High-End Dark Quiet Luxury Edition)
  * Stamped: September 2026
  */
 
@@ -19,55 +19,59 @@ $theme_uri = get_stylesheet_directory_uri();
 
 <div id="primary" class="content-area primary keystone-ai-protocols-page">
     <main id="main" class="site-main">
-        <div class="ast-container">
 
-            <!-- PAGE HERO -->
-            <header class="ai-hero-header text-center">
-                
-                <!-- LEAD ARCHITECT CHIP -->
-                <div class="hero-founder-chip" style="margin-bottom: 24px;">
-                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
-                         alt="Wayne Stevenson — Lead Systems Architect" 
-                         class="founder-chip-avatar" />
-                    <div class="founder-chip-meta">
-                        <span class="chip-name">Wayne Stevenson</span>
-                        <span class="chip-role">Lead Systems Architect • Autonomous Swarm Engineering</span>
+        <!-- 1. PAGE HERO -->
+        <section class="ai-hero-section">
+            <div class="ast-container">
+                <header class="ai-hero-header text-center">
+                    
+                    <!-- LEAD ARCHITECT CHIP -->
+                    <div class="hero-founder-chip" style="margin-bottom: 24px;">
+                        <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
+                             alt="Wayne Stevenson — Lead Systems Architect" 
+                             class="founder-chip-avatar" />
+                        <div class="founder-chip-meta">
+                            <span class="chip-name">Wayne Stevenson</span>
+                            <span class="chip-role">Lead Systems Architect • Autonomous Swarm Engineering</span>
+                        </div>
+                        <span class="chip-verified-badge">✔ LOCAL AGENTS</span>
                     </div>
-                    <span class="chip-verified-badge">✔ LOCAL AGENTS</span>
-                </div>
 
-                <div class="gold-badge-pill">
-                    ⚡ AUTONOMOUS MULTI-AGENT SWARMS • FASTMCP ARCHITECTURE
-                </div>
-                
-                <h1 class="page-title">
-                    Keystone AI Protocols: <span class="gold-gradient-text">Autonomous Multi-Agent Systems</span>
-                </h1>
-                
-                <p class="page-subtitle">
-                    The engineering blueprint behind Wayne Stevenson's local 16-agent swarms, FastMCP tool servers, and Chrome DevTools Protocol (CDP Port 9222) automation. High-throughput, sub-second execution with zero cloud lock-in.
-                </p>
+                    <div class="gold-badge-pill">
+                        ⚡ AUTONOMOUS MULTI-AGENT SWARMS • FASTMCP ARCHITECTURE
+                    </div>
+                    
+                    <h1 class="page-title">
+                        Keystone AI Protocols: <span class="gold-gradient-text">Autonomous Multi-Agent Systems</span>
+                    </h1>
+                    
+                    <p class="page-subtitle">
+                        The engineering blueprint behind Wayne Stevenson's local 16-agent swarms, FastMCP tool servers, and Chrome DevTools Protocol (CDP Port 9222) automation. High-throughput, sub-second execution with zero cloud lock-in.
+                    </p>
 
-                <div class="ai-hero-actions">
-                    <a href="https://youtube.com/@KeystoneAIProtocols" target="_blank" rel="noopener" class="btn-primary-gold">
-                        ▶ Subscribe to @KeystoneAIProtocols
-                    </a>
-                    <a href="https://skool.com" target="_blank" rel="noopener" class="btn-secondary-glass">
-                        🚀 Access Skool Builder Vault ($49/mo)
-                    </a>
-                </div>
+                    <div class="ai-hero-actions">
+                        <a href="https://youtube.com/@KeystoneAIProtocols" target="_blank" rel="noopener" class="btn-primary-gold">
+                            ▶ Subscribe to @KeystoneAIProtocols
+                        </a>
+                        <a href="https://skool.com" target="_blank" rel="noopener" class="btn-secondary-glass">
+                            🚀 Access Skool Builder Vault ($49/mo)
+                        </a>
+                    </div>
 
-                <!-- HERO HIGH-TECH SHOWCASE BANNER -->
-                <div class="hero-banner-frame" style="margin-top: 40px;">
-                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
-                         alt="Keystone AI Protocols 16-Agent Swarm Topology" 
-                         class="hero-banner-image" />
-                    <div class="banner-glass-reflection"></div>
-                </div>
-            </header>
+                    <!-- HERO HIGH-TECH SHOWCASE BANNER -->
+                    <div class="hero-banner-frame" style="margin-top: 40px;">
+                        <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
+                             alt="Keystone AI Protocols 16-Agent Swarm Topology" 
+                             class="hero-banner-image" />
+                        <div class="banner-glass-reflection"></div>
+                    </div>
+                </header>
+            </div>
+        </section>
 
-            <!-- 1. THE 16-AGENT SWARM LIFECYCLE -->
-            <section class="ai-section">
+        <!-- 2. THE 16-AGENT SWARM LIFECYCLE -->
+        <section class="ai-section">
+            <div class="ast-container">
                 <div class="section-title-wrap text-center">
                     <span class="section-tag">ENGINEERING LIFECYCLE</span>
                     <h2 class="section-heading">The Autonomous 16-Agent Swarm Topology</h2>
@@ -119,10 +123,12 @@ $theme_uri = get_stylesheet_directory_uri();
                         <p class="stage-desc">Adversarial gatekeeper auditing race conditions, AST types, and memory leaks. Zero regressions permitted before integration.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- 2. FASTMCP TYPED CONTRACTS -->
-            <section class="ai-section">
+        <!-- 3. FASTMCP TYPED CONTRACTS -->
+        <section class="ai-section">
+            <div class="ast-container">
                 <div class="section-title-wrap text-center">
                     <span class="section-tag">TOOL INFRASTRUCTURE</span>
                     <h2 class="section-heading">Model Context Protocol (FastMCP) Tools</h2>
@@ -195,10 +201,12 @@ $theme_uri = get_stylesheet_directory_uri();
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- 3. CHROME CDP PORT 9222 SPECIFICATION -->
-            <section class="ai-section">
+        <!-- 4. CHROME CDP PORT 9222 SPECIFICATION -->
+        <section class="ai-section">
+            <div class="ast-container">
                 <div class="cdp-spec-box">
                     <div class="cdp-header">
                         <span class="cdp-pill">ZERO-CLOUD AUTOMATION</span>
@@ -221,10 +229,12 @@ $theme_uri = get_stylesheet_directory_uri();
     --restore-last-session</code></pre>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- 4. YOUTUBE & SKOOL CTA SECTION -->
-            <section class="ai-section text-center">
+        <!-- 5. YOUTUBE & SKOOL CTA SECTION -->
+        <section class="ai-section text-center">
+            <div class="ast-container">
                 <div class="cta-vault-card">
                     <h2 class="vault-heading">Build With Us: Code, Architecture &amp; Live Teardowns</h2>
                     <p class="vault-sub">
@@ -239,9 +249,9 @@ $theme_uri = get_stylesheet_directory_uri();
                         </a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-        </div>
     </main>
 </div>
 
