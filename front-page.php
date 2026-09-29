@@ -417,6 +417,11 @@ $theme_uri = get_stylesheet_directory_uri();
                         if ( empty( $raw_exp ) ) {
                             $raw_exp = wp_trim_words( wp_strip_all_tags( get_the_content() ), 24, '...' );
                         }
+                        $raw_exp = str_replace(
+                            array( '196-track', '196 track', '196 cataloged', '18 albums', '18-album' ),
+                            array( '216-track', '216 track', '216 registered', '22 releases', '22-release' ),
+                            $raw_exp
+                        );
                         $carousel_items[] = array(
                             'title'    => get_the_title(),
                             'category' => $cat_name,
