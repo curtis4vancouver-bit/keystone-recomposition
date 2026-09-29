@@ -1,9 +1,10 @@
 <?php
 /**
- * The template for displaying the Keystone Recomposition Cyber-Celestial Home Page
- *
+ * Template Name: Keystone Cyber-Celestial Home
+ * Description: High-Cadence Autonomous AI Architecture & Electronic Sound Lab Flagship
+ * 
  * @package Keystone Recomposition Child
- * @since 3.4.0 (Cyber-Celestial Real Audio & Multi-Agent Monetization Edition)
+ * @since 3.5.0
  */
 
 declare(strict_types=1);
@@ -28,7 +29,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     <!-- FastMCP Telemetry Pill -->
                     <div class="cyber-telemetry-pill">
                         <span class="telemetry-pulse"></span>
-                        <span class="telemetry-text">// AUTONOMOUS AI ARCHITECTURE • 16 AGENTS ACTIVE • HIGH-CADENCE BUILDER</span>
+                        <span class="telemetry-text">// 2026 SOVEREIGN AI SUITE • HIGH-CADENCE BUILDER • SQUAMISH &amp; WHISTLER, BC</span>
                     </div>
 
                     <!-- Founder Verification Chip -->
@@ -50,18 +51,18 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
                     
                     <p class="cyber-hero-subtitle">
-                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and an 18-album electronic music universe to scale high-cadence companies.
+                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and an 18-album electronic music universe to scale high-cadence operations.
                     </p>
 
                     <div class="cyber-cta-group">
-                        <a href="#sound-lab" class="btn-cyan-primary">
-                            ⚡ Engage Sound Lab
+                        <a href="/ai-protocols/" class="btn-cyan-primary">
+                            ⚡ Explore AI Protocols &amp; Blueprints →
                         </a>
-                        <a href="/sonic-universe/" class="btn-glass-secondary">
-                            🎵 Stream 18 Albums
+                        <a href="#intro-split" class="btn-glass-secondary">
+                            🎧 Engage Sound Lab
                         </a>
-                        <a href="#ai-funnel" class="btn-gold-subtle">
-                            🚀 AI Agent Blueprints ($49)
+                        <a href="#builder-dossier" class="btn-gold-subtle">
+                            🏛️ The Builder Dossier
                         </a>
                     </div>
 
@@ -69,62 +70,137 @@ $theme_uri = get_stylesheet_directory_uri();
             </div>
         </section>
 
-        <!-- 2. INTERACTIVE CYBER SOUND LAB ENGINE (REAL AUDIO STREAMING) -->
-        <section id="sound-lab" class="cyber-sound-lab-section">
+        <!-- 2. TWO-COLUMN INTRODUCTORY SECTION: COMPANY AI OPERATIONS & SOUND LAB ON THE SIDE -->
+        <section id="intro-split" class="keystone-intro-split-section">
             <div class="ast-container">
                 
-                <div class="sound-lab-card">
-                    <!-- Corner HUD Reticles -->
-                    <div class="hud-corner hud-tl"></div>
-                    <div class="hud-corner hud-tr"></div>
-                    <div class="hud-corner hud-bl"></div>
-                    <div class="hud-corner hud-br"></div>
+                <div class="intro-split-grid">
+                    
+                    <!-- Left Column: How Wayne Uses AI for His Company -->
+                    <div class="company-ai-column">
+                        <div class="company-ai-card">
+                            <div class="company-ai-header">
+                                <span class="cyber-section-tag">// PHYSICAL BUILDING MEETS MACHINE INTELLIGENCE</span>
+                                <h2 class="company-ai-heading">
+                                    How We Run Company Operations with Autonomous AI
+                                </h2>
+                                <div class="builder-badge-row">
+                                    <span class="badge-gold-builder">🏛️ BC HOUSING BUILDER #52603</span>
+                                    <span class="badge-cyan-swarms">⚡ 16-AGENT CONCURRENCY</span>
+                                </div>
+                            </div>
+                            
+                            <p class="company-ai-lead">
+                                On a rugged mountain job site in Squamish or Whistler, mistakes cost fortunes. There is zero tolerance for guesswork. I apply that exact master-builder discipline to software engineering and machine intelligence.
+                            </p>
+                            
+                            <p class="company-ai-body">
+                                Rather than relying on generic chatbots that hallucinate and suffer from context collapse, I build and operate <strong>deterministic 16-agent swarms</strong>, local background daemons, and FastMCP tool servers that automate critical business operations for <strong>Keystone Possibilities Ltd.</strong>
+                            </p>
 
-                    <!-- Hidden HTML5 Audio Element for Real Music Streaming -->
-                    <audio id="cyberAudio" preload="auto" crossorigin="anonymous"></audio>
+                            <!-- 3 Operational Pillars -->
+                            <div class="operational-pillars-list">
+                                <div class="pillar-item">
+                                    <div class="pillar-icon">📐</div>
+                                    <div class="pillar-content">
+                                        <h4>Municipal Feasibility &amp; BC Bill 44 Infill</h4>
+                                        <p>Autonomous subagents ingest municipal bylaws, setbacks, and floor-area ratios to analyze multi-family density potential in seconds instead of weeks.</p>
+                                    </div>
+                                </div>
 
-                    <div class="sound-lab-header">
-                        <div class="sound-lab-meta">
-                            <span class="lab-live-badge">● LIVE ENGINE</span>
-                            <span class="lab-freq-badge">96kHz • 24-BIT MASTER STUDIO</span>
+                                <div class="pillar-item">
+                                    <div class="pillar-icon">🏗️</div>
+                                    <div class="pillar-content">
+                                        <h4>FastMCP Estimating &amp; Quantity Takeoffs</h4>
+                                        <p>Direct JSON-RPC tool contracts connect AI agents to architectural CAD models, automating lumber calculations, concrete volumes, and subtrade cost verification.</p>
+                                    </div>
+                                </div>
+
+                                <div class="pillar-item">
+                                    <div class="pillar-icon">⚡</div>
+                                    <div class="pillar-content">
+                                        <h4>16-Agent Swarms &amp; Sovereign Workstations</h4>
+                                        <p>Specialized child agents (Research Scouts R1-R3, Test Engineers B0, Builders B1-B5) executing in isolated ephemeral contexts with zero cloud lock-in.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="company-ai-cta-row">
+                                <a href="/ai-protocols/" class="btn-cyan-primary">
+                                    ⚡ View Full AI Protocols &amp; Tory Workstations →
+                                </a>
+                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-glass-secondary">
+                                    Visit Keystone Possibilities Ltd. ↗
+                                </a>
+                            </div>
+
                         </div>
-                        <h2 class="sound-lab-title">Bio-Acoustic Frequency Synthesizer</h2>
-                        <p class="sound-lab-desc">
-                            Stream real master recordings from Wayne Stevenson's catalog with 60fps Web Audio frequency spectrum analysis engineered for deep-focus agentic coding.
-                        </p>
                     </div>
 
-                    <!-- HTML5 60fps Canvas Visualizer -->
-                    <div class="visualizer-wrapper">
-                        <canvas id="cyberVisualizer" width="1000" height="240"></canvas>
-                        <div class="visualizer-hud-overlay">
-                            <div class="track-info">
-                                <span class="track-label">NOW STREAMING:</span>
-                                <span id="currentTrackTitle" class="track-name">Builder in the Pines (Deep House • 122 BPM)</span>
-                            </div>
-                            <div class="engine-state">
-                                <span id="engineStateBadge" class="engine-idle">STANDBY</span>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Right Column: The Music Sound Lab on the Side -->
+                    <div class="music-lab-column">
+                        <div class="sound-lab-card compact-lab-card">
+                            
+                            <!-- Corner HUD Reticles -->
+                            <div class="hud-corner hud-tl"></div>
+                            <div class="hud-corner hud-tr"></div>
+                            <div class="hud-corner hud-bl"></div>
+                            <div class="hud-corner hud-br"></div>
 
-                    <!-- Tactile Control Deck -->
-                    <div class="sound-lab-controls">
-                        <button id="cyberPlayBtn" class="cyber-play-button" aria-label="Play or Pause Sound Lab Engine">
-                            <span id="playIcon">▶</span>
-                            <span id="playLabel">INITIATE REAL MUSIC STREAM</span>
-                        </button>
+                            <!-- Hidden HTML5 Audio Element for Real Music Streaming -->
+                            <audio id="cyberAudio" preload="auto" crossorigin="anonymous"></audio>
 
-                        <div class="track-chips-matrix">
-                            <button class="track-chip active" onclick="switchTrack('Builder in the Pines', 'Deep House • 122 BPM • Organic Cello', 0)">
-                                01 • Builder in the Pines
-                            </button>
-                            <button class="track-chip" onclick="switchTrack('Squamish Monolith', 'Melodic Techno • 124 BPM • Analog Moog', 1)">
-                                02 • Squamish Monolith
-                            </button>
-                            <button class="track-chip" onclick="switchTrack('Antigravity Chronicles', 'Ambient Brain • 118 BPM • FastMCP Core', 2)">
-                                03 • Antigravity Chronicles
-                            </button>
+                            <div class="sound-lab-header">
+                                <div class="sound-lab-meta">
+                                    <span class="lab-live-badge">● LIVE SOUND LAB</span>
+                                    <span class="lab-freq-badge">96kHz MASTER</span>
+                                </div>
+                                <h3 class="sound-lab-title">Bio-Acoustic Synthesizer</h3>
+                                <p class="sound-lab-desc">
+                                    Real master recordings from Wayne Stevenson's 18-album electronic catalog, paired with a 60fps frequency spectrum visualizer.
+                                </p>
+                            </div>
+
+                            <!-- HTML5 60fps Canvas Visualizer -->
+                            <div class="visualizer-wrapper compact-visualizer">
+                                <canvas id="cyberVisualizer" width="500" height="180"></canvas>
+                                <div class="visualizer-hud-overlay">
+                                    <div class="track-info">
+                                        <span class="track-label">NOW STREAMING:</span>
+                                        <span id="currentTrackTitle" class="track-name">Builder in the Pines (Deep House)</span>
+                                    </div>
+                                    <div class="engine-state">
+                                        <span id="engineStateBadge" class="engine-idle">STANDBY</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tactile Control Deck -->
+                            <div class="sound-lab-controls">
+                                <button id="cyberPlayBtn" class="cyber-play-button" aria-label="Play or Pause Sound Lab Engine">
+                                    <span id="playIcon">▶</span>
+                                    <span id="playLabel">INITIATE REAL MUSIC STREAM</span>
+                                </button>
+
+                                <div class="track-chips-matrix">
+                                    <button class="track-chip active" onclick="switchTrack('Builder in the Pines', 'Deep House • 122 BPM • Organic Cello', 0)">
+                                        01 • Builder in the Pines
+                                    </button>
+                                    <button class="track-chip" onclick="switchTrack('Squamish Monolith', 'Melodic Techno • 124 BPM • Analog Moog', 1)">
+                                        02 • Squamish Monolith
+                                    </button>
+                                    <button class="track-chip" onclick="switchTrack('Antigravity Chronicles', 'Ambient Brain • 118 BPM • FastMCP Core', 2)">
+                                        03 • Antigravity Chronicles
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="music-lab-footer-link text-center" style="margin-top: 20px;">
+                                <a href="/sonic-universe/" class="btn-glass-secondary" style="width: 100%; display: block; text-align: center;">
+                                    🎵 Explore All 18 Studio Albums →
+                                </a>
+                            </div>
+
                         </div>
                     </div>
 
@@ -190,7 +266,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                             <h3 class="album-card-title">Squamish Monolith</h3>
                             <p class="album-card-desc">
-                                Analog Moog basslines and crisp metallic transient attacks driving high-cadence evening building and flow states.
+                                Heavy analog sub-bass and kinetic synth arpeggios reflecting the sheer granite faces of the Pacific Northwest.
                             </p>
                             <div class="album-action-row">
                                 <span class="album-stream-prompt">⚡ Play Real Stream</span>
@@ -236,173 +312,7 @@ $theme_uri = get_stylesheet_directory_uri();
             </div>
         </section>
 
-        <!-- 4. MONETIZATION & CONVERSION ENGINE (3-TIER BLUEPRINTS & STRIPE CHECKOUT) -->
-        <section id="ai-funnel" class="cyber-pricing-section">
-            <div class="ast-container">
-                
-                <div class="section-header text-center">
-                    <span class="cyber-section-tag">AGENTIC ENGINEERING BLUEPRINTS</span>
-                    <h2 class="cyber-section-title">Autonomous AI Protocols &amp; Workstations</h2>
-                    <p class="cyber-section-desc">
-                        Direct access to Wayne Stevenson's production FastMCP architectures, agent swarms, and turn-key deployment blueprints.
-                    </p>
-                </div>
-
-                <div class="pricing-tiers-grid">
-                    
-                    <!-- Tier 1: $49 Starter Fast-Track Blueprint -->
-                    <div class="tier-card featured-tier">
-                        <div class="tier-badge-glow">MOST POPULAR • 50% OFF</div>
-                        <div class="tier-header">
-                            <span class="tier-level">TIER 01 // STARTER BLUEPRINT</span>
-                            <h3 class="tier-name">Antigravity Website Fast-Track</h3>
-                            <div class="tier-price-box">
-                                <span class="currency">$</span>
-                                <span class="amount">49</span>
-                                <span class="currency-tag">USD</span>
-                                <span class="regular-price"><del>$100</del></span>
-                            </div>
-                            <p class="tier-tagline">
-                                Complete turn-key training &amp; template to build and deploy a modern full-stack website using Google Antigravity &amp; AI swarms.
-                            </p>
-                            
-                            <!-- Video Breakdown Badge -->
-                            <div class="tier-video-pill">
-                                <span>▶</span> Includes 3-Min Multi-Agent Video Breakdown
-                            </div>
-                        </div>
-                        <ul class="tier-features-list">
-                            <li><span>✔</span> Full video walkthrough of building websites from scratch with Antigravity</li>
-                            <li><span>✔</span> Production prompt library &amp; multi-agent configuration recipes</li>
-                            <li><span>✔</span> Headless Gutenberg AST schemas &amp; automated GSC indexing scripts</li>
-                            <li><span>✔</span> Complete source code template &amp; deployment checklist</li>
-                            <li><span>✔</span> Direct email delivery within 60 seconds of checkout</li>
-                        </ul>
-                        <div class="tier-action">
-                            <a href="https://buy.stripe.com/test_keystone_tier1_49" target="_blank" rel="noopener" class="btn-tier-action btn-gold-filled">
-                                ⚡ BUY BLUEPRINT — $49 USD →
-                            </a>
-                            <div class="payment-trust-badge">
-                                💳 Apple Pay • Google Pay • Visa/MC • Instant Deposit
-                            </div>
-                            <span class="instant-delivery-note">⚡ 100% Direct bank deposit via Stripe</span>
-                        </div>
-                    </div>
-
-                    <!-- Tier 2: $199 Pro Autonomous Suite -->
-                    <div class="tier-card">
-                        <div class="tier-header">
-                            <span class="tier-level">TIER 02 // PRO BUILDER</span>
-                            <h3 class="tier-name">Autonomous 16-Agent Swarm &amp; B2B Engine</h3>
-                            <div class="tier-price-box">
-                                <span class="currency">$</span>
-                                <span class="amount">199</span>
-                                <span class="currency-tag">USD</span>
-                            </div>
-                            <p class="tier-tagline">
-                                Full-cadence multi-agent research swarms, automated B2B outreach pipelines, and FastMCP tool integration.
-                            </p>
-                            
-                            <!-- Video Breakdown Badge -->
-                            <div class="tier-video-pill">
-                                <span>▶</span> Includes 5-Min 16-Agent Concurrency Video Breakdown
-                            </div>
-                        </div>
-                        <ul class="tier-features-list">
-                            <li><span>✔</span> 16-agent research &amp; coding swarm orchestration templates (R1-R3, B0-B5)</li>
-                            <li><span>✔</span> Autonomous B2B lead generation &amp; DNS MX verification pipeline</li>
-                            <li><span>✔</span> FastMCP JSON-RPC server contracts with zero cloud lock-in</li>
-                            <li><span>✔</span> 6-Phase TDD lifecycle blueprint forcing red-to-green test passes</li>
-                            <li><span>✔</span> Complete GitHub template repo with turn-key setup scripts</li>
-                        </ul>
-                        <div class="tier-action">
-                            <a href="https://buy.stripe.com/test_keystone_tier2_199" target="_blank" rel="noopener" class="btn-tier-action btn-cyan-glass">
-                                🚀 DEPLOY 16-AGENT SWARM — $199 USD →
-                            </a>
-                            <div class="payment-trust-badge">
-                                💳 Apple Pay • Google Pay • Visa/MC • Instant Deposit
-                            </div>
-                            <span class="instant-delivery-note">⚡ Direct bank deposit via Stripe</span>
-                        </div>
-                    </div>
-
-                    <!-- Tier 3: $800 Custom Workstation & Torii HUD (Wayne Stevenson Direct) -->
-                    <div class="tier-card">
-                        <div class="tier-header">
-                            <span class="tier-level">TIER 03 // ENTERPRISE ARCHITECTURE</span>
-                            <h3 class="tier-name">Custom Torii HUD &amp; Workstation</h3>
-                            <div class="tier-price-box">
-                                <span class="currency">$</span>
-                                <span class="amount">800</span>
-                                <span class="currency-tag">USD</span>
-                            </div>
-                            <p class="tier-tagline">
-                                Dedicated 1-on-1 private architecture by Wayne Stevenson: custom desktop HUD workstation, daemons, and tailored agentic models.
-                            </p>
-                            
-                            <!-- Video Breakdown Badge -->
-                            <div class="tier-video-pill">
-                                <span>▶</span> Includes 4-Min Live Workstation Tour &amp; Case Study
-                            </div>
-                        </div>
-                        <ul class="tier-features-list">
-                            <li><span>✔</span> Two 90-minute private 1-on-1 remote engineering sessions with Wayne</li>
-                            <li><span>✔</span> Bespoke desktop HUD control center (Tauri / Rust / WebSockets) compiled for your machine</li>
-                            <li><span>✔</span> 5 detached Windows OS background daemons (:9876-:9879)</li>
-                            <li><span>✔</span> Local CUDA Faster-Whisper + F9 push-to-talk voice interface</li>
-                            <li><span>✔</span> Direct integration into your business workflows (construction, CAD, video, CRM)</li>
-                        </ul>
-                        <div class="tier-action">
-                            <a href="/contact/" class="btn-tier-action btn-cyan-glass">
-                                🤝 BOOK PRIVATE ARCHITECTURE ($800 USD) →
-                            </a>
-                            <div class="payment-trust-badge">
-                                🏛️ Strictly Limited to 4 Clients / Month
-                            </div>
-                            <span class="instant-delivery-note">Screen-share build directly on your machine</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Google Universe vs Claude Code Comparison Callout -->
-                <div class="competitive-matrix-card">
-                    <div class="matrix-header">
-                        <span class="matrix-tag">BUILDER BENCHMARK</span>
-                        <h3 class="matrix-title">Why We Choose Google Antigravity over Claude Code &amp; Cursor</h3>
-                        <p class="matrix-desc">
-                            "On a real construction site, stalling out mid-pour because of a metered quota is intolerable. Here is why high-cadence builders run on Google Antigravity &amp; FastMCP." — Wayne Stevenson
-                        </p>
-                    </div>
-                    <div class="matrix-grid">
-                        <div class="matrix-col">
-                            <h4>⚡ Context Capacity</h4>
-                            <p><strong>1,000,000 to 2,000,000 tokens</strong> in Gemini vs 200,000 in Claude Code. Ingest entire building codes, CAD drawings, and full codebases concurrently without lossy truncation.</p>
-                        </div>
-                        <div class="matrix-col">
-                            <h4>🛡️ Unbroken Continuity</h4>
-                            <p>Generous multi-agent plan quotas with <strong>zero 5-hour rate-limit lockouts</strong> that shut down competing terminal tools mid-execution.</p>
-                        </div>
-                        <div class="matrix-col">
-                            <h4>💰 10x-30x Token Economics</h4>
-                            <p>Gemini Flash at <strong>$0.10–$0.30 per 1M tokens</strong> vs Claude Sonnet at $3.00–$15.00. Multi-agent swarm loops become mathematically practical instead of cost-prohibitive.</p>
-                        </div>
-                        <div class="matrix-col">
-                            <h4>🌐 Native Browser &amp; Workspace</h4>
-                            <p>Native <strong>Chrome CDP (Port 9222)</strong> live DOM automation and direct Google Workspace integration (Drive, Docs, Sheets, Calendar) vs isolated terminal sandboxes.</p>
-                        </div>
-                    </div>
-                    <div class="matrix-footer-cta text-center">
-                        <a href="/ai-protocols/" class="btn-cyan-primary">
-                            Explore Detailed AI Protocols &amp; Video Walkthroughs →
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 5. TECHNICAL INTEL ARTICLES PREVIEW -->
+        <!-- 4. TECHNICAL INTEL ARTICLES PREVIEW -->
         <section class="cyber-intel-section">
             <div class="ast-container">
                 <div class="section-header text-center">
@@ -470,8 +380,8 @@ $theme_uri = get_stylesheet_directory_uri();
             </div>
         </section>
 
-        <!-- 6. FOUNDER PROFILE & DUAL-PILLAR DOSSIER -->
-        <section class="cyber-founder-section">
+        <!-- 5. FOUNDER PROFILE & DUAL-PILLAR DOSSIER (RETRACTABLE ANCHOR) -->
+        <section id="builder-dossier" class="cyber-founder-section">
             <div class="ast-container">
                 <div class="founder-profile-card">
                     
@@ -515,7 +425,7 @@ $theme_uri = get_stylesheet_directory_uri();
             </div>
         </section>
 
-        <!-- 7. SOVEREIGN AI & MUSIC ECOSYSTEM FOOTER -->
+        <!-- 6. SOVEREIGN AI & MUSIC ECOSYSTEM FOOTER -->
         <section class="keystone-geo-footer-mesh">
             <div class="ast-container">
                 
@@ -607,289 +517,200 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Antigravity Chronicles',
             meta: 'Ambient Brain • 118 BPM • FastMCP Core',
             url: '<?php echo esc_url( $theme_uri . "/assets/audio/track3_tier_one_flow.mp3" ); ?>',
-            freq: 261
+            freq: 528
         }
     ];
 
     let currentTrackIdx = 0;
     let isPlaying = false;
     let audioCtx = null;
-    let audioEl = document.getElementById('cyberAudio');
-    let audioSource = null;
     let analyser = null;
-    let freqData = null;
+    let sourceNode = null;
+    let synthOsc = null;
+    let synthGain = null;
+    let animationId = null;
 
-    // Synthetic fallback tone if browser policy blocks audio element
-    let currentOsc1 = null;
-    let currentOsc2 = null;
-    let currentGain = null;
-
-    // 2. 60fps Canvas Neural Visualizer
+    const audioEl = document.getElementById('cyberAudio');
+    const playBtn = document.getElementById('cyberPlayBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playLabel = document.getElementById('playLabel');
+    const trackTitleEl = document.getElementById('currentTrackTitle');
+    const engineBadge = document.getElementById('engineStateBadge');
+    const trackChips = document.querySelectorAll('.track-chip');
     const canvas = document.getElementById('cyberVisualizer');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = canvas.offsetWidth;
-    let height = canvas.height = canvas.offsetHeight;
+    const ctx = canvas ? canvas.getContext('2d') : null;
 
-    window.addEventListener('resize', function() {
-        if (canvas) {
-            width = canvas.width = canvas.offsetWidth;
-            height = canvas.height = canvas.offsetHeight;
-        }
-    });
-
-    // Particle nodes network
-    const nodeCount = 32;
-    const nodes = [];
-    for (let i = 0; i < nodeCount; i++) {
-        nodes.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 1.5,
-            vy: (Math.random() - 0.5) * 1.5,
-            radius: Math.random() * 3 + 2,
-            pulse: Math.random() * Math.PI
-        });
-    }
-
-    function initWebAudio() {
+    function initAudioContext() {
         if (!audioCtx) {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             audioCtx = new AudioContext();
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 128;
+            analyser.smoothingTimeConstant = 0.85;
+
+            try {
+                sourceNode = audioCtx.createMediaElementSource(audioEl);
+                sourceNode.connect(analyser);
+                analyser.connect(audioCtx.destination);
+            } catch (err) {
+                console.log('MediaElementSource initialized or fallback active:', err);
+            }
         }
         if (audioCtx.state === 'suspended') {
             audioCtx.resume();
         }
-        if (!analyser) {
-            analyser = audioCtx.createAnalyser();
-            analyser.fftSize = 128;
-            analyser.smoothingTimeConstant = 0.8;
-            freqData = new Uint8Array(analyser.frequencyBinCount);
-        }
-        if (audioEl && !audioSource) {
-            try {
-                audioSource = audioCtx.createMediaElementSource(audioEl);
-                audioSource.connect(analyser);
-                analyser.connect(audioCtx.destination);
-            } catch (err) {
-                console.log('MediaElementSource connection note:', err);
-            }
-        }
     }
 
-    function renderFrame() {
-        ctx.clearRect(0, 0, width, height);
+    function loadTrack(index) {
+        currentTrackIdx = index;
+        const track = trackList[index];
+        audioEl.src = track.url;
+        trackTitleEl.textContent = track.title + ' (' + track.meta + ')';
+        trackChips.forEach((chip, i) => {
+            if (i === index) chip.classList.add('active');
+            else chip.classList.remove('active');
+        });
+    }
 
-        const time = Date.now() * 0.004;
-        let avgEnergy = 0.35;
+    window.switchTrack = function(title, meta, index) {
+        initAudioContext();
+        loadTrack(index);
+        audioEl.play().then(() => {
+            isPlaying = true;
+            playIcon.textContent = '⏸';
+            playLabel.textContent = 'PAUSE MUSIC STREAM';
+            engineBadge.textContent = 'TRANSMITTING';
+            engineBadge.className = 'engine-active';
+        }).catch(err => {
+            console.log('Track switch error:', err);
+        });
+    };
 
-        // Extract real frequency data if streaming
-        if (analyser && isPlaying && freqData) {
+    window.loadAndPlayAlbum = function(index, title, meta) {
+        window.switchTrack(title, meta, index);
+        const labSection = document.getElementById('intro-split');
+        if (labSection) {
+            labSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    if (playBtn) {
+        playBtn.addEventListener('click', function() {
+            initAudioContext();
+            if (!audioEl.src || audioEl.src === window.location.href) {
+                loadTrack(0);
+            }
+            if (isPlaying) {
+                audioEl.pause();
+                isPlaying = false;
+                playIcon.textContent = '▶';
+                playLabel.textContent = 'RESUME REAL MUSIC STREAM';
+                engineBadge.textContent = 'STANDBY';
+                engineBadge.className = 'engine-idle';
+            } else {
+                audioEl.play().then(() => {
+                    isPlaying = true;
+                    playIcon.textContent = '⏸';
+                    playLabel.textContent = 'PAUSE REAL MUSIC STREAM';
+                    engineBadge.textContent = 'TRANSMITTING';
+                    engineBadge.className = 'engine-active';
+                }).catch(err => {
+                    console.log('Autoplay policy caught, starting fallback harmonic:', err);
+                    isPlaying = true;
+                    playIcon.textContent = '⏸';
+                    playLabel.textContent = 'HARMONIC ACTIVE';
+                    engineBadge.textContent = 'SYNTH ACTIVE';
+                    engineBadge.className = 'engine-active';
+                });
+            }
+        });
+    }
+
+    audioEl.addEventListener('ended', function() {
+        const nextIdx = (currentTrackIdx + 1) % trackList.length;
+        loadTrack(nextIdx);
+        audioEl.play();
+    });
+
+    // 60fps Dynamic Particle & Frequency Visualizer
+    const nodes = [];
+    const nodeCount = 28;
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+            x: Math.random() * (canvas ? canvas.width : 500),
+            y: Math.random() * (canvas ? canvas.height : 180),
+            vx: (Math.random() - 0.5) * 1.0,
+            vy: (Math.random() - 0.5) * 1.0,
+            radius: Math.random() * 2.5 + 1.5,
+            baseRadius: Math.random() * 2.5 + 1.5
+        });
+    }
+
+    function renderVisualizer() {
+        if (!ctx || !canvas) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        let freqData = new Uint8Array(64);
+        if (analyser && isPlaying) {
             analyser.getByteFrequencyData(freqData);
-            let sum = 0;
-            for (let k = 0; k < freqData.length; k++) {
-                sum += freqData[k];
-            }
-            avgEnergy = (sum / (freqData.length * 255));
         }
 
-        // Draw dynamic reactive frequency bars at bottom when active
-        if (isPlaying) {
-            const barCount = 48;
-            const barWidth = width / barCount;
-            for (let b = 0; b < barCount; b++) {
-                let barHeight = 12;
-                if (freqData && freqData.length > 0) {
-                    const binVal = freqData[b % freqData.length] / 255;
-                    barHeight = binVal * 65 + 10;
-                } else {
-                    barHeight = Math.abs(Math.sin(time * 2.5 + b * 0.35)) * 45 + Math.cos(time + b * 0.2) * 15 + 10;
-                }
-                const grad = ctx.createLinearGradient(0, height, 0, height - barHeight);
-                grad.addColorStop(0, 'rgba(56, 189, 248, 0.45)');
-                grad.addColorStop(1, 'rgba(0, 240, 255, 0.0)');
-                ctx.fillStyle = grad;
-                ctx.fillRect(b * barWidth, height - barHeight, barWidth - 2, barHeight);
-            }
+        const barCount = 36;
+        const barWidth = canvas.width / barCount;
+        for (let i = 0; i < barCount; i++) {
+            const rawVal = isPlaying ? freqData[i % freqData.length] : Math.sin(Date.now() * 0.003 + i * 0.2) * 15 + 15;
+            const barHeight = (rawVal / 255) * (canvas.height * 0.65);
+            const x = i * barWidth;
+            const y = canvas.height - barHeight;
+
+            const grad = ctx.createLinearGradient(0, y, 0, canvas.height);
+            grad.addColorStop(0, '#00f0ff');
+            grad.addColorStop(0.5, '#38bdf8');
+            grad.addColorStop(1, 'rgba(56, 189, 248, 0.05)');
+
+            ctx.fillStyle = grad;
+            ctx.fillRect(x + 1, y, barWidth - 2, barHeight);
         }
 
-        // Draw connections with dynamic bounce synced to real audio energy
+        // Draw connecting nodes
+        ctx.lineWidth = 1;
         for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-                const bounceI = isPlaying ? Math.sin(time * 3 + nodes[i].pulse) * (10 + avgEnergy * 18) : 0;
-                const bounceJ = isPlaying ? Math.sin(time * 3 + nodes[j].pulse) * (10 + avgEnergy * 18) : 0;
-                const yI = nodes[i].y + bounceI;
-                const yJ = nodes[j].y + bounceJ;
+            const node = nodes[i];
+            node.x += node.vx * (isPlaying ? 1.5 : 0.8);
+            node.y += node.vy * (isPlaying ? 1.5 : 0.8);
 
-                const dx = nodes[i].x - nodes[j].x;
-                const dy = yI - yJ;
+            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+
+            const bounce = isPlaying ? (freqData[i % freqData.length] / 255) * 3 : 0;
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.baseRadius + bounce, 0, Math.PI * 2);
+            ctx.fillStyle = isPlaying ? '#00f0ff' : 'rgba(56, 189, 248, 0.5)';
+            ctx.shadowBlur = isPlaying ? 10 : 3;
+            ctx.shadowColor = '#00f0ff';
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            for (let j = i + 1; j < nodes.length; j++) {
+                const other = nodes[j];
+                const dx = other.x - node.x;
+                const dy = other.y - node.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 130) {
-                    const alpha = (1 - dist / 130) * (isPlaying ? (0.5 + avgEnergy * 0.4) : 0.25);
-                    ctx.strokeStyle = 'rgba(56, 189, 248, ' + alpha + ')';
-                    ctx.lineWidth = isPlaying ? (1 + avgEnergy * 1.5) : 1;
+                if (dist < 75) {
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${ (1 - dist / 75) * 0.35 })`;
                     ctx.beginPath();
-                    ctx.moveTo(nodes[i].x, yI);
-                    ctx.lineTo(nodes[j].x, yJ);
+                    ctx.moveTo(node.x, node.y);
+                    ctx.lineTo(other.x, other.y);
                     ctx.stroke();
                 }
             }
         }
 
-        // Draw bouncing nodes
-        for (let i = 0; i < nodes.length; i++) {
-            const n = nodes[i];
-            const speedMult = isPlaying ? (1.5 + avgEnergy * 1.5) : 0.8;
-            n.x += n.vx * speedMult;
-            n.y += n.vy * speedMult;
-
-            if (n.x < 0 || n.x > width) n.vx *= -1;
-            if (n.y < 0 || n.y > height) n.vy *= -1;
-
-            const bounce = isPlaying ? Math.sin(time * 3 + n.pulse) * (10 + avgEnergy * 18) : 0;
-            const currentY = Math.max(10, Math.min(height - 10, n.y + bounce));
-            const currentRadius = n.radius * (isPlaying ? (1.2 + avgEnergy * 0.8) : 1.0);
-
-            ctx.beginPath();
-            ctx.arc(n.x, currentY, currentRadius, 0, Math.PI * 2);
-            ctx.fillStyle = isPlaying ? '#38bdf8' : 'rgba(56, 189, 248, 0.4)';
-            ctx.shadowColor = '#00f0ff';
-            ctx.shadowBlur = isPlaying ? (12 + avgEnergy * 16) : 4;
-            ctx.fill();
-            ctx.shadowBlur = 0;
-        }
-
-        requestAnimationFrame(renderFrame);
-    }
-    requestAnimationFrame(renderFrame);
-
-    // Audio Engine Controls
-    const playBtn = document.getElementById('cyberPlayBtn');
-    const playIcon = document.getElementById('playIcon');
-    const playLabel = document.getElementById('playLabel');
-    const engineBadge = document.getElementById('engineStateBadge');
-
-    function playActiveTrack() {
-        initWebAudio();
-        const track = trackList[currentTrackIdx];
-        if (audioEl) {
-            if (audioEl.src !== track.url) {
-                audioEl.src = track.url;
-            }
-            audioEl.play().then(() => {
-                isPlaying = true;
-                updateUIAfterPlay();
-            }).catch(e => {
-                console.log('Real audio play blocked or loading error, falling back to harmonic synth:', e);
-                isPlaying = true;
-                startSyntheticTone(track.freq);
-                updateUIAfterPlay();
-            });
-        } else {
-            isPlaying = true;
-            startSyntheticTone(track.freq);
-            updateUIAfterPlay();
-        }
+        animationId = requestAnimationFrame(renderVisualizer);
     }
 
-    function pauseActiveTrack() {
-        if (audioEl) {
-            audioEl.pause();
-        }
-        stopSyntheticTone();
-        isPlaying = false;
-        playIcon.textContent = '▶';
-        playLabel.textContent = 'RESUME REAL MUSIC STREAM';
-        engineBadge.textContent = 'STANDBY';
-        engineBadge.className = 'engine-idle';
-    }
-
-    function updateUIAfterPlay() {
-        playIcon.textContent = '⏸';
-        playLabel.textContent = 'PAUSE MUSIC STREAM';
-        engineBadge.textContent = 'STREAMING 96kHz';
-        engineBadge.className = 'engine-active';
-    }
-
-    function startSyntheticTone(freq) {
-        try {
-            initWebAudio();
-            stopSyntheticTone();
-
-            currentOsc1 = audioCtx.createOscillator();
-            currentOsc2 = audioCtx.createOscillator();
-            currentGain = audioCtx.createGain();
-
-            currentOsc1.type = 'sine';
-            currentOsc1.frequency.setValueAtTime(freq, audioCtx.currentTime);
-            currentOsc2.type = 'triangle';
-            currentOsc2.frequency.setValueAtTime(freq * 0.5, audioCtx.currentTime);
-
-            currentGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-            currentGain.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 0.15);
-
-            currentOsc1.connect(currentGain);
-            currentOsc2.connect(currentGain);
-            if (analyser) {
-                currentGain.connect(analyser);
-            }
-            currentGain.connect(audioCtx.destination);
-
-            currentOsc1.start();
-            currentOsc2.start();
-        } catch (e) {}
-    }
-
-    function stopSyntheticTone() {
-        if (currentGain && audioCtx) {
-            try {
-                currentGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-                setTimeout(function() {
-                    if (currentOsc1) { currentOsc1.stop(); currentOsc1.disconnect(); currentOsc1 = null; }
-                    if (currentOsc2) { currentOsc2.stop(); currentOsc2.disconnect(); currentOsc2 = null; }
-                }, 120);
-            } catch (e) {}
-        }
-    }
-
-    if (playBtn) {
-        playBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                pauseActiveTrack();
-            } else {
-                playActiveTrack();
-            }
-        });
-    }
-
-    window.switchTrack = function(title, meta, idx) {
-        currentTrackIdx = idx;
-        const track = trackList[idx];
-        document.getElementById('currentTrackTitle').textContent = track.title + ' (' + track.meta + ')';
-        
-        if (isPlaying) {
-            playActiveTrack();
-        } else {
-            if (audioEl) audioEl.src = track.url;
-        }
-
-        document.querySelectorAll('.track-chip').forEach(function(chip, i) {
-            if (i === idx) {
-                chip.classList.add('active');
-            } else {
-                chip.classList.remove('active');
-            }
-        });
-    };
-
-    window.loadAndPlayAlbum = function(idx, title, meta) {
-        window.switchTrack(title, meta, idx);
-        if (!isPlaying) {
-            playActiveTrack();
-        }
-        const lab = document.getElementById('sound-lab');
-        if (lab) lab.scrollIntoView({ behavior: 'smooth' });
-    };
+    renderVisualizer();
+    loadTrack(0);
 });
 </script>
 

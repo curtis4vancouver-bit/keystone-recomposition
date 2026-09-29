@@ -6928,3 +6928,388 @@ body.page-template-template-ai-protocols #content > .ast-container {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
   transform: translateY(-2px);
 }
+
+/* ==========================================================================
+   Homepage 2-Column Split: Company AI Operations & Compact Sound Lab
+   ========================================================================== */
+.keystone-intro-split-section {
+  padding: 60px 0 80px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.intro-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.company-ai-card {
+  background: rgba(10, 16, 28, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 20px;
+  padding: 36px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.company-ai-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.25;
+  margin: 12px 0 16px 0;
+}
+
+.builder-badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.badge-gold-builder {
+  background: rgba(246, 211, 101, 0.12);
+  border: 1px solid rgba(246, 211, 101, 0.4);
+  color: #f6d365;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+}
+
+.badge-cyan-swarms {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+}
+
+.company-ai-lead {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.company-ai-body {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.operational-pillars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.pillar-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: all 0.25s ease;
+}
+
+.pillar-item:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateX(4px);
+}
+
+.pillar-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pillar-content h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 4px 0;
+}
+
+.pillar-content p {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.company-ai-cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Compact Sound Lab Card for Homepage Side-Dock */
+.compact-lab-card {
+  padding: 28px !important;
+  margin: 0 !important;
+}
+
+.compact-visualizer {
+  height: 180px !important;
+}
+
+.compact-visualizer canvas {
+  height: 180px !important;
+}
+
+/* ==========================================================================
+   Sales Landing Page: 2-Column Hero & Top-Right Express Checkout Portal
+   ========================================================================== */
+.protocols-hero-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: start;
+  text-align: left;
+}
+
+.protocols-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.protocols-hero-left .protocols-quick-nav {
+  justify-content: flex-start;
+}
+
+.express-checkout-card {
+  background: rgba(10, 16, 28, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15);
+  position: relative;
+}
+
+.checkout-badge-live {
+  display: inline-block;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.checkout-portal-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0 0 4px 0;
+}
+
+.checkout-portal-sub {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin: 0 0 20px 0;
+}
+
+.checkout-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.tier-select-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.tier-select-btn {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tier-select-btn:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.tier-select-btn.active {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+}
+
+.btn-tier-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+}
+
+.tier-select-btn.active .btn-tier-num {
+  color: #38bdf8;
+}
+
+.btn-tier-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #f8fafc;
+  line-height: 1.2;
+}
+
+.btn-tier-price {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #f6d365;
+}
+
+/* Promo Code Box */
+.promo-code-box {
+  margin-bottom: 20px;
+}
+
+.promo-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.promo-input {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  color: #f8fafc !important;
+  font-size: 0.85rem !important;
+  padding: 8px 12px !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.promo-input:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.3) !important;
+}
+
+.btn-promo-apply {
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-promo-apply:hover {
+  background: #38bdf8;
+  color: #030712;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.promo-feedback-msg {
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* Express Buy Button */
+.btn-cyan-express-buy {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 100%);
+  color: #030712 !important;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 14px 20px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  transition: all 0.25s ease;
+  letter-spacing: 0.02em;
+}
+
+.btn-cyan-express-buy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+}
+
+.btn-gold-portal {
+  background: linear-gradient(135deg, #f6d365 0%, #d4af37 100%) !important;
+  color: #030712 !important;
+  box-shadow: 0 0 20px rgba(246, 211, 101, 0.4) !important;
+}
+
+.checkout-payment-methods {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+.checkout-fiduciary-note {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .intro-split-grid,
+  .protocols-hero-split {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .protocols-hero-left {
+    align-items: center;
+    text-align: center;
+  }
+  .protocols-hero-left .protocols-quick-nav {
+    justify-content: center;
+  }
+  .express-checkout-card {
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}

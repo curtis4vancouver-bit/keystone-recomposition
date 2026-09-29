@@ -1,10 +1,10 @@
 <?php
 /**
  * Template Name: Keystone AI Protocols
- * Description: Dedicated 3-Tier Monetization & Video Breakdown Landing Page for Keystone Recomposition
+ * Description: Dedicated 3-Tier Monetization & Video Breakdown Sales Landing Page for Keystone Recomposition
  *
  * @package Keystone Recomposition Child
- * @since 3.4.0
+ * @since 3.5.0
  */
 
 declare(strict_types=1);
@@ -21,48 +21,106 @@ $theme_uri = get_stylesheet_directory_uri();
 <div id="primary" class="content-area primary keystone-cyber-protocols">
     <main id="main" class="site-main">
 
-        <!-- 1. LANDING HERO SECTION -->
+        <!-- 1. LANDING HERO SECTION WITH TOP-RIGHT EXPRESS CHECKOUT PORTAL -->
         <section class="cyber-hero-section protocols-hero">
             <div class="ast-container">
-                <div class="cyber-hero-wrap text-center">
+                <div class="protocols-hero-split">
                     
-                    <div class="cyber-telemetry-pill">
-                        <span class="telemetry-pulse"></span>
-                        <span class="telemetry-text">// 2026 SOVEREIGN AI SUITE • FAST-TRACK YOUR WORKSTATION</span>
-                    </div>
-
-                    <div class="cyber-founder-chip">
-                        <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
-                             alt="Wayne Stevenson — Founder &amp; Architect" 
-                             class="founder-chip-avatar" 
-                             width="52" height="52" loading="eager" decoding="async" />
-                        <div class="founder-chip-meta">
-                            <span class="chip-name">Wayne Stevenson</span>
-                            <span class="chip-role">Licensed BC Builder #52603 • FastMCP Systems Architect</span>
+                    <!-- Left Column: High-Conviction Value Positioning -->
+                    <div class="protocols-hero-left">
+                        <div class="cyber-telemetry-pill">
+                            <span class="telemetry-pulse"></span>
+                            <span class="telemetry-text">// 2026 SOVEREIGN AI SUITE • FAST-TRACK YOUR WORKSTATION</span>
                         </div>
-                        <span class="chip-verified-badge">✔ VERIFIED</span>
+
+                        <div class="cyber-founder-chip">
+                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
+                                 alt="Wayne Stevenson — Founder &amp; Architect" 
+                                 class="founder-chip-avatar" 
+                                 width="52" height="52" loading="eager" decoding="async" />
+                            <div class="founder-chip-meta">
+                                <span class="chip-name">Wayne Stevenson</span>
+                                <span class="chip-role">Licensed BC Builder #52603 • FastMCP Systems Architect</span>
+                            </div>
+                            <span class="chip-verified-badge">✔ VERIFIED</span>
+                        </div>
+
+                        <h1 class="cyber-hero-title">
+                            Deploy Production AI Workstations<br/>
+                            <span class="cyan-gradient-text">Engineered for High-Cadence Execution</span>
+                        </h1>
+
+                        <p class="cyber-hero-subtitle">
+                            Step-by-step blueprints, production 16-agent swarms, and bespoke 1-on-1 workstation architecture. Built by a licensed British Columbia residential builder who runs physical multi-million dollar operations and high-velocity digital media on sovereign AI.
+                        </p>
+
+                        <div class="protocols-quick-nav">
+                            <a href="#tier-blueprint" class="quick-nav-pill">01 • $49 Website Blueprint</a>
+                            <a href="#tier-swarm" class="quick-nav-pill">02 • $199 16-Agent Swarm</a>
+                            <a href="#tier-workstation" class="quick-nav-pill">03 • $800 Custom Tory Workstation</a>
+                        </div>
                     </div>
 
-                    <h1 class="cyber-hero-title">
-                        Deploy Production AI Workstations<br/>
-                        <span class="cyan-gradient-text">Engineered for High-Cadence Execution</span>
-                    </h1>
+                    <!-- Right Column: Top-Right Express Checkout & Payment Portal Card -->
+                    <div class="protocols-hero-right">
+                        <div class="express-checkout-card">
+                            <div class="checkout-card-header">
+                                <span class="checkout-badge-live">⚡ DIRECT STRIPE PORTAL</span>
+                                <h3 class="checkout-portal-title">Express Checkout &amp; Access</h3>
+                                <p class="checkout-portal-sub">Instant digital delivery &amp; corporate direct deposit.</p>
+                            </div>
+                            
+                            <div class="checkout-tier-selector">
+                                <label class="checkout-label">Select Protocol Tier:</label>
+                                <div class="tier-select-grid">
+                                    <button type="button" class="tier-select-btn active" data-tier="1" data-price="49" data-url="https://buy.stripe.com/test_keystone_tier1_49">
+                                        <span class="btn-tier-num">TIER 01</span>
+                                        <span class="btn-tier-name">Website Blueprint</span>
+                                        <span class="btn-tier-price">$49</span>
+                                    </button>
+                                    <button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-url="https://buy.stripe.com/test_keystone_tier2_199">
+                                        <span class="btn-tier-num">TIER 02</span>
+                                        <span class="btn-tier-name">16-Agent Swarm</span>
+                                        <span class="btn-tier-price">$199</span>
+                                    </button>
+                                    <button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-url="/contact/">
+                                        <span class="btn-tier-num">TIER 03</span>
+                                        <span class="btn-tier-name">Custom Tory Workstation</span>
+                                        <span class="btn-tier-price">$800</span>
+                                    </button>
+                                </div>
+                            </div>
 
-                    <p class="cyber-hero-subtitle">
-                        Step-by-step blueprints, production 16-agent swarms, and bespoke 1-on-1 workstation architecture. Built by a licensed British Columbia residential builder who runs physical multi-million dollar operations and high-velocity digital media on sovereign AI.
-                    </p>
+                            <!-- Promo Code Entry -->
+                            <div class="promo-code-box">
+                                <label for="promoInput" class="checkout-label">Have a Promo Code?</label>
+                                <div class="promo-input-row">
+                                    <input type="text" id="promoInput" placeholder="Enter code (e.g. BUILDER10)" class="promo-input" />
+                                    <button type="button" id="applyPromoBtn" class="btn-promo-apply">APPLY</button>
+                                </div>
+                                <div id="promoFeedback" class="promo-feedback-msg" style="display:none;"></div>
+                            </div>
 
-                    <div class="protocols-quick-nav">
-                        <a href="#tier-blueprint" class="quick-nav-pill">01 • $49 Website Blueprint</a>
-                        <a href="#tier-swarm" class="quick-nav-pill">02 • $199 16-Agent Swarm</a>
-                        <a href="#tier-workstation" class="quick-nav-pill">03 • $800 Private Workstation</a>
+                            <!-- Dynamic Express Buy Button -->
+                            <div class="checkout-cta-wrap">
+                                <a id="portalExpressBuyBtn" href="https://buy.stripe.com/test_keystone_tier1_49" target="_blank" rel="noopener" class="btn-cyan-express-buy">
+                                    ⚡ PAY WITH STRIPE / APPLE PAY ($49 USD) →
+                                </a>
+                                <div class="checkout-payment-methods">
+                                    <span>💳 Apple Pay</span> • <span>Google Pay</span> • <span>Visa / MC</span>
+                                </div>
+                                <div class="checkout-fiduciary-note">
+                                    🏛️ 100% Direct Payout to <strong>Keystone Possibilities Ltd.</strong> (Canadian Corporate Account)
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- 2. THE 3 DEDICATED PRODUCT LANDING SECTIONS -->
+        <!-- 2. THE 3 DEDICATED PRODUCT SHOWCASE BLOCKS -->
         <section class="protocols-showcase-section">
             <div class="ast-container">
 
@@ -190,7 +248,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </div>
                 </div>
 
-                <!-- PRODUCT 3: $800 CUSTOM TORII HUD & SOVEREIGN WORKSTATION ARCHITECTURE -->
+                <!-- PRODUCT 3: $800 CUSTOM TORY HUD & SOVEREIGN WORKSTATION ARCHITECTURE -->
                 <div id="tier-workstation" class="protocol-product-block featured-product">
                     <div class="product-grid">
                         
@@ -202,12 +260,12 @@ $theme_uri = get_stylesheet_directory_uri();
                                          class="video-thumb-img" loading="lazy" />
                                     <div class="video-play-overlay">
                                         <div class="play-circle-btn">▶</div>
-                                        <span class="video-runtime-tag">4-MIN MASTERCLASS</span>
+                                        <span class="video-runtime-tag">15-MIN COMPREHENSIVE ARCHITECTURE MASTERCLASS</span>
                                     </div>
                                 </div>
                                 <div class="video-card-meta">
-                                    <span class="video-title">The Sovereign Builder Workstation</span>
-                                    <span class="video-desc">Behind the scenes with Wayne Stevenson: physical building, video pipelines, and local voice.</span>
+                                    <span class="video-title">The Sovereign Builder Workstation: Physical Building &amp; Machine Intelligence</span>
+                                    <span class="video-desc">Comprehensive deep-dive with Wayne Stevenson on custom Tory workstations, background daemons, and physical construction workflows. (Preview player — staged for Wayne's upcoming custom video release).</span>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +275,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <span class="badge-tier-cyan">TIER 03 // PRIVATE ARCHITECTURE</span>
                                 <span class="badge-capacity-alert">STRICTLY CAPPED: 4 CLIENTS / MONTH</span>
                             </div>
-                            <h2 class="product-title">Custom Torii HUD &amp; Sovereign Workstation</h2>
+                            <h2 class="product-title">Custom Tory HUD &amp; Sovereign Workstation</h2>
                             <div class="product-price-row">
                                 <span class="price-symbol">$</span>
                                 <span class="price-val">800</span>
@@ -231,7 +289,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <h4>🏛️ What You Receive with Wayne:</h4>
                                 <ul>
                                     <li><strong>Two 90-Minute Private Engineering Sessions:</strong> Direct screen-share architecture and live deployment with Wayne Stevenson.</li>
-                                    <li><strong>Bespoke Torii HUD Desktop Binary:</strong> Custom Tauri v2 / Rust / Vite desktop interface compiled specifically for your PC.</li>
+                                    <li><strong>Bespoke Tory HUD Desktop Binary:</strong> Custom Tauri v2 / Rust / Vite desktop interface compiled specifically for your PC.</li>
                                     <li><strong>5 Win32 Detached Background Daemons:</strong> Ports 9876 (STT), 9877 (TTS), 9878 (Vector Brain), 9879 (CDP Overlay), and 9891 (Janitor) running resiliently across restarts.</li>
                                     <li><strong>Local CUDA Faster-Whisper + F9 Push-to-Talk:</strong> Zero-latency voice interface mapped directly to your hardware with zero monthly subscription fees.</li>
                                     <li><strong>Tailored Business Integration:</strong> Calibrated to your exact industry (construction estimates, CAD analysis, video production, or financial workflows).</li>
@@ -342,6 +400,75 @@ $theme_uri = get_stylesheet_directory_uri();
 
     </main>
 </div>
+
+<!-- Interactive Express Checkout & Promo Code Engine -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tierBtns = document.querySelectorAll('.tier-select-btn');
+    const expressBuyBtn = document.getElementById('portalExpressBuyBtn');
+    const promoInput = document.getElementById('promoInput');
+    const applyPromoBtn = document.getElementById('applyPromoBtn');
+    const promoFeedback = document.getElementById('promoFeedback');
+
+    let activeTier = 1;
+    let activePrice = 49;
+    let activeUrl = 'https://buy.stripe.com/test_keystone_tier1_49';
+    let discount = 0;
+
+    const promoCodes = {
+        'BUILDER10': 10,
+        'WAYNE10': 10,
+        'KEYSTONE20': 20,
+        'PROMO2026': 15
+    };
+
+    function updateCTA() {
+        if (!expressBuyBtn) return;
+        const finalPrice = Math.max(0, activePrice - discount);
+        if (activeTier === 3) {
+            expressBuyBtn.textContent = '🤝 APPLY FOR PRIVATE ARCHITECTURE ($800 USD) →';
+            expressBuyBtn.href = '/contact/';
+            expressBuyBtn.className = 'btn-cyan-express-buy btn-gold-portal';
+        } else {
+            expressBuyBtn.textContent = `⚡ PAY WITH STRIPE / APPLE PAY ($${finalPrice} USD) →`;
+            expressBuyBtn.href = activeUrl;
+            expressBuyBtn.className = 'btn-cyan-express-buy';
+        }
+    }
+
+    tierBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            tierBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            activeTier = parseInt(this.getAttribute('data-tier'), 10);
+            activePrice = parseInt(this.getAttribute('data-price'), 10);
+            activeUrl = this.getAttribute('data-url');
+            updateCTA();
+        });
+    });
+
+    if (applyPromoBtn && promoInput) {
+        applyPromoBtn.addEventListener('click', function() {
+            const code = promoInput.value.trim().toUpperCase();
+            if (promoCodes[code]) {
+                discount = promoCodes[code];
+                promoFeedback.style.display = 'block';
+                promoFeedback.style.color = '#38bdf8';
+                promoFeedback.textContent = `✔ Promo code applied: $${discount} USD discount!`;
+            } else if (code === '') {
+                discount = 0;
+                promoFeedback.style.display = 'none';
+            } else {
+                discount = 0;
+                promoFeedback.style.display = 'block';
+                promoFeedback.style.color = '#f87171';
+                promoFeedback.textContent = '✖ Invalid promo code.';
+            }
+            updateCTA();
+        });
+    }
+});
+</script>
 
 <?php
 get_footer();

@@ -73,6 +73,7 @@ add_filter( 'script_loader_tag', 'astra_child_keystone_add_defer_attribute', 10,
 function astra_child_keystone_header_overrides() {
     ?>
     <style id="keystone-header-social-lock">
+    /* 1. Header Social Icons: High-Specificity Luminous Cyan (#38bdf8) & Hover (#00f0ff) */
     .ast-desktop-header .site-header-primary-section-right,
     .ast-desktop-header .site-header-primary-section-right .ast-builder-layout-element,
     .ast-desktop-header .ast-header-social-1-wrap,
@@ -97,18 +98,74 @@ function astra_child_keystone_header_overrides() {
       vertical-align: middle !important;
     }
     .ast-desktop-header .header-social-inner-wrap svg,
-    .ast-desktop-header .header-social-inner-wrap svg path {
+    .ast-desktop-header .header-social-inner-wrap svg path,
+    .ast-desktop-header .ast-header-social-1-wrap svg,
+    .ast-desktop-header .ast-header-social-1-wrap svg path,
+    .ast-desktop-header .ast-social-color-type-custom svg,
+    .ast-desktop-header .ast-social-color-type-custom svg path,
+    .ast-header-social-1 svg,
+    .ast-header-social-1 svg path,
+    .header-social-inner-wrap svg,
+    .header-social-inner-wrap svg path {
       width: 18px !important;
       height: 18px !important;
       fill: #38bdf8 !important;
+      color: #38bdf8 !important;
       transition: fill 0.2s ease, filter 0.2s ease !important;
-      filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.5)) !important;
+      filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.6)) !important;
     }
     .ast-desktop-header .header-social-inner-wrap a:hover svg,
-    .ast-desktop-header .header-social-inner-wrap a:hover svg path {
+    .ast-desktop-header .header-social-inner-wrap a:hover svg path,
+    .ast-desktop-header .ast-social-color-type-custom a:hover svg,
+    .ast-desktop-header .ast-social-color-type-custom a:hover svg path,
+    .ast-header-social-1 a:hover svg,
+    .ast-header-social-1 a:hover svg path {
       fill: #00f0ff !important;
+      color: #00f0ff !important;
       filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.9)) !important;
     }
+
+    /* 2. Header Navigation Links: White Base + Luminous Cyan Active/Hover */
+    .main-header-menu .menu-item a,
+    .main-header-menu .menu-link,
+    .ast-nav-menu a {
+      color: #f8fafc !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.03em !important;
+      position: relative !important;
+      transition: all 0.2s ease !important;
+    }
+    .main-header-menu .menu-item:hover > a,
+    .main-header-menu .menu-item:hover > .menu-link,
+    .ast-nav-menu a:hover {
+      color: #00f0ff !important;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
+    }
+    .main-header-menu .current-menu-item > a,
+    .main-header-menu .current_page_item > a,
+    .main-header-menu a[aria-current="page"],
+    .main-header-menu a.keystone-active-nav,
+    .ast-nav-menu a.keystone-active-nav {
+      color: #38bdf8 !important;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 24px rgba(0, 240, 255, 0.4) !important;
+      font-weight: 700 !important;
+    }
+    .main-header-menu .current-menu-item > a::after,
+    .main-header-menu .current_page_item > a::after,
+    .main-header-menu a[aria-current="page"]::after,
+    .main-header-menu a.keystone-active-nav::after,
+    .ast-nav-menu a.keystone-active-nav::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -4px !important;
+      left: 8px !important;
+      right: 8px !important;
+      height: 2px !important;
+      background: #38bdf8 !important;
+      box-shadow: 0 0 8px #00f0ff !important;
+      border-radius: 2px !important;
+    }
+
     .ast-desktop-header .site-branding img,
     .ast-desktop-header .custom-logo-link img {
       max-height: 48px !important;
@@ -122,6 +179,24 @@ function astra_child_keystone_header_overrides() {
       display: none !important;
     }
     </style>
+    <script id="keystone-header-route-sync">
+    document.addEventListener('DOMContentLoaded', function() {
+      var path = window.location.pathname.replace(/\/$/, '') || '/';
+      var links = document.querySelectorAll('.main-header-menu a, .ast-nav-menu a');
+      links.forEach(function(a) {
+        try {
+          var aPath = new URL(a.href, window.location.origin).pathname.replace(/\/$/, '') || '/';
+          if (aPath === path) {
+            a.classList.add('keystone-active-nav');
+            if (a.parentElement) a.parentElement.classList.add('current-menu-item');
+          } else if (path !== '/' && aPath === '/') {
+            a.classList.remove('keystone-active-nav');
+            if (a.parentElement) a.parentElement.classList.remove('current-menu-item', 'current_page_item');
+          }
+        } catch (e) {}
+      });
+    });
+    </script>
     <?php
 }
 add_action( 'wp_head', 'astra_child_keystone_header_overrides', 9999 );
