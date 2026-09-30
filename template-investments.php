@@ -30,9 +30,7 @@ $theme_uri = get_stylesheet_directory_uri();
                      ============================================================== -->
                 <header class="investments-hero-header text-center">
                     <div class="hero-badge-row">
-                        <span class="gold-badge-pill">HIGH-CONVICTION CAPITAL ALLOCATION</span>
-                        <span class="license-badge-pill">BC HOUSING LICENSED BUILDER #52603</span>
-                        <span class="music-badge-pill">Sovereign Tech Infrastructure</span>
+                        <span class="gold-badge-pill">🏛️ CAPITAL ALLOCATION • BC HOUSING LICENSED BUILDER #52603</span>
                     </div>
 
                     <h1 class="investments-main-title">
@@ -396,19 +394,16 @@ $theme_uri = get_stylesheet_directory_uri();
                                 curtis4vancouver@gmail.com
                             </a>
                             <p class="gateway-email-notice">
-                                To protect focus and project execution, phone inquiries are not accepted. Qualified private investors and prospective partners are invited to email Wayne directly for prompt, confidential review.
+                                To protect focus and project execution, phone inquiries are not accepted. Qualified private investors and prospective partners are invited to email Curtis directly for prompt, confidential review.
                             </p>
                         </div>
 
                         <div class="cta-button-group">
-                            <a href="mailto:curtis4vancouver@gmail.com" class="btn-primary-gold btn-email-wayne">
-                                Email Wayne Stevenson Directly &rarr;
+                            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-primary-gold">
+                                Schedule Consultation via Contact Page &rarr;
                             </a>
-                            <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-secondary-glass">
-                                Keystone Possibilities Ltd. (Builder #52603) &nearr;
-                            </a>
-                            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-secondary-glass">
-                                Schedule Fiduciary Consultation &rarr;
+                            <a href="mailto:curtis4vancouver@gmail.com" class="btn-secondary-glass">
+                                Email Curtis Directly &rarr;
                             </a>
                         </div>
 

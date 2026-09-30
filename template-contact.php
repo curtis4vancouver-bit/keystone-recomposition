@@ -35,7 +35,7 @@ if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_
             $feedback_status = 'error';
             $feedback_message = 'Please provide your name, valid email address, and a project overview.';
         } else {
-            $to = 'wayne@keystonepossibilities.ca';
+            $to = 'curtis4vancouver@gmail.com';
             $subject = '[Keystone Recomposition Inquiry] ' . ( $category ? $category : 'Executive Consultation' ) . ' - ' . $name;
             $body = "Name: {$name}\n";
             $body .= "Email: {$email}\n";
@@ -279,7 +279,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <span class="detail-box-badge">DIRECT ROUTING</span>
                             <h4>Direct Email Communication</h4>
                             <p>
-                                <a href="mailto:wayne@keystonepossibilities.ca" class="cyan-link">wayne@keystonepossibilities.ca</a><br>
+                                <a href="mailto:curtis4vancouver@gmail.com" class="cyan-link">curtis4vancouver@gmail.com</a><br>
                                 <a href="mailto:contact@keystonerecomposition.com" class="cyan-link">contact@keystonerecomposition.com</a>
                             </p>
                         </div>
