@@ -313,15 +313,15 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </ul>
                             </div>
 
-                            <!-- Card 2: Proprietary AI Software & Machine Swarms -->
+                            <!-- Card 2: Proprietary AI Software & Autonomous Machine Swarms -->
                             <div class="business-subcard">
                                 <div class="subcard-header">
-                                    <span class="subcard-tag-cyan">SOVEREIGN TECH INFRASTRUCTURE</span>
+                                    <span class="subcard-tag-cyan">Sovereign Tech Infrastructure</span>
                                     <span class="subcard-icon">🤖</span>
                                 </div>
                                 <h3 class="subcard-title">Proprietary Construction AI Platforms</h3>
                                 <p class="subcard-desc">
-                                    Capital investment in Keystone's proprietary FastMCP multi-agent swarms, automated municipal zoning yield parsers, and computer vision drone site monitoring systems.
+                                    Capital investment in Keystone's proprietary FastMCP Autonomous multi-agent swarms, automated municipal zoning yield parsers, and computer vision drone site monitoring systems.
                                 </p>
                                 <ul class="subcard-list">
                                     <li>&bull; <strong>Zero-Cloud Dependency:</strong> Self-hosted local workstations running private multi-agent models with zero recurring SaaS rents.</li>
