@@ -361,10 +361,14 @@ function keystone_execute_sovereign_reset_pipeline(): array {
          AND post_name NOT IN (
              'home',
              'ai-protocols',
+             'intel',
              'sonic-universe',
+             'investments',
+             'lifestyle',
+             'founder',
              'about-the-founder',
              'about-the-founder-the-keystone-blueprint',
-             'intel'
+             'contact'
          )"
     );
 
