@@ -444,6 +444,29 @@ class TestStyleCssLifestylePillarsGrid:
             "to push .pillar-card-footer flush to the bottom."
         )
 
+    def test_hero_badge_row_horizontal_alignment(self):
+        """9. Invariant: .hero-badge-row spans have 0 bottom margin and identical height to prevent vertical sag."""
+        assert ".hero-badge-row" in self.css, "FAIL (RED): .hero-badge-row not found in style.css"
+        badge_spans = re.search(r'\.hero-badge-row\s+span[^{]*\{([^}]+)\}', self.css)
+        assert badge_spans is not None, "FAIL (RED): .hero-badge-row span rule block not found in style.css"
+        badge_css = badge_spans.group(1)
+        assert "margin: 0" in badge_css or "margin-bottom: 0" in badge_css, (
+            "FAIL (RED): .hero-badge-row span must enforce margin: 0 or margin-bottom: 0"
+        )
+        assert "height: 34px" in badge_css or "height:" in badge_css, (
+            "FAIL (RED): .hero-badge-row span must specify uniform height"
+        )
+
+    def test_hero_cta_button_group_alignment(self):
+        """10. Invariant: .hero-cta-button-group has display flex and equal button heights."""
+        assert ".hero-cta-button-group" in self.css, "FAIL (RED): .hero-cta-button-group not found in style.css"
+        btn_match = re.search(r'\.hero-cta-button-group\s+a[^{]*\{([^}]+)\}', self.css)
+        assert btn_match is not None, "FAIL (RED): .hero-cta-button-group a rule block not found in style.css"
+        btn_css = btn_match.group(1)
+        assert "display: inline-flex" in btn_css, "FAIL (RED): .hero-cta-button-group a must be inline-flex"
+        assert "height: 54px" in btn_css or "height:" in btn_css, "FAIL (RED): .hero-cta-button-group a must enforce uniform height"
+
+
 
 def run_standalone_red_baseline():
     """Runs all test methods directly and outputs clean baseline results."""

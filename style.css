@@ -3327,7 +3327,7 @@ footer.site-footer,
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);
 }
 
@@ -8755,12 +8755,28 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 /* Shared Badges & Hero Typography */
 .hero-badge-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 22px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-bottom: 22px !important;
+}
+
+.hero-badge-row span,
+.hero-badge-row .gold-badge-pill,
+.hero-badge-row .license-badge-pill,
+.hero-badge-row .music-badge-pill {
+  margin: 0 !important;
+  margin-bottom: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 34px !important;
+  line-height: 1 !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
 }
 
 .gold-badge-pill {
@@ -8774,6 +8790,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   padding: 5px 14px;
   border-radius: 9999px;
   text-transform: uppercase;
+  margin: 0;
 }
 
 .license-badge-pill {
@@ -8787,6 +8804,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   padding: 5px 14px;
   border-radius: 9999px;
   text-transform: uppercase;
+  margin: 0;
 }
 
 .music-badge-pill {
@@ -8800,6 +8818,30 @@ body.page-template-template-ai-protocols #content > .ast-container {
   padding: 5px 14px;
   border-radius: 9999px;
   text-transform: uppercase;
+  margin: 0;
+}
+
+/* Hero CTA Button Alignment */
+.hero-cta-button-group {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-top: 28px !important;
+  flex-wrap: wrap !important;
+}
+
+.hero-cta-button-group a,
+.hero-cta-button-group .btn-primary-gold,
+.hero-cta-button-group .btn-secondary-glass {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 54px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
 }
 
 .section-tag-gold {
