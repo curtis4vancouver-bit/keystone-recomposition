@@ -131,7 +131,7 @@ class TestKeystonePageTemplates:
         assert "$800" in content
         assert "52603" in content
         assert "TooLost" in content
-        assert "wayne@keystonepossibilities.ca" in content
+        assert "curtis4vancouver@gmail.com" in content
         assert "luxury-inquiry-form" in content or "contact-form" in content
         assert "SLA" in content
 
