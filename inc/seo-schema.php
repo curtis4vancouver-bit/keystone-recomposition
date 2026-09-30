@@ -1575,8 +1575,16 @@ function keystone_inject_city_landing_pages_geo_schema() {
             'locality'    => 'Lisbon',
             'region'      => 'Lisbon',
             'country'     => 'PT',
-            'latitude'    => 38.7223,
-            'longitude'   => -9.1393,
+        'newyork' => array(
+            'slugs'       => array( 'newyork', 'newyork-executive-ai-systems', 'new-york-autonomous-agent-swarms' ),
+            'name'        => 'Keystone Recomposition — New York Autonomous AI & Capital Hub',
+            'description' => 'Autonomous multi-agent systems, quantitative prediction market intelligence, and global media distribution for executive leaders.',
+            'url'         => home_url( '/ai-protocols/' ),
+            'locality'    => 'New York',
+            'region'      => 'NY',
+            'country'     => 'US',
+            'latitude'    => 40.7128,
+            'longitude'   => -74.0060,
         ),
         'worldwide' => array(
             'slugs'       => array( 'worldwide', 'ai-protocols', 'sonic-universe', 'newyork-executive-ai-systems', 'new-york-autonomous-agent-swarms' ),
