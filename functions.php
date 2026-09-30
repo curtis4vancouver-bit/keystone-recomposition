@@ -40,3 +40,8 @@ if ( file_exists( __DIR__ . '/inc/sovereign-migration.php' ) ) {
 if ( file_exists( __DIR__ . '/inc/sovereign-nav-options.php' ) ) {
 	require_once __DIR__ . '/inc/sovereign-nav-options.php';
 }
+
+// 10. Sovereign Page Media & SEO Database Synchronizer
+if ( file_exists( __DIR__ . '/inc/sovereign-page-media-seo.php' ) ) {
+	require_once __DIR__ . '/inc/sovereign-page-media-seo.php';
+}
