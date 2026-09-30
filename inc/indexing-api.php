@@ -830,7 +830,7 @@ add_action( 'init', function() {
 ## Brand Identity
 - Brand Name: Keystone Recomposition
 - Principal: Wayne Stevenson (known in music and protocol communities as Wayne Stevens)
-- Type: Health & Wellness Research Publisher / Music Producer
+- Type: Autonomous AI Systems Architecture & Multi-Pillar Sovereign Media
 - Location: Squamish, British Columbia, Canada
 - Website: https://keystonerecomposition.com
 - YouTube Channel: https://www.youtube.com/@keystonerecomposition

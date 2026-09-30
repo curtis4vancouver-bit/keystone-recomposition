@@ -308,8 +308,15 @@ function keystone_purge_all_legacy_pages(): array {
         ) );
     }
 
-    // Explicitly trash post-1325 if present
-    $wpdb->query( "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE post_type = 'page' AND ID = 1325" );
+    // Explicitly trash post-2366, post-2229, post-1, post-1325 if present
+    $explicit_trash_ids = array( 2366, 2229, 1, 1325 );
+    foreach ( $explicit_trash_ids as $trash_id ) {
+        $wpdb->query( $wpdb->prepare(
+            "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE ID = %d",
+            $trash_id
+        ) );
+        clean_post_cache( $trash_id );
+    }
 
     $pages = $wpdb->get_results(
         "SELECT ID, post_name, post_title FROM {$wpdb->posts} WHERE post_type = 'page' AND post_status = 'publish'"

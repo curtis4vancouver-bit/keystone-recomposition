@@ -50,10 +50,10 @@ function keystone_recomposition_child_inject_schema() {
         $logo_url = 'https://keystonerecomposition.com/wp-content/uploads/logo.png';
     }
 
-    // === Organization Schema (Keystone Recomposition Wellness Brand) ===
+    // === Organization Schema (Keystone Recomposition Sovereign Brand) ===
     $schema = array(
         '@context' => 'https://schema.org',
-        '@type' => array( 'Organization', 'HealthAndBeautyBusiness' ),
+        '@type' => 'Organization',
         '@id' => 'https://keystonerecomposition.com/#organization',
         'name' => 'Keystone Recomposition',
         'url' => 'https://keystonerecomposition.com',
@@ -281,8 +281,8 @@ function keystone_get_wayne_stevenson_person_schema(): array {
         'knowsAbout'       => array(
             array(
                 '@type'  => 'Thing',
-                'name'   => 'Metabolic Health Optimization',
-                'sameAs' => 'https://en.wikipedia.org/wiki/Metabolism',
+                'name'   => 'Quantitative Prediction Markets',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Prediction_market',
             ),
             array(
                 '@type'  => 'Thing',
@@ -1442,6 +1442,8 @@ function keystone_recomposition_child_404_redirect() {
     }
 
     if ( $is_gone ) {
+        status_header( 410 );
+        nocache_headers();
         wp_safe_redirect( home_url( '/' ), 301 );
         exit;
     }
@@ -1544,48 +1546,48 @@ function keystone_inject_city_landing_pages_geo_schema() {
 
     $city_configs = array(
         'vancouver' => array(
-            'slugs'       => array( 'vancouver-construction-infill', 'vancouver-bill44-builder-consulting' ),
-            'name'        => 'Keystone Possibilities — Sea-to-Sky & Vancouver Builder Hub',
-            'description' => 'Licensed residential building (BC Builder #52603), Small-Scale Multi-Unit Housing (SSMUH) infill, and Bill 44 conversions across Vancouver, Squamish, and Whistler.',
-            'url'         => 'https://keystonepossibilities.ca',
+            'slugs'       => array( 'vancouver-sea-to-sky', 'lifestyle', 'squamish', 'vancouver-construction-infill', 'vancouver-bill44-builder-consulting' ),
+            'name'        => 'Keystone Possibilities — Vancouver & Sea-to-Sky Hub',
+            'description' => 'Licensed BC Residential Builder (#52603) specializing in Bill 44 multiplex infill, high-performance Step Code engineering, and alpine living across Vancouver, Squamish, and Whistler.',
+            'url'         => home_url( '/lifestyle/' ),
             'locality'    => 'Squamish',
             'region'      => 'BC',
             'country'     => 'CA',
             'latitude'    => 49.7016,
             'longitude'   => -123.1558,
         ),
-        'newyork' => array(
-            'slugs'       => array( 'newyork-executive-ai-systems', 'new-york-autonomous-agent-swarms' ),
-            'name'        => 'Keystone Recomposition — New York Autonomous AI & Capital Hub',
-            'description' => 'Autonomous multi-agent systems, quantitative prediction market intelligence, and global media distribution for executive leaders.',
-            'url'         => home_url( '/ai-protocols/' ),
-            'locality'    => 'New York',
-            'region'      => 'NY',
-            'country'     => 'US',
-            'latitude'    => 40.7128,
-            'longitude'   => -74.0060,
-        ),
         'mexico' => array(
-            'slugs'       => array( 'mexico-coastal-villa-development', 'mexico-luxury-infill-investment' ),
-            'name'        => 'Keystone Recomposition — Mexico Pacific Coast Development Hub',
-            'description' => 'Luxury coastal villa co-development, 50-year Fideicomiso bank trust structures, and turnkey residential infill along the Riviera Nayarit.',
+            'slugs'       => array( 'mexico-pacific-coast', 'investments', 'riviera-nayarit', 'mexico-coastal-villa-development', 'mexico-luxury-infill-investment' ),
+            'name'        => 'Keystone Possibilities — Mexico Pacific Coast Development Hub',
+            'description' => 'Riviera Nayarit coastal luxury villa co-development, sovereign capital allocation, and Pacific mountain-ocean living architecture.',
             'url'         => home_url( '/investments/' ),
-            'locality'    => 'Puerto Vallarta',
-            'region'      => 'Jalisco',
+            'locality'    => 'Sayulita',
+            'region'      => 'Nayarit',
             'country'     => 'MX',
-            'latitude'    => 20.6534,
-            'longitude'   => -105.2253,
+            'latitude'    => 20.8689,
+            'longitude'   => -105.4408,
         ),
         'europe' => array(
-            'slugs'       => array( 'europe-strategic-infill-pipeline', 'european-boutique-residential-development' ),
-            'name'        => 'Keystone Recomposition — European Union Strategic Infill Hub',
-            'description' => 'Boutique architectural residential development, urban rehabilitation, and sovereign cross-border capital deployment across Portugal and Spain.',
+            'slugs'       => array( 'european-union', 'europe-strategic-infill-pipeline', 'boutique-infill', 'european-boutique-residential-development' ),
+            'name'        => 'Keystone Possibilities — European Union Architectural Hub',
+            'description' => 'Boutique architectural infill pipeline, quiet luxury capital deployment, and cross-border structural property advisory.',
             'url'         => home_url( '/investments/' ),
             'locality'    => 'Lisbon',
             'region'      => 'Lisbon',
             'country'     => 'PT',
             'latitude'    => 38.7223,
             'longitude'   => -9.1393,
+        ),
+        'worldwide' => array(
+            'slugs'       => array( 'worldwide', 'ai-protocols', 'sonic-universe', 'newyork-executive-ai-systems', 'new-york-autonomous-agent-swarms' ),
+            'name'        => 'Keystone Protocols — Worldwide Autonomous Intelligence & Music Publishing Hub',
+            'description' => 'Autonomous multi-agent AI swarms, quantitative prediction market intelligence, and 22-release TooLost functional electronic music universe distributed globally.',
+            'url'         => home_url( '/ai-protocols/' ),
+            'locality'    => 'Squamish',
+            'region'      => 'BC',
+            'country'     => 'CA',
+            'latitude'    => 49.7016,
+            'longitude'   => -123.1558,
         ),
     );
 
@@ -1603,7 +1605,7 @@ function keystone_inject_city_landing_pages_geo_schema() {
                 '@context' => 'https://schema.org',
                 '@graph'   => array(
                     array(
-                        '@type'       => array( 'Place', 'HealthAndBeautyBusiness' ),
+                        '@type'       => array( 'Place', 'ProfessionalService' ),
                         '@id'         => $config['url'] . '#place',
                         'name'        => $config['name'],
                         'description' => $config['description'],
