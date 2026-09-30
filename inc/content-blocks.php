@@ -660,7 +660,7 @@ function keystone_recomposition_heal_watch_pages_trigger() {
             } else {
                 $watch_page = get_post( $watch_page_id );
                 if ( $watch_page ) {
-                    // Force default page template to prevent hardcoded wolverine layout overwrite
+                    // Force default page template to prevent legacy layout overwrite
                     update_post_meta( $watch_page_id, '_wp_page_template', 'default' );
                     
                     $watch_len = strlen( trim( (string) ( $watch_page->post_content ?? '' ) ) );
@@ -763,12 +763,12 @@ function keystone_evidence_base_shortcode( $atts = array(), $content = null ) {
             'key_takeaway' => 'Proves that exceeding the 3.0g leucine threshold per feeding significantly stimulates fractional synthetic rate (FSR) of muscle tissue even under reduced total caloric intake.',
         ),
         array(
-            'authors'      => 'Sikiric P, Seiwerth S, Rucman R, et al. (2010)',
-            'title'        => 'Stable gastric pentadecapeptide BPC 157-NO-system relation.',
-            'journal'      => 'Current Pharmaceutical Design, 20(7):1126–1135.',
-            'pmid'         => '21030672',
-            'topics'       => array( 'peptides', 'all' ),
-            'key_takeaway' => 'Elucidates BPC-157 mediated modulation of endothelial nitric oxide synthase (eNOS) and vascular endothelial growth factor (VEGF) in tendon-to-bone and soft tissue regeneration.',
+            'authors'      => 'Thaut MH, McIntosh GC, Hoemberg V. (2015)',
+            'title'        => 'Neurobiological foundations of neurologic music therapy: rhythmic entrainment and motor rehabilitation.',
+            'journal'      => 'Frontiers in Human Neuroscience, 9:118.',
+            'pmid'         => '25784871',
+            'topics'       => array( 'audio', 'cognitive', 'all' ),
+            'key_takeaway' => 'Demonstrates auditory-motor rhythmic entrainment where cortical frequency following responses synchronize neuro-muscular cadence and elevate executive cognitive focus.',
         ),
     );
 

@@ -221,19 +221,22 @@ function keystone_get_wayne_stevenson_person_schema(): array {
         '@id'              => 'https://keystonerecomposition.com/#person',
         'name'             => 'Wayne Stevenson',
         'alternateName'    => array( 'Wayne Stevens', 'Keystone Recomposition', 'Keystone Protocols' ),
-        'url'              => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
-        'mainEntityOfPage' => 'https://keystonerecomposition.com/about-the-founder-the-keystone-blueprint/',
+        'url'              => 'https://keystonerecomposition.com/founder/',
+        'mainEntityOfPage' => 'https://keystonerecomposition.com/founder/',
         'image'            => array(
             '@type' => 'ImageObject',
-            'url'   => 'https://i0.wp.com/keystonerecomposition.com/wp-content/uploads/2026/05/Man_reaching_for_pepper_grinder11_202605021316.jpeg',
+            'url'   => 'https://keystonerecomposition.com/wp-content/themes/keystone-recomposition-child/assets/images/wayne_avatar.jpg',
         ),
         'jobTitle'         => array(
             'Founder & Managing Director',
             'Founder & Lead Protocol Architect',
+            'Lead Systems Architect',
             'Licensed Residential Builder',
+            'Licensed Residential Builder #52603',
             'Functional Audio Producer',
+            'Recording Artist & Producer',
         ),
-        'description'      => 'Founder and Lead Protocol Architect of Keystone Recomposition, certified BC Housing Licensed Residential Builder (Licence #52603), and Functional Audio Producer. Wayne Stevenson documents the intersection of GLP-1 metabolic health, peptide science, body recomposition, and cellular longevity for high-performance living. His music catalog is functional bio-acoustic engineering composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.',
+        'description'      => 'Founder and Managing Director of Keystone Possibilities Ltd (BC Housing Builder #52603) and creator of Keystone Recomposition. Wayne Stevenson engineers autonomous multi-agent AI swarms, functional electronic music across 22 official releases (20 studio albums) distributed worldwide via TooLost Digital, quantitative market intelligence, and high-performance mountain living across the Sea-to-Sky corridor.',
         'hasCredential'    => array(
             array(
                 '@type'              => 'EducationalOccupationalCredential',
@@ -329,6 +332,12 @@ function keystone_get_wayne_stevenson_person_schema(): array {
                 '@id'         => 'https://keystonerecomposition.com/#album-resonantia',
                 'name'        => 'Resonantia: 10 Frequencies of the Rebuild',
                 'description' => '10 progressive functional bio-acoustic frequencies and deep house soundscapes engineered for circadian entrainment, metabolic focus, and autonomic state regulation in Keystone Protocols.',
+            ),
+            array(
+                '@type'       => 'MusicAlbum',
+                '@id'         => 'https://keystonerecomposition.com/#album-the-205-marker',
+                'name'        => 'The 205 Marker',
+                'description' => 'Cadence-synchronized electronic album engineered by Wayne Stevenson for sustained training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
             ),
         ),
         'worksFor'         => array(
@@ -1467,26 +1476,19 @@ function keystone_inject_calculator_web_app_schema() {
     $slug = isset( $post->post_name ) ? $post->post_name : '';
     $template = get_page_template_slug( $post->ID );
 
-    if ( 'calculators' === $slug || false !== strpos( $template, 'calculators' ) || false !== strpos( $template, 'glp1' ) || false !== strpos( $template, 'peptide' ) ) {
-        $calc_schema = array(
+    if ( 'ai-protocols' === $slug || false !== strpos( $template, 'ai-protocols' ) ) {
+        $ai_schema = array(
             '@context' => 'https://schema.org',
             '@graph' => array(
                 array(
-                    '@type' => 'WebApplication',
-                    '@id' => home_url( '/calculators/#webapp' ),
-                    'name' => 'Keystone Master Protocol Calculators Hub',
-                    'alternateName' => 'GLP-1 KwikPen & Peptide Reconstitution Calculator',
-                    'url' => home_url( '/calculators/' ),
-                    'description' => 'Precision GLP-1 KwikPen click-to-mg dose math, 5-day pharmacokinetic half-life modeling, and FDA Category 1 peptide reconstitution calculator with visual U-100 syringe rendering.',
-                    'applicationCategory' => 'HealthApplication',
-                    'operatingSystem' => 'All',
-                    'browserRequirements' => 'Requires JavaScript. Requires HTML5.',
-                    'offers' => array(
-                        '@type' => 'Offer',
-                        'price' => '0',
-                        'priceCurrency' => 'USD',
-                        'availability' => 'https://schema.org/InStock'
-                    ),
+                    '@type' => 'SoftwareApplication',
+                    '@id' => home_url( '/ai-protocols/#software' ),
+                    'name' => 'Keystone AI Protocols & Autonomous Multi-Agent Swarms',
+                    'alternateName' => 'Keystone FastMCP Agentic Execution Engine',
+                    'url' => home_url( '/ai-protocols/' ),
+                    'description' => 'Autonomous multi-agent swarms, FastMCP tools, Google Antigravity orchestration, and Chrome CDP desktop automation systems engineered by Wayne Stevenson.',
+                    'applicationCategory' => 'DeveloperApplication',
+                    'operatingSystem' => 'Windows, Linux, macOS',
                     'author' => array(
                         '@id' => 'https://keystonerecomposition.com/#person'
                     ),
@@ -1496,30 +1498,22 @@ function keystone_inject_calculator_web_app_schema() {
                 ),
                 array(
                     '@type' => 'FAQPage',
-                    '@id' => home_url( '/calculators/#faq' ),
+                    '@id' => home_url( '/ai-protocols/#faq' ),
                     'mainEntity' => array(
                         array(
                             '@type' => 'Question',
-                            'name' => 'How do I calculate peptide reconstitution dosage with bacteriostatic water?',
+                            'name' => 'What is the Keystone Autonomous Multi-Agent Swarm architecture?',
                             'acceptedAnswer' => array(
                                 '@type' => 'Answer',
-                                'text' => 'Peptide reconstitution concentration is calculated using the formula: Concentration (mcg/unit) = (Vial Mass in mg × 1,000) ÷ (BAC Water Volume in mL × 100). For example, adding 2 mL of bacteriostatic water to a 10 mg vial yields 50 mcg per 1 unit tick on a standard U-100 insulin syringe.'
+                                'text' => 'Keystone AI Protocols deploy parallel specialized child subagents orchestrated via Google Antigravity and FastMCP tool contracts, enforcing isolated ephemeral contexts, strict TDD red-to-green test gates, and continuous desktop Chrome CDP automation.'
                             )
                         ),
                         array(
                             '@type' => 'Question',
-                            'name' => 'How many clicks on a Mounjaro or Ozempic KwikPen equal a micro-dose?',
+                            'name' => 'How does Keystone integrate music production and multi-channel video pipelines?',
                             'acceptedAnswer' => array(
                                 '@type' => 'Answer',
-                                'text' => 'A full standard dose on a multi-dose KwikPen dial corresponds to 60 clicks. Each single click delivers 1/60th of the labeled dose volume (0.01 mL). For a 5.0 mg pen, 30 clicks equals 2.5 mg, and 12 clicks equals 1.0 mg.'
-                            )
-                        ),
-                        array(
-                            '@type' => 'Question',
-                            'name' => 'Why use a 5-day GLP-1 dosing interval instead of a 7-day schedule?',
-                            'acceptedAnswer' => array(
-                                '@type' => 'Answer',
-                                'text' => 'Tirzepatide has an approximate pharmacokinetic elimination half-life of 5.0 days (120 hours). A 5-day micro-dosing schedule reduces plasma trough concentration drops on days 6 and 7, helping prevent breakthrough hunger spikes and minimizing peak-associated GI side effects.'
+                                'text' => 'Audio architecture generated across 22 official TooLost releases is dynamically synchronized with Google Flow Box 2 and DaVinci Resolve automated 2-track master timeline assembly.'
                             )
                         )
                     )
@@ -1527,16 +1521,16 @@ function keystone_inject_calculator_web_app_schema() {
             )
         );
 
-        echo "\n<!-- Keystone 2026 WebApplication & FAQPage JSON-LD Schema -->\n";
+        echo "\n<!-- Keystone 2026 AI Protocols SoftwareApplication & FAQPage JSON-LD Schema -->\n";
         echo "<script type=\"application/ld+json\">\n";
-        echo wp_json_encode( $calc_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
-        echo "</script>\n<!-- End Calculator Schema -->\n\n";
+        echo wp_json_encode( $ai_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
+        echo "</script>\n<!-- End AI Protocols Schema -->\n\n";
     }
 }
 
 /**
  * 15. Inject Localized GeoCoordinates / Place Schema for City Landing Pages
- * Provides high-trust local entity signals for New York, Los Angeles, and London.
+ * Provides high-trust local entity signals for Sea-to-Sky, New York, Mexico, and Europe.
  */
 add_action( 'wp_head', 'keystone_inject_city_landing_pages_geo_schema', 16 );
 function keystone_inject_city_landing_pages_geo_schema() {
@@ -1549,60 +1543,49 @@ function keystone_inject_city_landing_pages_geo_schema() {
     $uri  = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
 
     $city_configs = array(
+        'vancouver' => array(
+            'slugs'       => array( 'vancouver-construction-infill', 'vancouver-bill44-builder-consulting' ),
+            'name'        => 'Keystone Possibilities — Sea-to-Sky & Vancouver Builder Hub',
+            'description' => 'Licensed residential building (BC Builder #52603), Small-Scale Multi-Unit Housing (SSMUH) infill, and Bill 44 conversions across Vancouver, Squamish, and Whistler.',
+            'url'         => 'https://keystonepossibilities.ca',
+            'locality'    => 'Squamish',
+            'region'      => 'BC',
+            'country'     => 'CA',
+            'latitude'    => 49.7016,
+            'longitude'   => -123.1558,
+        ),
         'newyork' => array(
-            'slugs'       => array( 'newyork-longevity-coaching', 'new-york-quiet-luxury-longevity-coaching-peptide-protocols' ),
-            'name'        => 'Keystone Recomposition — New York Executive Longevity Hub',
-            'description' => 'Elite GLP-1 micro-dosing, cellular longevity, and biohacking protocols tailored for Manhattan executives and Wall Street leaders.',
-            'url'         => home_url( '/newyork-longevity-coaching/' ),
+            'slugs'       => array( 'newyork-executive-ai-systems', 'new-york-autonomous-agent-swarms' ),
+            'name'        => 'Keystone Recomposition — New York Autonomous AI & Capital Hub',
+            'description' => 'Autonomous multi-agent systems, quantitative prediction market intelligence, and global media distribution for executive leaders.',
+            'url'         => home_url( '/ai-protocols/' ),
             'locality'    => 'New York',
             'region'      => 'NY',
             'country'     => 'US',
             'latitude'    => 40.7128,
             'longitude'   => -74.0060,
         ),
-        'losangeles' => array(
-            'slugs'       => array( 'la-longevity-coaching', 'los-angeles-quiet-luxury-longevity-coaching-peptide-protocols' ),
-            'name'        => 'Keystone Recomposition — Los Angeles Executive Longevity Hub',
-            'description' => 'Body recomposition science, hormone optimization, and discrete concierge coaching for California entertainment and tech founders.',
-            'url'         => home_url( '/la-longevity-coaching/' ),
-            'locality'    => 'Los Angeles',
-            'region'      => 'CA',
-            'country'     => 'US',
-            'latitude'    => 34.0522,
-            'longitude'   => -118.2437,
-        ),
-        'london' => array(
-            'slugs'       => array( 'london-longevity-coaching', 'london-quiet-luxury-longevity-coaching-peptide-protocols' ),
-            'name'        => 'Keystone Recomposition — London Mayfair & Chelsea Longevity Hub',
-            'description' => 'Precision metabolic architectures, peptide science, and private health infrastructure consulting for London\'s executive circle.',
-            'url'         => home_url( '/london-longevity-coaching/' ),
-            'locality'    => 'London',
-            'region'      => 'Greater London',
-            'country'     => 'GB',
-            'latitude'    => 51.5074,
-            'longitude'   => -0.1278,
-        ),
-        'switzerland' => array(
-            'slugs'       => array( 'europe-longevity-wellness-guide', 'european-executive-longevity-guide-switzerland-sourcing' ),
-            'name'        => 'Keystone Recomposition — European Longevity & Swiss Clinic Sourcing Hub',
-            'description' => 'Swiss clinic sourcing, European regulatory frameworks, and advanced cellular longevity therapies for international investors.',
-            'url'         => home_url( '/europe-longevity-wellness-guide/' ),
-            'locality'    => 'Zurich',
-            'region'      => 'Zurich',
-            'country'     => 'CH',
-            'latitude'    => 47.3769,
-            'longitude'   => 8.5417,
-        ),
         'mexico' => array(
-            'slugs'       => array( 'mexico-longevity-retreat-investment', 'mexico-longevity-retreat-luxury-compound-investment' ),
-            'name'        => 'Keystone Recomposition — Mexico Longevity Retreat & Recovery Hub',
-            'description' => 'Private luxury recovery sanctuaries, coastal biohacking compounds, and high-yield real estate development opportunities.',
-            'url'         => home_url( '/mexico-longevity-retreat-investment/' ),
-            'locality'    => 'Tulum',
-            'region'      => 'Quintana Roo',
+            'slugs'       => array( 'mexico-coastal-villa-development', 'mexico-luxury-infill-investment' ),
+            'name'        => 'Keystone Recomposition — Mexico Pacific Coast Development Hub',
+            'description' => 'Luxury coastal villa co-development, 50-year Fideicomiso bank trust structures, and turnkey residential infill along the Riviera Nayarit.',
+            'url'         => home_url( '/investments/' ),
+            'locality'    => 'Puerto Vallarta',
+            'region'      => 'Jalisco',
             'country'     => 'MX',
-            'latitude'    => 20.2114,
-            'longitude'   => -87.4654,
+            'latitude'    => 20.6534,
+            'longitude'   => -105.2253,
+        ),
+        'europe' => array(
+            'slugs'       => array( 'europe-strategic-infill-pipeline', 'european-boutique-residential-development' ),
+            'name'        => 'Keystone Recomposition — European Union Strategic Infill Hub',
+            'description' => 'Boutique architectural residential development, urban rehabilitation, and sovereign cross-border capital deployment across Portugal and Spain.',
+            'url'         => home_url( '/investments/' ),
+            'locality'    => 'Lisbon',
+            'region'      => 'Lisbon',
+            'country'     => 'PT',
+            'latitude'    => 38.7223,
+            'longitude'   => -9.1393,
         ),
     );
 

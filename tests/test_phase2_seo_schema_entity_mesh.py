@@ -61,7 +61,7 @@ class TestPhase2WayneStevensonEntityMesh:
         assert "EducationalOccupationalCredential" in self.content
         assert "BC Housing Licensing and Consumer Services" in self.content
         assert "Licensed Residential Builder & Fiduciary Construction Consultant" in self.content
-        assert "Longevity & Recomposition Protocol Researcher" in self.content
+        assert "Autonomous AI Systems Architect" in self.content or "Longevity & Recomposition Protocol Researcher" in self.content
         assert "Electronic Music Producer & Functional Bio-Acoustic Engineer" in self.content
 
     def test_music_catalog_bio_acoustic_descriptions(self):
@@ -140,7 +140,6 @@ class TestPhase2LlmsTxt:
         assert "@KeystoneProtocols" in content
         assert "@KeyStoneRecomposition" in content
         assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in content
-        assert "Tirzepatide" in content
-        assert "Wolverine Stack" in content
-        assert "circadian entrainment" in content
-        assert "https://keystonepossibilities.ca/" in content
+        assert "multi-agent" in content.lower()
+        assert "22 official releases" in content or "22 Official Releases" in content
+        assert "https://keystonepossibilities.ca" in content

@@ -273,13 +273,14 @@ function keystone_sync_sovereign_site_identity(): array {
 }
 
 /**
- * 3. Permanently Trash All Legacy Workout & Peptide Pages
- * Purges The Forge, Mental Strength, Recommended Gear, Global Advisory, Blueprint, and all Watch-* pages.
+ * 3. Permanently Trash All Legacy Workout, Duplicate & Peptide Pages
+ * Purges The Forge, Mental Strength, Recommended Gear, Global Advisory, Blueprint, Watch-* pages,
+ * and duplicates (/lifestyle-2/, /about-the-founder/, /about-the-founder-the-keystone-blueprint/).
  */
 function keystone_purge_all_legacy_pages(): array {
     global $wpdb;
 
-    // Preserved slugs: strictly Wayne's core sovereign ecosystem
+    // Preserved slugs: strictly Wayne's core 8 sovereign canonical pages
     $preserved_page_slugs = array(
         'home',
         'ai-protocols',
@@ -288,13 +289,27 @@ function keystone_purge_all_legacy_pages(): array {
         'investments',
         'lifestyle',
         'founder',
-        'about-the-founder',
-        'about-the-founder-the-keystone-blueprint',
         'contact',
     );
 
     $front_id = (int) get_option( 'page_on_front' );
     $posts_id = (int) get_option( 'page_for_posts' );
+
+    // Explicitly trash known duplicates and legacy drafts/clones
+    $explicit_trash_slugs = array(
+        'lifestyle-2',
+        'about-the-founder',
+        'about-the-founder-the-keystone-blueprint',
+    );
+    foreach ( $explicit_trash_slugs as $trash_slug ) {
+        $wpdb->query( $wpdb->prepare(
+            "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE post_type = 'page' AND post_name = %s",
+            $trash_slug
+        ) );
+    }
+
+    // Explicitly trash post-1325 if present
+    $wpdb->query( "UPDATE {$wpdb->posts} SET post_status = 'trash' WHERE post_type = 'page' AND ID = 1325" );
 
     $pages = $wpdb->get_results(
         "SELECT ID, post_name, post_title FROM {$wpdb->posts} WHERE post_type = 'page' AND post_status = 'publish'"
@@ -334,15 +349,177 @@ function keystone_purge_all_legacy_pages(): array {
 }
 
 /**
+ * 3.5 Synchronize Canonical Page Titles, Rank Math SEO & High-Resolution Lead Pictures
+ */
+function keystone_sync_sovereign_lead_pictures_and_titles(): array {
+    global $wpdb;
+
+    $manifest = array(
+        'home' => array(
+            'post_id'     => (int) get_option( 'page_on_front' ) ?: 12,
+            'clean_title' => 'Home',
+            'asset_rel'   => 'assets/images/albums/sovereign_reverb.jpg',
+            'attach_title'=> 'Keystone Sovereign Reverb — Official Artwork',
+            'focus_kw'    => 'Keystone Recomposition',
+            'desc'        => 'Autonomous AI Multi-Agent Swarms, FastMCP Systems, 22-Release Sonic Universe, and BC Licensed Builder #52603.',
+        ),
+        'ai-protocols' => array(
+            'post_id'     => 2228,
+            'clean_title' => 'AI Protocols',
+            'asset_rel'   => 'assets/images/ai_protocols_banner.png',
+            'attach_title'=> 'Keystone AI Protocols — Multi-Agent Swarms',
+            'focus_kw'    => 'Keystone AI Protocols',
+            'desc'        => 'Autonomous Multi-Agent Swarms, FastMCP Workstation Architecture, and Desktop Automation by Wayne Stevenson.',
+        ),
+        'intel' => array(
+            'post_id'     => (int) get_option( 'page_for_posts' ) ?: 119,
+            'clean_title' => 'INTEL',
+            'asset_rel'   => 'assets/images/ai_protocols_banner.png',
+            'attach_title'=> 'Keystone INTEL — Technical Research & Analysis',
+            'focus_kw'    => 'Keystone Intel',
+            'desc'        => 'Technical engineering intelligence, multi-agent teardowns, and sovereign systems architecture.',
+        ),
+        'sonic-universe' => array(
+            'post_id'     => 320,
+            'clean_title' => 'Sonic Universe',
+            'asset_rel'   => 'assets/images/sonic_universe_banner.png',
+            'attach_title'=> 'Keystone Sonic Universe — 22 Official Releases',
+            'focus_kw'    => 'Keystone Sonic Universe',
+            'desc'        => 'Wayne Stevenson official music catalog: 22 releases, 20 studio albums, 216 master recordings on Spotify OAC.',
+        ),
+        'investments' => array(
+            'post_id'     => 2364,
+            'clean_title' => 'Investments',
+            'asset_rel'   => 'assets/images/trading_terminal_luxury.jpg',
+            'attach_title'=> 'Keystone Strategic Capital & Quantitative Markets',
+            'focus_kw'    => 'Keystone Investments',
+            'desc'        => 'Quantitative trading intelligence (EV >= +15%), 40% Cash Fortress, BC Bill 44 infill, Mexico and EU developments.',
+        ),
+        'lifestyle' => array(
+            'post_id'     => 2365,
+            'clean_title' => 'Lifestyle',
+            'asset_rel'   => 'assets/images/bc_luxury_multiplex.jpg',
+            'attach_title'=> 'Keystone Sovereign Operations & Lifestyle',
+            'focus_kw'    => 'Keystone Lifestyle',
+            'desc'        => 'The Six Sovereign Pillars of operations: AI media pipeline, quant markets, client acquisition, BC construction, mountain living, and global infill.',
+        ),
+        'founder' => array(
+            'post_id'     => 2363,
+            'clean_title' => 'About the Founder',
+            'asset_rel'   => 'assets/images/wayne_avatar.jpg',
+            'attach_title'=> 'Wayne Stevenson — Founder & Managing Director',
+            'focus_kw'    => 'Wayne Stevenson',
+            'desc'        => 'Wayne Stevenson: Founder of Keystone Possibilities Ltd (BC Builder #52603), AI systems architect, recording artist, and high-performance builder.',
+        ),
+        'contact' => array(
+            'post_id'     => 2367,
+            'clean_title' => 'Contact',
+            'asset_rel'   => 'assets/images/keystone_possibilities_crest.png',
+            'attach_title'=> 'Keystone Executive Contact Gateway',
+            'focus_kw'    => 'Contact Keystone',
+            'desc'        => 'Direct executive consultation with Wayne Stevenson for AI workstation architecture, BC Bill 44 general contracting, and Spotify catalog rights.',
+        ),
+    );
+
+    $results = array();
+
+    foreach ( $manifest as $slug => $data ) {
+        $target_id = $data['post_id'];
+        $post = get_post( $target_id );
+        if ( ! $post || 'page' !== $post->post_type ) {
+            $found_id = (int) $wpdb->get_var( $wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'page' AND post_name = %s AND post_status = 'publish' LIMIT 1",
+                $slug
+            ) );
+            if ( $found_id > 0 ) {
+                $target_id = $found_id;
+                $post = get_post( $target_id );
+            }
+        }
+
+        if ( ! $post ) {
+            continue;
+        }
+
+        // 1. Clean Title
+        if ( $post->post_title !== $data['clean_title'] ) {
+            $wpdb->update(
+                $wpdb->posts,
+                array( 'post_title' => $data['clean_title'] ),
+                array( 'ID' => $target_id )
+            );
+            clean_post_cache( $target_id );
+        }
+
+        // 2. Lead Picture Attachment
+        $attach_id = 0;
+        $filename = basename( $data['asset_rel'] );
+        $existing_attach = (int) $wpdb->get_var( $wpdb->prepare(
+            "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'attachment' AND guid LIKE %s LIMIT 1",
+            '%' . $wpdb->esc_like( $filename )
+        ) );
+
+        if ( $existing_attach > 0 ) {
+            $attach_id = $existing_attach;
+        } else {
+            $asset_path = get_stylesheet_directory() . '/' . ltrim( $data['asset_rel'], '/' );
+            if ( file_exists( $asset_path ) ) {
+                $upload_dir = wp_upload_dir();
+                $target_upload = $upload_dir['path'] . '/' . $filename;
+                @copy( $asset_path, $target_upload );
+
+                $filetype = wp_check_filetype( $filename, null );
+                $attach_arr = array(
+                    'guid'           => $upload_dir['url'] . '/' . $filename,
+                    'post_mime_type' => $filetype['type'],
+                    'post_title'     => $data['attach_title'],
+                    'post_content'   => '',
+                    'post_status'    => 'inherit',
+                );
+                $new_attach_id = wp_insert_attachment( $attach_arr, $target_upload, $target_id );
+                if ( ! is_wp_error( $new_attach_id ) && $new_attach_id > 0 ) {
+                    if ( ! function_exists( 'wp_generate_attachment_metadata' ) ) {
+                        require_once ABSPATH . 'wp-admin/includes/image.php';
+                    }
+                    $attach_meta = wp_generate_attachment_metadata( $new_attach_id, $target_upload );
+                    wp_update_attachment_metadata( $new_attach_id, $attach_meta );
+                    $attach_id = (int) $new_attach_id;
+                }
+            }
+        }
+
+        if ( $attach_id > 0 ) {
+            update_post_meta( $target_id, '_thumbnail_id', $attach_id );
+            $attach_url = wp_get_attachment_url( $attach_id );
+            if ( $attach_url ) {
+                update_post_meta( $target_id, 'rank_math_facebook_image', $attach_url );
+                update_post_meta( $target_id, 'rank_math_twitter_image', $attach_url );
+            }
+        }
+
+        // 3. Rank Math SEO Metadata
+        update_post_meta( $target_id, 'rank_math_title', $data['clean_title'] . ' %sep% %sitename%' );
+        update_post_meta( $target_id, 'rank_math_description', $data['desc'] );
+        update_post_meta( $target_id, 'rank_math_focus_keyword', $data['focus_kw'] );
+
+        $results[ $slug ] = array(
+            'id'           => $target_id,
+            'title'        => $data['clean_title'],
+            'thumbnail_id' => $attach_id,
+        );
+    }
+
+    return $results;
+}
+
+/**
  * 4. Guarantee Sovereign Navigation Menu rendering across all Astra menu locations
  */
 add_filter( 'wp_nav_menu_items', 'keystone_filter_sovereign_nav_menu_items', 10, 2 );
 function keystone_filter_sovereign_nav_menu_items( string $items, $args ): string {
-    // If the rendered menu items do not contain AI Protocols, inject our canonical sovereign menu
     if ( ! str_contains( $items, 'ai-protocols' ) && ! str_contains( $items, 'AI Protocols' ) ) {
         $ai_item  = '<li class="menu-item menu-item-type-custom"><a href="' . esc_url( home_url( '/ai-protocols/' ) ) . '" class="menu-link"><span class="menu-text">AI Protocols</span></a></li>';
         
-        // Insert AI Protocols right after Home
         $first_close = strpos( $items, '</li>' );
         if ( $first_close !== false ) {
             $items = substr_replace( $items, '</li>' . $ai_item, $first_close, 5 );
@@ -359,14 +536,15 @@ function keystone_filter_sovereign_nav_menu_items( string $items, $args ): strin
 add_action( 'init', 'keystone_run_sovereign_nav_and_options_sync', 15 );
 function keystone_run_sovereign_nav_and_options_sync(): void {
     $manual_trigger = isset( $_GET['keystone_sync_sovereign'] );
-    $synced_flag    = get_option( 'keystone_sovereign_nav_synced_v3_6_no_medical' );
+    $synced_flag    = get_option( 'keystone_sovereign_nav_synced_v3_7_lead_pictures' );
 
     if ( ! $synced_flag || $manual_trigger ) {
         $nav_res      = keystone_provision_sovereign_nav_menu();
         $identity_res = keystone_sync_sovereign_site_identity();
         $purge_res    = keystone_purge_all_legacy_pages();
+        $media_res    = keystone_sync_sovereign_lead_pictures_and_titles();
 
-        update_option( 'keystone_sovereign_nav_synced_v3_6_no_medical', '1' );
+        update_option( 'keystone_sovereign_nav_synced_v3_7_lead_pictures', '1' );
 
         if ( $manual_trigger ) {
             header( 'Content-Type: application/json; charset=utf-8' );
@@ -374,6 +552,7 @@ function keystone_run_sovereign_nav_and_options_sync(): void {
                 'navigation' => $nav_res,
                 'identity'   => $identity_res,
                 'page_purge' => $purge_res,
+                'lead_media' => $media_res,
             ), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
             exit;
         }
