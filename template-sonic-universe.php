@@ -146,7 +146,7 @@ $total_tracks = $stats['total_tracks'];
                                 </div>
 
                                 <!-- DSP Quick Trigger -->
-                                <div class="album-actions-bar" style="margin-top: 14px;">
+                                <div class="album-actions-bar">
                                     <button type="button" class="btn-open-album-modal" style="width: 100%;">
                                         ▶ Stream &amp; View Tracks (<?php echo esc_html( (string) $album['track_count'] ); ?>)
                                     </button>
