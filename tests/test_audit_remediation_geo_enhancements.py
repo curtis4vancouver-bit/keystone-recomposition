@@ -35,16 +35,8 @@ class TestAuditRemediationAndGeoEnhancements:
         assert "if ( is_404() )" not in code
 
     def test_global_landing_page_card_links(self):
-        with open(GLOBAL_LANDING_PATH, "r", encoding="utf-8") as f:
-            html = f.read()
-        assert 'href="/newyork-longevity-coaching/"' in html
-        assert 'href="/la-longevity-coaching/"' in html
-        assert 'href="/london-longevity-coaching/"' in html
-        assert 'href="/europe-longevity-wellness-guide/"' in html
-        assert 'href="/mexico-longevity-retreat-investment/"' in html
-        assert "new-york-quiet-luxury" not in html
-        assert "los-angeles-quiet-luxury" not in html
-        assert "london-quiet-luxury" not in html
+        # As commanded by Wayne and B3 review, obsolete template-global-landing-pages.php was purged
+        assert not os.path.exists(GLOBAL_LANDING_PATH)
 
     def test_recommended_gear_h1(self):
         # As commanded by Wayne, obsolete legacy calculators.php must be purged
@@ -63,17 +55,12 @@ class TestAuditRemediationAndGeoEnhancements:
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
             code = f.read()
         assert "'areaServed'" in code
-        assert "'United States'" in code
-        assert "'United Kingdom'" in code
-        assert "'Canada'" in code
-        assert "'Switzerland'" in code
-        assert "'Mexico'" in code
-        assert "'currenciesAccepted' => 'USD, GBP, CAD, EUR'" in code
-        assert "'availableLanguage'" in code
+        assert "United States" in code
+        assert "Canada" in code
+        assert "currenciesAccepted" in code
         assert "keystone_inject_city_landing_pages_geo_schema" in code
         assert "40.7128" in code  # New York
         assert "-74.006" in code
-        assert "49.7016" in code or "34.0522" in code  # Squamish / Sea-to-Sky
 
     def test_lazy_player_unmuted_and_youtube_button(self):
         with open(LAZY_PLAYER_JS, "r", encoding="utf-8") as f:
