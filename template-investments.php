@@ -44,29 +44,6 @@ $theme_uri = get_stylesheet_directory_uri();
                         Deploying balance-sheet capital across quantitative prediction engines, licensed British Columbia residential infill under Bill 44, international luxury footholds in Mexico and Europe, and autonomous computational enterprise infrastructure. Direct principal partnerships backed by tangible hard assets and mathematical rigor.
                     </p>
 
-                    <!-- TOP TELEMETRY METRIC STRIP -->
-                    <div class="investments-telemetry-grid">
-                        <div class="luxury-metric-card">
-                            <span class="metric-label">FIDUCIARY LICENSURE</span>
-                            <span class="metric-value-gold">#52603</span>
-                            <span class="metric-caption">BC Housing Residential Builder</span>
-                        </div>
-                        <div class="luxury-metric-card">
-                            <span class="metric-label">QUANTITATIVE HURDLE</span>
-                            <span class="metric-value-cyan">EV &ge; +15%</span>
-                            <span class="metric-caption">Mathematical Asymmetry &amp; Edge</span>
-                        </div>
-                        <div class="luxury-metric-card">
-                            <span class="metric-label">INVIOLABLE CASH FLOOR</span>
-                            <span class="metric-value-gold">40% CAD</span>
-                            <span class="metric-caption">Capital Preservation Fortress</span>
-                        </div>
-                        <div class="luxury-metric-card">
-                            <span class="metric-label">GLOBAL PIPELINE</span>
-                            <span class="metric-value-cyan">BC &bull; MEX &bull; EU</span>
-                            <span class="metric-caption">Direct Principal Co-Development</span>
-                        </div>
-                    </div>
                 </header>
 
                 <!-- ==============================================================
@@ -415,8 +392,8 @@ $theme_uri = get_stylesheet_directory_uri();
                         <!-- Direct Email Only Box (Strictly NO Phone Number) -->
                         <div class="direct-email-gateway-box">
                             <span class="gateway-email-label">DIRECT EXECUTIVE CONTACT (EMAIL ONLY):</span>
-                            <a href="mailto:wayne@keystonepossibilities.ca" class="gateway-email-address">
-                                wayne@keystonepossibilities.ca
+                            <a href="mailto:curtis4vancouver@gmail.com" class="gateway-email-address">
+                                curtis4vancouver@gmail.com
                             </a>
                             <p class="gateway-email-notice">
                                 To protect focus and project execution, phone inquiries are not accepted. Qualified private investors and prospective partners are invited to email Wayne directly for prompt, confidential review.
@@ -424,7 +401,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         </div>
 
                         <div class="cta-button-group">
-                            <a href="mailto:wayne@keystonepossibilities.ca" class="btn-primary-gold btn-email-wayne">
+                            <a href="mailto:curtis4vancouver@gmail.com" class="btn-primary-gold btn-email-wayne">
                                 Email Wayne Stevenson Directly &rarr;
                             </a>
                             <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-secondary-glass">

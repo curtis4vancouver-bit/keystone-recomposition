@@ -111,7 +111,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <span class="license-white" style="color: #f6d365 !important; font-weight: 600; font-size: 0.80rem; display: block; margin-bottom: 4px;">🏛️ Certified BC Housing Builder #52603</span>
                         <a href="/founder/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 4px; font-size: 0.80rem; transition: color 0.2s ease;">• Wayne Stevenson Builder Dossier</a>
                         <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener noreferrer" class="sister-flagship-link" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Keystone Possibilities Ltd. ↗</a>
-                        <a href="mailto:wayne@keystonepossibilities.ca" style="color: #00f0ff !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Direct Email: wayne@keystonepossibilities.ca</a>
+                        <a href="mailto:curtis4vancouver@gmail.com" style="color: #00f0ff !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Direct Email: curtis4vancouver@gmail.com</a>
                         <a href="/contact/" class="consultation-sub-link" style="color: #94A3B8 !important; font-size: 0.80rem; display: block; text-decoration: none !important;">• Schedule Fiduciary Consultation</a>
                     </div>
 

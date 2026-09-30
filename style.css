@@ -9,7 +9,7 @@ Template: astra
    Keystone Dark Quiet Luxury System Tokens & Variables
    ========================================================================== */
 :root {
-  --bg-primary: #04070d;
+  --bg-primary: #000000;
   --bg-surface: rgba(15, 23, 42, 0.95);
   --bg-card: rgba(10, 15, 25, 0.85);
   --gold-primary: #d4af37;
@@ -4878,8 +4878,8 @@ footer.site-footer,
 body.blog,
 body.archive,
 .keystone-intel-archive {
-  background-color: #04070D !important;
-  background: #04070D !important;
+  background-color: #000000 !important;
+  background: #000000 !important;
 }
 
 body.blog #content,
@@ -4891,8 +4891,8 @@ body.archive #primary,
 .keystone-intel-archive #main {
   margin: 0 !important;
   padding: 0 !important;
-  background-color: #04070D !important;
-  background: #04070D !important;
+  background-color: #000000 !important;
+  background: #000000 !important;
   width: 100% !important;
 }
 
@@ -5772,7 +5772,8 @@ body.archive #content > .ast-container {
 /* Global Home Page & Protocols Page Container Reset */
 .keystone-cyber-home,
 .keystone-cyber-protocols {
-  background-color: #030712 !important;
+  background-color: #000000 !important;
+  background: #000000 !important;
   color: #f8fafc !important;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
@@ -5793,6 +5794,13 @@ body.archive #content > .ast-container {
 }
 
 /* Hide legacy Astra footer and unnecessary container padding on cyber home and protocols */
+body.home,
+body.page-template-template-ai-protocols,
+body.page-template-page-ai-protocols {
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
 body.home .site-footer,
 body.page-template-template-ai-protocols .site-footer,
 .keystone-cyber-home ~ .site-footer,
@@ -5829,7 +5837,8 @@ body.page-template-template-ai-protocols #content > .ast-container {
 .cyber-hero-section {
   position: relative;
   padding: 85px 0 50px 0;
-  background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.12) 0%, rgba(3, 7, 18, 0.98) 75%);
+  background-color: #000000 !important;
+  background: #000000 !important;
   border-bottom: 1px solid rgba(56, 189, 248, 0.15);
 }
 
@@ -6454,7 +6463,8 @@ body.page-template-template-ai-protocols #content > .ast-container {
 /* 4. AI Protocols & Tiered Knowledge Blueprint ($49 / $199 / $800) */
 .cyber-funnel-section {
   padding: 80px 0;
-  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, rgba(3, 7, 18, 0.98) 80%);
+  background-color: #000000 !important;
+  background: #000000 !important;
   border-top: 1px solid rgba(56, 189, 248, 0.15);
 }
 
@@ -6661,7 +6671,8 @@ body.page-template-template-ai-protocols #content > .ast-container {
   border-top: 1px solid rgba(56, 189, 248, 0.15);
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 10%, rgba(56, 189, 248, 0.04) 0%, rgba(3, 7, 18, 0.98) 70%);
+  background-color: #000000 !important;
+  background: #000000 !important;
 }
 
 .intel-carousel-wrapper {
@@ -7302,7 +7313,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   top: 64px;
   left: 0;
   width: 100%;
-  background: rgba(4, 7, 13, 0.98);
+  background: rgba(0, 0, 0, 0.98);
   border-bottom: 1px solid rgba(56, 189, 248, 0.2);
   padding: 20px;
   flex-direction: column;
@@ -7339,7 +7350,8 @@ body.page-template-template-ai-protocols #content > .ast-container {
 /* 2. SEAMLESS CLEAN FOOTER STYLING (media_1790708837539.png) */
 .wayne-preferred-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  background: #04070D !important;
+  background-color: #000000 !important;
+  background: #000000 !important;
   padding: 40px 24px 24px !important;
   color: #94A3B8 !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
@@ -7554,7 +7566,8 @@ body.page-template-template-ai-protocols #content > .ast-container {
 .ast-desktop-header,
 .main-header-bar,
 .ast-theme-transparent-header .main-header-bar {
-  background: #030712 !important;
+  background-color: #000000 !important;
+  background: #000000 !important;
   border-bottom: 1px solid rgba(56, 189, 248, 0.2) !important;
 }
 
@@ -8981,8 +8994,14 @@ body.page-template-template-ai-protocols #content > .ast-container {
   margin-top: 2px;
 }
 
+.pillar-body {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+
 .pillar-card-footer {
-  margin-top: auto;
+  margin-top: auto !important;
   padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -9597,6 +9616,9 @@ body,
 .content-area,
 .site-footer,
 .wayne-preferred-footer,
+.keystone-cyber-home,
+.keystone-cyber-protocols,
+.keystone-intel-archive,
 .keystone-sonic-universe-page,
 .keystone-investments-page,
 .keystone-lifestyle-page,

@@ -94,7 +94,7 @@ class TestWayneFooterOverhaul:
         assert "Wayne Stevenson // Principal Builder" in self.content
         assert "52603" in self.content
         assert "keystonepossibilities.ca" in self.content
-        assert "wayne@keystonepossibilities.ca" in self.content
+        assert "curtis4vancouver@gmail.com" in self.content
 
     def test_empire_network_single_line_bar(self):
         assert "KEYSTONE EMPIRE NETWORK" in self.content
@@ -136,6 +136,32 @@ class TestStyleCssPureBlackAndTokens:
         assert ".quant-principles-grid" in self.css or ".quant-pillars-grid" in self.css
         assert ".fiduciary-treasury-notice" in self.css
 
+    def test_first_three_pages_pure_black_css(self):
+        """Asserts .keystone-cyber-home, .keystone-cyber-protocols, and .keystone-intel-archive have #000000 !important in style.css."""
+        assert ".keystone-cyber-home" in self.css
+        assert ".keystone-cyber-protocols" in self.css
+        assert ".keystone-intel-archive" in self.css
+
+        match = re.search(r'(\.keystone-cyber-home[^{]*)\{([^}]+)\}', self.css, re.DOTALL)
+        assert match is not None, "Rule block containing .keystone-cyber-home not found in style.css"
+        block = match.group(2)
+        assert "#000000 !important" in block, "Pure black #000000 !important missing from cyber pages rule"
+
+    def test_pillar_cards_bottom_alignment_css(self):
+        """Asserts .pillar-body flex-grow: 1 and .pillar-card-footer margin-top: auto in style.css."""
+        assert ".pillar-body" in self.css
+        assert ".pillar-card-footer" in self.css
+
+        body_match = re.search(r'\.pillar-body\s*\{([^}]+)\}', self.css)
+        assert body_match is not None, ".pillar-body rule block not found in style.css"
+        assert "flex-grow: 1" in body_match.group(1) or "flex: 1" in body_match.group(1), \
+            ".pillar-body must have flex-grow: 1"
+
+        footer_match = re.search(r'\.pillar-card-footer\s*\{([^}]+)\}', self.css)
+        assert footer_match is not None, ".pillar-card-footer rule block not found in style.css"
+        assert "margin-top: auto" in footer_match.group(1), \
+            ".pillar-card-footer must have margin-top: auto"
+
 
 class TestTemplateInvestmentsOverhaul:
     """Validates the full template-investments.php overhaul."""
@@ -152,12 +178,9 @@ class TestTemplateInvestmentsOverhaul:
     def test_universal_cyan_gold_gradient_heading(self):
         assert "cyan-gold-gradient-text" in self.content
 
-    def test_four_card_telemetry_bar(self):
-        assert "investments-telemetry-grid" in self.content
-        assert "52603" in self.content
-        assert "EV &ge; +15%" in self.content or "EV >= +15%" in self.content
-        assert "40% CAD" in self.content
-        assert "BC &bull; MEX &bull; EU" in self.content or "BC • MEX • EU" in self.content
+    def test_four_card_telemetry_bar_removed(self):
+        """Invariant: The 4-card telemetry bar (investments-telemetry-grid) is removed and hero is clean."""
+        assert "investments-telemetry-grid" not in self.content
 
     def test_top_spotlight_quant_trading_section(self):
         assert "trading_terminal_luxury.jpg" in self.content
@@ -202,9 +225,10 @@ class TestTemplateInvestmentsOverhaul:
         assert "Data &amp; Code Sovereignty" in self.content or "Data & Code Sovereignty" in self.content
 
     def test_private_executive_contact_gateway(self):
-        assert "wayne@keystonepossibilities.ca" in self.content
+        assert "curtis4vancouver@gmail.com" in self.content
         assert "Email Wayne Stevenson Directly" in self.content
         assert "keystonepossibilities.ca" in self.content
+        assert "/contact/" in self.content
 
     def test_strictly_zero_phone_numbers_invariant(self):
         """Invariant: Strictly NO phone numbers allowed on template-investments.php."""
