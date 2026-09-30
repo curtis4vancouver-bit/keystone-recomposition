@@ -1,8 +1,8 @@
 <?php
 /**
  * Template Name: Keystone Contact
- * Description: Executive Consultation, General Contracting BC #52603 & TooLost Licensing Inquiries
- * Version: 3.6.0 (High-End Dark Quiet Luxury Edition)
+ * Description: Executive Consultation, General Contracting BC #52603 & Spotify Artist Portal
+ * Version: 3.7.0 (High-End Dark Quiet Luxury Edition)
  * Stamped: September 2026
  *
  * @package KeystoneRecompositionChild
@@ -26,7 +26,6 @@ if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_
     } else {
         $name     = sanitize_text_field( $_POST['contact_name'] ?? '' );
         $email    = sanitize_email( $_POST['contact_email'] ?? '' );
-        $entity   = sanitize_text_field( $_POST['contact_entity'] ?? '' );
         $category = sanitize_text_field( $_POST['contact_category'] ?? '' );
         $budget   = sanitize_text_field( $_POST['contact_budget'] ?? '' );
         $details  = sanitize_textarea_field( $_POST['contact_message'] ?? '' );
@@ -39,7 +38,6 @@ if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_
             $subject = '[Keystone Recomposition Inquiry] ' . ( $category ? $category : 'Executive Consultation' ) . ' - ' . $name;
             $body = "Name: {$name}\n";
             $body .= "Email: {$email}\n";
-            $body .= "Entity/Company: {$entity}\n";
             $body .= "Category: {$category}\n";
             $body .= "Budget/Scale: {$budget}\n\n";
             $body .= "Project Overview:\n{$details}\n\n";
@@ -65,7 +63,7 @@ if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_
             }
 
             $feedback_status = 'success';
-            $feedback_message = 'Thank you, ' . esc_html( $name ) . '. Your inquiry has been received. Wayne Stevenson will review and respond within our 24–48 hour executive SLA.';
+            $feedback_message = 'Thank you, ' . esc_html( $name ) . '. Your inquiry has been routed directly to Wayne Stevenson (curtis4vancouver@gmail.com). You will receive a response within 24–48 hours.';
         }
     }
 }
@@ -91,11 +89,11 @@ $theme_uri = get_stylesheet_directory_uri();
 
                     <h1 class="contact-main-title">
                         Executive Inquiries &amp;<br>
-                        <span class="cyan-gradient-text">Private Consultations</span>
+                        <span class="cyan-gold-gradient-text">Private Consultations</span>
                     </h1>
 
                     <p class="contact-hero-subtitle">
-                        Direct builder-to-client consultations for sovereign AI workstation architecture, British Columbia residential general contracting under Bill 44, and TooLost commercial sync licensing.
+                        Direct builder-to-client consultations for sovereign AI workstation architecture, British Columbia residential general contracting under Bill 44, and official Spotify catalog streaming.
                     </p>
                 </header>
 
@@ -103,23 +101,23 @@ $theme_uri = get_stylesheet_directory_uri();
                 <section class="contact-channels-section">
                     <div class="contact-channels-grid">
                         
-                        <!-- CHANNEL 1: EXECUTIVE WORKSTATION MASTERCLASS -->
+                        <!-- CHANNEL 1: SPOTIFY OFFICIAL ARTIST CHANNEL -->
                         <div class="contact-channel-card">
                             <div class="channel-card-top">
-                                <span class="channel-tag-gold">$800 MASTERCLASS</span>
-                                <span class="channel-icon">⚡</span>
+                                <span class="channel-tag-gold">SPOTIFY ARTIST</span>
+                                <span class="channel-icon">🎵</span>
                             </div>
-                            <h3 class="channel-title">Executive Workstation Architecture</h3>
+                            <h3 class="channel-title">Spotify Official Artist Channel</h3>
                             <p class="channel-desc">
-                                Bespoke 1-on-1 architecture consultation with Wayne Stevenson. Full deployment of custom Tauri sovereign workstation, 16-agent FastMCP swarms, and Chrome CDP automated production pipelines.
+                                Stream Wayne Stevenson's catalog of 22 official releases (20 studio albums) and 216 verified recordings distributed worldwide via TooLost Digital on Spotify. High-fidelity ambient, deep house, and electronic architecture.
                             </p>
                             <ul class="channel-features">
-                                <li>&bull; 1-on-1 Screen-to-Screen Blueprint Walkthrough</li>
-                                <li>&bull; Complete Local-First Codebase &amp; Tools Provided</li>
-                                <li>&bull; Zero-Cloud SaaS Dependency Configuration</li>
+                                <li>&bull; 22 Official Releases &amp; 216 Master Recordings</li>
+                                <li>&bull; Spotify Verified Official Artist Channel</li>
+                                <li>&bull; Full Tracklists, ISRC &amp; Musixmatch Synced Rights</li>
                             </ul>
                             <div class="channel-action">
-                                <a href="#inquiry-form" class="channel-btn-gold">Book $800 Masterclass &darr;</a>
+                                <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener" class="channel-btn-gold">Stream on Spotify &nearr;</a>
                             </div>
                         </div>
 
@@ -139,31 +137,27 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <li>&bull; Pre-Construction Feasibility &amp; Land Assembly</li>
                             </ul>
                             <div class="channel-action">
-                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="channel-btn-cyan">
-                                    Visit Keystone Possibilities Ltd. &nearr;
-                                </a>
+                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="channel-btn-cyan">Visit Keystone Possibilities Ltd. &nearr;</a>
                             </div>
                         </div>
 
-                        <!-- CHANNEL 3: TOOLOST COMMERCIAL SYNC LICENSING -->
+                        <!-- CHANNEL 3: EXECUTIVE WORKSTATION MASTERCLASS -->
                         <div class="contact-channel-card">
                             <div class="channel-card-top">
-                                <span class="channel-tag-gold">TOOLOST ARTIST</span>
-                                <span class="channel-icon">🎵</span>
+                                <span class="channel-tag-gold">$800 MASTERCLASS</span>
+                                <span class="channel-icon">⚡</span>
                             </div>
-                            <h3 class="channel-title">Commercial Sync &amp; Master Licensing</h3>
+                            <h3 class="channel-title">Executive Workstation Architecture</h3>
                             <p class="channel-desc">
-                                Commercial synchronization and master use licensing across Wayne Stevenson's catalog of 22 official releases (20 studio albums) (216 master recordings) distributed worldwide by TooLost Digital.
+                                Bespoke 1-on-1 architecture consultation with Wayne Stevenson. Full deployment of custom Tauri sovereign workstation, 16-agent FastMCP swarms, and Chrome CDP automated production pipelines.
                             </p>
                             <ul class="channel-features">
-                                <li>&bull; Film, Television, Commercial &amp; Video Game Placements</li>
-                                <li>&bull; Functional Ambient &amp; Deep House OST Soundtracks</li>
-                                <li>&bull; Worldwide ISRC &amp; Musixmatch Verified Rights</li>
+                                <li>&bull; 1-on-1 Screen-to-Screen Blueprint Walkthrough</li>
+                                <li>&bull; Complete Local-First Codebase &amp; Tools Provided</li>
+                                <li>&bull; Zero-Cloud SaaS Dependency Configuration</li>
                             </ul>
                             <div class="channel-action">
-                                <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="channel-btn-gold">
-                                    Browse 22-Release Catalog &rarr;
-                                </a>
+                                <a href="#inquiry-form" class="channel-btn-gold">Book $800 Masterclass &darr;</a>
                             </div>
                         </div>
 
@@ -193,15 +187,14 @@ $theme_uri = get_stylesheet_directory_uri();
                             <?php wp_nonce_field( 'keystone_contact_action', 'keystone_contact_nonce' ); ?>
                             <input type="hidden" name="keystone_contact_submitted" value="1">
 
+                            <!-- Row 1: Name and Email -->
                             <div class="form-grid-two">
-                                <!-- Full Name -->
                                 <div class="form-field-group">
                                     <label for="contact_name" class="luxury-form-label">Full Name <span class="required-asterisk">*</span></label>
                                     <input type="text" id="contact_name" name="contact_name" required 
                                            placeholder="e.g. Marcus Vance" class="luxury-form-input">
                                 </div>
 
-                                <!-- Email Address -->
                                 <div class="form-field-group">
                                     <label for="contact_email" class="luxury-form-label">Email Address <span class="required-asterisk">*</span></label>
                                     <input type="email" id="contact_email" name="contact_email" required 
@@ -209,46 +202,38 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                             </div>
 
+                            <!-- Row 2: Category and Budget -->
                             <div class="form-grid-two">
-                                <!-- Company / Entity -->
-                                <div class="form-field-group">
-                                    <label for="contact_entity" class="luxury-form-label">Company / Entity Name</label>
-                                    <input type="text" id="contact_entity" name="contact_entity" 
-                                           placeholder="e.g. Vance Capital / Infill Group" class="luxury-form-input">
-                                </div>
-
-                                <!-- Inquiry Category -->
                                 <div class="form-field-group">
                                     <label for="contact_category" class="luxury-form-label">Inquiry Category <span class="required-asterisk">*</span></label>
                                     <select id="contact_category" name="contact_category" required class="luxury-form-select">
-                                        <option value="" disabled selected>Select Engagement Type...</option>
+                                        <option value="" disabled selected>Select Inquiry Category...</option>
                                         <option value="Executive Workstation Architecture ($800 Masterclass)">Executive Workstation Architecture ($800 Masterclass)</option>
-                                        <option value="Bill 44 General Contracting (BC #52603)">Bill 44 General Contracting &amp; Infill (BC #52603)</option>
-                                        <option value="TooLost Commercial Sync & Master Licensing">TooLost Commercial Sync &amp; Master Licensing</option>
-                                        <option value="Strategic Land Assembly / Co-Investment">Strategic Land Assembly / Infill Co-Investment</option>
-                                        <option value="General Executive Inquiry">General Executive Inquiry</option>
+                                        <option value="BC Bill 44 General Contracting & Infill (BC Builder #52603)">BC Bill 44 General Contracting &amp; Infill (BC Builder #52603)</option>
+                                        <option value="Private Real Estate Infill Investment & Co-Development">Private Real Estate Infill Investment &amp; Co-Development</option>
+                                        <option value="Spotify Music Catalog, Sync & Audio Architecture">Spotify Music Catalog, Sync &amp; Audio Architecture</option>
+                                        <option value="General Executive Consultation">General Executive Consultation</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field-group">
+                                    <label for="contact_budget" class="luxury-form-label">Project Budget / Capital Allocation</label>
+                                    <select id="contact_budget" name="contact_budget" class="luxury-form-select">
+                                        <option value="" disabled selected>Select Capital Allocation / Budget...</option>
+                                        <option value="$800 CAD — Executive Workstation Architecture Masterclass">$800 CAD — Executive Workstation Architecture Masterclass</option>
+                                        <option value="$25,000 – $100,000 CAD — Autonomous AI Software & Music Sync">$25,000 &ndash; $100,000 CAD — Autonomous AI Software &amp; Music Sync</option>
+                                        <option value="$100,000 – $500,000 CAD — Private Infill Co-Investment & Feasibility">$100,000 &ndash; $500,000 CAD — Private Infill Co-Investment &amp; Feasibility</option>
+                                        <option value="$500,000 – $2,500,000+ CAD — Turnkey Residential Multiplex Build">$500,000 &ndash; $2,500,000+ CAD — Turnkey Residential Multiplex Build</option>
+                                        <option value="Undisclosed / Private Discussion with Wayne Stevenson">Undisclosed / Private Discussion with Wayne Stevenson</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <!-- Budget / Scope -->
-                            <div class="form-field-group">
-                                <label for="contact_budget" class="luxury-form-label">Project Budget / Capital Allocation</label>
-                                <select id="contact_budget" name="contact_budget" class="luxury-form-select">
-                                    <option value="" disabled selected>Select Scope / Budget Allocation...</option>
-                                    <option value="$800 CAD (Workstation Architecture Masterclass)">$800 CAD — Workstation Masterclass Consultation</option>
-                                    <option value="$25,000 - $100,000 CAD (Music Licensing / FastMCP Systems)">$25,000 &ndash; $100,000 CAD — Custom FastMCP Swarms / Commercial Sync</option>
-                                    <option value="$100,000 - $500,000 CAD (Infill Pre-Construction / Design)">$100,000 &ndash; $500,000 CAD — Infill Pre-Construction &amp; Architectural Design</option>
-                                    <option value="$500,000 - $2,500,000+ CAD (Residential Multiplex Construction)">$500,000 &ndash; $2,500,000+ CAD — Full Turnkey Multiplex Build</option>
-                                    <option value="Undisclosed / Direct Discussion with Wayne">Undisclosed / Private Discussion with Wayne</option>
-                                </select>
-                            </div>
-
-                            <!-- Project Overview / Message -->
+                            <!-- Row 3: Overview & Requirements -->
                             <div class="form-field-group">
                                 <label for="contact_message" class="luxury-form-label">Project Overview &amp; Requirements <span class="required-asterisk">*</span></label>
-                                <textarea id="contact_message" name="contact_message" rows="5" required 
-                                          placeholder="Outline your project scope, timeline, land coordinates (if construction), or workstation requirements..." class="luxury-form-textarea"></textarea>
+                                <textarea id="contact_message" name="contact_message" rows="3" required 
+                                          placeholder="Briefly outline your project scope, location (if construction), or workstation requirements..." class="luxury-form-textarea"></textarea>
                             </div>
 
                             <!-- Submit Button -->
@@ -257,7 +242,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     Transmit Executive Inquiry &rarr;
                                 </button>
                                 <p class="form-encryption-notice">
-                                    🔒 TLS Encrypted &bull; Fiduciary Non-Disclosure Standard &bull; Direct Personal Routing to Wayne Stevenson
+                                    🔒 TLS Encrypted &bull; Fiduciary Non-Disclosure Standard &bull; Direct Personal Routing to curtis4vancouver@gmail.com
                                 </p>
                             </div>
                         </form>
