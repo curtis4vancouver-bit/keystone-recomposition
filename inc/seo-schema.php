@@ -494,8 +494,8 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
             $data['@graph'][] = $person_node;
         }
 
-        // Connect Article, NewsArticle, BlogPosting, MedicalWebPage, WebPage author to Wayne's Person ID
-        // and attach extracted PubMed citations to Article/MedicalWebPage nodes
+        // Connect Article, NewsArticle, BlogPosting, TechArticle, WebPage author to Wayne's Person ID
+        // and attach extracted PubMed citations to Article/TechArticle nodes
         $citations = array();
         if ( is_singular( 'post' ) && function_exists( 'keystone_extract_pubmed_citations' ) ) {
             global $post;
@@ -507,11 +507,11 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
         foreach ( $data['@graph'] as $idx => $node ) {
             if ( isset( $node['@type'] ) ) {
                 $types = (array) $node['@type'];
-                if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'MedicalWebPage', 'WebPage' ) ) ) {
+                if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage' ) ) ) {
                     if ( empty( $node['author'] ) || ( isset( $node['author']['@type'] ) && 'Person' === $node['author']['@type'] ) ) {
                         $data['@graph'][ $idx ]['author'] = array( '@id' => $person_id );
                     }
-                    if ( ! empty( $citations ) && array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'MedicalWebPage' ) ) ) {
+                    if ( ! empty( $citations ) && array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle' ) ) ) {
                         $existing_citations = isset( $node['citation'] ) ? (array) $node['citation'] : array();
                         $data['@graph'][ $idx ]['citation'] = array_merge( $existing_citations, $citations );
                     }
@@ -736,7 +736,7 @@ function keystone_recomposition_child_youtube_schema() {
     }
     $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
     // GSC Video Indexing Separation: ONLY emit VideoObject schema on dedicated watch-* pages
-    // where the video is the dominant hero element above the fold. Blog posts emit Article/MedicalWebPage.
+    // where the video is the dominant hero element above the fold. Blog posts emit Article/TechArticle.
     if ( ! $is_watch_page ) {
         return;
     }
@@ -871,51 +871,7 @@ function keystone_extract_pubmed_citations( string $content ): array {
     return $citations;
 }
 
-/**
- * 8.5 Dynamic MedicalWebPage Schema with Automated PubMed Citations
- */
-function keystone_recomposition_child_medical_schema() {
-    if ( ! is_singular( 'post' ) ) {
-        return;
-    }
-    
-    global $post;
-    if ( ! $post ) {
-        return;
-    }
 
-    $citations = keystone_extract_pubmed_citations( (string) $post->post_content );
-    
-    $medical_schema = array(
-        '@context'     => 'https://schema.org',
-        '@type'        => 'MedicalWebPage',
-        'name'         => esc_attr( get_the_title( $post->ID ) ),
-        'url'          => esc_url( get_permalink( $post->ID ) ),
-        'lastReviewed' => esc_attr( get_the_modified_date( 'Y-m-d', $post->ID ) ),
-        'reviewedBy'   => array(
-            '@type'    => 'Person',
-            '@id'      => 'https://keystonerecomposition.com/#person',
-            'name'     => 'Wayne Stevenson',
-            'jobTitle' => 'Founder & Lead Protocol Architect',
-        ),
-        'specialty'    => 'https://schema.org/Endocrine',
-        'audience'     => array(
-            '@type'        => 'MedicalAudience',
-            'audienceType' => 'Health Enthusiasts and Patients',
-        ),
-    );
-
-    if ( ! empty( $citations ) ) {
-        $medical_schema['citation'] = $citations;
-    }
-    
-    echo "\n<!-- Keystone MedicalWebPage Schema with PubMed Citations -->\n";
-    echo "<script type=\"application/ld+json\">\n";
-    echo wp_json_encode( $medical_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ) . "\n";
-    echo "</script>\n";
-    echo "<!-- End MedicalWebPage Schema -->\n\n";
-}
-// Retired: add_action( 'wp_head', 'keystone_recomposition_child_medical_schema', 25 );
 
 /**
  * 9. Hook custom media metadata into Rank Math PRO's Video Sitemap Generator
@@ -1465,11 +1421,11 @@ add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );
  */
 
 /**
- * 14. Inject 2026 WebApplication & FAQPage Schema for Calculator Pages
- * Maximizes global Google Rich Results in US, UK, CA, and AU for high-intent queries.
+ * 14. Inject 2026 SoftwareApplication & FAQPage Schema for AI Protocols Page
+ * Maximizes global Google Rich Results for high-intent AI workstation queries.
  */
-// Retired: add_action( 'wp_head', 'keystone_inject_calculator_web_app_schema', 15 );
-function keystone_inject_calculator_web_app_schema() {
+add_action( 'wp_head', 'keystone_inject_ai_protocols_software_schema', 15 );
+function keystone_inject_ai_protocols_software_schema() {
     if ( ! is_page() ) {
         return;
     }

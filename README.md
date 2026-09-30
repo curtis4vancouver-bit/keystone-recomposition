@@ -1,3 +1,10 @@
+---
+name: "Keystone Recomposition \u2014 Sovereign Child Theme"
+description: "**Sovereign multi-domain enterprise engineering platform for Keystone Recomposition.**"
+folder: "09_Keystone_websites/themes/keystone-recomposition-child"
+tags: ["keystone_websites", "52603", "000000", "050505", "ffffff", "38bdf8", "vector_brain"]
+last_updated: "2026-09-29 18:55:55"
+---
 # Keystone Recomposition — Sovereign Child Theme
 
 [![WordPress Child Theme](https://img.shields.io/badge/WordPress-6.4%2B-blue.svg)](https://wordpress.org)

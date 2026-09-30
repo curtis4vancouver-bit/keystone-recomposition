@@ -93,10 +93,10 @@ class TestPhase2PubMedExtraction:
         assert "ScholarlyArticle" in self.content
         assert "PMID" in self.content
 
-    def test_medical_schema_includes_citations(self):
-        """Ensures MedicalWebPage schema assigns citation array from extracted PMIDs."""
+    def test_schema_includes_citations(self):
+        """Ensures schema assigns citation array from extracted PMIDs to entity graph."""
         assert "$citations = keystone_extract_pubmed_citations" in self.content
-        assert "$medical_schema['citation'] = $citations;" in self.content
+        assert "$data['@graph'][ $idx ]['citation'] = array_merge( $existing_citations, $citations );" in self.content
 
 
 class TestPhase2ArchiveBloatElimination:

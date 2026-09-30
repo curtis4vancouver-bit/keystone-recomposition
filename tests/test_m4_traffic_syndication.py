@@ -27,7 +27,8 @@ import pytest
 CHILD_THEME_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 STYLE_CSS_PATH = os.path.join(CHILD_THEME_DIR, "style.css")
 CONTENT_BLOCKS_PATH = os.path.join(CHILD_THEME_DIR, "inc", "content-blocks.php")
-CALCULATORS_PATH = os.path.join(CHILD_THEME_DIR, "inc", "calculators.php")
+SONIC_CATALOG_PATH = os.path.join(CHILD_THEME_DIR, "inc", "sonic-catalog-data.php")
+FOOTER_PATH = os.path.join(CHILD_THEME_DIR, "footer.php")
 INDEXING_API_PATH = os.path.join(CHILD_THEME_DIR, "inc", "indexing-api.php")
 TEMPLATE_SONIC_PATH = os.path.join(CHILD_THEME_DIR, "template-sonic-universe.php")
 
@@ -75,13 +76,12 @@ class TestM4VideoTheaterBox:
 class TestM4GlassmorphicAudioDecks:
     """Verifies Sonic Universe discography hub and streaming pills."""
 
-    def test_sonic_universe_shortcode_registration(self):
-        """Validates [keystone_sonic_universe] shortcode."""
-        with open(CALCULATORS_PATH, "r", encoding="utf-8") as f:
+    def test_sonic_universe_catalog_data_and_registry(self):
+        """Validates Sonic Universe 22-release discography data store."""
+        with open(SONIC_CATALOG_PATH, "r", encoding="utf-8") as f:
             php = f.read()
 
-        assert "keystone_sonic_universe_shortcode" in php
-        assert "add_shortcode( 'keystone_sonic_universe', 'keystone_sonic_universe_shortcode' );" in php
+        assert "keystone_get_all_albums" in php
         assert "Concrete Foundations" in php
         assert "Resonantia: 10 Frequencies of the Rebuild" in php
         assert "The 205 Marker" in php
@@ -89,12 +89,13 @@ class TestM4GlassmorphicAudioDecks:
         assert "https://www.youtube.com/@KeyStoneRecomposition" in php
 
     def test_template_sonic_universe_file_exists(self):
-        """Validates template-sonic-universe.php exists and renders shortcode."""
+        """Validates template-sonic-universe.php exists and renders discography."""
         assert os.path.isfile(TEMPLATE_SONIC_PATH)
         with open(TEMPLATE_SONIC_PATH, "r", encoding="utf-8") as f:
             content = f.read()
         assert "Template Name: Keystone Sonic Universe" in content
-        assert "do_shortcode( '[keystone_sonic_universe]' )" in content or "do_shortcode('[keystone_sonic_universe]')" in content
+        assert "keystone_get_all_albums" in content
+        assert "22 Official Releases" in content
 
 
 # ==============================================================================
@@ -104,14 +105,13 @@ class TestM4GlassmorphicAudioDecks:
 class TestM4CrossChannelTrafficSyndication:
     """Verifies YouTube subscription CTAs, partner links, and 3D pill buttons."""
 
-    def test_dual_youtube_subscribe_buttons_appended(self):
-        """Validates automatic injection of dual YouTube subscription CTAs."""
-        with open(CONTENT_BLOCKS_PATH, "r", encoding="utf-8") as f:
+    def test_dual_youtube_subscribe_buttons_in_footer(self):
+        """Validates automatic injection of dual YouTube subscription CTAs in footer."""
+        with open(FOOTER_PATH, "r", encoding="utf-8") as f:
             php = f.read()
 
-        assert "keystone_recomposition_child_append_subscribe_buttons" in php
-        assert "https://www.youtube.com/@keystonerecomposition?sub_confirmation=1" in php
-        assert "https://www.youtube.com/@keystoneprotocols?sub_confirmation=1" in php
+        assert "https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" in php
+        assert "https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" in php
 
     def test_keystone_empire_sister_site_backlink(self):
         """Validates standardized footer partner backlink."""

@@ -33,14 +33,14 @@ get_header();
 
                 <div class="action-grid" style="display: flex; flex-direction: column; gap: 16px; justify-content: center; align-items: center;">
                     <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
-                        <a href="/ai-protocols/" class="btn-luxury-gold" style="display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #f6d365 50%, #aa820a 100%); color: #030712; font-weight: 800; font-size: 1.05rem; padding: 16px 36px; border-radius: 9999px; text-decoration: none; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);">
+                        <a href="/ai-protocols/" class="btn-luxury-gold" style="display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #f6d365 50%, #aa820a 100%); color: #000000; font-weight: 800; font-size: 1.05rem; padding: 16px 36px; border-radius: 9999px; text-decoration: none; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);">
                             Explore AI Protocols &amp; Swarms →
                         </a>
-                        <a href="/sonic-universe/" class="btn-luxury-glass" style="display: inline-block; background: rgba(15, 23, 42, 0.8); color: #f8fafc; border: 1px solid rgba(212, 175, 55, 0.35); font-weight: 700; font-size: 1.05rem; padding: 16px 36px; border-radius: 9999px; text-decoration: none; backdrop-filter: blur(12px);">
+                        <a href="/sonic-universe/" class="btn-luxury-glass" style="display: inline-block; background: rgba(10, 10, 10, 0.95); color: #f8fafc; border: 1px solid rgba(212, 175, 55, 0.35); font-weight: 700; font-size: 1.05rem; padding: 16px 36px; border-radius: 9999px; text-decoration: none; backdrop-filter: blur(12px);">
                             🎵 Stream Sonic Universe (22 Releases) →
                         </a>
                     </div>
-                    <a href="/about-the-founder/" style="color: #00f0ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; margin-top: 10px;">
+                    <a href="/founder/" style="color: #00f0ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; margin-top: 10px;">
                         Learn About Founder Wayne Stevenson →
                     </a>
                 </div>

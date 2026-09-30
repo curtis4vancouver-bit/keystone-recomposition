@@ -89,9 +89,7 @@ class TestTier2SchemaAndRichResults:
             "Person",
             "MusicGroup",
             "MusicAlbum",
-            "MedicalWebPage",
             "VideoObject",
-            "WebApplication",
             "FAQPage"
         ]
         for entity in required_entities:
@@ -199,4 +197,4 @@ class TestTier5ForensicIntegrity:
         assert os.path.isfile(os.path.join(CHILD_THEME_DIR, "style.css"))
         assert os.path.isfile(os.path.join(CHILD_THEME_DIR, "functions.php"))
         assert os.path.isfile(os.path.join(CHILD_THEME_DIR, "template-sonic-universe.php"))
-        assert os.path.isfile(os.path.join(CHILD_THEME_DIR, "template-calculators.php"))
+        assert os.path.isfile(os.path.join(CHILD_THEME_DIR, "template-ai-protocols.php"))

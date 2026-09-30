@@ -967,7 +967,7 @@ function keystone_recomposition_add_sister_site_backlink() {
     return;
     ?>
     <!-- Keystone Empire Network Standardized Footer Bar -->
-    <div class="keystone-empire-footer-bar" style="background:#04070d; border-top:1px solid rgba(196,162,101,0.25); padding:16px 20px; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:#94a3b8; font-size:0.82rem;">
+    <div class="keystone-empire-footer-bar" style="background:#000000; border-top:1px solid rgba(196,162,101,0.25); padding:16px 20px; text-align:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:#94a3b8; font-size:0.82rem;">
         <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
             <div style="display:flex; align-items:center; gap:10px; text-align:left;">
                 <span style="color:#c4a265; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; font-size:0.78rem; display:inline-flex; align-items:center; gap:6px;">

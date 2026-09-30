@@ -48,7 +48,7 @@ class TestM3MultiEntityKnowledgeGraph:
 
         # Check Organization properties
         assert "https://keystonerecomposition.com/#organization" in content
-        assert "HealthAndBeautyBusiness" in content
+        assert "Organization" in content
         assert "Keystone Empire" in content
         assert "https://keystonepossibilities.ca/#parent-organization" in content
         assert "TOOLOST3000939655" in content
@@ -68,11 +68,11 @@ class TestM3MultiEntityKnowledgeGraph:
         assert "Wayne Stevenson" in content
         assert "Founder & Managing Director" in content
         assert "https://www.linkedin.com/in/wayne-stevenson" in content
-        assert "Metabolic Health Optimization" in content
-        assert "Peptide Therapeutics" in content
+        assert "Quantitative Prediction Markets" in content
+        assert "Autonomous AI Agent Swarms" in content
         assert "Solfeggio Soundscapes" in content
-        assert "https://en.wikipedia.org/wiki/Metabolism" in content
-        assert "https://en.wikipedia.org/wiki/Peptide" in content
+        assert "Residential Construction & Building Codes" in content
+        assert "https://lims.bchousing.org/LicenceExpiryPortal/licence/52603" in content
 
     def test_music_group_and_album_schema(self):
         """Validates MusicGroup and MusicAlbum structured data nodes."""
@@ -86,28 +86,24 @@ class TestM3MultiEntityKnowledgeGraph:
         assert "The 205 Marker" in content
         assert "30027d0e-6aeb-4704-8792-a031c936c62a" in content
 
-    def test_medical_web_page_schema(self):
-        """Validates MedicalWebPage schema with Endocrine specialty and MedicalAudience."""
+    def test_zero_legacy_medical_and_calculator_schema(self):
+        """Validates zero legacy MedicalWebPage or peptide calculator schema regressions."""
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
             content = f.read()
 
-        assert "MedicalWebPage" in content
-        assert "https://schema.org/Endocrine" in content
-        assert "MedicalAudience" in content
-        assert "lastReviewed" in content
-        assert "reviewedBy" in content
+        assert "MedicalWebPage" not in content
+        assert "keystone_inject_calculator_web_app_schema" not in content
+        assert "How do I calculate peptide reconstitution" not in content
 
-    def test_calculator_web_application_and_faq_schema(self):
-        """Validates WebApplication and FAQPage schema for /calculators/ route."""
+    def test_global_city_hub_schemas(self):
+        """Validates global development and operations city hub schemas."""
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
             content = f.read()
 
-        assert "keystone_inject_calculator_web_app_schema" in content
-        assert "WebApplication" in content
-        assert "FAQPage" in content
-        assert "How do I calculate peptide reconstitution dosage with bacteriostatic water?" in content
-        assert "How many clicks on a Mounjaro or Ozempic KwikPen equal a micro-dose?" in content
-        assert "Why use a 5-day GLP-1 dosing interval instead of a 7-day schedule?" in content
+        assert "Vancouver & Sea-to-Sky" in content
+        assert "Riviera Nayarit" in content
+        assert "European Union" in content
+        assert "BC Housing Licensed Residential Builder" in content
 
 
 # ==============================================================================
@@ -122,13 +118,14 @@ class TestM3GenerativeEngineOptimization:
         with open(INDEXING_API_PATH, "r", encoding="utf-8") as f:
             content = f.read()
 
-        assert "SECTION: GENERATIVE ENGINE OPTIMIZATION (GEO) — /llms.txt Deployment" in content
+        assert "GENERATIVE ENGINE OPTIMIZATION (GEO)" in content
         assert "llms.txt" in content
-        assert "Keystone Recomposition — LLM Identity File" in content
+        assert "Keystone Recomposition" in content
         assert "Wayne Stevenson" in content
-        assert "GLP-1 Recomposition Research" in content
-        assert "Peptide Protocols & Case Studies" in content
-        assert "Wolverine Stack peptide protocol" in content
+        assert "Autonomous Multi-Agent AI Swarms & FastMCP Systems" in content
+        assert "TooLost Functional Electronic Music Catalog" in content
+        assert "Quantitative Trading & Liquid Prediction Market Intelligence" in content
+        assert "Licensed British Columbia Residential Infill Construction" in content
         assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in content
 
     def test_llms_txt_dynamic_endpoint_fallback(self):

@@ -15,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<div id="primary" class="content-area primary keystone-404-template" style="background: #030712; min-height: 75vh; display: flex; align-items: center; justify-content: center;">
+<div id="primary" class="content-area primary keystone-404-template" style="background: #000000; min-height: 75vh; display: flex; align-items: center; justify-content: center;">
     <main id="main" class="site-main" style="width: 100%;">
         <div class="ast-container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
-            <section class="error-404 not-found" style="padding: 60px 24px 80px; text-align: center; background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.06) 0%, rgba(3, 7, 18, 0.95) 75%); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);">
+            <section class="error-404 not-found" style="padding: 60px 24px 80px; text-align: center; background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.06) 0%, rgba(0, 0, 0, 0.98) 75%); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);">
                 
                 <!-- Status Pill Badge -->
                 <div class="luxury-badge-pill" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(212, 175, 55, 0.08); color: #f6d365; border: 1px solid rgba(212, 175, 55, 0.35); padding: 8px 24px; border-radius: 9999px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);">

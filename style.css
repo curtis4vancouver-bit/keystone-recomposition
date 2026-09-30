@@ -10,8 +10,8 @@ Template: astra
    ========================================================================== */
 :root {
   --bg-primary: #000000;
-  --bg-surface: rgba(15, 23, 42, 0.95);
-  --bg-card: rgba(10, 15, 25, 0.85);
+  --bg-surface: rgba(8, 8, 8, 0.95);
+  --bg-card: rgba(10, 10, 10, 0.90);
   --gold-primary: #d4af37;
   --gold-secondary: #c4a265;
   --gold-light: #f6d365;
@@ -43,7 +43,7 @@ Template: astra
 #rank-math-analytics-stats-wrapper,
 #rank-math-analytics-stats-bar,
 .rank-math-analytics-stats-bar {
-    background: rgba(10, 15, 25, 0.95) !important;
+    background: rgba(10, 10, 10, 0.95) !important;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
     color: #e2e8f0 !important;
     backdrop-filter: blur(12px) !important;
@@ -2111,7 +2111,7 @@ html body .gold-action-btn:hover {
 .ast-main-header-wrap,
 header.site-header,
 .ast-header-break-point .ast-primary-header-bar {
-  background: rgba(10, 15, 25, 0.85) !important;
+  background: rgba(10, 10, 10, 0.85) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -2692,7 +2692,7 @@ footer.site-footer,
 #rank-math-analytics-stats-wrapper,
 #rank-math-analytics-stats-bar,
 .rank-math-analytics-stats-bar {
-  background: rgba(4, 7, 13, 0.96) !important;
+  background: rgba(5, 5, 5, 0.96) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid var(--gold-border) !important;
@@ -2850,7 +2850,7 @@ footer.site-footer,
    Glassmorphic container, high-contrast typography, gold badges & cyan links
    ========================================================================== */
 .keystone-evidence-card {
-  background: rgba(10, 15, 25, 0.85) !important;
+  background: rgba(10, 10, 10, 0.85) !important;
   border: 1px solid rgba(196, 162, 101, 0.35) !important;
   border-radius: 18px !important;
   backdrop-filter: blur(12px) !important;
@@ -2896,7 +2896,7 @@ footer.site-footer,
 }
 
 .evidence-citation-row {
-  background: rgba(15, 23, 42, 0.7) !important;
+  background: rgba(10, 10, 10, 0.7) !important;
   border: 1px solid rgba(196, 162, 101, 0.2) !important;
   border-left: 4px solid #c4a265 !important;
   border-radius: 10px !important;
@@ -3279,9 +3279,9 @@ footer.site-footer,
    ========================================================================== */
 
 :root {
-  --bg-dark-obsidian: #030712;
-  --bg-slate-card: rgba(15, 23, 42, 0.92);
-  --bg-slate-elevated: rgba(30, 41, 59, 0.85);
+  --bg-dark-obsidian: #000000;
+  --bg-slate-card: rgba(10, 10, 10, 0.95);
+  --bg-slate-elevated: rgba(18, 18, 18, 0.95);
   --gold-primary: #d4af37;
   --gold-light: #f6d365;
   --gold-dark: #aa820a;
@@ -3302,6 +3302,9 @@ footer.site-footer,
 .keystone-founder-page,
 .keystone-ai-protocols-page,
 .keystone-intel-archive,
+.keystone-investments-page,
+.keystone-lifestyle-page,
+.keystone-contact-page,
 .keystone-single-post,
 .keystone-410-template {
   background: var(--bg-dark-obsidian) !important;
@@ -3375,7 +3378,7 @@ footer.site-footer,
    -------------------------------------------------------------------------- */
 .keystone-hero-section {
   padding: 100px 20px 80px 20px;
-  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, rgba(3, 7, 18, 0) 70%);
+  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, rgba(4, 4, 4, 0) 70%);
 }
 
 .hero-main-title {
@@ -3512,7 +3515,7 @@ footer.site-footer,
 }
 
 .guild-box {
-  background: radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.12) 0%, rgba(15, 23, 42, 0.95) 70%);
+  background: radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.12) 0%, rgba(10, 10, 10, 0.95) 70%);
   border: 1px solid var(--gold-border);
   border-radius: 24px;
   padding: 50px 40px;
@@ -3557,7 +3560,7 @@ footer.site-footer,
 }
 
 .perk-item {
-  background: rgba(10, 15, 25, 0.7);
+  background: rgba(10, 10, 10, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 24px;
@@ -3640,7 +3643,7 @@ footer.site-footer,
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(10, 15, 25, 0.95);
+  background: rgba(10, 10, 10, 0.95);
   border-top: 1px solid var(--gold-border);
   backdrop-filter: blur(16px);
   padding: 16px 20px;
@@ -3740,7 +3743,7 @@ footer.site-footer,
 }
 
 .dsp-pill {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(10, 10, 10, 0.7);
   color: #f8fafc !important;
   border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 9px 20px;
@@ -3784,7 +3787,7 @@ footer.site-footer,
 
 /* HIGH-CONTRAST YOUTUBE SUBSCRIBE PILL (RULE 1 & BANG & OLUFSEN STANDARD) */
 .dsp-pill.youtube-subscribe {
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.3) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(56, 189, 248, 0.2) 100%) !important;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.3) 0%, rgba(10, 10, 10, 0.95) 50%, rgba(56, 189, 248, 0.2) 100%) !important;
   border: 1px solid rgba(239, 68, 68, 0.7) !important;
   color: #ffffff !important;
   font-weight: 800 !important;
@@ -3794,7 +3797,7 @@ footer.site-footer,
 
 .dsp-pill.youtube-subscribe:hover {
   border-color: #38bdf8 !important;
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.45) 0%, rgba(15, 23, 42, 0.98) 50%, rgba(56, 189, 248, 0.35) 100%) !important;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.45) 0%, rgba(10, 10, 10, 0.98) 50%, rgba(56, 189, 248, 0.35) 100%) !important;
   box-shadow: 0 0 25px rgba(56, 189, 248, 0.5), 0 0 16px rgba(239, 68, 68, 0.4) !important;
   transform: translateY(-2px) scale(1.02) !important;
 }
@@ -3822,7 +3825,7 @@ footer.site-footer,
 .banner-glass-reflection {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 40%, rgba(4, 7, 13, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 40%, rgba(5, 5, 5, 0.75) 100%);
   pointer-events: none;
 }
 
@@ -3848,7 +3851,7 @@ footer.site-footer,
 }
 
 .album-card-18 {
-  background: rgba(10, 15, 26, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid #1e293b;
   border-radius: 18px;
   overflow: hidden;
@@ -3872,7 +3875,7 @@ footer.site-footer,
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background: #02040a;
+  background: #040404;
   overflow: hidden;
 }
 
@@ -3898,7 +3901,7 @@ footer.site-footer,
 }
 
 .badge-year, .badge-tracks {
-  background: rgba(3, 7, 18, 0.85);
+  background: rgba(4, 4, 4, 0.85);
   color: #f6d365;
   border: 1px solid rgba(212, 175, 55, 0.4);
   padding: 3px 8px;
@@ -3913,7 +3916,7 @@ footer.site-footer,
 .album-card-play-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(3, 7, 18, 0.45);
+  background: rgba(4, 4, 4, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4033,7 +4036,7 @@ footer.site-footer,
   justify-content: center;
   gap: 10px;
   padding: 8px 18px;
-  background: rgba(9, 13, 22, 0.92);
+  background: rgba(8, 8, 8, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
   backdrop-filter: blur(20px);
@@ -4098,7 +4101,7 @@ footer.site-footer,
 .sonic-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(3, 7, 18, 0.88);
+  background: rgba(4, 4, 4, 0.88);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   z-index: 999999;
@@ -4110,7 +4113,7 @@ footer.site-footer,
 
 .sonic-modal-container {
   position: relative;
-  background: rgba(9, 13, 22, 0.97);
+  background: rgba(8, 8, 8, 0.97);
   border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: 24px;
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95), 0 0 45px rgba(56, 189, 248, 0.16);
@@ -4129,7 +4132,7 @@ footer.site-footer,
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #cbd5e1;
   font-size: 1rem;
@@ -4211,7 +4214,7 @@ footer.site-footer,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(10, 10, 10, 0.6);
   padding: 12px 14px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -4316,7 +4319,7 @@ footer.site-footer,
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(10, 10, 10, 0.5);
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 16px;
@@ -4339,7 +4342,7 @@ footer.site-footer,
   max-height: 280px;
   padding-right: 6px;
   scrollbar-width: thin;
-  scrollbar-color: #38bdf8 rgba(15, 23, 42, 0.4);
+  scrollbar-color: #38bdf8 rgba(10, 10, 10, 0.4);
 }
 
 .modal-tracklist-scroll::-webkit-scrollbar {
@@ -4365,7 +4368,7 @@ footer.site-footer,
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  background: rgba(3, 7, 18, 0.6);
+  background: rgba(4, 4, 4, 0.6);
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.04);
   font-size: 0.82rem;
@@ -4373,7 +4376,7 @@ footer.site-footer,
 }
 
 .modal-track-row:hover {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(10, 10, 10, 0.8);
   border-color: rgba(56, 189, 248, 0.3);
 }
 
@@ -4543,7 +4546,7 @@ footer.site-footer,
 }
 
 .founder-fiduciary-box {
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid var(--gold-border);
   border-radius: 16px;
   padding: 24px;
@@ -4828,7 +4831,7 @@ footer.site-footer,
 
 /* CDP Box */
 .cdp-box {
-  background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, rgba(15, 23, 42, 0.95) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, rgba(10, 10, 10, 0.95) 70%);
   border: 1px solid rgba(0, 240, 255, 0.3);
   border-radius: 20px;
   padding: 50px 40px;
@@ -4841,7 +4844,7 @@ footer.site-footer,
 }
 
 .cdp-feature {
-  background: rgba(10, 15, 25, 0.7);
+  background: rgba(10, 10, 10, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 24px;
@@ -4869,7 +4872,7 @@ footer.site-footer,
 
 /* Guild Banner */
 .guild-banner-card {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(15, 23, 42, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(10, 10, 10, 0.95) 100%);
   border: 1px solid var(--gold-border);
   border-radius: 20px;
   padding: 50px 40px;
@@ -4945,7 +4948,7 @@ body.archive #content > .ast-container {
   align-items: center;
   gap: 8px;
   padding: 6px 16px;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 999px;
   margin-bottom: 20px;
@@ -5017,7 +5020,7 @@ body.archive #content > .ast-container {
 }
 
 .intel-post-card {
-  background: rgba(15, 23, 42, 0.75) !important;
+  background: rgba(10, 10, 10, 0.75) !important;
   border: 1px solid rgba(212, 175, 55, 0.22) !important;
   border-radius: 16px !important;
   overflow: hidden !important;
@@ -5040,7 +5043,7 @@ body.archive #content > .ast-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #020408;
+  background: #040404;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -5053,7 +5056,7 @@ body.archive #content > .ast-container {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.6) 0%, rgba(4, 7, 13, 0.95) 100%);
+  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.6) 0%, rgba(5, 5, 5, 0.95) 100%);
   padding: 16px;
   box-sizing: border-box;
   text-align: center;
@@ -5357,7 +5360,7 @@ body.archive #content > .ast-container {
 }
 
 .single-skool-card {
-  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, rgba(15, 23, 42, 0.9) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, rgba(10, 10, 10, 0.9) 70%);
   border: 1px solid var(--gold-border);
   border-radius: 18px;
   padding: 40px 30px;
@@ -5400,7 +5403,7 @@ body.archive #content > .ast-container {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(10, 10, 10, 0.75);
   border: 1px solid rgba(212, 175, 55, 0.4);
   padding: 8px 22px 8px 10px;
   border-radius: 9999px;
@@ -5486,7 +5489,7 @@ body.archive #content > .ast-container {
 .pillar-visual-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.92) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 10, 0.92) 100%);
   pointer-events: none;
 }
 
@@ -5499,7 +5502,7 @@ body.archive #content > .ast-container {
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.35);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.15);
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(10, 10, 10, 0.8);
   transition: transform 0.4s ease, border-color 0.4s ease;
 }
 
@@ -5541,7 +5544,7 @@ body.archive #content > .ast-container {
 }
 
 .portfolio-item-card {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(10, 10, 10, 0.7);
   border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 16px;
   overflow: hidden;
@@ -5577,7 +5580,7 @@ body.archive #content > .ast-container {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  background: rgba(3, 7, 18, 0.85);
+  background: rgba(4, 4, 4, 0.85);
   color: var(--gold-light);
   font-size: 0.7rem;
   font-weight: 800;
@@ -5657,7 +5660,7 @@ body.archive #content > .ast-container {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(3, 7, 18, 0.9) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(4, 4, 4, 0.9) 100%);
   color: var(--gold-light);
   font-size: 0.8rem;
   font-weight: 600;
@@ -5682,7 +5685,7 @@ body.archive #content > .ast-container {
 .brand-crest-box {
   margin-top: 24px;
   padding: 22px;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(10, 10, 10, 0.6);
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 16px;
 }
@@ -5877,7 +5880,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   align-items: center;
   gap: 10px;
   padding: 6px 18px;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 9999px;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
@@ -5907,7 +5910,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  background: rgba(10, 15, 25, 0.9);
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid rgba(212, 175, 55, 0.4);
   border-radius: 9999px;
   padding: 6px 20px 6px 6px;
@@ -6016,7 +6019,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .btn-glass-secondary {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.35);
   color: #f8fafc !important;
   font-family: 'Outfit', sans-serif;
@@ -6096,7 +6099,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .sound-lab-card {
-  background: rgba(10, 15, 25, 0.92);
+  background: rgba(10, 10, 10, 0.92);
   border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: 24px;
   padding: 40px;
@@ -6165,7 +6168,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 .visualizer-wrapper {
   position: relative;
-  background: #020408;
+  background: #040404;
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 16px;
   overflow: hidden;
@@ -6197,7 +6200,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   gap: 8px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
-  background: rgba(3, 7, 18, 0.8);
+  background: rgba(4, 4, 4, 0.8);
   padding: 4px 12px;
   border-radius: 6px;
   border: 1px solid rgba(56, 189, 248, 0.2);
@@ -6273,7 +6276,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .track-chip {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.25);
   color: #94a3b8;
   font-family: 'JetBrains Mono', monospace;
@@ -6353,7 +6356,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .cyber-album-card {
-  background: rgba(10, 15, 25, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 20px;
   overflow: hidden;
@@ -6391,7 +6394,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 .album-media-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(3, 7, 18, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(4, 4, 4, 0.75) 100%);
   pointer-events: none;
 }
 
@@ -6399,7 +6402,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(3, 7, 18, 0.85);
+  background: rgba(4, 4, 4, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.4);
   color: #38bdf8;
   font-family: 'JetBrains Mono', monospace;
@@ -6505,7 +6508,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .tier-card {
-  background: rgba(10, 15, 25, 0.9);
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 24px;
   padding: 38px 30px;
@@ -6742,7 +6745,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .cyber-intel-card {
-  background: rgba(10, 16, 28, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.22);
   border-radius: 18px;
   overflow: hidden;
@@ -6766,7 +6769,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #02050e;
+  background: #040404;
   overflow: hidden;
   border-bottom: 1px solid rgba(56, 189, 248, 0.2);
 }
@@ -6797,7 +6800,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   height: 100%;
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.15) 0%, rgba(3, 7, 18, 0.98) 85%);
+  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.15) 0%, rgba(4, 4, 4, 0.98) 85%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6814,7 +6817,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 .video-preview-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(3, 7, 18, 0.35);
+  background: rgba(4, 4, 4, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6825,7 +6828,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(10, 16, 28, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 2px solid #38bdf8;
   color: #00f0ff;
   display: flex;
@@ -6852,7 +6855,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background: rgba(3, 7, 18, 0.85);
+  background: rgba(4, 4, 4, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.4);
   color: #38bdf8;
   font-family: 'JetBrains Mono', monospace;
@@ -6954,7 +6957,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(10, 16, 28, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.4);
   color: #38bdf8;
   font-size: 1.6rem;
@@ -7047,7 +7050,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .founder-profile-card {
-  background: rgba(10, 15, 25, 0.95);
+  background: rgba(10, 10, 10, 0.95);
   border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 24px;
   padding: 48px;
@@ -7103,7 +7106,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .cred-pill {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(212, 175, 55, 0.25);
   color: #f6d365;
   font-family: 'Outfit', sans-serif;
@@ -7701,7 +7704,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 /* Competitive Benchmark Matrix */
 .competitive-matrix-card {
   margin-top: 60px;
-  background: linear-gradient(135deg, rgba(8, 15, 30, 0.85) 0%, rgba(3, 7, 18, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(8, 8, 8, 0.85) 0%, rgba(4, 4, 4, 0.95) 100%);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 20px;
   padding: 40px;
@@ -7750,7 +7753,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .matrix-col {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(10, 10, 10, 0.5);
   border: 1px solid rgba(56, 189, 248, 0.15);
   border-radius: 14px;
   padding: 22px;
@@ -7787,7 +7790,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .protocol-product-block {
-  background: rgba(8, 15, 30, 0.65);
+  background: rgba(8, 8, 8, 0.65);
   border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 24px;
   padding: 44px;
@@ -7817,7 +7820,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .video-preview-card {
-  background: #02040a;
+  background: #040404;
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 18px;
   overflow: hidden;
@@ -7828,7 +7831,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #0f172a;
+  background: #080808;
   overflow: hidden;
 }
 
@@ -7851,7 +7854,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(3, 7, 18, 0.45);
+  background: rgba(4, 4, 4, 0.45);
 }
 
 .play-circle-btn {
@@ -7987,7 +7990,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .product-deliverables-box {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(10, 10, 10, 0.5);
   border: 1px solid rgba(56, 189, 248, 0.15);
   border-radius: 16px;
   padding: 20px 24px;
@@ -8096,7 +8099,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .quick-nav-pill {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(10, 10, 10, 0.7);
   border: 1px solid rgba(56, 189, 248, 0.3);
   color: #f8fafc !important;
   font-size: 0.82rem;
@@ -8131,7 +8134,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .company-ai-card {
-  background: rgba(10, 16, 28, 0.75);
+  background: rgba(10, 10, 10, 0.75);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 20px;
   padding: 36px;
@@ -8203,7 +8206,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(10, 10, 10, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 16px 18px;
@@ -8212,7 +8215,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 .pillar-item:hover {
   border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   transform: translateX(4px);
 }
 
@@ -8281,7 +8284,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .express-checkout-card {
-  background: rgba(10, 16, 28, 0.88);
+  background: rgba(10, 10, 10, 0.88);
   border: 1px solid rgba(56, 189, 248, 0.4);
   border-radius: 20px;
   padding: 30px;
@@ -8336,7 +8339,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .tier-select-btn {
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 10px 6px 12px;
@@ -8353,7 +8356,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 .tier-select-btn:hover {
   border-color: rgba(56, 189, 248, 0.5);
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(10, 10, 10, 0.95);
 }
 
 .tier-select-btn.active {
@@ -8407,7 +8410,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 .promo-input {
   flex: 1;
-  background: rgba(15, 23, 42, 0.9) !important;
+  background: rgba(10, 10, 10, 0.9) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 8px !important;
   color: #f8fafc !important;
@@ -8516,7 +8519,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
    ========================================================================== */
 .sound-lab-playlist-deck {
   margin-top: 18px;
-  background: rgba(8, 14, 26, 0.6);
+  background: rgba(8, 8, 8, 0.6);
   border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 14px;
   padding: 14px;
@@ -8557,7 +8560,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   gap: 8px;
   padding-right: 4px;
   scrollbar-width: thin;
-  scrollbar-color: #38bdf8 rgba(15, 23, 42, 0.4);
+  scrollbar-color: #38bdf8 rgba(10, 10, 10, 0.4);
 }
 
 .playlist-scroll-container::-webkit-scrollbar {
@@ -8565,7 +8568,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .playlist-scroll-container::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(10, 10, 10, 0.4);
   border-radius: 4px;
 }
 
@@ -8579,7 +8582,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(10, 10, 10, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 10px 14px;
@@ -8591,7 +8594,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .playlist-track-row:hover {
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(10, 10, 10, 0.95);
   border-color: rgba(56, 189, 248, 0.45);
   transform: translateX(2px);
 }
@@ -8895,7 +8898,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .luxury-metric-card {
-  background: rgba(10, 16, 28, 0.85);
+  background: rgba(10, 10, 10, 0.85);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 16px;
   padding: 22px 18px;
@@ -8977,7 +8980,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .investment-pillar-card {
-  background: rgba(8, 14, 26, 0.85) !important;
+  background: rgba(8, 8, 8, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.2) !important;
   border-radius: 18px !important;
   padding: 32px 28px !important;
@@ -8992,7 +8995,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .lifestyle-pillar-card {
-  background: rgba(8, 14, 26, 0.85) !important;
+  background: rgba(8, 8, 8, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.2) !important;
   border-radius: 18px !important;
   padding: 32px 28px !important;
@@ -9218,7 +9221,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 /* Risk Section & Principle Items */
 .risk-matrix-card {
-  background: rgba(8, 14, 26, 0.75);
+  background: rgba(8, 8, 8, 0.75);
   border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 20px;
   padding: 40px;
@@ -9235,7 +9238,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .risk-principle-item {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(10, 10, 10, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
   padding: 22px 18px;
@@ -9264,7 +9267,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 /* Daily Routine Cadence (Lifestyle) */
 .routine-card {
-  background: rgba(8, 14, 26, 0.75);
+  background: rgba(8, 8, 8, 0.75);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 20px;
   padding: 40px;
@@ -9281,7 +9284,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .timeline-step-card {
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(10, 10, 10, 0.7);
   border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 14px;
   padding: 22px 18px;
@@ -9314,7 +9317,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 /* CTA Cards */
 .investments-cta-card,
 .lifestyle-cta-card {
-  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.95) 0%, rgba(4, 7, 13, 0.95) 100%);
+  background: radial-gradient(circle at center, rgba(10, 10, 10, 0.95) 0%, rgba(5, 5, 5, 0.95) 100%);
   border: 1px solid rgba(212, 175, 55, 0.4);
   border-radius: 24px;
   padding: 50px 36px;
@@ -9385,7 +9388,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .btn-secondary-glass {
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(10, 10, 10, 0.75);
   border: 1px solid rgba(56, 189, 248, 0.4);
   color: #38bdf8 !important;
   font-family: 'Outfit', sans-serif;
@@ -9425,7 +9428,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .contact-channel-card {
-  background: rgba(8, 14, 26, 0.85) !important;
+  background: rgba(8, 8, 8, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.25) !important;
   border-radius: 18px !important;
   padding: 30px 24px !important;
@@ -9566,7 +9569,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 /* Glassmorphic Contact Form */
 .contact-form-glass-card {
-  background: rgba(10, 16, 28, 0.85) !important;
+  background: rgba(10, 10, 10, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.3) !important;
   border-radius: 24px !important;
   padding: 32px 36px !important;
@@ -9647,7 +9650,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 .luxury-form-input,
 .luxury-form-select,
 .luxury-form-textarea {
-  background: rgba(15, 23, 42, 0.85) !important;
+  background: rgba(10, 10, 10, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.3) !important;
   border-radius: 10px !important;
   color: #f8fafc !important;
@@ -9665,11 +9668,11 @@ body.page-template-template-ai-protocols #content > .ast-container {
 .luxury-form-textarea:focus {
   border-color: #00f0ff !important;
   box-shadow: 0 0 16px rgba(0, 240, 255, 0.45) !important;
-  background: rgba(15, 23, 42, 0.98) !important;
+  background: rgba(10, 10, 10, 0.98) !important;
 }
 
 .luxury-form-select option {
-  background: #0f172a !important;
+  background: #080808 !important;
   color: #f8fafc !important;
 }
 
@@ -9716,7 +9719,7 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .detail-box {
-  background: rgba(10, 16, 28, 0.75);
+  background: rgba(10, 10, 10, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 24px 20px;
@@ -9887,7 +9890,7 @@ body.page-template-page-ai-protocols,
   width: 36px !important;
   height: 36px !important;
   border-radius: 50% !important;
-  background: rgba(15, 23, 42, 0.7) !important;
+  background: rgba(10, 10, 10, 0.7) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: #94a3b8 !important;
   text-decoration: none !important;
@@ -10015,7 +10018,7 @@ body.page-template-page-ai-protocols,
    HIGH-CONVICTION INVESTMENTS PAGE STYLING
    ========================================================================== */
 .investments-spotlight-card {
-  background: rgba(8, 14, 26, 0.85) !important;
+  background: rgba(8, 8, 8, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.35) !important;
   border-radius: 24px !important;
   padding: 44px 36px !important;
@@ -10046,7 +10049,7 @@ body.page-template-page-ai-protocols,
   position: absolute !important;
   bottom: 16px !important;
   left: 16px !important;
-  background: rgba(3, 7, 18, 0.85) !important;
+  background: rgba(4, 4, 4, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.4) !important;
   color: #38bdf8 !important;
   padding: 6px 14px !important;
@@ -10071,7 +10074,7 @@ body.page-template-page-ai-protocols,
 }
 
 .quant-pillar-item {
-  background: rgba(15, 23, 42, 0.6) !important;
+  background: rgba(10, 10, 10, 0.6) !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
   border-radius: 14px !important;
   padding: 20px 16px !important;
@@ -10138,7 +10141,7 @@ body.page-template-page-ai-protocols,
   position: absolute !important;
   top: 12px !important;
   left: 12px !important;
-  background: rgba(3, 7, 18, 0.85) !important;
+  background: rgba(4, 4, 4, 0.85) !important;
   border: 1px solid rgba(246, 211, 101, 0.4) !important;
   color: #f6d365 !important;
   font-family: 'Outfit', sans-serif !important;
@@ -10151,7 +10154,7 @@ body.page-template-page-ai-protocols,
 }
 
 .business-section-card {
-  background: rgba(8, 14, 26, 0.75) !important;
+  background: rgba(8, 8, 8, 0.75) !important;
   border: 1px solid rgba(56, 189, 248, 0.25) !important;
   border-radius: 20px !important;
   padding: 40px !important;
@@ -10167,7 +10170,7 @@ body.page-template-page-ai-protocols,
 }
 
 .business-subcard {
-  background: rgba(15, 23, 42, 0.6) !important;
+  background: rgba(10, 10, 10, 0.6) !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
   border-radius: 14px !important;
   padding: 26px 22px !important;
@@ -10229,7 +10232,7 @@ body.page-template-page-ai-protocols,
 }
 
 .direct-email-gateway-box {
-  background: rgba(10, 16, 28, 0.85) !important;
+  background: rgba(10, 10, 10, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.35) !important;
   border-radius: 16px !important;
   padding: 28px 24px !important;
@@ -10314,7 +10317,7 @@ body.page-template-page-ai-protocols,
 }
 
 .footer-subscribe-btn-gold {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
   border: 1.5px solid #d4af37 !important;
   color: #ffffff !important;
   box-shadow: 0 4px 18px rgba(212, 175, 55, 0.22) !important;
@@ -10329,7 +10332,7 @@ body.page-template-page-ai-protocols,
 }
 
 .footer-subscribe-btn-cyan {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
   border: 1.5px solid #00f0ff !important;
   color: #ffffff !important;
   box-shadow: 0 4px 18px rgba(0, 240, 255, 0.22) !important;
@@ -10354,7 +10357,7 @@ body.page-template-page-ai-protocols,
   min-width: 48px !important;
   min-height: 48px !important;
   border-radius: 50% !important;
-  background: rgba(15, 23, 42, 0.85) !important;
+  background: rgba(10, 10, 10, 0.85) !important;
   border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
   color: #f6d365 !important;
   display: inline-flex !important;
