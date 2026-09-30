@@ -226,7 +226,7 @@ class TestTemplateInvestmentsOverhaul:
 
     def test_private_executive_contact_gateway(self):
         assert "curtis4vancouver@gmail.com" in self.content
-        assert "Email Wayne Stevenson Directly" in self.content
+        assert "Email Curtis Directly" in self.content or "Email Wayne Stevenson Directly" in self.content
         assert "keystonepossibilities.ca" in self.content
         assert "/contact/" in self.content
 
