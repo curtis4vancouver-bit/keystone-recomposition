@@ -237,7 +237,7 @@ class TestTemplateContactOverhaul:
           * Row 3: Project Overview & Requirements * (contact_message)
         """
         form_match = re.search(
-            r'<form[^>]*class=["\'][^"\']*luxury-inquiry-form[^"\']*["\']>(.*?)</form>',
+            r'<form\b.*?\bclass=["\'][^"\']*luxury-inquiry-form[^"\']*["\'][^>]*>(.*?)</form>',
             self.content,
             re.DOTALL
         )
@@ -265,7 +265,7 @@ class TestTemplateContactOverhaul:
     def test_form_redundant_rows_removed(self):
         """4. Redundant full-width rows and unnecessary fields (contact_entity) are removed from form."""
         form_match = re.search(
-            r'<form[^>]*class=["\'][^"\']*luxury-inquiry-form[^"\']*["\']>(.*?)</form>',
+            r'<form\b.*?\bclass=["\'][^"\']*luxury-inquiry-form[^"\']*["\'][^>]*>(.*?)</form>',
             self.content,
             re.DOTALL
         )
