@@ -146,11 +146,11 @@ get_header(); ?>
                     <!-- Left Column (55%): Master 16:9 4K Video + Streaming Audio Deck -->
                     <div class="recomp-featured-left-col" style="flex: 1 1 55%; width: 55%; min-width: 0; display: flex; flex-direction: column;">
                         
-                        <!-- 16:9 Master Video Frame (The Anabolic Window) -->
+                        <!-- 16:9 Master Video Frame (The Zen Builder) -->
                         <div class="recomp-featured-video-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid rgba(245, 158, 11, 0.3); box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);">
                             <iframe id="recomp-featured-sound-video" 
-                                    src="https://www.youtube.com/embed/M2FfkoAmj20" 
-                                    title="Wayne Stevenson - The Anabolic Window (Official 4K Music Video)" 
+                                    src="https://www.youtube.com/embed/1I1eLu9v_hM" 
+                                    title="Wayne Stevenson - The Zen Builder (Official 4K Music Video)" 
                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                     allowfullscreen></iframe>
@@ -161,7 +161,7 @@ get_header(); ?>
                             
                             <!-- Track Thumbnail Box -->
                             <div style="position: relative; width: 120px; height: 68px; min-width: 120px; border-radius: 8px; overflow: hidden; background: #000; border: 1.5px solid rgba(245, 158, 11, 0.4); flex-shrink: 0;">
-                                <img src="https://keystonerecomposition.com/wp-content/uploads/2026/10/the-anabolic-window-music-video-4k-thumb.png" alt="The Anabolic Window" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://img.youtube.com/vi/M2FfkoAmj20/maxresdefault.jpg'" />
+                                <img src="https://img.youtube.com/vi/1I1eLu9v_hM/maxresdefault.jpg" alt="The Zen Builder" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://img.youtube.com/vi/1I1eLu9v_hM/hqdefault.jpg'" />
                             </div>
 
                             <!-- Track Details & Audio Meta -->
@@ -170,10 +170,10 @@ get_header(); ?>
                                     🎵 24-BIT / 48kHz LOSSLESS MASTER
                                 </div>
                                 <h4 style="margin: 0 0 4px 0; color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.96rem; font-weight: 800; line-height: 1.3;">
-                                    The Wolverine Protocol &bull; Track 8
+                                    Architectural Focus &bull; Track 1
                                 </h4>
                                 <p style="margin: 0 0 10px 0; color: #94a3b8; font-size: 0.78rem; line-height: 1.45;">
-                                    Organic Downtempo Melodic House &bull; Too Lost Digital Distribution
+                                    432Hz Cellular Healing &bull; Too Lost Digital Distribution
                                 </p>
                                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
                                     <a href="https://open.spotify.com/artist/4cKjV0Nsm8V7v0V4L7m5iM" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #1db954 0%, #15803d 100%); color: #000000 !important; -webkit-text-fill-color: #000000 !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(29, 185, 84, 0.35);">
@@ -194,7 +194,7 @@ get_header(); ?>
                         <!-- Metadata Pill Row -->
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.85rem; flex-wrap: wrap;">
                             <span class="recomp-cat-badge" style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.4); color: #fbbf24; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
-                                MELODIC_HOUSE // SONIC UNIVERSE
+                                432Hz_SOUND_HEALING // SONIC UNIVERSE
                             </span>
                             <span style="color: #94a3b8; font-size: 0.80rem; font-weight: 600;">October 2026</span>
                             <span style="color: #f6d365; font-size: 0.78rem; font-weight: 700;">4:10 DURATION</span>
@@ -202,12 +202,12 @@ get_header(); ?>
 
                         <!-- Main Title -->
                         <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.95rem); font-weight: 900; line-height: 1.25; color: #ffffff; margin: 0 0 1rem 0; letter-spacing: -0.01em;">
-                            The Anabolic Window: High-Frequency Downtempo &amp; Architectural Sound Design
+                            The Zen Builder: 432Hz Sound Healing, Deep Focus &amp; Cellular Recovery Architecture
                         </h2>
 
                         <!-- Excerpt Write-up -->
                         <p style="font-size: clamp(0.90rem, 1.05vw, 1.0rem); color: #cbd5e1; line-height: 1.7; margin: 0 0 1.5rem 0;">
-                            The flagship electronic music release from <em>The Wolverine Protocol</em>. Produced in Squamish, BC by Wayne Stevenson &mdash; combining deep analog basslines, restorative harmonic frequencies, and a structured 4-act narrative arc rendered in 4K resolution using Google Flow and DaVinci Resolve Studio.
+                            The flagship 432Hz restorative music release from <em>Architectural Focus</em>. Produced in Squamish, BC by Wayne Stevenson &mdash; combining deep analog basslines, 432Hz cellular recovery frequencies, and a structured narrative arc rendered in 4K resolution using Google Flow and DaVinci Resolve Studio.
                         </p>
 
                         <!-- Wayne Stevenson Author Signature & Credentials -->
@@ -221,10 +221,10 @@ get_header(); ?>
 
                         <!-- Action Buttons Box -->
                         <div class="recomp-featured-buttons-box" style="display: flex; flex-direction: column; gap: 10px; max-width: 360px; width: 100%;">
-                            <a href="/2026/10/03/the-anabolic-window-official-4k-music-video/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
+                            <a href="https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
                                 <span>READ SONIC ESSAY &amp; CREDITS &rarr;</span>
                             </a>
-                            <a href="https://www.youtube.com/watch?v=M2FfkoAmj20" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(245, 158, 11, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
+                            <a href="https://youtu.be/1I1eLu9v_hM" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(245, 158, 11, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
                                 <span>WATCH IN 4K ON YOUTUBE &rarr;</span>
                             </a>
                         </div>
