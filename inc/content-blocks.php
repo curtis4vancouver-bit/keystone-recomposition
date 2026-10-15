@@ -825,7 +825,7 @@ function keystone_evidence_base_shortcode( $atts = array(), $content = null ) {
             <?php endif; ?>
         </div>
 
-        <?php /* Medical disclaimer removed per Rule 11 and Wayne Stevenson directive */ ?>
+        <?php /* Legacy notice removed per Rule 11 and Wayne Stevenson directive */ ?>
 
         <?php if ( $show_twin ) : ?>
             <div class="evidence-disclaimer cyan-disclaimer">

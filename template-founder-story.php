@@ -213,7 +213,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <p>
                                 <a href="/ai-protocols/" class="btn-secondary-glass">
-                                    ⚡ Explore 16-Agent Swarm Architectures &amp; FastMCP →
+                                    ⚡ Explore 28-Agent Swarm Architectures &amp; FastMCP →
                                 </a>
                             </p>
                         </section>
@@ -238,7 +238,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <span class="eco-icon">🤖</span>
                                 <div class="eco-info">
                                     <span class="eco-title">AI Protocols Hub</span>
-                                    <span class="eco-desc">16-Agent Swarms &amp; FastMCP Tools</span>
+                                    <span class="eco-desc">28-Agent Swarms &amp; FastMCP Tools</span>
                                 </div>
                             </a>
                         </div>

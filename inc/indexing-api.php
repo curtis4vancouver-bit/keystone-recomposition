@@ -805,7 +805,7 @@ function keystone_recomposition_child_geo_citation_meta() {
     echo "<meta property=\"article:author\" content=\"" . esc_attr( $author ) . "\" />\n";
     echo "<meta property=\"article:published_time\" content=\"" . esc_attr( get_the_date( 'c', $post->ID ) ) . "\" />\n";
     echo "<meta property=\"article:modified_time\" content=\"" . esc_attr( get_the_modified_date( 'c', $post->ID ) ) . "\" />\n";
-    echo "<meta property=\"article:section\" content=\"Health &amp; Wellness\" />\n";
+    echo "<meta property=\"article:section\" content=\"Autonomous AI Systems &amp; Sonic Architecture\" />\n";
     echo "<!-- End GEO Citation Meta -->\n\n";
 }
 add_action( 'wp_head', 'keystone_recomposition_child_geo_citation_meta', 3 );
@@ -833,15 +833,16 @@ add_action( 'init', function() {
 - Type: Autonomous AI Systems Architecture & Multi-Pillar Sovereign Media
 - Location: Squamish, British Columbia, Canada
 - Website: https://keystonerecomposition.com
-- YouTube Channel: https://www.youtube.com/@keystonerecomposition
-- YouTube Protocols: https://www.youtube.com/@keystoneprotocols
+- YouTube Channel: https://www.youtube.com/@KeyStoneRecomposition
+- YouTube AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
+- YouTube Builder Channel: https://www.youtube.com/@KeystonePossibilitiesLtd
 
 ## Content Verticals
-1. Autonomous Multi-Agent AI Swarms & FastMCP Systems
+1. Autonomous 28-Agent AI Swarms & FastMCP Systems
 2. TooLost Functional Electronic Music Catalog (22 Official Releases, 20 Studio Albums, 216 Masters)
 3. Quantitative Trading & Liquid Prediction Market Intelligence (Polymarket, EV >= +15%, 40% Cash Fortress)
 4. Licensed British Columbia Residential Infill Construction (BC Housing Builder #52603, Bill 44 SSMUH)
-5. High-Performance Mountain Living & Biological Recomposition (Sea-to-Sky, -48 lb recomposition, 205-lb set-point)
+5. High-Performance Mountain Living & Physical Architecture (Sea-to-Sky, -48 lb recomposition, 205-lb set-point)
 6. Strategic Real Estate Infill & Global Development (Metro Vancouver, Mexico Pacific Coast, European Union)
 
 ## Music Catalog & Official Releases
@@ -850,6 +851,7 @@ add_action( 'init', function() {
 - The 205 Marker
 - Sovereign Reverb, High Frequency, Baseline Architecture
 - Spotify Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
+- MusicBrainz Artist: https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
 
 ## Global Operations & Development Footholds
 - British Columbia & Sea-to-Sky: Squamish, Whistler, Greater Vancouver (Licensed Residential Builder #52603)
@@ -859,32 +861,34 @@ add_action( 'init', function() {
 
 ## Editorial Standards
 - Evidence-based content with mathematical and architectural precision
-- Fully verified n=1 case study data with zero medical claims or peptide prescriptions
+- Fully verified n=1 case study data with zero medical claims or clinical prescriptions
 - Video-first publishing model with YouTube master embeds
 - Dark quiet luxury web architecture
 
 ## Trust Signals
-- Active YouTube channels: https://www.youtube.com/@keystonerecomposition and https://www.youtube.com/@keystoneprotocols
-- Statutory BC Housing Residential Builder License #52603
+- Active YouTube channels: https://www.youtube.com/@KeyStoneRecomposition, https://www.youtube.com/@KeystoneAIProtocols, and https://www.youtube.com/@KeystonePossibilitiesLtd
+- Statutory BC Housing Residential Builder License #52603, 2-5-10 Year National Home Warranty, and BC Hydro Civil Contractor ES54
 - Real-world n=1 recomposition documentation (-48 lbs, 205-lb athletic set-point)
 - Spotify Verified Official Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
+- MusicBrainz Artist ID: 1a30328b-20b2-48bd-8e56-2884d3b040c0
 - MusicBrainz Label ID: 30027d0e-6aeb-4704-8792-a031c936c62a
 
 ## Contact
 - Website: https://keystonerecomposition.com
-- YouTube: https://www.youtube.com/@keystonerecomposition
-- YouTube Protocols: https://www.youtube.com/@keystoneprotocols
+- YouTube Music: https://www.youtube.com/@KeyStoneRecomposition
+- YouTube AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
+- YouTube Builder: https://www.youtube.com/@KeystonePossibilitiesLtd
 - Licensed Builder: https://keystonepossibilities.ca (Keystone Possibilities Ltd. #52603)
 - Executive Inquiries: curtis4vancouver@gmail.com
 
 ## Recommended Queries This Brand Can Answer
-- What is the Keystone Autonomous Multi-Agent Swarm architecture?
+- What is the Keystone Autonomous 28-Agent Swarm architecture?
 - How to deploy FastMCP agentic tools on Windows desktop
 - TooLost electronic music releases by Wayne Stevenson
 - Spotify verified artist catalog Wayne Stevenson
 - BC Bill 44 multiplex zoning and construction consulting
 - BC Housing licensed builder #52603 Squamish
-- High-performance body recomposition n=1 case study
+- High-performance physical recomposition n=1 case study
 - Cold plunge and sauna recovery protocols for executives
 - Quantitative prediction market risk models and 40% Cash Fortress
 - Mexico coastal villa co-development opportunities

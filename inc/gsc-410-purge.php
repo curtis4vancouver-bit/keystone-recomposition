@@ -30,7 +30,6 @@ function keystone_get_purged_slug_patterns(): array {
         'bpc157',
         'wolverine-stack',
         'wolverine-protocol',
-        'wolverine',
         'retatrutide',
         'epithalon',
         'ipamorelin',
@@ -53,21 +52,17 @@ function keystone_get_purged_slug_patterns(): array {
         'keystone-kitchen',
         'the-kitchen',
         'kitchen',
-        'watch-',
         'the-forge',
         'forge',
         'mental-strength',
         'recommended-gear',
         'gear-codes',
         'global-protocols',
-        'global',
-        'blueprint',
         'europe-longevity',
         'mexico-longevity',
         'london-longevity',
         'la-longevity',
         'newyork-longevity',
-        'videos',
         'workout',
     );
 }
@@ -79,16 +74,11 @@ function keystone_is_purged_url( string $uri ): bool {
     $uri_clean = strtolower( trim( $uri, '/' ) );
     
     // Explicit whitelist for core sovereign ecosystem pages
-    $whitelist = array( 'founder', 'about-the-founder', 'investments', 'lifestyle', 'contact', 'ai-protocols', 'intel', 'sonic-universe' );
+    $whitelist = array( 'founder', 'investments', 'lifestyle', 'contact', 'ai-protocols', 'intel', 'sonic-universe' );
     foreach ( $whitelist as $allowed ) {
         if ( $uri_clean === $allowed || str_starts_with( $uri_clean, $allowed . '/' ) || str_contains( $uri_clean, 'founder' ) ) {
             return false;
         }
-    }
-
-    // Check watch- prefix
-    if ( str_starts_with( $uri_clean, 'watch-' ) || str_contains( $uri_clean, '/watch-' ) ) {
-        return true;
     }
 
     $patterns = keystone_get_purged_slug_patterns();
@@ -103,9 +93,6 @@ function keystone_is_purged_url( string $uri ): bool {
 
 /**
  * 1. HTTP 301 Permanent Redirect Interceptor on template_redirect (Priority 1)
- * Replaces HTTP 410 Gone with immediate HTTP 301 Permanent Redirect to home_url( '/' ).
- * This eliminates the Automattic edge proxy 410 disable screen ("This site is disabled"),
- * preserves link equity, and guarantees any incoming visitor lands on Wayne's luxury homepage.
  */
 add_action( 'template_redirect', 'keystone_intercept_purged_urls', 1 );
 function keystone_intercept_purged_urls(): void {
@@ -116,30 +103,36 @@ function keystone_intercept_purged_urls(): void {
         return;
     }
 
-    // Never redirect core sovereign ecosystem pages
     $path = strtolower( trim( parse_url( $request_uri, PHP_URL_PATH ) ?: '', '/' ) );
-    $core_slugs = array( 'founder', 'about-the-founder', 'investments', 'lifestyle', 'contact', 'ai-protocols', 'intel', 'sonic-universe' );
-    foreach ( $core_slugs as $core_slug ) {
-        if ( $path === $core_slug || str_starts_with( $path, $core_slug . '/' ) || str_contains( $path, 'founder' ) ) {
+
+    // Canonical 301 Redirects for Founder & Sonic Universe
+    if ( in_array( $path, array( 'about', 'about-the-founder', 'about-the-founder-the-keystone-blueprint' ), true ) ) {
+        wp_safe_redirect( home_url( '/founder/' ), 301 );
+        exit;
+    }
+    if ( $path === 'album' || str_starts_with( $path, 'album/' ) || $path === 'track' || str_starts_with( $path, 'track/' ) ) {
+        wp_safe_redirect( home_url( '/sonic-universe/' ), 301 );
+        exit;
+    }
+
+    // Active published posts and pages must NEVER be intercepted by the legacy purge engine!
+    if ( is_singular() ) {
+        $post = get_post();
+        if ( $post && $post->post_status === 'publish' ) {
             return;
         }
     }
 
-    // Check current URI or queried post against canonical purged patterns
-    $is_match = keystone_is_purged_url( $request_uri );
-    
-    if ( ! $is_match && is_singular() ) {
-        $post = get_post();
-        if ( $post ) {
-            $post_slug = strtolower( (string) $post->post_name );
-            if ( in_array( $post_slug, $core_slugs, true ) || str_contains( $post_slug, 'founder' ) ) {
-                return;
-            }
-            if ( keystone_is_purged_url( (string) $post->post_name ) || keystone_is_purged_url( (string) $post->post_title ) ) {
-                $is_match = true;
-            }
+    // Never redirect core sovereign ecosystem pages
+    $core_slugs = array( 'founder', 'investments', 'lifestyle', 'contact', 'ai-protocols', 'intel', 'sonic-universe' );
+    foreach ( $core_slugs as $core_slug ) {
+        if ( $path === $core_slug || str_starts_with( $path, $core_slug . '/' ) ) {
+            return;
         }
     }
+
+    // Check current URI against canonical purged patterns
+    $is_match = keystone_is_purged_url( $request_uri );
 
     if ( $is_match ) {
         // Enforce HTTP 301 Permanent Redirect directly to Sovereign Home

@@ -22,7 +22,7 @@ get_header();
                 
                 <!-- Status Pill Badge -->
                 <div class="luxury-badge-pill" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(212, 175, 55, 0.08); color: #f6d365; border: 1px solid rgba(212, 175, 55, 0.35); padding: 8px 24px; border-radius: 9999px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);">
-                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 10px #00f0ff;"></span>
+                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #38bdf8; box-shadow: 0 0 10px #38bdf8;"></span>
                     HTTP 404 — ROUTE UNCHARTED
                 </div>
                 
@@ -49,7 +49,7 @@ get_header();
                     
                     <!-- Secondary Navigation Links -->
                     <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 14px; align-items: center;">
-                        <a href="/about-the-founder/" style="color: #00f0ff; font-family: 'Outfit', sans-serif; font-weight: 600; text-decoration: none; font-size: 0.95rem; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);">
+                        <a href="/founder/" style="color: #38bdf8; font-family: 'Outfit', sans-serif; font-weight: 600; text-decoration: none; font-size: 0.95rem; text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);">
                             About Founder Wayne Stevenson →
                         </a>
                         <span style="color: rgba(212, 175, 55, 0.35);">•</span>

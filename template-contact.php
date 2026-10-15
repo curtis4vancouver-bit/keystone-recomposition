@@ -149,7 +149,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                             <h3 class="channel-title">Executive Workstation Architecture</h3>
                             <p class="channel-desc">
-                                Bespoke 1-on-1 architecture consultation with Wayne Stevenson. Full deployment of custom Tauri sovereign workstation, 16-agent FastMCP swarms, and Chrome CDP automated production pipelines.
+                                Bespoke 1-on-1 architecture consultation with Wayne Stevenson. Full deployment of custom Tauri sovereign workstation, 28-agent FastMCP swarms, and Chrome CDP automated production pipelines.
                             </p>
                             <ul class="channel-features">
                                 <li>&bull; 1-on-1 Screen-to-Screen Blueprint Walkthrough</li>

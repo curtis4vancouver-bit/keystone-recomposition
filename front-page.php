@@ -37,7 +37,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
                              alt="Wayne Stevenson — Founder &amp; Architect" 
                              class="founder-chip-avatar" 
-                             width="52" height="52" loading="eager" decoding="async" />
+                             data-recalc-dims="0" loading="eager" decoding="async" />
                         <div class="founder-chip-meta">
                             <span class="chip-name">Wayne Stevenson</span>
                             <span class="chip-role">AI Systems Architect • Music Producer • BC Builder #52603</span>
@@ -86,7 +86,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </h2>
                                 <div class="builder-badge-row">
                                     <span class="badge-gold-builder">🏛️ BC HOUSING BUILDER #52603</span>
-                                    <span class="badge-cyan-swarms">⚡ 16-AGENT CONCURRENCY</span>
+                                    <span class="badge-cyan-swarms">⚡ 28-AGENT CONCURRENCY</span>
                                 </div>
                             </div>
                             
@@ -95,7 +95,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             </p>
                             
                             <p class="company-ai-body">
-                                Rather than relying on generic chatbots that hallucinate and suffer from context collapse, I build and operate <strong>deterministic 16-agent swarms</strong>, local background daemons, and FastMCP tool servers that automate critical business operations for <strong>Keystone Possibilities Ltd.</strong>
+                                Rather than relying on generic chatbots that hallucinate and suffer from context collapse, I build and operate <strong>deterministic 28-agent swarms</strong>, local background daemons, and FastMCP tool servers that automate critical business operations for <strong>Keystone Possibilities Ltd.</strong>
                             </p>
 
                             <!-- 3 Operational Pillars -->
@@ -119,8 +119,8 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <div class="pillar-item">
                                     <div class="pillar-icon">⚡</div>
                                     <div class="pillar-content">
-                                        <h4>16-Agent Swarms &amp; Sovereign Workstations</h4>
-                                        <p>Specialized child agents (Research Scouts R1-R3, Test Engineers B0, Builders B1-B5) executing in isolated ephemeral contexts with zero cloud lock-in.</p>
+                                        <h4>28-Agent Swarms &amp; Sovereign Workstations</h4>
+                                        <p>Specialized child agents (Speed Scouts #01-#04, TDD Engineers #05-#10, Builders &amp; Domain Specialists #11-#28) executing in isolated ephemeral contexts with zero cloud lock-in.</p>
                                     </div>
                                 </div>
                             </div>
@@ -372,7 +372,7 @@ $theme_uri = get_stylesheet_directory_uri();
                 // Wayne's 3 Staged Video Drops for fallback/population
                 $staged_drops = array(
                     array(
-                        'title'    => 'Autonomous Multi-Agent Swarms: Architecting 16-Agent Concurrency on Port 9879',
+                        'title'    => 'Autonomous Multi-Agent Swarms: Architecting 28-Agent Concurrency on Port 9879',
                         'category' => 'AUTONOMOUS AGENTS',
                         'date'     => 'SEPT 2026',
                         'excerpt'  => 'How we isolate research scouts, test-driven engineers, and live browsers across detached background daemons without thread collisions.',
@@ -738,7 +738,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 Beyond autonomous software engineering and 216 registered electronic master recordings, Wayne Stevenson is the founder of <strong>Keystone Possibilities Ltd.</strong>, a licensed British Columbia residential builder delivering high-performance custom mountain residences and municipal infill across the Sea-to-Sky corridor.
                             </p>
                             <div class="founder-actions-row">
-                                <a href="/about-the-founder/" class="btn-cyan-primary">
+                                <a href="/founder/" class="btn-cyan-primary">
                                     Read Full Founder Dossier →
                                 </a>
                                 <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-glass-secondary">
@@ -869,6 +869,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.switchTrack = function(title, meta, index) {
         initAudioContext();
+        const vAudio = document.getElementById('kr-vault-audio');
+        if (vAudio && !vAudio.paused) vAudio.pause();
         if (currentTrackIdx === index && isPlaying) {
             audioEl.pause();
             isPlaying = false;
@@ -908,6 +910,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (playBtn) {
         playBtn.addEventListener('click', function() {
             initAudioContext();
+            const vAudio = document.getElementById('kr-vault-audio');
+            if (vAudio && !vAudio.paused) vAudio.pause();
             if (!audioEl.src || audioEl.src === window.location.href) {
                 loadTrack(0);
             }
@@ -987,7 +991,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const y = canvas.height - barHeight;
 
             const grad = ctx.createLinearGradient(0, y, 0, canvas.height);
-            grad.addColorStop(0, '#00f0ff');
+            grad.addColorStop(0, '#d4af37');
             grad.addColorStop(0.5, '#38bdf8');
             grad.addColorStop(1, 'rgba(56, 189, 248, 0.05)');
 
@@ -1008,9 +1012,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const bounce = isPlaying ? (freqData[i % freqData.length] / 255) * 3 : 0;
             ctx.beginPath();
             ctx.arc(node.x, node.y, node.baseRadius + bounce, 0, Math.PI * 2);
-            ctx.fillStyle = isPlaying ? '#00f0ff' : 'rgba(56, 189, 248, 0.5)';
+            ctx.fillStyle = isPlaying ? '#38bdf8' : 'rgba(56, 189, 248, 0.5)';
             ctx.shadowBlur = isPlaying ? 10 : 3;
-            ctx.shadowColor = '#00f0ff';
+            ctx.shadowColor = '#38bdf8';
             ctx.fill();
             ctx.shadowBlur = 0;
 

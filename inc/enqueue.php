@@ -9,8 +9,9 @@ function astra_child_keystone_enqueue_styles() {
     // Enqueue parent Astra style
     wp_enqueue_style( 'astra-parent-theme-css', get_template_directory_uri() . '/style.css' );
     
-    // Enqueue Child customized style (Cache busted)
-    wp_enqueue_style( 'astra-child-keystone-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-parent-theme-css' ), '3.0.0' );
+    // Enqueue Child customized style (Cache busted via filemtime)
+    $style_ver = file_exists( get_stylesheet_directory() . '/style.css' ) ? (string) filemtime( get_stylesheet_directory() . '/style.css' ) : '10.5.0';
+    wp_enqueue_style( 'astra-child-keystone-css', get_stylesheet_directory_uri() . '/style.css', array( 'astra-parent-theme-css' ), $style_ver );
     
     // Load typography fonts (Inter, Outfit, Montserrat, JetBrains Mono)
     wp_enqueue_style( 'keystone-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700&family=Outfit:wght@400;600;700;800&display=swap', array(), null );
@@ -68,12 +69,104 @@ function astra_child_keystone_add_defer_attribute( $tag, $handle ) {
 add_filter( 'script_loader_tag', 'astra_child_keystone_add_defer_attribute', 10, 2 );
 
 /**
- * 6. High-Priority Header Overrides (Single-Row Social Icons, Logo Polish & Footer Suppression)
+ * 6. High-Priority Header & Sovereign v10.5 Overrides (Zero Collision, Single-Post Full Width, Vault & Token Lock)
  */
+add_filter( 'jetpack_photon_skip_image', '__return_true', 9999 );
+add_filter( 'jetpack_photon_override_image_downsize', '__return_true', 9999 );
+
 function astra_child_keystone_header_overrides() {
     ?>
     <style id="keystone-header-social-lock">
-    /* 1. Header Social Icons: High-Specificity Luminous Cyan (#38bdf8) & Hover (#00f0ff) */
+    /* 0. Suppress Admin/RankMath overlay bars on frontend viewports & prevent horizontal overflow */
+    #rank-math-analytics-stats-wrapper,
+    #rank-math-analytic-bar,
+    .rank-math-analytics-stats-wrapper,
+    #wpadminbar,
+    #zip-ai-sidebar-admin-trigger,
+    #zip-ai-sidebar {
+      display: none !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+    }
+    html,
+    html.wp-toolbar {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      overflow-x: hidden !important;
+    }
+    body,
+    body.admin-bar {
+      background-color: #04070d !important;
+      color: #f8fafc !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      overflow-x: hidden !important;
+      padding-bottom: 76px !important;
+    }
+
+    /* Hero section vertical cadence so all 3 CTA pills sit cleanly above the bottom streaming vault at y=0 */
+    .cyber-hero-section {
+      padding-top: 38px !important;
+      padding-bottom: 72px !important;
+      min-height: auto !important;
+    }
+    .cyber-hero-wrap .cyber-telemetry-pill {
+      margin-bottom: 14px !important;
+    }
+    .cyber-hero-wrap .cyber-founder-chip {
+      margin-bottom: 18px !important;
+    }
+    .cyber-hero-wrap .founder-chip-avatar {
+      width: 48px !important;
+      height: 48px !important;
+      min-width: 48px !important;
+      min-height: 48px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2px solid #d4af37 !important;
+      display: block !important;
+    }
+    .cyber-hero-wrap .cyber-hero-title {
+      margin-bottom: 16px !important;
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem) !important;
+      line-height: 1.12 !important;
+    }
+    .cyber-hero-wrap .cyber-hero-subtitle {
+      margin-bottom: 22px !important;
+    }
+
+    /* 1. Header Navigation Non-Collision Flex Layout */
+    .site-nav-header .nav-container {
+      max-width: 1440px !important;
+      padding: 0 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 16px !important;
+    }
+    .site-nav-header nav {
+      position: static !important;
+      left: auto !important;
+      transform: none !important;
+      flex: 1 1 auto !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
+    .site-nav-header .nav-menu {
+      gap: 20px !important;
+      flex-wrap: nowrap !important;
+    }
+    .site-nav-header .brand-text {
+      font-size: 15.5px !important;
+      letter-spacing: 0.07em !important;
+      white-space: nowrap !important;
+    }
+    .site-nav-header .brand-sub {
+      white-space: nowrap !important;
+    }
+
+    /* 2. Header Social Icons: High-Specificity Luminous Baby Blue (#38bdf8) & Sovereign Gold (#d4af37) */
     .ast-desktop-header .site-header-primary-section-right,
     .ast-desktop-header .site-header-primary-section-right .ast-builder-layout-element,
     .ast-desktop-header .ast-header-social-1-wrap,
@@ -120,12 +213,12 @@ function astra_child_keystone_header_overrides() {
     .ast-desktop-header .ast-social-color-type-custom a:hover svg path,
     .ast-header-social-1 a:hover svg,
     .ast-header-social-1 a:hover svg path {
-      fill: #00f0ff !important;
-      color: #00f0ff !important;
-      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.9)) !important;
+      fill: #d4af37 !important;
+      color: #d4af37 !important;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.9)) !important;
     }
 
-    /* 2. Header Navigation Links: White Base + Luminous Cyan Active/Hover */
+    /* 3. Header Navigation Links: White Base + Luminous Baby Blue Active/Hover */
     .main-header-menu .menu-item a,
     .main-header-menu .menu-link,
     .ast-nav-menu a {
@@ -138,8 +231,8 @@ function astra_child_keystone_header_overrides() {
     .main-header-menu .menu-item:hover > a,
     .main-header-menu .menu-item:hover > .menu-link,
     .ast-nav-menu a:hover {
-      color: #00f0ff !important;
-      text-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
+      color: #38bdf8 !important;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.6) !important;
     }
     .main-header-menu .current-menu-item > a,
     .main-header-menu .current_page_item > a,
@@ -147,7 +240,7 @@ function astra_child_keystone_header_overrides() {
     .main-header-menu a.keystone-active-nav,
     .ast-nav-menu a.keystone-active-nav {
       color: #38bdf8 !important;
-      text-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 24px rgba(0, 240, 255, 0.4) !important;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 24px rgba(56, 189, 248, 0.4) !important;
       font-weight: 700 !important;
     }
     .main-header-menu .current-menu-item > a::after,
@@ -162,16 +255,261 @@ function astra_child_keystone_header_overrides() {
       right: 8px !important;
       height: 2px !important;
       background: #38bdf8 !important;
-      box-shadow: 0 0 8px #00f0ff !important;
+      box-shadow: 0 0 8px #38bdf8 !important;
       border-radius: 2px !important;
     }
 
-    .ast-desktop-header .site-branding img,
-    .ast-desktop-header .custom-logo-link img {
-      max-height: 48px !important;
-      width: auto !important;
-      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6)) !important;
+    /* 4. Bio-Acoustic Synthesizer Visualizer HUD Non-Overlap */
+    .visualizer-wrapper.compact-visualizer {
+      height: auto !important;
+      min-height: 215px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      overflow: hidden !important;
+      border-radius: 16px !important;
+      border: 1px solid rgba(56, 189, 248, 0.32) !important;
+      background: #04070d !important;
     }
+    #cyberVisualizer {
+      width: 100% !important;
+      height: 155px !important;
+      display: block !important;
+    }
+    .visualizer-hud-overlay {
+      position: relative !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      padding: 12px 16px !important;
+      background: rgba(4, 7, 13, 0.96) !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.25) !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex-wrap: wrap !important;
+    }
+
+    /* 5. Sonic Universe Hero Centering & Token Alignment */
+    .sonic-header,
+    .sonic-header.text-center {
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 auto 36px auto !important;
+    }
+    .sonic-hero-title {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .sonic-header .page-subtitle {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      max-width: 780px !important;
+    }
+    .header-dsp-links {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 14px !important;
+      margin-top: 22px !important;
+    }
+    .dsp-pill.youtube-subscribe {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(4, 7, 13, 0.95)) !important;
+      border: 1.5px solid #d4af37 !important;
+      color: #f8fafc !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.25) !important;
+    }
+    .music-badge-pill,
+    .lab-live-badge,
+    .chip-verified-badge,
+    .engine-active {
+      background: rgba(56, 189, 248, 0.14) !important;
+      border: 1px solid rgba(56, 189, 248, 0.45) !important;
+      color: #38bdf8 !important;
+      border-radius: 9999px !important;
+    }
+
+    /* 6. Single Blog Post Full-Width 1140px Obsidian Container & Gutenberg Luxury AST */
+    body.single-post,
+    body.single-post #page,
+    body.single-post #content,
+    body.single-post .site-content,
+    body.single-post #primary,
+    body.single-post #main {
+      background: #04070d !important;
+      color: #f8fafc !important;
+    }
+    body.single-post .ast-container {
+      max-width: 1180px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      padding: 32px 24px 60px 24px !important;
+      display: block !important;
+    }
+    body.single-post #primary {
+      width: 100% !important;
+      max-width: 1140px !important;
+      margin: 0 auto !important;
+      float: none !important;
+    }
+    body.single-post #secondary,
+    body.single-post .widget-area {
+      display: none !important;
+    }
+    body.single-post article.luxury-article-entry,
+    body.single-post .ast-article-single {
+      background: rgba(8, 12, 22, 0.94) !important;
+      border: 1px solid rgba(212, 175, 55, 0.24) !important;
+      border-radius: 22px !important;
+      padding: 38px 34px !important;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(56, 189, 248, 0.08) !important;
+      max-width: 1140px !important;
+      margin: 0 auto !important;
+    }
+
+    /* 7. Sovereign v10.5 Persistent Bottom Streaming Vault */
+    #kr-bottom-streaming-vault {
+      position: fixed !important;
+      bottom: 14px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      z-index: 9990 !important;
+      max-width: 980px !important;
+      width: calc(100% - 32px) !important;
+      background: rgba(4, 7, 13, 0.94) !important;
+      border: 1px solid rgba(212, 175, 55, 0.42) !important;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.9), 0 0 22px rgba(56, 189, 248, 0.18) !important;
+      border-radius: 9999px !important;
+      padding: 8px 20px !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-inner {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 14px !important;
+      flex-wrap: nowrap !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-brand {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      white-space: nowrap !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-pulse {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: #38bdf8 !important;
+      box-shadow: 0 0 10px #38bdf8 !important;
+      display: inline-block !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-tag {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.68rem !important;
+      font-weight: 800 !important;
+      color: #d4af37 !important;
+      letter-spacing: 0.08em !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-controls {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-icon-btn {
+      background: rgba(15, 23, 42, 0.9) !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+      color: #38bdf8 !important;
+      width: 30px !important;
+      height: 30px !important;
+      border-radius: 50% !important;
+      font-size: 0.65rem !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-play-pill {
+      background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%) !important;
+      color: #04070d !important;
+      border: none !important;
+      border-radius: 9999px !important;
+      padding: 6px 14px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      cursor: pointer !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      white-space: nowrap !important;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.35) !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-track-readout {
+      display: flex !important;
+      flex-direction: column !important;
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
+      overflow: hidden !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-track-title {
+      color: #f8fafc !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.80rem !important;
+      font-weight: 800 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-track-sub {
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-actions {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      white-space: nowrap !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-link-pill,
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill {
+      background: rgba(56, 189, 248, 0.12) !important;
+      border: 1px solid rgba(56, 189, 248, 0.4) !important;
+      color: #38bdf8 !important;
+      border-radius: 9999px !important;
+      padding: 5px 12px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill {
+      border-color: rgba(212, 175, 55, 0.45) !important;
+      color: #d4af37 !important;
+      background: rgba(212, 175, 55, 0.1) !important;
+    }
+    @media (max-width: 768px) {
+      #kr-bottom-streaming-vault .kr-vault-brand,
+      #kr-bottom-streaming-vault .kr-vault-actions {
+        display: none !important;
+      }
+    }
+
     /* Suppress Astra default footer on homepage in favor of Wayne's 4-column Regional Divisions footer */
     body.home .site-footer,
     body.home #colophon,

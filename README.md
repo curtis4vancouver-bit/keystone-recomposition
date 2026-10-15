@@ -190,3 +190,6 @@ Automated deployments to [keystonerecomposition.com](https://keystonerecompositi
 
 Copyright © 2023–2026 Keystone Possibilities Ltd & Keystone Recomposition. All Rights Reserved.  
 Certified BC Housing Residential Builder Licence #52603.
+
+---
+**Domain Hub:** [[09_Keystone_websites/themes/keystone-recomposition-child/00_INDEX|09_Keystone_websites/themes/keystone-recomposition-child Index]]

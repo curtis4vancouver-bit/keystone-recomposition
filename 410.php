@@ -28,7 +28,7 @@ get_header();
                 </h1>
                 
                 <p class="lead-text" style="color: #94a3b8; font-size: 1.15rem; line-height: 1.85; margin: 0 auto 40px auto; max-width: 660px;">
-                    As part of Keystone Recomposition's 2026 architectural evolution, all legacy metabolic and peptide case studies have been permanently removed from our digital index under RFC 9110. We invite you to explore our Autonomous AI Systems or stream our 22-Release Sonic Universe.
+                    As part of Keystone Recomposition's 2026 architectural evolution, all legacy historical drafts have been permanently retired from our digital index under RFC 9110. We invite you to explore our Autonomous AI Systems or stream our 22-Release Sonic Universe.
                 </p>
 
                 <div class="action-grid" style="display: flex; flex-direction: column; gap: 16px; justify-content: center; align-items: center;">
@@ -40,7 +40,7 @@ get_header();
                             🎵 Stream Sonic Universe (22 Releases) →
                         </a>
                     </div>
-                    <a href="/founder/" style="color: #00f0ff; font-weight: 600; text-decoration: none; font-size: 0.95rem; margin-top: 10px;">
+                    <a href="/founder/" style="color: #38bdf8; font-weight: 600; text-decoration: none; font-size: 0.95rem; margin-top: 10px;">
                         Learn About Founder Wayne Stevenson →
                     </a>
                 </div>

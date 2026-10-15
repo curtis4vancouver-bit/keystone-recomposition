@@ -112,10 +112,10 @@ $total_tracks = $stats['total_tracks'];
                                         432Hz Cellular Healing &bull; Too Lost Digital Distribution
                                     </p>
                                     <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #1db954 0%, #15803d 100%); color: #000000 !important; -webkit-text-fill-color: #000000 !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(29, 185, 84, 0.35);">
+                                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
                                             <span>🎧</span> Stream on Spotify
                                         </a>
-                                        <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(245, 158, 11, 0.45); color: #fbbf24 !important; -webkit-text-fill-color: #fbbf24 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 50px; text-decoration: none !important;">
+                                        <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8 !important; -webkit-text-fill-color: #38bdf8 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important;">
                                             <span>🔔</span> Subscribe Channel
                                         </a>
                                     </div>
@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (navigator.clipboard && code) {
                         navigator.clipboard.writeText(code).then(() => {
                             cBtn.textContent = '✔';
-                            cBtn.style.color = '#00f0ff';
+                            cBtn.style.color = '#38bdf8';
                             setTimeout(() => {
                                 cBtn.textContent = '📋';
                                 cBtn.style.color = '';

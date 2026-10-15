@@ -112,7 +112,7 @@ function keystone_get_all_albums(): array {
             'tracks'       => array(
                 array(
                     'pos'      => 1,
-                    'title'    => 'Secretagogue',
+                    'title'    => 'Sovereign Signal',
                     'isrc'     => 'QT62V2662071',
                     'duration' => 'PT4M15S',
                 ),
@@ -142,7 +142,7 @@ function keystone_get_all_albums(): array {
                 ),
                 array(
                     'pos'      => 6,
-                    'title'    => 'The Peptide Loop',
+                    'title'    => 'The Sovereign Loop',
                     'isrc'     => 'QT62V2662076',
                     'duration' => 'PT4M15S',
                 ),

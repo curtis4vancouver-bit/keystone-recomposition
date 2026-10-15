@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div><!-- #content -->
 
     <!-- WAYNE'S MASTER LUXURY FOOTER (Pure Luxury Black #000000 Standard) -->
-    <footer id="kr-master-luxury-footer" class="kr-master-luxury-footer wayne-preferred-footer" style="background-color: #000000 !important; background: #000000 !important; border-top: 1px solid rgba(212, 175, 55, 0.25); padding: 48px 20px calc(2rem + env(safe-area-inset-bottom, 0px)) 20px; color: #94A3B8; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.84rem; text-align: center; position: relative; z-index: 10; width: 100%; box-sizing: border-box; overflow-x: clip;">
+    <footer id="kr-master-luxury-footer" data-nosnippet class="kr-master-luxury-footer wayne-preferred-footer" style="background-color: #000000 !important; background: #000000 !important; border-top: 1px solid rgba(212, 175, 55, 0.25); padding: 48px 20px calc(5.5rem + env(safe-area-inset-bottom, 0px)) 20px; color: #94A3B8; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.84rem; text-align: center; position: relative; z-index: 10; width: 100%; box-sizing: border-box; overflow-x: clip;">
         <div style="max-width: 1200px; margin: 0 auto;">
             
             <!-- A. Top Action Row: Social Matrix & Two High-Converting YouTube Channel Subscribe Pills -->
@@ -47,13 +47,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                     <!-- YouTube Subscribe Pill: @KEYSTONERECOMPOSITION (Subtle Gold Border) -->
                     <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-gold" style="display: inline-flex; align-items: center; gap: 9px; min-height: 48px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(0, 0, 0, 0.98) 100%); border: 1.5px solid #d4af37; padding: 10px 22px; border-radius: 9999px; text-decoration: none !important; color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 18px rgba(212, 175, 55, 0.22); transition: all 0.25s ease;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.6)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4af37" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         <span>SUBSCRIBE &bull; @KEYSTONERECOMPOSITION</span>
                     </a>
 
-                    <!-- YouTube Subscribe Pill: @KEYSTONEAIPROTOCOLS (Subtle Cyan Border) -->
-                    <a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-cyan" style="display: inline-flex; align-items: center; gap: 9px; min-height: 48px; background: linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(0, 0, 0, 0.98) 100%); border: 1.5px solid #00f0ff; padding: 10px 22px; border-radius: 9999px; text-decoration: none !important; color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 18px rgba(0, 240, 255, 0.22); transition: all 0.25s ease;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.6)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <!-- YouTube Subscribe Pill: @KEYSTONEAIPROTOCOLS (Subtle Baby Blue Border) -->
+                    <a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-cyan" style="display: inline-flex; align-items: center; gap: 9px; min-height: 48px; background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(0, 0, 0, 0.98) 100%); border: 1.5px solid #38bdf8; padding: 10px 22px; border-radius: 9999px; text-decoration: none !important; color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 18px rgba(56, 189, 248, 0.22); transition: all 0.25s ease;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#38bdf8" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         <span>SUBSCRIBE &bull; @KEYSTONEAIPROTOCOLS</span>
                     </a>
 
@@ -66,7 +66,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     Copyright &copy; 2023–2026 Keystone Possibilities Ltd &amp; Keystone Recomposition &bull; All Rights Reserved.
                 </p>
                 <p class="footer-copyright-sub" style="margin: 0; color: #c5a059; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;">
-                    Certified BC Housing Residential Builder #52603 &bull; Autonomous AI Systems &amp; Audio Architecture
+                    Certified BC Housing Residential Builder #52603 &bull; 2-5-10 National Home Warranty &bull; BC Hydro Civil Contractor ES54
                 </p>
             </div>
 
@@ -83,14 +83,14 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Sovereign Reverb (10-Track Album)</a>
                         <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• APOLLO Protocol (Deep House)</a>
                         <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 22 Official Releases (20 Studio Albums)</a>
-                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="footer-cyan-link" style="color: #00f0ff !important; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• TooLost Global Distribution ↗</a>
+                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="footer-cyan-link" style="color: #38bdf8 !important; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• TooLost Global Distribution ↗</a>
                     </div>
 
                     <!-- Column 2: Autonomous AI Protocols -->
                     <div class="regional-col">
                         <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Autonomous AI Protocols:</strong>
                         <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Antigravity Workstation Blueprint</a>
-                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 16-Agent FastMCP Swarms</a>
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 28-Agent FastMCP Swarms</a>
                         <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Custom Tauri Sovereign Setup</a>
                         <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Chrome CDP Automation Engine</a>
                     </div>
@@ -111,14 +111,14 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <span class="license-white" style="color: #f6d365 !important; font-weight: 600; font-size: 0.80rem; display: block; margin-bottom: 4px;">🏛️ Certified BC Housing Builder #52603</span>
                         <a href="/founder/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 4px; font-size: 0.80rem; transition: color 0.2s ease;">• Wayne Stevenson Builder Dossier</a>
                         <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener noreferrer" class="sister-flagship-link" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Keystone Possibilities Ltd. ↗</a>
-                        <a href="mailto:curtis4vancouver@gmail.com" style="color: #00f0ff !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Direct Email: curtis4vancouver@gmail.com</a>
+                        <a href="mailto:curtis4vancouver@gmail.com" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Direct Email: curtis4vancouver@gmail.com</a>
                         <a href="/contact/" class="consultation-sub-link" style="color: #94A3B8 !important; font-size: 0.80rem; display: block; text-decoration: none !important;">• Schedule Fiduciary Consultation</a>
                     </div>
 
                 </div>
             </div>
 
-            <!-- D. Single-Line Empire Network Cross-Link Bar (media_1790708837539.png) -->
+            <!-- D. Single-Line Empire Network Cross-Link Bar -->
             <div class="empire-network-bar" style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.80rem; color: #94a3b8; text-align: left;">
                 <div class="empire-left">
                     <span class="network-title-gold" style="color: #d4af37; font-weight: 700; letter-spacing: 0.04em;">⚔️ KEYSTONE EMPIRE NETWORK</span> 
@@ -133,6 +133,108 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         </div>
     </footer>
+
+    <!-- SOVEREIGN v10 PERSISTENT BOTTOM STREAMING VAULT -->
+    <?php $kr_vault_theme_uri = get_stylesheet_directory_uri(); ?>
+    <div id="kr-bottom-streaming-vault" class="kr-bottom-streaming-vault" data-nosnippet aria-label="Sovereign Audio Streaming Vault">
+        <audio id="krVaultAudio" preload="none" crossorigin="anonymous"></audio>
+        <div class="kr-vault-inner">
+            <div class="kr-vault-brand">
+                <span class="kr-vault-pulse"></span>
+                <span class="kr-vault-tag">SONIC VAULT // 96kHz</span>
+            </div>
+            <div class="kr-vault-controls">
+                <button type="button" id="krVaultPrevBtn" class="kr-vault-icon-btn" aria-label="Previous Track" title="Previous Track">&#9664;&#9664;</button>
+                <button type="button" id="krVaultPlayBtn" class="kr-vault-play-pill" aria-label="Play or Pause Stream">
+                    <span id="krVaultPlayIcon">&#9654;</span>
+                    <span id="krVaultPlayText">STREAM MASTER</span>
+                </button>
+                <button type="button" id="krVaultNextBtn" class="kr-vault-icon-btn" aria-label="Next Track" title="Next Track">&#9654;&#9654;</button>
+            </div>
+            <div class="kr-vault-track-readout">
+                <span id="krVaultTrackTitle" class="kr-vault-track-title">01 • Sovereign Reverb</span>
+                <span id="krVaultTrackSub" class="kr-vault-track-sub">Organic Downtempo Chill House • 115 BPM</span>
+            </div>
+            <div class="kr-vault-actions">
+                <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">22-Release Catalog</a>
+                <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="kr-vault-spotify-pill">Spotify OAC ↗</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var vaultTracks = [
+            { title: '01 • Sovereign Reverb', sub: 'Organic Downtempo Chill House • 115 BPM', url: '<?php echo esc_url( $kr_vault_theme_uri . "/assets/audio/track1_steady_incline.mp3" ); ?>' },
+            { title: '02 • Apollo Protocol', sub: 'Progressive Ambient Melodic • 120 BPM', url: '<?php echo esc_url( $kr_vault_theme_uri . "/assets/audio/track2_fluid_dynamics.mp3" ); ?>' },
+            { title: '03 • Blue Collar Symphony', sub: 'Deep Melodic House • 122 BPM', url: '<?php echo esc_url( $kr_vault_theme_uri . "/assets/audio/track3_tier_one_flow.mp3" ); ?>' },
+            { title: '04 • The Midday Push', sub: 'Organic Cello & Deep Bass • 120 BPM', url: '<?php echo esc_url( $kr_vault_theme_uri . "/assets/audio/track4_the_midday_push.mp3" ); ?>' },
+            { title: '05 • Kinetic Peace', sub: 'Melodic Downtempo • 115 BPM', url: '<?php echo esc_url( $kr_vault_theme_uri . "/assets/audio/track5_kinetic_peace.mp3" ); ?>' },
+            { title: '06 • The Long Game', sub: 'Progressive Flow • 124 BPM', url: '<?php echo esc_url( $kr_vault_theme_uri . "/assets/audio/track6_the_long_game.mp3" ); ?>' }
+        ];
+        var vIdx = 0;
+        var vPlaying = false;
+        var vAudio = document.getElementById('cyberAudio') || document.getElementById('krVaultAudio');
+        var playBtn = document.getElementById('krVaultPlayBtn');
+        var prevBtn = document.getElementById('krVaultPrevBtn');
+        var nextBtn = document.getElementById('krVaultNextBtn');
+        var iconEl = document.getElementById('krVaultPlayIcon');
+        var textEl = document.getElementById('krVaultPlayText');
+        var titleEl = document.getElementById('krVaultTrackTitle');
+        var subEl = document.getElementById('krVaultTrackSub');
+
+        function syncVaultUI() {
+            if (titleEl) titleEl.textContent = vaultTracks[vIdx].title;
+            if (subEl) subEl.textContent = vaultTracks[vIdx].sub;
+            if (iconEl) iconEl.innerHTML = vPlaying ? '&#10074;&#10074;' : '&#9654;';
+            if (textEl) textEl.textContent = vPlaying ? 'LIVE 96kHz' : 'STREAM MASTER';
+            if (playBtn) playBtn.classList.toggle('is-playing', vPlaying);
+        }
+
+        function loadAndPlay(index) {
+            vIdx = (index + vaultTracks.length) % vaultTracks.length;
+            if (typeof window.switchTrack === 'function' && document.getElementById('cyberAudio')) {
+                window.switchTrack(vaultTracks[vIdx].title.replace(/^\d+\s•\s/, ''), vaultTracks[vIdx].sub, vIdx);
+                vPlaying = true;
+                syncVaultUI();
+                return;
+            }
+            if (!vAudio) return;
+            vAudio.src = vaultTracks[vIdx].url;
+            vAudio.play().then(function() {
+                vPlaying = true;
+                syncVaultUI();
+            }).catch(function() {
+                vPlaying = false;
+                syncVaultUI();
+            });
+        }
+
+        if (playBtn) {
+            playBtn.addEventListener('click', function() {
+                var mainBtn = document.getElementById('cyberPlayBtn');
+                if (mainBtn) {
+                    mainBtn.click();
+                    vPlaying = !vPlaying;
+                    syncVaultUI();
+                    return;
+                }
+                if (!vAudio) return;
+                if (!vAudio.src) {
+                    loadAndPlay(vIdx);
+                } else if (vAudio.paused) {
+                    vAudio.play().then(function() { vPlaying = true; syncVaultUI(); }).catch(function(){});
+                } else {
+                    vAudio.pause();
+                    vPlaying = false;
+                    syncVaultUI();
+                }
+            });
+        }
+        if (prevBtn) prevBtn.addEventListener('click', function() { loadAndPlay(vIdx - 1); });
+        if (nextBtn) nextBtn.addEventListener('click', function() { loadAndPlay(vIdx + 1); });
+        window.krPlayVaultTrack = loadAndPlay;
+    })();
+    </script>
 
 </div><!-- #page -->
 

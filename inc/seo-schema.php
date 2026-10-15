@@ -127,9 +127,11 @@ function keystone_recomposition_child_inject_schema() {
         ),
         'sameAs' => array(
             'https://keystonepossibilities.ca',
-            'https://www.youtube.com/@KeystoneRecomposition',
-            'https://www.youtube.com/@KeystoneProtocols',
+            'https://www.youtube.com/@KeyStoneRecomposition',
+            'https://www.youtube.com/@KeystoneAIProtocols',
+            'https://www.youtube.com/@KeystonePossibilitiesLtd',
             'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+            'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
             'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
             'https://audiomack.com/keystone-recomposition',
             'https://toolost.com',
@@ -211,7 +213,7 @@ add_action( 'wp_head', 'keystone_recomposition_child_inject_schema' );
 /**
  * 7.2 Master Wayne Stevenson Schema.org Person Definition
  * Multi-domain entity mesh spanning BC Housing builder licensing (#52603),
- * longevity protocol research, and functional bio-acoustic audio engineering.
+ * autonomous 28-agent AI systems, and functional bio-acoustic audio engineering.
  *
  * @return array Schema.org Person definition.
  */
@@ -236,7 +238,7 @@ function keystone_get_wayne_stevenson_person_schema(): array {
             'Functional Audio Producer',
             'Recording Artist & Producer',
         ),
-        'description'      => 'Founder and Managing Director of Keystone Possibilities Ltd (BC Housing Builder #52603) and creator of Keystone Recomposition. Wayne Stevenson engineers autonomous multi-agent AI swarms, functional electronic music across 22 official releases (20 studio albums) distributed worldwide via TooLost Digital, quantitative market intelligence, and high-performance mountain living across the Sea-to-Sky corridor.',
+        'description'      => 'Founder and Managing Director of Keystone Possibilities Ltd (BC Housing Builder #52603) and creator of Keystone Recomposition. Wayne Stevenson engineers autonomous 28-agent AI swarms, functional electronic music across 22 official releases (20 studio albums) distributed worldwide via TooLost Digital, quantitative market intelligence, and high-performance mountain living across the Sea-to-Sky corridor.',
         'hasCredential'    => array(
             array(
                 '@type'              => 'EducationalOccupationalCredential',
@@ -253,6 +255,26 @@ function keystone_get_wayne_stevenson_person_schema(): array {
                 ),
                 'url'                => 'https://lims.bchousing.org/LicenceExpiryPortal/licence/52603',
             ),
+            array(
+                '@type'              => 'EducationalOccupationalCredential',
+                'name'               => '2-5-10 Year National Home Warranty Protection',
+                'credentialCategory' => 'Statutory Residential Construction Warranty',
+                'validIn'            => array(
+                    '@type' => 'AdministrativeArea',
+                    'name'  => 'British Columbia, Canada',
+                ),
+                'url'                => 'https://keystonepossibilities.ca',
+            ),
+            array(
+                '@type'              => 'EducationalOccupationalCredential',
+                'name'               => 'BC Hydro Registered Civil Utility Contractor (ES54)',
+                'credentialCategory' => 'Civil Utility Infrastructure Qualification',
+                'validIn'            => array(
+                    '@type' => 'AdministrativeArea',
+                    'name'  => 'British Columbia, Canada',
+                ),
+                'url'                => 'https://keystonepossibilities.ca',
+            ),
         ),
         'hasOccupation'    => array(
             array(
@@ -268,7 +290,7 @@ function keystone_get_wayne_stevenson_person_schema(): array {
             array(
                 '@type'                => 'Occupation',
                 'name'                 => 'Autonomous AI Systems Architect & Multi-Agent Engineer',
-                'description'          => 'Lead Systems Architect engineering 16-agent autonomous swarms, FastMCP server infrastructure, and Chrome DevTools Protocol automation.',
+                'description'          => 'Lead Systems Architect engineering 28-agent autonomous swarms, FastMCP server infrastructure, and Chrome DevTools Protocol automation.',
                 'occupationalCategory' => 'Autonomous Software Engineering & AI Architecture',
             ),
             array(
@@ -307,35 +329,37 @@ function keystone_get_wayne_stevenson_person_schema(): array {
         ),
         'sameAs'           => array(
             'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
-            'https://musicbrainz.org/artist/52v3Qe6Jo0hg764driOl5Y',
+            'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
             'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
-            'https://pro.musixmatch.com',
+            'https://pro.musixmatch.com/roster/artist/72648585',
             'https://www.musixmatch.com/artist/Wayne-Stevenson',
-            'https://www.youtube.com/@KeystoneProtocols',
-            'https://www.youtube.com/@KeystoneRecomposition',
+            'https://www.youtube.com/@KeyStoneRecomposition',
+            'https://www.youtube.com/@KeystoneAIProtocols',
+            'https://www.youtube.com/@KeystonePossibilitiesLtd',
             'https://keystonepossibilities.ca',
             'https://lims.bchousing.org/LicenceExpiryPortal/licence/52603',
             'https://audiomack.com/keystone-recomposition',
             'https://www.linkedin.com/in/wayne-stevenson',
-            'https://www.facebook.com/profile.php?id=61554185128555',
+            'https://www.facebook.com/profile.php?id=61561081702787',
+            'https://www.instagram.com/keystonerecomposition/',
             'https://www.tiktok.com/@keystonerecomposition',
         ),
         'producerOf'       => array(
             array(
                 '@type'       => 'MusicAlbum',
-                '@id'         => 'https://keystonerecomposition.com/#album-concrete-foundations',
+                '@id'         => 'https://keystonerecomposition.com/sonic-universe/#album-concrete-foundations',
                 'name'        => 'Concrete Foundations',
                 'description' => 'Functional bio-acoustic engineering and high-end electronic soundscapes composed by Wayne Stevenson for training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
             ),
             array(
                 '@type'       => 'MusicAlbum',
-                '@id'         => 'https://keystonerecomposition.com/#album-resonantia',
+                '@id'         => 'https://keystonerecomposition.com/sonic-universe/#album-resonantia',
                 'name'        => 'Resonantia: 10 Frequencies of the Rebuild',
                 'description' => '10 progressive functional bio-acoustic frequencies and deep house soundscapes engineered for circadian entrainment, metabolic focus, and autonomic state regulation in Keystone Protocols.',
             ),
             array(
                 '@type'       => 'MusicAlbum',
-                '@id'         => 'https://keystonerecomposition.com/#album-the-205-marker',
+                '@id'         => 'https://keystonerecomposition.com/sonic-universe/#album-the-205-marker',
                 'name'        => 'The 205 Marker',
                 'description' => 'Cadence-synchronized electronic album engineered by Wayne Stevenson for sustained training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
             ),
@@ -405,7 +429,7 @@ function keystone_recomposition_child_music_schema() {
         $album_slug = sanitize_title( $album['title'] );
         $album_node = array(
             '@type'         => 'MusicAlbum',
-            '@id'           => 'https://keystonerecomposition.com/album/' . $album_slug . '/#album',
+            '@id'           => 'https://keystonerecomposition.com/sonic-universe/#album-' . $album_slug,
             'name'          => $album['title'],
             'datePublished' => $album['release_date'],
             'numTracks'     => (int) $album['track_count'],
@@ -426,7 +450,7 @@ function keystone_recomposition_child_music_schema() {
                     'position'       => (int) $t['pos'],
                     'item'           => array(
                         '@type'         => 'MusicRecording',
-                        '@id'           => 'https://keystonerecomposition.com/track/' . sanitize_title( $t['title'] ) . '/#recording',
+                        '@id'           => 'https://keystonerecomposition.com/sonic-universe/#track-' . sanitize_title( $t['title'] ),
                         'name'          => $t['title'],
                         'isrcCode'      => $t['isrc'],
                         'duration'      => $t['duration'] ?? 'PT4M00S',
@@ -434,7 +458,7 @@ function keystone_recomposition_child_music_schema() {
                             '@id' => 'https://keystonerecomposition.com/#musicgroup',
                         ),
                         'inAlbum'       => array(
-                            '@id' => 'https://keystonerecomposition.com/album/' . $album_slug . '/#album',
+                            '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-' . $album_slug,
                         ),
                     ),
                 );
@@ -1108,10 +1132,9 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
     );
 
     $known_301_sources = array(
-        '/2026/01/23/mounjaro-kwikpen-the-official-click-to-mg-math-bible/',
-        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/',
-        '/mounjaro-muscle-loss.html',
-        '/wolverine-stack.html',
+        '/about/',
+        '/about-the-founder/',
+        '/about-the-founder-the-keystone-blueprint/',
     );
 
     if ( isset( $url['loc'] ) ) {
@@ -1279,83 +1302,35 @@ function keystone_recomposition_child_seo_noindex() {
 add_action( 'wp_head', 'keystone_recomposition_child_seo_noindex', 1 );
 
 /**
- * 12. Patch Structural Site Leaks (404/Redirect Errors & 410 Gone Interceptor)
+ * 12. Patch Structural Site Leaks (301 Redirects for Canonical Routes)
  */
 function keystone_recomposition_child_404_redirect() {
+    if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+        return;
+    }
+
     $request_uri = $_SERVER['REQUEST_URI'] ?? '';
     if ( empty( $request_uri ) ) {
         return;
     }
 
     // Normalize request URI
-    $path = strtok( $request_uri, '?' ); // Strip query parameters
-    $path = '/' . trim( (string) $path, '/' ) . '/'; // Standardize slashes
-    $path = str_replace( '//', '/', $path );
+    $path = strtok( $request_uri, '?' );
+    $trimmed_path = '/' . trim( (string) $path, '/' );
+    $slashed_path = $trimmed_path === '//' ? '/' : ( $trimmed_path . '/' );
 
-    $redirects_301 = array(
-        '/2026/01/23/mounjaro-kwikpen-the-official-click-to-mg-math-bible/' => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
-        '/2026/05/07/wolverine-stack-bpc-157-tb500-protocol-blueprint/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
-        '/mounjaro-muscle-loss.html/' => '/2026/01/13/stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/',
-        '/wolverine-stack.html/' => '/2026/05/07/wolverine-stack-bpc-157-tb-500-protocol-blueprint/',
-        '/watch-12-solfeggio-protocols-for-total-cellular-rebuild/' => '/watch-solfeggio-cellular-rebuild/',
-        '/watch-2026-body-recomposition-protocol/' => '/watch-the-ultimate-2026-body-recompo/',
-        '/watch-219-lbs-how-i-broke-the-mounjaro-stall-the-week-18-protocol/' => '/watch-how-to-break-mounjaro-stall/',
-        '/watch-33lbs-down-glp1-muscle-infrastructure/' => '/watch-muscle-infrastructure-glp1-33lbs/',
-        '/watch-36lbs-fat-8lbs-muscle-the-recomposition-blueprint/' => '/watch-36lbs-fat-loss-8lbs-muscle-gain/',
-        '/watch-beyond-the-scale-the-2026-strategy-for-biological-age-reversal/' => '/watch-biological-age-reversal-2026/',
-        '/watch-biological-overdrive/' => '/watch-biological-overdrive-album/',
-        '/watch-biological-structural-refit/' => '/watch-biological-structural-refit-skinny/',
-        '/watch-body-recomposition-on-mounjaro/' => '/watch-mounjaro-body-recomposition-40/',
-        '/watch-cjc-1295-dac-vs-tesamorelin-the-visceral-belly-fat-battle/' => '/watch-cjc-1295-dac-vs-tesamorelin-th/',
-        '/watch-cjc-1295-ipamorelin-glp-1-fatigue/' => '/watch-cjc-1295-ipamorelin-glp-1-fati/',
-        '/watch-dangerous-mistake-cjc-1295/' => '/watch-the-dangerous-mistake-i-made-s/',
-        '/watch-day-5-on-tirzepatide-5-day-crash-half-life-protocol/' => '/watch-day-5-on-tirzepatide/',
-        '/watch-fda-ban-tirzepatide-access/' => '/watch-fda-ban-tirzepatide/',
-        '/watch-fda-peptide-ban-11-peptides-saved/' => '/watch-fda-peptide-ban-ending-2026/',
-        '/watch-fda-peptide-ban-july-update/' => '/watch-fda-peptide-ban-the-july-compo/',
-        '/watch-fda-peptide-ban-the-july-compounding-hearings-update-bpc-157-tb-500/' => '/watch-fda-peptide-ban-the-july-compo/',
-        '/watch-fda-peptides-bpc-157-tb-500-update-2026/' => '/watch-fda-peptides-bpc-157-tb-500-up/',
-        '/watch-fighting-glp-1-fatigue-my-personal-otc-energy-stack-recovery-case-study/' => '/watch-fighting-glp-1-fatigue-my-pers/',
-        '/watch-fighting-glp-1-fatigue-otc/' => '/watch-fighting-glp-1-fatigue-my-pers/',
-        '/watch-glp-1-fatigue-fix-motsc-auxiliary-generator/' => '/watch-retatrutide-motsc-mitochondrial-drive-protocol/',
-        '/watch-glp-1-infrastructure-the-cellular-rebuild-cold-plunge-protocol-week-11-log/' => '/watch-cellular-rebuild-cold-plunge/',
-        '/watch-glp-1-muscle-preservation-protocol/' => '/watch-glp-1-muscle-preservation-48lb/',
-        '/watch-glp-1-results-stalled/' => '/watch-glp-1-results-stalled-13-week/',
-        '/watch-https-keystonerecomposition-com-2026-09-03-day-4-on-tirzepatide-nausea-crash/' => '/watch-day-4-on-tirzepatide-nausea-crash/',
-        '/watch-https-keystonerecomposition-com-day-5-on-tirzepatide/' => '/watch-day-5-on-tirzepatide/',
-        '/watch-i-lost-48-lbs-on-mounjaro-heres-how-much-was-muscle-men-over-40/' => '/watch-i-lost-48-lbs-on-mounjaro-here/',
-        '/watch-iron-ice-the-54-minute-deep-house-blueprint-for-high-intensity-training/' => '/watch-iron-ice-deep-house-hit/',
-        '/watch-klow-vs-glow-peptide-stacks-science/' => '/watch-klow-vs-glow-peptide-stacks-sc/',
-        '/watch-mounjaro-26-week-results-construction-worker/' => '/watch-mounjaro-26-week-results-const/',
-        '/watch-mounjaro-breakdown-11-month-plateau-reset-protocol/' => '/watch-mounjaro-breakdown-11-month-plateau-reset/',
-        '/watch-mounjaro-maintenance-proven-phase-2-audit/' => '/watch-mounjaro-maintenance-audit/',
-        '/watch-mounjaro-muscle-preservation-week-18-stats/' => '/watch-muscle-preservation-33lbs-down/',
-        '/watch-mounjaro-week-20-100-clean-arteries-and-the-reality-of-biological-recompos/' => '/watch-biological-recomposition-week20/',
-        '/watch-mounjaro-whoosh-effect/' => '/watch-mounjaro-whoosh-effect-5-signs/',
-        '/watch-nad-injection-trend-anti-aging/' => '/watch-the-nad-injection-trend-anti-a/',
-        '/watch-pulse-of-the-forge-deep-house-chill/' => '/watch-pulse-of-the-forge-deep-house/',
-        '/watch-safe-mounjaro-injection-guide-2026-my-pain-free-30-second-routine/' => '/watch-mounjaro-injection-guide-2026/',
-        '/watch-stacking-mots-c-and-tirzepatide/' => '/watch-stacking-mots-c-and-tirzepatid/',
-        '/watch-stacking-mots-c-tirzepatide/' => '/watch-stacking-mots-c-and-tirzepatid/',
-        '/watch-stop-chasing-skinny-week-14-recomposition-the-269-click-kwikpen-secret/' => '/watch-kwikpen-click-protocol-249/',
-        '/watch-stop-glp-1-nausea-my-200g-protein-staple-meal/' => '/watch-glp-1-nausea-management-200g/',
-        '/watch-stop-glp1-weight-regain/' => '/watch-stop-glp1-weight-regain-reset/',
-        '/watch-structural-rebuild-protocol/' => '/watch-structural-rebuild-protocol-35/',
-        '/watch-the-2026-glp-1-muscle-leak-why-infrastructure-matters/' => '/watch-2026-glp-1-muscle-leak/',
-        '/watch-the-dangerous-mistake-i-made-stacking-cjc-1295-with-ghk-cu/' => '/watch-the-dangerous-mistake-i-made-s/',
-        '/watch-the-dopamine-reset-how-glp-1s-silence-the-beer-noise-2026-science-audit/' => '/watch-dopamine-reset-silence-beer-noise/',
-        '/watch-the-nad-injection-trend-anti-aging-breakthrough-or-cellular-wild-west/' => '/watch-the-nad-injection-trend-anti-a/',
-        '/watch-the-new-metabolic-system-kwikpen-logistics-cardio-protection-and-the-phase/' => '/watch-phase-2-stabilization-kwikpen/',
-        '/watch-the-resonance-suite-healing-frequencies-deep-house/' => '/watch-the-resonance-suite-healing-fr/',
-        '/watch-the-ultimate-2026-body-recomposition-protocol-tirzepatide-cjc-1295-explained/' => '/watch-the-ultimate-2026-body-recompo/',
-        '/watch-tirzepatide-titration-schedule-sarcopenia/' => '/watch-tirzepatide-titration-schedule/',
-        '/watch-trt-men-over-35-bloodwork-guide/' => '/watch-trt-for-men-over-35-protocols/',
-        '/watch-week-12-sunday-plunge-building-the-mental-infrastructure-for-205-lbs/' => '/watch-week-12-sunday-plunge-205lbs/',
-        '/watch-week-21-216-lbs-the-5mg-metabolic-cadence-recomposition-blueprint/' => '/watch-week-21-mounjaro-5mg-cadence/',
-        '/watch-why-is-the-fda-banning-this-10-year-age-reversal-peptide-epitalon-facts/' => '/watch-fda-epitalon-ban/',
-        '/watch-wolverine-peptide-protocol-bpc-157-tb-500/' => '/watch-wolverine-peptide-protocol-bpc/',
-        '/watch-wolverine-stack-bpc-157-tb-500-builder-blueprint/' => '/watch-wolverine-stack-bpc-157-tb-500/',
-    );
+    // 1. Canonical Founder 301 Redirects (/about/, /about-the-founder/ -> /founder/)
+    if ( in_array( strtolower( $trimmed_path ), array( '/about', '/about-the-founder', '/about-the-founder-the-keystone-blueprint' ), true ) ) {
+        wp_safe_redirect( home_url( '/founder/' ), 301 );
+        exit;
+    }
+
+    // 2. Canonical Sonic Universe 301 Redirects (/album/*, /track/* -> /sonic-universe/)
+    if ( 0 === strpos( strtolower( $trimmed_path ), '/album/' ) || strtolower( $trimmed_path ) === '/album' ||
+         0 === strpos( strtolower( $trimmed_path ), '/track/' ) || strtolower( $trimmed_path ) === '/track' ) {
+        wp_safe_redirect( home_url( '/sonic-universe/' ), 301 );
+        exit;
+    }
 
     $gone_paths = array(
         '/keystone_recomposition_/',
@@ -1377,17 +1352,6 @@ function keystone_recomposition_child_404_redirect() {
         '/pemberton-luxury-builder/',
     );
 
-    $trimmed_path = '/' . trim( (string) $path, '/' );
-    $slashed_path = $trimmed_path . '/';
-
-    // Exact 301 redirects (checking both with and without trailing slash)
-    $target = $redirects_301[ $slashed_path ] ?? $redirects_301[ $trimmed_path ] ?? null;
-    if ( $target !== null ) {
-        wp_redirect( home_url( $target ), 301 );
-        exit;
-    }
-
-    // Exact and prefix 410 Gone statuses
     $is_gone = false;
     foreach ( $gone_paths as $gone_target ) {
         $clean_target = '/' . trim( $gone_target, '/' );
@@ -1398,20 +1362,17 @@ function keystone_recomposition_child_404_redirect() {
     }
 
     if ( $is_gone ) {
-        status_header( 410 );
-        nocache_headers();
         wp_safe_redirect( home_url( '/' ), 301 );
         exit;
     }
 
     // Wildcard matches for rogue PHP file requests
-    if ( strpos( $path, '/wp-content/themes/keystone-recomposition-child' ) !== false ||
+    if ( strpos( $path, '/wp-content/themes/keystone-recomposition' ) !== false ||
          preg_match( '~^/wp-.*\.php$~i', $path ) ||
          ( strpos( $path, '/wp-admin' ) === false && preg_match( '~\.php$~i', $path ) ) ) {
-        wp_redirect( home_url(), 301 );
+        wp_safe_redirect( home_url( '/' ), 301 );
         exit;
     }
-
 }
 add_action( 'init', 'keystone_recomposition_child_404_redirect', 1 );
 add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );

@@ -47,7 +47,7 @@ get_header(); ?>
                     <div class="recomp-featured-left-col" style="flex: 1 1 55%; width: 55%; min-width: 0; display: flex; flex-direction: column;">
                         
                         <!-- 16:9 Master Video Frame (Keystone Recomposition Masterclass) -->
-                        <div class="recomp-featured-video-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 8px 30px rgba(0, 240, 255, 0.15);">
+                        <div class="recomp-featured-video-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 8px 30px rgba(56, 189, 248, 0.15);">
                             <iframe id="recomp-featured-long-video" 
                                     src="https://www.youtube.com/embed/uMkZvTbqF2U" 
                                     title="Autonomous Multi-Agent Swarms: FastMCP Production Architecture" 
@@ -81,7 +81,7 @@ get_header(); ?>
                                     Rapid 40-second mobile field breakdown &amp; sovereign 4-agent swarm architecture.
                                 </p>
                                 <div class="recomp-featured-short-actions" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                                    <a id="recomp-featured-short-link" href="https://youtube.com/shorts/XUiFyItyyzo" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #e50914 0%, #b81d24 100%); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(229, 9, 20, 0.35);">
+                                    <a id="recomp-featured-short-link" href="https://youtube.com/shorts/XUiFyItyyzo" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
                                         <span>▶</span> Watch Short on YouTube
                                     </a>
                                     <a href="https://youtube.com/@keystonerecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8 !important; -webkit-text-fill-color: #38bdf8 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 50px; text-decoration: none !important;">
@@ -126,7 +126,7 @@ get_header(); ?>
 
                         <!-- Action Buttons Box -->
                         <div class="recomp-featured-buttons-box" style="display: flex; flex-direction: column; gap: 10px; max-width: 360px; width: 100%;">
-                            <a id="recomp-featured-link" href="/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(0, 240, 255, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
+                            <a id="recomp-featured-link" href="/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
                                 <span>READ TECHNICAL INTEL &rarr;</span>
                             </a>
                             <a href="/ai-protocols/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(56, 189, 248, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
@@ -176,10 +176,10 @@ get_header(); ?>
                                     432Hz Cellular Healing &bull; Too Lost Digital Distribution
                                 </p>
                                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                                    <a href="https://open.spotify.com/artist/4cKjV0Nsm8V7v0V4L7m5iM" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #1db954 0%, #15803d 100%); color: #000000 !important; -webkit-text-fill-color: #000000 !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(29, 185, 84, 0.35);">
+                                    <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
                                         <span>🎧</span> Stream on Spotify
                                     </a>
-                                    <a href="https://youtube.com/@keystonerecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(245, 158, 11, 0.45); color: #fbbf24 !important; -webkit-text-fill-color: #fbbf24 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 50px; text-decoration: none !important;">
+                                    <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8 !important; -webkit-text-fill-color: #38bdf8 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important;">
                                         <span>🔔</span> Subscribe Channel
                                     </a>
                                 </div>
@@ -257,7 +257,7 @@ get_header(); ?>
                             <button type="button" id="recomp-prev-btn" onclick="window.recompChangePage(-1)" aria-label="Previous Page" style="width: 42px; height: 42px; border-radius: 50%; background: rgba(15, 23, 42, 0.95); border: 1.5px solid #38bdf8; color: #38bdf8; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease;">
                                 <span style="font-size: 1.2rem; font-weight: 900; line-height: 1;">&#10094;</span>
                             </button>
-                            <button type="button" id="recomp-page-1-btn" onclick="window.recompGoToPage(1)" style="min-width: 42px; height: 42px; border-radius: 21px; background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%); border: 1.5px solid #00f0ff; color: #04070d; font-weight: 900; font-size: 0.90rem; cursor: pointer; padding: 0 14px; box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);">
+                            <button type="button" id="recomp-page-1-btn" onclick="window.recompGoToPage(1)" style="min-width: 42px; height: 42px; border-radius: 21px; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); border: 1.5px solid #38bdf8; color: #04070d; font-weight: 900; font-size: 0.90rem; cursor: pointer; padding: 0 14px; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);">
                                 1
                             </button>
                             <button type="button" id="recomp-page-2-btn" onclick="window.recompGoToPage(2)" style="min-width: 42px; height: 42px; border-radius: 21px; background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(56, 189, 248, 0.4); color: #94a3b8; font-weight: 800; font-size: 0.90rem; cursor: pointer; padding: 0 14px;">
@@ -282,7 +282,7 @@ get_header(); ?>
                             'excerpt' => 'Deep-dive architectural breakdown of Wayne Stevenson\'s local 4-agent FastMCP swarms, typed tool contracts, and automated Chrome DevTools execution.',
                             'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/10/autonomous-multi-agent-swarms-fastmcp-thumb.jpg',
                             'link' => '/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/',
-                            'status' => '● LIVE INTEL', 'status_color' => '#10b981',
+                            'status' => '● LIVE INTEL', 'status_color' => '#38bdf8',
                         ),
                         2 => array(
                             'page' => 1, 'slot' => '02', 'tier' => 'INTEL DROP 02', 'cat' => 'CHROME CDP AUTOMATION', 'read' => '10 MIN READ',
@@ -290,7 +290,7 @@ get_header(); ?>
                             'excerpt' => 'How to eliminate flaky Selenium and Puppeteer cloud proxies by latching sovereign AI agents directly into Wayne\'s active desktop Chrome browser on Port 9222.',
                             'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/trading_terminal_luxury.jpg',
                             'link' => '/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/',
-                            'status' => '● LIVE INTEL', 'status_color' => '#10b981',
+                            'status' => '● LIVE INTEL', 'status_color' => '#38bdf8',
                         ),
                         3 => array(
                             'page' => 1, 'slot' => '03', 'tier' => 'INTEL DROP 03', 'cat' => 'SONIC ARCHITECTURE', 'read' => '15 MIN READ',
@@ -298,7 +298,7 @@ get_header(); ?>
                             'excerpt' => 'Engineering electronic audio frequencies to sustain deep flow state during intensive building sprints. Complete 22-release studio master telemetry.',
                             'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/sovereign_reverb.jpg',
                             'link' => '/2026/09/28/sovereign-reverb-functional-frequency-architecture/',
-                            'status' => '● LIVE INTEL', 'status_color' => '#10b981',
+                            'status' => '● LIVE INTEL', 'status_color' => '#38bdf8',
                         ),
                         4 => array(
                             'page' => 1, 'slot' => '04', 'tier' => 'INTEL DROP 04', 'cat' => 'FASTMCP PROTOCOLS', 'read' => '11 MIN READ',
@@ -435,7 +435,7 @@ get_header(); ?>
                     <button type="button" onclick="window.recompChangePage(-1)" class="recomp-nav-pill-btn" style="width: 155px; min-width: 155px; max-width: 155px; height: 42px; border-radius: 50px; background: rgba(15, 23, 42, 0.95); border: 1.5px solid #38bdf8; color: #38bdf8; font-weight: 800; font-size: 0.84rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-sizing: border-box; padding: 0; transition: all 0.2s ease;">
                         <span style="font-size: 1.05rem; line-height: 1;">&#10094;</span> Previous Page
                     </button>
-                    <button type="button" onclick="window.recompGoToPage(1)" id="recomp-bottom-page-1" style="width: 42px; min-width: 42px; max-width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%); border: 1.5px solid #00f0ff; color: #04070d; font-weight: 900; font-size: 0.90rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; line-height: 1; flex-shrink: 0; box-sizing: border-box; padding: 0; box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);">
+                    <button type="button" onclick="window.recompGoToPage(1)" id="recomp-bottom-page-1" style="width: 42px; min-width: 42px; max-width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); border: 1.5px solid #38bdf8; color: #04070d; font-weight: 900; font-size: 0.90rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; line-height: 1; flex-shrink: 0; box-sizing: border-box; padding: 0; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);">
                         1
                     </button>
                     <button type="button" onclick="window.recompGoToPage(2)" id="recomp-bottom-page-2" style="width: 42px; min-width: 42px; max-width: 42px; height: 42px; border-radius: 50%; background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(56, 189, 248, 0.4); color: #94a3b8; font-weight: 800; font-size: 0.90rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; line-height: 1; flex-shrink: 0; box-sizing: border-box; padding: 0;">
@@ -480,10 +480,10 @@ window.recompGoToPage = function(p) {
         p2Cards.forEach(function(c) { c.style.display = 'none'; });
         if (ind) ind.innerText = 'PAGE 1 OF 2 • INTEL 1–6 OF 12';
         if (b1) {
-            b1.style.background = 'linear-gradient(135deg, #00f0ff 0%, #0284c7 100%)';
+            b1.style.background = 'linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)';
             b1.style.color = '#04070d';
-            b1.style.borderColor = '#00f0ff';
-            b1.style.boxShadow = '0 0 12px rgba(0, 240, 255, 0.4)';
+            b1.style.borderColor = '#38bdf8';
+            b1.style.boxShadow = '0 0 12px rgba(56, 189, 248, 0.4)';
         }
         if (b2) {
             b2.style.background = 'rgba(15, 23, 42, 0.95)';
@@ -492,10 +492,10 @@ window.recompGoToPage = function(p) {
             b2.style.boxShadow = 'none';
         }
         if (bb1) {
-            bb1.style.background = 'linear-gradient(135deg, #00f0ff 0%, #0284c7 100%)';
+            bb1.style.background = 'linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)';
             bb1.style.color = '#04070d';
-            bb1.style.borderColor = '#00f0ff';
-            bb1.style.boxShadow = '0 0 12px rgba(0, 240, 255, 0.4)';
+            bb1.style.borderColor = '#38bdf8';
+            bb1.style.boxShadow = '0 0 12px rgba(56, 189, 248, 0.4)';
         }
         if (bb2) {
             bb2.style.background = 'rgba(15, 23, 42, 0.95)';
@@ -508,10 +508,10 @@ window.recompGoToPage = function(p) {
         p2Cards.forEach(function(c) { c.style.display = 'flex'; });
         if (ind) ind.innerText = 'PAGE 2 OF 2 • INTEL 7–12 OF 12';
         if (b2) {
-            b2.style.background = 'linear-gradient(135deg, #00f0ff 0%, #0284c7 100%)';
+            b2.style.background = 'linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)';
             b2.style.color = '#04070d';
-            b2.style.borderColor = '#00f0ff';
-            b2.style.boxShadow = '0 0 12px rgba(0, 240, 255, 0.4)';
+            b2.style.borderColor = '#38bdf8';
+            b2.style.boxShadow = '0 0 12px rgba(56, 189, 248, 0.4)';
         }
         if (b1) {
             b1.style.background = 'rgba(15, 23, 42, 0.95)';
@@ -520,10 +520,10 @@ window.recompGoToPage = function(p) {
             b1.style.boxShadow = 'none';
         }
         if (bb2) {
-            bb2.style.background = 'linear-gradient(135deg, #00f0ff 0%, #0284c7 100%)';
+            bb2.style.background = 'linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)';
             bb2.style.color = '#04070d';
-            bb2.style.borderColor = '#00f0ff';
-            bb2.style.boxShadow = '0 0 12px rgba(0, 240, 255, 0.4)';
+            bb2.style.borderColor = '#38bdf8';
+            bb2.style.boxShadow = '0 0 12px rgba(56, 189, 248, 0.4)';
         }
         if (bb1) {
             bb1.style.background = 'rgba(15, 23, 42, 0.95)';
@@ -649,6 +649,11 @@ async function loadPublishedIntel() {
                 if (postExcerpt) {
                     var excerptEl = card.querySelector('.recomp-card-excerpt');
                     if (excerptEl) excerptEl.innerText = postExcerpt;
+                }
+                var statusSpans = card.querySelectorAll('div:last-child span');
+                if (statusSpans.length >= 2) {
+                    statusSpans[1].innerText = '● LIVE INTEL';
+                    statusSpans[1].style.color = '#38bdf8';
                 }
                 card.style.cursor = 'pointer';
                 card.onclick = function() {

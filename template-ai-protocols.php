@@ -51,12 +51,12 @@ $theme_uri = get_stylesheet_directory_uri();
                         </h1>
 
                         <p class="cyber-hero-subtitle">
-                            Step-by-step blueprints, production 16-agent swarms, and bespoke 1-on-1 workstation architecture. Built by a licensed British Columbia residential builder who runs physical multi-million dollar operations and high-velocity digital media on sovereign AI.
+                            Step-by-step blueprints, production 28-agent swarms, and bespoke 1-on-1 workstation architecture. Built by a licensed British Columbia residential builder who runs physical multi-million dollar operations and high-velocity digital media on sovereign AI.
                         </p>
 
                         <div class="protocols-quick-nav">
                             <a href="#tier-blueprint" class="quick-nav-pill">01 • $49 Website Blueprint</a>
-                            <a href="#tier-swarm" class="quick-nav-pill">02 • $199 16-Agent Swarm</a>
+                            <a href="#tier-swarm" class="quick-nav-pill">02 • $199 28-Agent Swarm</a>
                             <a href="#tier-workstation" class="quick-nav-pill">03 • $800 Custom Tauri Workstation</a>
                         </div>
                     </div>
@@ -80,7 +80,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     </button>
                                     <button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-url="https://buy.stripe.com/test_keystone_tier2_199">
                                         <span class="btn-tier-num">TIER 02</span>
-                                        <span class="btn-tier-name">16-Agent Swarm</span>
+                                        <span class="btn-tier-name">28-Agent Swarm</span>
                                         <span class="btn-tier-price">$199</span>
                                     </button>
                                     <button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-url="/contact/">
@@ -141,7 +141,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <div class="video-card-meta">
                                     <span class="video-title">The Autonomous Website Machine</span>
-                                    <span class="video-desc">Watch 16 AI agents rewrite and deploy a complete production site in minutes. (Staged preview player — ready for custom recording).</span>
+                                    <span class="video-desc">Watch 28 AI agents rewrite and deploy a complete production site in minutes. (Staged preview player — ready for custom recording).</span>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </div>
                 </div>
 
-                <!-- PRODUCT 2: $199 AUTONOMOUS 16-AGENT SWARM & B2B OUTREACH ENGINE -->
+                <!-- PRODUCT 2: $199 AUTONOMOUS 28-AGENT SWARM & B2B OUTREACH ENGINE -->
                 <div id="tier-swarm" class="protocol-product-block">
                     <div class="product-grid reverse-on-desktop">
                         
@@ -195,7 +195,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="video-preview-card">
                                 <div class="video-thumb-wrap">
                                     <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_logo.png' ); ?>" 
-                                         alt="16-Agent Swarm Concurrency Video Preview" 
+                                         alt="28-Agent Swarm Concurrency Video Preview" 
                                          class="video-thumb-img" loading="lazy" />
                                     <div class="video-play-overlay">
                                         <div class="play-circle-btn">▶</div>
@@ -203,7 +203,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     </div>
                                 </div>
                                 <div class="video-card-meta">
-                                    <span class="video-title">16-Agent Swarm Concurrency</span>
+                                    <span class="video-title">28-Agent Swarm Concurrency</span>
                                     <span class="video-desc">How specialized trade crews prevent context window collapse. (Staged preview player — ready for custom recording).</span>
                                 </div>
                             </div>
@@ -213,20 +213,20 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="product-badge-row">
                                 <span class="badge-tier-cyan">TIER 02 // PRO BUILDER SUITE</span>
                             </div>
-                            <h2 class="product-title">Autonomous 16-Agent Swarm &amp; B2B Engine</h2>
+                            <h2 class="product-title">Autonomous 28-Agent Swarm &amp; B2B Engine</h2>
                             <div class="product-price-row">
                                 <span class="price-symbol">$</span>
                                 <span class="price-val">199</span>
                                 <span class="price-currency">USD</span>
                             </div>
                             <p class="product-lead-copy">
-                                Single-prompt chatbots suffer from context rot: after a few turns, they forget instructions and emit broken code. This turnkey engine provides the full 16-agent concurrency architecture Wayne uses to research municipal permits, execute test-driven code, and automate B2B outreach in parallel.
+                                Single-prompt chatbots suffer from context rot: after a few turns, they forget instructions and emit broken code. This turnkey engine provides the full 28-agent concurrency architecture Wayne uses to research municipal permits, execute test-driven code, and automate B2B outreach in parallel.
                             </p>
                             
                             <div class="product-deliverables-box">
                                 <h4>📦 What You Receive:</h4>
                                 <ul>
-                                    <li><strong>The 16-Agent Role Definitions:</strong> Complete configurations for Research Scouts (R1-R3), Test Engineers (B0), Builders (B1-B5), and Outreach Swarms (O1-O5).</li>
+                                    <li><strong>The 28-Agent Role Definitions:</strong> Complete configurations for Speed Scouts (#01-#04), TDD Engineers (#05-#10), Flow/Video (#11-#14), Quant (#15-#18), Music (#19-#22), Publishing (#23-#26), and Outreach/Brain (#27-#28).</li>
                                     <li><strong>FastMCP Typed Tool Contracts:</strong> Zero-hallucination JSON-RPC schemas connecting agents to local files, databases, and APIs.</li>
                                     <li><strong>B2B Lead Engine &amp; DNS MX Verification:</strong> Multi-tier socket verifier that inspects mail exchangers before sending, protecting your domain reputation.</li>
                                     <li><strong>6-Phase TDD Lifecycle Harness:</strong> Forces subagents to write failing unit tests before building, guaranteeing 100% bug-free delivery.</li>
@@ -236,7 +236,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <div class="product-checkout-box">
                                 <a href="https://buy.stripe.com/test_keystone_tier2_199" target="_blank" rel="noopener" class="btn-cyan-buy">
-                                    🚀 DEPLOY 16-AGENT SWARM ($199 USD) →
+                                    🚀 DEPLOY 28-AGENT SWARM ($199 USD) →
                                 </a>
                                 <div class="checkout-trust-line">
                                     💳 Apple Pay • Google Pay • Visa / MC • 100% Secure Stripe Checkout

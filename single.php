@@ -17,31 +17,37 @@ get_header(); ?>
     <main id="main" class="site-main">
         <div class="ast-container">
 
-            <?php while ( have_posts() ) : the_post(); ?>
+            <?php while ( have_posts() ) : the_post();
+                $raw_post_content = get_the_content();
+                $has_custom_hero_h1 = ( stripos( $raw_post_content, '<h1' ) !== false );
+                $has_inline_hero_media = ( stripos( $raw_post_content, '<iframe' ) !== false || stripos( $raw_post_content, '<img' ) !== false );
+            ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class( 'luxury-article-entry' ); ?>>
                     
-                    <!-- Article Header -->
-                    <header class="entry-header text-center">
-                        <div class="post-meta-badges">
-                            <span class="gold-badge-pill">TECHNICAL PROTOCOL</span>
-                            <span class="date-badge-pill"><?php echo get_the_date( 'F j, Y' ); ?></span>
-                        </div>
+                    <?php if ( ! $has_custom_hero_h1 ) : ?>
+                        <!-- Article Header (Rendered only if post content does not already contain a custom Gutenberg Hero H1) -->
+                        <header class="entry-header text-center">
+                            <div class="post-meta-badges">
+                                <span class="gold-badge-pill">TECHNICAL PROTOCOL</span>
+                                <span class="date-badge-pill"><?php echo get_the_date( 'F j, Y' ); ?></span>
+                            </div>
 
-                        <h1 class="entry-title">
-                            <?php the_title(); ?>
-                        </h1>
+                            <h1 class="entry-title">
+                                <?php the_title(); ?>
+                            </h1>
 
-                        <div class="entry-author-byline">
-                            <span class="byline-author">Architected by <strong>Wayne Stevenson</strong></span>
-                            <span class="byline-divider">•</span>
-                            <span class="byline-cred">BC Housing Builder #52603</span>
-                            <span class="byline-divider">•</span>
-                            <span class="byline-audio">Soundtrack by Keystone Recomposition</span>
-                        </div>
-                    </header>
+                            <div class="entry-author-byline">
+                                <span class="byline-author">Architected by <strong>Wayne Stevenson</strong></span>
+                                <span class="byline-divider">•</span>
+                                <span class="byline-cred">BC Housing Builder #52603</span>
+                                <span class="byline-divider">•</span>
+                                <span class="byline-audio">Soundtrack by Keystone Recomposition</span>
+                            </div>
+                        </header>
+                    <?php endif; ?>
 
-                    <!-- Featured Image / Schematic -->
-                    <?php if ( has_post_thumbnail() ) : ?>
+                    <!-- Featured Image / Schematic (Suppressed if post already embeds inline hero media to prevent Jetpack Photon duplicate/broken box) -->
+                    <?php if ( has_post_thumbnail() && ! $has_inline_hero_media ) : ?>
                         <div class="post-featured-media text-center">
                             <?php the_post_thumbnail( 'full', array( 'class' => 'featured-hero-image' ) ); ?>
                         </div>
@@ -65,10 +71,10 @@ get_header(); ?>
                                 </div>
                                 <h3 class="author-dossier-name">Wayne Stevenson</h3>
                                 <p class="author-dossier-bio">
-                                    Certified BC Housing Licensed Residential Builder (#52603), electronic music producer with 22 official releases (20 studio albums) on TooLost, and lead architect of autonomous FastMCP swarm workstations. Operating across Squamish, Whistler, and Greater Vancouver.
+                                    Certified BC Housing Licensed Residential Builder (#52603), electronic music producer with 22 official releases (20 studio albums) on TooLost, and lead architect of 28-agent autonomous FastMCP swarm workstations. Operating across Squamish, Whistler, and Greater Vancouver.
                                 </p>
                                 <div class="author-dossier-links">
-                                    <a href="/about-the-founder/" class="dossier-link">Full Founder Dossier →</a>
+                                    <a href="/founder/" class="dossier-link">Full Founder Dossier →</a>
                                     <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="dossier-link">Keystone Possibilities Ltd. →</a>
                                     <a href="/sonic-universe/" class="dossier-link">22-Release Sonic Universe →</a>
                                 </div>
