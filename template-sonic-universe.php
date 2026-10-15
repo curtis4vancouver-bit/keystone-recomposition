@@ -148,7 +148,7 @@ $total_tracks = $stats['total_tracks'];
 
                             <!-- Wayne Stevenson Author Signature & Credentials -->
                             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                                <img decoding="async" src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" alt="Wayne Stevenson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #fbbf24; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);" />
+                                <img loading="eager" fetchpriority="high" decoding="async" src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" alt="Wayne Stevenson" class="founder-chip-avatar" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #fbbf24; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(245, 158, 11, 0.3); display: block; opacity: 1;" />
                                 <div>
                                     <div style="color: #ffffff; font-weight: 800; font-size: 0.92rem; line-height: 1.2;">Wayne Stevenson</div>
                                     <div style="color: #fbbf24; font-size: 0.78rem; font-weight: 600;">Music Producer &bull; Sovereign AI Architect &bull; Squamish, BC</div>
@@ -246,7 +246,8 @@ $total_tracks = $stats['total_tracks'];
                             <div class="album-card-art">
                                 <img src="<?php echo esc_url( $album['cover_image'] ); ?>" 
                                      alt="<?php echo esc_attr( $album['title'] ); ?> 1:1 Album Artwork" 
-                                     loading="<?php echo ( $card_index <= 6 ) ? 'eager' : 'lazy'; ?>" 
+                                     loading="<?php echo ( $card_index <= 12 ) ? 'eager' : 'lazy'; ?>" 
+                                     fetchpriority="<?php echo ( $card_index <= 6 ) ? 'high' : 'auto'; ?>"
                                      decoding="async"
                                      class="album-cover-img" />
                                 <div class="album-art-badges">
@@ -315,7 +316,7 @@ $total_tracks = $stats['total_tracks'];
                     <!-- LEFT DECK: ALBUM ARTWORK & METADATA -->
                     <div class="modal-left-deck">
                         <div class="modal-art-wrap">
-                            <img id="modalAlbumCover" src="" alt="Album Artwork" class="modal-cover-img" />
+                            <img id="modalAlbumCover" src="<?php echo esc_url( $theme_uri . '/assets/images/albums/sovereign_reverb.jpg' ); ?>" alt="Album Artwork" class="modal-cover-img" />
                             <div class="modal-art-glow"></div>
                         </div>
                         <h3 id="modalAlbumTitle" class="modal-album-title">Album Title</h3>

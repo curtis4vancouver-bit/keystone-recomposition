@@ -746,10 +746,141 @@ function astra_child_keystone_header_overrides() {
       margin: 0 auto 36px auto !important;
     }
 
+    article.album-card-18[style*="display: none"] {
+      display: none !important;
+    }
+    .album-card-art,
+    .album-media-box {
+      background: radial-gradient(circle at 50% 35%, rgba(56, 189, 248, 0.28) 0%, rgba(212, 175, 55, 0.22) 48%, #09101d 100%) !important;
+    }
+    .album-cover-img {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: block !important;
+      filter: brightness(1.14) contrast(1.06) saturate(1.08) !important;
+    }
+    .album-media-overlay {
+      background: linear-gradient(180deg, rgba(4, 7, 13, 0.02) 0%, rgba(4, 7, 13, 0.35) 100%) !important;
+    }
+    .founder-chip-avatar {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: block !important;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, #0f172a 100%) !important;
+    }
+
+    @media (max-width: 1024px) {
+      .intro-split-grid,
+      .protocols-hero-split,
+      .albums-grid,
+      .discography-grid-18,
+      .sonic-catalog-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .intro-split-grid > *,
+      .company-ai-column,
+      .music-lab-column,
+      .company-ai-card,
+      .sound-lab-card,
+      .compact-lab-card,
+      .visualizer-wrapper,
+      .sonic-graph-card,
+      .sonic-universe-graph-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+      }
+    }
+
     @media (max-width: 640px) {
       html, body, #page, .site-content, #primary, #main, .ast-container {
         max-width: 100vw !important;
         overflow-x: clip !important;
+      }
+      .keystone-intro-split-section .ast-container,
+      .intro-split-section,
+      .container,
+      .hero-container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        box-sizing: border-box !important;
+      }
+      .compact-lab-card,
+      .sound-lab-card,
+      .company-ai-card,
+      .sonic-graph-card,
+      .sonic-universe-graph-card {
+        padding: 16px 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+      }
+      .company-ai-cta-row,
+      .cyber-cta-group {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .btn-cyan-primary,
+      .btn-glass-secondary,
+      .btn-gold-subtle,
+      .cyber-play-button {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        white-space: normal !important;
+        box-sizing: border-box !important;
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+      .music-graph-toolbar,
+      .graph-mode-pills,
+      .graph-preset-pills,
+      .kr-viz-mode-bar,
+      .kr-synth-toolbar {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .graph-mode-btn,
+      .su-preset-chip,
+      .kr-viz-mode-btn {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        font-size: 0.62rem !important;
+        padding: 5px 8px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+      }
+      .kr-track-selector-pills,
+      .track-pill-row {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        width: 100% !important;
+      }
+      .kr-track-pill,
+      .track-select-btn,
+      .playlist-track-row {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        padding: 8px 10px !important;
       }
       .site-nav-header .nav-container {
         padding: 0 12px !important;
@@ -828,5 +959,42 @@ add_action( 'template_redirect', function() {
     remove_all_actions( 'astra_footer_after' );
 }, 5 );
 
-
-
+// Automatically optimize oversized 9MB+ 4096x4096 album cover images & avatar on the server so cards render instantaneously
+add_action( 'init', function() {
+    $theme_dir = get_stylesheet_directory();
+    $probe     = $theme_dir . '/assets/images/albums/sovereign_reverb.jpg';
+    if ( file_exists( $probe ) && filesize( $probe ) < 500000 ) {
+        return;
+    }
+    $avatar = $theme_dir . '/assets/images/wayne_avatar.jpg';
+    if ( file_exists( $avatar ) && filesize( $avatar ) > 150000 ) {
+        $ed = wp_get_image_editor( $avatar );
+        if ( ! is_wp_error( $ed ) ) {
+            $ed->resize( 640, 360, false );
+            $ed->set_quality( 90 );
+            $ed->save( $avatar );
+        }
+    }
+    $banner = $theme_dir . '/assets/images/sonic_universe_banner.png';
+    if ( file_exists( $banner ) && filesize( $banner ) > 900000 ) {
+        $ed = wp_get_image_editor( $banner );
+        if ( ! is_wp_error( $ed ) ) {
+            $ed->resize( 1280, 720, false );
+            $ed->set_quality( 88 );
+            $ed->save( $banner );
+        }
+    }
+    $album_files = glob( $theme_dir . '/assets/images/albums/*.{jpg,png}', GLOB_BRACE );
+    if ( is_array( $album_files ) ) {
+        foreach ( $album_files as $file ) {
+            if ( filesize( $file ) > 450000 ) {
+                $ed = wp_get_image_editor( $file );
+                if ( ! is_wp_error( $ed ) ) {
+                    $ed->resize( 760, 760, true );
+                    $ed->set_quality( 86 );
+                    $ed->save( $file );
+                }
+            }
+        }
+    }
+}, 20 );
