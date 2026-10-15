@@ -145,13 +145,27 @@ function astra_child_keystone_header_overrides() {
       justify-content: space-between !important;
       gap: 16px !important;
     }
-    .site-nav-header nav {
-      position: static !important;
-      left: auto !important;
-      transform: none !important;
-      flex: 1 1 auto !important;
-      display: flex !important;
-      justify-content: center !important;
+    @media (min-width: 1101px) {
+      .site-nav-header nav {
+        position: static !important;
+        left: auto !important;
+        transform: none !important;
+        flex: 1 1 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+      }
+    }
+    @media (max-width: 1100px) {
+      .site-nav-header nav,
+      .site-nav-header .nav-links-menu {
+        display: none !important;
+      }
+      .site-nav-header .mobile-hamburger,
+      #kpMobileNavToggle {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
     }
     .site-nav-header .nav-menu {
       gap: 20px !important;
@@ -503,10 +517,260 @@ function astra_child_keystone_header_overrides() {
       color: #d4af37 !important;
       background: rgba(212, 175, 55, 0.1) !important;
     }
+    #kr-bottom-streaming-vault .kr-vault-min-btn {
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 50% !important;
+      background: rgba(15, 23, 42, 0.9) !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+      color: #38bdf8 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      flex-shrink: 0 !important;
+    }
+    #kr-bottom-streaming-vault.is-minimized {
+      padding: 6px 14px !important;
+    }
+    #kr-bottom-streaming-vault.is-minimized .kr-vault-brand,
+    #kr-bottom-streaming-vault.is-minimized .kr-vault-track-sub,
+    #kr-bottom-streaming-vault.is-minimized .kr-vault-actions {
+      display: none !important;
+    }
     @media (max-width: 768px) {
+      #kr-bottom-streaming-vault {
+        padding: 8px 10px !important;
+      }
+      #kr-bottom-streaming-vault .kr-vault-inner {
+        gap: 8px !important;
+        justify-content: space-between !important;
+      }
       #kr-bottom-streaming-vault .kr-vault-brand,
-      #kr-bottom-streaming-vault .kr-vault-actions {
+      #kr-bottom-streaming-vault .kr-vault-actions,
+      #kr-bottom-streaming-vault .kr-vault-track-sub {
         display: none !important;
+      }
+      #kr-bottom-streaming-vault .kr-vault-play-pill {
+        padding: 6px 12px !important;
+        font-size: 0.72rem !important;
+      }
+      #kr-bottom-streaming-vault .kr-vault-track-title {
+        font-size: 0.78rem !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 120px !important;
+      }
+    }
+
+    /* Multi-Device 60fps Music Graph & Sonic Universe Telemetry */
+    .music-graph-toolbar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+      padding: 10px 14px !important;
+      background: rgba(8, 12, 22, 0.96) !important;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.22) !important;
+    }
+    .graph-mode-pills,
+    .graph-preset-pills {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      flex-wrap: wrap !important;
+    }
+    .graph-mode-btn,
+    .su-preset-chip {
+      background: rgba(15, 23, 42, 0.85) !important;
+      border: 1px solid rgba(56, 189, 248, 0.28) !important;
+      color: #94a3b8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.68rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.05em !important;
+      padding: 5px 10px !important;
+      border-radius: 9999px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .graph-mode-btn:hover,
+    .su-preset-chip:hover {
+      border-color: #38bdf8 !important;
+      color: #ffffff !important;
+    }
+    .graph-mode-btn.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.24) 0%, rgba(212, 175, 55, 0.22) 100%) !important;
+      border-color: #38bdf8 !important;
+      color: #f8fafc !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3) !important;
+    }
+    .su-preset-chip.active {
+      background: rgba(212, 175, 55, 0.18) !important;
+      border-color: #d4af37 !important;
+      color: #f6d365 !important;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.28) !important;
+    }
+    .graph-telemetry-readout {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.68rem !important;
+    }
+    .telemetry-hz {
+      color: #f6d365 !important;
+      font-weight: 700 !important;
+    }
+    .telemetry-fps {
+      color: #38bdf8 !important;
+      background: rgba(56, 189, 248, 0.12) !important;
+      border: 1px solid rgba(56, 189, 248, 0.3) !important;
+      padding: 2px 7px !important;
+      border-radius: 9999px !important;
+      font-weight: 700 !important;
+    }
+    #cyberVisualizer {
+      width: 100% !important;
+      height: 195px !important;
+      display: block !important;
+    }
+    .sonic-universe-graph-card {
+      background: rgba(6, 10, 18, 0.94) !important;
+      border: 1px solid rgba(56, 189, 248, 0.32) !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      margin: 0 auto 36px auto !important;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 28px rgba(56, 189, 248, 0.12) !important;
+    }
+    .sonic-graph-canvas-wrap {
+      position: relative !important;
+      display: flex !important;
+      flex-direction: column !important;
+      background: #04070d !important;
+    }
+    #sonicUniverseVisualizer {
+      width: 100% !important;
+      height: 210px !important;
+      display: block !important;
+    }
+    .su-graph-play-pill {
+      background: linear-gradient(135deg, #d4af37 0%, #f6d365 50%, #b48a1e 100%) !important;
+      color: #04070d !important;
+      border: none !important;
+      border-radius: 9999px !important;
+      padding: 6px 14px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.74rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35) !important;
+    }
+    @media (max-width: 768px) {
+      #cyberVisualizer,
+      #sonicUniverseVisualizer {
+        height: 175px !important;
+      }
+      .music-graph-toolbar {
+        padding: 8px 10px !important;
+      }
+      .graph-mode-btn,
+      .su-preset-chip {
+        font-size: 0.62rem !important;
+        padding: 4px 8px !important;
+      }
+    }
+
+    /* Album Artwork Shimmer & Investments / Lifestyle Visual Alignment */
+    .album-media-box,
+    .album-card-art {
+      background: radial-gradient(circle at 50% 45%, rgba(56, 189, 248, 0.18) 0%, rgba(212, 175, 55, 0.12) 45%, #060a12 100%) !important;
+    }
+    .investments-hero-header,
+    .spotlight-header {
+      text-align: center !important;
+      max-width: 920px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .investments-hero-subtitle,
+    .spotlight-subtitle {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      max-width: 820px !important;
+    }
+    .spotlight-badge-cluster {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+      margin-bottom: 14px !important;
+    }
+    .badge-pill-cyan {
+      display: inline-block !important;
+      background: rgba(56, 189, 248, 0.12) !important;
+      border: 1px solid rgba(56, 189, 248, 0.4) !important;
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      padding: 5px 14px !important;
+      border-radius: 9999px !important;
+    }
+    .badge-pill-gold {
+      display: inline-block !important;
+      background: rgba(212, 175, 55, 0.14) !important;
+      border: 1px solid rgba(212, 175, 55, 0.45) !important;
+      color: #f6d365 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      padding: 5px 14px !important;
+      border-radius: 9999px !important;
+    }
+    .lifestyle-pillars-section {
+      margin-top: 64px !important;
+      padding-top: 24px !important;
+    }
+    .pillars-section-intro {
+      text-align: center !important;
+      max-width: 820px !important;
+      margin: 0 auto 36px auto !important;
+    }
+
+    @media (max-width: 640px) {
+      html, body, #page, .site-content, #primary, #main, .ast-container {
+        max-width: 100vw !important;
+        overflow-x: clip !important;
+      }
+      .site-nav-header .nav-container {
+        padding: 0 12px !important;
+        gap: 8px !important;
+      }
+      .site-nav-header .brand-text {
+        font-size: 12px !important;
+        letter-spacing: 0.04em !important;
+      }
+      .site-nav-header .brand-sub {
+        font-size: 8.5px !important;
+        letter-spacing: 0.04em !important;
+      }
+      .site-nav-header .nav-right-actions .social-icon-btn,
+      .site-nav-header .nav-right-actions .header-cta {
+        display: none !important;
+      }
+      h1, .hero-main-title, .contact-main-title, .sonic-hero-title, .inv-main-title {
+        font-size: clamp(1.75rem, 7vw, 2.35rem) !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
       }
     }
 

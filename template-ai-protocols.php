@@ -73,17 +73,17 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="checkout-tier-selector">
                                 <label class="checkout-label">Select Protocol Tier:</label>
                                 <div class="tier-select-grid">
-                                    <button type="button" class="tier-select-btn active" data-tier="1" data-price="49" data-url="https://buy.stripe.com/test_keystone_tier1_49">
+                                    <button type="button" class="tier-select-btn active" data-tier="1" data-price="49" data-url="/contact/?inquiry=tier1_blueprint#inquiry-form">
                                         <span class="btn-tier-num">TIER 01</span>
                                         <span class="btn-tier-name">Website Blueprint</span>
                                         <span class="btn-tier-price">$49</span>
                                     </button>
-                                    <button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-url="https://buy.stripe.com/test_keystone_tier2_199">
+                                    <button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
                                         <span class="btn-tier-num">TIER 02</span>
                                         <span class="btn-tier-name">28-Agent Swarm</span>
                                         <span class="btn-tier-price">$199</span>
                                     </button>
-                                    <button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-url="/contact/">
+                                    <button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
                                         <span class="btn-tier-num">TIER 03</span>
                                         <span class="btn-tier-name">Custom Tauri Workstation</span>
                                         <span class="btn-tier-price">$800</span>
@@ -103,11 +103,11 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <!-- Dynamic Express Buy Button -->
                             <div class="checkout-cta-wrap">
-                                <a id="portalExpressBuyBtn" href="https://buy.stripe.com/test_keystone_tier1_49" target="_blank" rel="noopener" class="btn-cyan-express-buy">
-                                    ⚡ PAY WITH STRIPE / APPLE PAY ($49 USD) →
+                                <a id="portalExpressBuyBtn" href="/contact/?inquiry=tier1_blueprint#inquiry-form" class="btn-cyan-express-buy">
+                                    ⚡ REQUEST INSTANT ACCESS ($49 USD) →
                                 </a>
                                 <div class="checkout-payment-methods">
-                                    <span>💳 Apple Pay</span> • <span>Google Pay</span> • <span>Visa / MC</span>
+                                    <span>💳 Direct Invoice</span> • <span>Interac / Wire</span> • <span>Visa / MC</span>
                                 </div>
                                 <div class="checkout-fiduciary-note">
                                     🏛️ 100% Direct Payout to <strong>Keystone Possibilities Ltd.</strong> (Canadian Corporate Account)
@@ -130,18 +130,16 @@ $theme_uri = get_stylesheet_directory_uri();
                         
                         <div class="product-media-col">
                             <div class="video-preview-card">
-                                <div class="video-thumb-wrap">
-                                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
-                                         alt="Antigravity Website Fast-Track Video Preview" 
-                                         class="video-thumb-img" loading="lazy" />
-                                    <div class="video-play-overlay">
-                                        <div class="play-circle-btn">▶</div>
-                                        <span class="video-runtime-tag">3-MIN BREAKDOWN</span>
-                                    </div>
+                                <div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
+                                    <iframe src="https://www.youtube.com/embed/JCgZ5SsN_bc?rel=0" 
+                                            title="The Autonomous Website Machine — 28-Agent Architecture" 
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            allowfullscreen loading="lazy"></iframe>
                                 </div>
                                 <div class="video-card-meta">
-                                    <span class="video-title">The Autonomous Website Machine</span>
-                                    <span class="video-desc">Watch 28 AI agents rewrite and deploy a complete production site in minutes. (Staged preview player — ready for custom recording).</span>
+                                    <span class="video-title">The Autonomous Website Machine (4K Master Walkthrough)</span>
+                                    <span class="video-desc">Watch our 28 specialized AI subagents architect, test, and deploy a full-stack dark-luxury production platform with automated Google Search Console indexing.</span>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +172,11 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
 
                             <div class="product-checkout-box">
-                                <a href="https://buy.stripe.com/test_keystone_tier1_49" target="_blank" rel="noopener" class="btn-cyan-buy">
+                                <a href="/contact/?inquiry=tier1_blueprint#inquiry-form" class="btn-cyan-buy">
                                     ⚡ GET INSTANT ACCESS ($49 USD) →
                                 </a>
                                 <div class="checkout-trust-line">
-                                    💳 Apple Pay • Google Pay • Visa / MC • 100% Secure Stripe Checkout
+                                    💳 Direct Corporate Fulfilment • Instant Digital Blueprint &amp; Video Walkthrough
                                 </div>
                                 <span class="delivery-time-tag">⚡ Immediate digital download &amp; license sent to your email</span>
                             </div>
@@ -193,18 +191,16 @@ $theme_uri = get_stylesheet_directory_uri();
                         
                         <div class="product-media-col">
                             <div class="video-preview-card">
-                                <div class="video-thumb-wrap">
-                                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_logo.png' ); ?>" 
-                                         alt="28-Agent Swarm Concurrency Video Preview" 
-                                         class="video-thumb-img" loading="lazy" />
-                                    <div class="video-play-overlay">
-                                        <div class="play-circle-btn">▶</div>
-                                        <span class="video-runtime-tag">5-MIN BREAKDOWN</span>
-                                    </div>
+                                <div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
+                                    <iframe src="https://www.youtube.com/embed/k3fArbXUzQM?rel=0" 
+                                            title="28-Agent Swarm Concurrency & FastMCP Contracts" 
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            allowfullscreen loading="lazy"></iframe>
                                 </div>
                                 <div class="video-card-meta">
-                                    <span class="video-title">28-Agent Swarm Concurrency</span>
-                                    <span class="video-desc">How specialized trade crews prevent context window collapse. (Staged preview player — ready for custom recording).</span>
+                                    <span class="video-title">28-Agent Swarm Concurrency &amp; FastMCP Architecture</span>
+                                    <span class="video-desc">How specialized subagent trade crews execute parallel research, red-green TDD verification, and Chrome CDP Port 9222 automation without context collapse.</span>
                                 </div>
                             </div>
                         </div>
@@ -235,11 +231,11 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
 
                             <div class="product-checkout-box">
-                                <a href="https://buy.stripe.com/test_keystone_tier2_199" target="_blank" rel="noopener" class="btn-cyan-buy">
+                                <a href="/contact/?inquiry=tier2_swarm#inquiry-form" class="btn-cyan-buy">
                                     🚀 DEPLOY 28-AGENT SWARM ($199 USD) →
                                 </a>
                                 <div class="checkout-trust-line">
-                                    💳 Apple Pay • Google Pay • Visa / MC • 100% Secure Stripe Checkout
+                                    💳 Direct Corporate Fulfilment • Turn-Key Architecture &amp; FastMCP Schemas
                                 </div>
                                 <span class="delivery-time-tag">⚡ Immediate GitHub repository access &amp; documentation</span>
                             </div>
@@ -254,18 +250,16 @@ $theme_uri = get_stylesheet_directory_uri();
                         
                         <div class="product-media-col">
                             <div class="video-preview-card">
-                                <div class="video-thumb-wrap">
-                                    <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
-                                         alt="Sovereign Builder Workstation Tour" 
-                                         class="video-thumb-img" loading="lazy" />
-                                    <div class="video-play-overlay">
-                                        <div class="play-circle-btn">▶</div>
-                                        <span class="video-runtime-tag">15-MIN ARCHITECTURE MASTERCLASS</span>
-                                    </div>
+                                <div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
+                                    <iframe src="https://www.youtube.com/embed/uMkZvTbqF2U?rel=0" 
+                                            title="The Sovereign Builder Workstation — Custom Tauri HUD & Daemons" 
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            allowfullscreen loading="lazy"></iframe>
                                 </div>
                                 <div class="video-card-meta">
                                     <span class="video-title">The Sovereign Builder Workstation: Physical Building &amp; Machine Intelligence</span>
-                                    <span class="video-desc">Comprehensive deep-dive with Wayne Stevenson on custom Tauri workstations, background daemons, and physical construction workflows. (Staged preview player — ready for custom recording).</span>
+                                    <span class="video-desc">Comprehensive deep-dive with Wayne Stevenson on custom Rust/Tauri workstations, detached OS daemons, and physical construction command systems.</span>
                                 </div>
                             </div>
                         </div>
@@ -290,14 +284,14 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <ul>
                                     <li><strong>One 60-Minute Focused Architecture Masterclass:</strong> Direct 1-on-1 screen-share architecture and live deployment with Wayne Stevenson (plus dedicated async follow-up deployment support).</li>
                                     <li><strong>Bespoke Tauri Desktop Binary:</strong> Custom Tauri v2 / Rust / Vite desktop interface compiled specifically for your PC.</li>
-                                    <li><strong>5 Win32 Detached Background Daemons:</strong> Ports 9876 (STT), 9877 (TTS), 9878 (Vector Brain), 9879 (CDP Overlay), and 9891 (Janitor) running resiliently across restarts.</li>
+                                    <li><strong>6 Win32 Detached Background Daemons:</strong> Ports 9876 (STT), 9877 (TTS), 9878 (Vector Brain), 9879 (CDP Overlay), and 9891 (Janitor) running resiliently across restarts.</li>
                                     <li><strong>Local CUDA Faster-Whisper + F9 Push-to-Talk:</strong> Zero-latency voice interface mapped directly to your hardware with zero monthly subscription fees.</li>
                                     <li><strong>Tailored Business Integration:</strong> Calibrated to your exact industry (construction estimates, CAD analysis, video production, or financial workflows).</li>
                                 </ul>
                             </div>
 
                             <div class="product-checkout-box">
-                                <a href="/contact/" class="btn-gold-buy">
+                                <a href="/contact/?inquiry=tier3_workstation#inquiry-form" class="btn-gold-buy">
                                     🤝 APPLY FOR PRIVATE ARCHITECTURE ($800 USD) →
                                 </a>
                                 <div class="checkout-trust-line">
@@ -335,7 +329,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         </div>
                         <div class="matrix-col">
                             <h4>💰 10x to 30x Token Economics</h4>
-                            <p>Gemini Flash costs <strong>$0.10 to $0.30 per million tokens</strong> ($0.03 cached) compared to Claude Sonnet's $3.00 input and $15.00 output. Running complex 16-agent swarms is mathematically viable instead of a financial drain.</p>
+                            <p>Gemini Flash costs <strong>$0.10 to $0.30 per million tokens</strong> ($0.03 cached) compared to Claude Sonnet's $3.00 input and $15.00 output. Running complex 28-agent swarms is mathematically viable instead of a financial drain.</p>
                         </div>
                         <div class="matrix-col">
                             <h4>🌐 Native Browser &amp; Google Ecosystem</h4>
@@ -359,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let activeTier = 1;
     let activePrice = 49;
-    let activeUrl = 'https://buy.stripe.com/test_keystone_tier1_49';
+    let activeUrl = '/contact/?inquiry=tier1_blueprint#inquiry-form';
     let discount = 0;
 
     const promoCodes = {
@@ -374,11 +368,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const finalPrice = Math.max(0, activePrice - discount);
         if (activeTier === 3) {
             expressBuyBtn.textContent = '🤝 APPLY FOR PRIVATE ARCHITECTURE ($800 USD) →';
-            expressBuyBtn.href = '/contact/';
+            expressBuyBtn.href = '/contact/?inquiry=tier3_workstation#inquiry-form';
             expressBuyBtn.className = 'btn-cyan-express-buy btn-gold-portal';
         } else {
-            expressBuyBtn.textContent = `⚡ PAY WITH STRIPE / APPLE PAY ($${finalPrice} USD) →`;
-            expressBuyBtn.href = activeUrl;
+            expressBuyBtn.textContent = `⚡ REQUEST INSTANT ACCESS ($${finalPrice} USD) →`;
+            expressBuyBtn.href = activeUrl + (discount > 0 ? `&promo=${encodeURIComponent(promoInput.value.trim().toUpperCase())}` : '');
             expressBuyBtn.className = 'btn-cyan-express-buy';
         }
     }

@@ -161,16 +161,27 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </p>
                             </div>
 
-                            <!-- HTML5 60fps Canvas Visualizer -->
-                            <div class="visualizer-wrapper compact-visualizer">
-                                <canvas id="cyberVisualizer" width="500" height="180"></canvas>
+                            <!-- HTML5 60fps HiDPI Multi-Device Music Graph -->
+                            <div class="visualizer-wrapper compact-visualizer" id="cyberVisualizerWrapper">
+                                <div class="music-graph-toolbar" role="toolbar" aria-label="Music Graph Display Modes">
+                                    <div class="graph-mode-pills">
+                                        <button type="button" class="graph-mode-btn active" data-graph-mode="spectrum" onclick="window.setKeystoneGraphMode && window.setKeystoneGraphMode('spectrum')">SPECTRUM + WAVE</button>
+                                        <button type="button" class="graph-mode-btn" data-graph-mode="lattice" onclick="window.setKeystoneGraphMode && window.setKeystoneGraphMode('lattice')">HARMONIC LATTICE</button>
+                                        <button type="button" class="graph-mode-btn" data-graph-mode="scope" onclick="window.setKeystoneGraphMode && window.setKeystoneGraphMode('scope')">OSCILLOSCOPE</button>
+                                    </div>
+                                    <div class="graph-telemetry-readout">
+                                        <span class="telemetry-hz" id="cyberGraphHzBadge">432Hz • 115 BPM</span>
+                                        <span class="telemetry-fps">60FPS HI-DPI</span>
+                                    </div>
+                                </div>
+                                <canvas id="cyberVisualizer" width="640" height="220" title="Click or tap to toggle 432Hz Sovereign Music Stream"></canvas>
                                 <div class="visualizer-hud-overlay">
                                     <div class="track-info">
                                         <span class="track-label">NOW STREAMING:</span>
                                         <span id="currentTrackTitle" class="track-name">Sovereign Reverb (Organic Downtempo Chill House)</span>
                                     </div>
                                     <div class="engine-state">
-                                        <span id="engineStateBadge" class="engine-idle">STANDBY</span>
+                                        <span id="engineStateBadge" class="engine-active">432HZ HARMONIC LIVE</span>
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +284,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="album-media-box">
                             <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/sovereign_reverb.jpg' ); ?>" 
                                  alt="Sovereign Reverb Album Cover Art" 
-                                 class="album-cover-img" loading="lazy" decoding="async" />
+                                 class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
                             <div class="album-media-overlay"></div>
                             <span class="album-format-pill">VOL. 01 • 96kHz</span>
                             <div class="album-vinyl-preview"></div>
@@ -299,7 +310,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="album-media-box">
                             <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/apollo_protocol.jpg' ); ?>" 
                                  alt="Apollo Protocol Album Cover Art" 
-                                 class="album-cover-img" loading="lazy" decoding="async" />
+                                 class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
                             <div class="album-media-overlay"></div>
                             <span class="album-format-pill">VOL. 02 • 96kHz</span>
                             <div class="album-vinyl-preview"></div>
@@ -325,7 +336,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="album-media-box">
                             <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/blue_collar_symphony.jpg' ); ?>" 
                                  alt="Blue Collar Symphony Album Cover Art" 
-                                 class="album-cover-img" loading="lazy" decoding="async" />
+                                 class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
                             <div class="album-media-overlay"></div>
                             <span class="album-format-pill">VOL. 03 • 96kHz</span>
                             <div class="album-vinyl-preview"></div>
@@ -374,7 +385,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     array(
                         'title'    => 'Autonomous Multi-Agent Swarms: Architecting 28-Agent Concurrency on Port 9879',
                         'category' => 'AUTONOMOUS AGENTS',
-                        'date'     => 'SEPT 2026',
+                        'date'     => 'OCT 2026',
                         'excerpt'  => 'How we isolate research scouts, test-driven engineers, and live browsers across detached background daemons without thread collisions.',
                         'url'      => home_url( '/ai-protocols/' ),
                         'image'    => '',
@@ -382,7 +393,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     array(
                         'title'    => 'Zero-Cloud Chrome CDP Automation: Headless DOM Control & Instant Indexing',
                         'category' => 'CHROME CDP AUTOMATION',
-                        'date'     => 'SEPT 2026',
+                        'date'     => 'OCT 2026',
                         'excerpt'  => 'Bypassing brittle web drivers: connecting autonomous subagents directly to Chrome Port 9222 for zero-fallback publishing and instant GSC indexing.',
                         'url'      => home_url( '/ai-protocols/' ),
                         'image'    => '',
@@ -390,7 +401,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     array(
                         'title'    => 'Bio-Acoustic Frequency Synthesis: Engineering Analog Harmonics for High-Cadence Focus',
                         'category' => 'BIO-ACOUSTIC SOUND',
-                        'date'     => 'SEPT 2026',
+                        'date'     => 'OCT 2026',
                         'excerpt'  => 'Designing 96kHz master electronic frequencies and Moog basslines to sustain cognitive focus during complex full-stack architectural sprints.',
                         'url'      => home_url( '/sonic-universe/' ),
                         'image'    => '',
@@ -959,79 +970,285 @@ document.addEventListener('DOMContentLoaded', function() {
         }).catch(err => console.log('Auto-advance play error:', err));
     });
 
-    // 60fps Dynamic Particle & Frequency Visualizer
+    // 60fps HiDPI Multi-Device 3-Mode Sovereign Music Graph Engine
+    let graphMode = 'spectrum';
+    let logicalW = 640;
+    let logicalH = 220;
+    let impulseBoost = 0;
+
+    function syncCanvasResolution() {
+        if (!canvas || !ctx) return;
+        const rect = canvas.getBoundingClientRect();
+        const w = Math.max(260, Math.floor(rect.width || 640));
+        const h = Math.max(170, Math.floor(rect.height || 220));
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
+            canvas.width = Math.floor(w * dpr);
+            canvas.height = Math.floor(h * dpr);
+        }
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        logicalW = w;
+        logicalH = h;
+    }
+
+    syncCanvasResolution();
+    window.addEventListener('resize', syncCanvasResolution, { passive: true });
+    if (typeof ResizeObserver !== 'undefined' && canvas) {
+        const ro = new ResizeObserver(() => syncCanvasResolution());
+        ro.observe(canvas);
+    }
+
+    window.setKeystoneGraphMode = function(mode) {
+        graphMode = mode || 'spectrum';
+        impulseBoost = 1.0;
+        document.querySelectorAll('.graph-mode-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-graph-mode') === graphMode);
+        });
+    };
+
+    if (canvas) {
+        canvas.style.cursor = 'pointer';
+        canvas.addEventListener('click', function() {
+            impulseBoost = 1.25;
+            if (playBtn) playBtn.click();
+        });
+    }
+
     const nodes = [];
     const nodeCount = 28;
     for (let i = 0; i < nodeCount; i++) {
         nodes.push({
-            x: Math.random() * (canvas ? canvas.width : 500),
-            y: Math.random() * (canvas ? canvas.height : 180),
-            vx: (Math.random() - 0.5) * 1.0,
-            vy: (Math.random() - 0.5) * 1.0,
-            radius: Math.random() * 2.5 + 1.5,
-            baseRadius: Math.random() * 2.5 + 1.5
+            nx: (i + 0.5) / nodeCount,
+            ny: 0.22 + (Math.sin(i * 1.37) * 0.5 + 0.5) * 0.55,
+            vx: ((i % 2 === 0 ? 1 : -1) * (0.00045 + (i % 5) * 0.00012)),
+            vy: ((i % 3 === 0 ? 1 : -1) * (0.00038 + (i % 4) * 0.0001)),
+            baseRadius: 1.8 + (i % 3) * 0.75
         });
     }
 
+    const barCount = 44;
+    const peakHolds = new Float32Array(barCount);
+    const freqAxisLabels = ['60Hz', '150Hz', '432Hz', '1.2kHz', '4.8kHz', '16kHz'];
+
     function renderVisualizer() {
         if (!ctx || !canvas) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const W = logicalW;
+        const H = logicalH;
+        ctx.clearRect(0, 0, W, H);
+
+        const t = performance.now() * 0.001;
+        if (impulseBoost > 0.01) impulseBoost *= 0.94;
+        else impulseBoost = 0;
+
+        const vaultAudio = document.getElementById('kr-vault-audio');
+        const vaultPlaying = !!(vaultAudio && !vaultAudio.paused);
+        const activeStream = isPlaying || vaultPlaying;
 
         let freqData = new Uint8Array(64);
+        let hasLiveBins = false;
         if (analyser && isPlaying) {
             analyser.getByteFrequencyData(freqData);
+            for (let k = 0; k < 16; k++) {
+                if (freqData[k] > 8) { hasLiveBins = true; break; }
+            }
         }
 
-        const barCount = 36;
-        const barWidth = canvas.width / barCount;
+        // 1. Subtle Obsidian-Cyan Engineering Grid + dB Guide Lines
+        ctx.save();
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+        ctx.lineWidth = 1;
+        const hLines = 4;
+        for (let r = 1; r < hLines; r++) {
+            const gy = Math.floor((H / hLines) * r) + 0.5;
+            ctx.beginPath();
+            ctx.moveTo(0, gy);
+            ctx.lineTo(W, gy);
+            ctx.stroke();
+        }
+        const vLines = 6;
+        ctx.font = '600 9px "JetBrains Mono", monospace';
+        ctx.fillStyle = 'rgba(148, 163, 184, 0.55)';
+        for (let c = 0; c < vLines; c++) {
+            const gx = Math.floor((W / vLines) * c + (W / (vLines * 2)));
+            ctx.beginPath();
+            ctx.moveTo(gx, 26);
+            ctx.lineTo(gx, H - 28);
+            ctx.stroke();
+            if (W > 340) {
+                ctx.fillText(freqAxisLabels[c] || '', Math.max(6, gx - 16), 38);
+            }
+        }
+        ctx.restore();
+
+        // Synthesize rich 432Hz harmonic envelope (used in standby or when CORS/WebAudio bins are quiet)
+        const synthBins = new Float32Array(barCount);
+        const energyMult = activeStream ? 1.18 : 0.88;
         for (let i = 0; i < barCount; i++) {
-            const rawVal = isPlaying ? freqData[i % freqData.length] : Math.sin(Date.now() * 0.003 + i * 0.2) * 15 + 15;
-            const barHeight = (rawVal / 255) * (canvas.height * 0.65);
-            const x = i * barWidth;
-            const y = canvas.height - barHeight;
-
-            const grad = ctx.createLinearGradient(0, y, 0, canvas.height);
-            grad.addColorStop(0, '#d4af37');
-            grad.addColorStop(0.5, '#38bdf8');
-            grad.addColorStop(1, 'rgba(56, 189, 248, 0.05)');
-
-            ctx.fillStyle = grad;
-            ctx.fillRect(x + 1, y, barWidth - 2, barHeight);
+            const norm = i / (barCount - 1);
+            const bassBell = Math.exp(-Math.pow((norm - 0.18) / 0.16, 2)) * 0.55;
+            const midBell = Math.exp(-Math.pow((norm - 0.48) / 0.22, 2)) * 0.48;
+            const highBell = Math.exp(-Math.pow((norm - 0.78) / 0.18, 2)) * 0.34;
+            const waveA = Math.sin(t * 2.8 + i * 0.32) * 0.18;
+            const waveB = Math.cos(t * 4.3 - i * 0.21) * 0.12;
+            const waveC = Math.sin(t * 1.6 + i * 0.55) * 0.09;
+            let val = (0.28 + bassBell + midBell + highBell + waveA + waveB + waveC) * energyMult + impulseBoost * 0.25;
+            if (hasLiveBins) {
+                const liveNorm = (freqData[i % freqData.length] / 255);
+                val = Math.max(val * 0.55, liveNorm * 0.95);
+            }
+            synthBins[i] = Math.max(0.16, Math.min(0.92, val));
+            if (synthBins[i] > peakHolds[i]) {
+                peakHolds[i] = synthBins[i];
+            } else {
+                peakHolds[i] = Math.max(synthBins[i], peakHolds[i] - 0.0045);
+            }
         }
 
-        // Draw connecting nodes
+        const usableBottom = H - 30;
+        const maxBarSpan = Math.max(70, usableBottom - 42);
+
+        if (graphMode === 'spectrum') {
+            // 2A. 44 Sovereign Gold -> Luminous Baby Blue Harmonic Bars + Peak Caps
+            const barWidth = W / barCount;
+            for (let i = 0; i < barCount; i++) {
+                const barH = synthBins[i] * maxBarSpan;
+                const x = i * barWidth;
+                const y = usableBottom - barH;
+                const bw = Math.max(2, barWidth - (W < 450 ? 2 : 3.5));
+
+                const grad = ctx.createLinearGradient(0, y, 0, usableBottom);
+                grad.addColorStop(0, '#f6d365');
+                grad.addColorStop(0.28, '#d4af37');
+                grad.addColorStop(0.68, '#38bdf8');
+                grad.addColorStop(1, 'rgba(56, 189, 248, 0.12)');
+
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                if (ctx.roundRect) {
+                    ctx.roundRect(x + 1, y, bw, barH, [3, 3, 0, 0]);
+                } else {
+                    ctx.rect(x + 1, y, bw, barH);
+                }
+                ctx.fill();
+
+                // Peak-hold floating cap
+                const peakY = usableBottom - peakHolds[i] * maxBarSpan - 4;
+                ctx.fillStyle = (i % 3 === 0) ? '#f6d365' : '#38bdf8';
+                ctx.fillRect(x + 1, Math.max(28, peakY), bw, 2.2);
+            }
+
+            // Overlay mid-plane 432Hz Sine-Wave Ribbon
+            ctx.save();
+            ctx.beginPath();
+            for (let x = 0; x <= W; x += 6) {
+                const idx = Math.min(barCount - 1, Math.floor((x / W) * barCount));
+                const amp = (synthBins[idx] - 0.35) * 32;
+                const y = (H * 0.46) + Math.sin(x * 0.024 + t * 3.6) * 14 + Math.cos(x * 0.011 - t * 2.2) * amp;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = 'rgba(246, 211, 101, 0.85)';
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#d4af37';
+            ctx.stroke();
+            ctx.restore();
+        } else if (graphMode === 'scope') {
+            // 2B. Dual-Channel Stereo Time-Domain Oscilloscope Ribbons
+            const midY = H * 0.50;
+            for (let ch = 0; ch < 2; ch++) {
+                ctx.save();
+                ctx.beginPath();
+                for (let x = 0; x <= W; x += 4) {
+                    const norm = x / W;
+                    const idx = Math.min(barCount - 1, Math.floor(norm * barCount));
+                    const env = Math.sin(norm * Math.PI) * (0.45 + synthBins[idx] * 0.75);
+                    const phase = ch === 0 ? t * 4.2 : -t * 3.4 + 1.1;
+                    const y = midY + (
+                        Math.sin(norm * 18 + phase) * 26 +
+                        Math.cos(norm * 37 - phase * 1.3) * 14
+                    ) * env;
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.strokeStyle = ch === 0 ? '#38bdf8' : '#d4af37';
+                ctx.lineWidth = ch === 0 ? 2.6 : 2.0;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = ch === 0 ? '#38bdf8' : '#d4af37';
+                ctx.stroke();
+                ctx.restore();
+            }
+        } else {
+            // 2C. Harmonic Lattice Mode: Concentric Acoustic Rings + Radial Frequency Vectors
+            const cx = W * 0.5;
+            const cy = H * 0.48;
+            const maxR = Math.min(W, H) * 0.34;
+            ctx.save();
+            for (let r = 1; r <= 3; r++) {
+                ctx.beginPath();
+                ctx.arc(cx, cy, (maxR / 3) * r + Math.sin(t * 2 + r) * 3, 0, Math.PI * 2);
+                ctx.strokeStyle = r === 2 ? 'rgba(212, 175, 55, 0.32)' : 'rgba(56, 189, 248, 0.24)';
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+            }
+            for (let i = 0; i < barCount; i++) {
+                const ang = (i / barCount) * Math.PI * 2 + t * 0.35;
+                const innerR = maxR * 0.32;
+                const outerR = innerR + synthBins[i] * maxR * 0.85;
+                ctx.beginPath();
+                ctx.moveTo(cx + Math.cos(ang) * innerR, cy + Math.sin(ang) * innerR);
+                ctx.lineTo(cx + Math.cos(ang) * outerR, cy + Math.sin(ang) * outerR);
+                ctx.strokeStyle = (i % 2 === 0) ? '#38bdf8' : '#d4af37';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        // 3. Acoustic Constellation Nodes & Proximity Mesh
+        const speedMult = activeStream ? 1.45 : 0.95;
+        ctx.save();
         ctx.lineWidth = 1;
         for (let i = 0; i < nodes.length; i++) {
             const node = nodes[i];
-            node.x += node.vx * (isPlaying ? 1.5 : 0.8);
-            node.y += node.vy * (isPlaying ? 1.5 : 0.8);
+            node.nx += node.vx * speedMult;
+            node.ny += node.vy * speedMult;
+            if (node.nx < 0.04 || node.nx > 0.96) node.vx *= -1;
+            if (node.ny < 0.16 || node.ny > 0.82) node.vy *= -1;
 
-            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-
-            const bounce = isPlaying ? (freqData[i % freqData.length] / 255) * 3 : 0;
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, node.baseRadius + bounce, 0, Math.PI * 2);
-            ctx.fillStyle = isPlaying ? '#38bdf8' : 'rgba(56, 189, 248, 0.5)';
-            ctx.shadowBlur = isPlaying ? 10 : 3;
-            ctx.shadowColor = '#38bdf8';
-            ctx.fill();
-            ctx.shadowBlur = 0;
+            const px = node.nx * W;
+            const py = node.ny * H;
+            const boost = synthBins[i % barCount] * 2.2;
 
             for (let j = i + 1; j < nodes.length; j++) {
                 const other = nodes[j];
-                const dx = other.x - node.x;
-                const dy = other.y - node.y;
+                const ox = other.nx * W;
+                const oy = other.ny * H;
+                const dx = ox - px;
+                const dy = oy - py;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 75) {
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${ (1 - dist / 75) * 0.35 })`;
+                const maxDist = W < 500 ? 68 : 92;
+                if (dist < maxDist) {
+                    const alpha = (1 - dist / maxDist) * ( graphMode === 'lattice' ? 0.52 : 0.28 );
+                    ctx.strokeStyle = (i % 3 === 0)
+                        ? `rgba(212, 175, 55, ${alpha.toFixed(3)})`
+                        : `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
                     ctx.beginPath();
-                    ctx.moveTo(node.x, node.y);
-                    ctx.lineTo(other.x, other.y);
+                    ctx.moveTo(px, py);
+                    ctx.lineTo(ox, oy);
                     ctx.stroke();
                 }
             }
+
+            ctx.beginPath();
+            ctx.arc(px, py, node.baseRadius + boost * 0.65, 0, Math.PI * 2);
+            ctx.fillStyle = (i % 4 === 0) ? '#f6d365' : '#38bdf8';
+            ctx.shadowBlur = activeStream ? 10 : 5;
+            ctx.shadowColor = (i % 4 === 0) ? '#d4af37' : '#38bdf8';
+            ctx.fill();
+            ctx.shadowBlur = 0;
         }
+        ctx.restore();
 
         animationId = requestAnimationFrame(renderVisualizer);
     }

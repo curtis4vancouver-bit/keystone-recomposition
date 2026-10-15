@@ -148,7 +148,7 @@ $total_tracks = $stats['total_tracks'];
 
                             <!-- Wayne Stevenson Author Signature & Credentials -->
                             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                                <img decoding="async" src="https://keystonerecomposition.com/wp-content/uploads/2026/09/wayne_avatar.jpg" alt="Wayne Stevenson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #fbbf24; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);" />
+                                <img decoding="async" src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" alt="Wayne Stevenson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #fbbf24; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);" />
                                 <div>
                                     <div style="color: #ffffff; font-weight: 800; font-size: 0.92rem; line-height: 1.2;">Wayne Stevenson</div>
                                     <div style="color: #fbbf24; font-size: 0.78rem; font-weight: 600;">Music Producer &bull; Sovereign AI Architect &bull; Squamish, BC</div>
@@ -177,14 +177,43 @@ $total_tracks = $stats['total_tracks'];
             <div class="ast-container">
 
                 <!-- SECTION HEADER -->
-                <div class="catalog-section-heading text-center" style="margin-bottom: 35px;">
-                    <span class="section-tag-cyan">// CANONICAL DISCOGRAPHY</span>
+                <div class="catalog-section-heading text-center" style="margin-bottom: 28px;">
+                    <span class="section-tag-cyan">// CANONICAL DISCOGRAPHY &amp; BIO-ACOUSTIC TELEMETRY</span>
                     <h2 class="section-title-luxury" style="color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; margin-top: 6px;">
-                        Master Catalog &amp; Streaming Vault
+                        Master Catalog &amp; 432Hz Harmonic Music Graph
                     </h2>
-                    <p style="color: #94a3b8; font-size: 0.90rem; max-width: 680px; margin: 8px auto 0;">
-                        Click any release to open the interactive tracklist, stream directly via Spotify, and inspect canonical ISRC codes.
+                    <p style="color: #94a3b8; font-size: 0.92rem; max-width: 720px; margin: 8px auto 0;">
+                        Inspect real-time 432Hz frequency harmonic telemetry across all devices, or click any of the 22 official releases below to launch the interactive tracklist and canonical ISRC vault.
                     </p>
+                </div>
+
+                <!-- SONIC UNIVERSE INTERACTIVE MULTI-DEVICE MUSIC GRAPH -->
+                <div class="sonic-universe-graph-card" id="sonicUniverseGraphCard">
+                    <div class="music-graph-toolbar" role="toolbar" aria-label="Sonic Universe Harmonic Graph Controls">
+                        <div class="graph-mode-pills">
+                            <button type="button" class="graph-mode-btn su-mode-btn active" data-su-mode="spectrum">SPECTRUM + WAVE</button>
+                            <button type="button" class="graph-mode-btn su-mode-btn" data-su-mode="lattice">HARMONIC LATTICE</button>
+                            <button type="button" class="graph-mode-btn su-mode-btn" data-su-mode="scope">OSCILLOSCOPE</button>
+                        </div>
+                        <div class="graph-preset-pills">
+                            <button type="button" class="su-preset-chip active" data-bpm="115" data-profile="Sovereign Reverb • 432Hz Downtempo (115 BPM)" data-vault-idx="0">115 BPM • SOVEREIGN REVERB</button>
+                            <button type="button" class="su-preset-chip" data-bpm="120" data-profile="Apollo Protocol • Progressive Melodic (120 BPM)" data-vault-idx="1">120 BPM • APOLLO PROTOCOL</button>
+                            <button type="button" class="su-preset-chip" data-bpm="122" data-profile="Blue Collar Symphony • Deep House (122 BPM)" data-vault-idx="2">122 BPM • BLUE COLLAR SYMPHONY</button>
+                            <button type="button" class="su-preset-chip" data-bpm="124" data-profile="The Long Game • Progressive Flow (124 BPM)" data-vault-idx="5">124 BPM • THE LONG GAME</button>
+                        </div>
+                    </div>
+                    <div class="sonic-graph-canvas-wrap">
+                        <canvas id="sonicUniverseVisualizer" width="960" height="220" title="Click or tap to trigger 432Hz Master Audio Stream"></canvas>
+                        <div class="visualizer-hud-overlay">
+                            <div class="track-info">
+                                <span class="track-label">ACTIVE ACOUSTIC PROFILE:</span>
+                                <span id="suActiveProfileLabel" class="track-name">Sovereign Reverb • 432Hz Downtempo (115 BPM)</span>
+                            </div>
+                            <div class="engine-state">
+                                <button type="button" id="suGraphPlayTrigger" class="su-graph-play-pill">▶ STREAM 96KHZ MASTER</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- DISCOGRAPHY GRID (22 ALBUMS, 12 PER PAGE) -->
@@ -217,7 +246,8 @@ $total_tracks = $stats['total_tracks'];
                             <div class="album-card-art">
                                 <img src="<?php echo esc_url( $album['cover_image'] ); ?>" 
                                      alt="<?php echo esc_attr( $album['title'] ); ?> 1:1 Album Artwork" 
-                                     loading="lazy" 
+                                     loading="<?php echo ( $card_index <= 6 ) ? 'eager' : 'lazy'; ?>" 
+                                     decoding="async"
                                      class="album-cover-img" />
                                 <div class="album-art-badges">
                                     <span class="badge-year"><?php echo esc_html( substr( $album['release_date'], 0, 4 ) ); ?></span>
@@ -534,6 +564,12 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('click', (e) => {
             // If user clicked inside a direct link, allow default
             if (e.target.tagName.toLowerCase() === 'a') return;
+            const cardTitle = card.getAttribute('data-title') || 'Sovereign Reverb';
+            const cardBpm = parseInt(card.getAttribute('data-bpm') || '115', 10) || 115;
+            const cardGenre = card.getAttribute('data-genre') || '432Hz Master';
+            if (window.setSonicUniverseProfile) {
+                window.setSonicUniverseProfile(cardBpm, `${cardTitle} • ${cardGenre} (${cardBpm} BPM)`);
+            }
             openModalForCard(card);
         });
     });
@@ -550,6 +586,261 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // =========================================================================
+    // 60FPS HI-DPI MULTI-DEVICE SONIC UNIVERSE HARMONIC MUSIC GRAPH
+    // =========================================================================
+    const suCanvas = document.getElementById('sonicUniverseVisualizer');
+    const suCtx = suCanvas ? suCanvas.getContext('2d') : null;
+    const suProfileLabel = document.getElementById('suActiveProfileLabel');
+    const suPlayTrigger = document.getElementById('suGraphPlayTrigger');
+    let suMode = 'spectrum';
+    let suBpm = 115;
+    let suW = 960;
+    let suH = 220;
+    let suImpulse = 0;
+
+    function syncSuCanvasSize() {
+        if (!suCanvas || !suCtx) return;
+        const rect = suCanvas.getBoundingClientRect();
+        const w = Math.max(260, Math.floor(rect.width || 960));
+        const h = Math.max(175, Math.floor(rect.height || 220));
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        if (suCanvas.width !== Math.floor(w * dpr) || suCanvas.height !== Math.floor(h * dpr)) {
+            suCanvas.width = Math.floor(w * dpr);
+            suCanvas.height = Math.floor(h * dpr);
+        }
+        suCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        suW = w;
+        suH = h;
+    }
+
+    if (suCanvas && suCtx) {
+        syncSuCanvasSize();
+        window.addEventListener('resize', syncSuCanvasSize, { passive: true });
+        if (typeof ResizeObserver !== 'undefined') {
+            const suRo = new ResizeObserver(() => syncSuCanvasSize());
+            suRo.observe(suCanvas);
+        }
+
+        window.setSonicUniverseProfile = function(bpm, label) {
+            suBpm = bpm || 115;
+            suImpulse = 1.15;
+            if (suProfileLabel && label) suProfileLabel.textContent = label;
+        };
+
+        document.querySelectorAll('.su-mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                suMode = btn.getAttribute('data-su-mode') || 'spectrum';
+                suImpulse = 1.0;
+                document.querySelectorAll('.su-mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+            });
+        });
+
+        document.querySelectorAll('.su-preset-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const bpm = parseInt(chip.getAttribute('data-bpm') || '115', 10);
+                const prof = chip.getAttribute('data-profile') || '';
+                const vIdx = parseInt(chip.getAttribute('data-vault-idx') || '0', 10);
+                document.querySelectorAll('.su-preset-chip').forEach(c => c.classList.toggle('active', c === chip));
+                window.setSonicUniverseProfile(bpm, prof);
+                const vaultBtns = document.querySelectorAll('.kr-vault-chip');
+                if (vaultBtns[vIdx]) vaultBtns[vIdx].click();
+            });
+        });
+
+        function toggleVaultPlayback() {
+            suImpulse = 1.25;
+            const vaultPlayBtn = document.getElementById('krVaultPlayBtn');
+            if (vaultPlayBtn) vaultPlayBtn.click();
+        }
+
+        suCanvas.style.cursor = 'pointer';
+        suCanvas.addEventListener('click', toggleVaultPlayback);
+        if (suPlayTrigger) suPlayTrigger.addEventListener('click', toggleVaultPlayback);
+
+        const suBars = 52;
+        const suPeaks = new Float32Array(suBars);
+        const suFreqs = ['40Hz', '110Hz', '250Hz', '432Hz', '1.5kHz', '6kHz', '18kHz'];
+        const suNodes = Array.from({ length: 30 }, (_, i) => ({
+            nx: (i + 0.5) / 30,
+            ny: 0.20 + (Math.sin(i * 1.61) * 0.5 + 0.5) * 0.56,
+            vx: (i % 2 === 0 ? 1 : -1) * (0.0004 + (i % 5) * 0.0001),
+            vy: (i % 3 === 0 ? 1 : -1) * (0.00035 + (i % 4) * 0.00009),
+            r: 1.8 + (i % 3) * 0.7
+        }));
+
+        function renderSuGraph() {
+            const W = suW;
+            const H = suH;
+            suCtx.clearRect(0, 0, W, H);
+            const t = performance.now() * 0.001 * (suBpm / 115);
+            if (suImpulse > 0.01) suImpulse *= 0.94;
+            else suImpulse = 0;
+
+            const vaultAudio = document.getElementById('kr-vault-audio');
+            const isVaultPlaying = !!(vaultAudio && !vaultAudio.paused);
+            if (suPlayTrigger) {
+                suPlayTrigger.textContent = isVaultPlaying ? '⏸ STREAMING 96KHZ MASTER' : '▶ STREAM 96KHZ MASTER';
+                suPlayTrigger.classList.toggle('active', isVaultPlaying);
+            }
+
+            // Grid
+            suCtx.save();
+            suCtx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+            suCtx.lineWidth = 1;
+            for (let r = 1; r < 4; r++) {
+                const gy = Math.floor((H / 4) * r) + 0.5;
+                suCtx.beginPath();
+                suCtx.moveTo(0, gy);
+                suCtx.lineTo(W, gy);
+                suCtx.stroke();
+            }
+            suCtx.font = '600 9px "JetBrains Mono", monospace';
+            suCtx.fillStyle = 'rgba(148, 163, 184, 0.55)';
+            for (let c = 0; c < suFreqs.length; c++) {
+                const gx = Math.floor((W / suFreqs.length) * c + (W / (suFreqs.length * 2)));
+                suCtx.beginPath();
+                suCtx.moveTo(gx, 14);
+                suCtx.lineTo(gx, H - 30);
+                suCtx.stroke();
+                if (W > 360) suCtx.fillText(suFreqs[c], Math.max(6, gx - 14), 24);
+            }
+            suCtx.restore();
+
+            const bins = new Float32Array(suBars);
+            const mult = isVaultPlaying ? 1.18 : 0.90;
+            for (let i = 0; i < suBars; i++) {
+                const norm = i / (suBars - 1);
+                const subBass = Math.exp(-Math.pow((norm - 0.16) / 0.15, 2)) * 0.54;
+                const celloMid = Math.exp(-Math.pow((norm - 0.46) / 0.21, 2)) * 0.48;
+                const airHigh = Math.exp(-Math.pow((norm - 0.79) / 0.17, 2)) * 0.35;
+                const osc = Math.sin(t * 2.9 + i * 0.29) * 0.17 + Math.cos(t * 4.4 - i * 0.19) * 0.12;
+                const v = Math.max(0.16, Math.min(0.92, (0.27 + subBass + celloMid + airHigh + osc) * mult + suImpulse * 0.22));
+                bins[i] = v;
+                suPeaks[i] = v > suPeaks[i] ? v : Math.max(v, suPeaks[i] - 0.0042);
+            }
+
+            const bottomY = H - 30;
+            const maxSpan = Math.max(72, bottomY - 34);
+
+            if (suMode === 'spectrum') {
+                const bwFull = W / suBars;
+                for (let i = 0; i < suBars; i++) {
+                    const bh = bins[i] * maxSpan;
+                    const x = i * bwFull;
+                    const y = bottomY - bh;
+                    const bw = Math.max(2, bwFull - (W < 500 ? 2 : 3.5));
+                    const g = suCtx.createLinearGradient(0, y, 0, bottomY);
+                    g.addColorStop(0, '#f6d365');
+                    g.addColorStop(0.30, '#d4af37');
+                    g.addColorStop(0.70, '#38bdf8');
+                    g.addColorStop(1, 'rgba(56, 189, 248, 0.10)');
+                    suCtx.fillStyle = g;
+                    suCtx.fillRect(x + 1, y, bw, bh);
+
+                    const py = bottomY - suPeaks[i] * maxSpan - 4;
+                    suCtx.fillStyle = (i % 3 === 0) ? '#f6d365' : '#38bdf8';
+                    suCtx.fillRect(x + 1, Math.max(18, py), bw, 2.2);
+                }
+
+                suCtx.save();
+                suCtx.beginPath();
+                for (let x = 0; x <= W; x += 6) {
+                    const idx = Math.min(suBars - 1, Math.floor((x / W) * suBars));
+                    const y = (H * 0.45) + Math.sin(x * 0.022 + t * 3.5) * 14 + Math.cos(x * 0.012 - t * 2.1) * ((bins[idx] - 0.35) * 30);
+                    if (x === 0) suCtx.moveTo(x, y);
+                    else suCtx.lineTo(x, y);
+                }
+                suCtx.strokeStyle = 'rgba(246, 211, 101, 0.88)';
+                suCtx.lineWidth = 2.1;
+                suCtx.shadowBlur = 10;
+                suCtx.shadowColor = '#d4af37';
+                suCtx.stroke();
+                suCtx.restore();
+            } else if (suMode === 'scope') {
+                const midY = H * 0.48;
+                for (let ch = 0; ch < 2; ch++) {
+                    suCtx.save();
+                    suCtx.beginPath();
+                    for (let x = 0; x <= W; x += 4) {
+                        const norm = x / W;
+                        const idx = Math.min(suBars - 1, Math.floor(norm * suBars));
+                        const env = Math.sin(norm * Math.PI) * (0.45 + bins[idx] * 0.78);
+                        const ph = ch === 0 ? t * 4.1 : -t * 3.3 + 1.2;
+                        const y = midY + (Math.sin(norm * 20 + ph) * 28 + Math.cos(norm * 39 - ph * 1.3) * 15) * env;
+                        if (x === 0) suCtx.moveTo(x, y);
+                        else suCtx.lineTo(x, y);
+                    }
+                    suCtx.strokeStyle = ch === 0 ? '#38bdf8' : '#d4af37';
+                    suCtx.lineWidth = ch === 0 ? 2.6 : 2.0;
+                    suCtx.shadowBlur = 12;
+                    suCtx.shadowColor = ch === 0 ? '#38bdf8' : '#d4af37';
+                    suCtx.stroke();
+                    suCtx.restore();
+                }
+            } else {
+                const cx = W * 0.5;
+                const cy = H * 0.46;
+                const maxR = Math.min(W, H) * 0.35;
+                suCtx.save();
+                for (let r = 1; r <= 3; r++) {
+                    suCtx.beginPath();
+                    suCtx.arc(cx, cy, (maxR / 3) * r + Math.sin(t * 2 + r) * 3, 0, Math.PI * 2);
+                    suCtx.strokeStyle = r === 2 ? 'rgba(212, 175, 55, 0.34)' : 'rgba(56, 189, 248, 0.25)';
+                    suCtx.lineWidth = 1.2;
+                    suCtx.stroke();
+                }
+                for (let i = 0; i < suBars; i++) {
+                    const ang = (i / suBars) * Math.PI * 2 + t * 0.32;
+                    const r0 = maxR * 0.32;
+                    const r1 = r0 + bins[i] * maxR * 0.85;
+                    suCtx.beginPath();
+                    suCtx.moveTo(cx + Math.cos(ang) * r0, cy + Math.sin(ang) * r0);
+                    suCtx.lineTo(cx + Math.cos(ang) * r1, cy + Math.sin(ang) * r1);
+                    suCtx.strokeStyle = (i % 2 === 0) ? '#38bdf8' : '#d4af37';
+                    suCtx.lineWidth = 2;
+                    suCtx.stroke();
+                }
+                suCtx.restore();
+            }
+
+            // Constellation Nodes
+            suCtx.save();
+            for (let i = 0; i < suNodes.length; i++) {
+                const n = suNodes[i];
+                n.nx += n.vx * (isVaultPlaying ? 1.4 : 0.95);
+                n.ny += n.vy * (isVaultPlaying ? 1.4 : 0.95);
+                if (n.nx < 0.03 || n.nx > 0.97) n.vx *= -1;
+                if (n.ny < 0.14 || n.ny > 0.82) n.vy *= -1;
+                const px = n.nx * W;
+                const py = n.ny * H;
+                for (let j = i + 1; j < suNodes.length; j++) {
+                    const m = suNodes[j];
+                    const ox = m.nx * W;
+                    const oy = m.ny * H;
+                    const dist = Math.hypot(ox - px, oy - py);
+                    const lim = W < 500 ? 70 : 96;
+                    if (dist < lim) {
+                        const a = (1 - dist / lim) * 0.28;
+                        suCtx.strokeStyle = (i % 3 === 0) ? `rgba(212,175,55,${a.toFixed(3)})` : `rgba(56,189,248,${a.toFixed(3)})`;
+                        suCtx.beginPath();
+                        suCtx.moveTo(px, py);
+                        suCtx.lineTo(ox, oy);
+                        suCtx.stroke();
+                    }
+                }
+                suCtx.beginPath();
+                suCtx.arc(px, py, n.r + bins[i % suBars] * 1.4, 0, Math.PI * 2);
+                suCtx.fillStyle = (i % 4 === 0) ? '#f6d365' : '#38bdf8';
+                suCtx.fill();
+            }
+            suCtx.restore();
+
+            requestAnimationFrame(renderSuGraph);
+        }
+        renderSuGraph();
+    }
 });
 </script>
 

@@ -49,7 +49,7 @@ get_header(); ?>
                         <!-- 16:9 Master Video Frame (Keystone Recomposition Masterclass) -->
                         <div class="recomp-featured-video-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 8px 30px rgba(56, 189, 248, 0.15);">
                             <iframe id="recomp-featured-long-video" 
-                                    src="https://www.youtube.com/embed/uMkZvTbqF2U" 
+                                    src="https://www.youtube.com/embed/JCgZ5SsN_bc?rel=0" 
                                     title="Autonomous Multi-Agent Swarms: FastMCP Production Architecture" 
                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -62,7 +62,7 @@ get_header(); ?>
                             <!-- 9:16 Vertical Player Frame -->
                             <div class="recomp-featured-short-player-box" style="position: relative; width: 120px; height: 213px; min-width: 120px; border-radius: 10px; overflow: hidden; background: #000; border: 1.5px solid rgba(56, 189, 248, 0.4); box-shadow: 0 4px 16px rgba(0,0,0,0.6); flex-shrink: 0;">
                                 <iframe id="recomp-featured-short-video" 
-                                        src="https://www.youtube.com/embed/XUiFyItyyzo" 
+                                        src="https://www.youtube.com/embed/vk2i18V28Bw?rel=0" 
                                         title="FastMCP Swarms Field Companion Short" 
                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -78,10 +78,10 @@ get_header(); ?>
                                     FastMCP Companion Short
                                 </h4>
                                 <p class="recomp-featured-short-desc" style="margin: 0 0 10px 0; color: #94a3b8; font-size: 0.78rem; line-height: 1.45;">
-                                    Rapid 40-second mobile field breakdown &amp; sovereign 4-agent swarm architecture.
+                                    Rapid 40-second mobile field breakdown &amp; sovereign 28-agent swarm architecture.
                                 </p>
                                 <div class="recomp-featured-short-actions" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                                    <a id="recomp-featured-short-link" href="https://youtube.com/shorts/XUiFyItyyzo" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
+                                    <a id="recomp-featured-short-link" href="https://youtube.com/shorts/vk2i18V28Bw" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
                                         <span>▶</span> Watch Short on YouTube
                                     </a>
                                     <a href="https://youtube.com/@keystonerecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8 !important; -webkit-text-fill-color: #38bdf8 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 50px; text-decoration: none !important;">
@@ -107,17 +107,17 @@ get_header(); ?>
 
                         <!-- Main Title -->
                         <h2 id="recomp-featured-title" class="recomp-featured-h2" style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.95rem); font-weight: 900; line-height: 1.25; color: #ffffff; margin: 0 0 1rem 0; letter-spacing: -0.01em;">
-                            Autonomous Multi-Agent Swarms: The Best 4-Agent FastMCP Architecture
+                            Autonomous Multi-Agent Swarms: The 28-Agent FastMCP Architecture
                         </h2>
 
                         <!-- SEO & GEO Excerpt Write-up -->
                         <p id="recomp-featured-excerpt" class="recomp-featured-excerpt" style="font-size: clamp(0.90rem, 1.05vw, 1.0rem); color: #cbd5e1; line-height: 1.7; margin: 0 0 1.5rem 0;">
-                            Production FastMCP server architecture, local 4-agent swarms via Google Antigravity, and zero-cloud Chrome DevTools Protocol automation latching directly into desktop Port 9222. Engineered in Squamish and Vancouver, BC by Wayne Stevenson to eliminate cloud API latency, vendor lock-in, and fragile bot-detection proxies.
+                            Production FastMCP server architecture, local 28-agent swarms via Google Antigravity, and zero-cloud Chrome DevTools Protocol automation latching directly into desktop Port 9222. Engineered in Squamish and Vancouver, BC by Wayne Stevenson to eliminate cloud API latency, vendor lock-in, and fragile bot-detection proxies.
                         </p>
 
                         <!-- Wayne Stevenson Author Signature & Credentials -->
                         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                            <img decoding="async" src="https://keystonerecomposition.com/wp-content/uploads/2026/09/wayne_avatar.jpg" alt="Wayne Stevenson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #38bdf8; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);" />
+                            <img decoding="async" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/wayne_avatar.jpg' ); ?>" alt="Wayne Stevenson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #38bdf8; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);" />
                             <div>
                                 <div style="color: #ffffff; font-weight: 800; font-size: 0.92rem; line-height: 1.2;">Wayne Stevenson</div>
                                 <div style="color: #38bdf8; font-size: 0.78rem; font-weight: 600;">Sovereign AI Architect &bull; Music Producer &bull; Squamish, BC</div>
@@ -212,7 +212,7 @@ get_header(); ?>
 
                         <!-- Wayne Stevenson Author Signature & Credentials -->
                         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                            <img decoding="async" src="https://keystonerecomposition.com/wp-content/uploads/2026/09/wayne_avatar.jpg" alt="Wayne Stevenson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #fbbf24; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);" />
+                            <img decoding="async" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/wayne_avatar.jpg' ); ?>" alt="Wayne Stevenson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #fbbf24; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);" />
                             <div>
                                 <div style="color: #ffffff; font-weight: 800; font-size: 0.92rem; line-height: 1.2;">Wayne Stevenson</div>
                                 <div style="color: #fbbf24; font-size: 0.78rem; font-weight: 600;">Music Producer &bull; Sovereign AI Architect &bull; Squamish, BC</div>
@@ -274,13 +274,14 @@ get_header(); ?>
                 <div id="recomp-intel-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-bottom: 2.5rem;">
 
                     <?php
+                    $theme_assets_uri = get_stylesheet_directory_uri() . '/assets/images';
                     // 12 Authentic High-End Technical Intel & Sonic Research Drops
                     $drops = array(
                         1 => array(
                             'page' => 1, 'slot' => '01', 'tier' => 'INTEL DROP 01', 'cat' => 'AI &amp; ARCHITECTURE', 'read' => '12 MIN READ',
-                            'title' => 'Autonomous Multi-Agent Swarms: The Best 4-Agent FastMCP Architecture',
-                            'excerpt' => 'Deep-dive architectural breakdown of Wayne Stevenson\'s local 4-agent FastMCP swarms, typed tool contracts, and automated Chrome DevTools execution.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/10/autonomous-multi-agent-swarms-fastmcp-thumb.jpg',
+                            'title' => 'Autonomous Multi-Agent Swarms: The 28-Agent FastMCP Architecture',
+                            'excerpt' => 'Deep-dive architectural breakdown of Wayne Stevenson\'s local 28-agent FastMCP swarms, typed tool contracts, and automated Chrome DevTools execution.',
+                            'image' => $theme_assets_uri . '/ai_protocols_banner.png',
                             'link' => '/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/',
                             'status' => '● LIVE INTEL', 'status_color' => '#38bdf8',
                         ),
@@ -288,7 +289,7 @@ get_header(); ?>
                             'page' => 1, 'slot' => '02', 'tier' => 'INTEL DROP 02', 'cat' => 'CHROME CDP AUTOMATION', 'read' => '10 MIN READ',
                             'title' => 'Zero-Cloud Chrome CDP Automation: Eliminating Headless Browser Bot Detection',
                             'excerpt' => 'How to eliminate flaky Selenium and Puppeteer cloud proxies by latching sovereign AI agents directly into Wayne\'s active desktop Chrome browser on Port 9222.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/trading_terminal_luxury.jpg',
+                            'image' => $theme_assets_uri . '/trading_terminal_luxury.jpg',
                             'link' => '/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/',
                             'status' => '● LIVE INTEL', 'status_color' => '#38bdf8',
                         ),
@@ -296,7 +297,7 @@ get_header(); ?>
                             'page' => 1, 'slot' => '03', 'tier' => 'INTEL DROP 03', 'cat' => 'SONIC ARCHITECTURE', 'read' => '15 MIN READ',
                             'title' => 'Sovereign Reverb: Functional Frequency Architecture &amp; High-Cadence Focus',
                             'excerpt' => 'Engineering electronic audio frequencies to sustain deep flow state during intensive building sprints. Complete 22-release studio master telemetry.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/sovereign_reverb.jpg',
+                            'image' => $theme_assets_uri . '/albums/sovereign_reverb.jpg',
                             'link' => '/2026/09/28/sovereign-reverb-functional-frequency-architecture/',
                             'status' => '● LIVE INTEL', 'status_color' => '#38bdf8',
                         ),
@@ -304,73 +305,73 @@ get_header(); ?>
                             'page' => 1, 'slot' => '04', 'tier' => 'INTEL DROP 04', 'cat' => 'FASTMCP PROTOCOLS', 'read' => '11 MIN READ',
                             'title' => 'FastMCP Typed Tool Contracts: Bridging Python Daemons with Desktop Workstations',
                             'excerpt' => 'Implementing strictly typed schemas, non-blocking asynchronous socket dispatch, and IPC telemetry across local FastMCP background daemons.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/ai_protocols_banner.png',
+                            'image' => $theme_assets_uri . '/ai_protocols_banner.png',
                             'link' => '/ai-protocols/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         5 => array(
                             'page' => 1, 'slot' => '05', 'tier' => 'INTEL DROP 05', 'cat' => 'QUANTITATIVE INTELLIGENCE', 'read' => '13 MIN READ',
                             'title' => 'Deterministic NOAA HRRR Weather Modeling: Autonomous Prediction Swarms',
                             'excerpt' => 'High-resolution rapid refresh physics engines analyzing wind shear and temperature anomalies for convex prediction market positioning.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/trading_terminal_luxury.jpg',
+                            'image' => $theme_assets_uri . '/trading_terminal_luxury.jpg',
                             'link' => '/investments/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         6 => array(
                             'page' => 1, 'slot' => '06', 'tier' => 'INTEL DROP 06', 'cat' => 'AUDIO ENGINEERING', 'read' => '9 MIN READ',
                             'title' => 'Local-First Voice Telemetry: Piper TTS &amp; Whisper STT OS Daemon Engineering',
                             'excerpt' => 'Eliminating cloud voice API roundtrips with sub-50ms local neural text-to-speech and speech-to-text daemons running directly on RTX silicon.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/sonic_universe_banner.png',
+                            'image' => $theme_assets_uri . '/sonic_universe_banner.png',
                             'link' => '/sonic-universe/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         7 => array(
                             'page' => 2, 'slot' => '07', 'tier' => 'INTEL DROP 07', 'cat' => 'FINANCIAL ARCHITECTURE', 'read' => '14 MIN READ',
                             'title' => 'The 40% Cash Fortress CAD Protocol: Algorithmic Treasury Compounding',
                             'excerpt' => 'Protecting core liquidity with an inviolable 40% cash reserve floor while compounding surplus float through automated momentum locks.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/trading_terminal_luxury.jpg',
+                            'image' => $theme_assets_uri . '/trading_terminal_luxury.jpg',
                             'link' => '/investments/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         8 => array(
                             'page' => 2, 'slot' => '08', 'tier' => 'INTEL DROP 08', 'cat' => 'GENERATIVE VIDEO', 'read' => '12 MIN READ',
                             'title' => 'Google Flow Box 2 Generative Video: Automated Reverse Grid Canvas Renaming',
                             'excerpt' => 'CDP automation protocols for reverse grid batch prompt generation, Angular CDK virtual scroll interaction, and 100% prompt verification.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/ai_protocols_banner.png',
+                            'image' => $theme_assets_uri . '/ai_protocols_banner.png',
                             'link' => '/ai-protocols/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         9 => array(
                             'page' => 2, 'slot' => '09', 'tier' => 'INTEL DROP 09', 'cat' => 'DAVINCI AUTOMATION', 'read' => '10 MIN READ',
                             'title' => 'DaVinci Resolve Studio API: 2-Track Master Assembly &amp; -18dB Audio Ducking',
                             'excerpt' => 'Automating dual-track timeline construction, optical flow slow-motion interpolation, and dynamic audio ducking via Python Resolve scripting.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/sonic_universe_banner.png',
+                            'image' => $theme_assets_uri . '/sonic_universe_banner.png',
                             'link' => '/sonic-universe/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         10 => array(
                             'page' => 2, 'slot' => '10', 'tier' => 'INTEL DROP 10', 'cat' => 'PHYSICAL RECOMPOSITION', 'read' => '16 MIN READ',
                             'title' => 'Squamish High-Performance Living: N=1 Physical Recomposition Case Study',
                             'excerpt' => 'Documented 48-pound fat loss, heavy compound strength training, sub-50°F cold water immersion, and metabolic protocols in the Sea-to-Sky corridor.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/bc_luxury_multiplex.jpg',
+                            'image' => $theme_assets_uri . '/bc_luxury_multiplex.jpg',
                             'link' => '/lifestyle/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         11 => array(
                             'page' => 2, 'slot' => '11', 'tier' => 'INTEL DROP 11', 'cat' => 'SOVEREIGN ASSETS', 'read' => '13 MIN READ',
                             'title' => 'Sovereign Fideicomiso Real Estate Assets: Multi-Jurisdictional Wealth Defense',
                             'excerpt' => 'Navigating Mexican bank trusts (Fideicomiso) and EU property acquisitions to establish sovereign, resilient international asset footholds.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/trading_terminal_luxury.jpg',
+                            'image' => $theme_assets_uri . '/trading_terminal_luxury.jpg',
                             'link' => '/founder/',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         12 => array(
                             'page' => 2, 'slot' => '12', 'tier' => 'INTEL DROP 12', 'cat' => 'LICENSED CONSTRUCTION', 'read' => '15 MIN READ',
                             'title' => 'Building BC Housing Licensed Infill: Bill 44 Multiplex Yield Engineering',
                             'excerpt' => 'Vancouver R1-1 multiplex zoning yields, BC Step Code 5 compliance, and structural engineering under statutory BC Housing License #52603.',
-                            'image' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/keystone_possibilities_crest.png',
+                            'image' => $theme_assets_uri . '/keystone_possibilities_crest.png',
                             'link' => 'https://keystonepossibilities.ca',
-                            'status' => '● STAGED FOR VIDEO DROP', 'status_color' => '#38bdf8',
+                            'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                     );
 
@@ -572,7 +573,11 @@ async function loadPublishedIntel() {
             featTitle.innerHTML = featuredPost.title.rendered;
         }
         if (featExcerpt && featuredPost.excerpt && featuredPost.excerpt.rendered) {
-            var cleanExcerpt = recompDecodeHtml(featuredPost.excerpt.rendered).replace(/\[.*?\]/g, '').trim();
+            var cleanExcerpt = recompDecodeHtml(featuredPost.excerpt.rendered)
+                .replace(/\[.*?\]/g, '')
+                .replace(/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i, '')
+                .replace(/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i, '')
+                .trim();
             if (cleanExcerpt.length > 20) {
                 featExcerpt.innerText = cleanExcerpt.substring(0, 240) + '...';
             }
@@ -584,18 +589,19 @@ async function loadPublishedIntel() {
             featDate.innerText = new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
         }
 
-        // Parse YouTube embeds if present in content
+        // Parse YouTube embeds if present in content (filtering out retired/unavailable staging IDs)
         var contentHtml = (featuredPost.content && featuredPost.content.rendered) ? featuredPost.content.rendered : '';
         var longIframe = document.getElementById('recomp-featured-long-video');
         var shortIframe = document.getElementById('recomp-featured-short-video');
         var shortLink = document.getElementById('recomp-featured-short-link');
         var shortDeck = document.querySelector('.recomp-featured-short-deck');
+        var retiredIds = ['3rYyZ0c8_1o', 'XUiFyItyyzo'];
 
         var ytRegex = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
         var match;
         var ytIds = [];
         while ((match = ytRegex.exec(contentHtml)) !== null) {
-            if (match[1] && ytIds.indexOf(match[1]) === -1) {
+            if (match[1] && retiredIds.indexOf(match[1]) === -1 && ytIds.indexOf(match[1]) === -1) {
                 ytIds.push(match[1]);
             }
         }
@@ -603,16 +609,16 @@ async function loadPublishedIntel() {
         var foundLong = ytIds.length > 0 ? ytIds[0] : null;
         var foundShort = ytIds.length > 1 ? ytIds[1] : null;
         var explicitShort = contentHtml.match(/shorts\/([a-zA-Z0-9_-]{11})/);
-        if (explicitShort && explicitShort[1]) {
+        if (explicitShort && explicitShort[1] && retiredIds.indexOf(explicitShort[1]) === -1) {
             foundShort = explicitShort[1];
         }
 
         if (foundLong && longIframe) {
-            longIframe.src = 'https://www.youtube.com/embed/' + foundLong;
+            longIframe.src = 'https://www.youtube.com/embed/' + foundLong + '?rel=0';
         }
         if (foundShort) {
             if (shortDeck) shortDeck.style.display = 'flex';
-            if (shortIframe) shortIframe.src = 'https://www.youtube.com/embed/' + foundShort;
+            if (shortIframe) shortIframe.src = 'https://www.youtube.com/embed/' + foundShort + '?rel=0';
             if (shortLink) shortLink.href = 'https://youtube.com/shorts/' + foundShort;
         }
 
@@ -634,8 +640,12 @@ async function loadPublishedIntel() {
                 var postTitle = (post.title && post.title.rendered) ? post.title.rendered : '';
                 var postExcerpt = '';
                 if (post.excerpt && post.excerpt.rendered) {
-                    var cEx = recompDecodeHtml(post.excerpt.rendered).replace(/\[.*?\]/g, '').trim();
-                    postExcerpt = cEx.substring(0, 115) + '...';
+                    var cEx = recompDecodeHtml(post.excerpt.rendered)
+                        .replace(/\[.*?\]/g, '')
+                        .replace(/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i, '')
+                        .replace(/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i, '')
+                        .trim();
+                    postExcerpt = cEx.substring(0, 125) + '...';
                 }
 
                 if (postThumb) {

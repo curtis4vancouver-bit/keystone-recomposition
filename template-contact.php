@@ -208,7 +208,9 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <label for="contact_category" class="luxury-form-label">Inquiry Category <span class="required-asterisk">*</span></label>
                                     <select id="contact_category" name="contact_category" required class="luxury-form-select">
                                         <option value="" disabled selected>Select Inquiry Category...</option>
-                                        <option value="Executive Workstation Architecture ($800 Masterclass)">Executive Workstation Architecture ($800 Masterclass)</option>
+                                        <option value="Tier 01 — Antigravity Website Fast-Track Blueprint ($49 USD)">Tier 01 — Antigravity Website Fast-Track Blueprint ($49 USD)</option>
+                                        <option value="Tier 02 — Autonomous 28-Agent Swarm & B2B Engine ($199 USD)">Tier 02 — Autonomous 28-Agent Swarm &amp; B2B Engine ($199 USD)</option>
+                                        <option value="Executive Workstation Architecture ($800 Masterclass)">Tier 03 — Executive Workstation Architecture ($800 Masterclass)</option>
                                         <option value="BC Bill 44 General Contracting & Infill (BC Builder #52603)">BC Bill 44 General Contracting &amp; Infill (BC Builder #52603)</option>
                                         <option value="Private Real Estate Infill Investment & Co-Development">Private Real Estate Infill Investment &amp; Co-Development</option>
                                         <option value="Spotify Music Catalog, Sync & Audio Architecture">Spotify Music Catalog, Sync &amp; Audio Architecture</option>
@@ -220,7 +222,9 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <label for="contact_budget" class="luxury-form-label">Project Budget / Capital Allocation</label>
                                     <select id="contact_budget" name="contact_budget" class="luxury-form-select">
                                         <option value="" disabled selected>Select Capital Allocation / Budget...</option>
-                                        <option value="$800 CAD — Executive Workstation Architecture Masterclass">$800 CAD — Executive Workstation Architecture Masterclass</option>
+                                        <option value="$49 USD — Tier 01 Antigravity Website Blueprint">$49 USD — Tier 01 Antigravity Website Blueprint</option>
+                                        <option value="$199 USD — Tier 02 Autonomous 28-Agent Swarm">$199 USD — Tier 02 Autonomous 28-Agent Swarm</option>
+                                        <option value="$800 CAD — Executive Workstation Architecture Masterclass">$800 USD/CAD — Executive Workstation Architecture Masterclass</option>
                                         <option value="$25,000 – $100,000 CAD — Autonomous AI Software & Music Sync">$25,000 &ndash; $100,000 CAD — Autonomous AI Software &amp; Music Sync</option>
                                         <option value="$100,000 – $500,000 CAD — Private Infill Co-Investment & Feasibility">$100,000 &ndash; $500,000 CAD — Private Infill Co-Investment &amp; Feasibility</option>
                                         <option value="$500,000 – $2,500,000+ CAD — Turnkey Residential Multiplex Build">$500,000 &ndash; $2,500,000+ CAD — Turnkey Residential Multiplex Build</option>
@@ -232,7 +236,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <!-- Row 3: Overview & Requirements -->
                             <div class="form-field-group">
                                 <label for="contact_message" class="luxury-form-label">Project Overview &amp; Requirements <span class="required-asterisk">*</span></label>
-                                <textarea id="contact_message" name="contact_message" rows="3" required 
+                                <textarea id="contact_message" name="contact_message" rows="5" required 
                                           placeholder="Briefly outline your project scope, location (if construction), or workstation requirements..." class="luxury-form-textarea"></textarea>
                             </div>
 
@@ -289,6 +293,40 @@ $theme_uri = get_stylesheet_directory_uri();
         </div>
     </main>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const inquiry = params.get('inquiry');
+    const promo = params.get('promo');
+    const catSelect = document.getElementById('contact_category');
+    const budSelect = document.getElementById('contact_budget');
+    const msgInput = document.getElementById('contact_message');
+
+    if (inquiry && catSelect && budSelect) {
+        const promoSuffix = promo ? ` (Promo Code Applied: ${promo})` : '';
+        if (inquiry === 'tier1_blueprint') {
+            catSelect.value = 'Tier 01 — Antigravity Website Fast-Track Blueprint ($49 USD)';
+            budSelect.value = '$49 USD — Tier 01 Antigravity Website Blueprint';
+            if (msgInput && !msgInput.value) {
+                msgInput.value = `Requesting instant access & licensing invoice for Tier 01: Antigravity Autonomous Website Fast-Track Blueprint ($49 USD)${promoSuffix}.`;
+            }
+        } else if (inquiry === 'tier2_swarm') {
+            catSelect.value = 'Tier 02 — Autonomous 28-Agent Swarm & B2B Engine ($199 USD)';
+            budSelect.value = '$199 USD — Tier 02 Autonomous 28-Agent Swarm';
+            if (msgInput && !msgInput.value) {
+                msgInput.value = `Requesting instant access & GitHub repository onboarding for Tier 02: Autonomous 28-Agent Swarm & B2B Engine ($199 USD)${promoSuffix}.`;
+            }
+        } else if (inquiry === 'tier3_workstation') {
+            catSelect.value = 'Executive Workstation Architecture ($800 Masterclass)';
+            budSelect.value = '$800 CAD — Executive Workstation Architecture Masterclass';
+            if (msgInput && !msgInput.value) {
+                msgInput.value = `Applying for Tier 03: Custom Tauri HUD & Sovereign Workstation 1-on-1 Private Architecture with Wayne Stevenson ($800 USD)${promoSuffix}.`;
+            }
+        }
+    }
+});
+</script>
 
 <?php
 get_footer();

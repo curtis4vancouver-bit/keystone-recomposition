@@ -159,6 +159,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">22-Release Catalog</a>
                 <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="kr-vault-spotify-pill">Spotify OAC ↗</a>
             </div>
+            <button type="button" id="krVaultMinBtn" class="kr-vault-min-btn" aria-label="Minimize or Expand Audio Bar" title="Minimize / Expand Audio Vault">&#9662;</button>
         </div>
     </div>
     <script>
@@ -177,6 +178,8 @@ if ( ! defined( 'ABSPATH' ) ) {
         var playBtn = document.getElementById('krVaultPlayBtn');
         var prevBtn = document.getElementById('krVaultPrevBtn');
         var nextBtn = document.getElementById('krVaultNextBtn');
+        var minBtn = document.getElementById('krVaultMinBtn');
+        var vaultBar = document.getElementById('kr-bottom-streaming-vault');
         var iconEl = document.getElementById('krVaultPlayIcon');
         var textEl = document.getElementById('krVaultPlayText');
         var titleEl = document.getElementById('krVaultTrackTitle');
@@ -232,6 +235,12 @@ if ( ! defined( 'ABSPATH' ) ) {
         }
         if (prevBtn) prevBtn.addEventListener('click', function() { loadAndPlay(vIdx - 1); });
         if (nextBtn) nextBtn.addEventListener('click', function() { loadAndPlay(vIdx + 1); });
+        if (minBtn && vaultBar) {
+            minBtn.addEventListener('click', function() {
+                var isMin = vaultBar.classList.toggle('is-minimized');
+                minBtn.innerHTML = isMin ? '&#9652;' : '&#9662;';
+            });
+        }
         window.krPlayVaultTrack = loadAndPlay;
     })();
     </script>
