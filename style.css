@@ -9836,24 +9836,63 @@ body.page-template-page-ai-protocols,
 .keystone-lifestyle-page,
 .keystone-contact-page,
 .keystone-founder-page,
-.keystone-home-orchestrator,
+.keystone-home-orchestrator {
+  background-color: #04070d !important;
+  background: #04070d !important;
+}
+
 .ast-container {
-  background-color: #000000 !important;
-  background: #000000 !important;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .site-nav-header {
-  background-color: #000000 !important;
-  background: #000000 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background-color: #04070d !important;
+  background: #04070d !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.16) !important;
 }
 
+.keystone-founder-page,
 .keystone-sonic-universe-page,
 .keystone-investments-page,
 .keystone-lifestyle-page,
-.keystone-contact-page {
+.keystone-contact-page,
+.keystone-cyber-protocols,
+.keystone-intel-archive {
   margin-top: 0 !important;
-  padding-top: 30px !important;
+  padding-top: 24px !important;
+}
+
+.founder-hero-header {
+  padding-top: 8px !important;
+  margin-top: 0 !important;
+  margin-bottom: 32px !important;
+}
+
+.header-protocols-cta-pill {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(212, 175, 55, 0.22) 100%) !important;
+  border: 1px solid #38bdf8 !important;
+  color: #f8fafc !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+
+.header-protocols-cta-pill:hover {
+  border-color: #d4af37 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.5) !important;
+  transform: translateY(-1px) !important;
 }
 
 /* ==========================================================================

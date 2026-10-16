@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </ul>
             </nav>
 
-            <!-- Right Action Items (Social Icons in Luminous Cyan) -->
+            <!-- Right Action Items (Social Icons + AI Protocols CTA Pill + Mobile Menu Pill) -->
             <div class="nav-right-actions">
                 <a href="https://www.facebook.com/profile.php?id=61561081702787" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -71,39 +71,68 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <a href="https://www.youtube.com/@KeyStoneRecomposition" target="_blank" rel="noopener" class="social-icon-btn" aria-label="YouTube">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
-                <button class="mobile-hamburger" id="kpMobileNavToggle" aria-label="Toggle navigation menu">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 6h18M3 18h18"/></svg>
+                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="header-protocols-cta-pill">
+                    ⚡ AI PROTOCOLS
+                </a>
+                <button class="mobile-hamburger" id="kpMobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="mobile-menu-icon">☰</span>
+                    <span class="mobile-menu-label">MENU</span>
+                    <span class="mobile-menu-caret">▾</span>
                 </button>
             </div>
 
         </div>
     </header>
 
-    <!-- MOBILE NAVIGATION DRAWER -->
-    <div class="mobile-menu-drawer" id="mobileDrawer">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo ( $current_path === '' || is_front_page() ) ? 'active' : ''; ?>">HOME</a>
-        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'ai-protocols' ) !== false || ( function_exists( 'is_page' ) && is_page( 'ai-protocols' ) ) ) ? 'active' : ''; ?>">AI PROTOCOLS</a>
-        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || ( function_exists( 'is_singular' ) && is_singular( 'post' ) ) || ( function_exists( 'is_home' ) && is_home() ) ) ? 'active' : ''; ?>">INTEL</a>
-        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'sonic-universe' ) !== false || ( function_exists( 'is_page' ) && is_page( 'sonic-universe' ) ) ) ? 'active' : ''; ?>">SONIC UNIVERSE</a>
-        <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'investments' ) !== false || ( function_exists( 'is_page' ) && is_page( 'investments' ) ) ) ? 'active' : ''; ?>">INVESTMENTS</a>
-        <a href="<?php echo esc_url( home_url( '/lifestyle/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'lifestyle' ) !== false || ( function_exists( 'is_page' ) && is_page( 'lifestyle' ) ) ) ? 'active' : ''; ?>">LIFESTYLE</a>
-        <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'founder' ) !== false || strpos( $current_path, 'about-the-founder' ) !== false || ( function_exists( 'is_page' ) && ( is_page( 'founder' ) || is_page( 'about-the-founder' ) ) ) ) ? 'active' : ''; ?>">FOUNDER</a>
-        <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="<?php echo ( strpos( $current_path, 'contact' ) !== false || ( function_exists( 'is_page' ) && is_page( 'contact' ) ) ) ? 'active' : ''; ?>">CONTACT</a>
+    <!-- MOBILE NAVIGATION DRAWER (SCROLLABLE DROPDOWN WITH TOP AI PROTOCOLS FEATURE CARD & VAULT UID CHECK) -->
+    <div class="mobile-menu-drawer" id="mobileDrawer" data-wp-uid="<?php echo esc_attr( is_user_logged_in() ? 'KR-WP-UID-' . (int) get_current_user_id() : '' ); ?>">
+        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="mobile-drawer-protocols-featured <?php echo ( strpos( $current_path, 'ai-protocols' ) !== false || ( function_exists( 'is_page' ) && is_page( 'ai-protocols' ) ) ) ? 'active' : ''; ?>">
+            <div class="drawer-proto-left">
+                <span class="drawer-proto-kicker" id="drawerVaultUidBadge">🔐 VAULT UID GATE ACTIVE • AUTOMATED DELIVERY</span>
+                <span class="drawer-proto-title">⚡ AI PROTOCOLS — $49.50 &amp; $800 AI Video + Download Vault</span>
+            </div>
+            <span class="drawer-proto-badge">▶ OPEN</span>
+        </a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="mobile-drawer-row <?php echo ( $current_path === '' || is_front_page() ) ? 'active' : ''; ?>"><span>🏠 HOME</span><span class="drawer-row-arrow">→</span></a>
+        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="mobile-drawer-row <?php echo ( strpos( $current_path, 'intel' ) !== false || strpos( $current_path, 'blog' ) !== false || ( function_exists( 'is_singular' ) && is_singular( 'post' ) ) || ( function_exists( 'is_home' ) && is_home() ) ) ? 'active' : ''; ?>"><span>📡 INTEL (VIDEOS &amp; BLOG)</span><span class="drawer-row-arrow">→</span></a>
+        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="mobile-drawer-row <?php echo ( strpos( $current_path, 'sonic-universe' ) !== false || ( function_exists( 'is_page' ) && is_page( 'sonic-universe' ) ) ) ? 'active' : ''; ?>"><span>🎵 SONIC UNIVERSE (22 ALBUMS)</span><span class="drawer-row-arrow">→</span></a>
+        <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" class="mobile-drawer-row <?php echo ( strpos( $current_path, 'investments' ) !== false || ( function_exists( 'is_page' ) && is_page( 'investments' ) ) ) ? 'active' : ''; ?>"><span>📈 INVESTMENTS</span><span class="drawer-row-arrow">→</span></a>
+        <a href="<?php echo esc_url( home_url( '/lifestyle/' ) ); ?>" class="mobile-drawer-row <?php echo ( strpos( $current_path, 'lifestyle' ) !== false || ( function_exists( 'is_page' ) && is_page( 'lifestyle' ) ) ) ? 'active' : ''; ?>"><span>🏔️ LIFESTYLE</span><span class="drawer-row-arrow">→</span></a>
+        <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="mobile-drawer-row <?php echo ( strpos( $current_path, 'founder' ) !== false || strpos( $current_path, 'about-the-founder' ) !== false || ( function_exists( 'is_page' ) && ( is_page( 'founder' ) || is_page( 'about-the-founder' ) ) ) ) ? 'active' : ''; ?>"><span>👤 FOUNDER</span><span class="drawer-row-arrow">→</span></a>
+        <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="mobile-drawer-row <?php echo ( strpos( $current_path, 'contact' ) !== false || ( function_exists( 'is_page' ) && is_page( 'contact' ) ) ) ? 'active' : ''; ?>"><span>✉️ CONTACT</span><span class="drawer-row-arrow">→</span></a>
     </div>
 
-    <!-- SCRIPT FOR MOBILE DRAWER TOGGLE -->
+    <!-- SCRIPT FOR MOBILE DRAWER TOGGLE & VAULT UID CHECK -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggleBtn = document.getElementById('kpMobileNavToggle');
         const drawer = document.getElementById('mobileDrawer');
+        const uidBadge = document.getElementById('drawerVaultUidBadge');
+
+        function syncDrawerVaultUid() {
+            if (!uidBadge || !drawer) return;
+            let storedUid = '';
+            try { storedUid = localStorage.getItem('kr_user_vault_uid') || ''; } catch (e) {}
+            const wpUid = drawer.getAttribute('data-wp-uid') || '';
+            const activeUid = storedUid || wpUid;
+            if (activeUid) {
+                uidBadge.textContent = '✔ UID VERIFIED: ' + activeUid;
+                uidBadge.style.color = '#f6d365';
+            }
+        }
+        syncDrawerVaultUid();
+
         if (toggleBtn && drawer) {
             toggleBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                drawer.classList.toggle('active');
+                syncDrawerVaultUid();
+                const isOpen = drawer.classList.toggle('active');
+                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             });
             document.addEventListener('click', function(e) {
-                if (drawer.classList.contains('active') && !drawer.contains(e.target) && e.target !== toggleBtn) {
+                if (drawer.classList.contains('active') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
                     drawer.classList.remove('active');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
                 }
             });
         }

@@ -134,14 +134,17 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
     </footer>
 
-    <!-- SOVEREIGN v10 PERSISTENT BOTTOM STREAMING VAULT -->
-    <?php $kr_vault_theme_uri = get_stylesheet_directory_uri(); ?>
-    <div id="kr-bottom-streaming-vault" class="kr-bottom-streaming-vault" data-nosnippet aria-label="Sovereign Audio Streaming Vault">
+    <!-- SOVEREIGN v10 PERSISTENT BOTTOM STREAMING & AI VAULT (UID-VERIFIED) -->
+    <?php
+    $kr_vault_theme_uri = get_stylesheet_directory_uri();
+    $kr_current_wp_uid  = is_user_logged_in() ? 'KR-WP-UID-' . (int) get_current_user_id() : 'KR-GUEST-SESSION';
+    ?>
+    <div id="kr-bottom-streaming-vault" class="kr-bottom-streaming-vault" data-nosnippet data-vault-uid="<?php echo esc_attr( $kr_current_wp_uid ); ?>" aria-label="Sovereign Audio Streaming Vault">
         <audio id="krVaultAudio" preload="none" crossorigin="anonymous"></audio>
         <div class="kr-vault-inner">
             <div class="kr-vault-brand">
                 <span class="kr-vault-pulse"></span>
-                <span class="kr-vault-tag">SONIC VAULT // 96kHz</span>
+                <span class="kr-vault-tag" id="krBottomVaultTag">SONIC VAULT // 96kHz</span>
             </div>
             <div class="kr-vault-controls">
                 <button type="button" id="krVaultPrevBtn" class="kr-vault-icon-btn" aria-label="Previous Track" title="Previous Track">&#9664;&#9664;</button>
@@ -156,6 +159,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <span id="krVaultTrackSub" class="kr-vault-track-sub">Organic Downtempo Chill House • 115 BPM</span>
             </div>
             <div class="kr-vault-actions">
+                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="kr-vault-link-pill" id="krVaultProtocolsBtn">⚡ AI Vault ($49.50)</a>
                 <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">22-Release Catalog</a>
                 <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="kr-vault-spotify-pill">Spotify OAC ↗</a>
             </div>
@@ -184,6 +188,28 @@ if ( ! defined( 'ABSPATH' ) ) {
         var textEl = document.getElementById('krVaultPlayText');
         var titleEl = document.getElementById('krVaultTrackTitle');
         var subEl = document.getElementById('krVaultTrackSub');
+        var protoBtn = document.getElementById('krVaultProtocolsBtn');
+
+        // Verify User UID on the Vault Menu so session state & entitlements stay isolated per user UID
+        function checkVaultUserUid() {
+            if (!vaultBar) return '';
+            var wpUid = vaultBar.getAttribute('data-vault-uid') || '';
+            var localUid = '';
+            try {
+                localUid = localStorage.getItem('kr_user_vault_uid') || '';
+                if (!localUid && wpUid && wpUid.indexOf('KR-WP-UID-') === 0) {
+                    localStorage.setItem('kr_user_vault_uid', wpUid);
+                    localUid = wpUid;
+                }
+            } catch (e) {}
+            var verifiedUid = localUid || wpUid;
+            vaultBar.setAttribute('data-verified-uid', verifiedUid);
+            if (protoBtn && localUid && localUid.indexOf('KR-UID-') === 0) {
+                protoBtn.textContent = '✔ Vault UID Verified';
+            }
+            return verifiedUid;
+        }
+        checkVaultUserUid();
 
         function syncVaultUI() {
             if (titleEl) titleEl.textContent = vaultTracks[vIdx].title;
@@ -194,6 +220,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         }
 
         function loadAndPlay(index) {
+            if (!checkVaultUserUid()) return;
             vIdx = (index + vaultTracks.length) % vaultTracks.length;
             if (typeof window.switchTrack === 'function' && document.getElementById('cyberAudio')) {
                 window.switchTrack(vaultTracks[vIdx].title.replace(/^\d+\s•\s/, ''), vaultTracks[vIdx].sub, vIdx);
@@ -214,6 +241,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         if (playBtn) {
             playBtn.addEventListener('click', function() {
+                if (!checkVaultUserUid()) return;
                 var mainBtn = document.getElementById('cyberPlayBtn');
                 if (mainBtn) {
                     mainBtn.click();

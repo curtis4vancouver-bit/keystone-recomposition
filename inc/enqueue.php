@@ -886,23 +886,236 @@ function astra_child_keystone_header_overrides() {
         padding: 0 12px !important;
         gap: 8px !important;
       }
-      .site-nav-header .brand-text {
-        font-size: 12px !important;
-        letter-spacing: 0.04em !important;
-      }
-      .site-nav-header .brand-sub {
-        font-size: 8.5px !important;
-        letter-spacing: 0.04em !important;
-      }
-      .site-nav-header .nav-right-actions .social-icon-btn,
-      .site-nav-header .nav-right-actions .header-cta {
-        display: none !important;
-      }
       h1, .hero-main-title, .contact-main-title, .sonic-hero-title, .inv-main-title {
         font-size: clamp(1.75rem, 7vw, 2.35rem) !important;
         overflow-wrap: break-word !important;
         word-break: break-word !important;
       }
+    }
+
+    /* Unified Obsidian #04070d Background & Transparent .ast-container (Eliminates #04070d vs #000000 Split) */
+    html,
+    body,
+    #page,
+    #content,
+    .site-content,
+    #primary,
+    .content-area,
+    .keystone-cyber-home,
+    .keystone-cyber-protocols,
+    .cyber-hero-section,
+    .keystone-intel-archive,
+    .keystone-sonic-universe-page,
+    .keystone-investments-page,
+    .keystone-lifestyle-page,
+    .keystone-contact-page,
+    .keystone-founder-page,
+    .keystone-home-orchestrator {
+      background-color: #04070d !important;
+      background: #04070d !important;
+    }
+    .ast-container {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    /* Eliminate 140px Black Void Under Header on /founder/ and All Sovereign Pages */
+    .keystone-founder-page,
+    .keystone-sonic-universe-page,
+    .keystone-investments-page,
+    .keystone-lifestyle-page,
+    .keystone-contact-page,
+    .keystone-cyber-protocols,
+    .keystone-intel-archive {
+      margin-top: 0 !important;
+      padding-top: 24px !important;
+    }
+    .founder-hero-header {
+      padding-top: 8px !important;
+      margin-top: 0 !important;
+      margin-bottom: 32px !important;
+    }
+
+    /* Header Right-Side AI PROTOCOLS CTA Pill */
+    .header-protocols-cta-pill {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(212, 175, 55, 0.22) 100%) !important;
+      border: 1px solid #38bdf8 !important;
+      color: #f8fafc !important;
+      border-radius: 9999px !important;
+      padding: 6px 14px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.2s ease !important;
+    }
+    .header-protocols-cta-pill:hover {
+      border-color: #d4af37 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.5) !important;
+    }
+
+    /* Compact Phone / Tablet Header (<= 1024px) & Scrollable Mobile Dropdown Bar */
+    @media (max-width: 1024px) {
+      .site-nav-header .nav-container {
+        height: 52px !important;
+        min-height: 52px !important;
+        padding: 0 12px !important;
+        gap: 8px !important;
+      }
+      .site-nav-header .kp-badge-mark {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+      }
+      .site-nav-header .kp-badge-img {
+        width: 22px !important;
+        height: 22px !important;
+      }
+      .site-nav-header .brand-title-wrap .title-main {
+        font-size: 0.76rem !important;
+        letter-spacing: 0.04em !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+      }
+      .site-nav-header .nav-right-actions {
+        gap: 6px !important;
+      }
+      .site-nav-header .nav-right-actions .social-icon-btn {
+        display: none !important;
+      }
+      .header-protocols-cta-pill {
+        padding: 5px 10px !important;
+        font-size: 0.66rem !important;
+        letter-spacing: 0.04em !important;
+      }
+      #kpMobileNavToggle,
+      .site-nav-header .mobile-hamburger {
+        border: 1px solid #38bdf8 !important;
+        background: rgba(15, 23, 42, 0.92) !important;
+        color: #38bdf8 !important;
+        border-radius: 9999px !important;
+        padding: 5px 11px !important;
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 0.68rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.05em !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        width: auto !important;
+        height: auto !important;
+        cursor: pointer !important;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.25) !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .site-nav-header .brand-title-wrap .title-sub {
+        display: none !important;
+      }
+    }
+    @media (max-width: 380px) {
+      .header-protocols-cta-pill {
+        display: none !important;
+      }
+    }
+
+    /* Upgraded Scrollable #mobileDrawer with #1 Featured AI PROTOCOLS Card */
+    #mobileDrawer.mobile-menu-drawer {
+      position: fixed !important;
+      top: 52px !important;
+      left: 0 !important;
+      right: 0 !important;
+      max-height: calc(100vh - 64px) !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      background: rgba(4, 7, 13, 0.98) !important;
+      border-bottom: 2px solid #38bdf8 !important;
+      padding: 14px 16px 24px 16px !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9) !important;
+      z-index: 9999 !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+    #mobileDrawer.mobile-menu-drawer.active {
+      display: flex !important;
+    }
+    #mobileDrawer .mobile-drawer-protocols-featured {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(212, 175, 55, 0.20) 100%) !important;
+      border: 1.5px solid #d4af37 !important;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.28) !important;
+      border-radius: 14px !important;
+      padding: 12px 14px !important;
+      text-decoration: none !important;
+      margin-bottom: 4px !important;
+    }
+    #mobileDrawer .drawer-proto-left {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 3px !important;
+      min-width: 0 !important;
+    }
+    #mobileDrawer .drawer-proto-kicker {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.62rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+      letter-spacing: 0.06em !important;
+    }
+    #mobileDrawer .drawer-proto-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.84rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      line-height: 1.25 !important;
+    }
+    #mobileDrawer .drawer-proto-badge {
+      background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%) !important;
+      color: #04070d !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.68rem !important;
+      font-weight: 900 !important;
+      padding: 5px 10px !important;
+      border-radius: 9999px !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+    }
+    #mobileDrawer .mobile-drawer-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 11px 14px !important;
+      border-radius: 10px !important;
+      background: rgba(15, 23, 42, 0.75) !important;
+      border: 1px solid rgba(56, 189, 248, 0.22) !important;
+      color: #f8fafc !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
+      text-decoration: none !important;
+    }
+    #mobileDrawer .mobile-drawer-row.active,
+    #mobileDrawer .mobile-drawer-row:hover {
+      border-color: #38bdf8 !important;
+      color: #38bdf8 !important;
+      background: rgba(56, 189, 248, 0.14) !important;
+    }
+    #mobileDrawer .drawer-row-arrow {
+      color: #38bdf8 !important;
+      font-weight: 800 !important;
     }
 
     /* Suppress Astra default footer on homepage in favor of Wayne's 4-column Regional Divisions footer */

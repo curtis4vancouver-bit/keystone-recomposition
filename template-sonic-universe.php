@@ -77,7 +77,7 @@ $total_tracks = $stats['total_tracks'];
         <!-- 1B. OFFICIAL 4K MUSIC VIDEO & VISUAL ARCHITECTURE SECTION -->
         <section class="sonic-featured-video-section" style="margin-top: 50px; margin-bottom: 20px;">
             <div class="ast-container">
-                <div style="background: rgba(10, 15, 25, 0.85); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+                <div style="background: linear-gradient(145deg, #0b111e 0%, #060a12 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); position: relative; z-index: 2; isolation: isolate;">
                     <div style="display: flex; gap: 36px; align-items: stretch; width: 100%; flex-wrap: wrap;">
                         
                         <!-- Left Column (55%): Master 16:9 4K Video + Streaming Audio Deck -->
@@ -125,7 +125,7 @@ $total_tracks = $stats['total_tracks'];
                         </div>
 
                         <!-- Right Column (45%): Sonic Architecture Write-up -->
-                        <div style="flex: 1 1 40%; min-width: 280px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
+                        <div style="flex: 1 1 40%; min-width: 280px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: relative; z-index: 3; transform: translateZ(0);">
                             
                             <!-- Metadata Pill Row -->
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.85rem; flex-wrap: wrap;">

@@ -45,3 +45,9 @@ if ( file_exists( __DIR__ . '/inc/sovereign-nav-options.php' ) ) {
 if ( file_exists( __DIR__ . '/inc/sovereign-page-media-seo.php' ) ) {
 	require_once __DIR__ . '/inc/sovereign-page-media-seo.php';
 }
+
+// 11. Automated AI Protocol Order Fulfillment, Video Walkthrough & Vault UID Verification Engine
+if ( file_exists( __DIR__ . '/inc/protocol-order-fulfillment.php' ) ) {
+	require_once __DIR__ . '/inc/protocol-order-fulfillment.php';
+}
+

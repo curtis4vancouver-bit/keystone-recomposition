@@ -40,7 +40,7 @@ get_header(); ?>
             </header>
 
             <!-- 2. Dual-Media Featured Hero Section (Video on Left with Short Underneath, Write-up on Right) -->
-            <section id="recomp-featured-intel-container" class="recomp-featured-hero-wrap" style="background: rgba(10, 15, 25, 0.85); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); margin-bottom: 3.5rem;">
+            <section id="recomp-featured-intel-container" class="recomp-featured-hero-wrap" style="background: linear-gradient(145deg, #0b111e 0%, #060a12 100%); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); position: relative; z-index: 2; isolation: isolate; margin-bottom: 3.5rem;">
                 <div class="recomp-featured-layout" style="display: flex; gap: 36px; align-items: stretch; width: 100%;">
                     
                     <!-- Left Column (55%): Keystone Recomposition Master 16:9 Video + 9:16 Companion Short Deck -->
@@ -94,7 +94,7 @@ get_header(); ?>
                     </div>
 
                     <!-- Right Column (45%): SEO & GEO Technical Intel Write-up -->
-                    <div class="recomp-featured-content-wrap" style="flex: 1 1 45%; width: 45%; min-width: 0; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
+                    <div class="recomp-featured-content-wrap" style="flex: 1 1 45%; width: 45%; min-width: 0; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: relative; z-index: 3; transform: translateZ(0);">
                         
                         <!-- Metadata Pill Row -->
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.85rem; flex-wrap: wrap;">
@@ -140,7 +140,7 @@ get_header(); ?>
             </section>
 
             <!-- 2B. SONIC UNIVERSE / SOUND LAB FEATURED HERO SECTION -->
-            <section id="recomp-featured-sound-container" class="recomp-featured-hero-wrap" style="background: rgba(10, 15, 25, 0.85); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); margin-bottom: 3.5rem;">
+            <section id="recomp-featured-sound-container" class="recomp-featured-hero-wrap" style="background: linear-gradient(145deg, #0b111e 0%, #060a12 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); position: relative; z-index: 2; isolation: isolate; margin-bottom: 3.5rem;">
                 <div class="recomp-featured-layout" style="display: flex; gap: 36px; align-items: stretch; width: 100%;">
                     
                     <!-- Left Column (55%): Master 16:9 4K Video + Streaming Audio Deck -->
@@ -189,7 +189,7 @@ get_header(); ?>
                     </div>
 
                     <!-- Right Column (45%): Sonic Architecture Write-up -->
-                    <div class="recomp-featured-content-wrap" style="flex: 1 1 45%; width: 45%; min-width: 0; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
+                    <div class="recomp-featured-content-wrap" style="flex: 1 1 45%; width: 45%; min-width: 0; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: relative; z-index: 3; transform: translateZ(0);">
                         
                         <!-- Metadata Pill Row -->
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.85rem; flex-wrap: wrap;">
