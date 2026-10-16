@@ -131,17 +131,17 @@ function keystone_execute_sovereign_page_media_seo_sync(): array {
             'attach_title' => 'Keystone Strategic Capital & Quantitative Markets',
             'focus_kw'     => 'Keystone Investments',
             'seo_title'    => 'Investments %sep% Quantitative Prediction Markets & Capital Deployment',
-            'seo_desc'     => 'Quantitative market intelligence (EV >= +15%), 40% Cash Fortress, BC Bill 44 infill, and luxury Mexico Riviera Nayarit coastal villa development.',
+            'seo_desc'     => 'Quantitative market intelligence (EV >= +15%), 40% Cash Fortress, Autonomous AI Workstations & 28-Agent FastMCP Swarms, and luxury Mexico Riviera Nayarit coastal villa development.',
         ),
         'lifestyle' => array(
             'preferred_id' => 2365,
             'clean_title'  => 'Lifestyle',
             'slug'         => 'lifestyle',
-            'asset_rel'    => 'assets/images/bc_luxury_multiplex.jpg',
+            'asset_rel'    => 'assets/images/whistler_luxury_estate.jpg',
             'attach_title' => 'Keystone Sovereign Operations & Lifestyle',
             'focus_kw'     => 'Keystone Lifestyle',
             'seo_title'    => 'Lifestyle %sep% Sovereign Operations & Mountain Living Architecture',
-            'seo_desc'     => 'High-performance mountain living across the Sea-to-Sky corridor, cold plunge and sauna recovery protocols, and BC Housing Licensed Builder #52603 infill.',
+            'seo_desc'     => 'High-performance mountain living across the Sea-to-Sky corridor, cold plunge and sauna recovery protocols, and Autonomous AI Workstations & 28-Agent FastMCP Swarms.',
         ),
         'founder' => array(
             'preferred_id' => 2363,
@@ -161,7 +161,7 @@ function keystone_execute_sovereign_page_media_seo_sync(): array {
             'attach_title' => 'Keystone Executive Contact Gateway',
             'focus_kw'     => 'Contact Keystone',
             'seo_title'    => 'Contact %sep% Executive Consultation & Partnership Gateway',
-            'seo_desc'     => 'Direct executive consultation with Wayne Stevenson for AI workstation architecture, BC Bill 44 general contracting, and Spotify catalog rights.',
+            'seo_desc'     => 'Direct executive consultation with Wayne Stevenson for Autonomous AI Workstations & 28-Agent FastMCP Swarms, Luxury Custom Homes (#52603), and Spotify catalog rights.',
         ),
     );
 
@@ -277,10 +277,10 @@ function keystone_execute_sovereign_page_media_seo_sync(): array {
 
 // Hook into admin_init for reliable WordPress admin dashboard execution
 add_action( 'admin_init', function() {
-    $synced = get_option( 'keystone_sovereign_media_seo_synced_v3_3' );
+    $synced = get_option( 'keystone_sovereign_media_seo_synced_v3_4' );
     if ( ! $synced ) {
         keystone_execute_sovereign_page_media_seo_sync();
-        update_option( 'keystone_sovereign_media_seo_synced_v3_3', '1' );
+        update_option( 'keystone_sovereign_media_seo_synced_v3_4', '1' );
     }
 } );
 

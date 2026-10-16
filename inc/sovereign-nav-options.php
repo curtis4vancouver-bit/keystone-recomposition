@@ -384,7 +384,7 @@ function keystone_generate_sovereign_page_seo_content( string $slug, string $tit
     $content .= "<!-- /wp:paragraph -->\n\n";
 
     $content .= "<!-- wp:paragraph -->\n";
-    $content .= "<p>In contemporary enterprise software and real estate development, fragmented workflows introduce latency, administrative bloat, and operational failure. By integrating autonomous agent swarms orchestrated through Google Antigravity, we execute complete pipelines in seconds: scanning municipal zoning yield curves under British Columbia Bill 44, deploying algorithmic sizing models with an inviolable 40% Cash Fortress floor, and synchronizing 24-bit studio audio masters across global streaming platforms.</p>\n";
+    $content .= "<p>In contemporary enterprise software and real estate development, fragmented workflows introduce latency, administrative bloat, and operational failure. By integrating autonomous agent swarms orchestrated through Google Antigravity, we execute complete pipelines in seconds: orchestrating Autonomous AI Workstations &amp; 28-Agent FastMCP Swarms, deploying algorithmic sizing models with an inviolable 40% Cash Fortress floor, and synchronizing 24-bit studio audio masters across global streaming platforms.</p>\n";
     $content .= "<!-- /wp:paragraph -->\n\n";
 
     $content .= "<!-- wp:heading {\"level\":3} -->\n";
@@ -412,11 +412,11 @@ function keystone_generate_sovereign_page_seo_content( string $slug, string $tit
     $content .= "<!-- /wp:paragraph -->\n\n";
 
     $content .= "<!-- wp:heading {\"level\":3} -->\n";
-    $content .= "<h3>3. Licensed Physical Construction &amp; Infill Housing (BC Builder #52603)</h3>\n";
+    $content .= "<h3>3. Licensed Physical Construction &amp; Civil Infrastructure (BC Builder #52603)</h3>\n";
     $content .= "<!-- /wp:heading -->\n\n";
 
     $content .= "<!-- wp:paragraph -->\n";
-    $content .= "<p>Physical execution is anchored by <a href=\"" . esc_url( $parent_url ) . "\" target=\"_blank\" rel=\"noopener\">Keystone Possibilities Ltd</a>, operating under statutory <a href=\"" . esc_url( $bchousing_url ) . "\" target=\"_blank\" rel=\"noopener\">BC Housing Residential Builder Licence #52603</a>. Led by Wayne Stevenson, the company specializes in Small-Scale Multi-Unit Housing (SSMUH) multiplex conversions under British Columbia's landmark Bill 44 legislation.</p>\n";
+    $content .= "<p>Physical execution is anchored by <a href=\"" . esc_url( $parent_url ) . "\" target=\"_blank\" rel=\"noopener\">Keystone Possibilities Ltd</a>, operating under statutory <a href=\"" . esc_url( $bchousing_url ) . "\" target=\"_blank\" rel=\"noopener\">BC Housing Residential Builder Licence #52603</a>. Led by Wayne Stevenson, the company specializes in Luxury Custom Homes &amp; BC Hydro ES54 Civil Infrastructure alongside Autonomous AI Workstations &amp; 28-Agent FastMCP Swarms.</p>\n";
     $content .= "<!-- /wp:paragraph -->\n\n";
 
     $content .= "<!-- wp:paragraph -->\n";
@@ -520,13 +520,13 @@ function keystone_sync_sovereign_lead_pictures_and_titles(): array {
             'asset_rel'   => 'assets/images/trading_terminal_luxury.jpg',
             'attach_title'=> 'Keystone Strategic Capital & Quantitative Markets',
             'focus_kw'    => 'Keystone Investments',
-            'desc'        => 'Quantitative trading intelligence (EV >= +15%), 40% Cash Fortress, BC Bill 44 infill, Mexico and EU developments.',
+            'desc'        => 'Quantitative trading intelligence (EV >= +15%), 40% Cash Fortress, Autonomous AI Workstations & 28-Agent FastMCP Swarms, Mexico and EU developments.',
             'seo_score'   => 86,
         ),
         'lifestyle' => array(
             'post_id'     => 2365,
             'clean_title' => 'Lifestyle',
-            'asset_rel'   => 'assets/images/bc_luxury_multiplex.jpg',
+            'asset_rel'   => 'assets/images/whistler_luxury_estate.jpg',
             'attach_title'=> 'Keystone Sovereign Operations & Lifestyle',
             'focus_kw'    => 'Keystone Lifestyle',
             'desc'        => 'The Six Sovereign Pillars of operations: AI media pipeline, quant markets, client acquisition, BC construction, mountain living, and global infill.',
@@ -547,7 +547,7 @@ function keystone_sync_sovereign_lead_pictures_and_titles(): array {
             'asset_rel'   => 'assets/images/keystone_possibilities_crest.png',
             'attach_title'=> 'Keystone Executive Contact Gateway',
             'focus_kw'    => 'Contact Keystone',
-            'desc'        => 'Direct executive consultation with Wayne Stevenson for AI workstation architecture, BC Bill 44 general contracting, and Spotify catalog rights.',
+            'desc'        => 'Direct executive consultation with Wayne Stevenson for Autonomous AI Workstations & 28-Agent FastMCP Swarms, Luxury Custom Homes (#52603), and Spotify catalog rights.',
             'seo_score'   => 85,
         ),
     );

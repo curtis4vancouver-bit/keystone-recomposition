@@ -353,7 +353,7 @@ get_header(); ?>
                             'page' => 2, 'slot' => '10', 'tier' => 'INTEL DROP 10', 'cat' => 'PHYSICAL RECOMPOSITION', 'read' => '16 MIN READ',
                             'title' => 'Squamish High-Performance Living: N=1 Physical Recomposition Case Study',
                             'excerpt' => 'Documented 48-pound fat loss, heavy compound strength training, sub-50°F cold water immersion, and metabolic protocols in the Sea-to-Sky corridor.',
-                            'image' => $theme_assets_uri . '/bc_luxury_multiplex.jpg',
+                            'image' => $theme_assets_uri . '/whistler_luxury_estate.jpg',
                             'link' => '/lifestyle/',
                             'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),

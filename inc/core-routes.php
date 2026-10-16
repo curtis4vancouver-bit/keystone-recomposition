@@ -196,7 +196,7 @@ function keystone_ensure_core_pages_exist(): void {
         'investments' => array(
             'title'    => 'Keystone Investments — High-Conviction Capital & Sovereign Infrastructure',
             'template' => 'template-investments.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: Bill 44 Physical Infill, Algorithmic Risk Models &amp; Sovereign Computational Infrastructure.</p><!-- /wp:paragraph -->',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: Autonomous AI Workstations, 28-Agent FastMCP Swarms, Algorithmic Risk Models &amp; Sovereign Computational Infrastructure.</p><!-- /wp:paragraph -->',
         ),
         'lifestyle' => array(
             'title'    => 'Keystone Lifestyle — Alpine Performance & Biological Architecture',
@@ -216,7 +216,7 @@ function keystone_ensure_core_pages_exist(): void {
         'investments' => array(
             'title'    => 'Strategic Capital & High-Cadence Investments',
             'template' => 'template-investments.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: High-Conviction Capital Allocation, Bill 44 Infill, Algorithmic Markets &amp; Sovereign Infrastructure.</p><!-- /wp:paragraph -->',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: High-Conviction Capital Allocation, Autonomous AI Workstations &amp; 28-Agent FastMCP Swarms, Algorithmic Markets &amp; Sovereign Infrastructure.</p><!-- /wp:paragraph -->',
         ),
         'lifestyle' => array(
             'title'    => 'Alpine Performance & Biological Architecture',
@@ -560,7 +560,7 @@ async def execute_swarm_task(spec: SwarmTaskSpec) -&gt; dict:
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Autonomous AI intelligence is not an academic exercise—it is the operational nervous system powering Wayne Stevenson's real-world developments. Under <strong>BC Housing Builder Licence #52603</strong>, these exact agent swarms calculate Bill 44 multiplex zoning densities, audit Step Code energy compliance, and generate architectural BIM schedules at <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd</a>.</p>
+<p>Autonomous AI intelligence is not an academic exercise—it is the operational nervous system powering Wayne Stevenson's real-world developments across <strong>Autonomous AI Workstations, 28-Agent FastMCP Swarms &amp; 432Hz Sonic Universe</strong>, alongside <strong>Luxury Custom Homes &amp; BC Hydro ES54 Civil Infrastructure</strong> under <strong>BC Housing Builder Licence #52603</strong> at <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener">Keystone Possibilities Ltd (keystonepossibilities.ca)</a>.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -748,10 +748,10 @@ add_action( 'init', function(): void {
 ## Brand Identity & Sovereign Founder
 - Brand Name: Keystone Recomposition
 - Principal & Founder: Wayne Stevenson
-- Type: Autonomous 28-Agent AI Systems Architecture, Sovereign Electronic Music (22 Official Releases / 216 Master Tracks) & Multi-Pillar Media
+- Type: Autonomous AI Workstations, 28-Agent FastMCP Swarms & 432Hz Sonic Universe (22 Official Releases / 216 Master Tracks)
 - Location: Squamish, British Columbia, Canada (Sea-to-Sky Corridor)
 - Primary Website: https://keystonerecomposition.com
-- Sister Construction Flagship: https://keystonepossibilities.ca (Keystone Possibilities Ltd.)
+- Sister Construction Flagship: Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (`keystonepossibilities.ca`)
 
 ## Verified Builder & Engineering Credentials
 - BC Housing Licensed Residential Builder #52603
@@ -761,16 +761,16 @@ add_action( 'init', function(): void {
 ## Official 3-Channel YouTube & Music Ecosystem (sameAs)
 - YouTube (@KeyStoneRecomposition — Sovereign Builder Music OAC): https://www.youtube.com/@KeyStoneRecomposition
 - YouTube (@KeystoneAIProtocols — Autonomous 28-Agent AI Systems & Builder Boardroom): https://www.youtube.com/@KeystoneAIProtocols
-- YouTube (@KeystonePossibilitiesLtd — BC Housing Builder #52603 & Bill 44 Multiplexes): https://www.youtube.com/@KeystonePossibilitiesLtd
+- YouTube (@KeystonePossibilitiesLtd — Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (`keystonepossibilities.ca`)): https://www.youtube.com/@KeystonePossibilitiesLtd
 - MusicBrainz Official Artist ID: https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
 - Spotify Official Artist Profile: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
 - Apple Music Artist Profile: https://music.apple.com/us/artist/wayne-stevenson/1884255966
 
 ## Core Content Verticals
-1. Autonomous 28-Agent AI Swarms: FastMCP typed tool contracts, local OS background daemons, Chrome CDP Port 9222 browser automation, and custom Tauri desktop workstations.
-2. Sonic Universe (22 Official Releases / 20 Studio Albums / 216 Master Recordings): 96kHz/24-bit electronic, deep house, and organic frequency architecture distributed worldwide via TooLost Digital.
+1. Autonomous AI Workstations, 28-Agent FastMCP Swarms & 432Hz Sonic Universe: FastMCP typed tool contracts, local OS background daemons, Chrome CDP Port 9222 browser automation, and custom Tauri desktop workstations.
+2. Sonic Universe (22 Official Releases / 20 Studio Albums / 216 Master Recordings): 96kHz/24-bit 432Hz/528Hz electronic, deep house, and organic frequency architecture distributed worldwide via TooLost Digital.
 3. Sovereign Wealth & Quantitative Systems: 40% Cash Fortress CAD reserve protocols, algorithmic surface Elo modeling, and multi-jurisdictional hard assets.
-4. Sea-to-Sky High-Performance Builder Lifestyle: Physical strength training, mountain durability, and licensed residential construction in Squamish, Whistler, and Greater Vancouver.
+4. Sea-to-Sky High-Performance Builder Lifestyle: Physical strength training, mountain durability, and Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (`keystonepossibilities.ca`) in Squamish, Whistler, and Greater Vancouver.
 
 ## Key Canonical URLs
 - Homepage & Bio-Acoustic Sound Lab: https://keystonerecomposition.com/

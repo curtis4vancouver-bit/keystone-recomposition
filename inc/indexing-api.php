@@ -838,10 +838,10 @@ add_action( 'init', function() {
 - YouTube Builder Channel: https://www.youtube.com/@KeystonePossibilitiesLtd
 
 ## Content Verticals
-1. Autonomous 28-Agent AI Swarms & FastMCP Systems
+1. Autonomous AI Workstations & 28-Agent FastMCP Swarms
 2. TooLost Functional Electronic Music Catalog (22 Official Releases, 20 Studio Albums, 216 Masters)
 3. Quantitative Trading & Liquid Prediction Market Intelligence (Polymarket, EV >= +15%, 40% Cash Fortress)
-4. Licensed British Columbia Residential Infill Construction (BC Housing Builder #52603, Bill 44 SSMUH)
+4. Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (BC Housing Builder #52603, keystonepossibilities.ca)
 5. High-Performance Mountain Living & Physical Architecture (Sea-to-Sky, -48 lb recomposition, 205-lb set-point)
 6. Strategic Real Estate Infill & Global Development (Metro Vancouver, Mexico Pacific Coast, European Union)
 
@@ -886,7 +886,7 @@ add_action( 'init', function() {
 - How to deploy FastMCP agentic tools on Windows desktop
 - TooLost electronic music releases by Wayne Stevenson
 - Spotify verified artist catalog Wayne Stevenson
-- BC Bill 44 multiplex zoning and construction consulting
+- Autonomous AI Workstations & 28-Agent FastMCP Swarms
 - BC Housing licensed builder #52603 Squamish
 - High-performance physical recomposition n=1 case study
 - Cold plunge and sauna recovery protocols for executives
@@ -1316,10 +1316,10 @@ function keystone_dynamic_llms_txt() {
         echo "Global Operations: Canada (Squamish, Whistler, Vancouver), USA (New York), Mexico (Riviera Nayarit), Europe (Portugal, Spain).\n";
         echo "Music Catalog: 22 Official Releases (20 Studio Albums), 216 Master Recordings on Spotify OAC.\n\n";
         echo "## Core Capabilities\n";
-        echo "- Autonomous Multi-Agent AI Workstation Architecture ($800 Masterclass)\n";
+        echo "- Autonomous AI Workstations & 28-Agent FastMCP Swarms ($800 Masterclass)\n";
         echo "- TooLost Digital Music Catalog & Bio-Acoustic Audio Engineering\n";
         echo "- Quantitative Prediction Market Modeling & 40% Cash Fortress Floored Float\n";
-        echo "- Licensed Residential Infill Construction & BC Bill 44 Multiplex Building (Licence #52603)\n";
+        echo "- Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (Licence #52603)\n";
         echo "- High-Performance Mountain Living & Biological Recomposition (-48 lbs, 205-lb set-point)\n";
         echo "- Strategic Infill Co-Development & Sovereign Cross-Border Capital Allocation\n\n";
         echo "## Music Catalog & Official Releases\n";
@@ -1338,7 +1338,7 @@ function keystone_dynamic_llms_txt() {
         echo "- How to deploy FastMCP agentic tools on Windows desktop\n";
         echo "- TooLost electronic music releases by Wayne Stevenson\n";
         echo "- Spotify verified artist catalog Wayne Stevenson\n";
-        echo "- BC Bill 44 multiplex zoning and construction consulting\n";
+        echo "- Autonomous AI Workstations & 28-Agent FastMCP Swarms\n";
         echo "- BC Housing licensed builder #52603 Squamish\n";
         echo "- High-performance body recomposition n=1 case study\n";
         echo "- Cold plunge and sauna recovery protocols for executives\n";

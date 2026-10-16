@@ -279,9 +279,9 @@ function keystone_get_wayne_stevenson_person_schema(): array {
         'hasOccupation'    => array(
             array(
                 '@type'                => 'Occupation',
-                'name'                 => 'Licensed Residential Builder & Fiduciary Construction Consultant',
-                'description'          => 'Builder consultant specializing in BC Bill 44 multiplex conversions, high-performance Step Code engineering, and fiduciary construction management in British Columbia.',
-                'occupationalCategory' => 'Construction Management & Residential Building',
+                'name'                 => 'AI Systems Architect, FastMCP Multi-Agent Engineer & 22-Album Electronic Music Producer',
+                'description'          => 'AI Systems Architect, FastMCP Multi-Agent Engineer & 22-Album Electronic Music Producer, alongside Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (keystonepossibilities.ca) in British Columbia.',
+                'occupationalCategory' => 'Autonomous Software Engineering & AI Architecture',
                 'occupationLocation'   => array(
                     '@type' => 'AdministrativeArea',
                     'name'  => 'British Columbia, Canada',
@@ -1463,9 +1463,9 @@ function keystone_inject_city_landing_pages_geo_schema() {
 
     $city_configs = array(
         'vancouver' => array(
-            'slugs'       => array( 'vancouver-sea-to-sky', 'lifestyle', 'squamish', 'vancouver-construction-infill', 'vancouver-bill44-builder-consulting' ),
-            'name'        => 'Keystone Possibilities — Vancouver & Sea-to-Sky Hub',
-            'description' => 'Licensed BC Residential Builder (#52603) specializing in Bill 44 multiplex infill, high-performance Step Code engineering, and alpine living across Vancouver, Squamish, and Whistler.',
+            'slugs'       => array( 'vancouver-sea-to-sky', 'lifestyle', 'squamish', 'vancouver-construction-infill', 'vancouver-ai-systems-architect' ),
+            'name'        => 'Keystone Recomposition — Vancouver & Sea-to-Sky Hub',
+            'description' => 'AI Systems Architect, FastMCP Multi-Agent Engineer & 22-Album Electronic Music Producer across Vancouver, Squamish, and Whistler.',
             'url'         => home_url( '/lifestyle/' ),
             'locality'    => 'Squamish',
             'region'      => 'BC',
