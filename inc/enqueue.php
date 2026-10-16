@@ -167,9 +167,41 @@ function astra_child_keystone_header_overrides() {
         justify-content: center !important;
       }
     }
-    .site-nav-header .nav-menu {
-      gap: 20px !important;
+    .site-nav-header .nav-menu,
+    .site-nav-header .nav-links-menu {
+      gap: 18px !important;
       flex-wrap: nowrap !important;
+    }
+    .site-nav-header .nav-link-intel-highlight {
+      color: #38bdf8 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      background: rgba(56, 189, 248, 0.08) !important;
+      border: 1px solid rgba(56, 189, 248, 0.32) !important;
+      border-radius: 9999px !important;
+      padding: 4px 11px !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.18) !important;
+    }
+    .site-nav-header .nav-link-intel-highlight:hover,
+    .site-nav-header .nav-link-intel-highlight.active {
+      background: rgba(56, 189, 248, 0.18) !important;
+      border-color: #38bdf8 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.45) !important;
+    }
+    .site-nav-header .nav-live-dot {
+      width: 6px !important;
+      height: 6px !important;
+      border-radius: 50% !important;
+      background: #38bdf8 !important;
+      box-shadow: 0 0 8px #38bdf8 !important;
+      display: inline-block !important;
+      flex-shrink: 0 !important;
+    }
+    .site-nav-header .nav-right-actions {
+      gap: 9px !important;
     }
     .site-nav-header .brand-text {
       font-size: 15.5px !important;

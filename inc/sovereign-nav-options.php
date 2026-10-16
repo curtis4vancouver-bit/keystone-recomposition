@@ -51,7 +51,7 @@ function keystone_provision_sovereign_nav_menu(): array {
             'target' => '',
         ),
         array(
-            'title'  => 'INTEL',
+            'title'  => 'INTEL & Videos',
             'url'    => home_url( '/intel/' ),
             'target' => '',
         ),

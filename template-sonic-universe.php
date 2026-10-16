@@ -225,9 +225,11 @@ $total_tracks = $stats['total_tracks'];
                         $page_num = ( $card_index <= 12 ) ? 1 : 2;
                         $display_style = ( $page_num === 1 ) ? 'display: flex;' : 'display: none;';
                         $album_id = isset( $album['id'] ) ? (string) $album['id'] : (string) $card_index;
+                        $album_slug = sanitize_title( $album['title'] ?? 'album-' . $card_index );
                         $tracks_json = esc_attr( wp_json_encode( $album['tracks'] ?? array() ) );
                     ?>
-                        <article class="album-card-18" 
+                        <article id="<?php echo esc_attr( $album_slug ); ?>"
+                                 class="album-card-18" 
                                  data-page="<?php echo esc_attr( (string) $page_num ); ?>" 
                                  data-album-id="<?php echo esc_attr( $album_id ); ?>"
                                  data-title="<?php echo esc_attr( $album['title'] ); ?>"
@@ -587,6 +589,22 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // Auto-handle deep link hash (e.g. /sonic-universe/#sovereign-reverb)
+    if (window.location.hash && window.location.hash.length > 1) {
+        const hashSlug = window.location.hash.substring(1);
+        const targetCard = document.getElementById(hashSlug);
+        if (targetCard && targetCard.classList.contains('album-card-18')) {
+            const targetPage = parseInt(targetCard.getAttribute('data-page') || '1', 10);
+            if (targetPage !== currentPage) {
+                setPage(targetPage);
+            }
+            setTimeout(() => {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                openModalForCard(targetCard);
+            }, 250);
+        }
+    }
 
     // =========================================================================
     // 60FPS HI-DPI MULTI-DEVICE SONIC UNIVERSE HARMONIC MUSIC GRAPH

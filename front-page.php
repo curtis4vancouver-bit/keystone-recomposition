@@ -55,14 +55,14 @@ $theme_uri = get_stylesheet_directory_uri();
                     </p>
 
                     <div class="cyber-cta-group">
-                        <a href="/ai-protocols/" class="btn-cyan-primary">
-                            ⚡ Explore AI Protocols &amp; Blueprints →
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-cyan-primary">
+                            ⚡ Explore AI Protocols &amp; Vault →
                         </a>
-                        <a href="#intro-split" class="btn-glass-secondary">
-                            🎧 Engage Sound Lab
+                        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-glass-secondary">
+                            🎬 Watch 4K Videos &amp; Intel Blog →
                         </a>
-                        <a href="#builder-dossier" class="btn-gold-subtle">
-                            🏛️ The Builder Dossier
+                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="btn-gold-subtle">
+                            🎧 22-Album Sonic Universe →
                         </a>
                     </div>
 
@@ -129,8 +129,8 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-cyan-primary">
                                     ⚡ View Full AI Protocols &amp; Tauri Workstations →
                                 </a>
-                                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-glass-secondary">
-                                    Unlock $49.50 &amp; $800 AI Vault →
+                                <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-glass-secondary">
+                                    🎬 Watch 4K Videos &amp; Read Technical Intel →
                                 </a>
                             </div>
 
@@ -482,7 +482,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                                         <span class="play-arrow">▶</span>
                                                     </div>
                                                 </div>
-                                                <span class="video-runtime-pill">16:9 4K VIDEO SLOT // STAGED</span>
+                                                <span class="video-runtime-pill">▶ WATCH 4K VIDEO &amp; READ INTEL</span>
                                             </a>
                                         </div>
 
@@ -501,7 +501,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                                 </p>
                                             </div>
                                             <div class="intel-card-footer">
-                                                <a href="<?php echo esc_url( $item['url'] ); ?>" class="intel-read-more">Read Technical Protocol →</a>
+                                                <a href="<?php echo esc_url( $item['url'] ); ?>" class="intel-read-more">Watch Video &amp; Read Protocol →</a>
                                             </div>
                                         </div>
                                     </article>
@@ -512,6 +512,12 @@ $theme_uri = get_stylesheet_directory_uri();
 
                     <!-- Pagination Dots -->
                     <div class="intel-carousel-dots" id="intelCarouselDots"></div>
+                </div>
+
+                <div class="albums-footer-cta text-center" style="margin-top: 32px;">
+                    <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-cyan-primary">
+                        🎬 View All 4K Videos &amp; Technical Intel Posts →
+                    </a>
                 </div>
 
             </div>
