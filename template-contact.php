@@ -93,7 +93,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
 
                     <p class="contact-hero-subtitle">
-                        Direct builder-to-client consultations for sovereign AI workstation architecture, British Columbia residential general contracting under Bill 44, and official Spotify catalog streaming.
+                        Direct builder-to-client consultations for sovereign AI workstation architecture, custom enterprise 28-agent FastMCP swarm buildouts ($3,500&ndash;$7,500), and 432Hz commercial music sync licensing.
                     </p>
                 </header>
 
@@ -114,30 +114,30 @@ $theme_uri = get_stylesheet_directory_uri();
                             <ul class="channel-features">
                                 <li>&bull; 22 Official Releases &amp; 216 Master Recordings</li>
                                 <li>&bull; Spotify Verified Official Artist Channel</li>
-                                <li>&bull; Full Tracklists, ISRC &amp; Musixmatch Synced Rights</li>
+                                <li>&bull; Direct-to-Creator 432Hz Commercial Sync Licensing</li>
                             </ul>
                             <div class="channel-action">
                                 <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener" class="channel-btn-gold">Stream on Spotify &nearr;</a>
                             </div>
                         </div>
 
-                        <!-- CHANNEL 2: GENERAL CONTRACTING BC #52603 -->
+                        <!-- CHANNEL 2: CUSTOM ENTERPRISE AI WORKSTATION & SWARM BUILDOUT -->
                         <div class="contact-channel-card">
                             <div class="channel-card-top">
-                                <span class="channel-tag-cyan">BC BUILDER #52603</span>
-                                <span class="channel-icon">🏛️</span>
+                                <span class="channel-tag-cyan">$3,500&ndash;$7,500 ENTERPRISE</span>
+                                <span class="channel-icon">🤖</span>
                             </div>
-                            <h3 class="channel-title">General Contracting &amp; Infill</h3>
+                            <h3 class="channel-title">Custom Enterprise AI Workstation &amp; Swarm Buildout</h3>
                             <p class="channel-desc">
-                                Executed via Keystone Possibilities Ltd. High-performance small-scale multi-unit housing (SSMUH) infill, duplex, triplex, and multiplex developments across Squamish, Whistler, and Greater Vancouver under BC Bill 44.
+                                Turnkey enterprise deployment of custom Tauri HUDs, 28-agent FastMCP tool servers, Chrome CDP Port 9222 automation engines, and direct-to-creator 432Hz commercial music sync licensing.
                             </p>
                             <ul class="channel-features">
-                                <li>&bull; Full 2-5-10 Year New Home Warranty Coverage</li>
-                                <li>&bull; Extreme Alpine Step Code &amp; Seismic Engineering</li>
-                                <li>&bull; Pre-Construction Feasibility &amp; Land Assembly</li>
+                                <li>&bull; $3,500&ndash;$7,500 Custom Enterprise Swarm Buildouts</li>
+                                <li>&bull; 28-Agent FastMCP &amp; Local Daemon Engineering</li>
+                                <li>&bull; 432Hz Commercial Music Sync Licensing (216 ISRCs)</li>
                             </ul>
                             <div class="channel-action">
-                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="channel-btn-cyan">Visit Keystone Possibilities Ltd. &nearr;</a>
+                                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="channel-btn-cyan">Explore AI Protocols &amp; Vault &rarr;</a>
                             </div>
                         </div>
 
@@ -208,12 +208,12 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <label for="contact_category" class="luxury-form-label">Inquiry Category <span class="required-asterisk">*</span></label>
                                     <select id="contact_category" name="contact_category" required class="luxury-form-select">
                                         <option value="" disabled selected>Select Inquiry Category...</option>
-                                        <option value="Tier 01 — Antigravity Website Fast-Track Blueprint ($49 USD)">Tier 01 — Antigravity Website Fast-Track Blueprint ($49 USD)</option>
+                                        <option value="Tier 01 — Antigravity Website Fast-Track Blueprint ($49.50 USD)">Tier 01 — Antigravity Website Fast-Track Blueprint ($49.50 USD)</option>
                                         <option value="Tier 02 — Autonomous 28-Agent Swarm & B2B Engine ($199 USD)">Tier 02 — Autonomous 28-Agent Swarm &amp; B2B Engine ($199 USD)</option>
                                         <option value="Executive Workstation Architecture ($800 Masterclass)">Tier 03 — Executive Workstation Architecture ($800 Masterclass)</option>
-                                        <option value="BC Bill 44 General Contracting & Infill (BC Builder #52603)">BC Bill 44 General Contracting &amp; Infill (BC Builder #52603)</option>
-                                        <option value="Private Real Estate Infill Investment & Co-Development">Private Real Estate Infill Investment &amp; Co-Development</option>
-                                        <option value="Spotify Music Catalog, Sync & Audio Architecture">Spotify Music Catalog, Sync &amp; Audio Architecture</option>
+                                        <option value="Custom Enterprise AI Workstation & Swarm Buildout ($3,500–$7,500)">Custom Enterprise AI Workstation &amp; Swarm Buildout ($3,500&ndash;$7,500)</option>
+                                        <option value="432Hz Commercial Music Sync Licensing (22 Albums / 216 ISRCs)">432Hz Commercial Music Sync Licensing (22 Albums / 216 ISRCs)</option>
+                                        <option value="International Co-Investment (Mexico & European Union)">International Co-Investment (Mexico &amp; European Union)</option>
                                         <option value="General Executive Consultation">General Executive Consultation</option>
                                     </select>
                                 </div>
@@ -222,12 +222,12 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <label for="contact_budget" class="luxury-form-label">Project Budget / Capital Allocation</label>
                                     <select id="contact_budget" name="contact_budget" class="luxury-form-select">
                                         <option value="" disabled selected>Select Capital Allocation / Budget...</option>
-                                        <option value="$49 USD — Tier 01 Antigravity Website Blueprint">$49 USD — Tier 01 Antigravity Website Blueprint</option>
+                                        <option value="$49.50 USD — Tier 01 Antigravity Website Blueprint">$49.50 USD — Tier 01 Antigravity Website Blueprint</option>
                                         <option value="$199 USD — Tier 02 Autonomous 28-Agent Swarm">$199 USD — Tier 02 Autonomous 28-Agent Swarm</option>
                                         <option value="$800 CAD — Executive Workstation Architecture Masterclass">$800 USD/CAD — Executive Workstation Architecture Masterclass</option>
-                                        <option value="$25,000 – $100,000 CAD — Autonomous AI Software & Music Sync">$25,000 &ndash; $100,000 CAD — Autonomous AI Software &amp; Music Sync</option>
-                                        <option value="$100,000 – $500,000 CAD — Private Infill Co-Investment & Feasibility">$100,000 &ndash; $500,000 CAD — Private Infill Co-Investment &amp; Feasibility</option>
-                                        <option value="$500,000 – $2,500,000+ CAD — Turnkey Residential Multiplex Build">$500,000 &ndash; $2,500,000+ CAD — Turnkey Residential Multiplex Build</option>
+                                        <option value="$3,500 – $7,500 USD — Custom Enterprise AI Workstation & Swarm Buildout">$3,500 &ndash; $7,500 USD — Custom Enterprise AI Workstation &amp; Swarm Buildout</option>
+                                        <option value="$1,500 – $25,000 USD — 432Hz Commercial Music Sync Licensing">$1,500 &ndash; $25,000 USD — 432Hz Commercial Music Sync Licensing</option>
+                                        <option value="$100,000 – $500,000+ USD — International Real Estate Co-Investment">$100,000 &ndash; $500,000+ USD — International Real Estate Co-Investment</option>
                                         <option value="Undisclosed / Private Discussion with Wayne Stevenson">Undisclosed / Private Discussion with Wayne Stevenson</option>
                                     </select>
                                 </div>
@@ -237,7 +237,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="form-field-group">
                                 <label for="contact_message" class="luxury-form-label">Project Overview &amp; Requirements <span class="required-asterisk">*</span></label>
                                 <textarea id="contact_message" name="contact_message" rows="5" required 
-                                          placeholder="Briefly outline your project scope, location (if construction), or workstation requirements..." class="luxury-form-textarea"></textarea>
+                                          placeholder="Briefly outline your AI workstation requirements, FastMCP swarm scope, or 432Hz music sync licensing request..." class="luxury-form-textarea"></textarea>
                             </div>
 
                             <!-- Submit Button -->

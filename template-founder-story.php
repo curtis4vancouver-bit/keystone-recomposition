@@ -114,9 +114,9 @@ $theme_uri = get_stylesheet_directory_uri();
                         </section>
 
                         <section class="narrative-section">
-                            <h2 class="section-heading">1. Physical Construction Mastery &amp; Bill 44 Infill</h2>
+                            <h2 class="section-heading">1. Luxury Custom Mountain &amp; Coastal Estates &amp; BC Hydro Civil Contracting (ES54)</h2>
                             <p>
-                                As the Managing Director of <strong>Keystone Possibilities Ltd.</strong> (BC Housing Licence #52603), I lead high-performance infill construction, duplex, triplex, and multiplex developments across Squamish, Whistler, and Greater Vancouver under British Columbia's Bill 44 small-scale multi-unit housing legislation.
+                                As the Managing Director of <strong>Keystone Possibilities Ltd.</strong> (BC Housing Licence #52603), I lead luxury custom mountain and coastal estates, architectural board-form concrete foundations, and registered BC Hydro civil electrical contracting (ES54) across Squamish, Whistler, and Greater Vancouver.
                             </p>
                             <p>
                                 Every build enforces rigorous seismic tie-down engineering, Step Code net-zero thermal envelope standards, and full 2-5-10 Year New Home Warranty backing.

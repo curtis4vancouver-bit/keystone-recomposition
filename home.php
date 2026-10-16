@@ -366,11 +366,11 @@ get_header(); ?>
                             'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                         12 => array(
-                            'page' => 2, 'slot' => '12', 'tier' => 'INTEL DROP 12', 'cat' => 'LICENSED CONSTRUCTION', 'read' => '15 MIN READ',
-                            'title' => 'Building BC Housing Licensed Infill: Bill 44 Multiplex Yield Engineering',
-                            'excerpt' => 'Vancouver R1-1 multiplex zoning yields, BC Step Code 5 compliance, and structural engineering under statutory BC Housing License #52603.',
-                            'image' => $theme_assets_uri . '/keystone_possibilities_crest.png',
-                            'link' => 'https://keystonepossibilities.ca',
+                            'page' => 2, 'slot' => '12', 'tier' => 'INTEL DROP 12', 'cat' => 'AI WORKSTATIONS', 'read' => '15 MIN READ',
+                            'title' => 'Deploying the $800 Turnkey Autonomous AI Workstation &amp; 28-Agent FastMCP Swarm',
+                            'excerpt' => 'Complete sovereign local workstation deployment with recorded AI video walkthroughs, instant UID-locked .ZIP/.bat download vault, and 28-agent FastMCP concurrency.',
+                            'image' => $theme_assets_uri . '/wayne_avatar.jpg',
+                            'link' => home_url( '/ai-protocols/' ),
                             'status' => '● ARCHITECTURAL BRIEFING', 'status_color' => '#38bdf8',
                         ),
                     );

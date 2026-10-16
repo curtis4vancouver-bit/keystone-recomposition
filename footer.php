@@ -95,12 +95,12 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Chrome CDP Automation Engine</a>
                     </div>
 
-                    <!-- Column 3: Strategic Investments & Infill -->
+                    <!-- Column 3: Strategic Investments & AI Vault -->
                     <div class="regional-col">
-                        <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Strategic Investments &amp; Infill:</strong>
+                        <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Strategic Investments &amp; AI Vault:</strong>
                         <a href="/investments/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Investments &amp; Strategic Allocation</a>
                         <a href="/lifestyle/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Alpine Performance &amp; Lifestyle</a>
-                        <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• BC Bill 44 Infill (Builder #52603)</a>
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #38bdf8 !important; font-weight: 600; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">→ $49.50 &amp; $800 AI Video + Download Vault</a>
                         <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Mexico &amp; European Expansion</a>
                     </div>
 

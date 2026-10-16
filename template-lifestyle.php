@@ -1,9 +1,9 @@
 <?php
 /**
  * Template Name: Keystone Lifestyle
- * Description: Sovereign AI Systems, Computational Markets, B2B Multi-Agent Outreach, BC Bill 44 Infill, High-Performance Mountain Living & Worldwide Travel
- * Version: 4.0.0 (High-End Dark Quiet Luxury Sovereign Edition)
- * Stamped: September 2026
+ * Description: Sovereign AI Systems, Computational Markets, B2B Multi-Agent Outreach, Autonomous AI Workstation Engineering, Sea-to-Sky Mountain Performance & 432Hz Acoustic Production
+ * Version: 4.1.0 (High-End Dark Quiet Luxury Sovereign Edition)
+ * Stamped: October 2026
  *
  * @package KeystoneRecompositionChild
  */
@@ -41,7 +41,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
 
                     <p class="lifestyle-hero-subtitle">
-                        We engineer autonomous AI systems built using original music and video production engines. We deploy machine intelligence for quantitative stock trading and Polymarket prediction contracts, run autonomous swarms to find clientele and acquisition opportunities for our licensed company, and maintain high-performance biological discipline across the Sea-to-Sky corridor.
+                        We engineer autonomous AI systems built using original music and video production engines. We deploy machine intelligence for quantitative stock trading and Polymarket prediction contracts, run autonomous swarms to find enterprise clientele and B2B deal flow, and maintain high-performance biological discipline across the Sea-to-Sky corridor.
                     </p>
 
                     <div class="hero-cta-button-group" style="display: flex; justify-content: center; gap: 16px; margin-top: 28px; flex-wrap: wrap;">
@@ -164,28 +164,28 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="pillar-body">
                                 <h3 class="pillar-title">Autonomous Enterprise Outreach &amp; B2B Swarms</h3>
                                 <p class="pillar-summary">
-                                    How Wayne runs AI for his company to find clientele: autonomous multi-agent outreach swarms, zoning analysis, and direct B2B pipelines.
+                                    How Wayne runs AI for his enterprise operations: autonomous multi-agent outreach swarms, DNS MX verification gates, and direct B2B deal-flow pipelines.
                                 </p>
                                 <div class="pillar-detail-list">
                                     <div class="pillar-detail-item">
                                         <span class="detail-icon">⚡</span>
                                         <div>
                                             <strong>Autonomous Multi-Agent Outreach Swarms:</strong>
-                                            <span>Autonomous multi-agent outreach swarms executing systematic prospecting, client qualification, and bespoke communication for construction services.</span>
+                                            <span>Autonomous multi-agent outreach swarms executing systematic prospecting, lead qualification, and bespoke executive communication.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item">
                                         <span class="detail-icon">🗺️</span>
                                         <div>
-                                            <strong>Zoning Yield &amp; BC Bill 44 Infill Scanners:</strong>
-                                            <span>Automated municipal zoning yield parsers, BC Bill 44 infill land scanners, and architect/investor pipelines identifying high-yield development opportunities.</span>
+                                            <strong>Automated B2B CRM &amp; Intelligence Scanners:</strong>
+                                            <span>Two-way Gmail CRM reconciliation, multi-tier DNS MX verification gates, and automated enterprise dossier generation at machine speed.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item">
                                         <span class="detail-icon">🤝</span>
                                         <div>
                                             <strong>Direct High-Net-Worth Deal Flow:</strong>
-                                            <span>Connecting directly with high-net-worth investors and commercial contracting clients for Keystone Possibilities Ltd (#52603) with zero broker overhead.</span>
+                                            <span>Connecting directly with enterprise operators, creators, and private co-investors with zero external agency or broker overhead.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -197,43 +197,43 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                         </div>
 
-                        <!-- PILLAR 04: STRUCTURAL BUILDING -->
+                        <!-- PILLAR 04: AUTONOMOUS AI WORKSTATION ENGINEERING -->
                         <div class="lifestyle-pillar-card">
                             <div class="pillar-card-header">
                                 <div class="pillar-badge-num">PILLAR 04</div>
-                                <span class="pillar-category-tag">STRUCTURAL BUILDING</span>
+                                <span class="pillar-category-tag">WORKSTATION ENGINEERING</span>
                             </div>
                             <div class="pillar-body">
-                                <h3 class="pillar-title">Licensed Physical Infill &amp; Construction</h3>
+                                <h3 class="pillar-title">Autonomous AI Workstation Engineering &amp; 432Hz Production</h3>
                                 <p class="pillar-summary">
-                                    Direct builder execution under Wayne Stevenson (BC Housing Licensed Builder #52603), translating digital intelligence into permanent, durable physical shelter.
+                                    Autonomous AI Workstation Engineering, Sea-to-Sky Mountain Performance &amp; 432Hz Acoustic Production uniting local-first FastMCP swarms with studio-grade sound design.
                                 </p>
                                 <div class="pillar-detail-list">
                                     <div class="pillar-detail-item">
-                                        <span class="detail-icon">🏗️</span>
+                                        <span class="detail-icon">💻</span>
                                         <div>
-                                            <strong>BC Housing Licensed Builder #52603:</strong>
-                                            <span>Direct builder execution under Wayne Stevenson (BC Housing Licensed Builder #52603) with turnkey statutory 2-5-10 year warranty execution.</span>
+                                            <strong>Autonomous AI Workstation Engineering:</strong>
+                                            <span>Custom Tauri desktop HUDs, 6 detached OS background daemons, and 28-agent FastMCP swarms running on local hardware with zero cloud lock-in.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item">
-                                        <span class="detail-icon">🏘️</span>
+                                        <span class="detail-icon">🏔️</span>
                                         <div>
-                                            <strong>Bill 44 SSMUH Multiplex Infill:</strong>
-                                            <span>Small-Scale Multi-Unit Housing (SSMUH) multiplex infill under Bill 44 across Metro Vancouver, the Squamish Valley, and the Sea-to-Sky corridor.</span>
+                                            <strong>Sea-to-Sky Mountain Performance:</strong>
+                                            <span>Engineered from the Squamish and Whistler alpine corridor, applying structural discipline and zero-fragility systems architecture to every workflow.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item">
-                                        <span class="detail-icon">🪵</span>
+                                        <span class="detail-icon">🎛️</span>
                                         <div>
-                                            <strong>Architectural Concrete &amp; Mass Timber:</strong>
-                                            <span>Architectural concrete, mass timber framing, high-performance building envelopes, and precision structural craftsmanship.</span>
+                                            <strong>432Hz Acoustic Production &amp; Sync Vault:</strong>
+                                            <span>96kHz/24-bit mastering, -18dB ambient focus beds, and 60fps Web Audio spectrum telemetry built directly into the workstation environment.</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pillar-card-footer">
-                                    <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener noreferrer" class="pillar-link-btn">
-                                        Visit Keystone Possibilities Ltd. &nearr;
+                                    <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="pillar-link-btn">
+                                        Unlock $49.50 &amp; $800 AI Vault &rarr;
                                     </a>
                                 </div>
                             </div>
@@ -290,14 +290,14 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="pillar-body">
                                 <h3 class="pillar-title">Strategic Investments &amp; Worldwide Travel</h3>
                                 <p class="pillar-summary">
-                                    Global development footholds combining Canadian multiplexes, Mexico luxury villas, and European boutique infill with sovereign mobility.
+                                    Global development footholds combining autonomous digital IP cash flow, Mexico luxury villas, and European boutique infill with sovereign mobility.
                                 </p>
                                 <div class="pillar-detail-list">
                                     <div class="pillar-detail-item">
                                         <span class="detail-icon">🌴</span>
                                         <div>
-                                            <strong>Global Infill Footholds:</strong>
-                                            <span>Global development footholds: Metro Vancouver multiplexes, Mexico Pacific coast luxury villa co-development, and European Union boutique infill pipeline.</span>
+                                            <strong>Global Sovereign Footholds:</strong>
+                                            <span>Global development footholds: Mexico Pacific coast luxury villa co-development, European Union boutique infill pipeline, and portable AI workstations.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item">
@@ -334,7 +334,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="cta-badge-pill">SOVEREIGN ECOSYSTEM ARCHITECTURE</div>
                         <h2 class="cta-title">Explore the Keystone Ecosystem</h2>
                         <p class="cta-desc">
-                            Connect with our 22-release streaming discography, explore our autonomous multi-agent AI protocols, or inspect our strategic investment pillars and licensed residential builds.
+                            Connect with our 22-release streaming discography, explore our autonomous multi-agent AI protocols, or inspect our strategic investment pillars and international asset expansion.
                         </p>
                         <div class="cta-button-group">
                             <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="btn-primary-gold">
@@ -344,7 +344,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 ⚡ AI Workstation Protocols &rarr;
                             </a>
                             <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" class="btn-secondary-glass">
-                                🏛️ Strategic Investments &amp; Global Infill &rarr;
+                                🏛️ Strategic Investments &amp; Digital IP &rarr;
                             </a>
                         </div>
                     </div>
@@ -361,7 +361,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <span class="cyan-gold-gradient-text">Wayne Stevenson // Principal</span>
                         </h2>
                         <p class="cta-desc">
-                            Direct consultation regarding autonomous multi-agent AI workflows, BC Bill 44 multiplex infill development partnerships, and strategic real estate syndication across Canada, Mexico, and Europe.
+                            Direct consultation regarding Autonomous AI Workstation Engineering, Sea-to-Sky Mountain Performance &amp; 432Hz Acoustic Production, and strategic real estate co-investment across Mexico and Europe.
                         </p>
 
                         <!-- Direct Email Only Box (Strictly ZERO Phone Numbers) -->

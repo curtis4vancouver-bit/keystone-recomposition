@@ -101,18 +101,18 @@ $theme_uri = get_stylesheet_directory_uri();
                             <!-- 3 Operational Pillars -->
                             <div class="operational-pillars-list">
                                 <div class="pillar-item">
-                                    <div class="pillar-icon">📐</div>
+                                    <div class="pillar-icon">🎬</div>
                                     <div class="pillar-content">
-                                        <h4>Municipal Feasibility &amp; BC Bill 44 Infill</h4>
-                                        <p>Autonomous subagents ingest municipal bylaws, setbacks, and floor-area ratios to analyze multi-family density potential in seconds instead of weeks.</p>
+                                        <h4>Autonomous AI Video &amp; Multi-Agent Swarm Workstations</h4>
+                                        <p>Deploy our $49.50 &amp; $800 Recorded AI Video Walkthroughs, Instant UID-Locked <code>.ZIP</code>/<code>.bat</code> Download Vault, and deterministic 28-Agent FastMCP Swarms on local hardware.</p>
                                     </div>
                                 </div>
 
                                 <div class="pillar-item">
-                                    <div class="pillar-icon">🏗️</div>
+                                    <div class="pillar-icon">🛠️</div>
                                     <div class="pillar-content">
-                                        <h4>FastMCP Estimating &amp; Quantity Takeoffs</h4>
-                                        <p>Direct JSON-RPC tool contracts connect AI agents to architectural CAD models, automating lumber calculations, concrete volumes, and subtrade cost verification.</p>
+                                        <h4>FastMCP Tool Servers &amp; Chrome CDP Pipelines</h4>
+                                        <p>Direct JSON-RPC tool contracts connect autonomous subagents to local daemons, Port 9222 browser tabs, and automated DaVinci Resolve &amp; Suno production engines.</p>
                                     </div>
                                 </div>
 
@@ -126,11 +126,11 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
 
                             <div class="company-ai-cta-row">
-                                <a href="/ai-protocols/" class="btn-cyan-primary">
+                                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-cyan-primary">
                                     ⚡ View Full AI Protocols &amp; Tauri Workstations →
                                 </a>
-                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-glass-secondary">
-                                    Visit Keystone Possibilities Ltd. ↗
+                                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-glass-secondary">
+                                    Unlock $49.50 &amp; $800 AI Vault →
                                 </a>
                             </div>
 

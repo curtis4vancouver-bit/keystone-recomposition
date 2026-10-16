@@ -1,9 +1,9 @@
 <?php
 /**
  * Template Name: Keystone Investments
- * Description: High-Conviction Capital Allocation, Quantitative Market Intelligence, Bill 44 Infill, Mexico Coastal & EU Expansion
- * Version: 4.3.0 (High-End Dark Quiet Luxury Edition)
- * Stamped: September 2026
+ * Description: High-Conviction Capital Allocation, Quantitative Market Intelligence, Autonomous AI Workstations & Digital IP, Mexico Coastal & EU Expansion
+ * Version: 4.4.0 (High-End Dark Quiet Luxury Edition)
+ * Stamped: October 2026
  *
  * @package KeystoneRecompositionChild
  */
@@ -30,7 +30,7 @@ $theme_uri = get_stylesheet_directory_uri();
                      ============================================================== -->
                 <header class="investments-hero-header text-center">
                     <div class="hero-badge-row">
-                        <span class="gold-badge-pill">🏛️ CAPITAL ALLOCATION • BC HOUSING LICENSED BUILDER #52603</span>
+                        <span class="gold-badge-pill">🏛️ CAPITAL ALLOCATION • AUTONOMOUS AI WORKSTATIONS &amp; QUANTITATIVE IP</span>
                     </div>
 
                     <h1 class="investments-main-title">
@@ -39,7 +39,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
 
                     <p class="investments-hero-subtitle">
-                        Deploying balance-sheet capital across quantitative prediction engines, licensed British Columbia residential infill under Bill 44, international luxury footholds in Mexico and Europe, and autonomous computational enterprise infrastructure. Direct principal partnerships backed by tangible hard assets and mathematical rigor.
+                        Deploying balance-sheet capital across quantitative prediction engines, turnkey autonomous AI swarm workstations, 22-album 432Hz commercial music IP, and international luxury footholds in Mexico and Europe. Direct principal partnerships backed by sovereign digital infrastructure, tangible hard assets, and mathematical rigor.
                     </p>
 
                 </header>
@@ -114,65 +114,65 @@ $theme_uri = get_stylesheet_directory_uri();
                 </section>
 
                 <!-- ==============================================================
-                     3. CORE REAL ESTATE INVESTMENT PILLARS (HNW PRIVATE INVESTORS)
+                     3. CORE DIGITAL IP & SOVEREIGN ASSET PILLARS
                      ============================================================== -->
                 <section class="investments-pillars-section" id="real-estate-pillars">
                     <div class="pillars-section-intro text-center">
-                        <span class="section-tag-gold">HARD ASSET CO-INVESTMENT &bull; PRIVATE PARTNERSHIPS</span>
+                        <span class="section-tag-gold">DIGITAL IP COMPOUNDING &bull; INTERNATIONAL HARD ASSETS</span>
                         <h2 class="pillars-section-title">
-                            Global Real Estate Development &amp;<br>
-                            <span class="cyan-gold-gradient-text">Private Investor Syndication</span>
+                            Autonomous AI Workstations, Digital IP &amp;<br>
+                            <span class="cyan-gold-gradient-text">International Sovereign Assets</span>
                         </h2>
                         <p class="pillars-section-desc">
-                            We partner with high-net-worth individuals, private investors, and family offices to co-develop high-yield residential infill and boutique luxury destinations with fee-simple title security and builder-led execution.
+                            Combining high-margin digital intellectual property—turnkey 28-agent FastMCP workstations, UID-locked video vaults, and 216 mastered 432Hz recordings—with international architectural footholds across Mexico and the European Union.
                         </p>
                     </div>
 
                     <div class="investments-pillars-grid">
                         
-                        <!-- PILLAR 01: BC BILL 44 INFILL -->
+                        <!-- PILLAR 01: AUTONOMOUS AI WORKSTATIONS & DIGITAL IP -->
                         <div class="investment-pillar-card">
                             <div class="pillar-image-wrap">
-                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/bc_luxury_multiplex.jpg' ); ?>" 
-                                     alt="Keystone Possibilities British Columbia Modern Mass Timber and Concrete Bill 44 Multiplex" 
+                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
+                                     alt="Keystone Recomposition Turnkey AI Swarm Workstations, Automated Video Vaults and 432Hz Music IP" 
                                      class="pillar-hero-img" 
                                      loading="lazy" width="1792" height="1024">
-                                <span class="pillar-badge-float">PILLAR 01 &bull; BRITISH COLUMBIA</span>
+                                <span class="pillar-badge-float">PILLAR 01 &bull; AUTONOMOUS AI &amp; DIGITAL IP</span>
                             </div>
                             <div class="pillar-body">
                                 <div class="pillar-card-header">
-                                    <span class="pillar-category-tag">BC BILL 44 INFILL SYNDICATION</span>
+                                    <span class="pillar-category-tag">AUTONOMOUS AI WORKSTATIONS &amp; DIGITAL IP</span>
                                 </div>
-                                <h3 class="pillar-title">Bill 44 High-Density Infill &amp; Turnkey Multiplexes</h3>
+                                <h3 class="pillar-title">Turnkey AI Swarm Workstations, Automated Video Vaults &amp; 432Hz Music IP</h3>
                                 <p class="pillar-summary">
-                                    British Columbia's landmark Bill 44 legislation permanently upzoned single-family lots for Small-Scale Multi-Unit Housing (SSMUH). We assemble land and build high-density 3-to-6 unit multiplexes across Squamish, Whistler, and Greater Vancouver.
+                                    Sovereign digital infrastructure generating scalable recurring cash flow with zero cloud lock-in—uniting recorded AI video masterclasses, enterprise multi-agent workstation buildouts, and commercial 432Hz acoustic licensing.
                                 </p>
                                 <div class="pillar-detail-list">
                                     <div class="pillar-detail-item">
-                                        <span class="detail-icon">🏛️</span>
+                                        <span class="detail-icon">🎬</span>
                                         <div>
-                                            <strong>Fiduciary General Contracting (#52603):</strong>
-                                            <span>Direct builder execution under Wayne Stevenson (BC Housing Licence #52603), eliminating 15%–20% GC markup. Wayne operates with direct skin in the game on private investor partnerships.</span>
-                                        </div>
-                                    </div>
-                                    <div class="pillar-detail-item">
-                                        <span class="detail-icon">🛡️</span>
-                                        <div>
-                                            <strong>Fee-Simple Dirt &amp; 2-5-10 Warranty:</strong>
-                                            <span>Investors hold primary registered title or first-lien mortgage protection on the underlying land, backed by statutory 2-5-10 Year New Home Warranty protection.</span>
+                                            <strong>$49.50 &amp; $800 Automated AI Video Walkthrough + UID Download Vault:</strong>
+                                            <span>95%+ digital margin self-liquidating vault delivering recorded step-by-step AI architecture walkthroughs and instant UID-locked <code>.ZIP</code>/<code>.bat</code> workstation installers.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item">
                                         <span class="detail-icon">⚡</span>
                                         <div>
-                                            <strong>BC Hydro Registered Civil Speed (ES54):</strong>
-                                            <span>Underground civil electrical infrastructure executed in-house, bypassing Metro Vancouver's 10–18 month public utility backlog and accelerating project velocity.</span>
+                                            <strong>$3,500–$7,500 Custom Enterprise AI Workstation &amp; FastMCP Swarm Buildouts:</strong>
+                                            <span>Turnkey local-first Tauri HUD workstations, 28-agent FastMCP tool servers, and Chrome CDP Port 9222 production pipelines engineered directly for executive operators.</span>
+                                        </div>
+                                    </div>
+                                    <div class="pillar-detail-item">
+                                        <span class="detail-icon">🎵</span>
+                                        <div>
+                                            <strong>Direct-to-Creator 432Hz Commercial Sync Licensing:</strong>
+                                            <span>100% sovereign master and publishing control across 22 official albums (216 mastered ISRCs), providing direct commercial sync licensing without label intermediaries.</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pillar-card-footer">
-                                    <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="pillar-link-btn">
-                                        Visit Keystone Possibilities Ltd. &nearr;
+                                    <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="pillar-link-btn">
+                                        Explore AI Protocols &amp; Pricing Vault &rarr;
                                     </a>
                                 </div>
                             </div>
@@ -351,13 +351,13 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="risk-principles-grid">
                             <div class="risk-principle-item">
                                 <div class="risk-icon-wrap">⚖️</div>
-                                <h4>Fiduciary Licensing</h4>
-                                <p>All residential construction is bonded, insured, and executed under British Columbia Housing Licence #52603 with statutory 2-5-10 New Home Warranty protection.</p>
+                                <h4>Sovereign IP Ownership</h4>
+                                <p>100% direct principal ownership across 28-agent FastMCP codebases, recorded AI video vaults, and 216 mastered 432Hz ISRC recordings.</p>
                             </div>
                             <div class="risk-principle-item">
                                 <div class="risk-icon-wrap">🧱</div>
-                                <h4>Bedrock Asset Backing</h4>
-                                <p>Capital deployed in Bill 44 housing is anchored by fee-simple British Columbia land title, high-density rezoning, and permanent physical infrastructure.</p>
+                                <h4>Bedrock Asset &amp; Digital IP Backing</h4>
+                                <p>Capital deployed across Autonomous AI Workstations, Quantitative Digital IP, and international real estate is anchored by fee-simple title, Fideicomiso bank trusts, and zero-debt local hardware.</p>
                             </div>
                             <div class="risk-principle-item">
                                 <div class="risk-icon-wrap">📐</div>
@@ -384,7 +384,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <span class="cyan-gold-gradient-text">Wayne Stevenson // Builder</span>
                         </h2>
                         <p class="cta-desc">
-                            We selectively review land assembly partnerships under BC Bill 44, private equity co-investments in British Columbia, Mexico, and the European Union, and strategic business acquisitions. Discussions are conducted directly with Wayne Stevenson under strict non-disclosure agreements.
+                            We selectively review custom enterprise Autonomous AI Workstation buildouts, Quantitative Digital IP partnerships, 432Hz commercial sync licensing, and international co-investments across Mexico and the European Union. Discussions are conducted directly with Wayne Stevenson under strict non-disclosure agreements.
                         </p>
 
                         <!-- Direct Email Only Box (Strictly NO Phone Number) -->
