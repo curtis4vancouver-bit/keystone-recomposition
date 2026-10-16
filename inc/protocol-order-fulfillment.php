@@ -134,8 +134,12 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 		);
 	}
 
-	// Owner Master UID support for Wayne Stevenson (#52603)
-	if ( in_array( $uid, array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603' ), true ) ) {
+	// Owner Master UID & Logged-in WP User UID support for Wayne Stevenson (#52603)
+	if (
+		in_array( $uid, array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603' ), true ) ||
+		0 === strpos( $uid, 'KR-WP-UID-' ) ||
+		0 === strpos( $uid, 'KR-ADMIN-UID-' )
+	) {
 		return array(
 			'valid'                 => true,
 			'uid'                   => $uid,

@@ -1018,8 +1018,43 @@ function astra_child_keystone_header_overrides() {
       }
     }
     @media (max-width: 768px) {
+      .site-nav-header .nav-container {
+        padding: 0 10px !important;
+        gap: 6px !important;
+      }
+      .site-nav-header .brand-edge-logo {
+        gap: 6px !important;
+      }
+      .site-nav-header .kp-badge-mark {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        min-height: 26px !important;
+      }
+      .site-nav-header .kp-badge-img {
+        width: 18px !important;
+        height: 18px !important;
+      }
+      .site-nav-header .brand-title-wrap .title-main {
+        font-size: 0.65rem !important;
+        letter-spacing: 0.02em !important;
+      }
       .site-nav-header .brand-title-wrap .title-sub {
         display: none !important;
+      }
+      .site-nav-header .nav-right-actions {
+        gap: 5px !important;
+      }
+      .header-protocols-cta-pill {
+        padding: 4px 8px !important;
+        font-size: 0.58rem !important;
+        letter-spacing: 0.03em !important;
+      }
+      #kpMobileNavToggle,
+      .site-nav-header .mobile-hamburger {
+        padding: 4px 9px !important;
+        font-size: 0.62rem !important;
+        gap: 4px !important;
       }
     }
     @media (max-width: 380px) {

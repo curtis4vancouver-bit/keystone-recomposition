@@ -37,7 +37,8 @@ $theme_uri = get_stylesheet_directory_uri();
                             <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
                                  alt="Wayne Stevenson — Founder &amp; Architect" 
                                  class="founder-chip-avatar" 
-                                 width="52" height="52" loading="eager" decoding="async" />
+                                 data-recalc-dims="0" loading="eager" fetchpriority="high" decoding="async"
+                                 style="width: 48px; height: 48px; min-width: 48px; min-height: 48px; border-radius: 50%; border: 2px solid #d4af37; object-fit: cover; flex-shrink: 0; display: block;" />
                             <div class="founder-chip-meta">
                                 <span class="chip-name">Wayne Stevenson</span>
                                 <span class="chip-role">Licensed BC Builder #52603 • FastMCP Systems Architect</span>
