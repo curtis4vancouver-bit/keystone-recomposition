@@ -86,13 +86,13 @@ $theme_uri = get_stylesheet_directory_uri();
                         <div class="express-checkout-card">
                             <div class="checkout-card-header">
                                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 6px;">
-                                    <span class="checkout-badge-live">⚡ AUTOMATED VIDEO + DOWNLOAD VAULT</span>
+                                    <span class="checkout-badge-live">🔒 NEXT COHORT RELEASING SOON • NO CARD REQUIRED TODAY</span>
                                     <span id="vaultUidStatusBadge" style="background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 800; padding: 3px 9px; border-radius: 9999px;">
-                                        🔐 UID CHECK: ACTIVE
+                                        🔐 UID RESERVATION: ACTIVE
                                     </span>
                                 </div>
-                                <h3 class="checkout-portal-title">Express Checkout &amp; Instant Vault</h3>
-                                <p class="checkout-portal-sub">Buy once &rarr; Instant recorded walkthrough video, UID-locked download pack &amp; automated email delivery.</p>
+                                <h3 class="checkout-portal-title">Lock In Launch Rate &amp; Reserve Access</h3>
+                                <p class="checkout-portal-sub">Reserve your launch rate today with zero card required &rarr; Receive your priority `KR-UID` &amp; direct checkout link by email as soon as Wayne's walkthrough videos &amp; Visa checkout go live next week.</p>
                             </div>
                             
                             <div class="checkout-tier-selector">
@@ -126,28 +126,33 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <div id="promoFeedback" class="promo-feedback-msg" style="display:none;"></div>
                             </div>
 
-                            <!-- Dynamic Express Buy Button (Opens Automated Video + Download Fulfillment Modal) -->
+                            <!-- Dynamic Express Reserve / Buy Button -->
                             <div class="checkout-cta-wrap">
                                 <button type="button" id="portalExpressBuyBtn" class="btn-cyan-express-buy" style="width: 100%; border: none; cursor: pointer;">
-                                    ⚡ UNLOCK VIDEO &amp; DOWNLOAD VAULT ($49.50 USD) →
+                                    ⚡ LOCK IN LAUNCH RATE &amp; RESERVE ACCESS ($49.50 USD) →
                                 </button>
                                 <div class="checkout-payment-methods">
-                                    <span>🎬 Recorded Video Guide</span> • <span>📦 Instant .ZIP Vault</span> • <span>✉️ Automated Email</span>
+                                    <span>🔒 $0 Charged Today</span> • <span>🔐 Priority KR-UID Saved</span> • <span>✉️ Direct Link Sent Next Week</span>
                                 </div>
                                 <div class="checkout-fiduciary-note">
-                                    🏛️ 100% Direct Payout to <strong>Keystone Possibilities Ltd.</strong> • Protected by User UID Verification
+                                    🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Protected by Priority UID Lock
                                 </div>
+                                <?php if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) : ?>
+                                <div style="margin-top: 8px; padding: 6px 10px; border-radius: 8px; background: rgba(212, 175, 55, 0.12); border: 1px dashed rgba(212, 175, 55, 0.5); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; line-height: 1.35;">
+                                    [ADMIN READY-CHECK: Flip KEYSTONE_VISA_AND_VIDEOS_LIVE = true in inc/protocol-order-fulfillment.php once Visa &amp; Videos are uploaded next week]
+                                </div>
+                                <?php endif; ?>
                             </div>
 
                             <!-- Vault Menu User UID Verification Gate -->
                             <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(56, 189, 248, 0.22);">
                                 <label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #f6d365; letter-spacing: 0.05em; margin-bottom: 6px;">
-                                    🔐 ALREADY ORDERED? VERIFY YOUR VAULT USER UID:
+                                    🔐 ALREADY RESERVED? CHECK YOUR PRIORITY UID STATUS:
                                 </label>
                                 <div style="display: flex; gap: 6px;">
                                     <input type="text" id="existingVaultUidInput" placeholder="e.g. KR-UID-XXXXXXXXXXXX" style="flex: 1; background: rgba(4, 7, 13, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 9999px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 6px 12px; outline: none;" />
                                     <button type="button" id="verifyVaultUidBtn" style="background: rgba(56, 189, 248, 0.18); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 6px 12px; font-family: 'Outfit', sans-serif; font-size: 0.70rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
-                                        VERIFY UID
+                                        CHECK UID
                                     </button>
                                 </div>
                                 <div id="vaultUidVerifyFeedback" style="display: none; margin-top: 8px; font-size: 0.74rem; line-height: 1.4; padding: 8px 10px; border-radius: 10px; background: rgba(8, 14, 26, 0.95); border: 1px solid rgba(56, 189, 248, 0.35);"></div>
@@ -211,12 +216,12 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <div class="product-checkout-box">
                                 <button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 AI Video & Website Blueprint" style="border: none; cursor: pointer; width: 100%;">
-                                    ⚡ UNLOCK $49.50 AI VIDEO WALKTHROUGH &amp; DOWNLOAD PACK →
+                                    ⚡ LOCK IN $49.50 LAUNCH RATE &amp; RESERVE ACCESS →
                                 </button>
                                 <div class="checkout-trust-line">
-                                    💳 Automated Instant Fulfillment • Recorded Video Walkthrough + `.ZIP` Download + Direct Email Follow-Up
+                                    🔒 $0 Charged Today • Priority `KR-UID` Reservation • Direct Video &amp; Download Link Emailed Next Week
                                 </div>
-                                <span class="delivery-time-tag">⚡ Immediate UID-verified download &amp; onboarding email sent automatically</span>
+                                <span class="delivery-time-tag">⚡ Priority reservation saved immediately &amp; emailed to your inbox</span>
                             </div>
                         </div>
 
@@ -258,23 +263,23 @@ $theme_uri = get_stylesheet_directory_uri();
                             </p>
                             
                             <div class="product-deliverables-box">
-                                <h4>📦 What You Receive Instantly (Automated Video + Download Vault):</h4>
+                                <h4>📦 What You Receive in Next Week's Cohort Release:</h4>
                                 <ul>
                                     <li><strong>🎬 Wayne's Recorded 28-Agent Swarm Setup Walkthrough:</strong> Full recorded masterclass showing how to wire all 28 subagents and run parallel waves.</li>
                                     <li><strong>📦 The 28-Agent Role Definitions &amp; FastMCP Contracts:</strong> Complete configurations for Speed Scouts (#01-#04), TDD Engineers (#05-#10), Flow/Video (#11-#14), Quant (#15-#18), Music (#19-#22), Publishing (#23-#26), and Outreach/Brain (#27-#28).</li>
                                     <li><strong>B2B Lead Engine &amp; DNS MX Verification:</strong> Multi-tier socket verifier that inspects mail exchangers before sending, protecting your domain reputation.</li>
-                                    <li><strong>✉️ Automated Email Fulfillment + Personal Follow-Up:</strong> Instant UID-verified download link emailed to you + direct follow-up from Wayne.</li>
+                                    <li><strong>✉️ Priority Reservation + Personal Follow-Up:</strong> Lock in the $199 rate today; receive your direct payment &amp; instant download link next week.</li>
                                 </ul>
                             </div>
 
                             <div class="product-checkout-box">
                                 <button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 28-Agent Swarm & B2B Engine" style="border: none; cursor: pointer; width: 100%;">
-                                    🚀 UNLOCK $199 28-AGENT SWARM VIDEO &amp; DOWNLOAD VAULT →
+                                    🚀 LOCK IN $199 SWARM LAUNCH RATE &amp; RESERVE ACCESS →
                                 </button>
                                 <div class="checkout-trust-line">
-                                    💳 Automated Corporate Fulfillment • Turn-Key Architecture, Video Guide &amp; FastMCP Schemas
+                                    🔒 $0 Charged Today • Priority `KR-UID` Reservation • Turn-Key Architecture &amp; FastMCP Schemas
                                 </div>
-                                <span class="delivery-time-tag">⚡ Immediate UID-verified repository access &amp; onboarding email</span>
+                                <span class="delivery-time-tag">⚡ Priority reservation saved immediately &amp; emailed to your inbox</span>
                             </div>
                         </div>
 
@@ -296,15 +301,15 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <div class="video-card-meta">
                                     <span class="video-title">Wayne's Recorded $800 Workstation &amp; AI Video Production Masterclass</span>
-                                    <span class="video-desc">Watch Wayne Stevenson demonstrate the complete $800 Custom Tauri Workstation, automated AI video generation pipeline, and detached OS daemon suite—with instant download delivery and personal email follow-up.</span>
+                                    <span class="video-desc">Watch Wayne Stevenson demonstrate the complete $800 Custom Tauri Workstation, automated AI video generation pipeline, and detached OS daemon suite—with priority reservation and personal email follow-up.</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="product-info-col">
                             <div class="product-badge-row">
-                                <span class="badge-tier-cyan">TIER 03 // $800 AUTOMATED WORKSTATION VAULT + 1-ON-1 FOLLOW-UP</span>
-                                <span class="badge-capacity-alert">INSTANT VIDEO + DOWNLOAD + PERSONAL EMAIL</span>
+                                <span class="badge-tier-cyan">TIER 03 // $800 WORKSTATION COHORT + 1-ON-1 FOLLOW-UP</span>
+                                <span class="badge-capacity-alert">PRIORITY RESERVATION + PERSONAL EMAIL</span>
                             </div>
                             <h2 class="product-title">Custom Tauri HUD, AI Video Pipeline &amp; Sovereign Workstation</h2>
                             <div class="product-price-row">
@@ -313,27 +318,27 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <span class="price-currency">USD</span>
                             </div>
                             <p class="product-lead-copy">
-                                Relying on cloud AI platforms is like running extension cords to your neighbor's house: when their power trips, your job site goes dark. Once you order the $800 Sovereign Workstation tier, you immediately unlock Wayne's pre-recorded master walkthrough video showing exactly how to generate the AI videos and run the workstation, plus the complete automated download suite—and Wayne receives an instant notification to personally email you back for tailored 1-on-1 setup.
+                                Relying on cloud AI platforms is like running extension cords to your neighbor's house: when their power trips, your job site goes dark. Reserve your spot in the $800 Sovereign Workstation cohort today with zero card required—and Wayne receives an instant notification to personally email you next week when the recorded master walkthrough video, download suite, and Visa checkout go live.
                             </p>
                             
                             <div class="product-deliverables-box">
-                                <h4>🏛️ 100% Automated $800 Workstation Delivery + Personal Follow-Up:</h4>
+                                <h4>🏛️ $800 Workstation Cohort Deliverables + Personal Follow-Up:</h4>
                                 <ul>
-                                    <li><strong>🎬 Step 1 — Wayne's Pre-Recorded $800 Workstation &amp; AI Video Masterclass:</strong> Complete recorded walkthrough where Wayne shows on screen how to generate AI videos, run the Tauri HUD, and orchestrate the background daemons from start to finish.</li>
-                                    <li><strong>📦 Step 2 — Instant Automated Workstation Download Suite (`.ZIP` + `.bat`):</strong> Immediate UID-verified download containing the Tauri v2 / Rust / Vite desktop interface blueprint, AI video orchestration templates, and 6 Win32 daemon launchers (Ports 9876–9879).</li>
-                                    <li><strong>🔐 Verified Owner/Buyer UID Lock:</strong> Protected by our Vault UID check (`KR-UID-...`) so your download pack and walkthrough video remain permanently accessible.</li>
-                                    <li><strong>✉️ Step 3 — Automated Onboarding Email + Direct Personal Follow-Up from Wayne:</strong> As soon as you order, the system sends your download pack &amp; video link by email AND alerts Wayne Stevenson (`keystonerecomposition@gmail.com`) so we can contact you right back with personal follow-up emails and schedule your 60-minute 1-on-1 architecture session.</li>
+                                    <li><strong>🎬 Step 1 — Wayne's Recorded $800 Workstation &amp; AI Video Masterclass:</strong> Complete recorded walkthrough where Wayne shows on screen how to generate AI videos, run the Tauri HUD, and orchestrate the background daemons from start to finish.</li>
+                                    <li><strong>📦 Step 2 — Automated Workstation Download Suite (`.ZIP` + `.bat`):</strong> Tauri v2 / Rust / Vite desktop interface blueprint, AI video orchestration templates, and 6 Win32 daemon launchers (Ports 9876–9879).</li>
+                                    <li><strong>🔐 Verified Priority UID Lock:</strong> Your reservation generates a priority `KR-UID-...` locking in your $800 cohort rate.</li>
+                                    <li><strong>✉️ Step 3 — Direct Personal Follow-Up from Wayne:</strong> Alerts Wayne Stevenson (`keystonerecomposition@gmail.com`) so we can email your direct checkout &amp; download link next week and schedule your 1-on-1 architecture session.</li>
                                 </ul>
                             </div>
 
                             <div class="product-checkout-box">
                                 <button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 Custom Tauri Workstation" style="border: none; cursor: pointer; width: 100%;">
-                                    🤝 UNLOCK $800 WORKSTATION VIDEO, DOWNLOAD PACK &amp; WAYNE FOLLOW-UP →
+                                    🤝 LOCK IN $800 WORKSTATION LAUNCH RATE &amp; RESERVE ACCESS →
                                 </button>
                                 <div class="checkout-trust-line">
-                                    🏛️ Instant Recorded Video + Download Vault Unlocked • Direct Personal Email Follow-Up from Wayne Stevenson
+                                    🏛️ $0 Charged Today • Priority `KR-UID` Saved • Direct Personal Email Follow-Up from Wayne Stevenson
                                 </div>
-                                <span class="delivery-time-tag">⚡ Automated video + download pack delivered immediately &amp; emailed to your inbox</span>
+                                <span class="delivery-time-tag">⚡ Priority reservation saved immediately &amp; emailed to your inbox</span>
                             </div>
                         </div>
 
@@ -378,20 +383,20 @@ $theme_uri = get_stylesheet_directory_uri();
     </main>
 </div>
 
-<!-- 4. INTERACTIVE AUTOMATED INSTANT ORDER, UID VERIFICATION & VIDEO/DOWNLOAD FULFILLMENT MODAL -->
+<!-- 4. INTERACTIVE AUTOMATED INSTANT ORDER / LAUNCH RATE RESERVATION & UID VERIFICATION MODAL -->
 <div id="automatedOrderModal" style="display: none; position: fixed; inset: 0; z-index: 10050; background: rgba(4, 7, 13, 0.92); align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
     <div style="background: linear-gradient(145deg, #0b111e 0%, #060a12 100%); border: 1.5px solid #38bdf8; border-radius: 22px; max-width: 660px; width: 100%; padding: 28px 26px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(56, 189, 248, 0.25); position: relative; color: #f8fafc;">
         <button type="button" id="closeAutomatedOrderModal" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-size: 1rem; font-weight: 800; cursor: pointer;">✕</button>
 
         <div style="display: inline-block; background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; letter-spacing: 0.06em; margin-bottom: 10px;">
-            ⚡ AUTOMATED VIDEO WALKTHROUGH + DOWNLOAD VAULT + UID GATE
+            🔒 NEXT COHORT RELEASING SOON • NO CARD REQUIRED TODAY
         </div>
 
         <h3 id="modalTierHeadline" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 900; color: #ffffff; margin: 0 0 8px 0;">
-            Unlock Tier 01 — $49.50 AI Video &amp; Website Blueprint
+            Lock In Launch Rate — Tier 01 ($49.50 AI Video &amp; Website Blueprint)
         </h3>
         <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.55; margin: 0 0 18px 0;">
-            Enter your name and email below to generate your verified <strong>User Vault UID (`KR-UID-...`)</strong>, immediately unlock Wayne's pre-recorded AI video generation walkthrough &amp; download pack right on this screen, and trigger automated email delivery + personal follow-up from Wayne Stevenson.
+            Enter your name and email below to lock in your launch price and generate your priority <strong>Reservation UID (`KR-UID-...`)</strong> with zero payment today. As soon as Wayne Stevenson's recorded walkthrough video and Visa checkout go live next week, your direct payment &amp; instant download link will be emailed to your inbox.
         </p>
 
         <form id="automatedProtocolOrderForm" style="display: flex; flex-direction: column; gap: 12px;">
@@ -419,26 +424,28 @@ $theme_uri = get_stylesheet_directory_uri();
                 <input type="text" id="orderBuyerNotes" placeholder="Tell Wayne what AI videos or systems you want to build..." style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 10px 12px; box-sizing: border-box;" />
             </div>
             <button type="submit" id="submitAutomatedOrderBtn" style="margin-top: 4px; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: #04070d; font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 900; letter-spacing: 0.05em; padding: 13px 20px; border-radius: 9999px; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35);">
-                ⚡ GENERATE VERIFIED UID &amp; UNLOCK VIDEO + DOWNLOAD VAULT →
+                ⚡ LOCK IN LAUNCH RATE &amp; RESERVE ACCESS →
             </button>
         </form>
 
-        <!-- Instant Fulfillment Result Screen (Hidden until order or UID verification succeeds) -->
+        <!-- Instant Reservation / Fulfillment Result Screen -->
         <div id="orderFulfillmentSuccessBox" style="display: none; margin-top: 18px; padding: 18px; border-radius: 16px; background: rgba(4, 7, 13, 0.96); border: 1.5px solid #d4af37;">
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-                <span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">✔ VAULT UID VERIFIED &amp; EMAIL DISPATCHED</span>
+                <span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">✔ LAUNCH RATE LOCKED IN &amp; RESERVATION SAVED</span>
                 <span id="fulfilledUidReadout" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; font-weight: 900; padding: 3px 10px; border-radius: 9999px;"></span>
             </div>
-            <p id="fulfilledMessageText" style="font-size: 0.82rem; color: #cbd5e1; margin: 0 0 12px 0; line-height: 1.5;"></p>
-            <div style="margin-bottom: 12px;">
-                <div style="font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">🎬 STEP 1: WATCH WAYNE'S RECORDED STEP-BY-STEP WALKTHROUGH</div>
-                <a id="fulfilledVideoBtn" href="https://www.youtube.com/watch?v=JCgZ5SsN_bc" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 900; padding: 9px 18px; border-radius: 9999px; text-decoration: none !important;">
-                    ▶ WATCH RECORDED AI VIDEO WALKTHROUGH
-                </a>
-            </div>
-            <div>
-                <div style="font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; color: #f6d365; margin-bottom: 6px;">📦 STEP 2: INSTANT UID-UNLOCKED DOWNLOAD VAULT</div>
-                <ul id="fulfilledDownloadsList" style="margin: 0; padding-left: 18px; color: #cbd5e1; font-size: 0.80rem; line-height: 1.65;"></ul>
+            <p id="fulfilledMessageText" style="font-size: 0.85rem; color: #f8fafc; margin: 0; line-height: 1.55; font-weight: 600;"></p>
+            <div id="fulfilledLiveDownloadsWrap" style="display: none; margin-top: 12px;">
+                <div style="margin-bottom: 12px;">
+                    <div style="font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">🎬 STEP 1: WATCH WAYNE'S RECORDED STEP-BY-STEP WALKTHROUGH</div>
+                    <a id="fulfilledVideoBtn" href="https://www.youtube.com/watch?v=JCgZ5SsN_bc" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 900; padding: 9px 18px; border-radius: 9999px; text-decoration: none !important;">
+                        ▶ WATCH RECORDED AI VIDEO WALKTHROUGH
+                    </a>
+                </div>
+                <div>
+                    <div style="font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; color: #f6d365; margin-bottom: 6px;">📦 STEP 2: INSTANT UID-UNLOCKED DOWNLOAD VAULT</div>
+                    <ul id="fulfilledDownloadsList" style="margin: 0; padding-left: 18px; color: #cbd5e1; font-size: 0.80rem; line-height: 1.65;"></ul>
+                </div>
             </div>
         </div>
     </div>
@@ -462,6 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const successBox = document.getElementById('orderFulfillmentSuccessBox');
     const fulfilledUidReadout = document.getElementById('fulfilledUidReadout');
     const fulfilledMessageText = document.getElementById('fulfilledMessageText');
+    const fulfilledLiveDownloadsWrap = document.getElementById('fulfilledLiveDownloadsWrap');
     const fulfilledVideoBtn = document.getElementById('fulfilledVideoBtn');
     const fulfilledDownloadsList = document.getElementById('fulfilledDownloadsList');
 
@@ -495,10 +503,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!expressBuyBtn) return;
         const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
         if (activeTier === 3) {
-            expressBuyBtn.textContent = '🤝 UNLOCK $800 WORKSTATION VIDEO & VAULT →';
+            expressBuyBtn.textContent = '🤝 LOCK IN $800 WORKSTATION LAUNCH RATE →';
             expressBuyBtn.className = 'btn-cyan-express-buy btn-gold-portal';
         } else {
-            expressBuyBtn.textContent = `⚡ UNLOCK VIDEO & DOWNLOAD VAULT ($${formatPrice(finalPrice)} USD) →`;
+            expressBuyBtn.textContent = `⚡ LOCK IN LAUNCH RATE & RESERVE ACCESS ($${formatPrice(finalPrice)} USD) →`;
             expressBuyBtn.className = 'btn-cyan-express-buy';
         }
     }
@@ -507,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
         activeTier = parseInt(tierNum, 10) || 1;
         if (modalTierSelect) modalTierSelect.value = String(activeTier);
         if (orderTierInput) orderTierInput.value = String(activeTier);
-        if (modalTierHeadline) modalTierHeadline.textContent = 'Unlock ' + (tierNames[activeTier] || tierNames[1]);
+        if (modalTierHeadline) modalTierHeadline.textContent = 'Lock In Launch Rate — ' + (tierNames[activeTier] || tierNames[1]);
         if (modal) modal.style.display = 'flex';
     }
 
@@ -541,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const t = parseInt(this.value, 10) || 1;
             activeTier = t;
             if (orderTierInput) orderTierInput.value = String(t);
-            if (modalTierHeadline) modalTierHeadline.textContent = 'Unlock ' + (tierNames[t] || tierNames[1]);
+            if (modalTierHeadline) modalTierHeadline.textContent = 'Lock In Launch Rate — ' + (tierNames[t] || tierNames[1]);
         });
     }
 
@@ -579,13 +587,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!data || !data.valid) return;
         try { localStorage.setItem('kr_user_vault_uid', data.uid); } catch (e) {}
         if (vaultUidStatusBadge) {
-            vaultUidStatusBadge.textContent = '✔ UID VERIFIED: ' + data.uid;
+            vaultUidStatusBadge.textContent = '✔ UID RESERVED: ' + data.uid;
             vaultUidStatusBadge.style.borderColor = '#d4af37';
             vaultUidStatusBadge.style.color = '#f6d365';
         }
         const drawerBadge = document.getElementById('drawerVaultUidBadge');
         if (drawerBadge) {
-            drawerBadge.textContent = '✔ UID VERIFIED: ' + data.uid;
+            drawerBadge.textContent = '✔ UID RESERVED: ' + data.uid;
             drawerBadge.style.color = '#f6d365';
         }
         if (existingVaultUidInput && !existingVaultUidInput.value) {
@@ -602,8 +610,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (showFeedbackBox && vaultUidVerifyFeedback) {
                         vaultUidVerifyFeedback.style.display = 'block';
                         vaultUidVerifyFeedback.style.borderColor = '#d4af37';
-                        let dlLinks = (data.unlocked_downloads || []).map(d => `<div style="margin-top:4px;"><a href="${d.url}" target="_blank" style="color:#38bdf8;font-weight:700;text-decoration:none;">${d.label}</a></div>`).join('');
-                        vaultUidVerifyFeedback.innerHTML = `<div style="color:#f6d365;font-weight:800;margin-bottom:4px;">✔ UID VERIFIED (${data.uid}) — ${data.tier_name || 'Vault Unlocked'}</div><div><a href="${data.walkthrough_video_url}" target="_blank" style="color:#ffffff;font-weight:800;text-decoration:underline;">▶ Watch Wayne's Recorded Walkthrough Video</a></div>${dlLinks}`;
+                        if (data.live_mode && data.unlocked_downloads && data.unlocked_downloads.length > 0) {
+                            let dlLinks = data.unlocked_downloads.map(d => `<div style="margin-top:4px;"><a href="${d.url}" target="_blank" style="color:#38bdf8;font-weight:700;text-decoration:none;">${d.label}</a></div>`).join('');
+                            vaultUidVerifyFeedback.innerHTML = `<div style="color:#f6d365;font-weight:800;margin-bottom:4px;">✔ UID VERIFIED (${data.uid}) — ${data.tier_name || 'Vault Unlocked'}</div><div><a href="${data.walkthrough_video_url}" target="_blank" style="color:#ffffff;font-weight:800;text-decoration:underline;">▶ Watch Wayne's Recorded Walkthrough Video</a></div>${dlLinks}`;
+                        } else {
+                            vaultUidVerifyFeedback.innerHTML = `<div style="color:#f6d365;font-weight:800;margin-bottom:4px;">✔ PRIORITY RESERVATION ACTIVE (${data.uid})</div><div style="color:#cbd5e1;">${data.message || 'Your Launch Rate reservation is saved. Direct payment & download links will be emailed next week as soon as Wayne\'s walkthrough videos go live.'}</div>`;
+                        }
                     }
                 } else if (showFeedbackBox && vaultUidVerifyFeedback) {
                     vaultUidVerifyFeedback.style.display = 'block';
@@ -614,13 +626,14 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(() => {});
     }
 
-    // Automatically check stored User Vault UID on page load so returning users are verified
     let initialUid = '';
     try {
         const urlParams = new URLSearchParams(window.location.search);
         initialUid = urlParams.get('uid') || localStorage.getItem('kr_user_vault_uid') || '';
     } catch (e) {}
-    verifyUidWithServer(initialUid, Boolean(initialUid));
+    if (initialUid) {
+        verifyUidWithServer(initialUid, true);
+    }
 
     if (verifyVaultUidBtn && existingVaultUidInput) {
         verifyVaultUidBtn.addEventListener('click', function() {
@@ -635,7 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const submitBtn = document.getElementById('submitAutomatedOrderBtn');
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.textContent = '⏳ VERIFYING UID & DISPATCHING VIDEO + DOWNLOAD EMAIL...';
+                submitBtn.textContent = '⏳ LOCKING IN LAUNCH RATE & SAVING PRIORITY UID...';
             }
             const payload = {
                 tier: modalTierSelect ? modalTierSelect.value : String(activeTier),
@@ -653,23 +666,28 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (submitBtn) {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = '✔ UID VERIFIED & VAULT UNLOCKED BELOW';
+                    submitBtn.textContent = '✔ LAUNCH RATE LOCKED IN & PRIORITY UID SAVED';
                 }
                 if (data && data.success) {
                     applyVerifiedVaultState({ valid: true, uid: data.user_uid, tier_name: data.tier_name, walkthrough_video_url: data.walkthrough_video_url, unlocked_downloads: data.unlocked_downloads });
                     if (successBox) successBox.style.display = 'block';
-                    if (fulfilledUidReadout) fulfilledUidReadout.textContent = data.user_uid;
+                    if (fulfilledUidReadout) fulfilledUidReadout.textContent = 'UID: ' + data.user_uid;
                     if (fulfilledMessageText) fulfilledMessageText.textContent = data.message;
-                    if (fulfilledVideoBtn) fulfilledVideoBtn.href = data.walkthrough_video_url;
-                    if (fulfilledDownloadsList) {
-                        fulfilledDownloadsList.innerHTML = (data.unlocked_downloads || []).map(d => `<li><a href="${d.url}" target="_blank" style="color:#38bdf8;font-weight:700;text-decoration:none;">${d.label}</a></li>`).join('');
+                    if (data.live_mode && data.unlocked_downloads && data.unlocked_downloads.length > 0 && fulfilledLiveDownloadsWrap) {
+                        fulfilledLiveDownloadsWrap.style.display = 'block';
+                        if (fulfilledVideoBtn) fulfilledVideoBtn.href = data.walkthrough_video_url;
+                        if (fulfilledDownloadsList) {
+                            fulfilledDownloadsList.innerHTML = data.unlocked_downloads.map(d => `<li><a href="${d.url}" target="_blank" style="color:#38bdf8;font-weight:700;text-decoration:none;">${d.label}</a></li>`).join('');
+                        }
+                    } else if (fulfilledLiveDownloadsWrap) {
+                        fulfilledLiveDownloadsWrap.style.display = 'none';
                     }
                 }
             })
             .catch(() => {
                 if (submitBtn) {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = '⚡ GENERATE VERIFIED UID & UNLOCK VIDEO + DOWNLOAD VAULT →';
+                    submitBtn.textContent = '⚡ LOCK IN LAUNCH RATE & RESERVE ACCESS →';
                 }
             });
         });

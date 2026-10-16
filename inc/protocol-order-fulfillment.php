@@ -18,6 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! defined( 'KEYSTONE_VISA_AND_VIDEOS_LIVE' ) ) {
+	define( 'KEYSTONE_VISA_AND_VIDEOS_LIVE', false ); // Flip to true in 1 week once Wayne records the videos & connects Visa/Stripe!
+}
+
 /**
  * Return canonical Tier metadata (Video Walkthrough URL, Download Pack items, Price, Label).
  */
@@ -61,7 +65,7 @@ function keystone_get_protocol_tier_catalog(): array {
 				),
 				array(
 					'label' => '🎬 Wayne_28_Agent_Swarm_Recorded_Walkthrough_4K.mp4 (Full Setup & Execution Guide)',
-					'url'   => 'https://www.youtube.com/watch?v=k3fArbXUzQM',
+				    'url'   => 'https://www.youtube.com/watch?v=k3fArbXUzQM',
 				),
 			),
 		),
@@ -104,8 +108,9 @@ function keystone_generate_user_vault_uid( string $email, string $tier ): string
  * Validate a User Vault UID against stored orders, active WP user session, or owner master key.
  */
 function keystone_verify_user_vault_uid_internal( string $uid ): array {
-	$uid     = strtoupper( sanitize_text_field( trim( $uid ) ) );
-	$catalog = keystone_get_protocol_tier_catalog();
+	$uid       = strtoupper( sanitize_text_field( trim( $uid ) ) );
+	$catalog   = keystone_get_protocol_tier_catalog();
+	$live_mode = (bool) KEYSTONE_VISA_AND_VIDEOS_LIVE;
 
 	if ( '' === $uid ) {
 		// Check if current logged-in WP administrator is viewing
@@ -113,6 +118,7 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 			$wp_uid = 'KR-ADMIN-UID-' . (int) get_current_user_id();
 			return array(
 				'valid'                 => true,
+				'live_mode'             => $live_mode,
 				'uid'                   => $wp_uid,
 				'buyer_name'            => 'Wayne Stevenson (Admin Verified)',
 				'tier'                  => '3',
@@ -120,17 +126,18 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 				'walkthrough_video_id'  => $catalog['3']['walkthrough_video_id'],
 				'walkthrough_video_url' => $catalog['3']['walkthrough_video_url'],
 				'walkthrough_title'     => $catalog['3']['walkthrough_title'],
-				'unlocked_downloads'    => array_merge(
+				'unlocked_downloads'    => $live_mode ? array_merge(
 					$catalog['1']['unlocked_downloads'],
 					$catalog['2']['unlocked_downloads'],
 					$catalog['3']['unlocked_downloads']
-				),
+				) : array(),
 			);
 		}
 		return array(
-			'valid'   => false,
-			'uid'     => '',
-			'message' => 'Missing User Vault UID. Please enter a valid KR-UID or complete order registration first.',
+			'valid'     => false,
+			'live_mode' => $live_mode,
+			'uid'       => '',
+			'message'   => 'Missing User Vault UID. Please enter a valid KR-UID or lock in your launch rate reservation first.',
 		);
 	}
 
@@ -142,6 +149,7 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 	) {
 		return array(
 			'valid'                 => true,
+			'live_mode'             => $live_mode,
 			'uid'                   => $uid,
 			'buyer_name'            => 'Wayne Stevenson (Founder Master UID)',
 			'tier'                  => '3',
@@ -149,11 +157,11 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 			'walkthrough_video_id'  => $catalog['3']['walkthrough_video_id'],
 			'walkthrough_video_url' => $catalog['3']['walkthrough_video_url'],
 			'walkthrough_title'     => $catalog['3']['walkthrough_title'],
-			'unlocked_downloads'    => array_merge(
+			'unlocked_downloads'    => $live_mode ? array_merge(
 				$catalog['1']['unlocked_downloads'],
 				$catalog['2']['unlocked_downloads'],
 				$catalog['3']['unlocked_downloads']
-			),
+			) : array(),
 		);
 	}
 
@@ -165,25 +173,30 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 				$t_obj = $catalog[ $t_key ];
 				return array(
 					'valid'                 => true,
+					'live_mode'             => $live_mode,
 					'uid'                   => (string) $order['user_uid'],
 					'order_id'              => (string) ( $order['order_id'] ?? '' ),
 					'buyer_name'            => (string) ( $order['buyer_name'] ?? 'Verified Builder' ),
 					'tier'                  => $t_key,
-					'tier_name'             => $t_obj['name'],
+					'tier_name'             => (string) ( $order['tier_name'] ?? $t_obj['name'] ),
 					'price'                 => (string) ( $order['price'] ?? $t_obj['price'] ),
 					'walkthrough_video_id'  => $t_obj['walkthrough_video_id'],
 					'walkthrough_video_url' => $t_obj['walkthrough_video_url'],
 					'walkthrough_title'     => $t_obj['walkthrough_title'],
-					'unlocked_downloads'    => $t_obj['unlocked_downloads'],
+					'unlocked_downloads'    => $live_mode ? $t_obj['unlocked_downloads'] : array(),
+					'message'               => $live_mode
+						? 'UID Verified! Your walkthrough video and download vault are unlocked.'
+						: sprintf( '✔ Launch Rate Locked In ($%s USD)! Your priority reservation is saved (UID: %s). As soon as Wayne Stevenson\'s recorded walkthrough video and Visa checkout go live next week, your direct payment & instant download link will be emailed to your inbox.', (string) ( $order['price'] ?? $t_obj['price'] ), (string) $order['user_uid'] ),
 				);
 			}
 		}
 	}
 
 	return array(
-		'valid'   => false,
-		'uid'     => $uid,
-		'message' => 'Unrecognized User Vault UID. Vault access requires a verified KR-UID.',
+		'valid'     => false,
+		'live_mode' => $live_mode,
+		'uid'       => $uid,
+		'message'   => 'Unrecognized User Vault UID. Please reserve your launch rate above to receive a verified KR-UID.',
 	);
 }
 
@@ -205,8 +218,9 @@ add_action( 'rest_api_init', function () {
 		'callback'            => function () {
 			$orders = get_option( 'keystone_protocol_orders_v10', array() );
 			return new WP_REST_Response( array(
-				'count'  => is_array( $orders ) ? count( $orders ) : 0,
-				'orders' => is_array( $orders ) ? $orders : array(),
+				'count'     => is_array( $orders ) ? count( $orders ) : 0,
+				'live_mode' => (bool) KEYSTONE_VISA_AND_VIDEOS_LIVE,
+				'orders'    => is_array( $orders ) ? $orders : array(),
 			), 200 );
 		},
 	) );
@@ -223,7 +237,7 @@ add_action( 'rest_api_init', function () {
 } );
 
 /**
- * Process Automated AI Protocol Order, Assign User UID, Unlock Video + Downloads, and Dispatch Emails.
+ * Process Automated AI Protocol Order / Priority Launch Rate Reservation.
  */
 function keystone_handle_protocol_order_submission( WP_REST_Request $request ): WP_REST_Response {
 	$params      = $request->get_json_params() ?: $request->get_params();
@@ -236,15 +250,15 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 	if ( '' === $buyer_name || ! is_email( $buyer_email ) ) {
 		return new WP_REST_Response( array(
 			'success' => false,
-			'message' => 'Please enter your full name and a valid email address to generate your Vault UID and unlock the walkthrough video + downloads.',
+			'message' => 'Please enter your full name and a valid email address to reserve your Launch Rate and generate your priority UID.',
 		), 400 );
 	}
 
-	$catalog = keystone_get_protocol_tier_catalog();
-	if ( ! isset( $catalog[ $tier ] ) ) {
+	$tier_catalog = keystone_get_protocol_tier_catalog();
+	if ( ! isset( $tier_catalog[ $tier ] ) ) {
 		$tier = '1';
 	}
-	$tier_info = $catalog[ $tier ];
+	$tier_info = $tier_catalog[ $tier ];
 	$price     = (float) $tier_info['price'];
 
 	$promo_discounts = array(
@@ -256,10 +270,11 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 	if ( isset( $promo_discounts[ $promo_code ] ) && '3' !== $tier ) {
 		$price = max( 0.0, $price - $promo_discounts[ $promo_code ] );
 	}
-	$formatted_price = number_format( $price, 2, '.', '' );
 
-	$user_uid = keystone_generate_user_vault_uid( $buyer_email, $tier );
-	$order_id = 'KR-ORD-' . gmdate( 'Ymd-His' ) . '-' . strtoupper( wp_generate_password( 4, false ) );
+	$formatted_price = number_format( $price, 2, '.', '' );
+	$live_mode       = (bool) KEYSTONE_VISA_AND_VIDEOS_LIVE;
+	$user_uid        = keystone_generate_user_vault_uid( $buyer_email, $tier );
+	$order_id        = 'KR-ORD-' . gmdate( 'Ymd-His' ) . '-' . strtoupper( wp_generate_password( 4, false ) );
 
 	$order_record = array(
 		'order_id'              => $order_id,
@@ -272,7 +287,7 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 		'buyer_email'           => $buyer_email,
 		'notes'                 => $notes,
 		'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
-		'status'                => 'fulfilled_pending_wayne_followup',
+		'status'                => $live_mode ? 'fulfilled_pending_wayne_followup' : 'waitlist_reserved',
 		'created_at'            => gmdate( 'c' ),
 	);
 
@@ -286,60 +301,81 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 	}
 	update_option( 'keystone_protocol_orders_v10', $orders, false );
 
-	// 1. Send Instant Automated HTML Onboarding Email (Video Walkthrough + Download Vault + Verified UID) to Buyer
 	$headers = array(
 		'Content-Type: text/html; charset=UTF-8',
 		'From: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
 		'Reply-To: keystonerecomposition@gmail.com',
 	);
 
-	$downloads_html = '';
-	foreach ( $tier_info['unlocked_downloads'] as $dl ) {
-		$downloads_html .= '<li style="margin-bottom:8px;"><a href="' . esc_url( $dl['url'] ) . '" style="color:#38bdf8;font-weight:700;text-decoration:none;">' . esc_html( $dl['label'] ) . '</a></li>';
-	}
+	if ( $live_mode ) {
+		$downloads_html = '';
+		foreach ( $tier_info['unlocked_downloads'] as $dl ) {
+			$downloads_html .= '<li style="margin-bottom:8px;"><a href="' . esc_url( $dl['url'] ) . '" style="color:#38bdf8;font-weight:700;text-decoration:none;">' . esc_html( $dl['label'] ) . '</a></li>';
+		}
 
-	$buyer_subject = sprintf( '[Keystone AI Protocols] Instant Access Unlocked: %s (UID: %s)', $tier_info['name'], $user_uid );
-	$buyer_body    = '
-	<div style="background:#04070d;color:#f8fafc;font-family:Arial,sans-serif;padding:32px;border-radius:16px;border:1px solid #38bdf8;max-width:640px;margin:0 auto;">
-		<div style="color:#d4af37;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">KEYSTONE AI PROTOCOLS // AUTOMATED FULFILLMENT VAULT</div>
-		<h2 style="color:#ffffff;margin:0 0 12px 0;font-size:22px;">Welcome, ' . esc_html( $buyer_name ) . ' — Your AI Video Walkthrough &amp; Download Vault Are Ready</h2>
-		<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Thank you for ordering <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>. Your unique Vault UID has been verified and locked to your account:</p>
-		<div style="background:#0b111e;border:1px solid #d4af37;border-radius:10px;padding:14px 18px;margin:16px 0;">
-			<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR VERIFIED VAULT UID (REQUIRED FOR VAULT MENU ACCESS)</div>
-			<div style="font-size:18px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
-			<div style="font-size:11px;color:#f6d365;margin-top:4px;">Order ID: ' . esc_html( $order_id ) . '</div>
-		</div>
-		<h3 style="color:#38bdf8;font-size:16px;margin:20px 0 8px 0;">🎬 Step 1: Watch Wayne\'s Recorded Step-by-Step AI Video Walkthrough</h3>
-		<p style="color:#cbd5e1;font-size:14px;line-height:1.6;margin:0 0 12px 0;">Watch Wayne Stevenson demonstrate on screen how to generate the AI videos, run the prompts, and launch the complete workflow:</p>
-		<p style="margin:0 0 18px 0;"><a href="' . esc_url( $tier_info['walkthrough_video_url'] ) . '" style="display:inline-block;background:#38bdf8;color:#04070d;font-weight:800;padding:10px 20px;border-radius:9999px;text-decoration:none;">▶ WATCH RECORDED WALKTHROUGH VIDEO</a></p>
-		<h3 style="color:#d4af37;font-size:16px;margin:20px 0 8px 0;">📦 Step 2: Instant Automated Download Pack</h3>
-		<ul style="color:#cbd5e1;font-size:14px;line-height:1.6;padding-left:18px;">' . $downloads_html . '</ul>
-		<h3 style="color:#ffffff;font-size:15px;margin:20px 0 8px 0;">🤝 Step 3: Direct Follow-Up from Wayne Stevenson</h3>
-		<p style="color:#94a3b8;font-size:13px;line-height:1.6;">Wayne Stevenson and our autonomous onboarding system have been notified at <a href="mailto:keystonerecomposition@gmail.com" style="color:#38bdf8;">keystonerecomposition@gmail.com</a>. Reply directly to this email anytime if you have questions or want custom tuning.</p>
-	</div>';
+		$buyer_subject = sprintf( '[Keystone AI Protocols] Instant Access Unlocked: %s (UID: %s)', $tier_info['name'], $user_uid );
+		$buyer_body    = '
+		<div style="background:#04070d;color:#f8fafc;font-family:Arial,sans-serif;padding:32px;border-radius:16px;border:1px solid #38bdf8;max-width:640px;margin:0 auto;">
+			<div style="color:#d4af37;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">KEYSTONE AI PROTOCOLS // AUTOMATED FULFILLMENT VAULT</div>
+			<h2 style="color:#ffffff;margin:0 0 12px 0;font-size:22px;">Welcome, ' . esc_html( $buyer_name ) . ' — Your AI Video Walkthrough &amp; Download Vault Are Ready</h2>
+			<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Thank you for ordering <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>. Your unique Vault UID has been verified and locked to your account:</p>
+			<div style="background:#0b111e;border:1px solid #d4af37;border-radius:10px;padding:14px 18px;margin:16px 0;">
+				<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR VERIFIED VAULT UID</div>
+				<div style="font-size:18px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
+				<div style="font-size:11px;color:#f6d365;margin-top:4px;">Order ID: ' . esc_html( $order_id ) . '</div>
+			</div>
+			<h3 style="color:#38bdf8;font-size:16px;margin:20px 0 8px 0;">🎬 Step 1: Watch Wayne\'s Recorded Step-by-Step AI Video Walkthrough</h3>
+			<p style="margin:0 0 18px 0;"><a href="' . esc_url( $tier_info['walkthrough_video_url'] ) . '" style="display:inline-block;background:#38bdf8;color:#04070d;font-weight:800;padding:10px 20px;border-radius:9999px;text-decoration:none;">▶ WATCH RECORDED WALKTHROUGH VIDEO</a></p>
+			<h3 style="color:#d4af37;font-size:16px;margin:20px 0 8px 0;">📦 Step 2: Instant Automated Download Pack</h3>
+			<ul style="color:#cbd5e1;font-size:14px;line-height:1.6;padding-left:18px;">' . $downloads_html . '</ul>
+		</div>';
+	} else {
+		$buyer_subject = sprintf( '[Keystone AI Protocols] Launch Rate Locked In: %s (UID: %s)', $tier_info['name'], $user_uid );
+		$buyer_body    = '
+		<div style="background:#04070d;color:#f8fafc;font-family:Arial,sans-serif;padding:32px;border-radius:16px;border:1px solid #38bdf8;max-width:640px;margin:0 auto;">
+			<div style="color:#d4af37;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">KEYSTONE AI PROTOCOLS // PRIORITY LAUNCH RESERVATION</div>
+			<h2 style="color:#ffffff;margin:0 0 12px 0;font-size:22px;">Launch Rate Locked In, ' . esc_html( $buyer_name ) . '!</h2>
+			<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Your priority reservation for <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong> is saved and locked in with no payment required today.</p>
+			<div style="background:#0b111e;border:1px solid #d4af37;border-radius:10px;padding:14px 18px;margin:16px 0;">
+				<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR PRIORITY RESERVATION UID</div>
+				<div style="font-size:18px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
+				<div style="font-size:11px;color:#f6d365;margin-top:4px;">Reservation ID: ' . esc_html( $order_id ) . ' • Locked Price: $' . esc_html( $formatted_price ) . ' USD</div>
+			</div>
+			<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">As soon as Wayne Stevenson\'s recorded walkthrough video and Visa checkout go live next week, your direct payment &amp; instant download link will be emailed directly to your inbox.</p>
+		</div>';
+	}
 
 	@wp_mail( $buyer_email, $buyer_subject, $buyer_body, $headers );
 
-	// 2. Send Instant Notification Email to Wayne (keystonerecomposition@gmail.com) so Antigravity & Wayne can follow up
-	$admin_subject = sprintf( '[Keystone AI Protocols Order] %s ($%s USD) — %s [%s]', $tier_info['name'], $formatted_price, $buyer_name, $user_uid );
+	$admin_subject = sprintf( '[Keystone AI Protocols %s] %s ($%s USD) — %s [%s]', $live_mode ? 'Order' : 'Launch Reservation', $tier_info['name'], $formatted_price, $buyer_name, $user_uid );
 	$admin_body    = sprintf(
-		"New Automated AI Protocols Order Fulfilled!\n\nOrder ID: %s\nVerified User Vault UID: %s\nTier: %s\nPrice: $%s USD\nBuyer Name: %s\nBuyer Email: %s\nPromo Code: %s\nNotes: %s\nTimestamp: %s\n\nWalkthrough Video Sent: %s\nStatus: Fulfilled & Ready for Personal AI-Assisted Follow-Up.",
+		"Keystone AI Protocols Lead / Reservation Saved!\n\nReservation ID: %s\nPriority UID: %s\nStatus: %s\nTier: %s\nLocked Price: $%s USD\nBuyer Name: %s\nBuyer Email: %s\nPromo Code: %s\nNotes: %s\nTimestamp: %s",
 		$order_id,
 		$user_uid,
+		$order_record['status'],
 		$tier_info['name'],
 		$formatted_price,
 		$buyer_name,
 		$buyer_email,
 		$promo_code ?: 'NONE',
 		$notes ?: 'None',
-		gmdate( 'Y-m-d H:i:s \U\T\C' ),
-		$tier_info['walkthrough_video_url']
+		gmdate( 'Y-m-d H:i:s \U\T\C' )
 	);
 
 	@wp_mail( 'keystonerecomposition@gmail.com', $admin_subject, $admin_body );
 
+	$response_msg = $live_mode
+		? 'UID Verified & Order Fulfilled! Your recorded walkthrough video and download pack are unlocked below, and a copy has been emailed to ' . $buyer_email . '.'
+		: sprintf(
+			'✔ Launch Rate Locked In ($%s USD)! Your priority reservation is saved (UID: %s). As soon as Wayne Stevenson\'s recorded walkthrough video and Visa checkout go live next week, your direct payment & instant download link will be emailed to your inbox.',
+			$formatted_price,
+			$user_uid
+		);
+
 	return new WP_REST_Response( array(
 		'success'               => true,
+		'live_mode'             => $live_mode,
+		'status'                => $order_record['status'],
 		'order_id'              => $order_id,
 		'user_uid'              => $user_uid,
 		'tier'                  => $tier,
@@ -350,7 +386,23 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 		'walkthrough_video_id'  => $tier_info['walkthrough_video_id'],
 		'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
 		'walkthrough_title'     => $tier_info['walkthrough_title'],
-		'unlocked_downloads'    => $tier_info['unlocked_downloads'],
-		'message'               => 'UID Verified & Order Fulfilled! Your recorded walkthrough video and download pack are unlocked below, and a copy has been emailed to ' . $buyer_email . '.',
+		'unlocked_downloads'    => $live_mode ? $tier_info['unlocked_downloads'] : array(),
+		'message'               => $response_msg,
 	), 200 );
 }
+
+if ( ! function_exists( 'keystone_v10_handle_protocol_order' ) ) {
+	function keystone_v10_handle_protocol_order( WP_REST_Request $request ): WP_REST_Response {
+		return keystone_handle_protocol_order_submission( $request );
+	}
+}
+
+if ( ! function_exists( 'keystone_v10_handle_verify_vault_uid' ) ) {
+	function keystone_v10_handle_verify_vault_uid( WP_REST_Request $request ): WP_REST_Response {
+		$uid    = (string) ( $request->get_param( 'uid' ) ?? '' );
+		$result = keystone_verify_user_vault_uid_internal( $uid );
+		return new WP_REST_Response( $result, 200 );
+	}
+}
+
+
