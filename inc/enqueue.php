@@ -1019,47 +1019,37 @@ function astra_child_keystone_header_overrides() {
     }
     @media (max-width: 768px) {
       .site-nav-header .nav-container {
-        padding: 0 10px !important;
-        gap: 6px !important;
+        padding: 0 12px !important;
+        gap: 8px !important;
       }
       .site-nav-header .brand-edge-logo {
-        gap: 6px !important;
+        gap: 8px !important;
       }
       .site-nav-header .kp-badge-mark {
-        width: 26px !important;
-        height: 26px !important;
-        min-width: 26px !important;
-        min-height: 26px !important;
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
       }
       .site-nav-header .kp-badge-img {
-        width: 18px !important;
-        height: 18px !important;
+        width: 20px !important;
+        height: 20px !important;
       }
       .site-nav-header .brand-title-wrap .title-main {
-        font-size: 0.65rem !important;
-        letter-spacing: 0.02em !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.03em !important;
       }
       .site-nav-header .brand-title-wrap .title-sub {
         display: none !important;
       }
-      .site-nav-header .nav-right-actions {
-        gap: 5px !important;
-      }
       .header-protocols-cta-pill {
-        padding: 4px 8px !important;
-        font-size: 0.58rem !important;
-        letter-spacing: 0.03em !important;
+        display: none !important;
       }
       #kpMobileNavToggle,
       .site-nav-header .mobile-hamburger {
-        padding: 4px 9px !important;
-        font-size: 0.62rem !important;
-        gap: 4px !important;
-      }
-    }
-    @media (max-width: 380px) {
-      .header-protocols-cta-pill {
-        display: none !important;
+        padding: 6px 12px !important;
+        font-size: 0.68rem !important;
+        gap: 5px !important;
       }
     }
 
