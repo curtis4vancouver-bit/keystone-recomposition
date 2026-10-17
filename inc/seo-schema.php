@@ -648,6 +648,14 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
  * 7.7 Sitemap Sanitization: Exclude Empty Category & Tag Sitemaps from Rank Math & WP Core
  * Prevents GSC "Sitemap could not be read / empty sitemap" errors on category-sitemap.xml.
  */
+add_filter( 'rank_math/sitemap/enable_caching', '__return_false' );
+
+add_filter( 'rank_math/sitemap/index', function( string $xml ): string {
+    $pattern = '/<sitemap>\s*<loc>[^<]*(?:category-sitemap\.xml|post_tag-sitemap\.xml|local-sitemap\.xml|locations-sitemap\.xml|locations\.kml)<\/loc>.*?<\/sitemap>\s*/is';
+    $cleaned = preg_replace( $pattern, '', $xml );
+    return is_string( $cleaned ) ? $cleaned : $xml;
+}, 11 );
+
 add_filter( 'rank_math/sitemap/exclude_taxonomies', function( $taxonomies ) {
     if ( ! is_array( $taxonomies ) ) {
         $taxonomies = array();
@@ -676,8 +684,9 @@ add_action( 'init', function() {
     $req = isset( $_SERVER['REQUEST_URI'] ) ? strtolower( (string) $_SERVER['REQUEST_URI'] ) : '';
     if ( false !== strpos( $req, 'category-sitemap' ) || false !== strpos( $req, 'post_tag-sitemap' ) ) {
         status_header( 410 );
+        nocache_headers();
         header( 'Content-Type: text/plain; charset=utf-8' );
-        header( 'X-Robots-Tag: noindex, follow' );
+        header( 'X-Robots-Tag: noindex, nofollow' );
         echo '410 Gone — Taxonomy sitemaps are intentionally retired in favor of page-sitemap.xml and post-sitemap.xml.';
         exit;
     }
