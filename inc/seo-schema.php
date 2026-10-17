@@ -1338,9 +1338,9 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
 }
 add_filter( 'rank_math/sitemap/enable_caching', '__return_false' );
 
-// Exclude thin taxonomies ('post_tag' and 'post_format') from Rank Math XML sitemaps to prevent index bloat
+// Exclude thin taxonomies ('category', 'post_tag' and 'post_format') from Rank Math XML sitemaps to prevent index bloat
 add_filter( 'rank_math/sitemap/exclude_taxonomy', function( bool $exclude, string $taxonomy ): bool {
-    if ( in_array( $taxonomy, array( 'post_tag', 'post_format' ), true ) ) {
+    if ( in_array( $taxonomy, array( 'category', 'post_tag', 'post_format' ), true ) ) {
         return true;
     }
     return $exclude;
