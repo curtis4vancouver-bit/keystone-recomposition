@@ -494,12 +494,95 @@ add_action( 'wp_head', 'keystone_recomposition_child_music_schema' );
 
 /**
  * 7.6 Inject Wayne Stevenson Multi-Domain Entity Mesh into Rank Math JSON-LD Graph
- * Seamlessly integrates Person schema into Rank Math's @graph and links all authored content.
+ * Seamlessly integrates Person schema into Rank Math's @graph, links all authored content,
+ * and recursively scrubs legacy fields (curtis4vancouver@gmail.com, @KeystoneProtocols,
+ * lowercase squamish, robots.txt-blocked logo URLs, and duplicate raw "Wayne" author nodes).
  */
-add_filter( 'rank_math/json_ld', 'keystone_inject_wayne_stevenson_rank_math_entity_mesh', 90, 2 );
+function keystone_sanitize_rank_math_json_ld_node( $node, array $person_node, string $clean_logo_url ) {
+    if ( ! is_array( $node ) ) {
+        if ( is_string( $node ) ) {
+            if ( 'curtis4vancouver@gmail.com' === strtolower( trim( $node ) ) ) {
+                return 'keystonerecomposition@gmail.com';
+            }
+            $node = str_ireplace(
+                array(
+                    'https://www.youtube.com/@KeystoneProtocols',
+                    'https://www.youtube.com/@keystoneprotocols',
+                    'https://youtube.com/@KeystoneProtocols',
+                    'https://youtube.com/@keystoneprotocols',
+                    'https://www.youtube.com/@keystonepossibilities',
+                    'https://youtube.com/@keystonepossibilities',
+                    'curtis4vancouver@gmail.com',
+                ),
+                array(
+                    'https://www.youtube.com/@KeystoneAIProtocols',
+                    'https://www.youtube.com/@KeystoneAIProtocols',
+                    'https://www.youtube.com/@KeystoneAIProtocols',
+                    'https://www.youtube.com/@KeystoneAIProtocols',
+                    'https://www.youtube.com/@KeystonePossibilitiesLtd',
+                    'https://www.youtube.com/@KeystonePossibilitiesLtd',
+                    'keystonerecomposition@gmail.com',
+                ),
+                $node
+            );
+            if ( false !== stripos( $node, 'Keystone_Recomposition_LTD_invert' ) || false !== stripos( $node, '/wp-content/uploads/logo.png' ) ) {
+                return $clean_logo_url;
+            }
+        }
+        return $node;
+    }
+
+    // Check if this associative array is a Person node that should be upgraded to full Wayne Stevenson schema
+    if ( isset( $node['@type'] ) ) {
+        $types = (array) $node['@type'];
+        if ( in_array( 'Person', $types, true ) ) {
+            $name = isset( $node['name'] ) ? trim( (string) $node['name'] ) : '';
+            if ( 'Wayne' === $name || 'Wayne Stevenson' === $name || 'Wayne Stevens' === $name || empty( $name ) ) {
+                $node = array_merge( $node, $person_node );
+            }
+        }
+        if ( in_array( 'PostalAddress', $types, true ) ) {
+            if ( isset( $node['streetAddress'] ) && 'squamish' === strtolower( trim( (string) $node['streetAddress'] ) ) ) {
+                $node['streetAddress'] = 'Sea-to-Sky Corridor';
+            }
+            if ( isset( $node['addressLocality'] ) && 'squamish' === strtolower( trim( (string) $node['addressLocality'] ) ) ) {
+                $node['addressLocality'] = 'Squamish';
+            }
+        }
+        if ( in_array( 'ImageObject', $types, true ) ) {
+            foreach ( array( 'url', 'contentUrl', '@id' ) as $img_key ) {
+                if ( isset( $node[ $img_key ] ) && is_string( $node[ $img_key ] ) ) {
+                    if ( false !== stripos( $node[ $img_key ], 'Keystone_Recomposition_LTD_invert' ) || false !== stripos( $node[ $img_key ], '/wp-content/uploads/logo.png' ) ) {
+                        $node[ $img_key ] = $clean_logo_url;
+                    }
+                }
+            }
+        }
+    }
+
+    foreach ( $node as $k => $v ) {
+        if ( 'email' === $k && is_string( $v ) && false !== stripos( $v, 'curtis4vancouver' ) ) {
+            $node[ $k ] = 'keystonerecomposition@gmail.com';
+        } elseif ( 'streetAddress' === $k && is_string( $v ) && 'squamish' === strtolower( trim( $v ) ) ) {
+            $node[ $k ] = 'Sea-to-Sky Corridor';
+        } elseif ( 'addressLocality' === $k && is_string( $v ) && 'squamish' === strtolower( trim( $v ) ) ) {
+            $node[ $k ] = 'Squamish';
+        } else {
+            $node[ $k ] = keystone_sanitize_rank_math_json_ld_node( $v, $person_node, $clean_logo_url );
+        }
+    }
+
+    return $node;
+}
+
+add_filter( 'rank_math/json_ld', 'keystone_inject_wayne_stevenson_rank_math_entity_mesh', 99999, 2 );
 function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $jsonld ): array {
-    $person_node = keystone_get_wayne_stevenson_person_schema();
-    $person_id   = 'https://keystonerecomposition.com/#person';
+    $person_node    = keystone_get_wayne_stevenson_person_schema();
+    $person_id      = 'https://keystonerecomposition.com/#person';
+    $clean_logo_url = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
+
+    // Recursively scrub legacy email, YouTube handles, lowercase squamish, blocked logo URL, and stub Person nodes
+    $data = keystone_sanitize_rank_math_json_ld_node( $data, $person_node, $clean_logo_url );
 
     // 1. If Rank Math uses @graph array, enrich existing Person or inject new node
     if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
@@ -546,6 +629,9 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
 
     // 2. Also inject into named Person entity and publisher node
     $data['Person'] = $person_node;
+    if ( isset( $data['ProfilePage'] ) && is_array( $data['ProfilePage'] ) ) {
+        $data['ProfilePage']['mainEntity'] = array( '@id' => $person_id );
+    }
     if ( isset( $data['publisher'] ) && is_array( $data['publisher'] ) && isset( $data['publisher']['@type'] ) && 'Person' === $data['publisher']['@type'] ) {
         $data['publisher'] = array_merge( $data['publisher'], $person_node );
     }
@@ -557,6 +643,45 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
 
     return $data;
 }
+
+/**
+ * 7.7 Sitemap Sanitization: Exclude Empty Category & Tag Sitemaps from Rank Math & WP Core
+ * Prevents GSC "Sitemap could not be read / empty sitemap" errors on category-sitemap.xml.
+ */
+add_filter( 'rank_math/sitemap/exclude_taxonomies', function( $taxonomies ) {
+    if ( ! is_array( $taxonomies ) ) {
+        $taxonomies = array();
+    }
+    $taxonomies[] = 'category';
+    $taxonomies[] = 'post_tag';
+    $taxonomies[] = 'post_format';
+    return array_unique( $taxonomies );
+}, 999 );
+
+add_filter( 'rank_math/sitemap/taxonomies', function( $taxonomies ) {
+    if ( is_array( $taxonomies ) ) {
+        unset( $taxonomies['category'], $taxonomies['post_tag'], $taxonomies['post_format'] );
+    }
+    return $taxonomies;
+}, 999 );
+
+add_filter( 'wp_sitemaps_taxonomies', function( $taxonomies ) {
+    if ( is_array( $taxonomies ) ) {
+        unset( $taxonomies['category'], $taxonomies['post_tag'], $taxonomies['post_format'] );
+    }
+    return $taxonomies;
+}, 999 );
+
+add_action( 'init', function() {
+    $req = isset( $_SERVER['REQUEST_URI'] ) ? strtolower( (string) $_SERVER['REQUEST_URI'] ) : '';
+    if ( false !== strpos( $req, 'category-sitemap' ) || false !== strpos( $req, 'post_tag-sitemap' ) ) {
+        status_header( 410 );
+        header( 'Content-Type: text/plain; charset=utf-8' );
+        header( 'X-Robots-Tag: noindex, follow' );
+        echo '410 Gone — Taxonomy sitemaps are intentionally retired in favor of page-sitemap.xml and post-sitemap.xml.';
+        exit;
+    }
+}, 1 );
 
 /**
  * 7.8 Keystone Centralized Post Video Metadata Helper
@@ -1004,13 +1129,23 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
 // Uses a robust approach that handles both top-level VideoObjects and @graph nested VideoObjects
 add_action( 'wp_head', function() {
     ob_start( function( $output ) {
-        // Strategy: find all JSON-LD script tags, decode, check for broken VideoObject, clean or remove
+        $person_node    = function_exists( 'keystone_get_wayne_stevenson_person_schema' ) ? keystone_get_wayne_stevenson_person_schema() : array();
+        $clean_logo_url = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
+
+        // Strategy: find all JSON-LD script tags, decode, check for broken VideoObject and sanitize legacy fields
         $output = preg_replace_callback(
             '~(<script\s+type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)~is',
-            function( $matches ) {
+            function( $matches ) use ( $person_node, $clean_logo_url ) {
                 $json = json_decode( $matches[2], true );
                 if ( ! is_array( $json ) ) {
                     return $matches[0]; // Can't parse, leave alone
+                }
+
+                $before_serialized = wp_json_encode( $json );
+
+                // 0. Recursively sanitize legacy email, YouTube handles, lowercase squamish, blocked logo, and stub Person nodes
+                if ( function_exists( 'keystone_sanitize_rank_math_json_ld_node' ) && ! empty( $person_node ) ) {
+                    $json = keystone_sanitize_rank_math_json_ld_node( $json, $person_node, $clean_logo_url );
                 }
 
                 // 1. Single Top-Level VideoObject check
@@ -1030,22 +1165,22 @@ add_action( 'wp_head', function() {
                 // 2. Nested @graph VideoObject check
                 if ( isset( $json['@graph'] ) && is_array( $json['@graph'] ) ) {
                     $filtered_graph = array();
-                    $graph_modified = false;
                     foreach ( $json['@graph'] as $node ) {
                         if ( isset( $node['@type'] ) && ( $node['@type'] === 'VideoObject' || in_array( 'VideoObject', (array) $node['@type'], true ) ) ) {
                             $embed = $node['embedUrl'] ?? '';
                             $content = $node['contentUrl'] ?? '';
                             if ( strpos( (string) $embed, 'maxresdefau' ) !== false || strpos( (string) $content, 'maxresdefau' ) !== false || ! isset( $node['publisher'] ) ) {
-                                $graph_modified = true;
                                 continue; // Strip corrupt / duplicate node
                             }
                         }
                         $filtered_graph[] = $node;
                     }
-                    if ( $graph_modified ) {
-                        $json['@graph'] = $filtered_graph;
-                        return $matches[1] . "\n" . wp_json_encode( $json, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE ) . "\n" . $matches[3];
-                    }
+                    $json['@graph'] = $filtered_graph;
+                }
+
+                $after_serialized = wp_json_encode( $json );
+                if ( $after_serialized !== $before_serialized ) {
+                    return $matches[1] . "\n" . wp_json_encode( $json, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE ) . "\n" . $matches[3];
                 }
 
                 return $matches[0];
@@ -1387,15 +1522,11 @@ add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );
  */
 add_action( 'wp_head', 'keystone_inject_ai_protocols_software_schema', 15 );
 function keystone_inject_ai_protocols_software_schema() {
-    if ( ! is_page() ) {
-        return;
-    }
-
     global $post;
-    $slug = isset( $post->post_name ) ? $post->post_name : '';
-    $template = get_page_template_slug( $post->ID );
+    $slug     = ( $post && isset( $post->post_name ) ) ? $post->post_name : '';
+    $template = ( $post && isset( $post->ID ) ) ? (string) get_page_template_slug( $post->ID ) : '';
 
-    if ( 'ai-protocols' === $slug || false !== strpos( $template, 'ai-protocols' ) ) {
+    if ( is_front_page() || is_home() || ( is_page() && ( 'ai-protocols' === $slug || false !== strpos( $template, 'ai-protocols' ) ) ) ) {
         $ai_schema = array(
             '@context' => 'https://schema.org',
             '@graph' => array(

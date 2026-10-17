@@ -5962,10 +5962,10 @@ body.page-template-template-ai-protocols #content > .ast-container {
 
 .cyber-hero-title {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.2rem, 4.8vw, 3.8rem);
+  font-size: clamp(2.05rem, 3.1vw, 2.85rem);
   font-weight: 800;
   color: #ffffff;
-  line-height: 1.2;
+  line-height: 1.16;
   letter-spacing: -0.02em;
   margin-bottom: 22px;
 }

@@ -396,7 +396,7 @@ function keystone_generate_sovereign_page_seo_content( string $slug, string $tit
     $content .= "<!-- /wp:paragraph -->\n\n";
 
     $content .= "<!-- wp:paragraph -->\n";
-    $content .= "<p>Our video production engine coordinates Google Flow Box 2 generative video prompts with automated DaVinci Resolve Studio 2-track master timeline assembly. Audio cues and visual scenes are dynamically aligned, rendering broadcast-grade 4K content that feeds our primary YouTube channels: <a href=\"" . esc_url( $youtube_url ) . "\" target=\"_blank\" rel=\"noopener\">Keystone Recomposition</a> and <a href=\"https://www.youtube.com/@keystoneprotocols\" target=\"_blank\" rel=\"noopener\">Keystone AI Protocols</a>.</p>\n";
+    $content .= "<p>Our video production engine coordinates Google Flow Box 2 generative video prompts with automated DaVinci Resolve Studio 2-track master timeline assembly. Audio cues and visual scenes are dynamically aligned, rendering broadcast-grade 4K content that feeds our primary YouTube channels: <a href=\"" . esc_url( $youtube_url ) . "\" target=\"_blank\" rel=\"noopener\">Keystone Recomposition</a> and <a href=\"https://www.youtube.com/@KeystoneAIProtocols\" target=\"_blank\" rel=\"noopener\">Keystone AI Protocols</a>.</p>\n";
     $content .= "<!-- /wp:paragraph -->\n\n";
 
     $content .= "<!-- wp:heading {\"level\":3} -->\n";
@@ -465,7 +465,7 @@ function keystone_generate_sovereign_page_seo_content( string $slug, string $tit
     $content .= "<!-- /wp:heading -->\n\n";
 
     $content .= "<!-- wp:paragraph -->\n";
-    $content .= "<p>For qualified executives, investors, and developers seeking direct access to Wayne Stevenson's proprietary systems, we offer bespoke 1-on-1 architecture sessions through the <a href=\"" . esc_url( home_url( '/contact/#inquiry-form' ) ) . "\">$800 Executive Workstation Masterclass</a>. These private screen-to-screen consultations provide full turn-key deployment of our multi-agent FastMCP swarms, local Tauri workstation configurations, and Chrome DevTools Protocol automation engines. To initiate a private discussion, visit our <a href=\"" . esc_url( home_url( '/contact/' ) ) . "\">Contact Gateway</a> or email Wayne directly at <a href=\"mailto:curtis4vancouver@gmail.com\">curtis4vancouver@gmail.com</a>.</p>\n";
+    $content .= "<p>For qualified executives, investors, and developers seeking direct access to Wayne Stevenson's proprietary systems, we offer bespoke 1-on-1 architecture sessions through the <a href=\"" . esc_url( home_url( '/contact/#inquiry-form' ) ) . "\">$800 Executive Workstation Masterclass</a>. These private screen-to-screen consultations provide full turn-key deployment of our multi-agent FastMCP swarms, local Tauri workstation configurations, and Chrome DevTools Protocol automation engines. To initiate a private discussion, visit our <a href=\"" . esc_url( home_url( '/contact/' ) ) . "\">Contact Gateway</a> or email Wayne directly at <a href=\"mailto:keystonerecomposition@gmail.com\">keystonerecomposition@gmail.com</a>.</p>\n";
     $content .= "<!-- /wp:paragraph -->\n";
 
     return $content;

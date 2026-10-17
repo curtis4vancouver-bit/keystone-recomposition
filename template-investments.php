@@ -390,8 +390,8 @@ $theme_uri = get_stylesheet_directory_uri();
                         <!-- Direct Email Only Box (Strictly NO Phone Number) -->
                         <div class="direct-email-gateway-box">
                             <span class="gateway-email-label">DIRECT EXECUTIVE CONTACT (EMAIL ONLY):</span>
-                            <a href="mailto:curtis4vancouver@gmail.com" class="gateway-email-address">
-                                curtis4vancouver@gmail.com
+                            <a href="mailto:keystonerecomposition@gmail.com" class="gateway-email-address">
+                                keystonerecomposition@gmail.com
                             </a>
                             <p class="gateway-email-notice">
                                 To protect focus and project execution, phone inquiries are not accepted. Qualified private investors and prospective partners are invited to email Wayne Stevenson directly for prompt, confidential review.
@@ -402,7 +402,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-primary-gold">
                                 Schedule Consultation via Contact Page &rarr;
                             </a>
-                            <a href="mailto:curtis4vancouver@gmail.com" class="btn-secondary-glass">
+                            <a href="mailto:keystonerecomposition@gmail.com" class="btn-secondary-glass">
                                 Email Wayne Stevenson Directly &rarr;
                             </a>
                         </div>

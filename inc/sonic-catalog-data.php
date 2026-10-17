@@ -1604,7 +1604,7 @@ function keystone_get_all_albums(): array {
                 ),
                 array(
                     'pos'      => 5,
-                    'title'    => 'he Legacy We Build',
+                    'title'    => 'The Legacy We Build',
                     'isrc'     => 'QT62V2591838',
                     'duration' => 'PT4M15S',
                 ),

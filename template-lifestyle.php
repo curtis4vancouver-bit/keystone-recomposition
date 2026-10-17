@@ -367,8 +367,8 @@ $theme_uri = get_stylesheet_directory_uri();
                         <!-- Direct Email Only Box (Strictly ZERO Phone Numbers) -->
                         <div class="direct-email-gateway-box">
                             <span class="gateway-email-label">DIRECT EXECUTIVE CONTACT (EMAIL ONLY):</span>
-                            <a href="mailto:curtis4vancouver@gmail.com" class="gateway-email-address">
-                                curtis4vancouver@gmail.com
+                            <a href="mailto:keystonerecomposition@gmail.com" class="gateway-email-address">
+                                keystonerecomposition@gmail.com
                             </a>
                             <p class="gateway-email-notice">
                                 To protect deep cognitive focus and active project build execution, phone inquiries are strictly not accepted. Direct all confidential inquiries to Wayne's executive inbox.
@@ -379,7 +379,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-primary-gold">
                                 Schedule Consultation via Contact Page &rarr;
                             </a>
-                            <a href="mailto:curtis4vancouver@gmail.com" class="btn-secondary-glass">
+                            <a href="mailto:keystonerecomposition@gmail.com" class="btn-secondary-glass">
                                 Email Wayne Directly &rarr;
                             </a>
                         </div>

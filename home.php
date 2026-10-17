@@ -648,7 +648,7 @@ async function loadPublishedIntel() {
                     postExcerpt = cEx.substring(0, 125) + '...';
                 }
 
-                if (postThumb) {
+                if (postThumb && postThumb.indexOf('anabolic-window') === -1) {
                     var imgEl = card.querySelector('img');
                     if (imgEl) imgEl.src = postThumb;
                 }

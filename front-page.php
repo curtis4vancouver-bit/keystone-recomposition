@@ -37,7 +37,7 @@ $theme_uri = get_stylesheet_directory_uri();
                         <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
                              alt="Wayne Stevenson — Founder &amp; Architect" 
                              class="founder-chip-avatar" 
-                             data-recalc-dims="0" loading="eager" decoding="async" />
+                             data-recalc-dims="0" loading="eager" decoding="sync" />
                         <div class="founder-chip-meta">
                             <span class="chip-name">Wayne Stevenson</span>
                             <span class="chip-role">AI Systems Architect • Music Producer • BC Builder #52603</span>
@@ -422,8 +422,23 @@ $theme_uri = get_stylesheet_directory_uri();
                     while ( $intel_query->have_posts() ) {
                         $intel_query->the_post();
                         $cats      = get_the_category();
-                        $cat_name  = ! empty( $cats ) ? strtoupper( $cats[0]->name ) : 'TECHNICAL INTEL';
+                        $cat_name  = ! empty( $cats ) ? strtoupper( trim( $cats[0]->name, ': ' ) ) : 'ARCHITECTURAL INTEL';
+                        if ( in_array( $cat_name, array( 'THE JOURNEY', 'THE-JOURNEY', 'UNCATEGORIZED' ), true ) ) {
+                            $cat_name = 'ARCHITECTURAL INTEL';
+                        }
                         $thumb_url = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'large' ) : '';
+                        if ( ! empty( $thumb_url ) && false !== stripos( $thumb_url, 'anabolic-window' ) ) {
+                            $thumb_url = $theme_uri . '/assets/images/sonic_universe_banner.png';
+                        }
+                        if ( empty( $thumb_url ) && function_exists( 'keystone_get_post_video_metadata' ) ) {
+                            $vmeta = keystone_get_post_video_metadata( get_the_ID() );
+                            if ( ! empty( $vmeta['youtube_id'] ) ) {
+                                $thumb_url = 'https://img.youtube.com/vi/' . $vmeta['youtube_id'] . '/hqdefault.jpg';
+                            }
+                        }
+                        if ( empty( $thumb_url ) ) {
+                            $thumb_url = $theme_uri . '/assets/images/ai_protocols_banner.png';
+                        }
                         $raw_exp   = get_the_excerpt();
                         if ( empty( $raw_exp ) ) {
                             $raw_exp = wp_trim_words( wp_strip_all_tags( get_the_content() ), 24, '...' );
@@ -471,7 +486,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                         <div class="intel-video-preview-slot">
                                             <a href="<?php echo esc_url( $item['url'] ); ?>" class="video-preview-link" tabindex="-1" aria-label="<?php echo esc_attr( $item['title'] ); ?>">
                                                 <?php if ( ! empty( $item['image'] ) ) : ?>
-                                                    <img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" class="video-preview-thumb" loading="lazy" decoding="async" />
+                                                    <img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" class="video-preview-thumb" loading="eager" decoding="sync" />
                                                 <?php else : ?>
                                                     <div class="video-preview-fallback">
                                                         <div class="fallback-grid-lines"></div>
@@ -735,7 +750,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="founder-photo-frame">
                                 <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
                                      alt="Wayne Stevenson — Founder &amp; Architect" 
-                                     class="founder-portrait-img" loading="lazy" decoding="async" />
+                                     class="founder-portrait-img" loading="eager" decoding="sync" />
                                 <div class="founder-photo-glow"></div>
                             </div>
                             <div class="founder-credentials-stack">

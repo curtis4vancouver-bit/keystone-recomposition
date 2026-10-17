@@ -34,7 +34,7 @@ if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_
             $feedback_status = 'error';
             $feedback_message = 'Please provide your name, valid email address, and a project overview.';
         } else {
-            $to = 'curtis4vancouver@gmail.com';
+            $to = 'keystonerecomposition@gmail.com';
             $subject = '[Keystone Recomposition Inquiry] ' . ( $category ? $category : 'Executive Consultation' ) . ' - ' . $name;
             $body = "Name: {$name}\n";
             $body .= "Email: {$email}\n";
@@ -63,7 +63,7 @@ if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_
             }
 
             $feedback_status = 'success';
-            $feedback_message = 'Thank you, ' . esc_html( $name ) . '. Your inquiry has been routed directly to Wayne Stevenson (curtis4vancouver@gmail.com). You will receive a response within 24–48 hours.';
+            $feedback_message = 'Thank you, ' . esc_html( $name ) . '. Your inquiry has been routed directly to Wayne Stevenson (keystonerecomposition@gmail.com). You will receive a response within 24–48 hours.';
         }
     }
 }
@@ -246,7 +246,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     Transmit Executive Inquiry &rarr;
                                 </button>
                                 <p class="form-encryption-notice">
-                                    🔒 TLS Encrypted &bull; Fiduciary Non-Disclosure Standard &bull; Direct Personal Routing to curtis4vancouver@gmail.com
+                                    🔒 TLS Encrypted &bull; Fiduciary Non-Disclosure Standard &bull; Direct Personal Routing to keystonerecomposition@gmail.com
                                 </p>
                             </div>
                         </form>
@@ -268,7 +268,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <span class="detail-box-badge">DIRECT ROUTING</span>
                             <h4>Direct Email Communication</h4>
                             <p>
-                                <a href="mailto:curtis4vancouver@gmail.com" class="cyan-link">curtis4vancouver@gmail.com</a><br>
+                                <a href="mailto:keystonerecomposition@gmail.com" class="cyan-link">keystonerecomposition@gmail.com</a><br>
                                 <a href="mailto:contact@keystonerecomposition.com" class="cyan-link">contact@keystonerecomposition.com</a>
                             </p>
                         </div>

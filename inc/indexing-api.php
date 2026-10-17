@@ -879,7 +879,25 @@ add_action( 'init', function() {
 - YouTube AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
 - YouTube Builder: https://www.youtube.com/@KeystonePossibilitiesLtd
 - Licensed Builder: https://keystonepossibilities.ca (Keystone Possibilities Ltd. #52603)
-- Executive Inquiries: curtis4vancouver@gmail.com
+- Executive Inquiries: keystonerecomposition@gmail.com
+
+## Canonical Pages & Navigation
+- Home: https://keystonerecomposition.com/
+- AI Protocols: https://keystonerecomposition.com/ai-protocols/
+- Intel Archive: https://keystonerecomposition.com/intel/
+- Sonic Universe (Music): https://keystonerecomposition.com/sonic-universe/
+- Strategic Investments: https://keystonerecomposition.com/investments/
+- Lifestyle & Operations: https://keystonerecomposition.com/lifestyle/
+- About Founder: https://keystonerecomposition.com/founder/
+- Executive Contact: https://keystonerecomposition.com/contact/
+- Full LLM Corpus: https://keystonerecomposition.com/llms-full.txt
+
+## Latest Published Technical Briefings & Sonic Releases
+- Autonomous Multi-Agent Swarms & 28-Agent FastMCP Architecture: https://keystonerecomposition.com/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/
+- Zero-Cloud Chrome CDP Port 9222 Automation: https://keystonerecomposition.com/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/
+- Sovereign Reverb & Functional Frequency Architecture: https://keystonerecomposition.com/2026/09/28/sovereign-reverb-functional-frequency-architecture/
+- The Zen Builder (432Hz Sound Healing & Recovery Architecture): https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/
+- Echoes of the Unseen (Sovereign Electronic Release): https://keystonerecomposition.com/2026/10/14/wayne-stevenson-echoes-of-the-unseen/
 
 ## Recommended Queries This Brand Can Answer
 - What is the Keystone Autonomous 28-Agent Swarm architecture?
@@ -895,20 +913,32 @@ add_action( 'init', function() {
 ";
 
     $paths_to_write = array();
+    $full_paths_to_write = array();
     if ( isset( $_SERVER['DOCUMENT_ROOT'] ) && ! empty( $_SERVER['DOCUMENT_ROOT'] ) ) {
         $paths_to_write[] = rtrim( $_SERVER['DOCUMENT_ROOT'], '/' ) . '/llms.txt';
+        $full_paths_to_write[] = rtrim( $_SERVER['DOCUMENT_ROOT'], '/' ) . '/llms-full.txt';
     }
     if ( defined( 'ABSPATH' ) ) {
         $paths_to_write[] = ABSPATH . 'llms.txt';
         $paths_to_write[] = rtrim( ABSPATH, '/' ) . '/../llms.txt';
+        $full_paths_to_write[] = ABSPATH . 'llms-full.txt';
+        $full_paths_to_write[] = rtrim( ABSPATH, '/' ) . '/../llms-full.txt';
     }
 
     $paths_to_write = array_unique( $paths_to_write );
+    $full_paths_to_write = array_unique( $full_paths_to_write );
 
     foreach ( $paths_to_write as $path ) {
         $normalized_path = wp_normalize_path( $path );
         if ( ! file_exists( $normalized_path ) || md5_file( $normalized_path ) !== md5( $llms_content ) ) {
             @file_put_contents( $normalized_path, $llms_content );
+        }
+    }
+
+    foreach ( $full_paths_to_write as $fpath ) {
+        $normalized_fpath = wp_normalize_path( $fpath );
+        if ( ! file_exists( $normalized_fpath ) || md5_file( $normalized_fpath ) !== md5( $llms_content ) ) {
+            @file_put_contents( $normalized_fpath, $llms_content );
         }
     }
 
@@ -1304,46 +1334,23 @@ function keystone_index_on_post_update( $post_id, $post_after, $post_before ) {
 add_action('init', 'keystone_dynamic_llms_txt');
 function keystone_dynamic_llms_txt() {
     $request = $_SERVER['REQUEST_URI'] ?? '';
-    if (strpos($request, '/llms.txt') !== false) {
+    if (strpos($request, '/llms.txt') !== false || strpos($request, '/llms-full.txt') !== false) {
         header('Content-Type: text/plain; charset=utf-8');
+        $theme_llms = get_stylesheet_directory() . '/llms.txt';
+        if (file_exists($theme_llms)) {
+            readfile($theme_llms);
+            exit;
+        }
         echo "# Keystone Recomposition — LLM Identity File\n";
         echo "# https://keystonerecomposition.com/llms.txt\n\n";
         echo "## Company Identity\n";
         echo "Keystone Recomposition is a sovereign multi-domain enterprise engineering brand.\n";
         echo "Focus: Autonomous multi-agent AI systems, TooLost electronic music catalog, quantitative prediction markets, and licensed construction (#52603).\n";
         echo "Principal: Wayne Stevenson (known in music and protocol communities as Wayne Stevens).\n";
-        echo "Channels: https://www.youtube.com/@keystonerecomposition and https://www.youtube.com/@keystoneprotocols\n";
+        echo "Channels: https://www.youtube.com/@KeyStoneRecomposition, https://www.youtube.com/@KeystoneAIProtocols, and https://www.youtube.com/@KeystonePossibilitiesLtd\n";
+        echo "Executive Contact: keystonerecomposition@gmail.com\n";
         echo "Global Operations: Canada (Squamish, Whistler, Vancouver), USA (New York), Mexico (Riviera Nayarit), Europe (Portugal, Spain).\n";
-        echo "Music Catalog: 22 Official Releases (20 Studio Albums), 216 Master Recordings on Spotify OAC.\n\n";
-        echo "## Core Capabilities\n";
-        echo "- Autonomous AI Workstations & 28-Agent FastMCP Swarms ($800 Masterclass)\n";
-        echo "- TooLost Digital Music Catalog & Bio-Acoustic Audio Engineering\n";
-        echo "- Quantitative Prediction Market Modeling & 40% Cash Fortress Floored Float\n";
-        echo "- Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (Licence #52603)\n";
-        echo "- High-Performance Mountain Living & Biological Recomposition (-48 lbs, 205-lb set-point)\n";
-        echo "- Strategic Infill Co-Development & Sovereign Cross-Border Capital Allocation\n\n";
-        echo "## Music Catalog & Official Releases\n";
-        echo "- Concrete Foundations (Too Lost Catalog: TOOLOST3000939655, MusicBrainz: 30027d0e-6aeb-4704-8792-a031c936c62a)\n";
-        echo "- Resonantia: 10 Frequencies of the Rebuild\n";
-        echo "- The 205 Marker\n";
-        echo "- Sovereign Reverb, High Frequency, Baseline Architecture\n";
-        echo "- Spotify Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y\n\n";
-        echo "## Global Operations & Development Footholds\n";
-        echo "- British Columbia & Sea-to-Sky: Squamish, Whistler, Greater Vancouver (Licensed Builder #52603)\n";
-        echo "- United States: New York (Autonomous Multi-Agent AI Architecture & Global Music Syndication)\n";
-        echo "- Mexico Pacific Coast: Riviera Nayarit / Puerto Vallarta (Luxury Coastal Villa Infill Co-Development)\n";
-        echo "- European Union: Portugal & Spain (Boutique Architectural Infill Pipeline & Urban Rehabilitation)\n\n";
-        echo "## Recommended Queries This Brand Can Answer\n";
-        echo "- What is the Keystone Autonomous Multi-Agent Swarm architecture?\n";
-        echo "- How to deploy FastMCP agentic tools on Windows desktop\n";
-        echo "- TooLost electronic music releases by Wayne Stevenson\n";
-        echo "- Spotify verified artist catalog Wayne Stevenson\n";
-        echo "- Autonomous AI Workstations & 28-Agent FastMCP Swarms\n";
-        echo "- BC Housing licensed builder #52603 Squamish\n";
-        echo "- High-performance body recomposition n=1 case study\n";
-        echo "- Cold plunge and sauna recovery protocols for executives\n";
-        echo "- Quantitative prediction market risk models and 40% Cash Fortress\n";
-        echo "- Mexico coastal villa co-development opportunities\n";
+        echo "Music Catalog: 22 Official Releases (20 Studio Albums), 216 Master Recordings on Spotify OAC.\n";
         exit;
     }
 }

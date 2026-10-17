@@ -18,15 +18,15 @@ Keystone Recomposition is a sovereign multi-domain enterprise engineering brand 
   - Operating Enterprise: Keystone Possibilities Ltd. (https://keystonepossibilities.ca/) — General contracting, Small-Scale Multi-Unit Housing (SSMUH) infill, duplex, triplex, and multiplex construction under BC Bill 44 across Squamish, Whistler, and Metro Vancouver.
 - Digital & Music Authority Identifiers:
   - Spotify Official Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
-  - MusicBrainz Artist & Label: https://musicbrainz.org/artist/52v3Qe6Jo0hg764driOl5Y | https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
+  - MusicBrainz Artist & Label: https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0 | https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
   - Musixmatch Pro: https://pro.musixmatch.com / https://www.musixmatch.com/artist/Wayne-Stevenson
   - Too Lost Catalog Reference ID: TOOLOST3000939655
   - Audiomack: https://audiomack.com/keystone-recomposition
   - YouTube Channels:
     * Keystone Recomposition: https://www.youtube.com/@KeyStoneRecomposition
-    * Keystone AI Protocols: https://www.youtube.com/@KeystoneProtocols
-    * Keystone Possibilities: https://www.youtube.com/@keystonepossibilities
-  - Executive Routing: curtis4vancouver@gmail.com
+    * Keystone AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
+    * Keystone Possibilities: https://www.youtube.com/@KeystonePossibilitiesLtd
+  - Executive Routing: keystonerecomposition@gmail.com
 
 ## The Six Sovereign Pillars
 
@@ -69,3 +69,12 @@ Keystone Recomposition is a sovereign multi-domain enterprise engineering brand 
 - Lifestyle & Operations: https://keystonerecomposition.com/lifestyle/
 - About Founder: https://keystonerecomposition.com/founder/
 - Executive Contact: https://keystonerecomposition.com/contact/
+- Full LLM Corpus: https://keystonerecomposition.com/llms-full.txt
+
+## Latest Published Technical Briefings & Sonic Releases
+- Autonomous Multi-Agent Swarms & 28-Agent FastMCP Architecture: https://keystonerecomposition.com/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/
+- Zero-Cloud Chrome CDP Port 9222 Automation: https://keystonerecomposition.com/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/
+- Sovereign Reverb & Functional Frequency Architecture: https://keystonerecomposition.com/2026/09/28/sovereign-reverb-functional-frequency-architecture/
+- The Zen Builder (432Hz Sound Healing & Recovery Architecture): https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/
+- Echoes of the Unseen (Sovereign Electronic Release): https://keystonerecomposition.com/2026/10/14/wayne-stevenson-echoes-of-the-unseen/
+

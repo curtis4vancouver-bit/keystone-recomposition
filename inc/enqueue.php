@@ -129,8 +129,8 @@ function astra_child_keystone_header_overrides() {
     }
     .cyber-hero-wrap .cyber-hero-title {
       margin-bottom: 16px !important;
-      font-size: clamp(2.2rem, 4.2vw, 3.6rem) !important;
-      line-height: 1.12 !important;
+      font-size: clamp(2.05rem, 3.1vw, 2.85rem) !important;
+      line-height: 1.16 !important;
     }
     .cyber-hero-wrap .cyber-hero-subtitle {
       margin-bottom: 22px !important;
