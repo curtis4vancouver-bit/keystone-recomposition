@@ -83,36 +83,43 @@ $total_tracks = $stats['total_tracks'];
                         <!-- Left Column (55%): Master 16:9 4K Video + Streaming Audio Deck -->
                         <div style="flex: 1 1 55%; min-width: 320px; display: flex; flex-direction: column;">
                             
-                            <!-- 16:9 Master Video Frame (The Zen Builder) -->
+                            <!-- 16:9 Master Video Frame (Iron & Grace) -->
                             <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid rgba(245, 158, 11, 0.3); box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);">
-                                <iframe src="https://www.youtube.com/embed/1I1eLu9v_hM" 
-                                        title="Wayne Stevenson - The Zen Builder (Official 4K Music Video)" 
+                                <iframe src="https://www.youtube.com/embed/iXzVHwT0B-A?rel=0" 
+                                        title="Wayne Stevenson - Iron &amp; Grace (Official 4K Music Video)" 
                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                         allowfullscreen></iframe>
                             </div>
 
-                            <!-- Audio Streaming Deck & Quick Links -->
+                            <!-- 9:16 Companion Short & Audio Streaming Deck -->
                             <div style="margin-top: 16px; background: rgba(8, 12, 20, 0.85); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; gap: 16px;">
                                 
-                                <!-- Track Thumbnail Box -->
-                                <div style="position: relative; width: 120px; height: 68px; min-width: 120px; border-radius: 8px; overflow: hidden; background: #000; border: 1.5px solid rgba(245, 158, 11, 0.4); flex-shrink: 0;">
-                                    <img src="https://img.youtube.com/vi/1I1eLu9v_hM/maxresdefault.jpg" alt="The Zen Builder" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://img.youtube.com/vi/1I1eLu9v_hM/hqdefault.jpg'" />
+                                <!-- 9:16 Vertical Short Player Box -->
+                                <div style="position: relative; width: 120px; height: 213px; min-width: 120px; border-radius: 10px; overflow: hidden; background: #000; border: 1.5px solid rgba(245, 158, 11, 0.45); box-shadow: 0 4px 16px rgba(0,0,0,0.6); flex-shrink: 0;">
+                                    <iframe src="https://www.youtube.com/embed/7inr5l4ECDQ?rel=0" 
+                                            title="Iron &amp; Grace Somatic Deep House Companion Short" 
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            allowfullscreen></iframe>
                                 </div>
 
                                 <!-- Track Details & Audio Meta -->
                                 <div style="flex: 1; min-width: 0;">
                                     <div style="display: inline-block; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); color: #fbbf24; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; margin-bottom: 6px;">
-                                        🎵 24-BIT / 48kHz LOSSLESS MASTER
+                                        🎵 24-BIT / 48kHz LOSSLESS MASTER &bull; ISRC: QZVEM2653487
                                     </div>
                                     <h4 style="margin: 0 0 4px 0; color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.96rem; font-weight: 800; line-height: 1.3;">
-                                        Architectural Focus &bull; Track 1
+                                        Foundation &amp; Flux &bull; Track 9 (Iron &amp; Grace)
                                     </h4>
                                     <p style="margin: 0 0 10px 0; color: #94a3b8; font-size: 0.78rem; line-height: 1.45;">
-                                        432Hz Cellular Healing &bull; Too Lost Digital Distribution
+                                        120 BPM F Minor Somatic Deep House &amp; Solo Cello &bull; Too Lost Digital Distribution
                                     </p>
                                     <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
+                                        <a href="https://youtube.com/shorts/7inr5l4ECDQ" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
+                                            <span>▶</span> Watch 9:16 Short
+                                        </a>
+                                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.45); color: #fbbf24 !important; -webkit-text-fill-color: #fbbf24 !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important;">
                                             <span>🎧</span> Stream on Spotify
                                         </a>
                                         <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8 !important; -webkit-text-fill-color: #38bdf8 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important;">
@@ -138,12 +145,12 @@ $total_tracks = $stats['total_tracks'];
 
                             <!-- Main Title -->
                             <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.95rem); font-weight: 900; line-height: 1.25; color: #ffffff; margin: 0 0 1rem 0; letter-spacing: -0.01em;">
-                                The Zen Builder: 432Hz Sound Healing, Deep Focus &amp; Cellular Recovery Architecture
+                                Iron &amp; Grace: Official 4K Somatic Deep House &amp; Cello Masterpiece (2026)
                             </h2>
 
                             <!-- Excerpt Write-up -->
                             <p style="font-size: clamp(0.90rem, 1.05vw, 1.0rem); color: #cbd5e1; line-height: 1.7; margin: 0 0 1.5rem 0;">
-                                The flagship 432Hz restorative music release from <em>Architectural Focus</em>. Produced in Squamish, BC by Wayne Stevenson &mdash; combining deep analog basslines, 432Hz cellular recovery frequencies, and a structured narrative arc rendered in 4K resolution using Google Flow and DaVinci Resolve Studio.
+                                The flagship 120 BPM F Minor somatic deep house and solo cello release from <em>Foundation &amp; Flux</em> (Track 9, ISRC: QZVEM2653487). Produced in Squamish, BC by Wayne Stevenson &mdash; uniting warm analog sub-bass foundations with expressive legato cello phrasing and a 25-clip 4K Panavision 2.39:1 visual film rendered in Google Flow and DaVinci Resolve Studio.
                             </p>
 
                             <!-- Wayne Stevenson Author Signature & Credentials -->
@@ -157,10 +164,10 @@ $total_tracks = $stats['total_tracks'];
 
                             <!-- Action Buttons Box -->
                             <div style="display: flex; flex-direction: column; gap: 10px; max-width: 360px; width: 100%;">
-                                <a href="https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
+                                <a href="https://keystonerecomposition.com/2026/10/17/iron-grace-keystone-recomposition/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
                                     <span>READ SONIC ESSAY &amp; CREDITS &rarr;</span>
                                 </a>
-                                <a href="https://youtu.be/1I1eLu9v_hM" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(245, 158, 11, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
+                                <a href="https://youtu.be/iXzVHwT0B-A" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(245, 158, 11, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
                                     <span>WATCH IN 4K ON YOUTUBE &rarr;</span>
                                 </a>
                             </div>

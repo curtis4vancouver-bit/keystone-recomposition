@@ -143,40 +143,48 @@ get_header(); ?>
             <section id="recomp-featured-sound-container" class="recomp-featured-hero-wrap" style="background: linear-gradient(145deg, #0b111e 0%, #060a12 100%); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 24px; padding: 32px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); position: relative; z-index: 2; isolation: isolate; margin-bottom: 3.5rem;">
                 <div class="recomp-featured-layout" style="display: flex; gap: 36px; align-items: stretch; width: 100%;">
                     
-                    <!-- Left Column (55%): Master 16:9 4K Video + Streaming Audio Deck -->
+                    <!-- Left Column (55%): Master 16:9 4K Video + Companion Short & Streaming Audio Deck -->
                     <div class="recomp-featured-left-col" style="flex: 1 1 55%; width: 55%; min-width: 0; display: flex; flex-direction: column;">
                         
-                        <!-- 16:9 Master Video Frame (The Zen Builder) -->
+                        <!-- 16:9 Master Video Frame (Iron & Grace) -->
                         <div class="recomp-featured-video-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid rgba(245, 158, 11, 0.3); box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);">
                             <iframe id="recomp-featured-sound-video" 
-                                    src="https://www.youtube.com/embed/1I1eLu9v_hM" 
-                                    title="Wayne Stevenson - The Zen Builder (Official 4K Music Video)" 
+                                    src="https://www.youtube.com/embed/iXzVHwT0B-A?rel=0" 
+                                    title="Wayne Stevenson - Iron &amp; Grace (Official 4K Music Video)" 
                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                     allowfullscreen></iframe>
                         </div>
 
-                        <!-- Audio Streaming Deck & Quick Links -->
+                        <!-- 9:16 Companion Short & Audio Streaming Deck -->
                         <div class="recomp-featured-short-deck" style="margin-top: 16px; background: rgba(8, 12, 20, 0.85); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; gap: 16px;">
                             
-                            <!-- Track Thumbnail Box -->
-                            <div style="position: relative; width: 120px; height: 68px; min-width: 120px; border-radius: 8px; overflow: hidden; background: #000; border: 1.5px solid rgba(245, 158, 11, 0.4); flex-shrink: 0;">
-                                <img src="https://img.youtube.com/vi/1I1eLu9v_hM/maxresdefault.jpg" alt="The Zen Builder" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://img.youtube.com/vi/1I1eLu9v_hM/hqdefault.jpg'" />
+                            <!-- 9:16 Vertical Short Player Box -->
+                            <div class="recomp-featured-short-player-box" style="position: relative; width: 120px; height: 213px; min-width: 120px; border-radius: 10px; overflow: hidden; background: #000; border: 1.5px solid rgba(245, 158, 11, 0.45); box-shadow: 0 4px 16px rgba(0,0,0,0.6); flex-shrink: 0;">
+                                <iframe id="recomp-featured-sound-short-video" 
+                                        src="https://www.youtube.com/embed/7inr5l4ECDQ?rel=0" 
+                                        title="Iron &amp; Grace Somatic Deep House Companion Short" 
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen></iframe>
                             </div>
 
                             <!-- Track Details & Audio Meta -->
                             <div style="flex: 1; min-width: 0;">
                                 <div style="display: inline-block; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); color: #fbbf24; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; margin-bottom: 6px;">
-                                    🎵 24-BIT / 48kHz LOSSLESS MASTER
+                                    🎵 24-BIT / 48kHz LOSSLESS MASTER &bull; ISRC: QZVEM2653487
                                 </div>
-                                <h4 style="margin: 0 0 4px 0; color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.96rem; font-weight: 800; line-height: 1.3;">
-                                    Architectural Focus &bull; Track 1
+                                <h4 id="recomp-featured-sound-sub" style="margin: 0 0 4px 0; color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.96rem; font-weight: 800; line-height: 1.3;">
+                                    Foundation &amp; Flux &bull; Track 9 (Iron &amp; Grace)
                                 </h4>
                                 <p style="margin: 0 0 10px 0; color: #94a3b8; font-size: 0.78rem; line-height: 1.45;">
-                                    432Hz Cellular Healing &bull; Too Lost Digital Distribution
+                                    120 BPM F Minor Somatic Deep House &amp; Solo Cello &bull; Too Lost Digital Distribution
                                 </p>
                                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                                    <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
+                                    <a id="recomp-featured-sound-short-link" href="https://youtube.com/shorts/7inr5l4ECDQ" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important; box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);">
+                                        <span>▶</span> Watch 9:16 Short
+                                    </a>
+                                    <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.45); color: #fbbf24 !important; -webkit-text-fill-color: #fbbf24 !important; font-size: 0.78rem; font-weight: 800; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important;">
                                         <span>🎧</span> Stream on Spotify
                                     </a>
                                     <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8 !important; -webkit-text-fill-color: #38bdf8 !important; font-size: 0.78rem; font-weight: 700; padding: 8px 14px; border-radius: 9999px; text-decoration: none !important;">
@@ -194,20 +202,20 @@ get_header(); ?>
                         <!-- Metadata Pill Row -->
                         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.85rem; flex-wrap: wrap;">
                             <span class="recomp-cat-badge" style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.4); color: #fbbf24; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
-                                432Hz_SOUND_HEALING // SONIC UNIVERSE
+                                SOMATIC_DEEP_HOUSE // SONIC UNIVERSE
                             </span>
-                            <span style="color: #94a3b8; font-size: 0.80rem; font-weight: 600;">October 2026</span>
+                            <span id="recomp-featured-sound-date" style="color: #94a3b8; font-size: 0.80rem; font-weight: 600;">October 2026</span>
                             <span style="color: #f6d365; font-size: 0.78rem; font-weight: 700;">4:10 DURATION</span>
                         </div>
 
                         <!-- Main Title -->
-                        <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.95rem); font-weight: 900; line-height: 1.25; color: #ffffff; margin: 0 0 1rem 0; letter-spacing: -0.01em;">
-                            The Zen Builder: 432Hz Sound Healing, Deep Focus &amp; Cellular Recovery Architecture
+                        <h2 id="recomp-featured-sound-title" style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 2.2vw, 1.95rem); font-weight: 900; line-height: 1.25; color: #ffffff; margin: 0 0 1rem 0; letter-spacing: -0.01em;">
+                            Iron &amp; Grace: Official 4K Somatic Deep House &amp; Cello Masterpiece (2026)
                         </h2>
 
                         <!-- Excerpt Write-up -->
-                        <p style="font-size: clamp(0.90rem, 1.05vw, 1.0rem); color: #cbd5e1; line-height: 1.7; margin: 0 0 1.5rem 0;">
-                            The flagship 432Hz restorative music release from <em>Architectural Focus</em>. Produced in Squamish, BC by Wayne Stevenson &mdash; combining deep analog basslines, 432Hz cellular recovery frequencies, and a structured narrative arc rendered in 4K resolution using Google Flow and DaVinci Resolve Studio.
+                        <p id="recomp-featured-sound-excerpt" style="font-size: clamp(0.90rem, 1.05vw, 1.0rem); color: #cbd5e1; line-height: 1.7; margin: 0 0 1.5rem 0;">
+                            The flagship 120 BPM F Minor somatic deep house and solo cello release from <em>Foundation &amp; Flux</em> (Track 9, ISRC: QZVEM2653487). Produced in Squamish, BC by Wayne Stevenson &mdash; uniting warm analog sub-bass foundations with expressive legato cello phrasing and a 25-clip 4K Panavision 2.39:1 visual film rendered in Google Flow and DaVinci Resolve Studio.
                         </p>
 
                         <!-- Wayne Stevenson Author Signature & Credentials -->
@@ -221,10 +229,10 @@ get_header(); ?>
 
                         <!-- Action Buttons Box -->
                         <div class="recomp-featured-buttons-box" style="display: flex; flex-direction: column; gap: 10px; max-width: 360px; width: 100%;">
-                            <a href="https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
+                            <a id="recomp-featured-sound-link" href="https://keystonerecomposition.com/2026/10/17/iron-grace-keystone-recomposition/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
                                 <span>READ SONIC ESSAY &amp; CREDITS &rarr;</span>
                             </a>
-                            <a href="https://youtu.be/1I1eLu9v_hM" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(245, 158, 11, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
+                            <a id="recomp-featured-sound-yt-btn" href="https://youtu.be/iXzVHwT0B-A" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(245, 158, 11, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
                                 <span>WATCH IN 4K ON YOUTUBE &rarr;</span>
                             </a>
                         </div>
@@ -562,8 +570,11 @@ async function loadPublishedIntel() {
         var posts = await response.json();
         if (!Array.isArray(posts) || posts.length === 0) return;
 
-        // 1. Ingest Featured Post into Hero Section
-        var featuredPost = posts[0];
+        // 1A. Ingest Featured AI Post into Top Blue Hero Section (AI Protocols / Cat 1538)
+        var featuredPost = posts.find(function(p) {
+            var cats = Array.isArray(p.categories) ? p.categories : [];
+            return cats.indexOf(1538) !== -1 || cats.indexOf(1442) === -1;
+        }) || posts[0];
         var featTitle = document.getElementById('recomp-featured-title');
         var featExcerpt = document.getElementById('recomp-featured-excerpt');
         var featLink = document.getElementById('recomp-featured-link');
@@ -589,12 +600,12 @@ async function loadPublishedIntel() {
             featDate.innerText = new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
         }
 
-        // Parse YouTube embeds if present in content (filtering out retired/unavailable staging IDs)
+        // Parse YouTube embeds if present in AI post content (filtering out retired/unavailable staging IDs)
         var contentHtml = (featuredPost.content && featuredPost.content.rendered) ? featuredPost.content.rendered : '';
         var longIframe = document.getElementById('recomp-featured-long-video');
         var shortIframe = document.getElementById('recomp-featured-short-video');
         var shortLink = document.getElementById('recomp-featured-short-link');
-        var shortDeck = document.querySelector('.recomp-featured-short-deck');
+        var shortDeck = document.querySelector('#recomp-featured-intel-container .recomp-featured-short-deck');
         var retiredIds = ['3rYyZ0c8_1o', 'XUiFyItyyzo'];
 
         var ytRegex = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
@@ -620,6 +631,66 @@ async function loadPublishedIntel() {
             if (shortDeck) shortDeck.style.display = 'flex';
             if (shortIframe) shortIframe.src = 'https://www.youtube.com/embed/' + foundShort + '?rel=0';
             if (shortLink) shortLink.href = 'https://youtube.com/shorts/' + foundShort;
+        }
+
+        // 1B. Ingest Featured Sonic Universe / Music Post into Bottom Gold Hero Section (Cat 1442)
+        var featuredSoundPost = posts.find(function(p) {
+            var cats = Array.isArray(p.categories) ? p.categories : [];
+            return cats.indexOf(1442) !== -1;
+        });
+        if (featuredSoundPost) {
+            var soundTitle = document.getElementById('recomp-featured-sound-title');
+            var soundExcerpt = document.getElementById('recomp-featured-sound-excerpt');
+            var soundLink = document.getElementById('recomp-featured-sound-link');
+            var soundDate = document.getElementById('recomp-featured-sound-date');
+            var soundVideo = document.getElementById('recomp-featured-sound-video');
+            var soundShortVideo = document.getElementById('recomp-featured-sound-short-video');
+            var soundShortLink = document.getElementById('recomp-featured-sound-short-link');
+            var soundYtBtn = document.getElementById('recomp-featured-sound-yt-btn');
+
+            if (soundTitle && featuredSoundPost.title && featuredSoundPost.title.rendered) {
+                soundTitle.innerHTML = featuredSoundPost.title.rendered;
+            }
+            if (soundExcerpt && featuredSoundPost.excerpt && featuredSoundPost.excerpt.rendered) {
+                var cleanSoundExcerpt = recompDecodeHtml(featuredSoundPost.excerpt.rendered)
+                    .replace(/\[.*?\]/g, '')
+                    .replace(/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i, '')
+                    .replace(/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i, '')
+                    .trim();
+                if (cleanSoundExcerpt.length > 20) {
+                    soundExcerpt.innerText = cleanSoundExcerpt.substring(0, 240) + '...';
+                }
+            }
+            if (soundLink && featuredSoundPost.link) {
+                soundLink.href = featuredSoundPost.link;
+            }
+            if (soundDate && featuredSoundPost.date) {
+                soundDate.innerText = new Date(featuredSoundPost.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            }
+
+            var soundHtml = (featuredSoundPost.content && featuredSoundPost.content.rendered) ? featuredSoundPost.content.rendered : '';
+            var soundYtRegex = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
+            var sMatch;
+            var sYtIds = [];
+            while ((sMatch = soundYtRegex.exec(soundHtml)) !== null) {
+                if (sMatch[1] && retiredIds.indexOf(sMatch[1]) === -1 && sYtIds.indexOf(sMatch[1]) === -1) {
+                    sYtIds.push(sMatch[1]);
+                }
+            }
+            var sFoundLong = sYtIds.length > 0 ? sYtIds[0] : null;
+            var sFoundShort = sYtIds.length > 1 ? sYtIds[1] : null;
+            var sExplicitShort = soundHtml.match(/shorts\/([a-zA-Z0-9_-]{11})/);
+            if (sExplicitShort && sExplicitShort[1] && retiredIds.indexOf(sExplicitShort[1]) === -1) {
+                sFoundShort = sExplicitShort[1];
+            }
+            if (sFoundLong) {
+                if (soundVideo) soundVideo.src = 'https://www.youtube.com/embed/' + sFoundLong + '?rel=0';
+                if (soundYtBtn) soundYtBtn.href = 'https://youtu.be/' + sFoundLong;
+            }
+            if (sFoundShort) {
+                if (soundShortVideo) soundShortVideo.src = 'https://www.youtube.com/embed/' + sFoundShort + '?rel=0';
+                if (soundShortLink) soundShortLink.href = 'https://youtube.com/shorts/' + sFoundShort;
+            }
         }
 
         // 2. Populate Grid Cards with actual published posts
