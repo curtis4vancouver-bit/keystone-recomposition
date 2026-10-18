@@ -229,7 +229,7 @@ get_header(); ?>
 
                         <!-- Action Buttons Box -->
                         <div class="recomp-featured-buttons-box" style="display: flex; flex-direction: column; gap: 10px; max-width: 360px; width: 100%;">
-                            <a id="recomp-featured-sound-link" href="https://keystonerecomposition.com/2026/10/17/iron-grace-keystone-recomposition/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
+                            <a id="recomp-featured-sound-link" href="https://keystonerecomposition.com/2026/10/17/iron-grace/" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35); box-sizing: border-box; transition: all 0.25s ease;">
                                 <span>READ SONIC ESSAY &amp; CREDITS &rarr;</span>
                             </a>
                             <a id="recomp-featured-sound-yt-btn" href="https://youtu.be/iXzVHwT0B-A" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 42px; min-height: 42px; background: rgba(15, 23, 42, 0.90); border: 1.5px solid rgba(245, 158, 11, 0.45); color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; padding: 0 20px; border-radius: 50px; text-decoration: none !important; box-sizing: border-box; transition: all 0.25s ease;">
@@ -620,7 +620,7 @@ async function loadPublishedIntel() {
         var foundLong = ytIds.length > 0 ? ytIds[0] : null;
         var foundShort = ytIds.length > 1 ? ytIds[1] : null;
         var explicitShort = contentHtml.match(/shorts\/([a-zA-Z0-9_-]{11})/);
-        if (explicitShort && explicitShort[1] && retiredIds.indexOf(explicitShort[1]) === -1) {
+        if (!foundShort && explicitShort && explicitShort[1] && retiredIds.indexOf(explicitShort[1]) === -1) {
             foundShort = explicitShort[1];
         }
 
