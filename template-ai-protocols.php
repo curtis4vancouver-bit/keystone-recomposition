@@ -130,6 +130,64 @@ $theme_uri = get_stylesheet_directory_uri();
 	padding: 1px 5px !important;
 	border-radius: 4px !important;
 }
+.kr-video-first-strip {
+	background: linear-gradient(145deg, #070e1c 0%, #04070d 100%);
+	border: 1.5px solid #d4af37;
+	border-radius: 18px;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 14px 36px rgba(0, 0, 0, 0.72);
+}
+.kr-video-first-strip.cyan-accent {
+	border-color: #38bdf8;
+}
+.kr-video-first-grid {
+	display: grid;
+	grid-template-columns: 1.15fr 1fr;
+	gap: 18px;
+	align-items: stretch;
+	margin-top: 12px;
+}
+@media (max-width: 920px) {
+	.kr-video-first-grid {
+		grid-template-columns: 1fr;
+	}
+}
+.kr-chapter-btn {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	width: 100%;
+	text-align: left;
+	background: rgba(4, 7, 13, 0.92);
+	border: 1px solid rgba(56, 189, 248, 0.35);
+	border-radius: 12px;
+	padding: 9px 12px;
+	color: #f8fafc;
+	font-family: 'Outfit', sans-serif;
+	font-size: 0.78rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.18s ease;
+}
+.kr-chapter-btn:hover {
+	border-color: #d4af37;
+	background: rgba(212, 175, 55, 0.12);
+	color: #ffffff;
+}
+.kr-chapter-time {
+	background: rgba(212, 175, 55, 0.18);
+	border: 1px solid #d4af37;
+	color: #f6d365;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.70rem;
+	font-weight: 900;
+	padding: 2px 8px;
+	border-radius: 9999px;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
 </style>
 
 <div id="primary" class="content-area primary keystone-cyber-protocols">
@@ -328,15 +386,99 @@ $theme_uri = get_stylesheet_directory_uri();
 					<!-- TAB 1: $30 ANTIGRAVITY BRAIN SETUP DIAGRAM + COPY-PASTE PROMPT + FORM     -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab1" class="kr-portal-tab-pane active">
+
+						<!-- STEP 1: VIDEO-FIRST WALKTHROUGH & TIMESTAMP CHAPTER STRIP (MODULE V01 — 4M 00S) -->
+						<div class="kr-video-first-strip">
+							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+								<div>
+									<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.16); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; padding: 4px 12px; border-radius: 9999px; margin-bottom: 6px;">
+										🎬 STEP 1: WATCH VIDEO WALKTHROUGH FIRST &bull; MODULE V01 (4M 00S RUNTIME)
+									</div>
+									<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.28rem; font-weight: 900; margin: 0;">
+										Module V01 Walkthrough: Building Your 4-Folder AI Brain on the $30/mo Antigravity Plan
+									</h3>
+								</div>
+								<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+									<button type="button" onclick="krDownloadStarterAgentsMd()" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 8px 16px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 900; cursor: pointer; box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);">
+										⬇ Download AGENTS.md Starter File
+									</button>
+									<button type="button" onclick="krOpenSpecModal('PDF-01')" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 8px 14px; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+										📄 Open Companion PDF-01
+									</button>
+								</div>
+							</div>
+
+							<div class="kr-video-first-grid">
+								<!-- Left Column: Embedded 16:9 YouTube Player (youtube-nocookie.com) -->
+								<div style="background: #02050a; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+									<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #04070d;">
+										<iframe id="krVideoPlayerV01"
+												src="https://www.youtube-nocookie.com/embed/JCgZ5SsN_bc?rel=0"
+												title="Module V01 — $30 Antigravity Brain Setup & 4-Folder Architecture Walkthrough (4m 00s)"
+												style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+												allowfullscreen loading="lazy"></iframe>
+									</div>
+									<div style="padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: rgba(8, 14, 26, 0.96); border-top: 1px solid rgba(56, 189, 248, 0.25);">
+										<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">▶ MODULE V01 // 4M 00S STEP-BY-STEP VIDEO</span>
+										<span style="color: #cbd5e1; font-size: 0.74rem;">Click any chapter on the right to jump to that timestamp &rarr;</span>
+									</div>
+								</div>
+
+								<!-- Right Column: Clickable Video Chapter Breakdown & Runtime Checklist + 1-Click .MD Starter File Download -->
+								<div style="background: rgba(8, 13, 24, 0.95); border: 1px solid rgba(212, 175, 55, 0.42); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+									<div>
+										<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px;">
+											<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 900;">⏱️ VIDEO CHAPTER BREAKDOWN &amp; RUNTIME CHECKLIST</span>
+											<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800;">TOTAL: 4M 00S</span>
+										</div>
+										<div style="display: flex; flex-direction: column; gap: 7px;">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 0)">
+												<span><strong>Ch 01:</strong> $30/mo Antigravity Plan &amp; Opening <code class="kr-code-pill">My_AI_Brain</code></span>
+												<span class="kr-chapter-time">▶ 00:00</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 65)">
+												<span><strong>Ch 02:</strong> Pasting Prompt #1 to Build All 4 Brain Folders</span>
+												<span class="kr-chapter-time">▶ 01:05</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 135)">
+												<span><strong>Ch 03:</strong> Dropping <code class="kr-code-pill">AGENTS.md</code> Inside <code class="kr-code-pill">01_Brain_Rules/</code></span>
+												<span class="kr-chapter-time">▶ 02:15</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 195)">
+												<span><strong>Ch 04:</strong> Verifying 2M-Token Persistent Brand Memory</span>
+												<span class="kr-chapter-time">▶ 03:15</span>
+											</button>
+										</div>
+									</div>
+
+									<!-- Tool A: 1-Click Starter AGENTS.md Download Box -->
+									<div style="background: rgba(4, 7, 13, 0.95); border: 1px solid #d4af37; border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+										<div>
+											<div style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 900;">TOOL A // READY-TO-DROP STARTER FILE</div>
+											<div style="color: #e2e8f0; font-size: 0.76rem; font-weight: 700;">Pre-configured for <code class="kr-code-pill">01_Brain_Rules/AGENTS.md</code></div>
+										</div>
+										<button type="button" class="kr-copy-btn" onclick="krDownloadStarterAgentsMd()">
+											⬇ Download AGENTS.md Starter File
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- STEP 2: VISUAL BRAIN SETUP DIAGRAM (PDF-01) + COPY-PASTE PROMPT #1 -->
 						<div style="background: #04070d; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 18px; padding: 20px; margin-bottom: 20px;">
 							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
 								<div>
-									<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULE V01 &bull; SPEC SHEET PDF-01 // VISUAL BRAIN ARCHITECTURE</span>
+									<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">STEP 2 &bull; MODULE V01 &bull; SPEC SHEET PDF-01 // VISUAL BRAIN ARCHITECTURE</span>
 									<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; margin: 4px 0 0 0;">
 										Visual Brain Setup Diagram: How Your $30/mo Antigravity Brain Works
 									</h3>
 								</div>
 								<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+									<button type="button" onclick="krDownloadStarterAgentsMd()" style="background: rgba(212, 175, 55, 0.16); border: 1px solid #d4af37; color: #f6d365; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 800; cursor: pointer;">
+										⬇ Download AGENTS.md Starter File
+									</button>
 									<button type="button" onclick="krOpenSpecModal('PDF-01')" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 800; cursor: pointer;">
 										👁️ View PDF-01 On Screen
 									</button>
@@ -390,10 +532,10 @@ $theme_uri = get_stylesheet_directory_uri();
 							</div>
 						</div>
 
-						<!-- INTERACTIVE BRAIN, YOUTUBE CHANNEL & WEBSITE SETUP INTAKE FORM -->
+						<!-- STEP 3: INTERACTIVE BRAIN, YOUTUBE CHANNEL & WEBSITE SETUP INTAKE FORM -->
 						<div style="background: linear-gradient(145deg, #0b1324 0%, #050911 100%); border: 1.5px solid #38bdf8; border-radius: 18px; padding: 22px;">
 							<div style="display: inline-block; background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 3px 10px; border-radius: 9999px; margin-bottom: 8px;">
-								⚡ INTERACTIVE CUSTOM PROMPT GENERATOR + EMAIL SYNC
+								⚡ STEP 3: INTERACTIVE CUSTOM PROMPT GENERATOR + EMAIL SYNC
 							</div>
 							<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.22rem; font-weight: 900; margin: 0 0 6px 0;">
 								Generate Your Custom Antigravity Brain, ~20-Word Google Flow &amp; Website Prompts
@@ -442,9 +584,22 @@ $theme_uri = get_stylesheet_directory_uri();
 								</div>
 							</form>
 
-							<!-- Custom Setup Output Container -->
+							<!-- Custom Setup Output Container (Includes Tool C: 1-Click Download All 4 Custom Setup Prompts .TXT) -->
 							<div id="krCustomSetupResultBox" style="display: none; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(212, 175, 55, 0.4);">
-								<div id="krCustomSetupStatusMsg" style="color: #f6d365; font-weight: 800; font-size: 0.86rem; margin-bottom: 12px;"></div>
+								<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; background: rgba(4, 7, 13, 0.92); border: 1.5px solid #d4af37; border-radius: 14px; padding: 12px 16px;">
+									<div>
+										<div style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900;">TOOL C // 1-CLICK PERSONALIZED CHEAT SHEET DOWNLOAD</div>
+										<div id="krCustomSetupStatusMsg" style="color: #f6d365; font-weight: 800; font-size: 0.86rem; margin-top: 2px;"></div>
+									</div>
+									<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+										<button type="button" class="kr-copy-btn" onclick="krDownloadCustomSetupTxt()" style="padding: 9px 16px; font-size: 0.78rem; box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);">
+											⬇ Download All 4 Custom Setup Prompts (.TXT)
+										</button>
+										<button type="button" onclick="krDownloadStarterAgentsMd()" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 8px 14px; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+											⬇ Download Custom AGENTS.md
+										</button>
+									</div>
+								</div>
 
 								<div class="kr-copy-prompt-box gold-border">
 									<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px;">
@@ -485,15 +640,95 @@ $theme_uri = get_stylesheet_directory_uri();
 					<!-- TAB 2: ~20-WORD GOOGLE FLOW VIDEO PROMPTS & MP4 EXPORT (PDF-02)           -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab2" class="kr-portal-tab-pane">
-						<div style="background: #04070d; border: 1px solid rgba(56, 189, 248, 0.45); border-radius: 18px; padding: 20px;">
+
+						<!-- STEP 1: VIDEO-FIRST WALKTHROUGH & TIMESTAMP CHAPTER STRIP (MODULE V02 — 5M 00S) -->
+						<div class="kr-video-first-strip cyan-accent">
+							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+								<div>
+									<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; padding: 4px 12px; border-radius: 9999px; margin-bottom: 6px;">
+										🎬 STEP 1: WATCH VIDEO WALKTHROUGH FIRST &bull; MODULE V02 (5M 00S RUNTIME)
+									</div>
+									<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.28rem; font-weight: 900; margin: 0;">
+										Module V02 Walkthrough: Writing ~20-Word (18–24 Word) Google Flow Prompts &amp; Exporting 1080p MP4s
+									</h3>
+								</div>
+								<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+									<button type="button" onclick="krDownloadStarterFlowMd()" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 8px 16px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 900; cursor: pointer;">
+										⬇ Download 02_Video_Prompts.md Starter
+									</button>
+									<button type="button" onclick="krOpenSpecModal('PDF-02')" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 8px 14px; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+										📄 Open Companion PDF-02
+									</button>
+								</div>
+							</div>
+
+							<div class="kr-video-first-grid">
+								<!-- Left Column: Embedded 16:9 YouTube Player (youtube-nocookie.com) -->
+								<div style="background: #02050a; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+									<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #04070d;">
+										<iframe id="krVideoPlayerV02"
+												src="https://www.youtube-nocookie.com/embed/k3fArbXUzQM?rel=0"
+												title="Module V02 — ~20-Word Google Flow Video Prompt Formula & 1080p MP4 Export Walkthrough (5m 00s)"
+												style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+												allowfullscreen loading="lazy"></iframe>
+									</div>
+									<div style="padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: rgba(8, 14, 26, 0.96); border-top: 1px solid rgba(56, 189, 248, 0.25);">
+										<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">▶ MODULE V02 // 5M 00S STEP-BY-STEP VIDEO</span>
+										<span style="color: #cbd5e1; font-size: 0.74rem;">Click any chapter on the right to jump to that timestamp &rarr;</span>
+									</div>
+								</div>
+
+								<!-- Right Column: Clickable Video Chapter Breakdown & Runtime Checklist + 1-Click .MD Starter File Download -->
+								<div style="background: rgba(8, 13, 24, 0.95); border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+									<div>
+										<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px;">
+											<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 900;">⏱️ VIDEO CHAPTER BREAKDOWN &amp; RUNTIME CHECKLIST</span>
+											<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800;">TOTAL: 5M 00S</span>
+										</div>
+										<div style="display: flex; flex-direction: column; gap: 7px;">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 0)">
+												<span><strong>Ch 01:</strong> Uploading 3 Reference Chips (Character, Outfit, Studio)</span>
+												<span class="kr-chapter-time">▶ 00:00</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 80)">
+												<span><strong>Ch 02:</strong> Why 18–24 Words (~20 Words) Prevents Audio Cutoffs</span>
+												<span class="kr-chapter-time">▶ 01:20</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 165)">
+												<span><strong>Ch 03:</strong> Generating 6 Sequential 10s Clips in Antigravity</span>
+												<span class="kr-chapter-time">▶ 02:45</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 240)">
+												<span><strong>Ch 04:</strong> Exporting 1080p MP4s &amp; Numbering Clips Cleanly</span>
+												<span class="kr-chapter-time">▶ 04:00</span>
+											</button>
+										</div>
+									</div>
+
+									<div style="background: rgba(4, 7, 13, 0.95); border: 1px solid #38bdf8; border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+										<div>
+											<div style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 900;">STARTER TEMPLATE // 02_VIDEO_PROMPTS</div>
+											<div style="color: #e2e8f0; font-size: 0.76rem; font-weight: 700;">Ready-to-drop <code class="kr-code-pill">02_Video_Prompts.md</code> template</div>
+										</div>
+										<button type="button" class="kr-copy-btn" onclick="krDownloadStarterFlowMd()">
+											⬇ Download .MD Starter File
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- STEP 2: PDF-02 SPEC SHEET & COPY-PASTE PROMPT #2 -->
+						<div style="background: #04070d; border: 1px solid rgba(56, 189, 248, 0.45); border-radius: 18px; padding: 20px; margin-bottom: 20px;">
 							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
 								<div>
-									<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULE V02 &bull; SPEC SHEET PDF-02 // ~20-WORD GOOGLE FLOW VIDEO FORMULA</span>
+									<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">STEP 2 &bull; MODULE V02 &bull; SPEC SHEET PDF-02 // ~20-WORD GOOGLE FLOW VIDEO FORMULA</span>
 									<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; margin: 4px 0 0 0;">
 										How to Generate ~20-Word Prompts in Antigravity, Paste into Google Flow &amp; Export MP4s
 									</h3>
 								</div>
-								<div style="display: flex; gap: 8px;">
+								<div style="display: flex; gap: 8px; flex-wrap: wrap;">
 									<button type="button" onclick="krOpenSpecModal('PDF-02')" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 800; cursor: pointer;">
 										👁️ View PDF-02 On Screen
 									</button>
@@ -520,16 +755,130 @@ Rules for every scene prompt:
 4. After generating the 6 prompts, remind me to attach my 3 reference images (Character, Outfit, Studio Background) in Google Flow and click Export MP4 (1080p).</pre>
 							</div>
 						</div>
+
+						<!-- STEP 3 (TOOL B): INTERACTIVE ~20-WORD (18-24 WORD) GOOGLE FLOW PACING CHECKER -->
+						<div style="background: linear-gradient(145deg, #0b1324 0%, #050911 100%); border: 1.5px solid #d4af37; border-radius: 18px; padding: 20px;">
+							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+								<div>
+									<div style="display: inline-block; background: rgba(212, 175, 55, 0.16); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; padding: 3px 10px; border-radius: 9999px; margin-bottom: 6px;">
+										🎯 TOOL B // INTERACTIVE ~20-WORD (18–24 WORD) GOOGLE FLOW PACING CHECKER
+									</div>
+									<h4 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 900; margin: 0;">
+										Test Your 10-Second Google Flow Prompt or Spoken Line Before Generating
+									</h4>
+								</div>
+								<div id="krFlowWordCountBadge" style="background: rgba(212, 175, 55, 0.18); border: 1.5px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 900; padding: 6px 14px; border-radius: 9999px;">
+									21 words — Perfect 18–24 Word Google Flow Sweet Spot
+								</div>
+							</div>
+							<p style="color: #cbd5e1; font-size: 0.82rem; margin: 0 0 10px 0; line-height: 1.5;">
+								Paste or type any 10-second scene prompt or spoken voiceover line below. Keep it inside the <strong>18–24 word sweet spot (~20 words)</strong> so your audio and lip-sync never rush or cut off at the end of a 10-second Google Flow clip.
+							</p>
+							<textarea id="krFlowWordCountInput" rows="3" style="width: 100%; background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 12px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; padding: 12px 14px; box-sizing: border-box; line-height: 1.5;" placeholder="Paste or type your 10-second Google Flow prompt or spoken line here...">Founder speaking warmly to camera with grounded two-handed builder gestures inside a dark acoustic oak studio on a 35mm cinema lens.</textarea>
+							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+								<span id="krFlowWordCountHint" style="color: #38bdf8; font-size: 0.76rem; font-weight: 700;">
+									✔ Ready for Google Flow Box 2: Attach your 3 Reference Chips (Character, Outfit, Studio) + Paste Prompt.
+								</span>
+								<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+									<button type="button" onclick="krLoadSampleFlowPrompt()" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 6px 12px; font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 800; cursor: pointer;">
+										🔄 Load 21-Word Sample
+									</button>
+									<button type="button" class="kr-copy-btn" onclick="krCopyFlowCheckedPrompt(this)">
+										📋 Copy Verified ~20-Word Prompt
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
 
 					<!-- ========================================================================= -->
 					<!-- TAB 3: COPY-PASTE WEBSITE BUILDER & YOUTUBE BRAND CHANNEL (PDF-03..05)    -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab3" class="kr-portal-tab-pane">
+
+						<!-- STEP 1: VIDEO-FIRST WALKTHROUGH & TIMESTAMP CHAPTER STRIP (MODULE V03 — 4M 30S) -->
+						<div class="kr-video-first-strip">
+							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+								<div>
+									<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.16); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; padding: 4px 12px; border-radius: 9999px; margin-bottom: 6px;">
+										🎬 STEP 1: WATCH VIDEO WALKTHROUGH FIRST &bull; MODULE V03 (4M 30S RUNTIME)
+									</div>
+									<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.28rem; font-weight: 900; margin: 0;">
+										Module V03 Walkthrough: Launching Your YouTube Brand Channel &amp; #04070d Dark-Luxury Website
+									</h3>
+								</div>
+								<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+									<button type="button" onclick="krDownloadStarterWebsiteMd()" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 8px 16px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 900; cursor: pointer;">
+										⬇ Download Website &amp; YouTube .MD Starter
+									</button>
+									<button type="button" onclick="krOpenSpecModal('PDF-04')" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 8px 14px; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+										📄 Open Companion PDF-04
+									</button>
+								</div>
+							</div>
+
+							<div class="kr-video-first-grid">
+								<!-- Left Column: Embedded 16:9 YouTube Player (youtube-nocookie.com) -->
+								<div style="background: #02050a; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+									<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #04070d;">
+										<iframe id="krVideoPlayerV03"
+												src="https://www.youtube-nocookie.com/embed/uMkZvTbqF2U?rel=0"
+												title="Module V03 — Copy-Paste Website Builder & YouTube Brand Channel Walkthrough (4m 30s)"
+												style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+												allowfullscreen loading="lazy"></iframe>
+									</div>
+									<div style="padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: rgba(8, 14, 26, 0.96); border-top: 1px solid rgba(56, 189, 248, 0.25);">
+										<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">▶ MODULE V03 // 4M 30S STEP-BY-STEP VIDEO</span>
+										<span style="color: #cbd5e1; font-size: 0.74rem;">Click any chapter on the right to jump to that timestamp &rarr;</span>
+									</div>
+								</div>
+
+								<!-- Right Column: Clickable Video Chapter Breakdown & Runtime Checklist + 1-Click .MD Starter File Download -->
+								<div style="background: rgba(8, 13, 24, 0.95); border: 1px solid rgba(212, 175, 55, 0.42); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+									<div>
+										<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px;">
+											<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 900;">⏱️ VIDEO CHAPTER BREAKDOWN &amp; RUNTIME CHECKLIST</span>
+											<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800;">TOTAL: 4M 30S</span>
+										</div>
+										<div style="display: flex; flex-direction: column; gap: 7px;">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 0)">
+												<span><strong>Ch 01:</strong> Creating Your Dedicated YouTube Brand Account</span>
+												<span class="kr-chapter-time">▶ 00:00</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 70)">
+												<span><strong>Ch 02:</strong> Upload Defaults &amp; 480-Character SEO Tag Stack (<code class="kr-code-pill">PDF-03</code>)</span>
+												<span class="kr-chapter-time">▶ 01:10</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 145)">
+												<span><strong>Ch 03:</strong> Pasting Dark-Luxury <code class="kr-code-pill">#04070d</code> Website Prompt (<code class="kr-code-pill">PDF-04</code>)</span>
+												<span class="kr-chapter-time">▶ 02:25</span>
+											</button>
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 215)">
+												<span><strong>Ch 04:</strong> JSON-LD Schema &amp; Search Console Indexing (<code class="kr-code-pill">PDF-05</code>)</span>
+												<span class="kr-chapter-time">▶ 03:35</span>
+											</button>
+										</div>
+									</div>
+
+									<div style="background: rgba(4, 7, 13, 0.95); border: 1px solid #d4af37; border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+										<div>
+											<div style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 900;">STARTER TEMPLATE // 03_WEBSITE_AND_YOUTUBE</div>
+											<div style="color: #e2e8f0; font-size: 0.76rem; font-weight: 700;">Ready-to-drop <code class="kr-code-pill">03_Website_Builder.md</code> file</div>
+										</div>
+										<button type="button" class="kr-copy-btn" onclick="krDownloadStarterWebsiteMd()">
+											⬇ Download .MD Starter File
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- STEP 2: PDF-03, PDF-04 & PDF-05 COPY-PASTE PROMPTS -->
 						<div style="background: #04070d; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 18px; padding: 20px;">
 							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
 								<div>
-									<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULE V03 &bull; SPEC SHEETS PDF-03, PDF-04 &amp; PDF-05 // YOUTUBE CHANNEL &amp; WEBSITE BUILDER</span>
+									<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">STEP 2 &bull; MODULE V03 &bull; SPEC SHEETS PDF-03, PDF-04 &amp; PDF-05 // YOUTUBE CHANNEL &amp; WEBSITE BUILDER</span>
 									<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; margin: 4px 0 0 0;">
 										Copy-Paste Prompts for Your YouTube Brand Channel &amp; Dark-Luxury Website
 									</h3>
@@ -1173,7 +1522,10 @@ function krOpenSpecModal(pdfId) {
 	if (spec.id === 'PDF-01') {
 		diagramHtml = `
 			<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:14px;padding:14px;margin-bottom:14px;">
-				<div style="color:#f6d365;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:900;margin-bottom:8px;">🗺️ VISUAL 4-FOLDER AI BRAIN SETUP FLOWCHART (PDF-01)</div>
+				<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+					<span style="color:#f6d365;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:900;">🗺️ VISUAL 4-FOLDER AI BRAIN SETUP FLOWCHART (PDF-01)</span>
+					<button type="button" class="kr-copy-btn" onclick="krDownloadStarterAgentsMd()">⬇ Download AGENTS.md Starter File</button>
+				</div>
 				<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;font-size:0.76rem;">
 					<div style="background:#081020;border:1px solid #d4af37;border-radius:10px;padding:10px;"><strong style="color:#f6d365;">1. $30 Antigravity Plan</strong><br/>Open local folder <code>My_AI_Brain</code></div>
 					<div style="background:#081020;border:1px solid #38bdf8;border-radius:10px;padding:10px;"><strong style="color:#38bdf8;">2. Paste Setup Prompt</strong><br/>Creates <code>01_Brain_Rules</code> .. <code>04_YouTube_Channel</code></div>
@@ -1200,6 +1552,203 @@ function krOpenSpecModal(pdfId) {
 		dlBtn.onclick = function() { krDownloadRealPdf(spec.id); };
 	}
 	modal.style.display = 'flex';
+}
+
+function krSeekModuleVideo(iframeId, videoId, startSec) {
+	const iframe = document.getElementById(iframeId);
+	if (!iframe) return;
+	const sec = Math.max(0, parseInt(startSec, 10) || 0);
+	iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?start=' + sec + '&autoplay=1&rel=0';
+}
+
+function krTriggerTextFileDownload(filename, content, mimeType) {
+	const blob = new Blob([content], { type: mimeType || 'text/markdown;charset=utf-8' });
+	const url = URL.createObjectURL(blob);
+	const a = document.createElement('a');
+	a.href = url;
+	a.download = filename;
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
+	setTimeout(() => URL.revokeObjectURL(url), 3000);
+}
+
+// TOOL A: 1-Click Download AGENTS.md Starter File (for 01_Brain_Rules/AGENTS.md)
+function krDownloadStarterAgentsMd() {
+	const chName = (document.getElementById('setupChannelName') && document.getElementById('setupChannelName').value.trim()) || 'My Brand AI Channel';
+	const chNiche = (document.getElementById('setupChannelNiche') && document.getElementById('setupChannelNiche').value.trim()) || 'AI Systems, Digital Products & Modern Authority';
+	const domain = (document.getElementById('setupWebsiteDomain') && document.getElementById('setupWebsiteDomain').value.trim()) || 'mybranddomain.com';
+	const buyerName = (document.getElementById('setupBuyerName') && document.getElementById('setupBuyerName').value.trim()) || 'Founder & Lead Architect';
+
+	const mdContent = [
+		'# AGENTS.md — Master AI Brain Rules (Drop Inside 01_Brain_Rules/AGENTS.md)',
+		'',
+		'## 1. Brand Identity & Core Offer',
+		'- **Founder / Presenter**: ' + buyerName,
+		'- **YouTube Brand Channel**: ' + chName,
+		'- **Core Niche & Audience**: ' + chNiche,
+		'- **Primary Website Domain**: https://' + domain.replace(/^https?:\/\//, ''),
+		'',
+		'## 2. 4-Folder Workspace Architecture ($30/mo Google Antigravity Plan)',
+		'1. `01_Brain_Rules/AGENTS.md` — Permanent brand rules, voice, and offer positioning loaded in every chat.',
+		'2. `02_Video_Prompts/` — ~20-word (strictly 18 to 24 words) 10-second Google Flow video scene prompts.',
+		'3. `03_Website_Builder/` — Dark-luxury homepage and SEO article templates (#04070d Obsidian, #d4af37 Sovereign Gold, #38bdf8 Baby Blue).',
+		'4. `04_YouTube_Channel/` — YouTube Brand Channel Upload Defaults, chapter timestamps, and 480-character SEO tag stacks.',
+		'',
+		'## 3. ~20-Word Google Flow Video Prompt Invariant (PDF-02)',
+		'- Every 10-second Google Flow visual scene prompt MUST be strictly between **18 and 24 words (~20 words)**.',
+		'- Always pair each prompt with 3 Reference Chips in Google Flow: Character Headshot (`char_1`), Wardrobe (`cloth_1`), and Studio Room (`background_1`).',
+		'- Export finished clips as 1080p MP4s for clean timeline assembly.',
+		'',
+		'## 4. Website & SEO Publishing Invariant (PDF-04 & PDF-05)',
+		'- Enforce Obsidian (`#04070d`) backgrounds, Sovereign Gold (`#d4af37`) `9999px` pill CTA buttons, and Baby Blue (`#38bdf8`) accents.',
+		'- Include `Person`, `VideoObject`, and `FAQPage` JSON-LD schema on every article and submit to Google Search Console.'
+	].join('\n');
+
+	krTriggerTextFileDownload('AGENTS.md', mdContent, 'text/markdown;charset=utf-8');
+}
+
+function krDownloadStarterFlowMd() {
+	const mdContent = [
+		'# 02_Video_Prompts.md — ~20-Word Google Flow Scene Generator Template',
+		'',
+		'## Copy-Paste Antigravity Prompt:',
+		'Write 6 sequential 10-second Google Flow video scene prompts for my episode topic.',
+		'1. Keep each visual prompt strictly between 18 and 24 words (~20 words total).',
+		'2. Describe the presenter speaking naturally to camera with grounded two-handed gestures in a warm acoustic oak studio on a 35mm cinema lens.',
+		'3. Include a separate 22-to-26 word spoken voiceover line for each 10-second clip.',
+		'4. Attach 3 reference images (Character, Outfit, Studio Background) in Google Flow and click Export MP4 (1080p).'
+	].join('\n');
+	krTriggerTextFileDownload('02_Video_Prompts.md', mdContent, 'text/markdown;charset=utf-8');
+}
+
+function krDownloadStarterWebsiteMd() {
+	const mdContent = [
+		'# 03_Website_And_YouTube_Starter.md — Dark-Luxury Website & YouTube Brand Channel Prompts',
+		'',
+		'## 1. YouTube Brand Channel & 480-Character Tag Stack Prompt (PDF-03)',
+		'Create my complete YouTube Brand Channel setup package in 04_YouTube_Channel/ with Channel Bio, Upload Defaults with chapter timestamps, and a calibrated 480-character SEO tag stack.',
+		'',
+		'## 2. Dark-Luxury Website & SEO Article Prompt (PDF-04 & PDF-05)',
+		'Build a responsive dark-luxury homepage hero and article template inside 03_Website_Builder/ using Obsidian (#04070d), Sovereign Gold (#d4af37) 9999px pill buttons, Baby Blue (#38bdf8) accents, and Person + VideoObject + FAQPage JSON-LD schema.'
+	].join('\n');
+	krTriggerTextFileDownload('03_Website_And_YouTube_Starter.md', mdContent, 'text/markdown;charset=utf-8');
+}
+
+// TOOL B: Interactive ~20-Word (18-24 Word) Google Flow Pacing Checker
+function krCountWords(str) {
+	const cleaned = String(str || '').trim();
+	if (!cleaned) return 0;
+	return cleaned.split(/\s+/).filter(Boolean).length;
+}
+
+function krUpdateFlowWordCounter() {
+	const input = document.getElementById('krFlowWordCountInput');
+	const badge = document.getElementById('krFlowWordCountBadge');
+	const hint = document.getElementById('krFlowWordCountHint');
+	if (!input || !badge) return;
+	const count = krCountWords(input.value);
+
+	if (count >= 18 && count <= 24) {
+		badge.textContent = count + ' words — Perfect 18–24 Word Google Flow Sweet Spot';
+		badge.style.background = 'rgba(212, 175, 55, 0.18)';
+		badge.style.borderColor = '#d4af37';
+		badge.style.color = '#f6d365';
+		if (hint) {
+			hint.style.color = '#38bdf8';
+			hint.textContent = '✔ Sweet Spot Locked (' + count + ' words): Optimal 10-second pacing so your audio & lip-sync never cut off in Google Flow.';
+		}
+	} else if (count < 18) {
+		const needed = 18 - count;
+		badge.textContent = count + ' words — Under 18 Words (Add ' + needed + '+ words for 18–24 Sweet Spot)';
+		badge.style.background = 'rgba(56, 189, 248, 0.16)';
+		badge.style.borderColor = '#38bdf8';
+		badge.style.color = '#38bdf8';
+		if (hint) {
+			hint.style.color = '#f6d365';
+			hint.textContent = '⚠️ Add ' + needed + ' to ' + (24 - count) + ' more words (camera lens, lighting, or gesture) so Google Flow has full 10-second scene context.';
+		}
+	} else {
+		const extra = count - 24;
+		badge.textContent = count + ' words — Over 24 Words! (Trim ' + extra + ' words to prevent audio cutoff)';
+		badge.style.background = 'rgba(248, 113, 113, 0.16)';
+		badge.style.borderColor = '#f87171';
+		badge.style.color = '#f87171';
+		if (hint) {
+			hint.style.color = '#f87171';
+			hint.textContent = '⚠️ Over 24 words (' + count + ' words): Trim ' + extra + ' words so Google Flow does not rush or cut off your 10-second clip!';
+		}
+	}
+}
+
+function krLoadSampleFlowPrompt() {
+	const input = document.getElementById('krFlowWordCountInput');
+	if (!input) return;
+	input.value = 'Founder speaking warmly to camera with grounded two-handed builder gestures inside a dark acoustic oak studio on a 35mm cinema lens.';
+	krUpdateFlowWordCounter();
+}
+
+function krCopyFlowCheckedPrompt(btnEl) {
+	const input = document.getElementById('krFlowWordCountInput');
+	if (!input) return;
+	const text = input.value || '';
+	if (navigator.clipboard && navigator.clipboard.writeText) {
+		navigator.clipboard.writeText(text).then(function() {
+			if (btnEl) {
+				const orig = btnEl.textContent;
+				btnEl.textContent = '✔ COPIED VERIFIED PROMPT!';
+				setTimeout(function() { btnEl.textContent = orig; }, 2200);
+			}
+		});
+	}
+}
+
+// TOOL C: 1-Click Download All 4 Custom Setup Prompts (.TXT)
+function krDownloadCustomSetupTxt() {
+	const chName = (document.getElementById('setupChannelName') && document.getElementById('setupChannelName').value.trim()) || 'My Brand AI Channel';
+	const chNiche = (document.getElementById('setupChannelNiche') && document.getElementById('setupChannelNiche').value.trim()) || 'AI Systems & Modern Builder Authority';
+	const domain = (document.getElementById('setupWebsiteDomain') && document.getElementById('setupWebsiteDomain').value.trim()) || 'mybranddomain.com';
+
+	const p1 = (document.getElementById('outCustomBrainPrompt') && document.getElementById('outCustomBrainPrompt').textContent.trim()) ||
+		(document.getElementById('krPromptBrainMaster') && document.getElementById('krPromptBrainMaster').textContent.trim()) || '';
+	const p2 = (document.getElementById('outCustomFlowPrompts') && document.getElementById('outCustomFlowPrompts').textContent.trim()) ||
+		(document.getElementById('krPromptFlowGenerator') && document.getElementById('krPromptFlowGenerator').textContent.trim()) || '';
+	const p3 = (document.getElementById('outCustomWebsitePrompt') && document.getElementById('outCustomWebsitePrompt').textContent.trim()) ||
+		(document.getElementById('krPromptWebsiteBuilder') && document.getElementById('krPromptWebsiteBuilder').textContent.trim()) || '';
+	const p4 = (document.getElementById('outCustomYoutubeTags') && document.getElementById('outCustomYoutubeTags').textContent.trim()) ||
+		(document.getElementById('krPromptYoutubeSetup') && document.getElementById('krPromptYoutubeSetup').textContent.trim()) || '';
+
+	const txtContent = [
+		'======================================================================',
+		'KEYSTONE AI PROTOCOLS // YOUR 4 CUSTOM COPY-PASTE SETUP PROMPTS (.TXT)',
+		'Channel: ' + chName + ' | Niche: ' + chNiche + ' | Website: ' + domain,
+		'Portal: https://keystonerecomposition.com/ai-protocols/',
+		'======================================================================',
+		'',
+		'----------------------------------------------------------------------',
+		'1. YOUR CUSTOM ANTIGRAVITY BRAIN SETUP PROMPT ($30/MO PLAN)',
+		'----------------------------------------------------------------------',
+		p1,
+		'',
+		'----------------------------------------------------------------------',
+		'2. YOUR 3 CUSTOM ~20-WORD (18-24 WORD) GOOGLE FLOW VIDEO PROMPTS',
+		'----------------------------------------------------------------------',
+		p2,
+		'',
+		'----------------------------------------------------------------------',
+		'3. YOUR CUSTOM ANTIGRAVITY DARK-LUXURY WEBSITE BUILDER PROMPT',
+		'----------------------------------------------------------------------',
+		p3,
+		'',
+		'----------------------------------------------------------------------',
+		'4. YOUR YOUTUBE BRAND CHANNEL UPLOAD DEFAULTS & 480-CHAR TAG STACK',
+		'----------------------------------------------------------------------',
+		p4,
+		''
+	].join('\n');
+
+	const safeSlug = chName.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || 'keystone_student';
+	krTriggerTextFileDownload('Keystone_4_Custom_Setup_Prompts_' + safeSlug + '.txt', txtContent, 'text/plain;charset=utf-8');
 }
 
 function krEscapePdfText(str) {
@@ -1297,6 +1846,13 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (pane) pane.classList.add('active');
 		});
 	});
+
+	// Tool B: Live ~20-Word (18-24 Word) Google Flow Pacing Checker
+	const flowWordInput = document.getElementById('krFlowWordCountInput');
+	if (flowWordInput) {
+		flowWordInput.addEventListener('input', krUpdateFlowWordCounter);
+		krUpdateFlowWordCounter();
+	}
 
 	// Interactive Brain, YouTube Channel & Website Setup Form Handler
 	const setupForm = document.getElementById('krChannelWebsiteSetupForm');
