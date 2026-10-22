@@ -110,6 +110,26 @@ $theme_uri = get_stylesheet_directory_uri();
 .kr-brain-node.cyan-node {
 	border-color: #38bdf8;
 }
+.kr-copy-prompt-box pre,
+#krSpecPdfModal pre,
+#kr-self-service-portal pre {
+	background: #02050a !important;
+	color: #f8fafc !important;
+	border: 1px solid rgba(56, 189, 248, 0.35) !important;
+	border-radius: 10px !important;
+	padding: 12px 14px !important;
+	margin: 0 !important;
+	font-family: 'JetBrains Mono', monospace !important;
+	font-size: 0.78rem !important;
+	line-height: 1.55 !important;
+	white-space: pre-wrap !important;
+}
+#krSpecPdfModal code {
+	background: rgba(56, 189, 248, 0.14) !important;
+	color: #38bdf8 !important;
+	padding: 1px 5px !important;
+	border-radius: 4px !important;
+}
 </style>
 
 <div id="primary" class="content-area primary keystone-cyber-protocols">
@@ -864,7 +884,7 @@ Rules for every scene prompt:
 <!-- 4. ON-SCREEN BREAKDOWN SPEC PDF VIEWER MODAL (WITH 1-CLICK COPY PROMPTS & %PDF-1.4 DOWNLOAD) -->
 <div id="krSpecPdfModal" style="display: none; position: fixed; inset: 0; z-index: 10060; background: rgba(4, 7, 13, 0.94); align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
 	<div style="background: linear-gradient(145deg, #0b111e 0%, #050911 100%); border: 1.5px solid #d4af37; border-radius: 22px; max-width: 780px; width: 100%; padding: 26px; box-shadow: 0 24px 64px rgba(0,0,0,0.95); position: relative; color: #f8fafc; max-height: 90vh; overflow-y: auto;">
-		<button type="button" onclick="document.getElementById('krSpecPdfModal').style.display='none'" style="position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%; background: #04070d; border: 1px solid #d4af37; color: #f6d365; font-weight: 900; cursor: pointer;">✕</button>
+		<button type="button" onclick="document.getElementById('krSpecPdfModal').style.display='none'" style="position: absolute; top: 16px; right: 16px; width: 34px !important; height: 34px !important; min-width: 34px !important; padding: 0 !important; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: #04070d; border: 1px solid #d4af37; color: #f6d365; font-weight: 900; cursor: pointer;">✕</button>
 		<div id="krSpecPdfModalBadge" style="display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; margin-bottom: 8px;"></div>
 		<h3 id="krSpecPdfModalTitle" style="font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 900; color: #ffffff; margin: 0 0 12px 0;"></h3>
 		<div id="krSpecPdfModalBody" style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;"></div>
