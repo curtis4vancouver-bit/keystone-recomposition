@@ -224,7 +224,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                         <option value="" disabled selected>Select Capital Allocation / Budget...</option>
                                         <option value="$49.50 USD — Tier 01 Antigravity Website Blueprint">$49.50 USD — Tier 01 Antigravity Website Blueprint</option>
                                         <option value="$199 USD — Tier 02 Autonomous 28-Agent Swarm">$199 USD — Tier 02 Autonomous 28-Agent Swarm</option>
-                                        <option value="$800 CAD — Executive Workstation Architecture Masterclass">$800 USD/CAD — Executive Workstation Architecture Masterclass</option>
+                                        <option value="$800 USD — Executive Workstation Architecture Masterclass">$800 USD — Executive Workstation Architecture Masterclass</option>
                                         <option value="$3,500 – $7,500 USD — Custom Enterprise AI Workstation & Swarm Buildout">$3,500 &ndash; $7,500 USD — Custom Enterprise AI Workstation &amp; Swarm Buildout</option>
                                         <option value="$1,500 – $25,000 USD — 432Hz Commercial Music Sync Licensing">$1,500 &ndash; $25,000 USD — 432Hz Commercial Music Sync Licensing</option>
                                         <option value="$100,000 – $500,000+ USD — International Real Estate Co-Investment">$100,000 &ndash; $500,000+ USD — International Real Estate Co-Investment</option>
@@ -306,10 +306,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (inquiry && catSelect && budSelect) {
         const promoSuffix = promo ? ` (Promo Code Applied: ${promo})` : '';
         if (inquiry === 'tier1_blueprint') {
-            catSelect.value = 'Tier 01 — Antigravity Website Fast-Track Blueprint ($49 USD)';
-            budSelect.value = '$49 USD — Tier 01 Antigravity Website Blueprint';
+            catSelect.value = 'Tier 01 — Antigravity Website Fast-Track Blueprint ($49.50 USD)';
+            budSelect.value = '$49.50 USD — Tier 01 Antigravity Website Blueprint';
             if (msgInput && !msgInput.value) {
-                msgInput.value = `Requesting instant access & licensing invoice for Tier 01: Antigravity Autonomous Website Fast-Track Blueprint ($49 USD)${promoSuffix}.`;
+                msgInput.value = `Requesting instant access & licensing invoice for Tier 01: Antigravity Autonomous Website Fast-Track Blueprint ($49.50 USD)${promoSuffix}.`;
             }
         } else if (inquiry === 'tier2_swarm') {
             catSelect.value = 'Tier 02 — Autonomous 28-Agent Swarm & B2B Engine ($199 USD)';
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else if (inquiry === 'tier3_workstation') {
             catSelect.value = 'Executive Workstation Architecture ($800 Masterclass)';
-            budSelect.value = '$800 CAD — Executive Workstation Architecture Masterclass';
+            budSelect.value = '$800 USD — Executive Workstation Architecture Masterclass';
             if (msgInput && !msgInput.value) {
                 msgInput.value = `Applying for Tier 03: Custom Tauri HUD & Sovereign Workstation 1-on-1 Private Architecture with Wayne Stevenson ($800 USD)${promoSuffix}.`;
             }

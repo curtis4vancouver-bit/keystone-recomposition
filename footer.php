@@ -197,12 +197,12 @@ if ( ! defined( 'ABSPATH' ) ) {
             var localUid = '';
             try {
                 localUid = localStorage.getItem('kr_user_vault_uid') || '';
-                if (!localUid && wpUid && wpUid.indexOf('KR-WP-UID-') === 0) {
-                    localStorage.setItem('kr_user_vault_uid', wpUid);
-                    localUid = wpUid;
+                if (localUid && localUid.indexOf('KR-WP-UID-') === 0) {
+                    localStorage.removeItem('kr_user_vault_uid');
+                    localUid = '';
                 }
             } catch (e) {}
-            var verifiedUid = localUid || wpUid;
+            var verifiedUid = localUid || wpUid || 'KR-GUEST-SESSION';
             vaultBar.setAttribute('data-verified-uid', verifiedUid);
             if (protoBtn && localUid && localUid.indexOf('KR-UID-') === 0) {
                 protoBtn.textContent = '✔ Vault UID Verified';

@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-10-22T21:25:48.659433+00:00",
+  "rule_30_air_gap_verified": true,
+  "violations": [],
+  "artifacts": {
+    "Keystone_Tier01_AI_Video_Website_Blueprint_Pack.zip": {
+      "files_count": 12,
+      "uncompressed_bytes": 25326,
+      "zip_bytes": 14256
+    },
+    "Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip": {
+      "files_count": 18,
+      "uncompressed_bytes": 30568,
+      "zip_bytes": 18785
+    },
+    "Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip": {
+      "files_count": 22,
+      "uncompressed_bytes": 35010,
+      "zip_bytes": 22370
+    }
+  }
+}
