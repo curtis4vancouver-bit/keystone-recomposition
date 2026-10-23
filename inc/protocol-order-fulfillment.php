@@ -90,6 +90,10 @@ function keystone_append_uid_to_downloads( array $downloads, string $uid ): arra
  * Strictly enforces Rule 30 ("Museum Model" IP Air-Gap): zero private desktop automation or internal daemon leaks.
  */
 function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
+	$lead_page_url = '' !== trim( $uid )
+		? home_url( '/ai-protocols/?uid=' . rawurlencode( trim( $uid ) ) . '#kr-self-service-portal' )
+		: home_url( '/ai-protocols/#kr-self-service-portal' );
+
 	$t1_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
@@ -101,8 +105,8 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 				'url'   => home_url( '/ai-protocols/?vault_download=tier1_website_channel_pack' ),
 			),
 			array(
-				'label' => '🎬 Wayne_Recorded_AI_Video_And_Brain_Setup_Walkthrough_4K.mp4 (Step-by-Step Screen Recording: $30 Antigravity Brain + Google Flow Export)',
-				'url'   => 'https://www.youtube.com/watch?v=JCgZ5SsN_bc',
+				'label' => '🎬 Module V01–V03 Step-by-Step Video Walkthroughs (Protected Buyer Lead Page Player)',
+				'url'   => $lead_page_url,
 			),
 		),
 		$uid
@@ -115,8 +119,8 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 				'url'   => home_url( '/ai-protocols/?vault_download=tier2_swarm_pack' ),
 			),
 			array(
-				'label' => '🎬 Wayne_Multi_Agent_Workflow_Recorded_Walkthrough_4K.mp4 (Full Setup & Execution Guide)',
-				'url'   => 'https://www.youtube.com/watch?v=k3fArbXUzQM',
+				'label' => '🎬 Module V04–V05 Multi-Agent Workflow Walkthroughs (Protected Buyer Lead Page Player)',
+				'url'   => $lead_page_url,
 			),
 		),
 		$uid
@@ -129,8 +133,8 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 				'url'   => home_url( '/ai-protocols/?vault_download=tier3_workstation_pack' ),
 			),
 			array(
-				'label' => '🎬 Wayne_Recorded_800_Creator_Workstation_AI_Video_Masterclass.mp4 (Complete Recorded Walkthrough)',
-				'url'   => 'https://www.youtube.com/watch?v=uMkZvTbqF2U',
+				'label' => '🎬 Module V06 Creator Workstation & DaVinci Assembly Masterclass (Protected Buyer Lead Page Player)',
+				'url'   => $lead_page_url,
 			),
 			array(
 				'label' => '🤝 1-on-1 Architecture Onboarding & Direct Email Priority Dossier (Wayne Stevenson)',
@@ -144,12 +148,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 		'1' => array(
 			'tier'                  => '1',
 			'code'                  => 'tier1_blueprint',
-			'name'                  => 'Tier 01 — $49.50 Antigravity AI Brain, Google Flow Video & Website Fast-Track Blueprint',
+			'name'                  => 'Tier 01 — $49.50 USD AI Brain, Google Flow Video & Website Fast-Track Blueprint (One-Time Payment • Lifetime Access)',
 			'price'                 => '49.50',
 			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER1_URL,
 			'walkthrough_video_id'  => 'JCgZ5SsN_bc',
-			'walkthrough_video_url' => 'https://www.youtube.com/watch?v=JCgZ5SsN_bc',
-			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: $30 Antigravity Brain Setup, ~20-Word Google Flow Prompts & Copy-Paste Website Builder',
+			'walkthrough_video_url' => $lead_page_url,
+			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: AI Brain Setup, ~20-Word Google Flow Prompts & Copy-Paste Website Builder (One-Time Payment • Lifetime Access)',
 			'unlocked_downloads'    => $t1_downloads,
 			'unlocked_modules'      => keystone_get_tier_unlocked_curriculum( '1' )['unlocked_modules'],
 			'unlocked_pdfs'         => keystone_get_tier_unlocked_curriculum( '1' )['unlocked_pdfs'],
@@ -157,12 +161,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 		'2' => array(
 			'tier'                  => '2',
 			'code'                  => 'tier2_swarm',
-			'name'                  => 'Tier 02 — $199 Multi-Agent Prompt System & B2B Outreach Engine',
+			'name'                  => 'Tier 02 — $199 USD Multi-Agent Prompt System & B2B Outreach Engine (One-Time Payment • Lifetime Access)',
 			'price'                 => '199.00',
 			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER2_URL,
 			'walkthrough_video_id'  => 'k3fArbXUzQM',
-			'walkthrough_video_url' => 'https://www.youtube.com/watch?v=k3fArbXUzQM',
-			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: Multi-Agent Role Prompts, Research Workflows & B2B Outreach Engine',
+			'walkthrough_video_url' => $lead_page_url,
+			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: Multi-Agent Role Prompts, Research Workflows & B2B Outreach Engine (One-Time Payment • Lifetime Access)',
 			'unlocked_downloads'    => array_merge( $t1_downloads, $t2_downloads ),
 			'unlocked_modules'      => keystone_get_tier_unlocked_curriculum( '2' )['unlocked_modules'],
 			'unlocked_pdfs'         => keystone_get_tier_unlocked_curriculum( '2' )['unlocked_pdfs'],
@@ -170,12 +174,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 		'3' => array(
 			'tier'                  => '3',
 			'code'                  => 'tier3_workstation',
-			'name'                  => 'Tier 03 — $800 Full-Stack AI Creator Workstation & 1-on-1 Architecture',
+			'name'                  => 'Tier 03 — $800 USD Full-Stack AI Creator Workstation & 1-on-1 Architecture (One-Time Payment • Lifetime Access)',
 			'price'                 => '800.00',
 			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER3_URL,
 			'walkthrough_video_id'  => 'uMkZvTbqF2U',
-			'walkthrough_video_url' => 'https://www.youtube.com/watch?v=uMkZvTbqF2U',
-			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: Complete AI Video Production Pipeline, DaVinci Assembly & Full-Stack Website Suite',
+			'walkthrough_video_url' => $lead_page_url,
+			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: Complete AI Video Production Pipeline, DaVinci Assembly & Full-Stack Website Suite (One-Time Payment • Lifetime Access)',
 			'unlocked_downloads'    => array_merge( $t1_downloads, $t2_downloads, $t3_downloads ),
 			'unlocked_modules'      => keystone_get_tier_unlocked_curriculum( '3' )['unlocked_modules'],
 			'unlocked_pdfs'         => keystone_get_tier_unlocked_curriculum( '3' )['unlocked_pdfs'],
@@ -193,7 +197,7 @@ function keystone_generate_user_vault_uid( string $email, string $tier ): string
 }
 
 /**
- * Validate a User Vault UID against stored orders, active WP admin session, demo key, or owner master key.
+ * Validate a User Vault UID against stored orders, active WP admin session, or owner master key.
  * Strictly guards KR-WP-UID-* and KR-ADMIN-UID-* behind `is_user_logged_in() && current_user_can('manage_options')`.
  */
 function keystone_verify_user_vault_uid_internal( string $uid ): array {
@@ -207,6 +211,7 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 			$catalog = keystone_get_protocol_tier_catalog( $wp_uid );
 			return array(
 				'valid'                 => true,
+				'verified'              => true,
 				'live_mode'             => $live_mode,
 				'uid'                   => $wp_uid,
 				'buyer_name'            => 'Wayne Stevenson (Admin Verified)',
@@ -223,9 +228,10 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 		}
 		return array(
 			'valid'     => false,
+			'verified'  => false,
 			'live_mode' => $live_mode,
 			'uid'       => '',
-			'message'   => 'Missing User Vault UID. Please enter a valid KR-UID or lock in your launch rate reservation first.',
+			'message'   => 'Missing Buyer KR-UID. Please enter a verified Buyer KR-UID or lock in your one-time launch rate reservation first.',
 		);
 	}
 
@@ -234,14 +240,16 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 		if ( ! $is_admin ) {
 			return array(
 				'valid'     => false,
+				'verified'  => false,
 				'live_mode' => $live_mode,
 				'uid'       => $uid,
-				'message'   => 'Administrator Vault UIDs require an active authenticated WordPress administrator session. Please reserve your launch rate above to generate your personal KR-UID.',
+				'message'   => 'Administrator Vault UIDs require an active authenticated WordPress administrator session. Please reserve your one-time launch rate above to generate your personal Buyer KR-UID.',
 			);
 		}
 		$catalog = keystone_get_protocol_tier_catalog( $uid );
 		return array(
 			'valid'                 => true,
+			'verified'              => true,
 			'live_mode'             => $live_mode,
 			'uid'                   => $uid,
 			'buyer_name'            => 'Wayne Stevenson (Admin Session Verified)',
@@ -257,15 +265,15 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 		);
 	}
 
-	// Owner Master UID & Interactive Self-Service Demo Key
-	if ( in_array( $uid, array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603', 'KR-DEMO-SELF-SERVICE' ), true ) ) {
+	// Owner Master UID (Private to Wayne Stevenson)
+	if ( in_array( $uid, array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603' ), true ) ) {
 		$catalog = keystone_get_protocol_tier_catalog( $uid );
-		$is_demo = ( 'KR-DEMO-SELF-SERVICE' === $uid );
 		return array(
 			'valid'                 => true,
+			'verified'              => true,
 			'live_mode'             => $live_mode,
 			'uid'                   => $uid,
-			'buyer_name'            => $is_demo ? 'Interactive Self-Service Student Preview' : 'Wayne Stevenson (Founder Master UID)',
+			'buyer_name'            => 'Wayne Stevenson (Founder Master UID)',
 			'tier'                  => '3',
 			'tier_name'             => $catalog['3']['name'],
 			'walkthrough_video_id'  => $catalog['3']['walkthrough_video_id'],
@@ -274,9 +282,7 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 			'unlocked_downloads'    => $catalog['3']['unlocked_downloads'],
 			'unlocked_modules'      => $catalog['3']['unlocked_modules'],
 			'unlocked_pdfs'         => $catalog['3']['unlocked_pdfs'],
-			'message'               => $is_demo
-				? '✔ Self-Service Course & 24/7 AI Tutor Portal Unlocked! Explore the Visual Brain Setup Diagram, Copy-Paste Antigravity Prompts, ~20-Word Google Flow Prompts, 12 Breakdown PDFs & Interactive AI Coaching below.'
-				: '✔ Founder Master UID Verified! All 6 Course Modules, 12 Breakdown PDFs & Copy-Paste Prompt Packs are unlocked.',
+			'message'               => '✔ Founder Master UID Verified! All 6 Course Modules, 12 Breakdown PDFs & Copy-Paste Prompt Packs are unlocked.',
 		);
 	}
 
@@ -285,11 +291,37 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 		foreach ( $orders as $order ) {
 			if ( ! empty( $order['user_uid'] ) && strtoupper( (string) $order['user_uid'] ) === $uid ) {
 				$verified_uid = (string) $order['user_uid'];
+
+				// 3-Device / IP Anti-Sharing Lock (Prevents forwarding KR-UID links to non-buyers)
+				$client_ip = (string) ( $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1' );
+				$client_ip = trim( explode( ',', $client_ip )[0] );
+				$ip_hash   = substr( hash( 'sha256', $client_ip . '|' . wp_salt( 'auth' ) ), 0, 16 );
+				$ip_locks  = get_option( 'keystone_uid_ip_locks_v10', array() );
+				if ( ! is_array( $ip_locks ) ) {
+					$ip_locks = array();
+				}
+				$uid_ips = isset( $ip_locks[ $verified_uid ] ) && is_array( $ip_locks[ $verified_uid ] ) ? $ip_locks[ $verified_uid ] : array();
+				if ( ! in_array( $ip_hash, $uid_ips, true ) ) {
+					if ( count( $uid_ips ) >= 3 && ! $is_admin ) {
+						return array(
+							'valid'     => false,
+							'verified'  => false,
+							'live_mode' => $live_mode,
+							'uid'       => $verified_uid,
+							'message'   => '🔒 Anti-Sharing Security Lock: This Buyer KR-UID is already bound to the maximum of 3 personal devices/IPs. Forwarding or sharing your Buyer Vault link is prohibited.',
+						);
+					}
+					$uid_ips[]                  = $ip_hash;
+					$ip_locks[ $verified_uid ]  = $uid_ips;
+					update_option( 'keystone_uid_ip_locks_v10', $ip_locks, false );
+				}
+
 				$catalog      = keystone_get_protocol_tier_catalog( $verified_uid );
 				$t_key        = isset( $catalog[ (string) $order['tier'] ] ) ? (string) $order['tier'] : '1';
 				$t_obj        = $catalog[ $t_key ];
 				return array(
 					'valid'                 => true,
+					'verified'              => true,
 					'live_mode'             => $live_mode,
 					'uid'                   => $verified_uid,
 					'order_id'              => (string) ( $order['order_id'] ?? '' ),
@@ -306,9 +338,9 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 					'unlocked_modules'      => $t_obj['unlocked_modules'],
 					'unlocked_pdfs'         => $t_obj['unlocked_pdfs'],
 					'message'               => $live_mode
-						? '✔ UID Verified! Your 6-Tab Course Portal, Visual Brain Setup Diagram, Copy-Paste Antigravity Prompts, 12 Breakdown PDFs & 24/7 AI Tutor are unlocked.'
+						? '✔ Buyer KR-UID Verified! Your 6-Tab Course Portal, Downloadable Breakdown PDFs, Copy-Paste Prompt Packs & 24/7 AI Tutor are unlocked.'
 						: sprintf(
-							'✔ Launch Rate Locked In ($%s USD) & Self-Service Portal Unlocked (UID: %s)! Your 6-Tab Course Portal, Visual Brain Setup Diagram, Copy-Paste Prompt Packs & 24/7 AI Architect Tutor are active below.',
+							'✔ One-Time Launch Rate Locked In ($%s USD) & Buyer Vault Unlocked (UID: %s)! Your 6-Tab Course Portal, Downloadable Breakdown PDFs, Copy-Paste Prompt Packs & 24/7 AI Architect Tutor are active below.',
 							(string) ( $order['price'] ?? $t_obj['price'] ),
 							$verified_uid
 						),
@@ -319,9 +351,10 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 
 	return array(
 		'valid'     => false,
+		'verified'  => false,
 		'live_mode' => $live_mode,
 		'uid'       => $uid,
-		'message'   => 'Unrecognized User Vault UID. Please reserve your launch rate above to receive a verified KR-UID, or click "Launch Self-Service Portal Preview".',
+		'message'   => '🔒 Unrecognized Buyer KR-UID. Please enter a verified Buyer KR-UID or lock in your one-time access rate above to receive your personal KR-UID.',
 	);
 }
 
@@ -441,14 +474,14 @@ function keystone_handle_vault_download_stream(): void {
 		wp_die( 'Invalid Keystone Vault download package requested.', 'Invalid Package', array( 'response' => 404 ) );
 	}
 
-	// Verify UID or fall back to KR-DEMO-SELF-SERVICE if explicitly requested in demo portal
+	// Verify Buyer KR-UID strictly (no public demo fallback)
 	$check_uid    = '' !== $raw_uid ? $raw_uid : '';
 	$verification = keystone_verify_user_vault_uid_internal( $check_uid );
 
-	if ( empty( $verification['valid'] ) ) {
+	if ( empty( $verification['verified'] ) ) {
 		wp_die(
-			'Vault Download Locked: Please enter or reserve your verified KR-UID on /ai-protocols/ first, or click "Launch Self-Service Portal Preview" to unlock instant downloads.',
-			'Vault UID Required',
+			'🔒 Buyer KR-UID Verification Required: Please enter your verified Buyer KR-UID on /ai-protocols/ to unlock your Download Vault.',
+			'Buyer KR-UID Required',
 			array( 'response' => 403 )
 		);
 	}
@@ -473,7 +506,7 @@ function keystone_handle_vault_download_stream(): void {
 	$readme_txt .= "Verified UID: " . $verification['uid'] . "\r\n";
 	$readme_txt .= "Self-Service Portal & 24/7 AI Tutor: https://keystonerecomposition.com/ai-protocols/?uid=" . $verification['uid'] . "#kr-self-service-portal\r\n";
 	$readme_txt .= "============================================================================\r\n\r\n";
-	$readme_txt .= "1. PASTE THIS INTO GOOGLE ANTIGRAVITY ($30/MO PLAN) TO BUILD YOUR 4 BRAIN FOLDERS:\r\n";
+	$readme_txt .= "1. PASTE THIS INTO GOOGLE ANTIGRAVITY TO BUILD YOUR 4 BRAIN FOLDERS:\r\n";
 	$readme_txt .= "   Create 4 folders in my workspace: 01_Brain_Rules, 02_Video_Prompts, 03_Website_Builder, and 04_YouTube_Channel.\r\n";
 	$readme_txt .= "   Inside 01_Brain_Rules/AGENTS.md, write my brand voice rules, target audience, and color palette.\r\n\r\n";
 	$readme_txt .= "2. PASTE THIS INTO ANTIGRAVITY TO GENERATE ~20-WORD (18-24 WORD) GOOGLE FLOW VIDEO PROMPTS:\r\n";
@@ -945,7 +978,15 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
  */
 function keystone_handle_protocol_setup_form( WP_REST_Request $request ): WP_REST_Response {
 	$params               = $request->get_json_params() ?: $request->get_params();
-	$uid                  = sanitize_text_field( (string) ( $params['uid'] ?? 'KR-DEMO-SELF-SERVICE' ) );
+	$uid                  = sanitize_text_field( (string) ( $params['uid'] ?? '' ) );
+	$uid_verification     = keystone_verify_user_vault_uid_internal( $uid );
+	if ( empty( $uid_verification['verified'] ) ) {
+		return new WP_REST_Response( array(
+			'success' => false,
+			'message' => '🔒 Buyer KR-UID Verification Required. Please enter your verified Buyer KR-UID to use the Custom Setup Generator and 24/7 AI Tutor.',
+		), 403 );
+	}
+	$uid                  = (string) $uid_verification['uid'];
 	$buyer_name           = sanitize_text_field( (string) ( $params['buyer_name'] ?? 'Keystone Builder' ) );
 	$buyer_email          = sanitize_email( (string) ( $params['buyer_email'] ?? '' ) );
 	$youtube_channel_name = sanitize_text_field( (string) ( $params['youtube_channel_name'] ?? 'My Authority Channel' ) );
@@ -964,7 +1005,7 @@ function keystone_handle_protocol_setup_form( WP_REST_Request $request ): WP_RES
 		$website_domain = 'mybrandwebsite.com';
 	}
 
-	// 1. Custom Copy-Paste Antigravity Brain Setup Prompt ($30/mo Plan)
+	// 1. Custom Copy-Paste Antigravity Brain Setup Prompt
 	$custom_brain_setup_prompt = sprintf(
 		"You are my lead AI Systems Architect inside Google Antigravity. Initialize my 4-folder AI Brain workspace for my brand \"%s\" (%s) and website \"%s\":\n" .
 		"1. Create folder 01_Brain_Rules/ and write AGENTS.md defining my brand voice for %s, my core niche (%s), and my primary call-to-action directing viewers to %s.\n" .
@@ -1118,7 +1159,7 @@ function keystone_handle_protocol_setup_form( WP_REST_Request $request ): WP_RES
 		$inner_html = '
 			<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Your custom <strong>Antigravity Brain, ~20-Word Google Flow Prompts, Website Builder Prompt &amp; YouTube Channel Setup Plan</strong> for <strong>' . esc_html( $youtube_channel_name ) . '</strong> (<code>' . esc_html( $website_domain ) . '</code>) is ready to copy and paste below:</p>
 			<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:12px;padding:14px 16px;margin:14px 0;">
-				<div style="color:#d4af37;font-size:11.5px;font-weight:800;text-transform:uppercase;margin-bottom:6px;">🧠 1. COPY-PASTE ANTIGRAVITY BRAIN SETUP PROMPT ($30 PLAN)</div>
+				<div style="color:#d4af37;font-size:11.5px;font-weight:800;text-transform:uppercase;margin-bottom:6px;">🧠 1. COPY-PASTE ANTIGRAVITY BRAIN SETUP PROMPT</div>
 				<pre style="white-space:pre-wrap;word-break:break-word;font-family:monospace;font-size:12px;color:#e2e8f0;margin:0;line-height:1.5;">' . esc_html( $custom_brain_setup_prompt ) . '</pre>
 			</div>
 			<div style="background:#04070d;border:1.5px solid #38bdf8;border-radius:12px;padding:14px 16px;margin:14px 0;">
@@ -1192,13 +1233,21 @@ function keystone_handle_protocol_setup_form( WP_REST_Request $request ): WP_RES
 
 /**
  * 24/7 Self-Service AI Architect Tutor Endpoint (`POST /wp-json/keystone/v1/protocol-tutor`).
- * Teaches the $30 Antigravity Plan + Visual Brain Setup Diagram (PDF-01), ~20-Word Google Flow Video Prompting & Export (PDF-02),
+ * Teaches the Visual Brain Setup Diagram (PDF-01), ~20-Word Google Flow Video Prompting & Export (PDF-02),
  * YouTube Brand Channel Setup & 480-Char Tags (PDF-03), and Copy-Paste Website Prompts (PDF-04, PDF-05).
  * Strictly enforces Wayne's IP Air-Gap: never exposes private desktop automation or internal daemons.
  */
 function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Response {
-	$params          = $request->get_json_params() ?: $request->get_params();
-	$uid             = sanitize_text_field( (string) ( $params['uid'] ?? 'KR-DEMO-SELF-SERVICE' ) );
+	$params           = $request->get_json_params() ?: $request->get_params();
+	$uid              = sanitize_text_field( (string) ( $params['uid'] ?? '' ) );
+	$uid_verification = keystone_verify_user_vault_uid_internal( $uid );
+	if ( empty( $uid_verification['verified'] ) ) {
+		return new WP_REST_Response( array(
+			'success' => false,
+			'message' => '🔒 Buyer KR-UID Verification Required. Please enter your verified Buyer KR-UID to use the Custom Setup Generator and 24/7 AI Tutor.',
+		), 403 );
+	}
+	$uid             = (string) $uid_verification['uid'];
 	$question        = sanitize_text_field( (string) ( $params['question'] ?? '' ) );
 	$tier            = sanitize_text_field( (string) ( $params['tier'] ?? '1' ) );
 	$buyer_email     = sanitize_email( (string) ( $params['buyer_email'] ?? '' ) );
@@ -1215,8 +1264,8 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 
 	// Intelligent topic matching across the 6 Modules & 12 Breakdown PDFs
 	$recommended_pdf_id       = 'PDF-01';
-	$recommended_pdf_title    = 'KR_01_Antigravity_30_Plan_And_Visual_Brain_Setup_Diagram.pdf';
-	$recommended_video_module = 'V01 — Module 01: Getting the $30 Antigravity Plan & Building Your 4-Folder AI Brain';
+	$recommended_pdf_title    = 'KR_01_Antigravity_Visual_Brain_Setup_Diagram.pdf';
+	$recommended_video_module = 'V01 — Module 01: Visual AI Brain Architecture & Starter Folder Blueprint';
 	$answer_html              = '';
 
 	if ( false !== strpos( $q_lower, 'flow' ) || false !== strpos( $q_lower, '20-word' ) || false !== strpos( $q_lower, '20 word' ) || false !== strpos( $q_lower, 'export' ) || false !== strpos( $q_lower, 'mp4' ) || false !== strpos( $q_lower, 'video' ) ) {
@@ -1228,9 +1277,7 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 			<ol style="margin:0 0 10px 0;padding-left:18px;color:#e2e8f0;font-size:0.84rem;line-height:1.6;">
 				<li><strong>Keep Every Google Flow Prompt to ~20 Words (18–24 Words):</strong> Google Flow produces the cleanest lip-sync and camera movement when your scene prompt is concise—strictly <strong>18 to 24 words per 10-second clip</strong>.</li>
 				<li><strong>Attach Your 3 Reference Images in Google Flow:</strong> Upload 1 clear headshot photo (Character), 1 outfit photo (Wardrobe), and 1 studio room photo (Background) so every clip matches visually.</li>
-				<li><strong>Copy-Paste Prompt Generator (Paste into Antigravity):</strong><br/>
-					<code style="display:block;background:#04070d;border:1px solid #38bdf8;border-radius:8px;padding:8px 10px;margin-top:4px;color:#38bdf8;font-family:monospace;font-size:0.78rem;">Write 6 Google Flow 10-second video prompts for my topic. Keep each prompt strictly 18 to 24 words describing the presenter speaking with natural gestures, warm studio lighting, and 35mm cinema camera tracking.</code>
-				</li>
+				<li><strong>Download Your Prompt Generator in PDF-02:</strong> Open or download <strong>PDF-02</strong> inside your Buyer Vault to copy the exact 10-second scene prompt generator template.</li>
 				<li><strong>Export &amp; Download MP4s:</strong> Paste each ~20-word prompt into Google Flow, generate your 10-second clips, and click <strong>Export / Download MP4 (1080p)</strong> into your project folder.</li>
 			</ol>';
 	} elseif ( false !== strpos( $q_lower, 'youtube' ) || false !== strpos( $q_lower, 'channel' ) || false !== strpos( $q_lower, 'brand account' ) || false !== strpos( $q_lower, 'tag' ) || false !== strpos( $q_lower, 'upload' ) ) {
@@ -1242,9 +1289,7 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 			<ol style="margin:0 0 10px 0;padding-left:18px;color:#e2e8f0;font-size:0.84rem;line-height:1.6;">
 				<li><strong>Create a YouTube Brand Account:</strong> Go to <code>youtube.com/channel_switcher</code> and click <strong>Create a new channel</strong> so your business channel is separate from your personal Gmail name.</li>
 				<li><strong>Configure Upload Defaults Once:</strong> In <strong>YouTube Studio &rarr; Settings &rarr; Upload Defaults</strong>, paste your permanent website link, social links, and chapter template so every upload is pre-filled automatically.</li>
-				<li><strong>Copy-Paste YouTube Setup Prompt (Paste into Antigravity):</strong><br/>
-					<code style="display:block;background:#04070d;border:1px solid #d4af37;border-radius:8px;padding:8px 10px;margin-top:4px;color:#f6d365;font-family:monospace;font-size:0.78rem;">Write my YouTube Channel description, Upload Defaults template with timestamps, and a 480-character comma-separated SEO tag stack for my channel name and niche.</code>
-				</li>
+				<li><strong>Download PDF-03 for the Copy-Paste YouTube Setup Prompt:</strong> Open or download <strong>PDF-03</strong> in your Buyer Vault to copy your Upload Defaults template and 480-character SEO tag generator.</li>
 				<li><strong>Link Your Companion Short:</strong> Upload a 30–50s vertical highlight clip and set the <strong>Related Video</strong> field in YouTube Studio to point directly to your full-length episode.</li>
 			</ol>';
 	} elseif ( false !== strpos( $q_lower, 'website' ) || false !== strpos( $q_lower, 'landing' ) || false !== strpos( $q_lower, 'gutenberg' ) || false !== strpos( $q_lower, 'css' ) || false !== strpos( $q_lower, 'rank math' ) || false !== strpos( $q_lower, 'seo' ) ) {
@@ -1254,11 +1299,9 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 		$answer_html              = '
 			<div style="color:#f6d365;font-weight:800;font-size:0.86rem;margin-bottom:6px;">🌐 AI ARCHITECT LESSON // COPY-PASTE ANTIGRAVITY WEBSITE BUILDER PROMPTS (PDF-04 &amp; PDF-05)</div>
 			<ol style="margin:0 0 10px 0;padding-left:18px;color:#e2e8f0;font-size:0.84rem;line-height:1.6;">
-				<li><strong>Open Your Website Folder in Antigravity:</strong> Point Antigravity at your local WordPress theme or static site folder (<code>03_Website_Builder/</code>).</li>
-				<li><strong>Paste the Master Website Builder Prompt:</strong><br/>
-					<code style="display:block;background:#04070d;border:1px solid #38bdf8;border-radius:8px;padding:8px 10px;margin-top:4px;color:#38bdf8;font-family:monospace;font-size:0.78rem;">Build a high-converting dark-luxury homepage hero and SEO article layout (#04070d Obsidian background, #d4af37 Gold 9999px pill CTA buttons, #38bdf8 Baby Blue accents, 18px glassmorphic cards) with an embedded YouTube video player, email lead capture form, and FAQPage JSON-LD schema.</code>
-				</li>
-				<li><strong>Turn Every Video Into an SEO Blog Post (PDF-05):</strong> Paste your video script into Antigravity and ask it to output a formatted WordPress article with comparison tables, key takeaways, and Rank Math 100/100 metadata.</li>
+				<li><strong>Open Your Website Folder in Antigravity:</strong> Point Antigravity at your local WordPress theme or static site folder.</li>
+				<li><strong>Download PDF-04 &amp; PDF-05:</strong> Open or download <strong>PDF-04</strong> and <strong>PDF-05</strong> inside your Buyer Vault to copy the complete dark-luxury homepage hero, SEO article layout, and JSON-LD schema prompts.</li>
+				<li><strong>Turn Every Video Into an SEO Blog Post (PDF-05):</strong> Paste your video script into Antigravity using the PDF-05 template to output a formatted WordPress article with comparison tables, key takeaways, and Rank Math 100/100 metadata.</li>
 				<li><strong>Submit to Google Search Console:</strong> Paste your published article URL into Google Search Console URL Inspection and click <strong>Request Indexing</strong>.</li>
 			</ol>';
 	} elseif ( false !== strpos( $q_lower, 'swarm' ) || false !== strpos( $q_lower, 'multi-agent' ) || false !== strpos( $q_lower, 'agent' ) || false !== strpos( $q_lower, 'role' ) || false !== strpos( $q_lower, 'b2b' ) || false !== strpos( $q_lower, 'outreach' ) ) {
@@ -1285,17 +1328,15 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 			</ol>';
 	} else {
 		$recommended_pdf_id       = 'PDF-01';
-		$recommended_pdf_title    = 'KR_01_Antigravity_30_Plan_And_Visual_Brain_Setup_Diagram.pdf';
-		$recommended_video_module = 'V01 — Module 01: Getting the $30 Antigravity Plan & Building Your 4-Folder AI Brain';
+		$recommended_pdf_title    = 'KR_01_Antigravity_Visual_Brain_Setup_Diagram.pdf';
+		$recommended_video_module = 'V01 — Module 01: Visual AI Brain Architecture & Starter Folder Blueprint';
 		$answer_html              = '
-			<div style="color:#f6d365;font-weight:800;font-size:0.86rem;margin-bottom:6px;">🧠 AI ARCHITECT LESSON // HOW TO GET THE $30 ANTIGRAVITY PLAN &amp; SET UP YOUR AI BRAIN (PDF-01)</div>
+			<div style="color:#f6d365;font-weight:800;font-size:0.86rem;margin-bottom:6px;">🧠 AI ARCHITECT LESSON // HOW TO SET UP YOUR 4-PART AI BRAIN ARCHITECTURE (PDF-01)</div>
 			<ol style="margin:0 0 10px 0;padding-left:18px;color:#e2e8f0;font-size:0.84rem;line-height:1.6;">
-				<li><strong>Step 1 — Get the $30/mo Google Antigravity Plan &amp; Open a Folder:</strong> Install Google Antigravity, activate the $30/mo individual plan, and open a clean folder on your computer called <code>My_AI_Brain</code>.</li>
-				<li><strong>Step 2 — Follow the Visual Brain Setup Diagram (PDF-01):</strong> Paste Brain Setup Prompt #1 into the Antigravity chat window. It automatically builds your 4 core folders: <code>01_Brain_Rules</code>, <code>02_Video_Prompts</code>, <code>03_Website_Builder</code>, and <code>04_YouTube_Channel</code>.</li>
-				<li><strong>Step 3 — Copy-Paste Brain Setup Prompt #1:</strong><br/>
-					<code style="display:block;background:#04070d;border:1px solid #d4af37;border-radius:8px;padding:8px 10px;margin-top:4px;color:#f6d365;font-family:monospace;font-size:0.78rem;">Create 4 folders in my workspace: 01_Brain_Rules, 02_Video_Prompts, 03_Website_Builder, and 04_YouTube_Channel. Inside 01_Brain_Rules/AGENTS.md, save my brand name, niche, target audience, and website URL so you remember them in every future chat.</code>
-				</li>
-				<li><strong>Step 4 — Generate Your Custom Prompts in Tab 1:</strong> Fill out the <strong>Interactive Brain, Channel &amp; Website Setup Form</strong> in Tab 1 below to generate prompts tailored to your exact YouTube channel and domain!</li>
+				<li><strong>Step 1 — Open Your Workspace in Google Antigravity:</strong> Install Google Antigravity and open a clean workspace folder on your computer.</li>
+				<li><strong>Step 2 — Download PDF-01 &amp; Your .ZIP Starter Pack:</strong> Open or download <strong>PDF-01</strong> in Tab 1 to view the Visual 4-Part AI Brain Setup Diagram and copy your master initialization prompt.</li>
+				<li><strong>Step 3 — Paste the Master Brain Initialization Prompt:</strong> Paste Prompt #1 from <strong>PDF-01</strong> into your Antigravity chat window to automatically generate your 4-folder AI Brain structure and starter rules file.</li>
+				<li><strong>Step 4 — Generate Your Custom Prompts in Tab 1:</strong> Fill out the <strong>Interactive Brain, Channel &amp; Website Setup Form</strong> in Tab 1 to generate prompts tailored to your exact YouTube channel and domain!</li>
 			</ol>';
 	}
 

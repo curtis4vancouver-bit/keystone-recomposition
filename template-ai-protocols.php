@@ -224,15 +224,15 @@ $theme_uri = get_stylesheet_directory_uri();
 						</h1>
 
 						<p class="cyber-hero-subtitle">
-							Learn step-by-step how to take the <code class="kr-code-pill-gold">$30/mo</code> Google Antigravity plan, build your 4-folder AI Brain using our <strong>Visual Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code>)</strong>, generate <strong>~20-word (18–24 word) Google Flow video prompts (<code class="kr-code-pill">PDF-02</code>)</strong> to export 1080p MP4s, launch your <strong>YouTube Brand Channel (<code class="kr-code-pill">PDF-03</code>)</strong>, and build your dark-luxury website with <strong>Copy-Paste Website Prompts (<code class="kr-code-pill">PDF-04</code>)</strong>—backed by our <strong>24/7 AI Architect Tutor</strong>.
+							Learn step-by-step how to set up your Google Antigravity workspace, build your 4-part AI Brain using our <strong>Visual Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code>)</strong>, generate <strong>~20-word (18–24 word) Google Flow video prompts (<code class="kr-code-pill">PDF-02</code>)</strong> to export 1080p MP4s, launch your <strong>YouTube Brand Channel (<code class="kr-code-pill">PDF-03</code>)</strong>, and build your dark-luxury website with <strong>Copy-Paste Website Prompts (<code class="kr-code-pill">PDF-04</code>)</strong>—all for a <strong>One-Time Payment with Zero Monthly Fees</strong>.
 						</p>
 
 						<!-- 100% Automated 3-Step Delivery Strip -->
 						<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 0 0 18px 0; width: 100%;">
 							<div style="background: rgba(11, 17, 30, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 10px 12px;">
 								<div style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800;">STEP 01 // VISUAL BRAIN SETUP</div>
-								<div style="color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; margin-top: 2px;">🧠 $30 Antigravity Brain Diagram</div>
-								<div style="color: #94a3b8; font-size: 0.72rem; line-height: 1.35; margin-top: 2px;">Visual diagram + copy-paste prompts that build your 4 AI Brain folders in 60 seconds.</div>
+								<div style="color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; margin-top: 2px;">🧠 Antigravity Brain Diagram</div>
+								<div style="color: #94a3b8; font-size: 0.72rem; line-height: 1.35; margin-top: 2px;">Visual diagram + copy-paste prompts that build your structured AI Brain workspace in 60 seconds.</div>
 							</div>
 							<div style="background: rgba(11, 17, 30, 0.9); border: 1px solid rgba(212, 175, 55, 0.40); border-radius: 12px; padding: 10px 12px;">
 								<div style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800;">STEP 02 // ~20-WORD FLOW PROMPTS</div>
@@ -247,10 +247,9 @@ $theme_uri = get_stylesheet_directory_uri();
 						</div>
 
 						<div class="protocols-quick-nav" style="display: flex; flex-wrap: wrap; gap: 8px;">
-							<a href="#kr-self-service-portal" class="quick-nav-pill" style="border-color: #d4af37; color: #f6d365;">🎓 Open 6-Tab Course, 12 PDFs &amp; 24/7 AI Tutor</a>
-							<a href="#tier-blueprint" class="quick-nav-pill">01 • $49.50 Brain, Flow Video &amp; Website Blueprint</a>
-							<a href="#tier-swarm" class="quick-nav-pill">02 • $199 Multi-Agent &amp; B2B Suite</a>
-							<a href="#tier-workstation" class="quick-nav-pill">03 • $800 Full Creator Workstation</a>
+							<a href="#tier-blueprint" class="quick-nav-pill" style="border-color: #d4af37; color: #f6d365;">01 • $49.50 One-Time: Brain, Flow Video &amp; Website Blueprint</a>
+							<a href="#tier-swarm" class="quick-nav-pill">02 • $199 One-Time: Multi-Agent &amp; B2B Suite</a>
+							<a href="#tier-workstation" class="quick-nav-pill">03 • $800 One-Time: Full Creator Workstation</a>
 						</div>
 					</div>
 
@@ -259,30 +258,30 @@ $theme_uri = get_stylesheet_directory_uri();
 						<div class="express-checkout-card">
 							<div class="checkout-card-header">
 								<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 6px;">
-									<span class="checkout-badge-live">🔒 NEXT COHORT RELEASING SOON • NO CARD REQUIRED TODAY</span>
+									<span class="checkout-badge-live">💎 ONE-TIME PAYMENT • LIFETIME ACCESS • ZERO MONTHLY FEES</span>
 									<span id="vaultUidStatusBadge" style="background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 800; padding: 3px 9px; border-radius: 9999px;">
-										🔐 UID RESERVATION: ACTIVE
+										🔐 BUYER VAULT: LOCKED
 									</span>
 								</div>
-								<h3 class="checkout-portal-title">Lock In Launch Rate &amp; Unlock Self-Service Portal</h3>
-								<p class="checkout-portal-sub">Reserve your launch rate today with zero card required &rarr; Receive your priority <code class="kr-code-pill">KR-UID</code> &amp; instant access to the <strong>Visual Brain Setup Diagram, Copy-Paste Prompts &amp; 24/7 AI Tutor</strong> below.</p>
+								<h3 class="checkout-portal-title">One-Time Access &amp; Instant Buyer Vault Unlock</h3>
+								<p class="checkout-portal-sub">Click below to unlock your <strong>Dedicated Buyer Lead Page</strong> &amp; receive your <code class="kr-code-pill">KR-UID</code> + all <strong>Breakdown PDFs, Copy-Paste Prompts &amp; Videos</strong> directly by email (One-Time Payment — No Subscription).</p>
 							</div>
 
 							<div class="checkout-tier-selector">
-								<label class="checkout-label">Select Protocol Tier:</label>
+								<label class="checkout-label">Select One-Time Protocol Tier:</label>
 								<div class="tier-select-grid">
-									<button type="button" class="tier-select-btn active" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 AI Brain, Flow Video & Website Blueprint" data-url="/contact/?inquiry=tier1_blueprint#inquiry-form">
-										<span class="btn-tier-num">TIER 01</span>
+									<button type="button" class="tier-select-btn active" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain, Flow Video & Website Blueprint" data-url="/contact/?inquiry=tier1_blueprint#inquiry-form">
+										<span class="btn-tier-num">TIER 01 • ONE-TIME</span>
 										<span class="btn-tier-name">Brain, Flow &amp; Website</span>
 										<span class="btn-tier-price">$49.50</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 Multi-Agent Prompt System & B2B Engine" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
-										<span class="btn-tier-num">TIER 02</span>
+									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Multi-Agent Prompt System & B2B Engine" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
+										<span class="btn-tier-num">TIER 02 • ONE-TIME</span>
 										<span class="btn-tier-name">Multi-Agent &amp; B2B</span>
 										<span class="btn-tier-price">$199</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 Full-Stack AI Creator Workstation" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
-										<span class="btn-tier-num">TIER 03</span>
+									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full-Stack AI Creator Workstation" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
+										<span class="btn-tier-num">TIER 03 • ONE-TIME</span>
 										<span class="btn-tier-name">Creator Workstation</span>
 										<span class="btn-tier-price">$800</span>
 									</button>
@@ -302,25 +301,25 @@ $theme_uri = get_stylesheet_directory_uri();
 							<!-- Dynamic Express Reserve / Buy Button -->
 							<div class="checkout-cta-wrap">
 								<button type="button" id="portalExpressBuyBtn" class="btn-cyan-express-buy" style="width: 100%; border: none; cursor: pointer;">
-									⚡ LOCK IN LAUNCH RATE &amp; RESERVE ACCESS ($49.50 USD) →
+									⚡ GET ONE-TIME ACCESS &amp; OPEN BUYER VAULT ($49.50 USD) →
 								</button>
 								<div class="checkout-payment-methods">
-									<span>🔒 $0 Charged Today</span> • <span>🔐 Priority <code class="kr-code-pill">KR-UID</code> Saved</span> • <span>✉️ Custom Prompts Emailed</span>
+									<span>💎 One-Time Payment (No Monthly Fee)</span> • <span>🔐 Instant <code class="kr-code-pill">KR-UID</code> Lead Page</span> • <span>✉️ Emailed Instantly</span>
 								</div>
 								<div class="checkout-fiduciary-note">
-									🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Protected by Priority UID Lock
+									🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Protected by Verified Buyer UID Lock
 								</div>
 							</div>
 
 							<!-- Vault Menu User UID Verification Gate -->
 							<div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(56, 189, 248, 0.22);">
 								<label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #f6d365; letter-spacing: 0.05em; margin-bottom: 6px;">
-									🔐 ALREADY RESERVED? CHECK YOUR PRIORITY UID OR LAUNCH PREVIEW:
+									🔑 RETURNING BUYER? ENTER YOUR KR-UID TO OPEN YOUR LEAD PAGE:
 								</label>
 								<div style="display: flex; gap: 6px;">
 									<input type="text" id="existingVaultUidInput" placeholder="e.g. KR-UID-XXXXXXXXXXXX" style="flex: 1; background: rgba(4, 7, 13, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 9999px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 6px 12px; outline: none;" />
 									<button type="button" id="verifyVaultUidBtn" style="background: rgba(56, 189, 248, 0.18); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 6px 12px; font-family: 'Outfit', sans-serif; font-size: 0.70rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
-										CHECK UID
+										UNLOCK VAULT
 									</button>
 								</div>
 								<div id="vaultUidVerifyFeedback" style="display: none; margin-top: 8px; font-size: 0.74rem; line-height: 1.4; padding: 8px 10px; border-radius: 10px; background: rgba(8, 14, 26, 0.95); border: 1px solid rgba(56, 189, 248, 0.35);"></div>
@@ -332,8 +331,8 @@ $theme_uri = get_stylesheet_directory_uri();
 			</div>
 		</section>
 
-		<!-- 1B. SELF-SERVICE 6-TAB INTERACTIVE COURSE, VISUAL BRAIN DIAGRAM, 12 BREAKDOWN PDFs, SETUP FORM & 24/7 AI TUTOR PORTAL -->
-		<section id="kr-self-service-portal" style="padding: 36px 0 48px 0; background: linear-gradient(180deg, #04070d 0%, #070d19 100%); border-top: 1px solid rgba(212, 175, 55, 0.35); border-bottom: 1px solid rgba(56, 189, 248, 0.28);">
+		<!-- 1B. DEDICATED BUYER LEAD PAGE / SELF-SERVICE VAULT (HIDDEN ON PUBLIC SALES PAGE UNTIL PAYMENT / UID VERIFICATION) -->
+		<section id="kr-self-service-portal" style="display: none; padding: 36px 0 48px 0; background: linear-gradient(180deg, #04070d 0%, #070d19 100%); border-top: 1px solid rgba(212, 175, 55, 0.35); border-bottom: 1px solid rgba(56, 189, 248, 0.28);">
 			<div class="ast-container">
 				<div style="background: rgba(8, 13, 24, 0.96); border: 1.5px solid #d4af37; border-radius: 22px; padding: 28px 26px; box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85);">
 
@@ -341,20 +340,20 @@ $theme_uri = get_stylesheet_directory_uri();
 					<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid rgba(212, 175, 55, 0.28);">
 						<div>
 							<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.14); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; margin-bottom: 8px;">
-								🎓 INTERACTIVE SELF-SERVICE COURSE PORTAL • VISUAL BRAIN DIAGRAM + COPY-PASTE PROMPTS + 24/7 AI TEACHER
+								✅ VERIFIED BUYER LEAD PAGE UNLOCKED • ALL VIDEOS, BRAIN DIAGRAMS, PROMPTS &amp; PDFs READY
 							</div>
 							<h2 style="font-family: 'Outfit', sans-serif; font-size: 1.65rem; font-weight: 900; color: #ffffff; margin: 0;">
-								The $49.50 AI Brain, ~20-Word Google Flow Video &amp; Website Implementation Portal
+								Your Unlocked AI Brain, ~20-Word Google Flow Video &amp; Website Implementation Vault
 							</h2>
 							<p style="color: #cbd5e1; font-size: 0.88rem; margin: 6px 0 0 0; line-height: 1.55;">
-								Everything is laid out step-by-step below so you never get stuck: follow the <strong>Visual Brain Setup Diagram</strong>, copy-paste the exact prompts into your <code class="kr-code-pill-gold">$30/mo</code> Antigravity workspace and <strong>Google Flow</strong>, download all <strong>12 Breakdown Spec PDFs (<code class="kr-code-pill">%PDF-1.4</code>)</strong>, or ask the <strong>24/7 AI Architect Tutor</strong> any question.
+								Everything is unlocked below and a copy has been sent to your email: watch your <strong>Step-by-Step Walkthrough Videos</strong>, follow the <strong>Visual Brain Setup Diagram</strong>, copy-paste the exact prompts into your Antigravity workspace and <strong>Google Flow</strong>, download all <strong>12 Breakdown Spec PDFs (<code class="kr-code-pill">%PDF-1.4</code>)</strong>, or ask the <strong>24/7 AI Architect Tutor</strong> any question.
 							</p>
 						</div>
 						<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-							<button type="button" id="launchDemoPortalBtn" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 10px 18px; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 900; cursor: pointer;">
-								🔓 UNLOCK FULL SELF-SERVICE PREVIEW
+							<button type="button" id="backToSalesPageBtn" style="background: rgba(11, 17, 30, 0.92); border: 1px solid rgba(212, 175, 55, 0.55); color: #f6d365; border-radius: 9999px; padding: 10px 16px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+								← Back to Product Overview
 							</button>
-							<a href="?vault_download=tier1_blueprint_pack&amp;uid=KR-DEMO-SELF-SERVICE" id="portalQuickZipBtn" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 10px 16px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 800; text-decoration: none;">
+							<a href="?vault_download=tier1_blueprint_pack" id="portalQuickZipBtn" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 10px 18px; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 900; text-decoration: none;">
 								📦 DOWNLOAD COPY-PASTE PROMPT PACK (.ZIP)
 							</a>
 						</div>
@@ -1011,6 +1010,7 @@ Rules for every scene prompt:
 			</div>
 		</section>
 
+		<div id="krPublicSalesSections">
 		<!-- 2. THE 3 DEDICATED PRODUCT SHOWCASE BLOCKS -->
 		<section class="protocols-showcase-section">
 			<div class="ast-container">
@@ -1023,14 +1023,14 @@ Rules for every scene prompt:
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
 									<iframe src="https://www.youtube.com/embed/JCgZ5SsN_bc?rel=0"
-											title="Wayne's Recorded Walkthrough: $30 Antigravity Brain, ~20-Word Google Flow Prompts & Website Blueprint"
+											title="Wayne's Recorded Walkthrough: AI Brain, ~20-Word Google Flow Prompts & Website Blueprint"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 											allowfullscreen loading="lazy"></iframe>
 								</div>
 								<div class="video-card-meta">
-									<span class="video-title">Wayne's Recorded Walkthrough: $30 Antigravity Brain, ~20-Word Google Flow Prompts &amp; Website Blueprint</span>
-									<span class="video-desc">Watch Wayne Stevenson demonstrate how to set up your 4-folder AI Brain on the $30 Antigravity plan, generate ~20-word Google Flow video prompts, export 1080p MP4 clips, and build a high-converting website.</span>
+									<span class="video-title">Wayne's Recorded Walkthrough: AI Brain, ~20-Word Google Flow Prompts &amp; Website Blueprint</span>
+									<span class="video-desc">Watch Wayne Stevenson demonstrate how to set up your structured AI Brain inside Google Antigravity, generate ~20-word Google Flow video prompts, export 1080p MP4 clips, and build a high-converting website.</span>
 								</div>
 							</div>
 						</div>
@@ -1038,37 +1038,37 @@ Rules for every scene prompt:
 						<div class="product-info-col">
 							<div class="product-badge-row">
 								<span class="badge-tier-cyan">TIER 01 // VISUAL BRAIN DIAGRAM + COPY-PASTE PROMPTS</span>
-								<span class="badge-discount-gold">50% OFF $99 LAUNCH SPECIAL</span>
+								<span class="badge-discount-gold">ONE-TIME PAYMENT • ZERO MONTHLY FEES</span>
 							</div>
 							<h2 class="product-title">Antigravity AI Brain, ~20-Word Google Flow Video &amp; Website Fast-Track Blueprint</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">49.50</span>
-								<span class="price-currency">USD</span>
+								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 								<span class="price-original"><del>$99.00</del></span>
 							</div>
 							<p class="product-lead-copy">
-								Stop paying agencies $5,000+ for slow websites or spending weeks guessing how to write AI video prompts. This fast-track blueprint gives you our <strong>Visual Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code>)</strong> and <strong>Copy-Paste Prompt Packs</strong> so you can take the <code class="kr-code-pill-gold">$30/mo</code> Google Antigravity plan, build your 4-folder AI Brain, generate <strong>~20-word (18–24 word) Google Flow video prompts</strong>, export MP4 videos, and launch your YouTube Brand Channel and Website step by step.
+								Stop paying agencies $5,000+ for slow websites or spending weeks guessing how to write AI video prompts. This <strong>one-time blueprint</strong> gives you our <strong>Visual Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code>)</strong> and <strong>Copy-Paste Prompt Packs</strong> so you can organize your Google Antigravity AI Brain, generate <strong>~20-word (18–24 word) Google Flow video prompts</strong>, export MP4 videos, and launch your YouTube Brand Channel and Website step by step.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>📦 100% Self-Service Deliverables (Unlocked Instantly via Verified <code class="kr-code-pill">KR-UID</code>):</h4>
+								<h4>📦 What Unlocks on Your Buyer Lead Page &amp; Email Inbox (One-Time Payment):</h4>
 								<ul>
-									<li><strong>🧠 Step 1 — $30 Antigravity Visual Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code>):</strong> Visual flowchart + copy-paste prompt that builds your <code class="kr-code-pill">01_Brain_Rules</code>, <code class="kr-code-pill">02_Video_Prompts</code>, <code class="kr-code-pill">03_Website_Builder</code>, and <code class="kr-code-pill">04_YouTube_Channel</code> folders automatically.</li>
+									<li><strong>🧠 Step 1 — Visual AI Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code> + <code class="kr-code-pill">.ZIP</code>):</strong> Complete visual architecture flowchart + ready-to-paste setup prompts that build your entire 4-part AI Brain workspace automatically.</li>
 									<li><strong>🎬 Step 2 — ~20-Word Google Flow Video Prompt System (<code class="kr-code-pill">PDF-02</code>):</strong> Copy-paste prompt generator that writes concise 18–24 word Google Flow scene prompts so you can generate and export crisp 10-second MP4 videos.</li>
 									<li><strong>📺 Step 3 — YouTube Brand Channel &amp; Copy-Paste Website Prompts (<code class="kr-code-pill">PDF-03</code>–<code class="kr-code-pill">PDF-05</code>):</strong> Ready-to-paste prompts for your dark-luxury <code class="kr-code-pill">#04070d</code> homepage, SEO articles, Upload Defaults, and 480-character tag stack.</li>
-									<li><strong>🤖 Step 4 — 24/7 AI Architect Tutor + Personal Email Follow-Up:</strong> Interactive AI Teacher on this page + automated custom prompt email from <code class="kr-code-pill">keystonerecomposition@gmail.com</code>.</li>
+									<li><strong>🤖 Step 4 — 24/7 AI Architect Tutor + Direct Email Delivery:</strong> Instant access to the unlocked Lead Page + full download suite emailed directly to your inbox from <code class="kr-code-pill">keystonerecomposition@gmail.com</code>.</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 AI Brain, Flow Video & Website Blueprint" style="border: none; cursor: pointer; width: 100%;">
-									⚡ LOCK IN $49.50 LAUNCH RATE &amp; UNLOCK PORTAL →
+								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain, Flow Video & Website Blueprint" style="border: none; cursor: pointer; width: 100%;">
+									⚡ GET $49.50 ONE-TIME ACCESS &amp; OPEN BUYER LEAD PAGE →
 								</button>
 								<div class="checkout-trust-line">
-									🔒 $0 Charged Today • Priority <code class="kr-code-pill">KR-UID</code> Reservation • Instant Self-Service Portal &amp; PDFs
+									💎 One-Time Payment (No Monthly Fee) • Instant <code class="kr-code-pill">KR-UID</code> Lead Page • Emailed to Your Inbox
 								</div>
-								<span class="delivery-time-tag">⚡ Priority reservation saved immediately &amp; emailed to your inbox</span>
+								<span class="delivery-time-tag">⚡ Opens your unlocked Buyer Lead Page &amp; emails your full package immediately</span>
 							</div>
 						</div>
 
@@ -1098,12 +1098,13 @@ Rules for every scene prompt:
 						<div class="product-info-col">
 							<div class="product-badge-row">
 								<span class="badge-tier-cyan">TIER 02 // PRO MULTI-AGENT &amp; B2B SUITE</span>
+								<span class="badge-discount-gold">ONE-TIME PAYMENT • ZERO MONTHLY FEES</span>
 							</div>
 							<h2 class="product-title">Multi-Agent Role Prompt System &amp; B2B Outreach Engine</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">199</span>
-								<span class="price-currency">USD</span>
+								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
 								Single-prompt chatbots suffer from context rot: after a few turns, they forget your brand rules and emit generic copy. Tier 02 gives you the complete multi-agent role prompt library (<code class="kr-code-pill">PDF-06</code> to <code class="kr-code-pill">PDF-09</code>) to run dedicated Research, Scripting, Website, and B2B Outreach agents inside your Antigravity Brain.
@@ -1112,7 +1113,7 @@ Rules for every scene prompt:
 							<div class="product-deliverables-box">
 								<h4>📦 What You Receive in Tier 02 (Includes Everything in Tier 01 + <code class="kr-code-pill">PDF-06</code>–<code class="kr-code-pill">PDF-09</code>):</h4>
 								<ul>
-									<li><strong>🎬 Wayne's Recorded Multi-Agent Workflow Walkthrough:</strong> Step-by-step guide showing how to organize specialized role prompts inside your Brain folders.</li>
+									<li><strong>🎬 Wayne's Recorded Multi-Agent Workflow Walkthrough:</strong> Step-by-step guide showing how to organize specialized role prompts inside your Brain workspace.</li>
 									<li><strong>📦 Copy-Paste Subagent Role Prompt Library (<code class="kr-code-pill">.ZIP</code>):</strong> Ready-to-use role definitions for Speed Research, Scriptwriting, Full-Stack Web Pages, SEO Auditing, and B2B Lead Outreach.</li>
 									<li><strong>✉️ B2B Lead Verification &amp; Locked Crest Logo Email Shell:</strong> Domain MX verification checklist and dark-luxury HTML email templates that build instant executive authority.</li>
 									<li><strong>🤖 Full Access to 24/7 AI Architect Tutor:</strong> On-demand coaching across all 9 Breakdown PDFs.</li>
@@ -1120,13 +1121,13 @@ Rules for every scene prompt:
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 Multi-Agent Prompt System & B2B Engine" style="border: none; cursor: pointer; width: 100%;">
-									🚀 LOCK IN $199 MULTI-AGENT LAUNCH RATE &amp; RESERVE ACCESS →
+								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Multi-Agent Prompt System & B2B Engine" style="border: none; cursor: pointer; width: 100%;">
+									🚀 GET $199 ONE-TIME ACCESS &amp; OPEN BUYER LEAD PAGE →
 								</button>
 								<div class="checkout-trust-line">
-									🔒 $0 Charged Today • Priority <code class="kr-code-pill">KR-UID</code> Reservation • Includes Tier 01 + Multi-Agent Pack
+									💎 One-Time Payment (No Monthly Fee) • Includes Tier 01 + Multi-Agent Pack • Emailed Instantly
 								</div>
-								<span class="delivery-time-tag">⚡ Priority reservation saved immediately &amp; emailed to your inbox</span>
+								<span class="delivery-time-tag">⚡ Opens your unlocked Buyer Lead Page &amp; emails your full package immediately</span>
 							</div>
 						</div>
 
@@ -1156,36 +1157,36 @@ Rules for every scene prompt:
 						<div class="product-info-col">
 							<div class="product-badge-row">
 								<span class="badge-tier-cyan">TIER 03 // $800 CREATOR WORKSTATION + 1-ON-1 FOLLOW-UP</span>
-								<span class="badge-capacity-alert">ALL 12 PDFS + PERSONAL ARCHITECTURE REVIEW</span>
+								<span class="badge-capacity-alert">ONE-TIME PAYMENT • ALL 12 PDFS + 1-ON-1 REVIEW</span>
 							</div>
 							<h2 class="product-title">Full-Stack AI Creator Workstation, DaVinci Assembly &amp; 1-on-1 Onboarding</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">800</span>
-								<span class="price-currency">USD</span>
+								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
 								Designed for founders, builders, and creators who want the complete flagship system (<code class="kr-code-pill">PDF-01</code> through <code class="kr-code-pill">PDF-12</code>): multi-brand Brain architecture, 2-track DaVinci Resolve video &amp; B-roll assembly with <code class="kr-code-pill-gold">-18dB</code> audio ducking, full website funnel templates, and direct personal email onboarding with Wayne Stevenson.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>🏛️ $800 Creator Workstation Deliverables + Personal Follow-Up:</h4>
+								<h4>🏛️ $800 Creator Workstation Deliverables + Personal Follow-Up (One-Time Payment):</h4>
 								<ul>
 									<li><strong>🎬 Step 1 — Complete 6-Module Masterclass &amp; All 12 Breakdown PDFs:</strong> Unlocks every module (<code class="kr-code-pill">V01</code>–<code class="kr-code-pill">V06</code>) and all 12 downloadable <code class="kr-code-pill">%PDF-1.4</code> spec sheets.</li>
-									<li><strong>📦 Step 2 — Full Creator Workstation Suite (<code class="kr-code-pill">.ZIP</code>):</strong> Multi-brand Brain folder blueprint, 2-track DaVinci Resolve assembly guide, and full website + lead capture templates.</li>
-									<li><strong>🔐 Verified Priority <code class="kr-code-pill">KR-UID</code> Lock:</strong> Permanently unlocks all 3 tiers inside the Self-Service Portal.</li>
+									<li><strong>📦 Step 2 — Full Creator Workstation Suite (<code class="kr-code-pill">.ZIP</code>):</strong> Multi-brand Brain architecture blueprint, 2-track DaVinci Resolve assembly guide, and full website + lead capture templates.</li>
+									<li><strong>🔐 Verified Priority <code class="kr-code-pill">KR-UID</code> Lock:</strong> Permanently unlocks all 3 tiers inside your Buyer Lead Page.</li>
 									<li><strong>✉️ Step 3 — Direct Personal Follow-Up from Wayne:</strong> Alerts Wayne Stevenson (<code class="kr-code-pill">keystonerecomposition@gmail.com</code>) to review your setup intake form and schedule your 1-on-1 architecture onboarding.</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 Full-Stack AI Creator Workstation" style="border: none; cursor: pointer; width: 100%;">
-									🤝 LOCK IN $800 WORKSTATION LAUNCH RATE &amp; RESERVE ACCESS →
+								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full-Stack AI Creator Workstation" style="border: none; cursor: pointer; width: 100%;">
+									🤝 GET $800 ONE-TIME WORKSTATION ACCESS &amp; OPEN LEAD PAGE →
 								</button>
 								<div class="checkout-trust-line">
-									🏛️ $0 Charged Today • Priority <code class="kr-code-pill">KR-UID</code> Saved • Direct Personal Email Follow-Up from Wayne Stevenson
+									🏛️ One-Time Payment (No Monthly Fee) • Instant <code class="kr-code-pill">KR-UID</code> Lead Page • Direct Personal Follow-Up from Wayne
 								</div>
-								<span class="delivery-time-tag">⚡ Priority reservation saved immediately &amp; emailed to your inbox</span>
+								<span class="delivery-time-tag">⚡ Opens your unlocked Buyer Lead Page &amp; emails your full package immediately</span>
 							</div>
 						</div>
 
@@ -1201,7 +1202,7 @@ Rules for every scene prompt:
 				<div class="competitive-matrix-card">
 					<div class="matrix-header">
 						<span class="matrix-tag">THE BUILDER BENCHMARK</span>
-						<h3 class="matrix-title">Why We Build Our AI Brain in Google Antigravity ($30/mo Plan) + Google Flow</h3>
+						<h3 class="matrix-title">Why We Build Our AI Brain in Google Antigravity + Google Flow</h3>
 						<p class="matrix-desc">
 							"When you pour concrete or frame high-load timber structures, you learn that unreliable tools cost fortunes. In AI video and website production, the principle is identical." — Wayne Stevenson
 						</p>
@@ -1209,7 +1210,7 @@ Rules for every scene prompt:
 					<div class="matrix-grid">
 						<div class="matrix-col">
 							<h4>⚡ 2,000,000-Token Brain Memory</h4>
-							<p>Gemini provides up to <strong>2M tokens of context</strong> inside Antigravity, allowing your <code class="kr-code-pill">01_Brain_Rules</code> folder to hold your entire brand bible, video scripts, and website templates simultaneously.</p>
+							<p>Gemini provides up to <strong>2M tokens of context</strong> inside Antigravity, allowing your structured AI Brain workspace to hold your entire brand bible, video scripts, and website templates simultaneously.</p>
 						</div>
 						<div class="matrix-col">
 							<h4>🎬 ~20-Word Google Flow Precision</h4>
@@ -1221,12 +1222,13 @@ Rules for every scene prompt:
 						</div>
 						<div class="matrix-col">
 							<h4>🤖 24/7 Self-Service AI Teacher</h4>
-							<p>Every student gets instant access to our <strong>Visual Brain Setup Diagram</strong>, <strong>12 Breakdown PDFs</strong>, <strong>Interactive Setup Generator</strong>, and <strong>24/7 AI Architect Tutor</strong> right on this page.</p>
+							<p>Every buyer gets instant access to our <strong>Visual Brain Setup Diagram</strong>, <strong>12 Breakdown PDFs</strong>, <strong>Interactive Setup Generator</strong>, and <strong>24/7 AI Architect Tutor</strong> on their unlocked Lead Page + by email.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+		</div>
 	</main>
 </div>
 
@@ -2007,9 +2009,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	const tierNames = {
-		1: 'Tier 01 — $49.50 AI Brain, Flow Video & Website Blueprint',
-		2: 'Tier 02 — $199 Multi-Agent Prompt System & B2B Engine',
-		3: 'Tier 03 — $800 Full-Stack AI Creator Workstation'
+		1: 'Tier 01 — $49.50 USD One-Time: AI Brain, Flow Video & Website Blueprint',
+		2: 'Tier 02 — $199 USD One-Time: Multi-Agent Prompt System & B2B Engine',
+		3: 'Tier 03 — $800 USD One-Time: Full-Stack AI Creator Workstation'
 	};
 
 	function formatPrice(val) {
@@ -2020,10 +2022,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (!expressBuyBtn) return;
 		const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
 		if (activeTier === 3) {
-			expressBuyBtn.textContent = '🤝 LOCK IN $800 WORKSTATION LAUNCH RATE →';
+			expressBuyBtn.textContent = '🤝 GET $800 ONE-TIME WORKSTATION ACCESS & OPEN LEAD PAGE →';
 			expressBuyBtn.className = 'btn-cyan-express-buy btn-gold-portal';
 		} else {
-			expressBuyBtn.textContent = `⚡ LOCK IN LAUNCH RATE & RESERVE ACCESS ($${formatPrice(finalPrice)} USD) →`;
+			expressBuyBtn.textContent = `⚡ GET ONE-TIME ACCESS & OPEN BUYER VAULT ($${formatPrice(finalPrice)} USD) →`;
 			expressBuyBtn.className = 'btn-cyan-express-buy';
 		}
 	}
@@ -2032,7 +2034,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		activeTier = parseInt(tierNum, 10) || 1;
 		if (modalTierSelect) modalTierSelect.value = String(activeTier);
 		if (orderTierInput) orderTierInput.value = String(activeTier);
-		if (modalTierHeadline) modalTierHeadline.textContent = 'Lock In Launch Rate — ' + (tierNames[activeTier] || tierNames[1]);
+		if (modalTierHeadline) modalTierHeadline.textContent = 'One-Time Access — ' + (tierNames[activeTier] || tierNames[1]);
 		if (modal) modal.style.display = 'flex';
 	}
 
@@ -2100,8 +2102,31 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 
+	function openBuyerLeadVaultView() {
+		const portalSec = document.getElementById('kr-self-service-portal');
+		const publicSecs = document.getElementById('krPublicSalesSections');
+		if (portalSec) {
+			portalSec.style.display = 'block';
+			if (publicSecs) publicSecs.style.display = 'none';
+			portalSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+	}
+
+	const backToSalesBtn = document.getElementById('backToSalesPageBtn');
+	if (backToSalesBtn) {
+		backToSalesBtn.addEventListener('click', function() {
+			const portalSec = document.getElementById('kr-self-service-portal');
+			const publicSecs = document.getElementById('krPublicSalesSections');
+			if (publicSecs) publicSecs.style.display = 'block';
+			if (portalSec) portalSec.style.display = 'none';
+			const firstTier = document.getElementById('tier-blueprint');
+			if (firstTier) firstTier.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		});
+	}
+
 	function applyVerifiedVaultState(data) {
 		if (!data || !data.valid) return;
+		window.krVerifiedBuyerUid = data.uid;
 		try { localStorage.setItem('kr_user_vault_uid', data.uid); } catch (e) {}
 		if (vaultUidStatusBadge) {
 			vaultUidStatusBadge.textContent = '✔ UID UNLOCKED: ' + data.uid;
@@ -2115,10 +2140,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (zipBtn) {
 			zipBtn.href = '?vault_download=tier1_blueprint_pack&uid=' + encodeURIComponent(data.uid);
 		}
+		openBuyerLeadVaultView();
 	}
 
 	function verifyUidWithServer(uidToVerify, showFeedbackBox) {
-		fetch('/wp-json/keystone/v1/verify-vault-uid?uid=' + encodeURIComponent(uidToVerify || ''))
+		if (!uidToVerify) return;
+		fetch('/wp-json/keystone/v1/verify-vault-uid?uid=' + encodeURIComponent(uidToVerify))
 			.then(r => r.json())
 			.then(data => {
 				if (data && data.valid) {
@@ -2127,28 +2154,21 @@ document.addEventListener('DOMContentLoaded', function() {
 						vaultUidVerifyFeedback.style.display = 'block';
 						vaultUidVerifyFeedback.style.borderColor = '#d4af37';
 						let dlLinks = (data.unlocked_downloads || []).map(d => `<div style="margin-top:4px;"><a href="${d.url}" target="_blank" style="color:#38bdf8;font-weight:700;text-decoration:none;">${d.label}</a></div>`).join('');
-						vaultUidVerifyFeedback.innerHTML = `<div style="color:#f6d365;font-weight:800;margin-bottom:4px;">✔ UID VERIFIED (${data.uid}) — ${data.tier_name || 'Portal Unlocked'}</div><div style="color:#cbd5e1;margin-bottom:6px;">${data.message || ''}</div><div><a href="${data.walkthrough_video_url}" target="_blank" style="color:#ffffff;font-weight:800;text-decoration:underline;">▶ Watch Wayne's Recorded Walkthrough Video</a></div>${dlLinks}`;
+						vaultUidVerifyFeedback.innerHTML = `<div style="color:#f6d365;font-weight:800;margin-bottom:4px;">✔ UID VERIFIED (${data.uid}) — ${data.tier_name || 'Buyer Lead Page Unlocked'}</div><div style="color:#cbd5e1;margin-bottom:6px;">${data.message || ''}</div><div><a href="${data.walkthrough_video_url}" target="_blank" style="color:#ffffff;font-weight:800;text-decoration:underline;">▶ Watch Wayne's Recorded Walkthrough Video</a></div>${dlLinks}`;
 					}
 				} else if (showFeedbackBox && vaultUidVerifyFeedback) {
 					vaultUidVerifyFeedback.style.display = 'block';
 					vaultUidVerifyFeedback.style.borderColor = '#f87171';
-					vaultUidVerifyFeedback.innerHTML = `<span style="color:#f87171;font-weight:700;">✖ ${data && data.message ? data.message : 'Invalid User Vault UID.'}</span>`;
+					vaultUidVerifyFeedback.innerHTML = `<span style="color:#f87171;font-weight:700;">✖ ${data && data.message ? data.message : 'Invalid Buyer KR-UID.'}</span>`;
 				}
 			})
 			.catch(() => {});
 	}
 
-	if (launchDemoPortalBtn) {
-		launchDemoPortalBtn.addEventListener('click', function() {
-			verifyUidWithServer('KR-DEMO-SELF-SERVICE', true);
-			this.textContent = '✔ SELF-SERVICE PREVIEW UNLOCKED (KR-DEMO-SELF-SERVICE)';
-		});
-	}
-
 	let initialUid = '';
 	try {
 		const urlParams = new URLSearchParams(window.location.search);
-		initialUid = urlParams.get('uid') || localStorage.getItem('kr_user_vault_uid') || '';
+		initialUid = urlParams.get('uid') || '';
 	} catch (e) {}
 	if (initialUid) {
 		verifyUidWithServer(initialUid, true);
@@ -2156,8 +2176,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	if (verifyVaultUidBtn && existingVaultUidInput) {
 		verifyVaultUidBtn.addEventListener('click', function() {
-			const val = existingVaultUidInput.value.trim() || 'KR-DEMO-SELF-SERVICE';
-			verifyUidWithServer(val, true);
+			const val = existingVaultUidInput.value.trim();
+			if (val) verifyUidWithServer(val, true);
 		});
 	}
 
