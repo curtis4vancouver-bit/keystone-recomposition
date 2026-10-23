@@ -1592,17 +1592,17 @@ function krDownloadStarterAgentsMd() {
 		'## 2. 4-Folder Workspace Architecture ($30/mo Google Antigravity Plan)',
 		'1. `01_Brain_Rules/AGENTS.md` — Permanent brand rules, voice, and offer positioning loaded in every chat.',
 		'2. `02_Video_Prompts/` — ~20-word (strictly 18 to 24 words) 10-second Google Flow video scene prompts.',
-		'3. `03_Website_Builder/` — Dark-luxury homepage and SEO article templates (#04070d Obsidian, #d4af37 Sovereign Gold, #38bdf8 Baby Blue).',
-		'4. `04_YouTube_Channel/` — YouTube Brand Channel Upload Defaults, chapter timestamps, and 480-character SEO tag stacks.',
+		'3. `03_Website_Builder/` — Clean, high-converting homepage, landing page, and SEO article templates.',
+		'4. `04_YouTube_Channel/` — YouTube Brand Channel Upload Defaults, chapter timestamps, and SEO tag stacks.',
 		'',
-		'## 3. ~20-Word Google Flow Video Prompt Invariant (PDF-02)',
-		'- Every 10-second Google Flow visual scene prompt MUST be strictly between **18 and 24 words (~20 words)**.',
-		'- Always pair each prompt with 3 Reference Chips in Google Flow: Character Headshot (`char_1`), Wardrobe (`cloth_1`), and Studio Room (`background_1`).',
-		'- Export finished clips as 1080p MP4s for clean timeline assembly.',
+		'## 3. ~20-Word Google Flow Video Prompt Rule (PDF-02)',
+		'- Every 10-second Google Flow scene prompt MUST use **~20 spoken words (18 to 24 words)** so speech never cuts off at the end of a clip.',
+		'- Keep your presenter and setting description consistent from scene to scene.',
+		'- Export finished clips as 1080p MP4s from Google Flow.',
 		'',
-		'## 4. Website & SEO Publishing Invariant (PDF-04 & PDF-05)',
-		'- Enforce Obsidian (`#04070d`) backgrounds, Sovereign Gold (`#d4af37`) `9999px` pill CTA buttons, and Baby Blue (`#38bdf8`) accents.',
-		'- Include `Person`, `VideoObject`, and `FAQPage` JSON-LD schema on every article and submit to Google Search Console.'
+		'## 4. Website & YouTube Publishing Rule (PDF-03 to PDF-05)',
+		'- Build clean, mobile-friendly landing pages and articles matching your brand colors and fonts.',
+		'- Include clear headings, comparison tables, FAQ blocks, and submit new URLs to Google Search Console.'
 	].join('\n');
 
 	krTriggerTextFileDownload('AGENTS.md', mdContent, 'text/markdown;charset=utf-8');
