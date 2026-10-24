@@ -3,7 +3,7 @@
  * Keystone AI Protocols — Automated Video Walkthrough, Instant Download Vault,
  * Strict User UID Verification Gate, Stripe HMAC-SHA256 Webhook,
  * Interactive Brain/Channel/Website Setup Intake Generator,
- * Authenticated .ZIP Download Streamer & 24/7 AI Architect Tutor Engine
+ * Authenticated .ZIP Download Streamer & Guided Setup Assistant Engine (With Setup Window & Follow-Up Cap)
  *
  * Endpoints:
  *   POST     /wp-json/keystone/v1/protocol-order
@@ -129,15 +129,15 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 	$t3_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
-				'label' => '🏛️ Keystone_Tier03_Full_Stack_Creator_Workstation_Suite.zip (Complete Creator Workstation Setup + 2-Track DaVinci Assembly Guide + Omnichannel Templates)',
+				'label' => '🖥️ Keystone_Tier03_Custom_Tauri_Desktop_App_Suite.zip (Custom Tauri Desktop App Setup + Dashboard UI Templates + .EXE Build Guide)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier3_workstation_pack' ),
 			),
 			array(
-				'label' => '🎬 Module V06 Creator Workstation & DaVinci Assembly Masterclass (Protected Buyer Lead Page Player)',
+				'label' => '🎬 Module V06 Custom Tauri Desktop App Build & .EXE Command Center Walkthrough (Protected Buyer Lead Page Player)',
 				'url'   => $lead_page_url,
 			),
 			array(
-				'label' => '🤖 24/7 Automated AI Setup Assistant & Complete PDF Setup Library (Buyer Vault)',
+				'label' => '🤖 Guided Setup Assistant (7–14 Day Setup Window + Follow-Up Q&A) & Complete PDF Setup Library',
 				'url'   => $lead_page_url,
 			),
 		),
@@ -174,12 +174,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 		'3' => array(
 			'tier'                  => '3',
 			'code'                  => 'tier3_workstation',
-			'name'                  => 'Tier 03 — $800 USD Full-Stack AI Creator Workstation & Studio Production Pipeline (One-Time Payment)',
+			'name'                  => 'Tier 03 — $800 USD Custom Tauri Desktop App Build & Standalone .EXE Command Center (One-Time Payment)',
 			'price'                 => '800.00',
 			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER3_URL,
 			'walkthrough_video_id'  => 'uMkZvTbqF2U',
 			'walkthrough_video_url' => $lead_page_url,
-			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Full Creator Workstation & 2-Track DaVinci Production Pipeline (One-Time Payment)',
+			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Custom Tauri Desktop App Build & Standalone .EXE Command Center (One-Time Payment)',
 			'unlocked_downloads'    => array_merge( $t1_downloads, $t2_downloads, $t3_downloads ),
 			'unlocked_modules'      => keystone_get_tier_unlocked_curriculum( '3' )['unlocked_modules'],
 			'unlocked_pdfs'         => keystone_get_tier_unlocked_curriculum( '3' )['unlocked_pdfs'],
@@ -223,7 +223,7 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 				'unlocked_downloads'    => $catalog['3']['unlocked_downloads'],
 				'unlocked_modules'      => $catalog['3']['unlocked_modules'],
 				'unlocked_pdfs'         => $catalog['3']['unlocked_pdfs'],
-				'message'               => 'Admin Session Verified! All 6 Course Modules, 12 Breakdown PDFs, Copy-Paste Prompt Packs, and 24/7 AI Tutor are unlocked.',
+				'message'               => 'Admin Session Verified! All 6 Course Modules, 12 Breakdown PDFs, Copy-Paste Prompt Packs, and Guided Setup Assistant are unlocked.',
 			);
 		}
 		return array(
@@ -338,9 +338,9 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 					'unlocked_modules'      => $t_obj['unlocked_modules'],
 					'unlocked_pdfs'         => $t_obj['unlocked_pdfs'],
 					'message'               => $live_mode
-						? '✔ Buyer KR-UID Verified! Your 6-Tab Course Portal, Downloadable Breakdown PDFs, Copy-Paste Prompt Packs & 24/7 AI Tutor are unlocked.'
+						? '✔ Buyer KR-UID Verified! Your 6-Tab Course Portal, Downloadable Breakdown PDFs, Copy-Paste Prompt Packs & Guided Setup Assistant are unlocked.'
 						: sprintf(
-							'✔ One-Time Launch Rate Locked In ($%s USD) & Buyer Vault Unlocked (UID: %s)! Your 6-Tab Course Portal, Downloadable Breakdown PDFs, Copy-Paste Prompt Packs & 24/7 AI Architect Tutor are active below.',
+							'✔ One-Time Launch Rate Locked In ($%s USD) & Buyer Vault Unlocked (UID: %s)! Your 6-Tab Course Portal, Downloadable Breakdown PDFs, Copy-Paste Prompt Packs & Guided Setup Assistant are active below.',
 							(string) ( $order['price'] ?? $t_obj['price'] ),
 							$verified_uid
 						),
@@ -399,9 +399,9 @@ function keystone_build_locked_protocol_email_shell(
 			</a>
 		</div>
 
-		<!-- 24/7 AUTONOMOUS AI TEACHER BANNER -->
+		<!-- GUIDED SETUP ASSISTANT BANNER -->
 		<div style="background:rgba(56,189,248,0.10);border:1px solid #38bdf8;border-radius:12px;padding:14px 16px;margin:18px 0;color:#f8fafc;font-size:13px;line-height:1.55;">
-			<strong style="color:#38bdf8;">🤖 24/7 Autonomous AI Teacher Active:</strong> Use the Self-Service Portal or reply directly to this email anytime with questions&mdash;our AI Architect will walk you through every step!
+			<strong style="color:#38bdf8;">🤖 Guided Setup Assistant Active:</strong> Use the Self-Service Portal or reply directly to this email anytime with questions&mdash;our AI Architect will walk you through every step!
 		</div>
 
 		<!-- LOCKED BOTTOM EXECUTIVE SIGNATURE WITH KEYSTONE CREST LOGO -->
@@ -504,7 +504,7 @@ function keystone_handle_vault_download_stream(): void {
 	$readme_txt .= "KEYSTONE AI PROTOCOLS — COPY-PASTE ANTIGRAVITY BRAIN, FLOW & WEBSITE PACK\r\n";
 	$readme_txt .= "Package: " . $pack_info['filename'] . "\r\n";
 	$readme_txt .= "Verified UID: " . $verification['uid'] . "\r\n";
-	$readme_txt .= "Self-Service Portal & 24/7 AI Tutor: https://keystonerecomposition.com/ai-protocols/?uid=" . $verification['uid'] . "#kr-self-service-portal\r\n";
+	$readme_txt .= "Self-Service Portal & Guided Setup Assistant: https://keystonerecomposition.com/ai-protocols/?uid=" . $verification['uid'] . "#kr-self-service-portal\r\n";
 	$readme_txt .= "============================================================================\r\n\r\n";
 	$readme_txt .= "1. PASTE THIS INTO GOOGLE ANTIGRAVITY TO BUILD YOUR 4 BRAIN FOLDERS:\r\n";
 	$readme_txt .= "   Create 4 folders in my workspace: 01_Brain_Rules, 02_Video_Prompts, 03_Website_Builder, and 04_YouTube_Channel.\r\n";
@@ -557,7 +557,7 @@ add_action( 'template_redirect', 'keystone_handle_vault_download_stream', 5 );
 
 /**
  * Register REST API routes for Automated Order Fulfillment, Vault UID Verification,
- * Stripe Webhook, Interactive Brain/Channel/Website Setup Intake Form & 24/7 Self-Service AI Architect Tutor.
+ * Stripe Webhook, Interactive Brain/Channel/Website Setup Intake Form & Guided Setup Assistant.
  */
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'keystone/v1', '/protocol-order', array(
@@ -695,7 +695,7 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 	$pdf_list_html = '<li style="margin-bottom:6px;"><a href="' . esc_url( $magic_portal_url ) . '" style="color:#d4af37;font-weight:700;text-decoration:none;">📄 Interactive Breakdown PDFs (' . esc_html( implode( ', ', $tier_info['unlocked_pdfs'] ) ) . ') — View Visual Brain Diagram &amp; Copy-Paste Prompts On-Screen or Download %PDF-1.4</a></li>';
 
 	$inner_email_html = '
-		<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Thank you for ' . ( $live_mode ? 'ordering' : 'locking in your priority launch rate for' ) . ' <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>. Your unique Vault UID is active and unlocks the <strong>Self-Service 6-Tab Course, Visual Brain Setup Diagram, Copy-Paste Antigravity &amp; Google Flow Prompts, Breakdown PDFs &amp; 24/7 AI Architect Tutor</strong> immediately:</p>
+		<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Thank you for ' . ( $live_mode ? 'ordering' : 'locking in your priority launch rate for' ) . ' <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>. Your unique Vault UID is active and unlocks the <strong>Self-Service 6-Tab Course, Visual Brain Setup Diagram, Copy-Paste Antigravity &amp; Google Flow Prompts, Breakdown PDFs &amp; Guided Setup Assistant</strong> immediately:</p>
 		<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:12px;padding:14px 18px;margin:16px 0;">
 			<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR VERIFIED VAULT UID</div>
 			<div style="font-size:19px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
@@ -746,9 +746,9 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 	@wp_mail( 'keystonerecomposition@gmail.com', $admin_subject, $admin_body );
 
 	$response_msg = $live_mode
-		? '✔ UID Verified & Order Fulfilled! Your 6-Tab Course Portal, Visual Brain Setup Diagram, Copy-Paste Antigravity Prompts, 12 Breakdown PDFs, and 24/7 AI Tutor are unlocked below, and a copy has been emailed to ' . $buyer_email . '.'
+		? '✔ UID Verified & Order Fulfilled! Your 6-Tab Course Portal, Visual Brain Setup Diagram, Copy-Paste Antigravity Prompts, 12 Breakdown PDFs, and Guided Setup Assistant are unlocked below, and a copy has been emailed to ' . $buyer_email . '.'
 		: sprintf(
-			'✔ Launch Rate Locked In ($%s USD) & Self-Service Portal Unlocked (UID: %s)! Your 6-Tab Course Portal, Visual Brain Setup Diagram, Copy-Paste Prompt Packs, and 24/7 AI Architect Tutor are unlocked below, and your Magic Portal Link has been emailed to %s.',
+			'✔ Launch Rate Locked In ($%s USD) & Self-Service Portal Unlocked (UID: %s)! Your 6-Tab Course Portal, Visual Brain Setup Diagram, Copy-Paste Prompt Packs, and Guided Setup Assistant are unlocked below, and your Magic Portal Link has been emailed to %s.',
 			$formatted_price,
 			$user_uid,
 			$buyer_email
@@ -983,7 +983,7 @@ function keystone_handle_protocol_setup_form( WP_REST_Request $request ): WP_RES
 	if ( empty( $uid_verification['verified'] ) ) {
 		return new WP_REST_Response( array(
 			'success' => false,
-			'message' => '🔒 Buyer KR-UID Verification Required. Please enter your verified Buyer KR-UID to use the Custom Setup Generator and 24/7 AI Tutor.',
+			'message' => '🔒 Buyer KR-UID Verification Required. Please enter your verified Buyer KR-UID to use the Custom Setup Generator and Guided Setup Assistant.',
 		), 403 );
 	}
 	$uid                  = (string) $uid_verification['uid'];
@@ -1232,7 +1232,7 @@ function keystone_handle_protocol_setup_form( WP_REST_Request $request ): WP_RES
 }
 
 /**
- * 24/7 Self-Service AI Architect Tutor Endpoint (`POST /wp-json/keystone/v1/protocol-tutor`).
+ * Guided Setup Assistant Endpoint (`POST /wp-json/keystone/v1/protocol-tutor`).
  * Teaches the Visual Brain Setup Diagram (PDF-01), ~20-Word Google Flow Video Prompting & Export (PDF-02),
  * YouTube Brand Channel Setup & 480-Char Tags (PDF-03), and Copy-Paste Website Prompts (PDF-04, PDF-05).
  * Strictly enforces Wayne's IP Air-Gap: never exposes private desktop automation or internal daemons.
@@ -1244,7 +1244,7 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 	if ( empty( $uid_verification['verified'] ) ) {
 		return new WP_REST_Response( array(
 			'success' => false,
-			'message' => '🔒 Buyer KR-UID Verification Required. Please enter your verified Buyer KR-UID to use the Custom Setup Generator and 24/7 AI Tutor.',
+			'message' => '🔒 Buyer KR-UID Verification Required. Please enter your verified Buyer KR-UID to use the Custom Setup Generator and Guided Setup Assistant.',
 		), 403 );
 	}
 	$uid             = (string) $uid_verification['uid'];
@@ -1256,8 +1256,37 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 	if ( '' === trim( $question ) ) {
 		return new WP_REST_Response( array(
 			'success' => false,
-			'message' => 'Please enter or click a question for the 24/7 AI Architect Tutor.',
+			'message' => 'Please enter or click a setup question for the Guided Setup Assistant.',
 		), 400 );
+	}
+
+	// Enforce Tier-Based Setup Window (7 Days for Tiers 1-2, 14 Days for Tier 3) & Follow-Up Question Cap (3 / 5 / 8)
+	$resolved_tier = (string) ( $uid_verification['tier'] ?? $tier ?: '1' );
+	$max_questions = '3' === $resolved_tier ? 8 : ( '2' === $resolved_tier ? 5 : 3 );
+	$max_days      = '3' === $resolved_tier ? 14 : 7;
+	$usage_map     = get_option( 'keystone_protocol_tutor_usage_v1', array() );
+	if ( ! is_array( $usage_map ) ) {
+		$usage_map = array();
+	}
+	if ( 'KR-DEMO-SELF-SERVICE' !== $uid && ! current_user_can( 'manage_options' ) ) {
+		$entry = isset( $usage_map[ $uid ] ) && is_array( $usage_map[ $uid ] )
+			? $usage_map[ $uid ]
+			: array( 'first_ts' => time(), 'count' => 0 );
+		$days_elapsed = ( time() - (int) ( $entry['first_ts'] ?? time() ) ) / 86400;
+		if ( $days_elapsed > $max_days || (int) ( $entry['count'] ?? 0 ) >= $max_questions ) {
+			return new WP_REST_Response( array(
+				'success' => false,
+				'message' => sprintf(
+					'✔ Your Guided Setup Window (%d-Day Setup Window / %d Follow-Up Questions) for %s is complete. Your downloadable PDF Setup Guides remain unlocked in your Buyer Vault.',
+					$max_days,
+					$max_questions,
+					$uid
+				),
+			), 200 );
+		}
+		$entry['count']      = (int) ( $entry['count'] ?? 0 ) + 1;
+		$usage_map[ $uid ]   = $entry;
+		update_option( 'keystone_protocol_tutor_usage_v1', $usage_map, false );
 	}
 
 	$q_lower = strtolower( $question );
@@ -1315,16 +1344,16 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 				<li><strong>3-Source Fact Verification Gate:</strong> Instruct your Research Agent to verify every industry stat across at least 3 authoritative sources before writing your script or article.</li>
 				<li><strong>B2B Outreach &amp; Lead Verification (PDF-08):</strong> Verify prospect email domains before sending outreach and wrap your messages in a clean, branded HTML signature.</li>
 			</ol>';
-	} elseif ( false !== strpos( $q_lower, 'davinci' ) || false !== strpos( $q_lower, 'edit' ) || false !== strpos( $q_lower, 'timeline' ) || false !== strpos( $q_lower, 'workstation' ) || false !== strpos( $q_lower, '800' ) ) {
+	} elseif ( false !== strpos( $q_lower, 'tauri' ) || false !== strpos( $q_lower, 'desktop' ) || false !== strpos( $q_lower, 'exe' ) || false !== strpos( $q_lower, 'app' ) || false !== strpos( $q_lower, '800' ) ) {
 		$recommended_pdf_id       = 'PDF-10';
-		$recommended_pdf_title    = 'KR_10_Full_Stack_Creator_Workstation_And_DaVinci_Assembly.pdf';
-		$recommended_video_module = 'V06 — Module 06: 2-Track DaVinci Resolve Assembly, -18dB Music Ducking & Full Workstation Scaling';
+		$recommended_pdf_title    = 'KR_10_Custom_Tauri_Desktop_App_Project_Setup.pdf';
+		$recommended_video_module = 'V06 — Module 06: Custom Tauri Desktop App Build, Dashboard Tabs & .EXE Compilation';
 		$answer_html              = '
-			<div style="color:#f6d365;font-weight:800;font-size:0.86rem;margin-bottom:6px;">🏛️ AI ARCHITECT LESSON // 2-TRACK DAVINCI RESOLVE ASSEMBLY &amp; CREATOR WORKSTATION (PDF-10 TO PDF-12)</div>
+			<div style="color:#f6d365;font-weight:800;font-size:0.86rem;margin-bottom:6px;">🖥️ GUIDED SETUP LESSON // CUSTOM TAURI DESKTOP APP BUILD &amp; .EXE COMPILATION (PDF-10 TO PDF-12)</div>
 			<ol style="margin:0 0 10px 0;padding-left:18px;color:#e2e8f0;font-size:0.84rem;line-height:1.6;">
-				<li><strong>Track 1 (Main Spoken Clips):</strong> Drop your exported Google Flow 10-second spoken MP4 clips sequentially onto Video Track 1 in DaVinci Resolve.</li>
-				<li><strong>Track 2 (Visual B-Roll Cutaways):</strong> Place your B-roll clips on Video Track 2 over transition points so the viewer sees dynamic visuals while your spoken audio continues seamlessly underneath.</li>
-				<li><strong>Audio Ducking (-18dB Background Music):</strong> Place your instrumental background track on Audio Track 2 at <strong>-18dB</strong> so your voice on Audio Track 1 remains crystal clear, then export in 4K/1080p MP4.</li>
+				<li><strong>Step 1 — Initialize Your Tauri Project (PDF-10):</strong> Open your AI Brain workspace in Google Antigravity and use the PDF-10 setup prompt to scaffold your Rust + Tauri + React desktop application.</li>
+				<li><strong>Step 2 — Custom Dashboard Tabs &amp; Buttons (PDF-11):</strong> Add your dark-luxury navigation tabs and one-click action buttons wired to your AI Brain folders and custom website.</li>
+				<li><strong>Step 3 — Compile Your Standalone Windows .EXE (PDF-12):</strong> Run the production build step in PDF-12 to package your standalone <strong>.exe</strong> desktop command center.</li>
 			</ol>';
 	} else {
 		$recommended_pdf_id       = 'PDF-01';
@@ -1344,7 +1373,7 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 	if ( $send_email_copy && is_email( $buyer_email ) ) {
 		$magic_url  = home_url( '/ai-protocols/?uid=' . rawurlencode( $uid ) . '#kr-self-service-portal' );
 		$inner_mail = '
-			<p style="color:#cbd5e1;font-size:14px;">Here is your custom step-by-step lesson from the <strong>Keystone 24/7 AI Architect Tutor</strong>:</p>
+			<p style="color:#cbd5e1;font-size:14px;">Here is your custom step-by-step lesson from the <strong>Keystone Guided Setup Assistant</strong>:</p>
 			<div style="background:#04070d;border:1px solid #38bdf8;border-radius:12px;padding:14px 16px;margin:14px 0;">
 				<div style="font-size:11px;color:#38bdf8;font-weight:800;text-transform:uppercase;">YOUR QUESTION:</div>
 				<div style="font-size:14px;color:#ffffff;font-weight:700;margin-top:4px;">' . esc_html( $question ) . '</div>
@@ -1359,7 +1388,7 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 
 		$mail_body = keystone_build_locked_protocol_email_shell(
 			'Keystone Builder',
-			'24/7 AI ARCHITECT TUTOR // CUSTOM LESSON TRANSCRIPT',
+			'GUIDED SETUP ASSISTANT // CUSTOM LESSON TRANSCRIPT',
 			'Your Step-by-Step AI Protocols Coaching Lesson',
 			$inner_mail,
 			$magic_url,
