@@ -1518,16 +1518,33 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       display: flex !important;
       flex-direction: row !important;
       align-items: center !important;
-      gap: 10px !important;
-      flex-wrap: wrap !important;
+      gap: 8px !important;
+      flex-wrap: nowrap !important;
       margin: 14px 0 18px 0 !important;
+    }
+    .badge-gold-builder,
+    .badge-cyan-swarms,
+    .lab-live-badge,
+    .lab-freq-badge {
+      padding: 5px 12px !important;
+      min-height: 0 !important;
+      height: auto !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 700 !important;
+      line-height: 1.2 !important;
+      letter-spacing: 0.04em !important;
+      white-space: nowrap !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
     }
     .sound-lab-meta {
       display: flex !important;
       flex-direction: row !important;
       align-items: center !important;
       gap: 10px !important;
-      flex-wrap: wrap !important;
+      flex-wrap: nowrap !important;
       margin-bottom: 12px !important;
     }
 
@@ -1959,10 +1976,35 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
 
-    .telemetry-hz {
+    .telemetry-hz,
+    .telemetry-fps,
+    .graph-mode-btn,
+    #engineStateBadge,
+    .playlist-rotate-btn,
+    .playlist-count,
+    .track-hz-pill {
       padding: 4px 10px !important;
+      min-height: 0 !important;
+      height: auto !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.62rem !important;
+      font-weight: 700 !important;
+      line-height: 1.2 !important;
+      letter-spacing: 0.04em !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
       display: inline-flex !important;
       align-items: center !important;
+      justify-content: center !important;
+    }
+    .music-graph-toolbar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 6px !important;
+      padding: 10px 12px !important;
+      background: #04070d !important;
     }
     .album-stream-prompt,
     .album-details-link,
