@@ -1291,10 +1291,10 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       box-shadow: 0 6px 22px rgba(0, 0, 0, 0.7), 0 0 18px rgba(56, 189, 248, 0.24) !important;
     }
     .cyber-hero-wrap .cyber-hero-title {
-      margin-bottom: 22px !important;
-      font-size: clamp(2.25rem, 3.5vw, 3.15rem) !important;
-      line-height: 1.13 !important;
-      letter-spacing: -0.025em !important;
+      margin-bottom: 20px !important;
+      font-size: clamp(1.95rem, 2.9vw, 2.75rem) !important;
+      line-height: 1.16 !important;
+      letter-spacing: -0.02em !important;
       text-shadow: 0 8px 30px rgba(0, 0, 0, 0.85) !important;
     }
 
