@@ -1268,3 +1268,311 @@ add_action( 'init', function() {
         }
     }
 }, 20 );
+
+
+/**
+ * 8. Page 1 Clean Crisp Top Hero Architecture, High-End Founder 3-Pillar Showcase & Rotating Button Word Color Wave
+ */
+function keystone_page1_hero_and_button_wave_engine(): void {
+    ?>
+    <style id="keystone-hero-and-button-wave-lock">
+    /* Clean Crisp Top Hero Cadence */
+    .cyber-hero-section {
+      padding-top: 26px !important;
+      padding-bottom: 32px !important;
+      min-height: auto !important;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.22) !important;
+      background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.11) 0%, rgba(212, 175, 55, 0.05) 38%, #04070d 76%) !important;
+    }
+    .cyber-hero-wrap .cyber-telemetry-pill {
+      margin-bottom: 16px !important;
+      border: 1px solid rgba(56, 189, 248, 0.5) !important;
+      background: rgba(6, 11, 20, 0.94) !important;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.7), 0 0 18px rgba(56, 189, 248, 0.24) !important;
+    }
+    .cyber-hero-wrap .cyber-hero-title {
+      margin-bottom: 22px !important;
+      font-size: clamp(2.25rem, 3.5vw, 3.15rem) !important;
+      line-height: 1.13 !important;
+      letter-spacing: -0.025em !important;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.85) !important;
+    }
+
+    /* High-End Founder & 3-Domain Identity Showcase Underneath Machine Intelligence */
+    .cyber-founder-showcase-card {
+      width: 100% !important;
+      max-width: 960px !important;
+      margin: 0 auto 20px auto !important;
+      padding: 18px 22px !important;
+      background: linear-gradient(135deg, rgba(10, 16, 28, 0.96) 0%, rgba(4, 7, 13, 0.99) 100%) !important;
+      border: 1px solid rgba(212, 175, 55, 0.52) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 28px rgba(56, 189, 248, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 15px !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+    }
+    .founder-showcase-top {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 16px !important;
+      padding-bottom: 14px !important;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.24) !important;
+      flex-wrap: wrap !important;
+    }
+    .founder-avatar-halo {
+      position: relative !important;
+      display: inline-flex !important;
+      padding: 3px !important;
+      border-radius: 50% !important;
+      background: linear-gradient(135deg, #d4af37 0%, #38bdf8 50%, #f6d365 100%) !important;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.45), 0 0 12px rgba(56, 189, 248, 0.35) !important;
+    }
+    .cyber-hero-wrap .founder-chip-avatar {
+      width: 54px !important;
+      height: 54px !important;
+      min-width: 54px !important;
+      min-height: 54px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2px solid #04070d !important;
+      display: block !important;
+    }
+    .avatar-online-dot {
+      position: absolute !important;
+      bottom: 2px !important;
+      right: 2px !important;
+      width: 11px !important;
+      height: 11px !important;
+      border-radius: 50% !important;
+      background: #38bdf8 !important;
+      border: 2px solid #04070d !important;
+      box-shadow: 0 0 8px #38bdf8 !important;
+    }
+    .founder-name-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+    }
+    .cyber-founder-showcase-card .chip-name {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.22rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      letter-spacing: -0.01em !important;
+    }
+    .cyber-founder-showcase-card .chip-role {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: #f6d365 !important;
+      letter-spacing: 0.02em !important;
+      margin-top: 2px !important;
+    }
+    .founder-triad-pills {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+    .triad-pill {
+      display: flex !important;
+      align-items: center !important;
+      gap: 11px !important;
+      padding: 11px 14px !important;
+      border-radius: 14px !important;
+      background: rgba(8, 13, 24, 0.94) !important;
+      border: 1px solid rgba(56, 189, 248, 0.36) !important;
+      text-align: left !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .triad-pill:hover {
+      transform: translateY(-2px) !important;
+      border-color: #d4af37 !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.7), 0 0 16px rgba(212, 175, 55, 0.24) !important;
+    }
+    .triad-pill.triad-ai {
+      border-color: rgba(212, 175, 55, 0.45) !important;
+    }
+    .triad-copy {
+      display: flex !important;
+      flex-direction: column !important;
+      min-width: 0 !important;
+    }
+    .triad-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.74rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      background: linear-gradient(90deg, #ffffff 0%, #38bdf8 25%, #f6d365 50%, #38bdf8 75%, #ffffff 100%) !important;
+      background-size: 200% 100% !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 4.2s linear infinite !important;
+    }
+    .triad-sub {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.72rem !important;
+      color: #cbd5e1 !important;
+      line-height: 1.35 !important;
+      margin-top: 2px !important;
+    }
+    .triad-node-icon {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      border-radius: 10px !important;
+      background: rgba(56, 189, 248, 0.12) !important;
+      border: 1px solid rgba(212, 175, 55, 0.44) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 0.95rem !important;
+      flex-shrink: 0 !important;
+    }
+    .triad-eq-bars {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      border-radius: 10px !important;
+      background: rgba(56, 189, 248, 0.12) !important;
+      border: 1px solid rgba(56, 189, 248, 0.45) !important;
+      display: inline-flex !important;
+      align-items: flex-end !important;
+      justify-content: center !important;
+      gap: 3px !important;
+      padding: 8px 6px !important;
+      box-sizing: border-box !important;
+      flex-shrink: 0 !important;
+    }
+    .triad-eq-bars i {
+      display: block !important;
+      width: 3px !important;
+      border-radius: 2px !important;
+      background: linear-gradient(180deg, #38bdf8 0%, #d4af37 100%) !important;
+      animation: ksEqPulse 1.2s ease-in-out infinite !important;
+    }
+    .triad-eq-bars i:nth-child(1) { height: 8px !important; animation-delay: 0s !important; }
+    .triad-eq-bars i:nth-child(2) { height: 15px !important; animation-delay: 0.2s !important; }
+    .triad-eq-bars i:nth-child(3) { height: 11px !important; animation-delay: 0.4s !important; }
+    .triad-eq-bars i:nth-child(4) { height: 16px !important; animation-delay: 0.15s !important; }
+    @keyframes ksEqPulse {
+      0%, 100% { transform: scaleY(0.55); opacity: 0.75; }
+      50% { transform: scaleY(1.1); opacity: 1; }
+    }
+    @media (max-width: 900px) {
+      .founder-triad-pills {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    .cyber-hero-wrap .cyber-hero-subtitle {
+      margin-bottom: 2px !important;
+      max-width: 820px !important;
+      color: #cbd5e1 !important;
+      font-size: clamp(0.98rem, 1.4vw, 1.12rem) !important;
+      line-height: 1.65 !important;
+    }
+
+    /* Rotating Color Wave Through Button Wording Across All Sovereign Buttons */
+    @keyframes ksButtonWordWave {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .btn-cyan-primary,
+    .btn-glass-secondary,
+    .btn-gold-subtle,
+    .btn-cyan-outline,
+    .header-protocols-cta-pill,
+    .cyber-play-button,
+    .footer-subscribe-btn,
+    #kr-bottom-streaming-vault .kr-vault-play-pill,
+    #kr-bottom-streaming-vault .kr-vault-link-pill,
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill {
+      background: linear-gradient(135deg, rgba(8, 14, 26, 0.96) 0%, rgba(4, 7, 13, 0.99) 100%) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.58) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(56, 189, 248, 0.22) !important;
+      border-radius: 9999px !important;
+      color: #f8fafc !important;
+    }
+    .btn-gold-subtle,
+    .footer-subscribe-btn-gold,
+    #kr-bottom-streaming-vault .kr-vault-play-pill,
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill {
+      border-color: rgba(212, 175, 55, 0.68) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(212, 175, 55, 0.24) !important;
+    }
+    .btn-cyan-primary:hover,
+    .btn-glass-secondary:hover,
+    .btn-gold-subtle:hover,
+    .header-protocols-cta-pill:hover,
+    .cyber-play-button:hover,
+    .footer-subscribe-btn:hover {
+      border-color: #d4af37 !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 24px rgba(56, 189, 248, 0.45), 0 0 16px rgba(212, 175, 55, 0.35) !important;
+      transform: translateY(-2px) !important;
+    }
+    .ks-wave-text,
+    .cyber-play-button #playLabel,
+    .cyber-play-button #playIcon {
+      display: inline-block !important;
+      contain: paint !important;
+      will-change: background-position !important;
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #38bdf8 25%,
+        #f6d365 50%,
+        #38bdf8 75%,
+        #ffffff 100%
+      ) !important;
+      background-size: 200% 100% !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 3.4s linear infinite !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ks-wave-text,
+      .triad-title,
+      .cyber-play-button #playLabel,
+      .cyber-play-button #playIcon {
+        animation: none !important;
+        background-position: 50% 50% !important;
+      }
+    }
+    </style>
+    <script id="keystone-button-word-wave-init">
+    document.addEventListener('DOMContentLoaded', function() {
+      var waveSelectors = [
+        '.btn-cyan-primary',
+        '.btn-glass-secondary',
+        '.btn-gold-subtle',
+        '.btn-cyan-outline',
+        '.header-protocols-cta-pill',
+        '.footer-subscribe-btn',
+        '#kr-bottom-streaming-vault .kr-vault-play-pill',
+        '#kr-bottom-streaming-vault .kr-vault-link-pill',
+        '#kr-bottom-streaming-vault .kr-vault-spotify-pill'
+      ].join(',');
+      document.querySelectorAll(waveSelectors).forEach(function(btn) {
+        if (!btn.querySelector('.ks-wave-text')) {
+          var span = document.createElement('span');
+          span.className = 'ks-wave-text';
+          while (btn.firstChild) {
+            span.appendChild(btn.firstChild);
+          }
+          btn.appendChild(span);
+        }
+      });
+    });
+    </script>
+    <?php
+}
+add_action( 'wp_head', 'keystone_page1_hero_and_button_wave_engine', 10001 );

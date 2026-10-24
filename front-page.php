@@ -21,50 +21,70 @@ $theme_uri = get_stylesheet_directory_uri();
 <div id="primary" class="content-area primary keystone-cyber-home">
     <main id="main" class="site-main">
 
-        <!-- 1. HERO ORCHESTRATION SECTION -->
+        <!-- 1. HERO ORCHESTRATION SECTION (Clean Crisp Top Architecture — Zero Clutter Buttons) -->
         <section class="cyber-hero-section">
             <div class="ast-container">
                 <div class="cyber-hero-wrap text-center">
                     
-                    <!-- FastMCP Telemetry Pill -->
+                    <!-- Top Telemetry Pill (Kept at Very Top) -->
                     <div class="cyber-telemetry-pill">
                         <span class="telemetry-pulse"></span>
                         <span class="telemetry-text">// 2026 SOVEREIGN AI SUITE • HIGH-CADENCE BUILDER • SQUAMISH &amp; WHISTLER, BC</span>
                     </div>
-
-                    <!-- Founder Verification Chip -->
-                    <div class="cyber-founder-chip">
-                        <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
-                             alt="Wayne Stevenson — Founder &amp; Architect" 
-                             class="founder-chip-avatar" 
-                             data-recalc-dims="0" loading="eager" decoding="sync" />
-                        <div class="founder-chip-meta">
-                            <span class="chip-name">Wayne Stevenson</span>
-                            <span class="chip-role">AI Systems Architect • Music Producer • BC Builder #52603</span>
-                        </div>
-                        <span class="chip-verified-badge">✔ VERIFIED</span>
-                    </div>
                     
+                    <!-- Primary Hero Headline -->
                     <h1 class="cyber-hero-title">
                         Where Autonomous Machine Intelligence<br/>
                         <span class="cyan-gradient-text">Meets Real-World Building &amp; Sound</span>
                     </h1>
+
+                    <!-- High-End Founder & 3-Domain Identity Showcase (Positioned Underneath Machine Intelligence Headline) -->
+                    <div class="cyber-founder-showcase-card">
+                        <div class="founder-showcase-top">
+                            <div class="founder-avatar-halo">
+                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
+                                     alt="Wayne Stevenson — International Music Producer, AI Systems Architect &amp; Licensed Builder" 
+                                     class="founder-chip-avatar" 
+                                     data-recalc-dims="0" loading="eager" decoding="sync" />
+                                <span class="avatar-online-dot" title="Sovereign Systems Online"></span>
+                            </div>
+                            <div class="founder-chip-meta">
+                                <div class="founder-name-row">
+                                    <span class="chip-name">Wayne Stevenson</span>
+                                    <span class="chip-verified-badge">✔ VERIFIED ARCHITECT</span>
+                                </div>
+                                <span class="chip-role">International Music Producer • AI Systems Architect • Licensed Builder #52603</span>
+                            </div>
+                        </div>
+
+                        <div class="founder-triad-pills">
+                            <div class="triad-pill triad-music">
+                                <span class="triad-eq-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                                <div class="triad-copy">
+                                    <span class="triad-title">INTERNATIONAL MUSIC PRODUCER</span>
+                                    <span class="triad-sub">22 Releases • 216 Master Tracks • 96kHz Global Catalog</span>
+                                </div>
+                            </div>
+                            <div class="triad-pill triad-ai">
+                                <span class="triad-node-icon" aria-hidden="true">⚡</span>
+                                <div class="triad-copy">
+                                    <span class="triad-title">AI SYSTEMS &amp; SWARM ARCHITECT</span>
+                                    <span class="triad-sub">28-Agent FastMCP Swarms • Local CUDA &amp; Tauri Workstations</span>
+                                </div>
+                            </div>
+                            <div class="triad-pill triad-builder">
+                                <span class="triad-node-icon" aria-hidden="true">🏛️</span>
+                                <div class="triad-copy">
+                                    <span class="triad-title">LICENSED BUILDER #52603</span>
+                                    <span class="triad-sub">BC Housing Licensed • Multiplex &amp; Heavy Civil Execution</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <p class="cyber-hero-subtitle">
-                        The sovereign digital headquarters of Wayne Stevenson — showing how a licensed builder uses autonomous multi-agent engineering, FastMCP server infrastructure, and a 22-release electronic music universe to scale high-cadence operations.
+                        The sovereign digital headquarters of Wayne Stevenson — uniting a 22-release international electronic music catalog, deterministic 28-agent FastMCP engineering, and licensed mountain construction discipline.
                     </p>
-
-                    <div class="cyber-cta-group">
-                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-cyan-primary">
-                            ⚡ Explore AI Protocols &amp; Vault →
-                        </a>
-                        <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-glass-secondary">
-                            🎬 Watch 4K Videos &amp; Intel Blog →
-                        </a>
-                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="btn-gold-subtle">
-                            🎧 22-Album Sonic Universe →
-                        </a>
-                    </div>
 
                 </div>
             </div>
