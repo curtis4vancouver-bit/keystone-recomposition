@@ -1517,17 +1517,19 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      gap: 6px !important;
-      padding: 8px 10px !important;
+      gap: 8px !important;
+      padding: 8px 12px !important;
       margin: 12px 0 14px 0 !important;
       background: rgba(6, 11, 20, 0.92) !important;
       border: 1px solid rgba(56, 189, 248, 0.28) !important;
       border-radius: 12px !important;
-      flex-wrap: nowrap !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
     }
     .ai-pillar-switcher-bar .switcher-label {
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.63rem !important;
+      font-size: 0.65rem !important;
       font-weight: 700 !important;
       color: #f6d365 !important;
       letter-spacing: 0.05em !important;
@@ -1535,24 +1537,24 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       flex-shrink: 0 !important;
     }
     .ai-pillar-switcher-bar .switcher-pills {
-      display: flex !important;
-      align-items: center !important;
-      gap: 5px !important;
-      flex-wrap: nowrap !important;
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 6px !important;
       flex: 1 1 auto !important;
-      justify-content: flex-end !important;
+      min-width: 0 !important;
     }
     .ai-core-pill {
-      padding: 5px 8px !important;
+      padding: 5px 6px !important;
       border-radius: 9999px !important;
       background: rgba(15, 23, 42, 0.85) !important;
       border: 1px solid rgba(56, 189, 248, 0.28) !important;
       color: #cbd5e1 !important;
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.61rem !important;
+      font-size: 0.62rem !important;
       font-weight: 700 !important;
       letter-spacing: 0.02em !important;
       white-space: nowrap !important;
+      text-align: center !important;
       cursor: pointer !important;
       transition: all 0.2s ease !important;
     }
@@ -1714,22 +1716,34 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      gap: 10px !important;
+      flex-wrap: nowrap !important;
+      gap: 8px !important;
+    }
+    .playlist-header .playlist-title {
+      white-space: nowrap !important;
+      font-size: 0.68rem !important;
+    }
+    .playlist-header .playlist-count {
+      white-space: nowrap !important;
+      font-size: 0.64rem !important;
     }
     .playlist-header-actions {
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important;
+      flex-wrap: nowrap !important;
+      gap: 6px !important;
+      flex-shrink: 0 !important;
     }
     .playlist-rotate-btn {
-      padding: 3px 10px !important;
+      padding: 3px 9px !important;
       border-radius: 9999px !important;
       background: rgba(56, 189, 248, 0.14) !important;
       border: 1px solid rgba(56, 189, 248, 0.45) !important;
       color: #38bdf8 !important;
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.65rem !important;
+      font-size: 0.63rem !important;
       font-weight: 700 !important;
+      white-space: nowrap !important;
       cursor: pointer !important;
       transition: all 0.2s ease !important;
     }
@@ -1776,7 +1790,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       width: 100% !important;
     }
     .sound-lab-card .playlist-scroll-container {
-      max-height: 280px !important;
+      max-height: 335px !important;
       flex: 1 1 auto !important;
     }
     .company-ai-cta-row a,

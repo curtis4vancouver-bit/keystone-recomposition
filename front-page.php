@@ -123,9 +123,9 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <span class="switcher-label">ACTIVE CORE:</span>
                                 <div class="switcher-pills">
                                     <button type="button" class="ai-core-pill active" data-core="all" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore('all')">ALL 3 CORES</button>
-                                    <button type="button" class="ai-core-pill" data-core="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">01 • 3-FORCE VIDEO</button>
-                                    <button type="button" class="ai-core-pill" data-core="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">02 • FASTMCP &amp; CDP</button>
-                                    <button type="button" class="ai-core-pill" data-core="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">03 • 28-AGENT SWARM</button>
+                                    <button type="button" class="ai-core-pill" data-core="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">01 • 3-FORCE</button>
+                                    <button type="button" class="ai-core-pill" data-core="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">02 • FASTMCP</button>
+                                    <button type="button" class="ai-core-pill" data-core="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">03 • 28-SWARM</button>
                                 </div>
                             </div>
 
