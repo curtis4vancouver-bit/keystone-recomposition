@@ -1411,17 +1411,19 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       letter-spacing: 0.06em !important;
       color: #ffffff !important;
       -webkit-text-fill-color: #ffffff !important;
-      background: none !important;
+      background-image: none !important;
+      background-color: transparent !important;
       animation: none !important;
     }
     .triad-pill:hover .triad-title {
-      background: linear-gradient(90deg, #ffffff 0%, #f6d365 35%, #d4af37 50%, #f6d365 65%, #ffffff 100%) !important;
-      background-size: 200% 100% !important;
+      background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 16%, #f6d365 30%, #ffd700 40%, #ffffff 52%, #d4af37 68%, #ffd700 78%, #ffffff 92%, #ffffff 100%) !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 1.6s linear infinite !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
     }
     .triad-sub {
       font-family: 'Inter', sans-serif !important;
@@ -1990,7 +1992,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     }
 
     @keyframes ksButtonWordWave {
-      0% { background-position: 200% 50%; }
+      0% { background-position: 220% 50%; }
       100% { background-position: 0% 50%; }
     }
 
@@ -2170,11 +2172,12 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .playlist-track-row.active .track-play-indicator {
       color: #ffffff !important;
       -webkit-text-fill-color: #ffffff !important;
-      background: none !important;
+      background-image: none !important;
+      background-color: transparent !important;
       animation: none !important;
     }
 
-    /* Button & Interior Pill Wording At Rest: Crisp Solid White */
+    /* Button & Interior Pill Wording At Rest: Crisp Solid White (NEVER use background shorthand with !important so @keyframes can animate background-position!) */
     .ks-wave-text,
     .cyber-play-button #playLabel,
     .cyber-play-button #playIcon,
@@ -2183,7 +2186,8 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       display: inline-block !important;
       color: #ffffff !important;
       -webkit-text-fill-color: #ffffff !important;
-      background: none !important;
+      background-image: none !important;
+      background-color: transparent !important;
       animation: none !important;
     }
 
@@ -2249,18 +2253,22 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background-image: linear-gradient(
         90deg,
         #ffffff 0%,
-        #38bdf8 22%,
-        #00f2fe 45%,
+        #ffffff 16%,
+        #38bdf8 30%,
+        #00f2fe 40%,
+        #ffffff 52%,
         #38bdf8 68%,
+        #00f2fe 78%,
+        #ffffff 92%,
         #ffffff 100%
       ) !important;
-      background-size: 200% auto !important;
+      background-size: 220% auto !important;
       background-repeat: repeat !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 1.1s linear infinite !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
     }
 
     /* Gold Button / Interior Pill Hover: Stays Black Background + White-to-Gold Wave Pulsating Through Letters */
@@ -2302,18 +2310,22 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background-image: linear-gradient(
         90deg,
         #ffffff 0%,
-        #f6d365 22%,
-        #ffd700 45%,
+        #ffffff 16%,
+        #f6d365 30%,
+        #ffd700 40%,
+        #ffffff 52%,
         #d4af37 68%,
+        #ffd700 78%,
+        #ffffff 92%,
         #ffffff 100%
       ) !important;
-      background-size: 200% auto !important;
+      background-size: 220% auto !important;
       background-repeat: repeat !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 1.1s linear infinite !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
     }
 
     /* 8. Bottom Streaming Vault Minimize Button Circular Fix */

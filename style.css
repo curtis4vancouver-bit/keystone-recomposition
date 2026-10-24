@@ -10794,13 +10794,14 @@ article.album-card-18[style*="display: none"] {
   width: 100% !important;
 }
 @keyframes ksButtonWordWave {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  0% { background-position: 220% 50%; }
+  100% { background-position: 0% 50%; }
 }
 .ks-wave-text {
   display: inline-block !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
   animation: none !important;
 }
