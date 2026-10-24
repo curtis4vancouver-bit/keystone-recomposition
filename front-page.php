@@ -330,7 +330,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     <span class="cyber-section-tag">OFFICIAL ARTIST CATALOG</span>
                     <h2 class="cyber-section-title">Latest Master <span class="cyan-gold-gradient-text">Studio Releases</span></h2>
                     <p class="cyber-section-desc">
-                        22 Official Releases • 20 Full Studio Albums | 216 Registered Master Recordings registered with TooLost Digital &amp; distributed worldwide on Spotify, Apple Music &amp; YouTube Music.
+                        22 Official Releases • 20 Full Studio Albums • 216 Master Recordings distributed globally via TooLost across Spotify, Apple Music &amp; YouTube Music.
                     </p>
                 </div>
 
@@ -432,7 +432,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     <span class="cyber-section-tag">ENGINEERING DISPATCHES • 2026 ARCHITECTURAL INTEL</span>
                     <h2 class="cyber-section-title">Technical Intel &amp; <span class="cyan-gold-gradient-text">Architectural Protocols</span></h2>
                     <p class="cyber-section-desc">
-                        Production FastMCP server patterns, local multi-agent swarm case studies, and Chrome DevTools Protocol automation. Staged for master video releases.
+                        4K architectural teardowns, deterministic 28-agent FastMCP swarm patterns, local OS daemon engineering, and live Chrome Port 9222 automation protocols.
                     </p>
                 </div>
 
@@ -821,10 +821,10 @@ $theme_uri = get_stylesheet_directory_uri();
                             <span class="cyber-section-tag">THE ARCHITECT</span>
                             <h2 class="founder-name-heading">Wayne Stevenson</h2>
                             <p class="founder-lead-para">
-                                "Machine intelligence without physical grounding is hallucination. Every line of code, every agentic swarm, and every bio-acoustic frequency I engineer is rooted in the rigorous discipline of real-world master building."
+                                "Machine intelligence without physical grounding is guesswork. Every autonomous 28-agent swarm, local OS daemon, and 96kHz master recording we engineer is built on the uncompromising discipline of real-world mountain construction."
                             </p>
                             <p class="founder-detail-para">
-                                Beyond autonomous software engineering and 216 registered electronic master recordings, Wayne Stevenson is the founder of <strong>Keystone Possibilities Ltd.</strong>, a licensed British Columbia residential builder delivering high-performance custom mountain residences and municipal infill across the Sea-to-Sky corridor.
+                                Uniting a 216-track international electronic music catalog with deterministic AI engineering, Wayne Stevenson is the Founder &amp; Principal Architect of <strong>Keystone Possibilities Ltd.</strong> (BC Housing Licensed Builder #52603) — delivering high-performance custom mountain residences, Bill 44 multiplexes, and heavy civil execution across Squamish, Whistler, and the Sea-to-Sky corridor.
                             </p>
                             <div class="founder-actions-row">
                                 <a href="/founder/" class="btn-cyan-primary">

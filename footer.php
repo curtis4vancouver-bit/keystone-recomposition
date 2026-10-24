@@ -21,9 +21,29 @@ if ( ! defined( 'ABSPATH' ) ) {
     <footer id="kr-master-luxury-footer" data-nosnippet class="kr-master-luxury-footer wayne-preferred-footer" style="background-color: #000000 !important; background: #000000 !important; border-top: 1px solid rgba(212, 175, 55, 0.25); padding: 48px 20px calc(5.5rem + env(safe-area-inset-bottom, 0px)) 20px; color: #94A3B8; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.84rem; text-align: center; position: relative; z-index: 10; width: 100%; box-sizing: border-box; overflow-x: clip;">
         <div style="max-width: 1200px; margin: 0 auto;">
             
-            <!-- A. Top Action Row: Social Matrix & Two High-Converting YouTube Channel Subscribe Pills -->
-            <div style="margin-bottom: 24px;">
-                <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px;">
+            <!-- A. Top Action Row: Prominent YouTube Channel Subscribe Buttons + Social Matrix -->
+            <div style="margin-bottom: 28px;">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #38bdf8; margin-bottom: 14px;">
+                    OFFICIAL YOUTUBE BROADCAST CHANNELS &bull; JOIN THE BUILDER ECOSYSTEM
+                </div>
+
+                <!-- Featured Prominent Subscribe Row -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <!-- YouTube Subscribe Pill: @KEYSTONERECOMPOSITION (Gold Border + Gold-to-White Letter Pulse on Hover) -->
+                    <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-gold" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; height: 56px; min-width: 340px; padding: 0 32px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.90rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#f6d365" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 8px rgba(246, 211, 101, 0.75)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <span class="ks-wave-text">SUBSCRIBE &bull; @KEYSTONERECOMPOSITION</span>
+                    </a>
+
+                    <!-- YouTube Subscribe Pill: @KEYSTONEAIPROTOCOLS (Blue Border + Blue-to-White Letter Pulse on Hover) -->
+                    <a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-cyan" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; height: 56px; min-width: 340px; padding: 0 32px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.90rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#38bdf8" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.75)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <span class="ks-wave-text">SUBSCRIBE &bull; @KEYSTONEAIPROTOCOLS</span>
+                    </a>
+                </div>
+
+                <!-- Secondary Row: Verified Social & Streaming Profiles -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;">
                     
                     <!-- Facebook Page -->
                     <a href="https://www.facebook.com/profile.php?id=61561081702787" target="_blank" rel="noopener noreferrer" class="footer-social-circle" aria-label="Facebook Page" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px; border-radius: 50%; background: rgba(8, 8, 8, 0.95); border: 1.5px solid rgba(212, 175, 55, 0.35); color: #f6d365; display: inline-flex; align-items: center; justify-content: center; text-decoration: none !important; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);">
@@ -43,18 +63,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <!-- Spotify Official Artist Channel -->
                     <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="footer-social-circle" aria-label="Spotify Official Artist Channel" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px; border-radius: 50%; background: rgba(8, 8, 8, 0.95); border: 1.5px solid rgba(212, 175, 55, 0.35); color: #f6d365; display: inline-flex; align-items: center; justify-content: center; text-decoration: none !important; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.502 17.31c-.218.358-.684.474-1.042.256-2.856-1.745-6.452-2.14-10.686-1.173-.41.094-.814-.162-.907-.571-.094-.41.162-.813.571-.907 4.636-1.06 8.607-.611 11.806 1.348.358.218.474.684.256 1.047zm1.47-3.26c-.275.447-.864.59-1.311.315-3.27-2.01-8.254-2.593-12.12-1.419-.505.153-1.037-.134-1.19-.639-.153-.505.134-1.037.639-1.19 4.417-1.34 9.907-.69 13.667 1.623.447.275.59.864.315 1.311zm.126-3.41c-3.921-2.328-10.384-2.543-14.133-1.404-.6.182-1.236-.16-1.418-.76-.182-.6.16-1.236.76-1.418 4.303-1.306 11.433-1.055 15.938 1.62.54.32.718 1.02.398 1.56-.32.54-1.02.718-1.56.398z"/></svg>
-                    </a>
-
-                    <!-- YouTube Subscribe Pill: @KEYSTONERECOMPOSITION (Subtle Gold Border) -->
-                    <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-gold" style="display: inline-flex; align-items: center; gap: 9px; min-height: 48px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(0, 0, 0, 0.98) 100%); border: 1.5px solid #d4af37; padding: 10px 22px; border-radius: 9999px; text-decoration: none !important; color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 18px rgba(212, 175, 55, 0.22); transition: all 0.25s ease;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#d4af37" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        <span>SUBSCRIBE &bull; @KEYSTONERECOMPOSITION</span>
-                    </a>
-
-                    <!-- YouTube Subscribe Pill: @KEYSTONEAIPROTOCOLS (Subtle Baby Blue Border) -->
-                    <a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-cyan" style="display: inline-flex; align-items: center; gap: 9px; min-height: 48px; background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(0, 0, 0, 0.98) 100%); border: 1.5px solid #38bdf8; padding: 10px 22px; border-radius: 9999px; text-decoration: none !important; color: #ffffff !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 4px 18px rgba(56, 189, 248, 0.22); transition: all 0.25s ease;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#38bdf8" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        <span>SUBSCRIBE &bull; @KEYSTONEAIPROTOCOLS</span>
                     </a>
 
                 </div>
@@ -80,28 +88,28 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <!-- Column 1: Sonic Universe Catalog -->
                     <div class="regional-col">
                         <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Sonic Universe Catalog:</strong>
-                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Sovereign Reverb (10-Track Album)</a>
-                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• APOLLO Protocol (Deep House)</a>
+                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Sovereign Reverb (10-Track Master)</a>
+                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• APOLLO Protocol (Melodic Deep House)</a>
                         <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 22 Official Releases (20 Studio Albums)</a>
-                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="footer-cyan-link" style="color: #38bdf8 !important; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• TooLost Global Distribution ↗</a>
+                        <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="footer-cyan-link" style="color: #38bdf8 !important; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Global Streaming Distribution ↗</a>
                     </div>
 
                     <!-- Column 2: Autonomous AI Protocols -->
                     <div class="regional-col">
                         <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Autonomous AI Protocols:</strong>
-                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Antigravity Workstation Blueprint</a>
-                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 28-Agent FastMCP Swarms</a>
-                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Custom Tauri Sovereign Setup</a>
-                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Chrome CDP Automation Engine</a>
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Antigravity Workstation Architecture</a>
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 28-Agent FastMCP Swarm Orchestration</a>
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Custom Rust + Tauri Desktop Studio</a>
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Chrome CDP &amp; Hybrid Vector Brain</a>
                     </div>
 
-                    <!-- Column 3: Strategic Investments & AI Vault -->
+                    <!-- Column 3: Capital & Mountain Lifestyle -->
                     <div class="regional-col">
-                        <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Strategic Investments &amp; AI Vault:</strong>
-                        <a href="/investments/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Investments &amp; Strategic Allocation</a>
-                        <a href="/lifestyle/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Alpine Performance &amp; Lifestyle</a>
-                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #38bdf8 !important; font-weight: 600; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">→ $49.50 &amp; $800 AI Video + Download Vault</a>
-                        <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Mexico &amp; European Expansion</a>
+                        <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Capital &amp; Mountain Lifestyle:</strong>
+                        <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Strategic Capital &amp; Asset Allocation</a>
+                        <a href="<?php echo esc_url( home_url( '/lifestyle/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Sea-to-Sky Alpine Performance &amp; Longevity</a>
+                        <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" style="color: #38bdf8 !important; font-weight: 600; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">→ Architectural Teardowns &amp; Technical Intel</a>
+                        <a href="<?php echo esc_url( home_url( '/investments/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• International Real Estate &amp; Expansion</a>
                     </div>
 
                     <!-- Column 4: Direct Authority & Contact -->
@@ -109,10 +117,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Direct Authority &amp; Contact:</strong>
                         <span class="founder-title-blue" style="color: #38bdf8 !important; font-weight: 700; font-size: 0.82rem; display: block; margin-bottom: 4px;">Wayne Stevenson // Principal Builder</span>
                         <span class="license-white" style="color: #f6d365 !important; font-weight: 600; font-size: 0.80rem; display: block; margin-bottom: 4px;">🏛️ Certified BC Housing Builder #52603</span>
-                        <a href="/founder/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 4px; font-size: 0.80rem; transition: color 0.2s ease;">• Wayne Stevenson Builder Dossier</a>
+                        <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 4px; font-size: 0.80rem; transition: color 0.2s ease;">• Wayne Stevenson Executive Dossier</a>
                         <a href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>" class="sister-flagship-link" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• PropTech &amp; AI Systems Case Studies →</a>
                         <a href="mailto:keystonerecomposition@gmail.com" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Direct Email: keystonerecomposition@gmail.com</a>
-                        <a href="/contact/" class="consultation-sub-link" style="color: #94A3B8 !important; font-size: 0.80rem; display: block; text-decoration: none !important;">• Schedule Fiduciary Consultation</a>
+                        <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="consultation-sub-link" style="color: #94A3B8 !important; font-size: 0.80rem; display: block; text-decoration: none !important;">• Schedule Direct Builder Consultation</a>
                     </div>
 
                 </div>

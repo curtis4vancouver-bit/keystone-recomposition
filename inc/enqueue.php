@@ -1899,66 +1899,94 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       align-items: center !important;
     }
 
-    /* 6. Section 5 Founder Dossier — Equal Centered Paired Buttons */
+    /* 6. Section 5 Founder Dossier — Equal Centered Paired Buttons (Zero Vertical Offset) */
     .founder-actions-row {
       display: flex !important;
       align-items: center !important;
+      justify-content: flex-start !important;
       gap: 16px !important;
       flex-wrap: wrap !important;
       margin-top: 24px !important;
     }
-    .founder-actions-row a {
-      min-height: 52px !important;
-      height: 52px !important;
+    .founder-actions-row a,
+    .founder-actions-row .btn-cyan-primary,
+    .founder-actions-row .btn-gold-subtle {
+      margin: 0 !important;
+      min-height: 54px !important;
+      height: 54px !important;
+      max-height: 54px !important;
       min-width: 280px !important;
+      flex: 1 1 280px !important;
       padding: 0 28px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       text-align: center !important;
+      vertical-align: middle !important;
+      box-sizing: border-box !important;
       font-family: 'Outfit', sans-serif !important;
       font-size: 0.86rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.05em !important;
       text-transform: uppercase !important;
+      line-height: 1 !important;
     }
 
-    /* 7. Distinct Blue vs Gold Buttons at Rest + Hover-Only Word Color Wave */
+    /* 7. Prominent Footer Subscribe Buttons & Hover-Only Letter Pulsating Wave */
+    .footer-subscribe-btn {
+      min-height: 56px !important;
+      height: 56px !important;
+      min-width: 340px !important;
+      padding: 0 32px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 12px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.90rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.07em !important;
+      text-transform: uppercase !important;
+      box-sizing: border-box !important;
+    }
+
     @keyframes ksButtonWordWave {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
+      0% { background-position: 220% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* Blue Buttons at Rest */
+    /* Blue Buttons at Rest (Obsidian Black Fill + Luminous Cyan Border) */
     .btn-cyan-primary,
     .btn-cyan-outline,
     .header-protocols-cta-pill,
     .cyber-play-button,
     .footer-subscribe-btn-cyan,
     #kr-bottom-streaming-vault .kr-vault-link-pill {
-      background: linear-gradient(135deg, rgba(8, 16, 32, 0.96) 0%, rgba(4, 9, 18, 0.99) 100%) !important;
-      border: 1.5px solid rgba(56, 189, 248, 0.78) !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.82), 0 0 18px rgba(56, 189, 248, 0.24), inset 0 1px 0 rgba(56, 189, 248, 0.2) !important;
+      background: #04070d !important;
+      background-image: linear-gradient(135deg, rgba(6, 12, 24, 0.98) 0%, rgba(2, 5, 11, 1) 100%) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.82) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85), 0 0 18px rgba(56, 189, 248, 0.24), inset 0 1px 0 rgba(56, 189, 248, 0.2) !important;
       border-radius: 9999px !important;
       color: #ffffff !important;
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
 
-    /* Gold Buttons at Rest */
+    /* Gold Buttons at Rest (Obsidian Black Fill + Sovereign Gold Border) */
     .btn-gold-subtle,
     .btn-glass-secondary,
     .footer-subscribe-btn-gold,
     #kr-bottom-streaming-vault .kr-vault-play-pill,
     #kr-bottom-streaming-vault .kr-vault-spotify-pill {
-      background: linear-gradient(135deg, rgba(18, 15, 10, 0.96) 0%, rgba(6, 8, 14, 0.99) 100%) !important;
-      border: 1.5px solid rgba(212, 175, 55, 0.82) !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.82), 0 0 18px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(246, 211, 101, 0.22) !important;
+      background: #04070d !important;
+      background-image: linear-gradient(135deg, rgba(16, 13, 8, 0.98) 0%, rgba(3, 5, 10, 1) 100%) !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.85) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85), 0 0 18px rgba(212, 175, 55, 0.26), inset 0 1px 0 rgba(246, 211, 101, 0.22) !important;
       border-radius: 9999px !important;
       color: #ffffff !important;
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
 
-    /* Button Wording At Rest: Crisp Solid White (Zero Static Rainbow Split) */
+    /* Button Wording At Rest: Crisp Solid White (Zero Static Color Split) */
     .ks-wave-text,
     .cyber-play-button #playLabel,
     .cyber-play-button #playIcon,
@@ -1970,15 +1998,16 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       animation: none !important;
     }
 
-    /* Blue Button Hover: Luminous Baby Blue Glow + White-to-Blue Word Wave */
+    /* Blue Button Hover: Stays Black Background + Multi-Crest White-to-Blue Wave Pulsating Through Letters */
     .btn-cyan-primary:hover,
     .btn-cyan-outline:hover,
     .header-protocols-cta-pill:hover,
     .cyber-play-button:hover,
     .footer-subscribe-btn-cyan:hover,
     #kr-bottom-streaming-vault .kr-vault-link-pill:hover {
+      background: #04070d !important;
       border-color: #38bdf8 !important;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), 0 0 26px rgba(56, 189, 248, 0.52) !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.92), 0 0 28px rgba(56, 189, 248, 0.58), inset 0 0 14px rgba(56, 189, 248, 0.14) !important;
       transform: translateY(-2px) !important;
     }
     .btn-cyan-primary:hover .ks-wave-text,
@@ -1988,30 +2017,36 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .cyber-play-button:hover #playIcon,
     .footer-subscribe-btn-cyan:hover .ks-wave-text,
     #kr-bottom-streaming-vault .kr-vault-link-pill:hover .ks-wave-text {
-      background: linear-gradient(
+      background-image: linear-gradient(
         90deg,
         #ffffff 0%,
+        #ffffff 16%,
         #38bdf8 30%,
-        #7dd3fc 50%,
-        #38bdf8 70%,
+        #00f2fe 40%,
+        #ffffff 52%,
+        #38bdf8 68%,
+        #00f2fe 78%,
+        #ffffff 92%,
         #ffffff 100%
       ) !important;
-      background-size: 200% 100% !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 1.5s linear infinite !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
     }
 
-    /* Gold Button Hover: Sovereign Gold Glow + White-to-Gold Word Wave */
+    /* Gold Button Hover: Stays Black Background + Multi-Crest White-to-Gold Wave Pulsating Through Letters */
     .btn-gold-subtle:hover,
     .btn-glass-secondary:hover,
     .footer-subscribe-btn-gold:hover,
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover,
     #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover {
+      background: #04070d !important;
       border-color: #f6d365 !important;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), 0 0 26px rgba(212, 175, 55, 0.52) !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.92), 0 0 28px rgba(212, 175, 55, 0.58), inset 0 0 14px rgba(212, 175, 55, 0.14) !important;
       transform: translateY(-2px) !important;
     }
     .btn-gold-subtle:hover .ks-wave-text,
@@ -2020,20 +2055,25 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover .ks-wave-text,
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover span,
     #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover .ks-wave-text {
-      background: linear-gradient(
+      background-image: linear-gradient(
         90deg,
         #ffffff 0%,
+        #ffffff 16%,
         #f6d365 30%,
-        #d4af37 50%,
-        #f6d365 70%,
+        #ffd700 40%,
+        #ffffff 52%,
+        #d4af37 68%,
+        #ffd700 78%,
+        #ffffff 92%,
         #ffffff 100%
       ) !important;
-      background-size: 200% 100% !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 1.5s linear infinite !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
     }
 
     /* 8. Bottom Streaming Vault Minimize Button Circular Fix */
@@ -2065,9 +2105,11 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       }
       .company-ai-cta-row a,
       .sound-lab-controls #cyberPlayBtn,
-      .music-lab-footer-link a {
+      .music-lab-footer-link a,
+      .footer-subscribe-btn {
         white-space: normal !important;
         height: auto !important;
+        min-width: 0 !important;
         padding: 12px 18px !important;
       }
     }
@@ -2086,14 +2128,20 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         '#kr-bottom-streaming-vault .kr-vault-spotify-pill'
       ].join(',');
       document.querySelectorAll(waveSelectors).forEach(function(btn) {
-        if (!btn.querySelector('.ks-wave-text')) {
-          var span = document.createElement('span');
-          span.className = 'ks-wave-text';
-          while (btn.firstChild) {
-            span.appendChild(btn.firstChild);
-          }
-          btn.appendChild(span);
+        if (btn.querySelector('.ks-wave-text')) {
+          return;
         }
+        var existingSpans = btn.querySelectorAll('span');
+        if (btn.querySelector('svg') && existingSpans.length > 0) {
+          existingSpans.forEach(function(s) { s.classList.add('ks-wave-text'); });
+          return;
+        }
+        var span = document.createElement('span');
+        span.className = 'ks-wave-text';
+        while (btn.firstChild) {
+          span.appendChild(btn.firstChild);
+        }
+        btn.appendChild(span);
       });
     });
     </script>
