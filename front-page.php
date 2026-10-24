@@ -120,34 +120,34 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <!-- 3 Operational Pillars -->
                             <div class="operational-pillars-list" id="operationalPillarsList">
-                                <div class="pillar-item active-pillar" data-pillar-idx="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">
+                                <div class="pillar-item pillar-blue" data-pillar-idx="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">
                                     <div class="pillar-icon">🎬</div>
                                     <div class="pillar-content">
                                         <div class="pillar-title-row">
                                             <h4>Autonomous 4K Video &amp; 3-Force Studio Pipelines</h4>
-                                            <span class="pillar-tag-pill">CORE 01</span>
+                                            <span class="pillar-tag-pill pillar-tag-blue">CORE 01</span>
                                         </div>
                                         <p>End-to-end 4K video orchestration, 60fps 3-Force holographic telemetry, and automated DaVinci Resolve master assembly running on local workstation GPUs.</p>
                                     </div>
                                 </div>
 
-                                <div class="pillar-item" data-pillar-idx="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">
+                                <div class="pillar-item pillar-gold" data-pillar-idx="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">
                                     <div class="pillar-icon">🛠️</div>
                                     <div class="pillar-content">
                                         <div class="pillar-title-row">
                                             <h4>FastMCP Tool Servers &amp; Chrome Port 9222 CDP</h4>
-                                            <span class="pillar-tag-pill">CORE 02</span>
+                                            <span class="pillar-tag-pill pillar-tag-gold">CORE 02</span>
                                         </div>
                                         <p>Direct JSON-RPC tool contracts connecting autonomous subagents to detached OS daemons, live Port 9222 browser tabs, and instant Search Console indexing.</p>
                                     </div>
                                 </div>
 
-                                <div class="pillar-item" data-pillar-idx="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">
+                                <div class="pillar-item pillar-blue" data-pillar-idx="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">
                                     <div class="pillar-icon">⚡</div>
                                     <div class="pillar-content">
                                         <div class="pillar-title-row">
                                             <h4>28-Agent Swarms &amp; Sovereign Tauri Workstations</h4>
-                                            <span class="pillar-tag-pill">CORE 03</span>
+                                            <span class="pillar-tag-pill pillar-tag-blue">CORE 03</span>
                                         </div>
                                         <p>Tier-A Flash Speed Scouts (#01–#04) and Tier-B Argon Specialists (#05–#28) executing in isolated ephemeral contexts with adversarial Boss Checker verification.</p>
                                     </div>
@@ -323,13 +323,11 @@ $theme_uri = get_stylesheet_directory_uri();
                                  alt="Sovereign Reverb Album Cover Art" 
                                  class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
                             <div class="album-media-overlay"></div>
-                            <span class="album-format-pill">VOL. 01 • 96kHz</span>
                             <div class="album-vinyl-preview"></div>
                         </div>
                         <div class="album-card-body">
                             <div class="album-genre-meta">
                                 <span class="genre-tag">ORGANIC DOWNTEMPO CHILL HOUSE • 115 BPM</span>
-                                <span class="lossless-tag">★ LOSSLESS</span>
                             </div>
                             <h3 class="album-card-title">Sovereign Reverb</h3>
                             <p class="album-card-desc">
@@ -349,13 +347,11 @@ $theme_uri = get_stylesheet_directory_uri();
                                  alt="Apollo Protocol Album Cover Art" 
                                  class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
                             <div class="album-media-overlay"></div>
-                            <span class="album-format-pill">VOL. 02 • 96kHz</span>
                             <div class="album-vinyl-preview"></div>
                         </div>
                         <div class="album-card-body">
                             <div class="album-genre-meta">
                                 <span class="genre-tag">PROGRESSIVE AMBIENT MELODIC • 120 BPM</span>
-                                <span class="lossless-tag">★ LOSSLESS</span>
                             </div>
                             <h3 class="album-card-title">Apollo Protocol</h3>
                             <p class="album-card-desc">
@@ -375,13 +371,11 @@ $theme_uri = get_stylesheet_directory_uri();
                                  alt="Blue Collar Symphony Album Cover Art" 
                                  class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
                             <div class="album-media-overlay"></div>
-                            <span class="album-format-pill">VOL. 03 • 96kHz</span>
                             <div class="album-vinyl-preview"></div>
                         </div>
                         <div class="album-card-body">
                             <div class="album-genre-meta">
                                 <span class="genre-tag">DEEP MELODIC HOUSE • 122 BPM</span>
-                                <span class="lossless-tag">★ LOSSLESS</span>
                             </div>
                             <h3 class="album-card-title">Blue Collar Symphony</h3>
                             <p class="album-card-desc">

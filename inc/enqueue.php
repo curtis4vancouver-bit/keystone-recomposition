@@ -1548,14 +1548,17 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       margin-bottom: 12px !important;
     }
 
-    /* Hide Removed Switcher & Frequency Bars if Cached */
+    /* Hide Removed Switcher, Frequency, Top-Corner & Lossless Clutter Pills */
     .ai-pillar-switcher-bar,
     .freq-tuning-bar,
-    .founder-credentials-stack {
+    .founder-credentials-stack,
+    .album-format-pill,
+    .lossless-tag,
+    .video-runtime-pill {
       display: none !important;
     }
 
-    /* Operational Pillars Alignment (Expands Cleanly to Match Right Column) */
+    /* Operational Pillars Alignment (Color-Matched Blue & Gold Borders + Hover Wave) */
     .operational-pillars-list {
       display: flex !important;
       flex-direction: column !important;
@@ -1567,13 +1570,15 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       width: 100% !important;
     }
     .operational-pillars-list .pillar-item,
-    .operational-pillars-list .pillar-item.active-pillar {
+    .operational-pillars-list .pillar-item.active-pillar,
+    .operational-pillars-list .pillar-item.pillar-blue {
       padding: 18px 20px !important;
       border-radius: 14px !important;
       background: #04070d !important;
+      background-color: #04070d !important;
       background-image: none !important;
-      border: 1px solid rgba(56, 189, 248, 0.34) !important;
-      box-shadow: none !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.65) !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.82) !important;
       display: flex !important;
       align-items: flex-start !important;
       gap: 14px !important;
@@ -1581,11 +1586,21 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
       flex: 1 1 auto !important;
     }
-    .operational-pillars-list .pillar-item:hover {
+    .operational-pillars-list .pillar-item.pillar-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.72) !important;
+    }
+    .operational-pillars-list .pillar-item.pillar-blue:hover {
       background: #04070d !important;
       background-image: none !important;
-      border-color: #d4af37 !important;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 18px rgba(212, 175, 55, 0.28) !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(56, 189, 248, 0.55) !important;
+      transform: translateY(-2px) !important;
+    }
+    .operational-pillars-list .pillar-item.pillar-gold:hover {
+      background: #04070d !important;
+      background-image: none !important;
+      border-color: #f6d365 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(212, 175, 55, 0.55) !important;
       transform: translateY(-2px) !important;
     }
     .pillar-title-row {
@@ -1613,9 +1628,12 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       -webkit-text-fill-color: #ffffff !important;
       background: #04070d !important;
       background-image: none !important;
-      border: 1px solid rgba(212, 175, 55, 0.72) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.78) !important;
       white-space: nowrap !important;
       flex-shrink: 0 !important;
+    }
+    .pillar-tag-pill.pillar-tag-gold {
+      border-color: rgba(212, 175, 55, 0.82) !important;
     }
     .operational-pillars-list .pillar-content p {
       margin: 0 !important;
@@ -1644,9 +1662,11 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       overflow: hidden !important;
       background: #04070d !important;
       background-image: none !important;
-      border: 1px solid rgba(56, 189, 248, 0.42) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.68) !important;
       border-radius: 9999px !important;
       padding: 5px 12px !important;
+      cursor: pointer !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
     .visualizer-hud-overlay .track-label {
       white-space: nowrap !important;
@@ -1752,7 +1772,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       gap: 8px !important;
     }
 
-    /* 4. Section 3 Master Studio Albums — Equal Card Heights & Generous Bottom Button Spacing */
+    /* 4. Section 3 Master Studio Albums — Equal Card Heights, Left-Aligned Genre & Stacked Vertical Action Buttons */
     .albums-grid {
       display: grid !important;
       grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -1766,6 +1786,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       border-radius: 18px !important;
       box-sizing: border-box !important;
       background: #04070d !important;
+      border: 1px solid rgba(56, 189, 248, 0.34) !important;
     }
     .cyber-album-card .album-card-body {
       flex: 1 1 auto !important;
@@ -1773,14 +1794,49 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       flex-direction: column !important;
       justify-content: space-between !important;
       background: #04070d !important;
+      padding: 24px !important;
+      text-align: left !important;
+    }
+    .cyber-album-card .album-genre-meta {
+      display: flex !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      text-align: left !important;
+      margin-bottom: 10px !important;
+      width: 100% !important;
+    }
+    .cyber-album-card .genre-tag {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.70rem !important;
+      font-weight: 700 !important;
+      color: #38bdf8 !important;
+      letter-spacing: 0.05em !important;
+      text-align: left !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .cyber-album-card .album-card-title {
+      text-align: left !important;
+      margin: 0 0 10px 0 !important;
+      color: #ffffff !important;
+    }
+    .cyber-album-card .album-card-desc {
+      text-align: left !important;
+      margin: 0 0 18px 0 !important;
+      color: #cbd5e1 !important;
+      flex: 1 1 auto !important;
     }
     .cyber-album-card .album-action-row {
       margin-top: auto !important;
       padding-top: 16px !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.2) !important;
       display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: flex-end !important;
       gap: 10px !important;
+      width: 100% !important;
     }
     .cyber-albums-section .albums-footer-cta {
       margin-top: 56px !important;
@@ -1805,7 +1861,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       text-transform: uppercase !important;
     }
 
-    /* 5. Section 4 Technical Intel Carousel — Equal Slide Card Heights & Aligned Footers */
+    /* 5. Section 4 Technical Intel Carousel — Equal Slide Card Heights & Full-Width Aligned Footers */
     .intel-carousel-track {
       display: flex !important;
       align-items: stretch !important;
@@ -1823,6 +1879,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       border-radius: 18px !important;
       box-sizing: border-box !important;
       background: #04070d !important;
+      border: 1px solid rgba(56, 189, 248, 0.34) !important;
     }
     .cyber-intel-card .intel-card-content {
       flex: 1 1 auto !important;
@@ -1830,10 +1887,14 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       flex-direction: column !important;
       justify-content: space-between !important;
       background: #04070d !important;
+      padding: 24px !important;
     }
     .cyber-intel-card .intel-card-footer {
       margin-top: auto !important;
       padding-top: 16px !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.2) !important;
+      display: flex !important;
+      width: 100% !important;
     }
     .cyber-intel-carousel-section .albums-footer-cta {
       margin-top: 46px !important;
@@ -1913,7 +1974,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     }
 
     @keyframes ksButtonWordWave {
-      0% { background-position: 220% 50%; }
+      0% { background-position: 200% 50%; }
       100% { background-position: 0% 50%; }
     }
 
@@ -1927,6 +1988,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .cyber-telemetry-pill,
     .chip-verified-badge,
     .badge-cyan-swarms,
+    .pillar-tag-pill.pillar-tag-blue,
     .lab-live-badge,
     .graph-mode-btn,
     .graph-mode-btn.active,
@@ -1958,12 +2020,9 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     #kr-bottom-streaming-vault .kr-vault-spotify-pill,
     .badge-gold-builder,
     .lab-freq-badge,
-    .pillar-tag-pill,
+    .pillar-tag-pill.pillar-tag-gold,
     .track-hz-pill,
-    .album-format-pill,
-    .lossless-tag,
     .album-stream-prompt,
-    .video-runtime-pill,
     .telemetry-hz {
       background: #04070d !important;
       background-color: #04070d !important;
@@ -1996,6 +2055,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
+      cursor: pointer !important;
     }
     .music-graph-toolbar {
       display: flex !important;
@@ -2009,16 +2069,24 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .album-stream-prompt,
     .album-details-link,
     .intel-read-more {
-      padding: 6px 14px !important;
+      width: 100% !important;
+      min-height: 46px !important;
+      height: 46px !important;
+      padding: 0 18px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
+      text-align: center !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: 0.74rem !important;
+      font-size: 0.78rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      white-space: nowrap !important;
       text-decoration: none !important;
+      box-sizing: border-box !important;
       cursor: pointer !important;
+      margin: 0 !important;
     }
 
     /* Triad Pills & Song Rows: Pure Black Background (Zero Shading Behind Them) + White Writing */
@@ -2031,6 +2099,25 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background: #04070d !important;
       background-color: #04070d !important;
       background-image: none !important;
+      cursor: pointer !important;
+    }
+    .triad-pill.triad-music,
+    .triad-pill.triad-builder {
+      border: 1.5px solid rgba(56, 189, 248, 0.72) !important;
+    }
+    .triad-pill.triad-ai {
+      border: 1.5px solid rgba(212, 175, 55, 0.78) !important;
+    }
+    .triad-pill.triad-music:hover,
+    .triad-pill.triad-builder:hover {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(56, 189, 248, 0.55) !important;
+      transform: translateY(-2px) !important;
+    }
+    .triad-pill.triad-ai:hover {
+      border-color: #f6d365 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(212, 175, 55, 0.55) !important;
+      transform: translateY(-2px) !important;
     }
     .triad-pill .triad-title,
     .triad-pill .triad-sub {
@@ -2044,7 +2131,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background: #04070d !important;
       background-color: #04070d !important;
       background-image: none !important;
-      border: 1.5px solid rgba(56, 189, 248, 0.35) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
       box-shadow: none !important;
       border-radius: 12px !important;
       color: #ffffff !important;
@@ -2094,6 +2181,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .cyber-telemetry-pill:hover,
     .chip-verified-badge:hover,
     .badge-cyan-swarms:hover,
+    .pillar-tag-pill.pillar-tag-blue:hover,
     .lab-live-badge:hover,
     .graph-mode-btn:hover,
     .telemetry-fps:hover,
@@ -2120,11 +2208,18 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .cyber-telemetry-pill:hover .telemetry-text,
     .cyber-telemetry-pill:hover .ks-wave-text,
     .chip-verified-badge:hover .ks-wave-text,
+    .triad-pill.triad-music:hover .triad-title,
+    .triad-pill.triad-builder:hover .triad-title,
     .badge-cyan-swarms:hover .ks-wave-text,
+    .operational-pillars-list .pillar-item.pillar-blue:hover .pillar-title-row h4 .ks-wave-text,
+    .operational-pillars-list .pillar-item.pillar-blue:hover .pillar-title-row h4,
+    .operational-pillars-list .pillar-item.pillar-blue:hover .pillar-tag-blue .ks-wave-text,
+    .pillar-tag-pill.pillar-tag-blue:hover .ks-wave-text,
     .lab-live-badge:hover .ks-wave-text,
     .graph-mode-btn:hover .ks-wave-text,
     .telemetry-fps:hover .ks-wave-text,
     #engineStateBadge:hover .ks-wave-text,
+    #engineStateBadge:hover,
     .playlist-rotate-btn:hover .ks-wave-text,
     .playlist-count:hover .ks-wave-text,
     .visualizer-hud-overlay .track-info:hover .track-label,
@@ -2138,22 +2233,18 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background-image: linear-gradient(
         90deg,
         #ffffff 0%,
-        #ffffff 16%,
-        #38bdf8 30%,
-        #00f2fe 40%,
-        #ffffff 52%,
+        #38bdf8 22%,
+        #00f2fe 45%,
         #38bdf8 68%,
-        #00f2fe 78%,
-        #ffffff 92%,
         #ffffff 100%
       ) !important;
-      background-size: 220% auto !important;
+      background-size: 200% auto !important;
       background-repeat: repeat !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 1.15s linear infinite !important;
+      animation: ksButtonWordWave 1.1s linear infinite !important;
     }
 
     /* Gold Button / Interior Pill Hover: Stays Black Background + White-to-Gold Wave Pulsating Through Letters */
@@ -2164,12 +2255,9 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover,
     .badge-gold-builder:hover,
     .lab-freq-badge:hover,
-    .pillar-tag-pill:hover,
+    .pillar-tag-pill.pillar-tag-gold:hover,
     .track-hz-pill:hover,
-    .album-format-pill:hover,
-    .lossless-tag:hover,
     .album-stream-prompt:hover,
-    .video-runtime-pill:hover,
     .telemetry-hz:hover {
       background: #04070d !important;
       background-image: none !important;
@@ -2183,40 +2271,33 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover .ks-wave-text,
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover span,
     #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover .ks-wave-text,
+    .triad-pill.triad-ai:hover .triad-title,
     .badge-gold-builder:hover .ks-wave-text,
     .lab-freq-badge:hover .ks-wave-text,
-    .pillar-tag-pill:hover .ks-wave-text,
-    .operational-pillars-list .pillar-item:hover .pillar-title-row h4,
-    .operational-pillars-list .pillar-item:hover .pillar-tag-pill .ks-wave-text,
-    .operational-pillars-list .pillar-item:hover .pillar-tag-pill,
+    .operational-pillars-list .pillar-item.pillar-gold:hover .pillar-title-row h4 .ks-wave-text,
+    .operational-pillars-list .pillar-item.pillar-gold:hover .pillar-title-row h4,
+    .operational-pillars-list .pillar-item.pillar-gold:hover .pillar-tag-gold .ks-wave-text,
+    .pillar-tag-pill.pillar-tag-gold:hover .ks-wave-text,
     .track-hz-pill:hover .ks-wave-text,
     .playlist-track-row:hover .track-hz-pill .ks-wave-text,
     .playlist-track-row:hover .track-hz-pill,
-    .album-format-pill:hover .ks-wave-text,
-    .lossless-tag:hover .ks-wave-text,
     .album-stream-prompt:hover .ks-wave-text,
-    .cyber-album-card:hover .album-stream-prompt .ks-wave-text,
-    .video-runtime-pill:hover .ks-wave-text,
     .telemetry-hz:hover .ks-wave-text {
       background-image: linear-gradient(
         90deg,
         #ffffff 0%,
-        #ffffff 16%,
-        #f6d365 30%,
-        #ffd700 40%,
-        #ffffff 52%,
+        #f6d365 22%,
+        #ffd700 45%,
         #d4af37 68%,
-        #ffd700 78%,
-        #ffffff 92%,
         #ffffff 100%
       ) !important;
-      background-size: 220% auto !important;
+      background-size: 200% auto !important;
       background-repeat: repeat !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 1.15s linear infinite !important;
+      animation: ksButtonWordWave 1.1s linear infinite !important;
     }
 
     /* 8. Bottom Streaming Vault Minimize Button Circular Fix */
@@ -2273,6 +2354,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         '.chip-verified-badge',
         '.badge-gold-builder',
         '.badge-cyan-swarms',
+        '.pillar-title-row h4',
         '.pillar-tag-pill',
         '.lab-live-badge',
         '.lab-freq-badge',
@@ -2283,11 +2365,8 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         '.playlist-rotate-btn',
         '.playlist-count',
         '.track-hz-pill',
-        '.album-format-pill',
-        '.lossless-tag',
         '.album-stream-prompt',
         '.album-details-link',
-        '.video-runtime-pill',
         '.intel-read-more',
         '.intel-carousel-nav-btn'
       ].join(',');
