@@ -10799,13 +10799,8 @@ article.album-card-18[style*="display: none"] {
 }
 .ks-wave-text {
   display: inline-block !important;
-  contain: paint !important;
-  will-change: background-position !important;
-  background: linear-gradient(90deg, #ffffff 0%, #38bdf8 25%, #f6d365 50%, #38bdf8 75%, #ffffff 100%) !important;
-  background-size: 200% 100% !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  animation: ksButtonWordWave 3.4s linear infinite !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+  animation: none !important;
 }

@@ -110,7 +110,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <span class="founder-title-blue" style="color: #38bdf8 !important; font-weight: 700; font-size: 0.82rem; display: block; margin-bottom: 4px;">Wayne Stevenson // Principal Builder</span>
                         <span class="license-white" style="color: #f6d365 !important; font-weight: 600; font-size: 0.80rem; display: block; margin-bottom: 4px;">🏛️ Certified BC Housing Builder #52603</span>
                         <a href="/founder/" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 4px; font-size: 0.80rem; transition: color 0.2s ease;">• Wayne Stevenson Builder Dossier</a>
-                        <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener noreferrer" class="sister-flagship-link" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Keystone Possibilities Ltd. ↗</a>
+                        <a href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>" class="sister-flagship-link" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• PropTech &amp; AI Systems Case Studies →</a>
                         <a href="mailto:keystonerecomposition@gmail.com" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Direct Email: keystonerecomposition@gmail.com</a>
                         <a href="/contact/" class="consultation-sub-link" style="color: #94A3B8 !important; font-size: 0.80rem; display: block; text-decoration: none !important;">• Schedule Fiduciary Consultation</a>
                     </div>
@@ -126,8 +126,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <span class="network-desc">Keystone Recomposition — Evidence-Based AI Systems, Sonic Architecture &amp; Lifestyle Investments</span>
                 </div>
                 <div class="empire-right">
-                    <span class="sister-label">Sister Flagship:</span> 
-                    <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener noreferrer" class="sister-link" style="color: #f6d365; text-decoration: none !important; font-weight: 600;">Keystone Possibilities Ltd. — Licensed Residential Builder #52603 &amp; BC Hydro Utility Contractor →</a>
+                    <span class="sister-label">Executive Leadership:</span> 
+                    <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="sister-link" style="color: #f6d365; text-decoration: none !important; font-weight: 600;">Wayne Stevenson — Founder Dossier &amp; Architecture Roadmap →</a>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <span id="krVaultTrackSub" class="kr-vault-track-sub">Organic Downtempo Chill House • 115 BPM</span>
             </div>
             <div class="kr-vault-actions">
-                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="kr-vault-link-pill" id="krVaultProtocolsBtn">⚡ AI Vault ($49.50)</a>
+                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="kr-vault-link-pill" id="krVaultProtocolsBtn">⚡ AI Protocols Vault</a>
                 <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">22-Release Catalog</a>
                 <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="kr-vault-spotify-pill">Spotify OAC ↗</a>
             </div>

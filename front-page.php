@@ -111,36 +111,56 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                             
                             <p class="company-ai-lead">
-                                On a rugged mountain job site in Squamish or Whistler, mistakes cost fortunes. There is zero tolerance for guesswork. I apply that exact master-builder discipline to software engineering and machine intelligence.
+                                On a high-altitude job site in Squamish or Whistler, structural precision is non-negotiable. We bring that exact licensed builder discipline to autonomous software engineering, multi-agent systems, and studio production.
                             </p>
                             
                             <p class="company-ai-body">
-                                Rather than relying on generic chatbots that hallucinate and suffer from context collapse, I build and operate <strong>deterministic 28-agent swarms</strong>, local background daemons, and FastMCP tool servers that automate critical business operations for <strong>Keystone Possibilities Ltd.</strong>
+                                Instead of fragile cloud chatbots that drift or lose context, our operations run on <strong>deterministic 28-agent FastMCP swarms</strong>, detached local OS daemons, and direct Chrome Port 9222 pipelines built for <strong>Keystone Possibilities Ltd.</strong> and <strong>Keystone AI Protocols</strong>.
                             </p>
 
+                            <!-- Interactive Architecture Mode Switcher (Mirrors Right-Column Frequency Deck) -->
+                            <div class="ai-pillar-switcher-bar" role="toolbar" aria-label="Operational Architecture Core Selector">
+                                <span class="switcher-label">ACTIVE CORE:</span>
+                                <div class="switcher-pills">
+                                    <button type="button" class="ai-core-pill active" data-core="all" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore('all')">ALL 3 CORES</button>
+                                    <button type="button" class="ai-core-pill" data-core="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">01 • 3-FORCE VIDEO</button>
+                                    <button type="button" class="ai-core-pill" data-core="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">02 • FASTMCP &amp; CDP</button>
+                                    <button type="button" class="ai-core-pill" data-core="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">03 • 28-AGENT SWARM</button>
+                                </div>
+                            </div>
+
                             <!-- 3 Operational Pillars -->
-                            <div class="operational-pillars-list">
-                                <div class="pillar-item">
+                            <div class="operational-pillars-list" id="operationalPillarsList">
+                                <div class="pillar-item active-pillar" data-pillar-idx="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">
                                     <div class="pillar-icon">🎬</div>
                                     <div class="pillar-content">
-                                        <h4>Autonomous AI Video &amp; Multi-Agent Swarm Workstations</h4>
-                                        <p>Deploy our $49.50 &amp; $800 Recorded AI Video Walkthroughs, Instant UID-Locked <code>.ZIP</code>/<code>.bat</code> Download Vault, and deterministic 28-Agent FastMCP Swarms on local hardware.</p>
+                                        <div class="pillar-title-row">
+                                            <h4>Autonomous 4K Video &amp; 3-Force Studio Pipelines</h4>
+                                            <span class="pillar-tag-pill">CORE 01</span>
+                                        </div>
+                                        <p>End-to-end 4K video orchestration, 60fps 3-Force holographic telemetry, and automated DaVinci Resolve master assembly running on local workstation GPUs.</p>
                                     </div>
                                 </div>
 
-                                <div class="pillar-item">
+                                <div class="pillar-item" data-pillar-idx="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">
                                     <div class="pillar-icon">🛠️</div>
                                     <div class="pillar-content">
-                                        <h4>FastMCP Tool Servers &amp; Chrome CDP Pipelines</h4>
-                                        <p>Direct JSON-RPC tool contracts connect autonomous subagents to local daemons, Port 9222 browser tabs, and automated DaVinci Resolve &amp; Suno production engines.</p>
+                                        <div class="pillar-title-row">
+                                            <h4>FastMCP Tool Servers &amp; Chrome Port 9222 CDP</h4>
+                                            <span class="pillar-tag-pill">CORE 02</span>
+                                        </div>
+                                        <p>Direct JSON-RPC tool contracts connecting autonomous subagents to detached OS daemons, live Port 9222 browser tabs, and instant Search Console indexing.</p>
                                     </div>
                                 </div>
 
-                                <div class="pillar-item">
+                                <div class="pillar-item" data-pillar-idx="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">
                                     <div class="pillar-icon">⚡</div>
                                     <div class="pillar-content">
-                                        <h4>28-Agent Swarms &amp; Sovereign Workstations</h4>
-                                        <p>Specialized child agents (Speed Scouts #01-#04, TDD Engineers #05-#10, Builders &amp; Domain Specialists #11-#28) executing in isolated ephemeral contexts with zero cloud lock-in.</p>
+                                        <div class="pillar-title-row">
+                                            <h4>28-Agent Swarms &amp; Sovereign Tauri Workstations</h4>
+                                            <span class="pillar-tag-pill">CORE 03</span>
+                                        </div>
+                                        <p>Tier-A Flash Speed Scouts (#01–#04) and Tier-B Argon Specialists (#05–#28) executing in isolated ephemeral contexts with adversarial Boss Checker verification.</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +169,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-cyan-primary">
                                     ⚡ View Full AI Protocols &amp; Tauri Workstations →
                                 </a>
-                                <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-glass-secondary">
+                                <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-gold-subtle">
                                     🎬 Watch 4K Videos &amp; Read Technical Intel →
                                 </a>
                             </div>
@@ -173,11 +193,11 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="sound-lab-header">
                                 <div class="sound-lab-meta">
                                     <span class="lab-live-badge">● LIVE SOUND LAB</span>
-                                    <span class="lab-freq-badge">96kHz MASTER</span>
+                                    <span class="lab-freq-badge" id="soundLabTopFreqBadge">60Hz SUB • 432Hz MASTER</span>
                                 </div>
                                 <h3 class="sound-lab-title">Bio-Acoustic Synthesizer</h3>
                                 <p class="sound-lab-desc">
-                                    Real master recordings from Wayne Stevenson's 22-release electronic catalog, paired with a 60fps frequency spectrum visualizer.
+                                    Master electronic recordings from Wayne Stevenson's 22-release catalog with real-time 60Hz sub-harmonic &amp; 432Hz frequency switching.
                                 </p>
                             </div>
 
@@ -190,20 +210,29 @@ $theme_uri = get_stylesheet_directory_uri();
                                         <button type="button" class="graph-mode-btn" data-graph-mode="scope" onclick="window.setKeystoneGraphMode && window.setKeystoneGraphMode('scope')">OSCILLOSCOPE</button>
                                     </div>
                                     <div class="graph-telemetry-readout">
-                                        <span class="telemetry-hz" id="cyberGraphHzBadge">432Hz • 115 BPM</span>
+                                        <span class="telemetry-hz" id="cyberGraphHzBadge">60Hz • 432Hz TUNED</span>
                                         <span class="telemetry-fps">60FPS HI-DPI</span>
                                     </div>
                                 </div>
-                                <canvas id="cyberVisualizer" width="640" height="220" title="Click or tap to toggle 432Hz Sovereign Music Stream"></canvas>
+                                <canvas id="cyberVisualizer" width="640" height="205" title="Click or tap to toggle 60Hz / 432Hz Sovereign Music Stream"></canvas>
                                 <div class="visualizer-hud-overlay">
                                     <div class="track-info">
                                         <span class="track-label">NOW STREAMING:</span>
-                                        <span id="currentTrackTitle" class="track-name">Sovereign Reverb (Organic Downtempo Chill House)</span>
+                                        <span id="currentTrackTitle" class="track-name">Sovereign Reverb (Organic Downtempo • 115 BPM)</span>
                                     </div>
                                     <div class="engine-state">
-                                        <span id="engineStateBadge" class="engine-active">432HZ HARMONIC LIVE</span>
+                                        <span id="engineStateBadge" class="engine-active">60HZ / 432HZ LIVE</span>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- High-End 60Hz / 432Hz / 528Hz / 96kHz Frequency Tuning & Auto-Rotation Deck -->
+                            <div class="freq-tuning-bar" role="toolbar" aria-label="Bio-Acoustic Frequency Tuning">
+                                <button type="button" class="freq-tune-pill active" data-freq-band="60hz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('60hz')">60Hz SUB-BASS</button>
+                                <button type="button" class="freq-tune-pill" data-freq-band="432hz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('432hz')">432Hz HARMONIC</button>
+                                <button type="button" class="freq-tune-pill" data-freq-band="528hz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('528hz')">528Hz SOLFEGGIO</button>
+                                <button type="button" class="freq-tune-pill" data-freq-band="96khz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('96khz')">96kHz MASTER</button>
+                                <button type="button" class="freq-tune-pill freq-rotate-pill active" id="freqAutoRotateBtn" onclick="window.toggleKeystoneFreqAutoRotate && window.toggleKeystoneFreqAutoRotate()">⟳ AUTO-ROTATE: ON</button>
                             </div>
 
                             <!-- Tactile Control Deck -->
@@ -216,63 +245,72 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <div class="sound-lab-playlist-deck">
                                     <div class="playlist-header">
                                         <span class="playlist-title">SELECT FREQUENCY STREAM:</span>
-                                        <span class="playlist-count">6 MASTER TRACKS</span>
+                                        <div class="playlist-header-actions">
+                                            <button type="button" class="playlist-rotate-btn" onclick="window.rotateNextKeystoneTrack && window.rotateNextKeystoneTrack()">↻ ROTATE TRACK</button>
+                                            <span class="playlist-count">6 MASTER TRACKS</span>
+                                        </div>
                                     </div>
                                     <div class="playlist-scroll-container">
                                         <button type="button" class="playlist-track-row active" onclick="switchTrack('Sovereign Reverb', 'Organic Downtempo Chill House • 115 BPM', 0)">
                                             <span class="track-num">01</span>
                                             <span class="track-details">
                                                 <span class="track-name-main">Sovereign Reverb</span>
-                                                <span class="track-meta-sub">Organic Downtempo Chill House • 115 BPM</span>
+                                                <span class="track-meta-sub">60Hz Sub-Bass &amp; 432Hz • Organic Chill House • 115 BPM</span>
                                             </span>
+                                            <span class="track-hz-pill">60Hz / 432Hz</span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
                                         <button type="button" class="playlist-track-row" onclick="switchTrack('Apollo Protocol', 'Progressive Ambient Melodic • 120 BPM', 1)">
                                             <span class="track-num">02</span>
                                             <span class="track-details">
                                                 <span class="track-name-main">Apollo Protocol</span>
-                                                <span class="track-meta-sub">Progressive Ambient Melodic • 120 BPM</span>
+                                                <span class="track-meta-sub">432Hz Harmonic Lattice • Progressive Melodic • 120 BPM</span>
                                             </span>
+                                            <span class="track-hz-pill">432Hz TUNED</span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
                                         <button type="button" class="playlist-track-row" onclick="switchTrack('Blue Collar Symphony', 'Deep Melodic House • 122 BPM', 2)">
                                             <span class="track-num">03</span>
                                             <span class="track-details">
                                                 <span class="track-name-main">Blue Collar Symphony</span>
-                                                <span class="track-meta-sub">Deep Melodic House • 122 BPM</span>
+                                                <span class="track-meta-sub">60Hz Analog Moog Drive • Deep Melodic House • 122 BPM</span>
                                             </span>
+                                            <span class="track-hz-pill">60Hz DRIVE</span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
                                         <button type="button" class="playlist-track-row" onclick="switchTrack('The Midday Push', 'Organic Cello &amp; Deep Bass • 120 BPM', 3)">
                                             <span class="track-num">04</span>
                                             <span class="track-details">
                                                 <span class="track-name-main">The Midday Push</span>
-                                                <span class="track-meta-sub">Organic Cello &amp; Deep Bass • 120 BPM</span>
+                                                <span class="track-meta-sub">528Hz Solfeggio Strings • Cello &amp; Deep Bass • 120 BPM</span>
                                             </span>
+                                            <span class="track-hz-pill">528Hz FOCUS</span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
                                         <button type="button" class="playlist-track-row" onclick="switchTrack('Kinetic Peace', 'Melodic Downtempo • 115 BPM', 4)">
                                             <span class="track-num">05</span>
                                             <span class="track-details">
                                                 <span class="track-name-main">Kinetic Peace</span>
-                                                <span class="track-meta-sub">Melodic Downtempo • 115 BPM</span>
+                                                <span class="track-meta-sub">432Hz Equilibrium • Melodic Downtempo • 115 BPM</span>
                                             </span>
+                                            <span class="track-hz-pill">432Hz FLOW</span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
                                         <button type="button" class="playlist-track-row" onclick="switchTrack('The Long Game', 'Progressive Flow • 124 BPM', 5)">
                                             <span class="track-num">06</span>
                                             <span class="track-details">
                                                 <span class="track-name-main">The Long Game</span>
-                                                <span class="track-meta-sub">Progressive Flow • 124 BPM</span>
+                                                <span class="track-meta-sub">96kHz Studio Reference • Progressive Flow • 124 BPM</span>
                                             </span>
+                                            <span class="track-hz-pill">96kHz MASTER</span>
                                             <span class="track-play-indicator">▶</span>
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="music-lab-footer-link text-center" style="margin-top: 20px;">
-                                <a href="/sonic-universe/" class="btn-glass-secondary" style="width: 100%; display: block; text-align: center;">
+                            <div class="music-lab-footer-link">
+                                <a href="/sonic-universe/" class="btn-gold-subtle">
                                     🎵 Explore All 22 Official Releases (20 Studio Albums) →
                                 </a>
                             </div>
@@ -380,7 +418,7 @@ $theme_uri = get_stylesheet_directory_uri();
                 </div>
 
                 <div class="albums-footer-cta text-center">
-                    <a href="/sonic-universe/" class="btn-glass-secondary">
+                    <a href="/sonic-universe/" class="btn-gold-subtle">
                         🎵 Explore All 22 Official Releases (20 Studio Albums) in Sonic Universe →
                     </a>
                 </div>
@@ -793,7 +831,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <a href="/founder/" class="btn-cyan-primary">
                                     Read Full Founder Dossier →
                                 </a>
-                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-glass-secondary">
+                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-gold-subtle">
                                     Visit Keystone Possibilities Ltd. ↗
                                 </a>
                             </div>
@@ -1293,6 +1331,101 @@ document.addEventListener('DOMContentLoaded', function() {
 
         animationId = requestAnimationFrame(renderVisualizer);
     }
+
+    // 4. Interactive 60Hz / 432Hz / 528Hz / 96kHz Frequency Tuning & Track Rotation Engine
+    const freqBands = [
+        { id: '60hz', label: '60Hz • SUB-BASS DRIVE', topBadge: '60Hz SUB • 432Hz MASTER', engineText: '60HZ SUB-HARMONIC LIVE', mode: 'spectrum' },
+        { id: '432hz', label: '432Hz • HARMONIC TUNED', topBadge: '432Hz BIO-ACOUSTIC', engineText: '432HZ HARMONIC LIVE', mode: 'lattice' },
+        { id: '528hz', label: '528Hz • SOLFEGGIO FOCUS', topBadge: '528Hz SOLFEGGIO LATTICE', engineText: '528HZ SOLFEGGIO LIVE', mode: 'scope' },
+        { id: '96khz', label: '96kHz • STUDIO MASTER', topBadge: '96kHz LOSSLESS MASTER', engineText: '96KHZ STUDIO MASTER', mode: 'spectrum' }
+    ];
+    let currentFreqBandIdx = 0;
+    let freqAutoRotateEnabled = true;
+
+    window.setKeystoneFreqBand = function(bandId, fromAuto) {
+        const idx = freqBands.findIndex(b => b.id === bandId);
+        if (idx !== -1) currentFreqBandIdx = idx;
+        const activeBand = freqBands[currentFreqBandIdx];
+        impulseBoost = 1.15;
+
+        document.querySelectorAll('.freq-tune-pill[data-freq-band]').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-freq-band') === activeBand.id);
+        });
+
+        const hzBadge = document.getElementById('cyberGraphHzBadge');
+        if (hzBadge) hzBadge.textContent = activeBand.label;
+        const topFreqBadge = document.getElementById('soundLabTopFreqBadge');
+        if (topFreqBadge) topFreqBadge.textContent = activeBand.topBadge;
+        if (engineBadge && !isPlaying) {
+            engineBadge.textContent = activeBand.engineText;
+        }
+        if (!fromAuto && window.setKeystoneGraphMode) {
+            window.setKeystoneGraphMode(activeBand.mode);
+        }
+    };
+
+    window.rotateNextKeystoneTrack = function() {
+        const nextIdx = (currentTrackIdx + 1) % trackList.length;
+        const nextTrack = trackList[nextIdx];
+        if (isPlaying) {
+            window.switchTrack(nextTrack.title, nextTrack.meta, nextIdx);
+        } else {
+            loadTrack(nextIdx);
+            impulseBoost = 1.1;
+        }
+    };
+
+    window.toggleKeystoneFreqAutoRotate = function() {
+        freqAutoRotateEnabled = !freqAutoRotateEnabled;
+        const btn = document.getElementById('freqAutoRotateBtn');
+        if (btn) {
+            btn.classList.toggle('active', freqAutoRotateEnabled);
+            btn.textContent = freqAutoRotateEnabled ? '⟳ AUTO-ROTATE: ON' : '⟳ AUTO-ROTATE: OFF';
+        }
+    };
+
+    setInterval(function() {
+        if (!freqAutoRotateEnabled) return;
+        currentFreqBandIdx = (currentFreqBandIdx + 1) % freqBands.length;
+        const nextBand = freqBands[currentFreqBandIdx];
+        window.setKeystoneFreqBand(nextBand.id, true);
+        if (!isPlaying) {
+            const nextTrackIdx = (currentTrackIdx + 1) % trackList.length;
+            loadTrack(nextTrackIdx);
+        }
+    }, 6500);
+
+    // 5. Left-Column Operational AI Core Selector & Synchronized Highlight
+    let activeAiCoreIdx = 0;
+    let aiCoreCycleMode = 'all';
+
+    window.selectKeystoneAiCore = function(coreVal) {
+        aiCoreCycleMode = String(coreVal);
+        document.querySelectorAll('.ai-core-pill').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-core') === aiCoreCycleMode);
+        });
+        const items = document.querySelectorAll('#operationalPillarsList .pillar-item');
+        items.forEach((item, idx) => {
+            if (aiCoreCycleMode === 'all') {
+                item.classList.toggle('active-pillar', idx === activeAiCoreIdx);
+                item.style.opacity = '1';
+            } else {
+                const match = String(idx) === aiCoreCycleMode;
+                item.classList.toggle('active-pillar', match);
+                item.style.opacity = match ? '1' : '0.62';
+            }
+        });
+    };
+
+    setInterval(function() {
+        if (aiCoreCycleMode !== 'all') return;
+        const items = document.querySelectorAll('#operationalPillarsList .pillar-item');
+        if (!items.length) return;
+        activeAiCoreIdx = (activeAiCoreIdx + 1) % items.length;
+        items.forEach((item, idx) => {
+            item.classList.toggle('active-pillar', idx === activeAiCoreIdx);
+        });
+    }, 5200);
 
     renderVisualizer();
     loadTrack(0);

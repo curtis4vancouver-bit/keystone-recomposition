@@ -1271,12 +1271,12 @@ add_action( 'init', function() {
 
 
 /**
- * 8. Page 1 Clean Crisp Top Hero Architecture, High-End Founder 3-Pillar Showcase & Rotating Button Word Color Wave
+ * 8. Page 1 Clean Crisp Top Hero Architecture, Equal Box Alignment, 60Hz/432Hz Sound Lab & Hover-Only Button Color Wave
  */
 function keystone_page1_hero_and_button_wave_engine(): void {
     ?>
     <style id="keystone-hero-and-button-wave-lock">
-    /* Clean Crisp Top Hero Cadence */
+    /* 1. Clean Crisp Top Hero Cadence */
     .cyber-hero-section {
       padding-top: 26px !important;
       padding-bottom: 32px !important;
@@ -1298,7 +1298,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       text-shadow: 0 8px 30px rgba(0, 0, 0, 0.85) !important;
     }
 
-    /* High-End Founder & 3-Domain Identity Showcase Underneath Machine Intelligence */
+    /* 2. High-End Founder & 3-Domain Identity Showcase Underneath Machine Intelligence */
     .cyber-founder-showcase-card {
       width: 100% !important;
       max-width: 960px !important;
@@ -1390,31 +1390,38 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       text-align: left !important;
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
+    .triad-pill.triad-ai {
+      border-color: rgba(212, 175, 55, 0.48) !important;
+    }
     .triad-pill:hover {
       transform: translateY(-2px) !important;
       border-color: #d4af37 !important;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.7), 0 0 16px rgba(212, 175, 55, 0.24) !important;
-    }
-    .triad-pill.triad-ai {
-      border-color: rgba(212, 175, 55, 0.45) !important;
     }
     .triad-copy {
       display: flex !important;
       flex-direction: column !important;
       min-width: 0 !important;
     }
+    /* Crisp solid white at rest on Triad pills; gradient wave only on hover */
     .triad-title {
       font-family: 'Outfit', sans-serif !important;
       font-size: 0.74rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.06em !important;
-      background: linear-gradient(90deg, #ffffff 0%, #38bdf8 25%, #f6d365 50%, #38bdf8 75%, #ffffff 100%) !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background: none !important;
+      animation: none !important;
+    }
+    .triad-pill:hover .triad-title {
+      background: linear-gradient(90deg, #ffffff 0%, #f6d365 35%, #d4af37 50%, #f6d365 65%, #ffffff 100%) !important;
       background-size: 200% 100% !important;
       -webkit-background-clip: text !important;
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 4.2s linear infinite !important;
+      animation: ksButtonWordWave 1.6s linear infinite !important;
     }
     .triad-sub {
       font-family: 'Inter', sans-serif !important;
@@ -1466,11 +1473,6 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       0%, 100% { transform: scaleY(0.55); opacity: 0.75; }
       50% { transform: scaleY(1.1); opacity: 1; }
     }
-    @media (max-width: 900px) {
-      .founder-triad-pills {
-        grid-template-columns: 1fr !important;
-      }
-    }
     .cyber-hero-wrap .cyber-hero-subtitle {
       margin-bottom: 2px !important;
       max-width: 820px !important;
@@ -1479,56 +1481,489 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       line-height: 1.65 !important;
     }
 
-    /* Rotating Color Wave Through Button Wording Across All Sovereign Buttons */
+    /* 3. Section 2 Two-Column Split Alignment & Interactive Core / 60Hz Bars */
+    .intro-split-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 32px !important;
+      align-items: stretch !important;
+    }
+    .company-ai-column,
+    .music-lab-column {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+      min-width: 0 !important;
+    }
+    .company-ai-card,
+    .sound-lab-card.compact-lab-card {
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      padding: 32px !important;
+      border-radius: 18px !important;
+      box-sizing: border-box !important;
+      background: linear-gradient(165deg, rgba(10, 16, 28, 0.96) 0%, rgba(4, 7, 13, 0.99) 100%) !important;
+      border: 1px solid rgba(56, 189, 248, 0.34) !important;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 28px rgba(56, 189, 248, 0.1) !important;
+    }
+    .sound-lab-card.compact-lab-card {
+      border-color: rgba(212, 175, 55, 0.42) !important;
+    }
+
+    /* Interactive AI Core Switcher Bar (Left Column) */
+    .ai-pillar-switcher-bar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 8px !important;
+      padding: 8px 12px !important;
+      margin: 14px 0 14px 0 !important;
+      background: rgba(6, 11, 20, 0.92) !important;
+      border: 1px solid rgba(56, 189, 248, 0.28) !important;
+      border-radius: 12px !important;
+      flex-wrap: wrap !important;
+    }
+    .ai-pillar-switcher-bar .switcher-label {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.68rem !important;
+      font-weight: 700 !important;
+      color: #f6d365 !important;
+      letter-spacing: 0.08em !important;
+      white-space: nowrap !important;
+    }
+    .ai-pillar-switcher-bar .switcher-pills {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      flex-wrap: wrap !important;
+    }
+    .ai-core-pill {
+      padding: 5px 10px !important;
+      border-radius: 9999px !important;
+      background: rgba(15, 23, 42, 0.85) !important;
+      border: 1px solid rgba(56, 189, 248, 0.28) !important;
+      color: #cbd5e1 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .ai-core-pill.active,
+    .ai-core-pill:hover {
+      background: rgba(56, 189, 248, 0.16) !important;
+      border-color: #38bdf8 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3) !important;
+    }
+
+    /* Operational Pillars Alignment */
+    .operational-pillars-list {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      margin-bottom: 20px !important;
+      width: 100% !important;
+    }
+    .operational-pillars-list .pillar-item {
+      padding: 15px 18px !important;
+      border-radius: 14px !important;
+      background: rgba(8, 13, 24, 0.9) !important;
+      border: 1px solid rgba(56, 189, 248, 0.22) !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 14px !important;
+      cursor: pointer !important;
+      transition: all 0.25s ease !important;
+    }
+    .operational-pillars-list .pillar-item.active-pillar,
+    .operational-pillars-list .pillar-item:hover {
+      border-color: rgba(212, 175, 55, 0.62) !important;
+      background: linear-gradient(135deg, rgba(14, 22, 38, 0.96) 0%, rgba(8, 13, 24, 0.98) 100%) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 16px rgba(212, 175, 55, 0.18) !important;
+    }
+    .pillar-title-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      margin-bottom: 5px !important;
+    }
+    .pillar-title-row h4 {
+      margin: 0 !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.98rem !important;
+      font-weight: 700 !important;
+      color: #ffffff !important;
+    }
+    .pillar-tag-pill {
+      padding: 2px 8px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.64rem !important;
+      font-weight: 700 !important;
+      color: #f6d365 !important;
+      background: rgba(212, 175, 55, 0.12) !important;
+      border: 1px solid rgba(212, 175, 55, 0.42) !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+    }
+    .operational-pillars-list .pillar-content p {
+      margin: 0 !important;
+      font-size: 0.85rem !important;
+      line-height: 1.5 !important;
+      color: #cbd5e1 !important;
+    }
+
+    /* High-End 60Hz / 432Hz / 528Hz / 96kHz Frequency Tuning Bar (Right Column) */
+    .freq-tuning-bar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 6px !important;
+      padding: 8px 10px !important;
+      margin: 12px 0 !important;
+      background: rgba(6, 11, 20, 0.94) !important;
+      border: 1px solid rgba(212, 175, 55, 0.34) !important;
+      border-radius: 12px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      flex-wrap: wrap !important;
+    }
+    .freq-tune-pill {
+      flex: 1 1 auto !important;
+      padding: 6px 9px !important;
+      border-radius: 9999px !important;
+      background: rgba(15, 23, 42, 0.88) !important;
+      border: 1px solid rgba(56, 189, 248, 0.28) !important;
+      color: #cbd5e1 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.65rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.03em !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .freq-tune-pill.active,
+    .freq-tune-pill:hover {
+      background: rgba(56, 189, 248, 0.18) !important;
+      border-color: #38bdf8 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.32) !important;
+    }
+    .freq-tune-pill.freq-rotate-pill {
+      border-color: rgba(212, 175, 55, 0.48) !important;
+      color: #f6d365 !important;
+    }
+    .freq-tune-pill.freq-rotate-pill.active,
+    .freq-tune-pill.freq-rotate-pill:hover {
+      background: rgba(212, 175, 55, 0.18) !important;
+      border-color: #d4af37 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.32) !important;
+    }
+
+    /* Fix NOW STREAMING Bar Wrapping & Playlist Header */
+    .visualizer-hud-overlay {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      padding: 10px 14px !important;
+    }
+    .visualizer-hud-overlay .track-info {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
+      overflow: hidden !important;
+    }
+    .visualizer-hud-overlay .track-label {
+      white-space: nowrap !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.7rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+      letter-spacing: 0.05em !important;
+      flex-shrink: 0 !important;
+    }
+    .visualizer-hud-overlay .track-name {
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      font-size: 0.8rem !important;
+      font-weight: 700 !important;
+      color: #ffffff !important;
+    }
+    .visualizer-hud-overlay .engine-state {
+      flex-shrink: 0 !important;
+    }
+    .playlist-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+    }
+    .playlist-header-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+    .playlist-rotate-btn {
+      padding: 3px 10px !important;
+      border-radius: 9999px !important;
+      background: rgba(56, 189, 248, 0.14) !important;
+      border: 1px solid rgba(56, 189, 248, 0.45) !important;
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.65rem !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .playlist-rotate-btn:hover {
+      background: rgba(212, 175, 55, 0.2) !important;
+      border-color: #d4af37 !important;
+      color: #ffffff !important;
+    }
+    .track-hz-pill {
+      padding: 2px 8px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.64rem !important;
+      font-weight: 700 !important;
+      color: #f6d365 !important;
+      background: rgba(212, 175, 55, 0.12) !important;
+      border: 1px solid rgba(212, 175, 55, 0.36) !important;
+      white-space: nowrap !important;
+      margin-right: 6px !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Uniform Button Sizing & Centering in Section 2 Left & Right Columns */
+    .company-ai-cta-row {
+      margin-top: auto !important;
+      padding-top: 16px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      width: 100% !important;
+    }
+    .sound-lab-controls {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      width: 100% !important;
+    }
+    .music-lab-footer-link {
+      margin-top: auto !important;
+      padding-top: 16px !important;
+      width: 100% !important;
+    }
+    .company-ai-cta-row a,
+    .sound-lab-controls #cyberPlayBtn,
+    .music-lab-footer-link a {
+      width: 100% !important;
+      min-height: 52px !important;
+      height: 52px !important;
+      padding: 0 24px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+      white-space: nowrap !important;
+      margin: 0 !important;
+    }
+
+    /* 4. Section 3 Master Studio Albums — Equal Card Heights & Generous Bottom Button Spacing */
+    .albums-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 28px !important;
+      align-items: stretch !important;
+    }
+    .cyber-album-card {
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      border-radius: 18px !important;
+      box-sizing: border-box !important;
+    }
+    .cyber-album-card .album-card-body {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+    .cyber-album-card .album-action-row {
+      margin-top: auto !important;
+      padding-top: 16px !important;
+    }
+    .cyber-albums-section .albums-footer-cta {
+      margin-top: 56px !important;
+      margin-bottom: 12px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .cyber-albums-section .albums-footer-cta a,
+    .cyber-intel-carousel-section .albums-footer-cta a {
+      min-height: 54px !important;
+      height: 54px !important;
+      padding: 0 38px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.88rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+    }
+
+    /* 5. Section 4 Technical Intel Carousel — Equal Slide Card Heights & Aligned Footers */
+    .intel-carousel-track {
+      display: flex !important;
+      align-items: stretch !important;
+    }
+    .intel-carousel-slide {
+      display: flex !important;
+      height: auto !important;
+    }
+    .cyber-intel-card.intel-slide-card {
+      height: 100% !important;
+      width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      border-radius: 18px !important;
+      box-sizing: border-box !important;
+    }
+    .cyber-intel-card .intel-card-content {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+    .cyber-intel-card .intel-card-footer {
+      margin-top: auto !important;
+      padding-top: 16px !important;
+    }
+    .cyber-intel-carousel-section .albums-footer-cta {
+      margin-top: 46px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    /* 6. Section 5 Founder Dossier — Equal Centered Paired Buttons */
+    .founder-actions-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      flex-wrap: wrap !important;
+      margin-top: 24px !important;
+    }
+    .founder-actions-row a {
+      min-height: 52px !important;
+      height: 52px !important;
+      min-width: 280px !important;
+      padding: 0 28px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+    }
+
+    /* 7. Distinct Blue vs Gold Buttons at Rest + Hover-Only Word Color Wave */
     @keyframes ksButtonWordWave {
       0% { background-position: 0% 50%; }
       100% { background-position: 200% 50%; }
     }
+
+    /* Blue Buttons at Rest */
     .btn-cyan-primary,
-    .btn-glass-secondary,
-    .btn-gold-subtle,
     .btn-cyan-outline,
     .header-protocols-cta-pill,
     .cyber-play-button,
-    .footer-subscribe-btn,
-    #kr-bottom-streaming-vault .kr-vault-play-pill,
-    #kr-bottom-streaming-vault .kr-vault-link-pill,
-    #kr-bottom-streaming-vault .kr-vault-spotify-pill {
-      background: linear-gradient(135deg, rgba(8, 14, 26, 0.96) 0%, rgba(4, 7, 13, 0.99) 100%) !important;
-      border: 1.5px solid rgba(56, 189, 248, 0.58) !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(56, 189, 248, 0.22) !important;
+    .footer-subscribe-btn-cyan,
+    #kr-bottom-streaming-vault .kr-vault-link-pill {
+      background: linear-gradient(135deg, rgba(8, 16, 32, 0.96) 0%, rgba(4, 9, 18, 0.99) 100%) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.78) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.82), 0 0 18px rgba(56, 189, 248, 0.24), inset 0 1px 0 rgba(56, 189, 248, 0.2) !important;
       border-radius: 9999px !important;
-      color: #f8fafc !important;
+      color: #ffffff !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
+
+    /* Gold Buttons at Rest */
     .btn-gold-subtle,
+    .btn-glass-secondary,
     .footer-subscribe-btn-gold,
     #kr-bottom-streaming-vault .kr-vault-play-pill,
     #kr-bottom-streaming-vault .kr-vault-spotify-pill {
-      border-color: rgba(212, 175, 55, 0.68) !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8), 0 0 18px rgba(212, 175, 55, 0.24) !important;
+      background: linear-gradient(135deg, rgba(18, 15, 10, 0.96) 0%, rgba(6, 8, 14, 0.99) 100%) !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.82) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.82), 0 0 18px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(246, 211, 101, 0.22) !important;
+      border-radius: 9999px !important;
+      color: #ffffff !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
-    .btn-cyan-primary:hover,
-    .btn-glass-secondary:hover,
-    .btn-gold-subtle:hover,
-    .header-protocols-cta-pill:hover,
-    .cyber-play-button:hover,
-    .footer-subscribe-btn:hover {
-      border-color: #d4af37 !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 24px rgba(56, 189, 248, 0.45), 0 0 16px rgba(212, 175, 55, 0.35) !important;
-      transform: translateY(-2px) !important;
-    }
+
+    /* Button Wording At Rest: Crisp Solid White (Zero Static Rainbow Split) */
     .ks-wave-text,
     .cyber-play-button #playLabel,
-    .cyber-play-button #playIcon {
+    .cyber-play-button #playIcon,
+    #kr-bottom-streaming-vault .kr-vault-play-pill span {
       display: inline-block !important;
-      contain: paint !important;
-      will-change: background-position !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background: none !important;
+      animation: none !important;
+    }
+
+    /* Blue Button Hover: Luminous Baby Blue Glow + White-to-Blue Word Wave */
+    .btn-cyan-primary:hover,
+    .btn-cyan-outline:hover,
+    .header-protocols-cta-pill:hover,
+    .cyber-play-button:hover,
+    .footer-subscribe-btn-cyan:hover,
+    #kr-bottom-streaming-vault .kr-vault-link-pill:hover {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), 0 0 26px rgba(56, 189, 248, 0.52) !important;
+      transform: translateY(-2px) !important;
+    }
+    .btn-cyan-primary:hover .ks-wave-text,
+    .btn-cyan-outline:hover .ks-wave-text,
+    .header-protocols-cta-pill:hover .ks-wave-text,
+    .cyber-play-button:hover #playLabel,
+    .cyber-play-button:hover #playIcon,
+    .footer-subscribe-btn-cyan:hover .ks-wave-text,
+    #kr-bottom-streaming-vault .kr-vault-link-pill:hover .ks-wave-text {
       background: linear-gradient(
         90deg,
         #ffffff 0%,
-        #38bdf8 25%,
-        #f6d365 50%,
-        #38bdf8 75%,
+        #38bdf8 30%,
+        #7dd3fc 50%,
+        #38bdf8 70%,
         #ffffff 100%
       ) !important;
       background-size: 200% 100% !important;
@@ -1536,15 +1971,74 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       color: transparent !important;
-      animation: ksButtonWordWave 3.4s linear infinite !important;
+      animation: ksButtonWordWave 1.5s linear infinite !important;
     }
-    @media (prefers-reduced-motion: reduce) {
-      .ks-wave-text,
-      .triad-title,
-      .cyber-play-button #playLabel,
-      .cyber-play-button #playIcon {
-        animation: none !important;
-        background-position: 50% 50% !important;
+
+    /* Gold Button Hover: Sovereign Gold Glow + White-to-Gold Word Wave */
+    .btn-gold-subtle:hover,
+    .btn-glass-secondary:hover,
+    .footer-subscribe-btn-gold:hover,
+    #kr-bottom-streaming-vault .kr-vault-play-pill:hover,
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover {
+      border-color: #f6d365 !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), 0 0 26px rgba(212, 175, 55, 0.52) !important;
+      transform: translateY(-2px) !important;
+    }
+    .btn-gold-subtle:hover .ks-wave-text,
+    .btn-glass-secondary:hover .ks-wave-text,
+    .footer-subscribe-btn-gold:hover .ks-wave-text,
+    #kr-bottom-streaming-vault .kr-vault-play-pill:hover .ks-wave-text,
+    #kr-bottom-streaming-vault .kr-vault-play-pill:hover span,
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover .ks-wave-text {
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #f6d365 30%,
+        #d4af37 50%,
+        #f6d365 70%,
+        #ffffff 100%
+      ) !important;
+      background-size: 200% 100% !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.5s linear infinite !important;
+    }
+
+    /* 8. Bottom Streaming Vault Minimize Button Circular Fix */
+    #kr-bottom-streaming-vault .kr-vault-min-btn {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      max-width: 34px !important;
+      flex: 0 0 34px !important;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 1px solid rgba(56, 189, 248, 0.45) !important;
+      background: rgba(8, 14, 26, 0.95) !important;
+      color: #f8fafc !important;
+    }
+    #kr-bottom-streaming-vault .kr-vault-min-btn:hover {
+      border-color: #d4af37 !important;
+      color: #f6d365 !important;
+    }
+
+    @media (max-width: 980px) {
+      .intro-split-grid,
+      .albums-grid,
+      .founder-triad-pills {
+        grid-template-columns: 1fr !important;
+      }
+      .company-ai-cta-row a,
+      .sound-lab-controls #cyberPlayBtn,
+      .music-lab-footer-link a {
+        white-space: normal !important;
+        height: auto !important;
+        padding: 12px 18px !important;
       }
     }
     </style>
