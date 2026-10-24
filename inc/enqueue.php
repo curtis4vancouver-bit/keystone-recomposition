@@ -1481,7 +1481,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       line-height: 1.65 !important;
     }
 
-    /* 3. Section 2 Two-Column Split Alignment & Interactive Core / 60Hz Bars */
+    /* 3. Section 2 Two-Column Split Alignment & Interior Pure Black Buttons */
     .intro-split-grid {
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -1504,174 +1504,107 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       padding: 32px !important;
       border-radius: 18px !important;
       box-sizing: border-box !important;
-      background: linear-gradient(165deg, rgba(10, 16, 28, 0.96) 0%, rgba(4, 7, 13, 0.99) 100%) !important;
-      border: 1px solid rgba(56, 189, 248, 0.34) !important;
+      background: #04070d !important;
+      background-image: none !important;
+      border: 1px solid rgba(56, 189, 248, 0.38) !important;
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 28px rgba(56, 189, 248, 0.1) !important;
     }
     .sound-lab-card.compact-lab-card {
-      border-color: rgba(212, 175, 55, 0.42) !important;
+      border-color: rgba(212, 175, 55, 0.45) !important;
     }
 
-    /* Interactive AI Core Switcher Bar (Left Column) */
-    .ai-pillar-switcher-bar {
+    /* Left Column Header Badges Side-by-Side Alignment */
+    .builder-badge-row {
       display: flex !important;
+      flex-direction: row !important;
       align-items: center !important;
-      justify-content: space-between !important;
-      gap: 8px !important;
-      padding: 8px 12px !important;
-      margin: 12px 0 14px 0 !important;
-      background: rgba(6, 11, 20, 0.92) !important;
-      border: 1px solid rgba(56, 189, 248, 0.28) !important;
-      border-radius: 12px !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      overflow: hidden !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+      margin: 14px 0 18px 0 !important;
     }
-    .ai-pillar-switcher-bar .switcher-label {
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.65rem !important;
-      font-weight: 700 !important;
-      color: #f6d365 !important;
-      letter-spacing: 0.05em !important;
-      white-space: nowrap !important;
-      flex-shrink: 0 !important;
-    }
-    .ai-pillar-switcher-bar .switcher-pills {
-      display: grid !important;
-      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-      gap: 6px !important;
-      flex: 1 1 auto !important;
-      min-width: 0 !important;
-    }
-    .ai-core-pill {
-      padding: 5px 6px !important;
-      border-radius: 9999px !important;
-      background: rgba(15, 23, 42, 0.85) !important;
-      border: 1px solid rgba(56, 189, 248, 0.28) !important;
-      color: #cbd5e1 !important;
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.62rem !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.02em !important;
-      white-space: nowrap !important;
-      text-align: center !important;
-      cursor: pointer !important;
-      transition: all 0.2s ease !important;
-    }
-    .ai-core-pill.active,
-    .ai-core-pill:hover {
-      background: rgba(56, 189, 248, 0.16) !important;
-      border-color: #38bdf8 !important;
-      color: #ffffff !important;
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3) !important;
+    .sound-lab-meta {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 10px !important;
+      flex-wrap: wrap !important;
+      margin-bottom: 12px !important;
     }
 
-    /* Operational Pillars Alignment */
+    /* Hide Removed Switcher & Frequency Bars if Cached */
+    .ai-pillar-switcher-bar,
+    .freq-tuning-bar,
+    .founder-credentials-stack {
+      display: none !important;
+    }
+
+    /* Operational Pillars Alignment (Expands Cleanly to Match Right Column) */
     .operational-pillars-list {
       display: flex !important;
       flex-direction: column !important;
-      gap: 12px !important;
+      justify-content: space-between !important;
+      flex: 1 1 auto !important;
+      gap: 14px !important;
+      margin-top: 8px !important;
       margin-bottom: 20px !important;
       width: 100% !important;
     }
-    .operational-pillars-list .pillar-item {
-      padding: 15px 18px !important;
+    .operational-pillars-list .pillar-item,
+    .operational-pillars-list .pillar-item.active-pillar {
+      padding: 18px 20px !important;
       border-radius: 14px !important;
-      background: rgba(8, 13, 24, 0.9) !important;
-      border: 1px solid rgba(56, 189, 248, 0.22) !important;
+      background: #04070d !important;
+      background-image: none !important;
+      border: 1px solid rgba(56, 189, 248, 0.34) !important;
+      box-shadow: none !important;
       display: flex !important;
       align-items: flex-start !important;
       gap: 14px !important;
       cursor: pointer !important;
-      transition: all 0.25s ease !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+      flex: 1 1 auto !important;
     }
-    .operational-pillars-list .pillar-item.active-pillar,
     .operational-pillars-list .pillar-item:hover {
-      border-color: rgba(212, 175, 55, 0.62) !important;
-      background: linear-gradient(135deg, rgba(14, 22, 38, 0.96) 0%, rgba(8, 13, 24, 0.98) 100%) !important;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 16px rgba(212, 175, 55, 0.18) !important;
+      background: #04070d !important;
+      background-image: none !important;
+      border-color: #d4af37 !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 18px rgba(212, 175, 55, 0.28) !important;
+      transform: translateY(-2px) !important;
     }
     .pillar-title-row {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
       gap: 10px !important;
-      margin-bottom: 5px !important;
+      margin-bottom: 6px !important;
     }
     .pillar-title-row h4 {
       margin: 0 !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: 0.98rem !important;
+      font-size: 1.0rem !important;
       font-weight: 700 !important;
       color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
     }
     .pillar-tag-pill {
-      padding: 2px 8px !important;
+      padding: 4px 10px !important;
       border-radius: 9999px !important;
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.64rem !important;
+      font-size: 0.65rem !important;
       font-weight: 700 !important;
-      color: #f6d365 !important;
-      background: rgba(212, 175, 55, 0.12) !important;
-      border: 1px solid rgba(212, 175, 55, 0.42) !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background: #04070d !important;
+      background-image: none !important;
+      border: 1px solid rgba(212, 175, 55, 0.72) !important;
       white-space: nowrap !important;
       flex-shrink: 0 !important;
     }
     .operational-pillars-list .pillar-content p {
       margin: 0 !important;
-      font-size: 0.85rem !important;
-      line-height: 1.5 !important;
-      color: #cbd5e1 !important;
-    }
-
-    /* High-End 60Hz / 432Hz / 528Hz / 96kHz Frequency Tuning Bar (Right Column) */
-    .freq-tuning-bar {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 6px !important;
-      padding: 8px 10px !important;
-      margin: 12px 0 !important;
-      background: rgba(6, 11, 20, 0.94) !important;
-      border: 1px solid rgba(212, 175, 55, 0.34) !important;
-      border-radius: 12px !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      flex-wrap: wrap !important;
-    }
-    .freq-tune-pill {
-      flex: 1 1 auto !important;
-      padding: 6px 9px !important;
-      border-radius: 9999px !important;
-      background: rgba(15, 23, 42, 0.88) !important;
-      border: 1px solid rgba(56, 189, 248, 0.28) !important;
-      color: #cbd5e1 !important;
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.65rem !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.03em !important;
-      text-align: center !important;
-      white-space: nowrap !important;
-      cursor: pointer !important;
-      transition: all 0.2s ease !important;
-    }
-    .freq-tune-pill.active,
-    .freq-tune-pill:hover {
-      background: rgba(56, 189, 248, 0.18) !important;
-      border-color: #38bdf8 !important;
+      font-size: 0.86rem !important;
+      line-height: 1.55 !important;
       color: #ffffff !important;
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.32) !important;
-    }
-    .freq-tune-pill.freq-rotate-pill {
-      border-color: rgba(212, 175, 55, 0.48) !important;
-      color: #f6d365 !important;
-    }
-    .freq-tune-pill.freq-rotate-pill.active,
-    .freq-tune-pill.freq-rotate-pill:hover {
-      background: rgba(212, 175, 55, 0.18) !important;
-      border-color: #d4af37 !important;
-      color: #ffffff !important;
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.32) !important;
     }
 
     /* Fix NOW STREAMING Bar Wrapping & Playlist Header */
@@ -1681,22 +1614,30 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       justify-content: space-between !important;
       flex-wrap: nowrap !important;
       gap: 10px !important;
-      padding: 9px 12px !important;
+      padding: 10px 14px !important;
+      background: #04070d !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.28) !important;
     }
     .visualizer-hud-overlay .track-info {
-      display: flex !important;
+      display: inline-flex !important;
       align-items: center !important;
       gap: 6px !important;
       min-width: 0 !important;
       flex: 1 1 auto !important;
       overflow: hidden !important;
+      background: #04070d !important;
+      background-image: none !important;
+      border: 1px solid rgba(56, 189, 248, 0.42) !important;
+      border-radius: 9999px !important;
+      padding: 5px 12px !important;
     }
     .visualizer-hud-overlay .track-label {
       white-space: nowrap !important;
       font-family: 'JetBrains Mono', monospace !important;
       font-size: 0.68rem !important;
       font-weight: 800 !important;
-      color: #38bdf8 !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
       letter-spacing: 0.04em !important;
       flex-shrink: 0 !important;
     }
@@ -1704,9 +1645,10 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       white-space: nowrap !important;
       overflow: hidden !important;
       text-overflow: ellipsis !important;
-      font-size: 0.78rem !important;
+      font-size: 0.76rem !important;
       font-weight: 700 !important;
       color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
     }
     .visualizer-hud-overlay .engine-state {
       flex-shrink: 0 !important;
@@ -1718,51 +1660,19 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       justify-content: space-between !important;
       flex-wrap: nowrap !important;
       gap: 8px !important;
+      margin-bottom: 12px !important;
     }
     .playlist-header .playlist-title {
       white-space: nowrap !important;
-      font-size: 0.68rem !important;
-    }
-    .playlist-header .playlist-count {
-      white-space: nowrap !important;
-      font-size: 0.64rem !important;
+      font-size: 0.70rem !important;
+      color: #ffffff !important;
+      font-weight: 800 !important;
     }
     .playlist-header-actions {
       display: flex !important;
       align-items: center !important;
       flex-wrap: nowrap !important;
-      gap: 6px !important;
-      flex-shrink: 0 !important;
-    }
-    .playlist-rotate-btn {
-      padding: 3px 9px !important;
-      border-radius: 9999px !important;
-      background: rgba(56, 189, 248, 0.14) !important;
-      border: 1px solid rgba(56, 189, 248, 0.45) !important;
-      color: #38bdf8 !important;
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.63rem !important;
-      font-weight: 700 !important;
-      white-space: nowrap !important;
-      cursor: pointer !important;
-      transition: all 0.2s ease !important;
-    }
-    .playlist-rotate-btn:hover {
-      background: rgba(212, 175, 55, 0.2) !important;
-      border-color: #d4af37 !important;
-      color: #ffffff !important;
-    }
-    .track-hz-pill {
-      padding: 2px 8px !important;
-      border-radius: 9999px !important;
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.64rem !important;
-      font-weight: 700 !important;
-      color: #f6d365 !important;
-      background: rgba(212, 175, 55, 0.12) !important;
-      border: 1px solid rgba(212, 175, 55, 0.36) !important;
-      white-space: nowrap !important;
-      margin-right: 6px !important;
+      gap: 8px !important;
       flex-shrink: 0 !important;
     }
 
@@ -1782,15 +1692,23 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       gap: 14px !important;
       width: 100% !important;
       flex: 1 1 auto !important;
+      margin-top: 16px !important;
     }
     .sound-lab-playlist-deck {
       display: flex !important;
       flex-direction: column !important;
       flex: 1 1 auto !important;
       width: 100% !important;
+      margin-top: 0 !important;
+      margin-bottom: 20px !important;
+      background: #04070d !important;
+      border: 1px solid rgba(56, 189, 248, 0.32) !important;
+      border-radius: 16px !important;
+      padding: 16px !important;
+      box-sizing: border-box !important;
     }
     .sound-lab-card .playlist-scroll-container {
-      max-height: 335px !important;
+      max-height: 295px !important;
       flex: 1 1 auto !important;
     }
     .company-ai-cta-row a,
@@ -1830,16 +1748,22 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       flex-direction: column !important;
       border-radius: 18px !important;
       box-sizing: border-box !important;
+      background: #04070d !important;
     }
     .cyber-album-card .album-card-body {
       flex: 1 1 auto !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
+      background: #04070d !important;
     }
     .cyber-album-card .album-action-row {
       margin-top: auto !important;
       padding-top: 16px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
     }
     .cyber-albums-section .albums-footer-cta {
       margin-top: 56px !important;
@@ -1881,12 +1805,14 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       justify-content: space-between !important;
       border-radius: 18px !important;
       box-sizing: border-box !important;
+      background: #04070d !important;
     }
     .cyber-intel-card .intel-card-content {
       flex: 1 1 auto !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
+      background: #04070d !important;
     }
     .cyber-intel-card .intel-card-footer {
       margin-top: auto !important;
@@ -1899,7 +1825,26 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       align-items: center !important;
     }
 
-    /* 6. Section 5 Founder Dossier — Equal Centered Paired Buttons (Zero Vertical Offset) */
+    /* 6. Section 5 Founder Dossier — Centered Portrait & Paired Buttons (Zero Clutter Under Photo) */
+    .founder-card-inner {
+      display: grid !important;
+      grid-template-columns: 280px 1fr !important;
+      gap: 40px !important;
+      align-items: center !important;
+    }
+    .founder-photo-col {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 !important;
+    }
+    .founder-photo-frame {
+      margin: 0 auto !important;
+    }
+    .founder-name-heading {
+      margin-top: 0 !important;
+    }
     .founder-actions-row {
       display: flex !important;
       align-items: center !important;
@@ -1932,7 +1877,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       line-height: 1 !important;
     }
 
-    /* 7. Prominent Footer Subscribe Buttons & Hover-Only Letter Pulsating Wave */
+    /* 7. Prominent Footer Subscribe Buttons & Universal Pure-Black + Hover-Only Wave Standard */
     .footer-subscribe-btn {
       min-height: 56px !important;
       height: 56px !important;
@@ -1955,42 +1900,141 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       100% { background-position: 0% 50%; }
     }
 
-    /* Blue Buttons at Rest (Obsidian Black Fill + Luminous Cyan Border) */
+    /* ALL INTERIOR & BOTTOM BLUE BUTTONS / PILLS AT REST: Pure Black Background + White Text + Blue Border */
     .btn-cyan-primary,
     .btn-cyan-outline,
     .header-protocols-cta-pill,
     .cyber-play-button,
     .footer-subscribe-btn-cyan,
-    #kr-bottom-streaming-vault .kr-vault-link-pill {
+    #kr-bottom-streaming-vault .kr-vault-link-pill,
+    .cyber-telemetry-pill,
+    .chip-verified-badge,
+    .badge-cyan-swarms,
+    .lab-live-badge,
+    .graph-mode-btn,
+    .graph-mode-btn.active,
+    .telemetry-fps,
+    #engineStateBadge,
+    .engine-active,
+    .engine-idle,
+    .playlist-rotate-btn,
+    .playlist-count,
+    .album-details-link,
+    .intel-read-more,
+    .intel-carousel-nav-btn {
       background: #04070d !important;
-      background-image: linear-gradient(135deg, rgba(6, 12, 24, 0.98) 0%, rgba(2, 5, 11, 1) 100%) !important;
-      border: 1.5px solid rgba(56, 189, 248, 0.82) !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85), 0 0 18px rgba(56, 189, 248, 0.24), inset 0 1px 0 rgba(56, 189, 248, 0.2) !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.78) !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.82) !important;
       border-radius: 9999px !important;
       color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
 
-    /* Gold Buttons at Rest (Obsidian Black Fill + Sovereign Gold Border) */
+    /* ALL INTERIOR & BOTTOM GOLD BUTTONS / PILLS AT REST: Pure Black Background + White Text + Gold Border */
     .btn-gold-subtle,
     .btn-glass-secondary,
     .footer-subscribe-btn-gold,
     #kr-bottom-streaming-vault .kr-vault-play-pill,
-    #kr-bottom-streaming-vault .kr-vault-spotify-pill {
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill,
+    .badge-gold-builder,
+    .lab-freq-badge,
+    .pillar-tag-pill,
+    .track-hz-pill,
+    .album-format-pill,
+    .lossless-tag,
+    .album-stream-prompt,
+    .video-runtime-pill,
+    .telemetry-hz {
       background: #04070d !important;
-      background-image: linear-gradient(135deg, rgba(16, 13, 8, 0.98) 0%, rgba(3, 5, 10, 1) 100%) !important;
-      border: 1.5px solid rgba(212, 175, 55, 0.85) !important;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85), 0 0 18px rgba(212, 175, 55, 0.26), inset 0 1px 0 rgba(246, 211, 101, 0.22) !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.82) !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.82) !important;
       border-radius: 9999px !important;
       color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
 
-    /* Button Wording At Rest: Crisp Solid White (Zero Static Color Split) */
+    .telemetry-hz {
+      padding: 4px 10px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+    .album-stream-prompt,
+    .album-details-link,
+    .intel-read-more {
+      padding: 6px 14px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.74rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      text-decoration: none !important;
+      cursor: pointer !important;
+    }
+
+    /* Triad Pills & Song Rows: Pure Black Background (Zero Shading Behind Them) + White Writing */
+    .triad-pill,
+    .triad-pill.triad-ai,
+    .triad-pill.triad-music,
+    .triad-pill.triad-builder,
+    .triad-node-icon,
+    .triad-eq-bars {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+    }
+    .triad-pill .triad-title,
+    .triad-pill .triad-sub {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    .playlist-track-row,
+    .playlist-track-row.active,
+    .playlist-track-row:hover {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.35) !important;
+      box-shadow: none !important;
+      border-radius: 12px !important;
+      color: #ffffff !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .playlist-track-row.active {
+      border-color: rgba(56, 189, 248, 0.85) !important;
+    }
+    .playlist-track-row:hover {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.85), 0 0 18px rgba(56, 189, 248, 0.35) !important;
+      transform: translateY(-1px) !important;
+    }
+    .playlist-track-row .track-num,
+    .playlist-track-row.active .track-num,
+    .playlist-track-row .track-name-main,
+    .playlist-track-row.active .track-name-main,
+    .playlist-track-row .track-meta-sub,
+    .playlist-track-row .track-play-indicator,
+    .playlist-track-row.active .track-play-indicator {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background: none !important;
+      animation: none !important;
+    }
+
+    /* Button & Interior Pill Wording At Rest: Crisp Solid White */
     .ks-wave-text,
     .cyber-play-button #playLabel,
     .cyber-play-button #playIcon,
-    #kr-bottom-streaming-vault .kr-vault-play-pill span {
+    #kr-bottom-streaming-vault .kr-vault-play-pill span,
+    .cyber-telemetry-pill .telemetry-text {
       display: inline-block !important;
       color: #ffffff !important;
       -webkit-text-fill-color: #ffffff !important;
@@ -1998,17 +2042,31 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       animation: none !important;
     }
 
-    /* Blue Button Hover: Stays Black Background + Multi-Crest White-to-Blue Wave Pulsating Through Letters */
+    /* Blue Button / Interior Pill Hover: Stays Black Background + White-to-Blue Wave Pulsating Through Letters */
     .btn-cyan-primary:hover,
     .btn-cyan-outline:hover,
     .header-protocols-cta-pill:hover,
     .cyber-play-button:hover,
     .footer-subscribe-btn-cyan:hover,
-    #kr-bottom-streaming-vault .kr-vault-link-pill:hover {
+    #kr-bottom-streaming-vault .kr-vault-link-pill:hover,
+    .cyber-telemetry-pill:hover,
+    .chip-verified-badge:hover,
+    .badge-cyan-swarms:hover,
+    .lab-live-badge:hover,
+    .graph-mode-btn:hover,
+    .telemetry-fps:hover,
+    #engineStateBadge:hover,
+    .playlist-rotate-btn:hover,
+    .playlist-count:hover,
+    .visualizer-hud-overlay .track-info:hover,
+    .album-details-link:hover,
+    .intel-read-more:hover,
+    .intel-carousel-nav-btn:hover {
       background: #04070d !important;
+      background-image: none !important;
       border-color: #38bdf8 !important;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.92), 0 0 28px rgba(56, 189, 248, 0.58), inset 0 0 14px rgba(56, 189, 248, 0.14) !important;
-      transform: translateY(-2px) !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(56, 189, 248, 0.55) !important;
+      transform: translateY(-1px) !important;
     }
     .btn-cyan-primary:hover .ks-wave-text,
     .btn-cyan-outline:hover .ks-wave-text,
@@ -2016,7 +2074,25 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .cyber-play-button:hover #playLabel,
     .cyber-play-button:hover #playIcon,
     .footer-subscribe-btn-cyan:hover .ks-wave-text,
-    #kr-bottom-streaming-vault .kr-vault-link-pill:hover .ks-wave-text {
+    #kr-bottom-streaming-vault .kr-vault-link-pill:hover .ks-wave-text,
+    .cyber-telemetry-pill:hover .telemetry-text,
+    .cyber-telemetry-pill:hover .ks-wave-text,
+    .chip-verified-badge:hover .ks-wave-text,
+    .badge-cyan-swarms:hover .ks-wave-text,
+    .lab-live-badge:hover .ks-wave-text,
+    .graph-mode-btn:hover .ks-wave-text,
+    .telemetry-fps:hover .ks-wave-text,
+    #engineStateBadge:hover .ks-wave-text,
+    .playlist-rotate-btn:hover .ks-wave-text,
+    .playlist-count:hover .ks-wave-text,
+    .visualizer-hud-overlay .track-info:hover .track-label,
+    .visualizer-hud-overlay .track-info:hover .track-name,
+    .playlist-track-row:hover .track-num,
+    .playlist-track-row:hover .track-name-main,
+    .playlist-track-row:hover .track-play-indicator,
+    .album-details-link:hover .ks-wave-text,
+    .intel-read-more:hover .ks-wave-text,
+    .intel-carousel-nav-btn:hover .ks-wave-text {
       background-image: linear-gradient(
         90deg,
         #ffffff 0%,
@@ -2038,23 +2114,48 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       animation: ksButtonWordWave 1.15s linear infinite !important;
     }
 
-    /* Gold Button Hover: Stays Black Background + Multi-Crest White-to-Gold Wave Pulsating Through Letters */
+    /* Gold Button / Interior Pill Hover: Stays Black Background + White-to-Gold Wave Pulsating Through Letters */
     .btn-gold-subtle:hover,
     .btn-glass-secondary:hover,
     .footer-subscribe-btn-gold:hover,
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover,
-    #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover {
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover,
+    .badge-gold-builder:hover,
+    .lab-freq-badge:hover,
+    .pillar-tag-pill:hover,
+    .track-hz-pill:hover,
+    .album-format-pill:hover,
+    .lossless-tag:hover,
+    .album-stream-prompt:hover,
+    .video-runtime-pill:hover,
+    .telemetry-hz:hover {
       background: #04070d !important;
+      background-image: none !important;
       border-color: #f6d365 !important;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.92), 0 0 28px rgba(212, 175, 55, 0.58), inset 0 0 14px rgba(212, 175, 55, 0.14) !important;
-      transform: translateY(-2px) !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(212, 175, 55, 0.55) !important;
+      transform: translateY(-1px) !important;
     }
     .btn-gold-subtle:hover .ks-wave-text,
     .btn-glass-secondary:hover .ks-wave-text,
     .footer-subscribe-btn-gold:hover .ks-wave-text,
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover .ks-wave-text,
     #kr-bottom-streaming-vault .kr-vault-play-pill:hover span,
-    #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover .ks-wave-text {
+    #kr-bottom-streaming-vault .kr-vault-spotify-pill:hover .ks-wave-text,
+    .badge-gold-builder:hover .ks-wave-text,
+    .lab-freq-badge:hover .ks-wave-text,
+    .pillar-tag-pill:hover .ks-wave-text,
+    .operational-pillars-list .pillar-item:hover .pillar-title-row h4,
+    .operational-pillars-list .pillar-item:hover .pillar-tag-pill .ks-wave-text,
+    .operational-pillars-list .pillar-item:hover .pillar-tag-pill,
+    .track-hz-pill:hover .ks-wave-text,
+    .playlist-track-row:hover .track-hz-pill .ks-wave-text,
+    .playlist-track-row:hover .track-hz-pill,
+    .album-format-pill:hover .ks-wave-text,
+    .lossless-tag:hover .ks-wave-text,
+    .album-stream-prompt:hover .ks-wave-text,
+    .cyber-album-card:hover .album-stream-prompt .ks-wave-text,
+    .video-runtime-pill:hover .ks-wave-text,
+    .telemetry-hz:hover .ks-wave-text {
       background-image: linear-gradient(
         90deg,
         #ffffff 0%,
@@ -2089,8 +2190,8 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       align-items: center !important;
       justify-content: center !important;
       border: 1px solid rgba(56, 189, 248, 0.45) !important;
-      background: rgba(8, 14, 26, 0.95) !important;
-      color: #f8fafc !important;
+      background: #04070d !important;
+      color: #ffffff !important;
     }
     #kr-bottom-streaming-vault .kr-vault-min-btn:hover {
       border-color: #d4af37 !important;
@@ -2100,7 +2201,8 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     @media (max-width: 980px) {
       .intro-split-grid,
       .albums-grid,
-      .founder-triad-pills {
+      .founder-triad-pills,
+      .founder-card-inner {
         grid-template-columns: 1fr !important;
       }
       .company-ai-cta-row a,
@@ -2125,7 +2227,27 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         '.footer-subscribe-btn',
         '#kr-bottom-streaming-vault .kr-vault-play-pill',
         '#kr-bottom-streaming-vault .kr-vault-link-pill',
-        '#kr-bottom-streaming-vault .kr-vault-spotify-pill'
+        '#kr-bottom-streaming-vault .kr-vault-spotify-pill',
+        '.chip-verified-badge',
+        '.badge-gold-builder',
+        '.badge-cyan-swarms',
+        '.pillar-tag-pill',
+        '.lab-live-badge',
+        '.lab-freq-badge',
+        '.graph-mode-btn',
+        '.telemetry-hz',
+        '.telemetry-fps',
+        '#engineStateBadge',
+        '.playlist-rotate-btn',
+        '.playlist-count',
+        '.track-hz-pill',
+        '.album-format-pill',
+        '.lossless-tag',
+        '.album-stream-prompt',
+        '.album-details-link',
+        '.video-runtime-pill',
+        '.intel-read-more',
+        '.intel-carousel-nav-btn'
       ].join(',');
       document.querySelectorAll(waveSelectors).forEach(function(btn) {
         if (btn.querySelector('.ks-wave-text')) {

@@ -118,17 +118,6 @@ $theme_uri = get_stylesheet_directory_uri();
                                 Instead of fragile cloud chatbots that drift or lose context, our operations run on <strong>deterministic 28-agent FastMCP swarms</strong>, detached local OS daemons, and direct Chrome Port 9222 pipelines built for <strong>Keystone Possibilities Ltd.</strong> and <strong>Keystone AI Protocols</strong>.
                             </p>
 
-                            <!-- Interactive Architecture Mode Switcher (Mirrors Right-Column Frequency Deck) -->
-                            <div class="ai-pillar-switcher-bar" role="toolbar" aria-label="Operational Architecture Core Selector">
-                                <span class="switcher-label">ACTIVE CORE:</span>
-                                <div class="switcher-pills">
-                                    <button type="button" class="ai-core-pill active" data-core="all" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore('all')">ALL 3 CORES</button>
-                                    <button type="button" class="ai-core-pill" data-core="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">01 • 3-FORCE</button>
-                                    <button type="button" class="ai-core-pill" data-core="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">02 • FASTMCP</button>
-                                    <button type="button" class="ai-core-pill" data-core="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">03 • 28-SWARM</button>
-                                </div>
-                            </div>
-
                             <!-- 3 Operational Pillars -->
                             <div class="operational-pillars-list" id="operationalPillarsList">
                                 <div class="pillar-item active-pillar" data-pillar-idx="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">
@@ -224,15 +213,6 @@ $theme_uri = get_stylesheet_directory_uri();
                                         <span id="engineStateBadge" class="engine-active">60HZ / 432HZ LIVE</span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- High-End 60Hz / 432Hz / 528Hz / 96kHz Frequency Tuning & Auto-Rotation Deck -->
-                            <div class="freq-tuning-bar" role="toolbar" aria-label="Bio-Acoustic Frequency Tuning">
-                                <button type="button" class="freq-tune-pill active" data-freq-band="60hz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('60hz')">60Hz SUB-BASS</button>
-                                <button type="button" class="freq-tune-pill" data-freq-band="432hz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('432hz')">432Hz HARMONIC</button>
-                                <button type="button" class="freq-tune-pill" data-freq-band="528hz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('528hz')">528Hz SOLFEGGIO</button>
-                                <button type="button" class="freq-tune-pill" data-freq-band="96khz" onclick="window.setKeystoneFreqBand && window.setKeystoneFreqBand('96khz')">96kHz MASTER</button>
-                                <button type="button" class="freq-tune-pill freq-rotate-pill active" id="freqAutoRotateBtn" onclick="window.toggleKeystoneFreqAutoRotate && window.toggleKeystoneFreqAutoRotate()">⟳ AUTO-ROTATE: ON</button>
                             </div>
 
                             <!-- Tactile Control Deck -->
@@ -810,15 +790,9 @@ $theme_uri = get_stylesheet_directory_uri();
                                      class="founder-portrait-img" loading="eager" decoding="sync" />
                                 <div class="founder-photo-glow"></div>
                             </div>
-                            <div class="founder-credentials-stack">
-                                <span class="cred-pill">🏛️ BC Housing Builder #52603</span>
-                                <span class="cred-pill">⚡ FastMCP Architect</span>
-                                <span class="cred-pill">🎵 22 Official Releases (20 Studio Albums)</span>
-                            </div>
                         </div>
 
                         <div class="founder-bio-col">
-                            <span class="cyber-section-tag">THE ARCHITECT</span>
                             <h2 class="founder-name-heading">Wayne Stevenson</h2>
                             <p class="founder-lead-para">
                                 "Machine intelligence without physical grounding is guesswork. Every autonomous 28-agent swarm, local OS daemon, and 96kHz master recording we engineer is built on the uncompromising discipline of real-world mountain construction."
@@ -1352,9 +1326,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         const hzBadge = document.getElementById('cyberGraphHzBadge');
-        if (hzBadge) hzBadge.textContent = activeBand.label;
+        if (hzBadge) {
+            const w = hzBadge.querySelector('.ks-wave-text');
+            if (w) w.textContent = activeBand.label;
+            else hzBadge.textContent = activeBand.label;
+        }
         const topFreqBadge = document.getElementById('soundLabTopFreqBadge');
-        if (topFreqBadge) topFreqBadge.textContent = activeBand.topBadge;
+        if (topFreqBadge) {
+            const w = topFreqBadge.querySelector('.ks-wave-text');
+            if (w) w.textContent = activeBand.topBadge;
+            else topFreqBadge.textContent = activeBand.topBadge;
+        }
         if (engineBadge && !isPlaying) {
             engineBadge.textContent = activeBand.engineText;
         }
@@ -1374,57 +1356,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    window.toggleKeystoneFreqAutoRotate = function() {
-        freqAutoRotateEnabled = !freqAutoRotateEnabled;
-        const btn = document.getElementById('freqAutoRotateBtn');
-        if (btn) {
-            btn.classList.toggle('active', freqAutoRotateEnabled);
-            btn.textContent = freqAutoRotateEnabled ? '⟳ AUTO-ROTATE: ON' : '⟳ AUTO-ROTATE: OFF';
-        }
-    };
-
-    setInterval(function() {
-        if (!freqAutoRotateEnabled) return;
-        currentFreqBandIdx = (currentFreqBandIdx + 1) % freqBands.length;
-        const nextBand = freqBands[currentFreqBandIdx];
-        window.setKeystoneFreqBand(nextBand.id, true);
-        if (!isPlaying) {
-            const nextTrackIdx = (currentTrackIdx + 1) % trackList.length;
-            loadTrack(nextTrackIdx);
-        }
-    }, 6500);
-
-    // 5. Left-Column Operational AI Core Selector & Synchronized Highlight
-    let activeAiCoreIdx = 0;
-    let aiCoreCycleMode = 'all';
-
-    window.selectKeystoneAiCore = function(coreVal) {
-        aiCoreCycleMode = String(coreVal);
-        document.querySelectorAll('.ai-core-pill').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-core') === aiCoreCycleMode);
-        });
-        const items = document.querySelectorAll('#operationalPillarsList .pillar-item');
-        items.forEach((item, idx) => {
-            if (aiCoreCycleMode === 'all') {
-                item.classList.toggle('active-pillar', idx === activeAiCoreIdx);
-                item.style.opacity = '1';
-            } else {
-                const match = String(idx) === aiCoreCycleMode;
-                item.classList.toggle('active-pillar', match);
-                item.style.opacity = match ? '1' : '0.62';
-            }
-        });
-    };
-
-    setInterval(function() {
-        if (aiCoreCycleMode !== 'all') return;
-        const items = document.querySelectorAll('#operationalPillarsList .pillar-item');
-        if (!items.length) return;
-        activeAiCoreIdx = (activeAiCoreIdx + 1) % items.length;
-        items.forEach((item, idx) => {
-            item.classList.toggle('active-pillar', idx === activeAiCoreIdx);
-        });
-    }, 5200);
+    // Ensure all 3 left-column operational pillars maintain uniform black styling at rest
+    document.querySelectorAll('#operationalPillarsList .pillar-item').forEach(item => {
+        item.classList.remove('active-pillar');
+        item.style.opacity = '1';
+    });
 
     renderVisualizer();
     loadTrack(0);
