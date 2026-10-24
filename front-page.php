@@ -812,6 +812,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                     </div>
                 </div>
+            </div>
         </section>
 
     </main>
