@@ -237,11 +237,6 @@ $theme_uri = get_stylesheet_directory_uri();
 
                             <!-- Tactile Control Deck -->
                             <div class="sound-lab-controls">
-                                <button id="cyberPlayBtn" class="cyber-play-button" aria-label="Play or Pause Sound Lab Engine">
-                                    <span id="playIcon">▶</span>
-                                    <span id="playLabel">INITIATE REAL MUSIC STREAM</span>
-                                </button>
-
                                 <div class="sound-lab-playlist-deck">
                                     <div class="playlist-header">
                                         <span class="playlist-title">SELECT FREQUENCY STREAM:</span>
@@ -309,7 +304,11 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                             </div>
 
-                            <div class="music-lab-footer-link">
+                            <div class="company-ai-cta-row music-lab-cta-row">
+                                <button id="cyberPlayBtn" class="cyber-play-button" aria-label="Play or Pause Sound Lab Engine">
+                                    <span id="playIcon">▶</span>
+                                    <span id="playLabel">INITIATE REAL MUSIC STREAM</span>
+                                </button>
                                 <a href="/sonic-universe/" class="btn-gold-subtle">
                                     🎵 Explore All 22 Official Releases (20 Studio Albums) →
                                 </a>

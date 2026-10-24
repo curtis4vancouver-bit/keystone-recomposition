@@ -1517,38 +1517,42 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      gap: 8px !important;
-      padding: 8px 12px !important;
-      margin: 14px 0 14px 0 !important;
+      gap: 6px !important;
+      padding: 8px 10px !important;
+      margin: 12px 0 14px 0 !important;
       background: rgba(6, 11, 20, 0.92) !important;
       border: 1px solid rgba(56, 189, 248, 0.28) !important;
       border-radius: 12px !important;
-      flex-wrap: wrap !important;
+      flex-wrap: nowrap !important;
     }
     .ai-pillar-switcher-bar .switcher-label {
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.68rem !important;
+      font-size: 0.63rem !important;
       font-weight: 700 !important;
       color: #f6d365 !important;
-      letter-spacing: 0.08em !important;
+      letter-spacing: 0.05em !important;
       white-space: nowrap !important;
+      flex-shrink: 0 !important;
     }
     .ai-pillar-switcher-bar .switcher-pills {
       display: flex !important;
       align-items: center !important;
-      gap: 6px !important;
-      flex-wrap: wrap !important;
+      gap: 5px !important;
+      flex-wrap: nowrap !important;
+      flex: 1 1 auto !important;
+      justify-content: flex-end !important;
     }
     .ai-core-pill {
-      padding: 5px 10px !important;
+      padding: 5px 8px !important;
       border-radius: 9999px !important;
       background: rgba(15, 23, 42, 0.85) !important;
       border: 1px solid rgba(56, 189, 248, 0.28) !important;
       color: #cbd5e1 !important;
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.66rem !important;
+      font-size: 0.61rem !important;
       font-weight: 700 !important;
-      letter-spacing: 0.04em !important;
+      letter-spacing: 0.02em !important;
+      white-space: nowrap !important;
       cursor: pointer !important;
       transition: all 0.2s ease !important;
     }
@@ -1673,13 +1677,14 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      gap: 12px !important;
-      padding: 10px 14px !important;
+      flex-wrap: nowrap !important;
+      gap: 10px !important;
+      padding: 9px 12px !important;
     }
     .visualizer-hud-overlay .track-info {
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important;
+      gap: 6px !important;
       min-width: 0 !important;
       flex: 1 1 auto !important;
       overflow: hidden !important;
@@ -1687,22 +1692,23 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .visualizer-hud-overlay .track-label {
       white-space: nowrap !important;
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.7rem !important;
+      font-size: 0.68rem !important;
       font-weight: 800 !important;
       color: #38bdf8 !important;
-      letter-spacing: 0.05em !important;
+      letter-spacing: 0.04em !important;
       flex-shrink: 0 !important;
     }
     .visualizer-hud-overlay .track-name {
       white-space: nowrap !important;
       overflow: hidden !important;
       text-overflow: ellipsis !important;
-      font-size: 0.8rem !important;
+      font-size: 0.78rem !important;
       font-weight: 700 !important;
       color: #ffffff !important;
     }
     .visualizer-hud-overlay .engine-state {
       flex-shrink: 0 !important;
+      white-space: nowrap !important;
     }
     .playlist-header {
       display: flex !important;
@@ -1747,7 +1753,8 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     }
 
     /* Uniform Button Sizing & Centering in Section 2 Left & Right Columns */
-    .company-ai-cta-row {
+    .company-ai-cta-row,
+    .music-lab-cta-row {
       margin-top: auto !important;
       padding-top: 16px !important;
       display: flex !important;
@@ -1760,31 +1767,40 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       flex-direction: column !important;
       gap: 14px !important;
       width: 100% !important;
+      flex: 1 1 auto !important;
     }
-    .music-lab-footer-link {
-      margin-top: auto !important;
-      padding-top: 16px !important;
+    .sound-lab-playlist-deck {
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
       width: 100% !important;
     }
+    .sound-lab-card .playlist-scroll-container {
+      max-height: 280px !important;
+      flex: 1 1 auto !important;
+    }
     .company-ai-cta-row a,
+    .music-lab-cta-row #cyberPlayBtn,
+    .music-lab-cta-row a,
     .sound-lab-controls #cyberPlayBtn,
     .music-lab-footer-link a {
       width: 100% !important;
       min-height: 52px !important;
       height: 52px !important;
-      padding: 0 24px !important;
+      padding: 0 20px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       text-align: center !important;
       box-sizing: border-box !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: 0.86rem !important;
+      font-size: 0.81rem !important;
       font-weight: 800 !important;
-      letter-spacing: 0.06em !important;
+      letter-spacing: 0.04em !important;
       text-transform: uppercase !important;
       white-space: nowrap !important;
       margin: 0 !important;
+      gap: 8px !important;
     }
 
     /* 4. Section 3 Master Studio Albums — Equal Card Heights & Generous Bottom Button Spacing */
