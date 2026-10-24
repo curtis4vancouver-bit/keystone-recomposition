@@ -2366,6 +2366,478 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         padding: 12px 18px !important;
       }
     }
+
+    /* ==========================================================================
+       9. PAGE 2 (/ai-protocols/) LAYOUT LEVELING, 2-COL PORTAL CARDS & BUTTON WAVE
+       ========================================================================== */
+    .protocols-hero {
+      padding: 44px 0 48px 0 !important;
+    }
+    .protocols-hero-split {
+      display: grid !important;
+      grid-template-columns: 1.08fr 0.92fr !important;
+      gap: 32px !important;
+      align-items: stretch !important;
+    }
+    .protocols-hero-left {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      background: linear-gradient(145deg, rgba(10, 16, 29, 0.92) 0%, rgba(4, 7, 13, 0.96) 100%) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.35) !important;
+      border-radius: 22px !important;
+      padding: 28px 28px !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.78) !important;
+    }
+    .protocols-hero-right {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+    }
+    .express-checkout-card {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      padding: 28px 28px !important;
+      border-radius: 22px !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+    }
+    .protocols-hero-left .cyber-hero-title {
+      font-size: clamp(1.85rem, 2.75vw, 2.55rem) !important;
+      line-height: 1.16 !important;
+      margin: 14px 0 12px 0 !important;
+    }
+    .protocols-hero-left .cyber-hero-subtitle {
+      font-size: 0.96rem !important;
+      line-height: 1.62 !important;
+      color: #cbd5e1 !important;
+      margin: 0 0 18px 0 !important;
+    }
+    .hero-tier-summary-box {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+      cursor: pointer !important;
+    }
+    .hero-tier-summary-box.hero-tier-blue:hover {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 20px rgba(56, 189, 248, 0.45) !important;
+      transform: translateY(-2px) !important;
+    }
+    .hero-tier-summary-box.hero-tier-gold:hover {
+      border-color: #f6d365 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 20px rgba(212, 175, 55, 0.45) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* Section 2: Tier 01 Full-Width Level Split + Tiers 02 & 03 Side-by-Side Portal Grid */
+    .protocols-showcase-section {
+      padding: 44px 0 48px 0 !important;
+    }
+    .protocols-portal-grid-container {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 28px !important;
+      align-items: stretch !important;
+    }
+    #tier-blueprint {
+      grid-column: 1 / -1 !important;
+      margin-bottom: 0 !important;
+      padding: 32px !important;
+      border-radius: 22px !important;
+      box-sizing: border-box !important;
+    }
+    #tier-blueprint .product-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1.12fr !important;
+      gap: 32px !important;
+      align-items: stretch !important;
+    }
+    #tier-blueprint .product-media-col,
+    #tier-blueprint .product-info-col {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+    }
+    #tier-blueprint .video-preview-card {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      margin: 0 !important;
+    }
+    #tier-blueprint .video-card-meta {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      padding: 20px 22px !important;
+    }
+    #tier-blueprint .product-deliverables-box {
+      flex: 1 1 auto !important;
+      margin-bottom: 18px !important;
+    }
+    #tier-blueprint .product-checkout-box {
+      margin-top: auto !important;
+      padding-top: 4px !important;
+    }
+
+    /* Tiers 02 ($199) & 03 ($800) Side-by-Side Portal Half Cards */
+    #tier-swarm.portal-half-card,
+    #tier-workstation.portal-half-card {
+      margin-bottom: 0 !important;
+      padding: 28px !important;
+      border-radius: 22px !important;
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      box-sizing: border-box !important;
+    }
+    #tier-swarm.portal-half-card .product-grid,
+    #tier-workstation.portal-half-card .product-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      gap: 22px !important;
+      flex: 1 1 auto !important;
+      height: 100% !important;
+    }
+    #tier-swarm.portal-half-card .product-media-col,
+    #tier-workstation.portal-half-card .product-media-col {
+      width: 100% !important;
+    }
+    #tier-swarm.portal-half-card .video-preview-card,
+    #tier-workstation.portal-half-card .video-preview-card {
+      margin: 0 !important;
+    }
+    #tier-swarm.portal-half-card .video-card-meta,
+    #tier-workstation.portal-half-card .video-card-meta {
+      min-height: 108px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      padding: 16px 18px !important;
+      box-sizing: border-box !important;
+    }
+    #tier-swarm.portal-half-card .product-info-col,
+    #tier-workstation.portal-half-card .product-info-col {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+    #tier-swarm.portal-half-card .product-title,
+    #tier-workstation.portal-half-card .product-title {
+      font-size: 1.48rem !important;
+      line-height: 1.24 !important;
+      min-height: 3.7rem !important;
+      margin: 10px 0 10px 0 !important;
+    }
+    #tier-swarm.portal-half-card .product-lead-copy,
+    #tier-workstation.portal-half-card .product-lead-copy {
+      font-size: 0.92rem !important;
+      line-height: 1.58 !important;
+      min-height: 5.8rem !important;
+      margin-bottom: 16px !important;
+    }
+    #tier-swarm.portal-half-card .product-deliverables-box,
+    #tier-workstation.portal-half-card .product-deliverables-box {
+      flex: 1 1 auto !important;
+      margin-bottom: 18px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+    }
+    #tier-swarm.portal-half-card .product-checkout-box,
+    #tier-workstation.portal-half-card .product-checkout-box {
+      margin-top: auto !important;
+      padding-top: 6px !important;
+    }
+
+    /* Section 3: Competitive Benchmark Matrix Leveling & Bottom Clearance (Moved Up Away From Bottom Line!) */
+    .protocols-benchmark-section {
+      padding: 28px 0 108px 0 !important;
+      margin-bottom: 0 !important;
+    }
+    .competitive-matrix-card {
+      padding: 36px 32px !important;
+      margin: 0 0 24px 0 !important;
+      border-radius: 22px !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.65) !important;
+      background: linear-gradient(145deg, rgba(10, 16, 29, 0.95) 0%, rgba(4, 7, 13, 0.98) 100%) !important;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85) !important;
+    }
+    .competitive-matrix-card .matrix-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 20px !important;
+      align-items: stretch !important;
+      margin-top: 24px !important;
+    }
+    .competitive-matrix-card .matrix-col {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.58) !important;
+      border-radius: 16px !important;
+      padding: 22px 20px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+      cursor: pointer !important;
+    }
+    .competitive-matrix-card .matrix-col.matrix-col-gold {
+      border-color: rgba(212, 175, 55, 0.68) !important;
+    }
+    .competitive-matrix-card .matrix-col.matrix-col-blue:hover {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(56, 189, 248, 0.48) !important;
+      transform: translateY(-2px) !important;
+    }
+    .competitive-matrix-card .matrix-col.matrix-col-gold:hover {
+      border-color: #f6d365 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(212, 175, 55, 0.48) !important;
+      transform: translateY(-2px) !important;
+    }
+    .competitive-matrix-card .matrix-col h4 {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.02rem !important;
+      font-weight: 800 !important;
+      margin: 0 0 10px 0 !important;
+      line-height: 1.3 !important;
+    }
+    .competitive-matrix-card .matrix-col p {
+      color: #cbd5e1 !important;
+      font-size: 0.85rem !important;
+      line-height: 1.56 !important;
+      margin: 0 !important;
+    }
+
+    /* ALL PAGE 2 (/ai-protocols/) BUTTONS & PILLS: Pure Black Background + White Text + Pulsating Blue/Gold Wave */
+    .btn-cyan-express-buy,
+    .btn-cyan-buy,
+    .btn-gold-buy,
+    .btn-promo-apply,
+    #applyPromoBtn,
+    #verifyVaultUidBtn,
+    .btn-vault-unlock-pill,
+    #vaultUidStatusBadge,
+    .checkout-badge-live,
+    .badge-tier-cyan,
+    .badge-discount-gold,
+    .badge-capacity-alert,
+    .matrix-tag,
+    #submitAutomatedOrderBtn {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.82) !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .btn-cyan-express-buy:not(.btn-gold-portal),
+    .btn-cyan-buy,
+    #verifyVaultUidBtn,
+    .btn-vault-unlock-pill,
+    #vaultUidStatusBadge,
+    .badge-tier-cyan,
+    #submitAutomatedOrderBtn {
+      border: 1.5px solid rgba(56, 189, 248, 0.82) !important;
+    }
+    .btn-gold-buy,
+    .btn-cyan-express-buy.btn-gold-portal,
+    .btn-promo-apply,
+    #applyPromoBtn,
+    .checkout-badge-live,
+    .badge-discount-gold,
+    .badge-capacity-alert,
+    .matrix-tag {
+      border: 1.5px solid rgba(212, 175, 55, 0.85) !important;
+    }
+    .btn-cyan-express-buy,
+    .btn-cyan-buy,
+    .btn-gold-buy {
+      min-height: 52px !important;
+      padding: 12px 22px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Tier Selector 3-Button Grid inside Express Checkout Card */
+    .tier-select-btn {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.48) !important;
+      border-radius: 14px !important;
+      color: #ffffff !important;
+      padding: 12px 10px !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .tier-select-btn[data-tier="3"] {
+      border-color: rgba(212, 175, 55, 0.55) !important;
+    }
+    .tier-select-btn.active {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.35) !important;
+    }
+    .tier-select-btn[data-tier="3"].active {
+      border-color: #f6d365 !important;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.4) !important;
+    }
+    .tier-select-btn .btn-tier-num,
+    .tier-select-btn .btn-tier-name,
+    .tier-select-btn .btn-tier-price {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background-image: none !important;
+      background-color: transparent !important;
+    }
+
+    /* Page 2 Blue Hover Wave */
+    .btn-cyan-express-buy:not(.btn-gold-portal):hover,
+    .btn-cyan-buy:hover,
+    #verifyVaultUidBtn:hover,
+    .btn-vault-unlock-pill:hover,
+    #vaultUidStatusBadge:hover,
+    .badge-tier-cyan:hover,
+    #submitAutomatedOrderBtn:hover,
+    .tier-select-btn[data-tier="1"]:hover,
+    .tier-select-btn[data-tier="2"]:hover {
+      background: #04070d !important;
+      background-image: none !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(56, 189, 248, 0.55) !important;
+      transform: translateY(-1px) !important;
+    }
+    .btn-cyan-express-buy:not(.btn-gold-portal):hover .ks-wave-text,
+    .btn-cyan-buy:hover .ks-wave-text,
+    #verifyVaultUidBtn:hover .ks-wave-text,
+    .btn-vault-unlock-pill:hover .ks-wave-text,
+    #vaultUidStatusBadge:hover .ks-wave-text,
+    .badge-tier-cyan:hover .ks-wave-text,
+    #submitAutomatedOrderBtn:hover .ks-wave-text,
+    .tier-select-btn[data-tier="1"]:hover .btn-tier-num,
+    .tier-select-btn[data-tier="1"]:hover .btn-tier-name,
+    .tier-select-btn[data-tier="1"]:hover .btn-tier-price,
+    .tier-select-btn[data-tier="2"]:hover .btn-tier-num,
+    .tier-select-btn[data-tier="2"]:hover .btn-tier-name,
+    .tier-select-btn[data-tier="2"]:hover .btn-tier-price,
+    .hero-tier-summary-box.hero-tier-blue:hover .summary-tier-tag,
+    .hero-tier-summary-box.hero-tier-blue:hover .summary-tier-heading,
+    .competitive-matrix-card .matrix-col.matrix-col-blue:hover h4 .ks-wave-text,
+    .competitive-matrix-card .matrix-col.matrix-col-blue:hover h4 {
+      background-image: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 16%,
+        #38bdf8 30%,
+        #00f2fe 40%,
+        #ffffff 52%,
+        #38bdf8 68%,
+        #00f2fe 78%,
+        #ffffff 92%,
+        #ffffff 100%
+      ) !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
+    }
+
+    /* Page 2 Gold Hover Wave */
+    .btn-gold-buy:hover,
+    .btn-cyan-express-buy.btn-gold-portal:hover,
+    .btn-promo-apply:hover,
+    #applyPromoBtn:hover,
+    .checkout-badge-live:hover,
+    .badge-discount-gold:hover,
+    .badge-capacity-alert:hover,
+    .matrix-tag:hover,
+    .tier-select-btn[data-tier="3"]:hover {
+      background: #04070d !important;
+      background-image: none !important;
+      border-color: #f6d365 !important;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.92), 0 0 22px rgba(212, 175, 55, 0.55) !important;
+      transform: translateY(-1px) !important;
+    }
+    .btn-gold-buy:hover .ks-wave-text,
+    .btn-cyan-express-buy.btn-gold-portal:hover .ks-wave-text,
+    .btn-promo-apply:hover .ks-wave-text,
+    #applyPromoBtn:hover .ks-wave-text,
+    .checkout-badge-live:hover .ks-wave-text,
+    .badge-discount-gold:hover .ks-wave-text,
+    .badge-capacity-alert:hover .ks-wave-text,
+    .matrix-tag:hover .ks-wave-text,
+    .tier-select-btn[data-tier="3"]:hover .btn-tier-num,
+    .tier-select-btn[data-tier="3"]:hover .btn-tier-name,
+    .tier-select-btn[data-tier="3"]:hover .btn-tier-price,
+    .hero-tier-summary-box.hero-tier-gold:hover .summary-tier-tag,
+    .hero-tier-summary-box.hero-tier-gold:hover .summary-tier-heading,
+    .competitive-matrix-card .matrix-col.matrix-col-gold:hover h4 .ks-wave-text,
+    .competitive-matrix-card .matrix-col.matrix-col-gold:hover h4 {
+      background-image: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 16%,
+        #f6d365 30%,
+        #ffd700 40%,
+        #ffffff 52%,
+        #d4af37 68%,
+        #ffd700 78%,
+        #ffffff 92%,
+        #ffffff 100%
+      ) !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
+    }
+
+    @media (max-width: 980px) {
+      .protocols-hero-split,
+      .protocols-portal-grid-container,
+      #tier-blueprint .product-grid,
+      .competitive-matrix-card .matrix-grid,
+      .hero-tier-summary-grid {
+        grid-template-columns: 1fr !important;
+      }
+      #tier-swarm.portal-half-card .product-title,
+      #tier-workstation.portal-half-card .product-title,
+      #tier-swarm.portal-half-card .product-lead-copy,
+      #tier-workstation.portal-half-card .product-lead-copy {
+        min-height: 0 !important;
+      }
+    }
     </style>
     <script id="keystone-button-word-wave-init">
     document.addEventListener('DOMContentLoaded', function() {
@@ -2396,7 +2868,22 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         '.album-stream-prompt',
         '.album-details-link',
         '.intel-read-more',
-        '.intel-carousel-nav-btn'
+        '.intel-carousel-nav-btn',
+        '.btn-cyan-express-buy',
+        '.btn-cyan-buy',
+        '.btn-gold-buy',
+        '.btn-promo-apply',
+        '#applyPromoBtn',
+        '#verifyVaultUidBtn',
+        '.btn-vault-unlock-pill',
+        '#vaultUidStatusBadge',
+        '.checkout-badge-live',
+        '.badge-tier-cyan',
+        '.badge-discount-gold',
+        '.badge-capacity-alert',
+        '.matrix-tag',
+        '.competitive-matrix-card .matrix-col h4',
+        '#submitAutomatedOrderBtn'
       ].join(',');
       document.querySelectorAll(waveSelectors).forEach(function(btn) {
         if (btn.querySelector('.ks-wave-text')) {

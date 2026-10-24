@@ -129,7 +129,7 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 	$t3_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
-				'label' => '🏛️ Keystone_Tier03_Full_Stack_Creator_Workstation_Suite.zip (Advanced Multi-Folder Brain Architecture + DaVinci Timeline Guide + Full Website & Funnel Suite)',
+				'label' => '🏛️ Keystone_Tier03_Full_Stack_Creator_Workstation_Suite.zip (Complete Creator Workstation Setup + 2-Track DaVinci Assembly Guide + Omnichannel Templates)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier3_workstation_pack' ),
 			),
 			array(
@@ -137,8 +137,8 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 				'url'   => $lead_page_url,
 			),
 			array(
-				'label' => '🤝 1-on-1 Architecture Onboarding & Direct Email Priority Dossier (Wayne Stevenson)',
-				'url'   => home_url( '/contact/?inquiry=tier3_workstation#inquiry-form' ),
+				'label' => '🤖 24/7 Automated AI Setup Assistant & Complete PDF Setup Library (Buyer Vault)',
+				'url'   => $lead_page_url,
 			),
 		),
 		$uid
@@ -148,12 +148,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 		'1' => array(
 			'tier'                  => '1',
 			'code'                  => 'tier1_blueprint',
-			'name'                  => 'Tier 01 — $49.50 USD AI Brain, Google Flow Video & Website Fast-Track Blueprint (One-Time Payment • Lifetime Access)',
+			'name'                  => 'Tier 01 — $49.50 USD AI Brain Setup & Basic Google Flow Walkthrough (One-Time Payment)',
 			'price'                 => '49.50',
 			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER1_URL,
 			'walkthrough_video_id'  => 'JCgZ5SsN_bc',
 			'walkthrough_video_url' => $lead_page_url,
-			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: AI Brain Setup, ~20-Word Google Flow Prompts & Copy-Paste Website Builder (One-Time Payment • Lifetime Access)',
+			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Setting Up Your AI Brain & Basic Google Flow Video Example (One-Time Payment)',
 			'unlocked_downloads'    => $t1_downloads,
 			'unlocked_modules'      => keystone_get_tier_unlocked_curriculum( '1' )['unlocked_modules'],
 			'unlocked_pdfs'         => keystone_get_tier_unlocked_curriculum( '1' )['unlocked_pdfs'],
@@ -161,12 +161,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 		'2' => array(
 			'tier'                  => '2',
 			'code'                  => 'tier2_swarm',
-			'name'                  => 'Tier 02 — $199 USD Multi-Agent Prompt System & B2B Outreach Engine (One-Time Payment • Lifetime Access)',
+			'name'                  => 'Tier 02 — $199 USD Custom Website Build, Multi-Agent Workflows & Brand Channel (One-Time Payment)',
 			'price'                 => '199.00',
 			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER2_URL,
 			'walkthrough_video_id'  => 'k3fArbXUzQM',
 			'walkthrough_video_url' => $lead_page_url,
-			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: Multi-Agent Role Prompts, Research Workflows & B2B Outreach Engine (One-Time Payment • Lifetime Access)',
+			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Custom Website Build, Multi-Agent Workflows & Brand Channel Setup (One-Time Payment)',
 			'unlocked_downloads'    => array_merge( $t1_downloads, $t2_downloads ),
 			'unlocked_modules'      => keystone_get_tier_unlocked_curriculum( '2' )['unlocked_modules'],
 			'unlocked_pdfs'         => keystone_get_tier_unlocked_curriculum( '2' )['unlocked_pdfs'],
@@ -174,12 +174,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 		'3' => array(
 			'tier'                  => '3',
 			'code'                  => 'tier3_workstation',
-			'name'                  => 'Tier 03 — $800 USD Full-Stack AI Creator Workstation & 1-on-1 Architecture (One-Time Payment • Lifetime Access)',
+			'name'                  => 'Tier 03 — $800 USD Full-Stack AI Creator Workstation & Studio Production Pipeline (One-Time Payment)',
 			'price'                 => '800.00',
 			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER3_URL,
 			'walkthrough_video_id'  => 'uMkZvTbqF2U',
 			'walkthrough_video_url' => $lead_page_url,
-			'walkthrough_title'     => 'Wayne Stevenson Recorded Master Walkthrough: Complete AI Video Production Pipeline, DaVinci Assembly & Full-Stack Website Suite (One-Time Payment • Lifetime Access)',
+			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Full Creator Workstation & 2-Track DaVinci Production Pipeline (One-Time Payment)',
 			'unlocked_downloads'    => array_merge( $t1_downloads, $t2_downloads, $t3_downloads ),
 			'unlocked_modules'      => keystone_get_tier_unlocked_curriculum( '3' )['unlocked_modules'],
 			'unlocked_pdfs'         => keystone_get_tier_unlocked_curriculum( '3' )['unlocked_pdfs'],

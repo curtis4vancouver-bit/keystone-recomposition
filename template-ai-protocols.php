@@ -202,7 +202,7 @@ $theme_uri = get_stylesheet_directory_uri();
 					<div class="protocols-hero-left">
 						<div class="cyber-telemetry-pill">
 							<span class="telemetry-pulse"></span>
-							<span class="telemetry-text">// 2026 AI CREATOR &amp; BUILDER SUITE • COPY-PASTE BRAIN PROMPTS + GOOGLE FLOW VIDEO SYSTEM</span>
+							<span class="telemetry-text">// 2026 AI CREATOR &amp; BUILDER SUITE • ONE-TIME SETUP • GUIDED WALKTHROUGHS</span>
 						</div>
 
 						<div class="cyber-founder-chip">
@@ -219,37 +219,37 @@ $theme_uri = get_stylesheet_directory_uri();
 						</div>
 
 						<h1 class="cyber-hero-title">
-							Build Your AI Brain, Google Flow Videos &amp; Website<br/>
-							<span class="cyan-gradient-text">With Copy-Paste Prompts &amp; Visual Diagrams</span>
+							Set Up Your AI Brain, Google Flow Videos &amp; Custom Website<br/>
+							<span class="cyan-gradient-text">Simple One-Time Setup • Guided Walkthroughs &amp; 24/7 AI Assistant</span>
 						</h1>
 
 						<p class="cyber-hero-subtitle">
-							Learn step-by-step how to set up your Google Antigravity workspace, build your 4-part AI Brain using our <strong>Visual Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code>)</strong>, generate <strong>~20-word (18–24 word) Google Flow video prompts (<code class="kr-code-pill">PDF-02</code>)</strong> to export 1080p MP4s, launch your <strong>YouTube Brand Channel (<code class="kr-code-pill">PDF-03</code>)</strong>, and build your dark-luxury website with <strong>Copy-Paste Website Prompts (<code class="kr-code-pill">PDF-04</code>)</strong>—all for a <strong>One-Time Payment with Zero Monthly Fees</strong>.
+							We walk you through the basics to get your system set up fast—from organizing your AI Brain and running a basic example in Google Flow, to building your custom website, multi-agent workflows, and full creator workstation. Every tier is a <strong>single One-Time Payment</strong>: we help you get set up once with our recorded walkthroughs, step-by-step PDF guides, and <strong>24/7 Automated AI Setup Assistant</strong>, and you are ready to run.
 						</p>
 
-						<!-- 100% Automated 3-Step Delivery Strip -->
-						<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 0 0 18px 0; width: 100%;">
-							<div style="background: rgba(11, 17, 30, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 10px 12px;">
-								<div style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800;">STEP 01 // VISUAL BRAIN SETUP</div>
-								<div style="color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; margin-top: 2px;">🧠 Antigravity Brain Diagram</div>
-								<div style="color: #94a3b8; font-size: 0.72rem; line-height: 1.35; margin-top: 2px;">Visual diagram + copy-paste prompts that build your structured AI Brain workspace in 60 seconds.</div>
+						<!-- Clean 3-Tier Summary Strip -->
+						<div class="hero-tier-summary-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: auto 0 0 0; width: 100%; align-items: stretch;">
+							<div class="hero-tier-summary-box hero-tier-blue" style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.65); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
+								<div>
+									<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.04em;">TIER 01 • $49.50 ONE-TIME</div>
+									<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 800; margin-top: 4px;">🧠 AI Brain &amp; Google Flow</div>
+								</div>
+								<div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.42; margin-top: 6px;">Set up your AI Brain workspace and run a basic step-by-step example of Google Flow video creation.</div>
 							</div>
-							<div style="background: rgba(11, 17, 30, 0.9); border: 1px solid rgba(212, 175, 55, 0.40); border-radius: 12px; padding: 10px 12px;">
-								<div style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800;">STEP 02 // ~20-WORD FLOW PROMPTS</div>
-								<div style="color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; margin-top: 2px;">🎬 Google Flow Video &amp; Export</div>
-								<div style="color: #94a3b8; font-size: 0.72rem; line-height: 1.35; margin-top: 2px;">Generate 18–24 word scene prompts, paste into Google Flow &amp; export crisp MP4 videos.</div>
+							<div class="hero-tier-summary-box hero-tier-gold" style="background: #04070d; border: 1.5px solid rgba(212, 175, 55, 0.72); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
+								<div>
+									<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.04em;">TIER 02 • $199 ONE-TIME</div>
+									<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 800; margin-top: 4px;">🌐 Website &amp; Multi-Agent</div>
+								</div>
+								<div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.42; margin-top: 6px;">Build your custom dark-luxury website, set up your brand channel, and run multi-agent workflows.</div>
 							</div>
-							<div style="background: rgba(11, 17, 30, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 10px 12px;">
-								<div style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800;">STEP 03 // WEBSITE &amp; 24/7 AI TUTOR</div>
-								<div style="color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; margin-top: 2px;">🌐 Copy-Paste Website &amp; YouTube</div>
-								<div style="color: #94a3b8; font-size: 0.72rem; line-height: 1.35; margin-top: 2px;">Copy-paste Website &amp; YouTube Brand Channel prompts + 24/7 AI Teacher &amp; email support.</div>
+							<div class="hero-tier-summary-box hero-tier-blue" style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.65); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
+								<div>
+									<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.04em;">TIER 03 • $800 ONE-TIME</div>
+									<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 800; margin-top: 4px;">🎬 Creator Workstation</div>
+								</div>
+								<div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.42; margin-top: 6px;">Complete creator workstation setup with multi-batch video production and 2-track DaVinci assembly.</div>
 							</div>
-						</div>
-
-						<div class="protocols-quick-nav" style="display: flex; flex-wrap: wrap; gap: 8px;">
-							<a href="#tier-blueprint" class="quick-nav-pill" style="border-color: #d4af37; color: #f6d365;">01 • $49.50 One-Time: Brain, Flow Video &amp; Website Blueprint</a>
-							<a href="#tier-swarm" class="quick-nav-pill">02 • $199 One-Time: Multi-Agent &amp; B2B Suite</a>
-							<a href="#tier-workstation" class="quick-nav-pill">03 • $800 One-Time: Full Creator Workstation</a>
 						</div>
 					</div>
 
@@ -257,30 +257,30 @@ $theme_uri = get_stylesheet_directory_uri();
 					<div class="protocols-hero-right">
 						<div class="express-checkout-card">
 							<div class="checkout-card-header">
-								<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 6px;">
-									<span class="checkout-badge-live">💎 ONE-TIME PAYMENT • LIFETIME ACCESS • ZERO MONTHLY FEES</span>
-									<span id="vaultUidStatusBadge" style="background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 800; padding: 3px 9px; border-radius: 9999px;">
+								<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+									<span class="checkout-badge-live">💎 ONE-TIME PAYMENT • GUIDED SETUP • ZERO MONTHLY FEES</span>
+									<span id="vaultUidStatusBadge" style="background: #04070d; border: 1.5px solid #38bdf8; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 800; padding: 4px 10px; border-radius: 9999px;">
 										🔐 BUYER VAULT: LOCKED
 									</span>
 								</div>
-								<h3 class="checkout-portal-title">One-Time Access &amp; Instant Buyer Vault Unlock</h3>
-								<p class="checkout-portal-sub">Click below to unlock your <strong>Dedicated Buyer Lead Page</strong> &amp; receive your <code class="kr-code-pill">KR-UID</code> + all <strong>Breakdown PDFs, Copy-Paste Prompts &amp; Videos</strong> directly by email (One-Time Payment — No Subscription).</p>
+								<h3 class="checkout-portal-title">One-Time Setup Access &amp; Instant Buyer Vault</h3>
+								<p class="checkout-portal-sub">Choose your setup tier below to unlock your <strong>Buyer Setup Page</strong> and receive your recorded avatar walkthrough video + step-by-step PDF guides directly by email. Simple one-time payment—get set up once and you are good to go.</p>
 							</div>
 
 							<div class="checkout-tier-selector">
-								<label class="checkout-label">Select One-Time Protocol Tier:</label>
+								<label class="checkout-label">Select One-Time Setup Tier:</label>
 								<div class="tier-select-grid">
-									<button type="button" class="tier-select-btn active" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain, Flow Video & Website Blueprint" data-url="/contact/?inquiry=tier1_blueprint#inquiry-form">
+									<button type="button" class="tier-select-btn active" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter" data-url="/contact/?inquiry=tier1_blueprint#inquiry-form">
 										<span class="btn-tier-num">TIER 01 • ONE-TIME</span>
-										<span class="btn-tier-name">Brain, Flow &amp; Website</span>
+										<span class="btn-tier-name">Brain &amp; Google Flow</span>
 										<span class="btn-tier-price">$49.50</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Multi-Agent Prompt System & B2B Engine" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
+									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
 										<span class="btn-tier-num">TIER 02 • ONE-TIME</span>
-										<span class="btn-tier-name">Multi-Agent &amp; B2B</span>
+										<span class="btn-tier-name">Website &amp; Multi-Agent</span>
 										<span class="btn-tier-price">$199</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full-Stack AI Creator Workstation" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
+									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full Creator Workstation" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
 										<span class="btn-tier-num">TIER 03 • ONE-TIME</span>
 										<span class="btn-tier-name">Creator Workstation</span>
 										<span class="btn-tier-price">$800</span>
@@ -300,25 +300,25 @@ $theme_uri = get_stylesheet_directory_uri();
 
 							<!-- Dynamic Express Reserve / Buy Button -->
 							<div class="checkout-cta-wrap">
-								<button type="button" id="portalExpressBuyBtn" class="btn-cyan-express-buy" style="width: 100%; border: none; cursor: pointer;">
-									⚡ GET ONE-TIME ACCESS &amp; OPEN BUYER VAULT ($49.50 USD) →
+								<button type="button" id="portalExpressBuyBtn" class="btn-cyan-express-buy" style="width: 100%; cursor: pointer;">
+									⚡ GET ONE-TIME SETUP ACCESS &amp; OPEN BUYER VAULT →
 								</button>
 								<div class="checkout-payment-methods">
-									<span>💎 One-Time Payment (No Monthly Fee)</span> • <span>🔐 Instant <code class="kr-code-pill">KR-UID</code> Lead Page</span> • <span>✉️ Emailed Instantly</span>
+									<span>💎 One-Time Payment (No Monthly Fee)</span> • <span>🎬 Recorded Video + PDF Guides</span> • <span>🤖 24/7 AI Setup Assistant</span>
 								</div>
 								<div class="checkout-fiduciary-note">
-									🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Protected by Verified Buyer UID Lock
+									🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Protected by Verified Buyer Access Lock
 								</div>
 							</div>
 
 							<!-- Vault Menu User UID Verification Gate -->
 							<div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(56, 189, 248, 0.22);">
-								<label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #f6d365; letter-spacing: 0.05em; margin-bottom: 6px;">
-									🔑 RETURNING BUYER? ENTER YOUR KR-UID TO OPEN YOUR LEAD PAGE:
+								<label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #ffffff; letter-spacing: 0.05em; margin-bottom: 6px;">
+									🔑 RETURNING BUYER? ENTER YOUR ACCESS ID TO OPEN YOUR SETUP PAGE:
 								</label>
-								<div style="display: flex; gap: 6px;">
-									<input type="text" id="existingVaultUidInput" placeholder="e.g. KR-UID-XXXXXXXXXXXX" style="flex: 1; background: rgba(4, 7, 13, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 9999px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 6px 12px; outline: none;" />
-									<button type="button" id="verifyVaultUidBtn" style="background: rgba(56, 189, 248, 0.18); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 6px 12px; font-family: 'Outfit', sans-serif; font-size: 0.70rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
+								<div style="display: flex; gap: 8px;">
+									<input type="text" id="existingVaultUidInput" placeholder="e.g. KR-UID-XXXXXXXXXXXX" style="flex: 1; background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 9999px; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 8px 14px; outline: none;" />
+									<button type="button" id="verifyVaultUidBtn" class="btn-vault-unlock-pill" style="background: #04070d; border: 1.5px solid #38bdf8; color: #ffffff; border-radius: 9999px; padding: 8px 16px; font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
 										UNLOCK VAULT
 									</button>
 								</div>
@@ -1013,9 +1013,9 @@ Rules for every scene prompt:
 		<div id="krPublicSalesSections">
 		<!-- 2. THE 3 DEDICATED PRODUCT SHOWCASE BLOCKS -->
 		<section class="protocols-showcase-section">
-			<div class="ast-container">
+			<div class="ast-container protocols-portal-grid-container">
 
-				<!-- PRODUCT 1: $49.50 ANTIGRAVITY AI BRAIN, GOOGLE FLOW VIDEO & WEBSITE FAST-TRACK BLUEPRINT -->
+				<!-- PRODUCT 1: $49.50 AI BRAIN & BASIC GOOGLE FLOW STARTER -->
 				<div id="tier-blueprint" class="protocol-product-block">
 					<div class="product-grid">
 
@@ -1023,24 +1023,24 @@ Rules for every scene prompt:
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
 									<iframe src="https://www.youtube.com/embed/JCgZ5SsN_bc?rel=0"
-											title="Wayne's Recorded Walkthrough: AI Brain, ~20-Word Google Flow Prompts & Website Blueprint"
+											title="Wayne's Recorded Walkthrough: AI Brain Setup & Basic Google Flow Video Example"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 											allowfullscreen loading="lazy"></iframe>
 								</div>
 								<div class="video-card-meta">
-									<span class="video-title">Wayne's Recorded Walkthrough: AI Brain, ~20-Word Google Flow Prompts &amp; Website Blueprint</span>
-									<span class="video-desc">Watch Wayne Stevenson demonstrate how to set up your structured AI Brain inside Google Antigravity, generate ~20-word Google Flow video prompts, export 1080p MP4 clips, and build a high-converting website.</span>
+									<span class="video-title">Wayne's Recorded Walkthrough: Setting Up Your AI Brain &amp; Basic Google Flow Example</span>
+									<span class="video-desc">Watch a clean, step-by-step walkthrough of how we organize an AI Brain inside Google Antigravity and run a basic example in Google Flow to create and export 10-second MP4 video clips.</span>
 								</div>
 							</div>
 						</div>
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 01 // VISUAL BRAIN DIAGRAM + COPY-PASTE PROMPTS</span>
+								<span class="badge-tier-cyan">TIER 01 // AI BRAIN &amp; GOOGLE FLOW STARTER</span>
 								<span class="badge-discount-gold">ONE-TIME PAYMENT • ZERO MONTHLY FEES</span>
 							</div>
-							<h2 class="product-title">Antigravity AI Brain, ~20-Word Google Flow Video &amp; Website Fast-Track Blueprint</h2>
+							<h2 class="product-title">AI Brain Setup &amp; Basic Google Flow Video Walkthrough</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">49.50</span>
@@ -1048,145 +1048,142 @@ Rules for every scene prompt:
 								<span class="price-original"><del>$99.00</del></span>
 							</div>
 							<p class="product-lead-copy">
-								Stop paying agencies $5,000+ for slow websites or spending weeks guessing how to write AI video prompts. This <strong>one-time blueprint</strong> gives you our <strong>Visual Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code>)</strong> and <strong>Copy-Paste Prompt Packs</strong> so you can organize your Google Antigravity AI Brain, generate <strong>~20-word (18–24 word) Google Flow video prompts</strong>, export MP4 videos, and launch your YouTube Brand Channel and Website step by step.
+								The simple starter setup for anyone who wants to stop guessing with random prompts. We go over the basics to get your <strong>AI Brain</strong> set up inside Google Antigravity so it remembers your projects, and walk you through a <strong>basic example of Google Flow</strong> so you can generate and export clean 10-second video clips. One-time payment—we help you get set up once, and you are ready to run.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>📦 What Unlocks on Your Buyer Lead Page &amp; Email Inbox (One-Time Payment):</h4>
+								<h4>📋 The Basics We Cover Together to Get You Set Up:</h4>
 								<ul>
-									<li><strong>🧠 Step 1 — Visual AI Brain Setup Diagram (<code class="kr-code-pill">PDF-01</code> + <code class="kr-code-pill">.ZIP</code>):</strong> Complete visual architecture flowchart + ready-to-paste setup prompts that build your entire 4-part AI Brain workspace automatically.</li>
-									<li><strong>🎬 Step 2 — ~20-Word Google Flow Video Prompt System (<code class="kr-code-pill">PDF-02</code>):</strong> Copy-paste prompt generator that writes concise 18–24 word Google Flow scene prompts so you can generate and export crisp 10-second MP4 videos.</li>
-									<li><strong>📺 Step 3 — YouTube Brand Channel &amp; Copy-Paste Website Prompts (<code class="kr-code-pill">PDF-03</code>–<code class="kr-code-pill">PDF-05</code>):</strong> Ready-to-paste prompts for your dark-luxury <code class="kr-code-pill">#04070d</code> homepage, SEO articles, Upload Defaults, and 480-character tag stack.</li>
-									<li><strong>🤖 Step 4 — 24/7 AI Architect Tutor + Direct Email Delivery:</strong> Instant access to the unlocked Lead Page + full download suite emailed directly to your inbox from <code class="kr-code-pill">keystonerecomposition@gmail.com</code>.</li>
+									<li><strong>🧠 Step 1 — Setting Up Your AI Brain:</strong> How to organize a clean AI Brain workspace in Google Antigravity so your AI remembers your voice, rules, and project files.</li>
+									<li><strong>🎬 Step 2 — Basic Google Flow Video Example:</strong> A simple walkthrough showing how to write short scene prompts, attach reference images, and export 10-second MP4 video clips.</li>
+									<li><strong>📄 Step 3 — Step-by-Step Setup Guides &amp; Starter Prompts:</strong> Clear written PDF setup guides and starter prompts sent straight to your email and buyer page.</li>
+									<li><strong>🤖 Step 4 — 24/7 Automated AI Setup Assistant:</strong> Instant access to our automated AI Setup Assistant to answer setup questions anytime—one payment, get set up, and done.</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain, Flow Video & Website Blueprint" style="border: none; cursor: pointer; width: 100%;">
-									⚡ GET $49.50 ONE-TIME ACCESS &amp; OPEN BUYER LEAD PAGE →
+								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter" style="cursor: pointer; width: 100%;">
+									⚡ GET TIER 01 ONE-TIME ACCESS &amp; START SETUP →
 								</button>
 								<div class="checkout-trust-line">
-									💎 One-Time Payment (No Monthly Fee) • Instant <code class="kr-code-pill">KR-UID</code> Lead Page • Emailed to Your Inbox
+									💎 One-Time Payment (No Monthly Fee) • Recorded Avatar Walkthrough + PDF Guides • Emailed Instantly
 								</div>
-								<span class="delivery-time-tag">⚡ Opens your unlocked Buyer Lead Page &amp; emails your full package immediately</span>
 							</div>
 						</div>
 
 					</div>
 				</div>
 
-				<!-- PRODUCT 2: $199 MULTI-AGENT PROMPT SYSTEM & B2B OUTREACH ENGINE -->
-				<div id="tier-swarm" class="protocol-product-block">
-					<div class="product-grid reverse-on-desktop">
+				<!-- PRODUCT 2: $199 CUSTOM WEBSITE BUILD, MULTI-AGENT WORKFLOWS & BRAND CHANNEL -->
+				<div id="tier-swarm" class="protocol-product-block portal-half-card">
+					<div class="product-grid">
 
 						<div class="product-media-col">
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
 									<iframe src="https://www.youtube.com/embed/k3fArbXUzQM?rel=0"
-											title="Multi-Agent Role Prompts & B2B Outreach Engine"
+											title="Custom Website Build, Multi-Agent Workflows & Brand Channel Setup"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 											allowfullscreen loading="lazy"></iframe>
 								</div>
 								<div class="video-card-meta">
-									<span class="video-title">Multi-Agent Role Prompts &amp; B2B Outreach Architecture</span>
-									<span class="video-desc">How specialized subagent role prompts execute parallel research, 3-source fact verification, and branded B2B client outreach without context collapse.</span>
+									<span class="video-title">Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</span>
+									<span class="video-desc">How we build and launch a custom dark-luxury website, connect your YouTube Brand Channel, and set up dedicated multi-agent workflows inside your AI Brain.</span>
 								</div>
 							</div>
 						</div>
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 02 // PRO MULTI-AGENT &amp; B2B SUITE</span>
-								<span class="badge-discount-gold">ONE-TIME PAYMENT • ZERO MONTHLY FEES</span>
+								<span class="badge-tier-cyan">TIER 02 // WEBSITE &amp; MULTI-AGENT SUITE</span>
+								<span class="badge-discount-gold">ONE-TIME PAYMENT • GUIDED SETUP</span>
 							</div>
-							<h2 class="product-title">Multi-Agent Role Prompt System &amp; B2B Outreach Engine</h2>
+							<h2 class="product-title">Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">199</span>
 								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
-								Single-prompt chatbots suffer from context rot: after a few turns, they forget your brand rules and emit generic copy. Tier 02 gives you the complete multi-agent role prompt library (<code class="kr-code-pill">PDF-06</code> to <code class="kr-code-pill">PDF-09</code>) to run dedicated Research, Scripting, Website, and B2B Outreach agents inside your Antigravity Brain.
+								Ready to launch your full online presence? Tier 02 includes everything in Tier 01, plus we go over the basics to build and launch your <strong>custom dark-luxury website</strong>, set up your <strong>YouTube Brand Channel</strong>, and run <strong>multi-agent workflows</strong> for research, writing, and SEO—all for a single one-time payment.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>📦 What You Receive in Tier 02 (Includes Everything in Tier 01 + <code class="kr-code-pill">PDF-06</code>–<code class="kr-code-pill">PDF-09</code>):</h4>
+								<h4>📋 What We Cover in Tier 02 (Includes Tier 01):</h4>
 								<ul>
-									<li><strong>🎬 Wayne's Recorded Multi-Agent Workflow Walkthrough:</strong> Step-by-step guide showing how to organize specialized role prompts inside your Brain workspace.</li>
-									<li><strong>📦 Copy-Paste Subagent Role Prompt Library (<code class="kr-code-pill">.ZIP</code>):</strong> Ready-to-use role definitions for Speed Research, Scriptwriting, Full-Stack Web Pages, SEO Auditing, and B2B Lead Outreach.</li>
-									<li><strong>✉️ B2B Lead Verification &amp; Locked Crest Logo Email Shell:</strong> Domain MX verification checklist and dark-luxury HTML email templates that build instant executive authority.</li>
-									<li><strong>🤖 Full Access to 24/7 AI Architect Tutor:</strong> On-demand coaching across all 9 Breakdown PDFs.</li>
+									<li><strong>🌐 Step 1 — Custom Website Build &amp; Pages:</strong> Guided setup to build and style your dark-luxury website, landing pages, and clean SEO structure using your AI Brain.</li>
+									<li><strong>🤝 Step 2 — Multi-Agent Role Workflows:</strong> Setting up specialized AI agents for research, scriptwriting, and page building so your AI never loses context.</li>
+									<li><strong>📺 Step 3 — YouTube Brand Channel Setup:</strong> Configuring your Brand Channel structure, upload defaults, and search tags to connect your videos to your site.</li>
+									<li><strong>🤖 Step 4 — One-Time Setup + 24/7 AI Assistant:</strong> Full step-by-step PDF guides and 24/7 automated AI Setup Assistant support to get your website and agents running.</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Multi-Agent Prompt System & B2B Engine" style="border: none; cursor: pointer; width: 100%;">
-									🚀 GET $199 ONE-TIME ACCESS &amp; OPEN BUYER LEAD PAGE →
+								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite" style="cursor: pointer; width: 100%;">
+									🚀 GET TIER 02 WEBSITE &amp; MULTI-AGENT ACCESS →
 								</button>
 								<div class="checkout-trust-line">
-									💎 One-Time Payment (No Monthly Fee) • Includes Tier 01 + Multi-Agent Pack • Emailed Instantly
+									💎 One-Time Payment (No Monthly Fee) • Includes Tier 01 + Website &amp; Multi-Agent Setup
 								</div>
-								<span class="delivery-time-tag">⚡ Opens your unlocked Buyer Lead Page &amp; emails your full package immediately</span>
 							</div>
 						</div>
 
 					</div>
 				</div>
 
-				<!-- PRODUCT 3: $800 FULL-STACK AI CREATOR WORKSTATION & 1-ON-1 ARCHITECTURE -->
-				<div id="tier-workstation" class="protocol-product-block featured-product">
+				<!-- PRODUCT 3: $800 FULL-STACK AI CREATOR WORKSTATION & PRODUCTION PIPELINE -->
+				<div id="tier-workstation" class="protocol-product-block featured-product portal-half-card">
 					<div class="product-grid">
 
 						<div class="product-media-col">
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
 									<iframe src="https://www.youtube.com/embed/uMkZvTbqF2U?rel=0"
-											title="The Full-Stack AI Creator Workstation & DaVinci Resolve Pipeline"
+											title="Full-Stack AI Creator Workstation & DaVinci Production Pipeline"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 											allowfullscreen loading="lazy"></iframe>
 								</div>
 								<div class="video-card-meta">
-									<span class="video-title">Wayne's Recorded $800 Creator Workstation &amp; AI Video Production Masterclass</span>
-									<span class="video-desc">Watch Wayne Stevenson demonstrate the complete multi-brand AI Brain workstation, 2-track DaVinci Resolve timeline assembly, and full-stack conversion funnel suite.</span>
+									<span class="video-title">Full-Stack AI Creator Workstation &amp; Studio Production Pipeline</span>
+									<span class="video-desc">Watch how we structure a full multi-batch creator workstation, combine main clips with B-roll in DaVinci Resolve, and run an end-to-end production pipeline.</span>
 								</div>
 							</div>
 						</div>
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 03 // $800 CREATOR WORKSTATION + 1-ON-1 FOLLOW-UP</span>
-								<span class="badge-capacity-alert">ONE-TIME PAYMENT • ALL 12 PDFS + 1-ON-1 REVIEW</span>
+								<span class="badge-tier-cyan">TIER 03 // FULL CREATOR WORKSTATION</span>
+								<span class="badge-capacity-alert">ONE-TIME PAYMENT • COMPLETE STUDIO SETUP</span>
 							</div>
-							<h2 class="product-title">Full-Stack AI Creator Workstation, DaVinci Assembly &amp; 1-on-1 Onboarding</h2>
+							<h2 class="product-title">Full-Stack AI Creator Workstation &amp; Studio Production Pipeline</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">800</span>
 								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
-								Designed for founders, builders, and creators who want the complete flagship system (<code class="kr-code-pill">PDF-01</code> through <code class="kr-code-pill">PDF-12</code>): multi-brand Brain architecture, 2-track DaVinci Resolve video &amp; B-roll assembly with <code class="kr-code-pill-gold">-18dB</code> audio ducking, full website funnel templates, and direct personal email onboarding with Wayne Stevenson.
+								Built for creators and founders who want the complete studio production system. Includes everything in Tiers 01 and 02, plus we walk you through setting up a <strong>full multi-batch creator workstation</strong> and assembling full episodes with B-roll and balanced background audio in <strong>DaVinci Resolve</strong>. One payment to get set up from start to finish.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>🏛️ $800 Creator Workstation Deliverables + Personal Follow-Up (One-Time Payment):</h4>
+								<h4>🏛️ What We Cover in Tier 03 (Includes Tiers 01 &amp; 02):</h4>
 								<ul>
-									<li><strong>🎬 Step 1 — Complete 6-Module Masterclass &amp; All 12 Breakdown PDFs:</strong> Unlocks every module (<code class="kr-code-pill">V01</code>–<code class="kr-code-pill">V06</code>) and all 12 downloadable <code class="kr-code-pill">%PDF-1.4</code> spec sheets.</li>
-									<li><strong>📦 Step 2 — Full Creator Workstation Suite (<code class="kr-code-pill">.ZIP</code>):</strong> Multi-brand Brain architecture blueprint, 2-track DaVinci Resolve assembly guide, and full website + lead capture templates.</li>
-									<li><strong>🔐 Verified Priority <code class="kr-code-pill">KR-UID</code> Lock:</strong> Permanently unlocks all 3 tiers inside your Buyer Lead Page.</li>
-									<li><strong>✉️ Step 3 — Direct Personal Follow-Up from Wayne:</strong> Alerts Wayne Stevenson (<code class="kr-code-pill">keystonerecomposition@gmail.com</code>) to review your setup intake form and schedule your 1-on-1 architecture onboarding.</li>
+									<li><strong>🏛️ Step 1 — Complete Creator Workstation Architecture:</strong> How to organize a full multi-project workstation for high-volume video, audio, and content production.</li>
+									<li><strong>🎬 Step 2 — 2-Track DaVinci Resolve Episode Assembly:</strong> Guided setup for combining spoken video clips, B-roll cutaways, and balanced background music into finished episodes.</li>
+									<li><strong>⚡ Step 3 — End-to-End Omnichannel Routine:</strong> Connecting your full-length videos, vertical shorts, and website posts into one repeatable workflow.</li>
+									<li><strong>🤖 Step 4 — One-Time Turnkey Setup + 24/7 AI Assistant:</strong> Unlocks every workstation walkthrough video, PDF guide, and our 24/7 automated AI Setup Assistant—get set up once and own your workflow.</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full-Stack AI Creator Workstation" style="border: none; cursor: pointer; width: 100%;">
-									🤝 GET $800 ONE-TIME WORKSTATION ACCESS &amp; OPEN LEAD PAGE →
+								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full Creator Workstation" style="cursor: pointer; width: 100%;">
+									🏛️ GET TIER 03 CREATOR WORKSTATION ACCESS →
 								</button>
 								<div class="checkout-trust-line">
-									🏛️ One-Time Payment (No Monthly Fee) • Instant <code class="kr-code-pill">KR-UID</code> Lead Page • Direct Personal Follow-Up from Wayne
+									🏛️ One-Time Payment (No Monthly Fee) • Unlocks All 3 Tiers + 24/7 AI Setup Assistant
 								</div>
-								<span class="delivery-time-tag">⚡ Opens your unlocked Buyer Lead Page &amp; emails your full package immediately</span>
 							</div>
 						</div>
 
@@ -1208,21 +1205,21 @@ Rules for every scene prompt:
 						</p>
 					</div>
 					<div class="matrix-grid">
-						<div class="matrix-col">
-							<h4>⚡ 2,000,000-Token Brain Memory</h4>
-							<p>Gemini provides up to <strong>2M tokens of context</strong> inside Antigravity, allowing your structured AI Brain workspace to hold your entire brand bible, video scripts, and website templates simultaneously.</p>
+						<div class="matrix-col matrix-col-blue">
+							<h4>⚡ Long-Context AI Brain Memory</h4>
+							<p>Google Antigravity holds your brand rules, project folders, and setup instructions in one organized workspace so your AI stays consistent every day.</p>
 						</div>
-						<div class="matrix-col">
-							<h4>🎬 ~20-Word Google Flow Precision</h4>
-							<p>By generating concise <strong>18-to-24 word scene prompts</strong> in Antigravity and pairing them with 3 reference images in <strong>Google Flow</strong>, you export consistent 10-second 1080p MP4 clips on demand.</p>
+						<div class="matrix-col matrix-col-gold">
+							<h4>🎬 Clean Google Flow Video Clips</h4>
+							<p>By pairing concise scene prompts with your character and studio reference images in Google Flow, you can generate and export clean 10-second MP4 clips reliably.</p>
 						</div>
-						<div class="matrix-col">
-							<h4>🌐 Copy-Paste Website &amp; SEO Speed</h4>
-							<p>Instead of wrestling with bloated page builders, you paste our <strong>Website Builder Prompts</strong> directly into Antigravity to generate clean <code class="kr-code-pill">#04070d</code> Obsidian &amp; Gold pages with Rank Math 100/100 schema.</p>
+						<div class="matrix-col matrix-col-blue">
+							<h4>🌐 Custom Website &amp; Multi-Agent</h4>
+							<p>Instead of wrestling with complicated page builders, our Tier 02 workflow walks you through building a fast, dark-luxury website and multi-agent system.</p>
 						</div>
-						<div class="matrix-col">
-							<h4>🤖 24/7 Self-Service AI Teacher</h4>
-							<p>Every buyer gets instant access to our <strong>Visual Brain Setup Diagram</strong>, <strong>12 Breakdown PDFs</strong>, <strong>Interactive Setup Generator</strong>, and <strong>24/7 AI Architect Tutor</strong> on their unlocked Lead Page + by email.</p>
+						<div class="matrix-col matrix-col-gold">
+							<h4>🤖 One-Time Setup + 24/7 AI Assistant</h4>
+							<p>Every tier is a single one-time payment with recorded walkthrough videos, step-by-step PDF guides, and our automated 24/7 AI Setup Assistant to get you up and running.</p>
 						</div>
 					</div>
 				</div>
@@ -1271,9 +1268,9 @@ Rules for every scene prompt:
 			<div>
 				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #f6d365; margin-bottom: 5px;">SELECTED PROTOCOL TIER</label>
 				<select id="modalTierSelect" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.86rem; font-weight: 700; padding: 10px 12px;">
-					<option value="1">Tier 01 — $49.50 USD Antigravity Brain, ~20-Word Flow Video &amp; Website Blueprint (50% OFF)</option>
-					<option value="2">Tier 02 — $199.00 USD Multi-Agent Role Prompt System &amp; B2B Outreach Engine</option>
-					<option value="3">Tier 03 — $800.00 USD Full-Stack AI Creator Workstation &amp; 1-on-1 Onboarding</option>
+					<option value="1">Tier 01 — $49.50 USD One-Time: AI Brain Setup &amp; Basic Google Flow Walkthrough</option>
+					<option value="2">Tier 02 — $199.00 USD One-Time: Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</option>
+					<option value="3">Tier 03 — $800.00 USD One-Time: Full Creator Workstation &amp; Studio Production Pipeline</option>
 				</select>
 			</div>
 			<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
@@ -2009,9 +2006,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	const tierNames = {
-		1: 'Tier 01 — $49.50 USD One-Time: AI Brain, Flow Video & Website Blueprint',
-		2: 'Tier 02 — $199 USD One-Time: Multi-Agent Prompt System & B2B Engine',
-		3: 'Tier 03 — $800 USD One-Time: Full-Stack AI Creator Workstation'
+		1: 'Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter',
+		2: 'Tier 02 — $199 USD One-Time: Custom Website Build & Multi-Agent Suite',
+		3: 'Tier 03 — $800 USD One-Time: Full Creator Workstation & Production Pipeline'
 	};
 
 	function formatPrice(val) {
@@ -2021,13 +2018,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	function updateCTA() {
 		if (!expressBuyBtn) return;
 		const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
-		if (activeTier === 3) {
-			expressBuyBtn.textContent = '🤝 GET $800 ONE-TIME WORKSTATION ACCESS & OPEN LEAD PAGE →';
-			expressBuyBtn.className = 'btn-cyan-express-buy btn-gold-portal';
-		} else {
-			expressBuyBtn.textContent = `⚡ GET ONE-TIME ACCESS & OPEN BUYER VAULT ($${formatPrice(finalPrice)} USD) →`;
-			expressBuyBtn.className = 'btn-cyan-express-buy';
-		}
+		const labelText = activeTier === 3
+			? '🏛️ GET TIER 03 WORKSTATION ACCESS & OPEN BUYER VAULT →'
+			: (activeTier === 2
+				? `🚀 GET TIER 02 WEBSITE & MULTI-AGENT ACCESS ($${formatPrice(finalPrice)} USD) →`
+				: `⚡ GET TIER 01 SETUP ACCESS & OPEN BUYER VAULT ($${formatPrice(finalPrice)} USD) →`);
+		expressBuyBtn.innerHTML = `<span class="ks-wave-text">${labelText}</span>`;
+		expressBuyBtn.className = activeTier === 3 ? 'btn-cyan-express-buy btn-gold-portal' : 'btn-cyan-express-buy';
 	}
 
 	function openOrderModal(tierNum) {
