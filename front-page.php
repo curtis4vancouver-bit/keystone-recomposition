@@ -779,8 +779,8 @@ $theme_uri = get_stylesheet_directory_uri();
                         
                         <div class="founder-photo-col">
                             <div class="founder-photo-frame">
-                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
-                                     alt="Wayne Stevenson — Founder &amp; Architect" 
+                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar_9x16.jpg' ); ?>" 
+                                     alt="Wayne Stevenson — Founder &amp; Architect (9:16 Portrait)" 
                                      class="founder-portrait-img" loading="eager" decoding="sync" />
                                 <div class="founder-photo-glow"></div>
                             </div>

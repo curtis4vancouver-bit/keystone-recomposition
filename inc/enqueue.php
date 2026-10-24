@@ -1903,11 +1903,11 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       align-items: center !important;
     }
 
-    /* 6. Section 5 Founder Dossier — Centered Portrait & Paired Buttons (Zero Clutter Under Photo) */
+    /* 6. Section 5 Founder Dossier — 9:16 Vertical Portrait & Paired Buttons (Zero Clutter Under Photo) */
     .founder-card-inner {
       display: grid !important;
-      grid-template-columns: 280px 1fr !important;
-      gap: 40px !important;
+      grid-template-columns: 240px 1fr !important;
+      gap: 42px !important;
       align-items: center !important;
     }
     .founder-photo-col {
@@ -1919,6 +1919,22 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     }
     .founder-photo-frame {
       margin: 0 auto !important;
+      width: 230px !important;
+      aspect-ratio: 9 / 16 !important;
+      height: 409px !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.82) !important;
+      background: #04070d !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9), 0 0 22px rgba(56, 189, 248, 0.18) !important;
+      position: relative !important;
+    }
+    .founder-portrait-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 22% !important;
+      display: block !important;
     }
     .founder-name-heading {
       margin-top: 0 !important;
