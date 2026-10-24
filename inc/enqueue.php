@@ -2371,12 +2371,12 @@ function keystone_page1_hero_and_button_wave_engine(): void {
        9. PAGE 2 (/ai-protocols/) LAYOUT LEVELING, 2-COL PORTAL CARDS & BUTTON WAVE
        ========================================================================== */
     .protocols-hero {
-      padding: 44px 0 48px 0 !important;
+      padding: 26px 0 34px 0 !important;
     }
     .protocols-hero-split {
       display: grid !important;
       grid-template-columns: 1.08fr 0.92fr !important;
-      gap: 32px !important;
+      gap: 28px !important;
       align-items: stretch !important;
     }
     .protocols-hero-left {
@@ -2387,7 +2387,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background: linear-gradient(145deg, rgba(10, 16, 29, 0.92) 0%, rgba(4, 7, 13, 0.96) 100%) !important;
       border: 1.5px solid rgba(56, 189, 248, 0.35) !important;
       border-radius: 22px !important;
-      padding: 28px 28px !important;
+      padding: 22px 24px !important;
       box-sizing: border-box !important;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.78) !important;
     }
@@ -2402,26 +2402,27 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       flex-direction: column !important;
       justify-content: space-between !important;
       height: 100% !important;
-      padding: 28px 28px !important;
+      padding: 22px 24px !important;
       border-radius: 22px !important;
       box-sizing: border-box !important;
       margin: 0 !important;
     }
     .protocols-hero-left .cyber-hero-title {
-      font-size: clamp(1.85rem, 2.75vw, 2.55rem) !important;
+      font-size: clamp(1.62rem, 2.28vw, 2.12rem) !important;
       line-height: 1.16 !important;
-      margin: 14px 0 12px 0 !important;
+      margin: 10px 0 10px 0 !important;
     }
     .protocols-hero-left .cyber-hero-subtitle {
-      font-size: 0.96rem !important;
-      line-height: 1.62 !important;
+      font-size: 0.90rem !important;
+      line-height: 1.55 !important;
       color: #cbd5e1 !important;
-      margin: 0 0 18px 0 !important;
+      margin: 0 0 14px 0 !important;
     }
     .hero-tier-summary-box {
       background: #04070d !important;
       background-color: #04070d !important;
       background-image: none !important;
+      padding: 12px 12px !important;
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
       cursor: pointer !important;
     }
@@ -2438,25 +2439,36 @@ function keystone_page1_hero_and_button_wave_engine(): void {
 
     /* Section 2: Tier 01 Full-Width Level Split + Tiers 02 & 03 Side-by-Side Portal Grid */
     .protocols-showcase-section {
-      padding: 44px 0 48px 0 !important;
+      padding: 36px 0 44px 0 !important;
     }
     .protocols-portal-grid-container {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 28px !important;
+    }
+    .protocols-portal-grid-container::before,
+    .protocols-portal-grid-container::after {
+      display: none !important;
+      content: none !important;
+    }
+    .portal-two-col-grid {
       display: grid !important;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       gap: 28px !important;
       align-items: stretch !important;
+      width: 100% !important;
     }
     #tier-blueprint {
-      grid-column: 1 / -1 !important;
+      width: 100% !important;
       margin-bottom: 0 !important;
-      padding: 32px !important;
+      padding: 30px !important;
       border-radius: 22px !important;
       box-sizing: border-box !important;
     }
     #tier-blueprint .product-grid {
       display: grid !important;
-      grid-template-columns: 1fr 1.12fr !important;
-      gap: 32px !important;
+      grid-template-columns: 1fr 1.1fr !important;
+      gap: 30px !important;
       align-items: stretch !important;
     }
     #tier-blueprint .product-media-col,
@@ -2465,25 +2477,92 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       flex-direction: column !important;
       justify-content: space-between !important;
       height: 100% !important;
+      gap: 16px !important;
     }
     #tier-blueprint .video-preview-card {
-      flex: 1 1 auto !important;
+      flex: 0 0 auto !important;
       display: flex !important;
       flex-direction: column !important;
-      justify-content: space-between !important;
-      height: 100% !important;
       margin: 0 !important;
     }
     #tier-blueprint .video-card-meta {
+      padding: 16px 18px !important;
+    }
+    .t1-media-highlights-grid {
       flex: 1 1 auto !important;
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 12px !important;
+      align-items: stretch !important;
+    }
+    .t1-highlight-pill {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.58) !important;
+      border-radius: 14px !important;
+      padding: 13px 14px !important;
       display: flex !important;
       flex-direction: column !important;
-      justify-content: center !important;
-      padding: 20px 22px !important;
+      justify-content: space-between !important;
+      gap: 4px !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+      cursor: pointer !important;
+    }
+    .t1-highlight-pill.t1-pill-gold {
+      border-color: rgba(212, 175, 55, 0.65) !important;
+    }
+    .t1-highlight-pill .t1-hl-tag {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.62rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      letter-spacing: 0.04em !important;
+    }
+    .t1-highlight-pill strong {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+    }
+    .t1-highlight-pill span:last-child {
+      font-size: 0.74rem !important;
+      line-height: 1.4 !important;
+      color: #cbd5e1 !important;
+    }
+    .t1-highlight-pill.t1-pill-blue:hover {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.9), 0 0 18px rgba(56, 189, 248, 0.45) !important;
+      transform: translateY(-2px) !important;
+    }
+    .t1-highlight-pill.t1-pill-gold:hover {
+      border-color: #f6d365 !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.9), 0 0 18px rgba(212, 175, 55, 0.45) !important;
+      transform: translateY(-2px) !important;
+    }
+    .t1-highlight-pill.t1-pill-blue:hover .t1-hl-tag,
+    .t1-highlight-pill.t1-pill-blue:hover strong {
+      background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 16%, #38bdf8 30%, #00f2fe 40%, #ffffff 52%, #38bdf8 68%, #00f2fe 78%, #ffffff 92%, #ffffff 100%) !important;
+      background-size: 220% auto !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
+    }
+    .t1-highlight-pill.t1-pill-gold:hover .t1-hl-tag,
+    .t1-highlight-pill.t1-pill-gold:hover strong {
+      background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 16%, #f6d365 30%, #ffd700 40%, #ffffff 52%, #d4af37 68%, #ffd700 78%, #ffffff 92%, #ffffff 100%) !important;
+      background-size: 220% auto !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
     }
     #tier-blueprint .product-deliverables-box {
       flex: 1 1 auto !important;
-      margin-bottom: 18px !important;
+      margin-bottom: 16px !important;
     }
     #tier-blueprint .product-checkout-box {
       margin-top: auto !important;
@@ -2825,8 +2904,9 @@ function keystone_page1_hero_and_button_wave_engine(): void {
 
     @media (max-width: 980px) {
       .protocols-hero-split,
-      .protocols-portal-grid-container,
+      .portal-two-col-grid,
       #tier-blueprint .product-grid,
+      .t1-media-highlights-grid,
       .competitive-matrix-card .matrix-grid,
       .hero-tier-summary-grid {
         grid-template-columns: 1fr !important;

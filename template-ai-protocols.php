@@ -1033,6 +1033,28 @@ Rules for every scene prompt:
 									<span class="video-desc">Watch a clean, step-by-step walkthrough of how we organize an AI Brain inside Google Antigravity and run a basic example in Google Flow to create and export 10-second MP4 video clips.</span>
 								</div>
 							</div>
+							<div class="t1-media-highlights-grid">
+								<div class="t1-highlight-pill t1-pill-blue">
+									<span class="t1-hl-tag">01 • AI BRAIN WORKSPACE</span>
+									<strong>Clean Folder &amp; Memory Setup</strong>
+									<span>Organize your project folders and core rules so your AI remembers your instructions every session.</span>
+								</div>
+								<div class="t1-highlight-pill t1-pill-gold">
+									<span class="t1-hl-tag">02 • GOOGLE FLOW BASICS</span>
+									<strong>10-Second Video Walkthrough</strong>
+									<span>See how to pair short scene prompts with reference images to export clean MP4 video clips.</span>
+								</div>
+								<div class="t1-highlight-pill t1-pill-gold">
+									<span class="t1-hl-tag">03 • DIRECT PDF GUIDES</span>
+									<strong>Emailed Straight to You</strong>
+									<span>Step-by-step written setup guides and starter prompts sent directly to your inbox and buyer page.</span>
+								</div>
+								<div class="t1-highlight-pill t1-pill-blue">
+									<span class="t1-hl-tag">04 • ONE-TIME SETUP</span>
+									<strong>24/7 AI Setup Assistant</strong>
+									<span>One payment to get set up with our recorded walkthrough and automated 24/7 AI Setup Assistant.</span>
+								</div>
+							</div>
 						</div>
 
 						<div class="product-info-col">
@@ -1074,6 +1096,8 @@ Rules for every scene prompt:
 					</div>
 				</div>
 
+				<!-- 2-COLUMN SIDE-BY-SIDE PORTAL GRID FOR TIER 02 ($199) & TIER 03 ($800) -->
+				<div class="portal-two-col-grid">
 				<!-- PRODUCT 2: $199 CUSTOM WEBSITE BUILD, MULTI-AGENT WORKFLOWS & BRAND CHANNEL -->
 				<div id="tier-swarm" class="protocol-product-block portal-half-card">
 					<div class="product-grid">
@@ -1189,6 +1213,7 @@ Rules for every scene prompt:
 
 					</div>
 				</div>
+				</div><!-- /.portal-two-col-grid -->
 
 			</div>
 		</section>
