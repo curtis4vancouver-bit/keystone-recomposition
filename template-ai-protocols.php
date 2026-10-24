@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Keystone AI Protocols
- * Description: Dedicated 3-Tier Monetization, Self-Service 6-Tab Course Portal, Visual Brain Setup Diagram, Copy-Paste Antigravity & ~20-Word Google Flow Prompts, 12 Breakdown PDFs, Interactive Setup Intake Form & 24/7 AI Architect Tutor
+ * Description: Dedicated 3-Tier Synergistic Monetization (Tier 01 Brain & Flow -> Tier 02 Website & Multi-Agent -> Tier 03 Tauri Desktop App Build), Self-Service 6-Tab Course Portal, 12 Breakdown PDFs & Time-Bounded Guided Setup Assistant
  *
  * @package Keystone Recomposition Child
  * @since 3.8.0
@@ -219,36 +219,36 @@ $theme_uri = get_stylesheet_directory_uri();
 						</div>
 
 						<h1 class="cyber-hero-title">
-							Set Up Your AI Brain, Google Flow Videos &amp; Custom Website<br/>
-							<span class="cyan-gradient-text">Simple One-Time Setup • Guided Walkthroughs &amp; 24/7 AI Assistant</span>
+							Set Up Your AI Brain, Custom Website &amp; Tauri Desktop Command Center<br/>
+							<span class="cyan-gradient-text">Simple One-Time Setup • 3-Stage Connected System &amp; Guided Setup Window</span>
 						</h1>
 
 						<p class="cyber-hero-subtitle">
-							We walk you through the basics to get your system set up fast—from organizing your AI Brain and running a basic example in Google Flow, to building your custom website, multi-agent workflows, and full creator workstation. Every tier is a <strong>single One-Time Payment</strong>: we help you get set up once with our recorded walkthroughs, step-by-step PDF guides, and <strong>24/7 Automated AI Setup Assistant</strong>, and you are ready to run.
+							We walk you through a connected 3-stage builder architecture—starting with your <strong>AI Brain &amp; Google Flow video prompts (Tier 01)</strong>, expanding into your <strong>Custom Dark-Luxury Website &amp; Multi-Agent Suite (Tier 02)</strong>, and culminating in your own <strong>Native Tauri Desktop App &amp; Local AI Command Center (Tier 03)</strong>. Every tier is a <strong>single One-Time Payment</strong> with recorded walkthroughs, step-by-step PDF guides, and a <strong>7-to-14 Day Guided AI Setup Window</strong> so you get set up once and own your stack.
 						</p>
 
-						<!-- Clean 3-Tier Summary Strip -->
+						<!-- Clean 3-Tier Synergistic Summary Strip -->
 						<div class="hero-tier-summary-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: auto 0 0 0; width: 100%; align-items: stretch;">
 							<div class="hero-tier-summary-box hero-tier-blue" style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.65); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
 								<div>
-									<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.04em;">TIER 01 • $49.50 ONE-TIME</div>
+									<div class="summary-tier-tag" style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.04em;">STAGE 1 • TIER 01 • $49.50</div>
 									<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 800; margin-top: 4px;">🧠 AI Brain &amp; Google Flow</div>
 								</div>
-								<div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.42; margin-top: 6px;">Set up your AI Brain workspace and run a basic step-by-step example of Google Flow video creation.</div>
+								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42; margin-top: 6px;">Build your 4-folder AI Brain foundation and run ~20-word Google Flow video clips. <strong style="color:#f6d365;">7-Day Setup Window (3 Qs)</strong>.</div>
 							</div>
 							<div class="hero-tier-summary-box hero-tier-gold" style="background: #04070d; border: 1.5px solid rgba(212, 175, 55, 0.72); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
 								<div>
-									<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.04em;">TIER 02 • $199 ONE-TIME</div>
+									<div class="summary-tier-tag" style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.04em;">STAGE 2 • TIER 02 • $199</div>
 									<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 800; margin-top: 4px;">🌐 Website &amp; Multi-Agent</div>
 								</div>
-								<div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.42; margin-top: 6px;">Build your custom dark-luxury website, set up your brand channel, and run multi-agent workflows.</div>
+								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42; margin-top: 6px;">Includes Tier 01 + custom dark-luxury website, YouTube channel &amp; Multi-Agent roles. <strong style="color:#f6d365;">7-Day Setup Window (5 Qs)</strong>.</div>
 							</div>
 							<div class="hero-tier-summary-box hero-tier-blue" style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.65); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
 								<div>
-									<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.04em;">TIER 03 • $800 ONE-TIME</div>
-									<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 800; margin-top: 4px;">🎬 Creator Workstation</div>
+									<div class="summary-tier-tag" style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.04em;">STAGE 3 • TIER 03 • $800</div>
+									<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 800; margin-top: 4px;">🖥️ Tauri Desktop App Build</div>
 								</div>
-								<div style="color: #cbd5e1; font-size: 0.75rem; line-height: 1.42; margin-top: 6px;">Complete creator workstation setup with multi-batch video production and 2-track DaVinci assembly.</div>
+								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42; margin-top: 6px;">Includes Tiers 01 &amp; 02 + build your own Native Tauri Desktop AI Command Center app. <strong style="color:#f6d365;">14-Day Setup Window (8 Qs)</strong>.</div>
 							</div>
 						</div>
 					</div>
@@ -268,21 +268,21 @@ $theme_uri = get_stylesheet_directory_uri();
 							</div>
 
 							<div class="checkout-tier-selector">
-								<label class="checkout-label">Select One-Time Setup Tier:</label>
+								<label class="checkout-label">Select Connected One-Time Setup Tier:</label>
 								<div class="tier-select-grid">
-									<button type="button" class="tier-select-btn active" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter" data-url="/contact/?inquiry=tier1_blueprint#inquiry-form">
-										<span class="btn-tier-num">TIER 01 • ONE-TIME</span>
+									<button type="button" class="tier-select-btn active" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter (7-Day Setup Window)" data-url="/contact/?inquiry=tier1_blueprint#inquiry-form">
+										<span class="btn-tier-num">TIER 01 • 7-DAY SETUP</span>
 										<span class="btn-tier-name">Brain &amp; Google Flow</span>
 										<span class="btn-tier-price">$49.50</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
-										<span class="btn-tier-num">TIER 02 • ONE-TIME</span>
+									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite (7-Day Setup Window)" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
+										<span class="btn-tier-num">TIER 02 • 7-DAY SETUP</span>
 										<span class="btn-tier-name">Website &amp; Multi-Agent</span>
 										<span class="btn-tier-price">$199</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full Creator Workstation" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
-										<span class="btn-tier-num">TIER 03 • ONE-TIME</span>
-										<span class="btn-tier-name">Creator Workstation</span>
+									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Tauri Desktop App & AI Command Center (14-Day Setup Window)" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
+										<span class="btn-tier-num">TIER 03 • 14-DAY SETUP</span>
+										<span class="btn-tier-name">Tauri Desktop App</span>
 										<span class="btn-tier-price">$800</span>
 									</button>
 								</div>
@@ -304,26 +304,29 @@ $theme_uri = get_stylesheet_directory_uri();
 									⚡ GET ONE-TIME SETUP ACCESS &amp; OPEN BUYER VAULT →
 								</button>
 								<div class="checkout-payment-methods">
-									<span>💎 One-Time Payment (No Monthly Fee)</span> • <span>🎬 Recorded Video + PDF Guides</span> • <span>🤖 24/7 AI Setup Assistant</span>
+									<span>💎 One-Time Payment (No Monthly Fee)</span> • <span>🎬 Video + PDF Guides</span> • <span>⏱️ 7–14 Day Guided Setup Window</span>
 								</div>
 								<div class="checkout-fiduciary-note">
 									🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Protected by Verified Buyer Access Lock
 								</div>
 							</div>
 
-							<!-- Vault Menu User UID Verification Gate -->
-							<div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(56, 189, 248, 0.22);">
-								<label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #ffffff; letter-spacing: 0.05em; margin-bottom: 6px;">
-									🔑 RETURNING BUYER? ENTER YOUR ACCESS ID TO OPEN YOUR SETUP PAGE:
-								</label>
-								<div style="display: flex; gap: 8px;">
-									<input type="text" id="existingVaultUidInput" placeholder="e.g. KR-UID-XXXXXXXXXXXX" style="flex: 1; background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 9999px; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 8px 14px; outline: none;" />
-									<button type="button" id="verifyVaultUidBtn" class="btn-vault-unlock-pill" style="background: #04070d; border: 1.5px solid #38bdf8; color: #ffffff; border-radius: 9999px; padding: 8px 16px; font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
-										UNLOCK VAULT
-									</button>
+							<!-- Compact Collapsible Returning Buyer UID Verification Gate -->
+							<details id="returningBuyerDetails" style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(56, 189, 248, 0.18);">
+								<summary style="cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700; color: #94a3b8; letter-spacing: 0.04em; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+									<span>🔑 Already have a Buyer Access ID (<code style="color:#38bdf8;">KR-UID</code>)? Click to unlock</span>
+									<span style="color: #38bdf8; font-size: 0.68rem;">▼</span>
+								</summary>
+								<div style="margin-top: 8px;">
+									<div style="display: flex; gap: 8px;">
+										<input type="text" id="existingVaultUidInput" placeholder="e.g. KR-UID-XXXXXXXXXXXX" style="flex: 1; background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 9999px; color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 7px 14px; outline: none;" />
+										<button type="button" id="verifyVaultUidBtn" class="btn-vault-unlock-pill" style="background: #04070d; border: 1.5px solid #38bdf8; color: #ffffff; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
+											UNLOCK VAULT
+										</button>
+									</div>
+									<div id="vaultUidVerifyFeedback" style="display: none; margin-top: 8px; font-size: 0.74rem; line-height: 1.4; padding: 8px 10px; border-radius: 10px; background: rgba(8, 14, 26, 0.95); border: 1px solid rgba(56, 189, 248, 0.35);"></div>
 								</div>
-								<div id="vaultUidVerifyFeedback" style="display: none; margin-top: 8px; font-size: 0.74rem; line-height: 1.4; padding: 8px 10px; border-radius: 10px; background: rgba(8, 14, 26, 0.95); border: 1px solid rgba(56, 189, 248, 0.35);"></div>
-							</div>
+							</details>
 						</div>
 					</div>
 
@@ -332,7 +335,7 @@ $theme_uri = get_stylesheet_directory_uri();
 		</section>
 
 		<!-- 1B. DEDICATED BUYER LEAD PAGE / SELF-SERVICE VAULT (HIDDEN ON PUBLIC SALES PAGE UNTIL PAYMENT / UID VERIFICATION) -->
-		<section id="kr-self-service-portal" style="display: none; padding: 36px 0 48px 0; background: linear-gradient(180deg, #04070d 0%, #070d19 100%); border-top: 1px solid rgba(212, 175, 55, 0.35); border-bottom: 1px solid rgba(56, 189, 248, 0.28);">
+		<section id="kr-self-service-portal" oncontextmenu="return false;" style="display: none; padding: 36px 0 48px 0; background: linear-gradient(180deg, #04070d 0%, #070d19 100%); border-top: 1px solid rgba(212, 175, 55, 0.35); border-bottom: 1px solid rgba(56, 189, 248, 0.28);">
 			<div class="ast-container">
 				<div style="background: rgba(8, 13, 24, 0.96); border: 1.5px solid #d4af37; border-radius: 22px; padding: 28px 26px; box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85);">
 
@@ -340,13 +343,13 @@ $theme_uri = get_stylesheet_directory_uri();
 					<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid rgba(212, 175, 55, 0.28);">
 						<div>
 							<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.14); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; margin-bottom: 8px;">
-								✅ VERIFIED BUYER LEAD PAGE UNLOCKED • ALL VIDEOS, BRAIN DIAGRAMS, PROMPTS &amp; PDFs READY
+								✅ VERIFIED BUYER LEAD PAGE UNLOCKED • PROTECTED STREAMING (<span id="portalWatermarkUid">KR-UID</span>) &amp; GUIDED SETUP WINDOW ACTIVE
 							</div>
 							<h2 style="font-family: 'Outfit', sans-serif; font-size: 1.65rem; font-weight: 900; color: #ffffff; margin: 0;">
-								Your Unlocked AI Brain, ~20-Word Google Flow Video &amp; Website Implementation Vault
+								Your Unlocked AI Brain, Website &amp; Tauri Desktop App Implementation Vault
 							</h2>
 							<p style="color: #cbd5e1; font-size: 0.88rem; margin: 6px 0 0 0; line-height: 1.55;">
-								Everything is unlocked below and a copy has been sent to your email: watch your <strong>Step-by-Step Walkthrough Videos</strong>, follow the <strong>Visual Brain Setup Diagram</strong>, copy-paste the exact prompts into your Antigravity workspace and <strong>Google Flow</strong>, download all <strong>12 Breakdown Spec PDFs (<code class="kr-code-pill">%PDF-1.4</code>)</strong>, or ask the <strong>24/7 AI Architect Tutor</strong> any question.
+								Everything is unlocked below and a copy has been sent to your email: watch your <strong>Protected Step-by-Step Walkthrough Videos</strong>, follow the <strong>Visual Brain Setup Diagram</strong>, copy-paste the exact prompts into your Antigravity workspace, download all <strong>12 Breakdown Spec PDFs (<code class="kr-code-pill">%PDF-1.4</code>)</strong>, or use your <strong>Guided Setup Assistant</strong> during your active setup window.
 							</p>
 						</div>
 						<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
@@ -374,10 +377,10 @@ $theme_uri = get_stylesheet_directory_uri();
 							🐝 Tab 4: Multi-Agent Role Prompts &amp; B2B Outreach (Tier 02)
 						</button>
 						<button type="button" class="kr-portal-tab-btn" data-portal-tab="tab5">
-							🏛️ Tab 5: DaVinci 2-Track Edit &amp; Creator Workstation (Tier 03)
+							🖥️ Tab 5: Tauri Desktop App &amp; AI Command Center (Tier 03)
 						</button>
 						<button type="button" class="kr-portal-tab-btn" data-portal-tab="tab6">
-							🤖 Tab 6: 24/7 AI Architect Tutor &amp; All 12 Breakdown PDFs
+							🤖 Tab 6: Guided AI Setup Assistant &amp; All 12 Breakdown PDFs
 						</button>
 					</div>
 
@@ -935,40 +938,43 @@ Rules for every scene prompt:
 					</div>
 
 					<!-- ========================================================================= -->
-					<!-- TAB 5: DAVINCI RESOLVE 2-TRACK EDIT & CREATOR WORKSTATION (PDF-10..12)    -->
+					<!-- TAB 5: TAURI DESKTOP APP & LOCAL AI COMMAND CENTER BUILD (PDF-10..12)     -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab5" class="kr-portal-tab-pane">
 						<div style="background: #04070d; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 18px; padding: 20px;">
-							<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULE V06 &bull; SPEC SHEETS PDF-10 TO PDF-12 // TIER 03 CREATOR WORKSTATION</span>
+							<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULE V06 &bull; SPEC SHEETS PDF-10 TO PDF-12 // TIER 03 TAURI DESKTOP APP &amp; COMMAND CENTER</span>
 							<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; margin: 4px 0 10px 0;">
-								2-Track DaVinci Resolve Timeline Assembly, -18dB Music Ducking &amp; Full Workstation Scaling
+								Building Your Native Tauri Desktop App &amp; Local AI Command Center Dashboard
 							</h3>
 							<p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.6; margin: 0 0 14px 0;">
-								Combine your exported 10-second Google Flow spoken clips (Video Track 1) with cutaway B-roll clips (Video Track 2) and <code class="kr-code-pill-gold">-18dB</code> background music in DaVinci Resolve for a broadcast-ready 4K master episode.
+								Connect your Tier 01 AI Brain and Tier 02 Multi-Agent Suite into your own custom <strong>Native Tauri v2 Desktop App</strong> (<code class="kr-code-pill-gold">.exe / .app</code>) featuring a dark-luxury command center UI, 1-click agent triggers, local service health indicators, and project launcher buttons.
 							</p>
 							<div style="display: flex; gap: 8px; flex-wrap: wrap;">
-								<button type="button" onclick="krOpenSpecModal('PDF-10')" class="kr-copy-btn">👁️ PDF-10: Multi-Folder Workstation</button>
-								<button type="button" onclick="krOpenSpecModal('PDF-11')" class="kr-copy-btn">👁️ PDF-11: DaVinci 2-Track Assembly</button>
-								<button type="button" onclick="krOpenSpecModal('PDF-12')" class="kr-copy-btn">👁️ PDF-12: Omnichannel Launch Checklist</button>
+								<button type="button" onclick="krOpenSpecModal('PDF-10')" class="kr-copy-btn">👁️ PDF-10: Tauri v2 Desktop App Scaffold</button>
+								<button type="button" onclick="krOpenSpecModal('PDF-11')" class="kr-copy-btn">👁️ PDF-11: Command Center UI &amp; Agent Triggers</button>
+								<button type="button" onclick="krOpenSpecModal('PDF-12')" class="kr-copy-btn">👁️ PDF-12: Native Desktop Packaging &amp; Launch</button>
 							</div>
 						</div>
 					</div>
 
 					<!-- ========================================================================= -->
-					<!-- TAB 6: 24/7 AI ARCHITECT TUTOR + ALL 12 BREAKDOWN SPEC PDFs               -->
+					<!-- TAB 6: GUIDED AI SETUP ASSISTANT + ALL 12 BREAKDOWN SPEC PDFs             -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab6" class="kr-portal-tab-pane">
 						<div id="krAiTutorPanel" style="background: linear-gradient(145deg, #0b1324 0%, #050911 100%); border: 1.5px solid #38bdf8; border-radius: 18px; padding: 22px; margin-bottom: 20px;">
 							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
-								<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 900;">🤖 24/7 INTERACTIVE AI ARCHITECT TUTOR // INSTANT ANSWERS + EMAIL TRANSCRIPTS</span>
-								<span style="color: #f6d365; font-size: 0.74rem; font-weight: 700;">Trained on PDF-01 through PDF-12</span>
+								<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 900;">🤖 GUIDED AI SETUP ASSISTANT // ACTIVE SETUP WINDOW + EMAIL TRANSCRIPTS</span>
+								<span id="krSetupQuotaBadge" style="background: rgba(212, 175, 55, 0.16); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 3px 10px; border-radius: 9999px;">⏱️ 7–14 Day Guided Setup Window (3 / 5 / 8 Follow-Up Questions)</span>
 							</div>
 							<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.22rem; font-weight: 900; margin: 0 0 8px 0;">
-								Ask Your 24/7 AI Teacher Anything About Setting Up Your Brain, Google Flow Videos, or Website
+								Ask Your Guided AI Setup Assistant About Your AI Brain, Website, or Tauri Desktop App
 							</h3>
 
 							<!-- Quick Question Pills -->
 							<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+								<button type="button" class="kr-tutor-quick-btn" data-q="Which setup tier fits my goals and how do the 3 tiers connect?" style="background: rgba(56, 189, 248, 0.18); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 6px 12px; font-size: 0.74rem; font-weight: 800; cursor: pointer;">
+									🎯 Which setup tier fits my goals?
+								</button>
 								<button type="button" class="kr-tutor-quick-btn" data-q="How do I set up my $30 Antigravity Brain?" style="background: rgba(212, 175, 55, 0.15); border: 1px solid #d4af37; color: #f6d365; border-radius: 9999px; padding: 6px 12px; font-size: 0.74rem; font-weight: 800; cursor: pointer;">
 									🧠 How do I set up my $30 Antigravity Brain?
 								</button>
@@ -1050,17 +1056,17 @@ Rules for every scene prompt:
 									<span>Step-by-step written setup guides and starter prompts sent directly to your inbox and buyer page.</span>
 								</div>
 								<div class="t1-highlight-pill t1-pill-blue">
-									<span class="t1-hl-tag">04 • ONE-TIME SETUP</span>
-									<strong>24/7 AI Setup Assistant</strong>
-									<span>One payment to get set up with our recorded walkthrough and automated 24/7 AI Setup Assistant.</span>
+									<span class="t1-hl-tag">04 • 7-DAY SETUP WINDOW</span>
+									<strong>Guided Setup + 3 Follow-Up Qs</strong>
+									<span>7-day guided setup window with up to 3 follow-up questions in the AI Setup Assistant.</span>
 								</div>
 							</div>
 						</div>
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 01 // AI BRAIN &amp; GOOGLE FLOW STARTER</span>
-								<span class="badge-discount-gold">ONE-TIME PAYMENT • ZERO MONTHLY FEES</span>
+								<span class="badge-tier-cyan">STAGE 1 • TIER 01 // AI BRAIN &amp; GOOGLE FLOW STARTER</span>
+								<span class="badge-discount-gold">ONE-TIME PAYMENT • 7-DAY SETUP WINDOW</span>
 							</div>
 							<h2 class="product-title">AI Brain Setup &amp; Basic Google Flow Video Walkthrough</h2>
 							<div class="product-price-row">
@@ -1070,25 +1076,34 @@ Rules for every scene prompt:
 								<span class="price-original"><del>$99.00</del></span>
 							</div>
 							<p class="product-lead-copy">
-								The simple starter setup for anyone who wants to stop guessing with random prompts. We go over the basics to get your <strong>AI Brain</strong> set up inside Google Antigravity so it remembers your projects, and walk you through a <strong>basic example of Google Flow</strong> so you can generate and export clean 10-second video clips. One-time payment—we help you get set up once, and you are ready to run.
+								<strong>Stage 1 of the Connected Keystone Stack:</strong> The clean foundation for anyone who wants to stop guessing with random prompts. We walk you through organizing your <strong>4-Folder AI Brain</strong> inside Google Antigravity and running a <strong>step-by-step example in Google Flow</strong> so you can generate and export clean 10-second video clips. Includes a <strong>7-Day Guided Setup Window + up to 3 setup follow-up questions</strong>, and upgrades seamlessly into Tiers 02 and 03.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>📋 The Basics We Cover Together to Get You Set Up:</h4>
+								<h4>📋 What We Cover in Stage 1 / Tier 01:</h4>
 								<ul>
-									<li><strong>🧠 Step 1 — Setting Up Your AI Brain:</strong> How to organize a clean AI Brain workspace in Google Antigravity so your AI remembers your voice, rules, and project files.</li>
-									<li><strong>🎬 Step 2 — Basic Google Flow Video Example:</strong> A simple walkthrough showing how to write short scene prompts, attach reference images, and export 10-second MP4 video clips.</li>
-									<li><strong>📄 Step 3 — Step-by-Step Setup Guides &amp; Starter Prompts:</strong> Clear written PDF setup guides and starter prompts sent straight to your email and buyer page.</li>
-									<li><strong>🤖 Step 4 — 24/7 Automated AI Setup Assistant:</strong> Instant access to our automated AI Setup Assistant to answer setup questions anytime—one payment, get set up, and done.</li>
+									<li><strong>🧠 Step 1 — 4-Folder AI Brain Foundation:</strong> Organize a persistent AI Brain workspace in Google Antigravity so your AI remembers your voice, rules, and project files.</li>
+									<li><strong>🎬 Step 2 — Basic Google Flow Video Example:</strong> Write concise ~20-word (18–24 word) scene prompts, attach 3 reference images, and export 10-second MP4 video clips.</li>
+									<li><strong>📄 Step 3 — Step-by-Step PDF Guides &amp; Starter Prompts:</strong> Printable <code class="kr-code-pill">PDF-01</code> to <code class="kr-code-pill">PDF-05</code> spec sheets and copy-paste starter prompts sent straight to your email and buyer page.</li>
+									<li><strong>⏱️ Step 4 — 7-Day Guided Setup Window (Up to 3 Follow-Up Questions):</strong> Dedicated 7-day setup window with our Guided AI Setup Assistant (up to 3 follow-up questions unlocked by your <code class="kr-code-pill">KR-UID</code>).</li>
 								</ul>
 							</div>
 
+							<details style="margin: 0 0 14px 0; background: rgba(4, 7, 13, 0.92); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 10px 14px;">
+								<summary style="cursor: pointer; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">📄 Preview Tier 01 Curriculum, Setup Window &amp; Stage 1→2 Synergy</summary>
+								<div style="margin-top: 8px; font-size: 0.78rem; color: #cbd5e1; line-height: 1.55;">
+									<div>• <strong>Unlocked Video Modules:</strong> V01 (4-Folder Brain), V02 (~20-Word Flow Clips), V03 (Starter Site &amp; Channel)</div>
+									<div>• <strong>Unlocked Spec PDFs:</strong> PDF-01 through PDF-05 + Copy-Paste <code class="kr-code-pill">AGENTS.md</code> Starter</div>
+									<div>• <strong>Guided Setup Scope:</strong> 7-Day Setup Window + 3 Setup Follow-Up Questions • Ready to expand into Tier 02 Website &amp; Multi-Agent Suite</div>
+								</div>
+							</details>
+
 							<div class="product-checkout-box">
-								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter" style="cursor: pointer; width: 100%;">
+								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter (7-Day Setup Window)" style="cursor: pointer; width: 100%;">
 									⚡ GET TIER 01 ONE-TIME ACCESS &amp; START SETUP →
 								</button>
 								<div class="checkout-trust-line">
-									💎 One-Time Payment (No Monthly Fee) • Recorded Avatar Walkthrough + PDF Guides • Emailed Instantly
+									💎 One-Time Payment (No Monthly Fee) • 7-Day Guided Setup Window + 3 Follow-Up Questions
 								</div>
 							</div>
 						</div>
@@ -1120,8 +1135,8 @@ Rules for every scene prompt:
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 02 // WEBSITE &amp; MULTI-AGENT SUITE</span>
-								<span class="badge-discount-gold">ONE-TIME PAYMENT • GUIDED SETUP</span>
+								<span class="badge-tier-cyan">STAGE 2 • TIER 02 // WEBSITE &amp; MULTI-AGENT SUITE</span>
+								<span class="badge-discount-gold">ONE-TIME PAYMENT • 7-DAY SETUP WINDOW</span>
 							</div>
 							<h2 class="product-title">Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</h2>
 							<div class="product-price-row">
@@ -1130,25 +1145,34 @@ Rules for every scene prompt:
 								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
-								Ready to launch your full online presence? Tier 02 includes everything in Tier 01, plus we go over the basics to build and launch your <strong>custom dark-luxury website</strong>, set up your <strong>YouTube Brand Channel</strong>, and run <strong>multi-agent workflows</strong> for research, writing, and SEO—all for a single one-time payment.
+								<strong>Stage 2 of the Connected Keystone Stack:</strong> Includes everything in Tier 01, and connects directly onto your AI Brain to build and launch your <strong>custom dark-luxury website</strong>, configure your <strong>YouTube Brand Channel</strong>, and run <strong>specialized Multi-Agent workflows</strong> for research, writing, and SEO—with a <strong>7-Day Guided Setup Window + up to 5 setup follow-up questions</strong>.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>📋 What We Cover in Tier 02 (Includes Tier 01):</h4>
+								<h4>📋 What We Cover in Stage 2 / Tier 02 (Includes Tier 01):</h4>
 								<ul>
-									<li><strong>🌐 Step 1 — Custom Website Build &amp; Pages:</strong> Guided setup to build and style your dark-luxury website, landing pages, and clean SEO structure using your AI Brain.</li>
-									<li><strong>🤝 Step 2 — Multi-Agent Role Workflows:</strong> Setting up specialized AI agents for research, scriptwriting, and page building so your AI never loses context.</li>
-									<li><strong>📺 Step 3 — YouTube Brand Channel Setup:</strong> Configuring your Brand Channel structure, upload defaults, and search tags to connect your videos to your site.</li>
-									<li><strong>🤖 Step 4 — One-Time Setup + 24/7 AI Assistant:</strong> Full step-by-step PDF guides and 24/7 automated AI Setup Assistant support to get your website and agents running.</li>
+									<li><strong>🌐 Step 1 — Custom Website Build &amp; Pages:</strong> Build and style your dark-luxury website, landing pages, and Rank Math 100/100 SEO structure directly from your Tier 01 AI Brain.</li>
+									<li><strong>🤝 Step 2 — Multi-Agent Role Workflows:</strong> Deploy specialized subagent role prompts (Researcher, Scriptwriter, Web Engineer, QA Auditor) so your AI never loses context.</li>
+									<li><strong>📺 Step 3 — YouTube Brand Channel &amp; B2B Outreach:</strong> Configure your Brand Channel upload defaults, 480-character tags, and branded HTML email shell (<code class="kr-code-pill">PDF-06</code> to <code class="kr-code-pill">PDF-09</code>).</li>
+									<li><strong>⏱️ Step 4 — 7-Day Guided Setup Window (Up to 5 Follow-Up Questions):</strong> Includes 7 days of Guided AI Setup Assistant access with up to 5 setup follow-up questions unlocked by your <code class="kr-code-pill">KR-UID</code>.</li>
 								</ul>
 							</div>
 
+							<details style="margin: 0 0 14px 0; background: rgba(4, 7, 13, 0.92); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 10px 14px;">
+								<summary style="cursor: pointer; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">📄 Preview Tier 02 Curriculum, Setup Window &amp; Stage 2→3 Synergy</summary>
+								<div style="margin-top: 8px; font-size: 0.78rem; color: #cbd5e1; line-height: 1.55;">
+									<div>• <strong>Includes All of Tier 01</strong> + Modules V04 &amp; V05 (Multi-Agent Roles &amp; B2B Outreach)</div>
+									<div>• <strong>Unlocked Spec PDFs:</strong> PDF-01 through PDF-09 + Branded HTML Email Shell</div>
+									<div>• <strong>Guided Setup Scope:</strong> 7-Day Setup Window + 5 Setup Follow-Up Questions • Ready to wrap into the Tier 03 Tauri Desktop App</div>
+								</div>
+							</details>
+
 							<div class="product-checkout-box">
-								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite" style="cursor: pointer; width: 100%;">
+								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite (7-Day Setup Window)" style="cursor: pointer; width: 100%;">
 									🚀 GET TIER 02 WEBSITE &amp; MULTI-AGENT ACCESS →
 								</button>
 								<div class="checkout-trust-line">
-									💎 One-Time Payment (No Monthly Fee) • Includes Tier 01 + Website &amp; Multi-Agent Setup
+									💎 One-Time Payment (No Monthly Fee) • 7-Day Setup Window + 5 Follow-Up Questions
 								</div>
 							</div>
 						</div>
@@ -1156,7 +1180,7 @@ Rules for every scene prompt:
 					</div>
 				</div>
 
-				<!-- PRODUCT 3: $800 FULL-STACK AI CREATOR WORKSTATION & PRODUCTION PIPELINE -->
+				<!-- PRODUCT 3: $800 NATIVE TAURI DESKTOP APP & LOCAL AI COMMAND CENTER BUILD -->
 				<div id="tier-workstation" class="protocol-product-block featured-product portal-half-card">
 					<div class="product-grid">
 
@@ -1164,49 +1188,58 @@ Rules for every scene prompt:
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
 									<iframe src="https://www.youtube.com/embed/uMkZvTbqF2U?rel=0"
-											title="Full-Stack AI Creator Workstation & DaVinci Production Pipeline"
+											title="Native Tauri Desktop App & Local AI Command Center Build"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 											allowfullscreen loading="lazy"></iframe>
 								</div>
 								<div class="video-card-meta">
-									<span class="video-title">Full-Stack AI Creator Workstation &amp; Studio Production Pipeline</span>
-									<span class="video-desc">Watch how we structure a full multi-batch creator workstation, combine main clips with B-roll in DaVinci Resolve, and run an end-to-end production pipeline.</span>
+									<span class="video-title">Native Tauri Desktop App &amp; Local AI Command Center Build</span>
+									<span class="video-desc">Watch how we wrap your AI Brain, Website, and Multi-Agent workflows into a custom Native Tauri Desktop App dashboard on your own computer.</span>
 								</div>
 							</div>
 						</div>
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 03 // FULL CREATOR WORKSTATION</span>
-								<span class="badge-capacity-alert">ONE-TIME PAYMENT • COMPLETE STUDIO SETUP</span>
+								<span class="badge-tier-cyan">STAGE 3 • TIER 03 // TAURI DESKTOP APP BUILD</span>
+								<span class="badge-capacity-alert">ONE-TIME PAYMENT • 14-DAY SETUP WINDOW</span>
 							</div>
-							<h2 class="product-title">Full-Stack AI Creator Workstation &amp; Studio Production Pipeline</h2>
+							<h2 class="product-title">Native Tauri Desktop App &amp; Local AI Command Center Build</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">800</span>
 								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
-								Built for creators and founders who want the complete studio production system. Includes everything in Tiers 01 and 02, plus we walk you through setting up a <strong>full multi-batch creator workstation</strong> and assembling full episodes with B-roll and balanced background audio in <strong>DaVinci Resolve</strong>. One payment to get set up from start to finish.
+								<strong>Stage 3 Flagship of the Connected Keystone Stack:</strong> Built for founders and builders who want their own custom desktop command center. Includes everything in Tiers 01 and 02, plus we walk you through building and compiling your own <strong>Native Tauri v2 Desktop App</strong> that connects directly to your AI Brain, Website, and Multi-Agent workflows—backed by a <strong>14-Day Guided Setup Window + up to 8 setup follow-up questions</strong>.
 							</p>
 
 							<div class="product-deliverables-box">
-								<h4>🏛️ What We Cover in Tier 03 (Includes Tiers 01 &amp; 02):</h4>
+								<h4>🖥️ What We Cover in Stage 3 / Tier 03 (Includes Tiers 01 &amp; 02):</h4>
 								<ul>
-									<li><strong>🏛️ Step 1 — Complete Creator Workstation Architecture:</strong> How to organize a full multi-project workstation for high-volume video, audio, and content production.</li>
-									<li><strong>🎬 Step 2 — 2-Track DaVinci Resolve Episode Assembly:</strong> Guided setup for combining spoken video clips, B-roll cutaways, and balanced background music into finished episodes.</li>
-									<li><strong>⚡ Step 3 — End-to-End Omnichannel Routine:</strong> Connecting your full-length videos, vertical shorts, and website posts into one repeatable workflow.</li>
-									<li><strong>🤖 Step 4 — One-Time Turnkey Setup + 24/7 AI Assistant:</strong> Unlocks every workstation walkthrough video, PDF guide, and our 24/7 automated AI Setup Assistant—get set up once and own your workflow.</li>
+									<li><strong>🖥️ Step 1 — Native Tauri v2 Desktop App Architecture:</strong> Scaffold and configure a lightweight Rust + WebView2/WebKit desktop app (<code class="kr-code-pill-gold">.exe / .app</code>) powered by your AI Brain.</li>
+									<li><strong>🎛️ Step 2 — Dark-Luxury Command Center UI &amp; 1-Click Triggers:</strong> Build custom dashboard tabs, 1-click prompt launchers, and project status cards that trigger your Tier 02 Multi-Agent workflows.</li>
+									<li><strong>🔌 Step 3 — Local Workspace Bridge &amp; Desktop Packaging:</strong> Connect your desktop app to your local project folders and compile your standalone desktop installer (<code class="kr-code-pill">PDF-10</code> to <code class="kr-code-pill">PDF-12</code>).</li>
+									<li><strong>⏱️ Step 4 — 14-Day Guided Setup Window (Up to 8 Follow-Up Questions):</strong> Unlocks all 6 video modules, all 12 Breakdown PDFs, and a 14-day setup window with up to 8 setup follow-up questions.</li>
 								</ul>
 							</div>
 
+							<details style="margin: 0 0 14px 0; background: rgba(4, 7, 13, 0.92); border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 12px; padding: 10px 14px;">
+								<summary style="cursor: pointer; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">📄 Preview Tier 03 Curriculum, 14-Day Setup Window &amp; Full-Stack Synergy</summary>
+								<div style="margin-top: 8px; font-size: 0.78rem; color: #cbd5e1; line-height: 1.55;">
+									<div>• <strong>Includes All of Tiers 01 &amp; 02</strong> + Module V06 (Native Tauri Desktop App &amp; Local AI Command Center)</div>
+									<div>• <strong>Unlocked Spec PDFs:</strong> All 12 Spec Sheets (PDF-01 through PDF-12) + Tauri v2 Desktop App Prompts</div>
+									<div>• <strong>Guided Setup Scope:</strong> 14-Day Setup Window + 8 Setup Follow-Up Questions unlocked by your <code class="kr-code-pill">KR-UID</code></div>
+								</div>
+							</details>
+
 							<div class="product-checkout-box">
-								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Full Creator Workstation" style="cursor: pointer; width: 100%;">
-									🏛️ GET TIER 03 CREATOR WORKSTATION ACCESS →
+								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Tauri Desktop App & AI Command Center (14-Day Setup Window)" style="cursor: pointer; width: 100%;">
+									🖥️ GET TIER 03 TAURI DESKTOP APP ACCESS →
 								</button>
 								<div class="checkout-trust-line">
-									🏛️ One-Time Payment (No Monthly Fee) • Unlocks All 3 Tiers + 24/7 AI Setup Assistant
+									🏛️ One-Time Payment (No Monthly Fee) • Unlocks All 3 Tiers + 14-Day Guided Setup Window (8 Qs)
 								</div>
 							</div>
 						</div>
@@ -1223,28 +1256,28 @@ Rules for every scene prompt:
 			<div class="ast-container">
 				<div class="competitive-matrix-card">
 					<div class="matrix-header">
-						<span class="matrix-tag">THE BUILDER BENCHMARK</span>
-						<h3 class="matrix-title">Why We Build Our AI Brain in Google Antigravity + Google Flow</h3>
+						<span class="matrix-tag">THE 3-TIER CONNECTED BUILDER SYSTEM</span>
+						<h3 class="matrix-title">How Tiers 01, 02 &amp; 03 Connect Into One Cohesive AI Stack</h3>
 						<p class="matrix-desc">
-							"When you pour concrete or frame high-load timber structures, you learn that unreliable tools cost fortunes. In AI video and website production, the principle is identical." — Wayne Stevenson
+							"When you pour concrete or frame high-load timber structures, every phase builds directly on the foundation below it. Our 3 setup tiers work the exact same way." — Wayne Stevenson
 						</p>
 					</div>
 					<div class="matrix-grid">
 						<div class="matrix-col matrix-col-blue">
-							<h4>⚡ Long-Context AI Brain Memory</h4>
-							<p>Google Antigravity holds your brand rules, project folders, and setup instructions in one organized workspace so your AI stays consistent every day.</p>
+							<h4>🧠 Stage 1: AI Brain &amp; Flow ($49.50)</h4>
+							<p>Set up your 4-folder AI Brain in Google Antigravity and generate clean 10-second Google Flow video clips with a 7-day setup window (up to 3 follow-up questions).</p>
 						</div>
 						<div class="matrix-col matrix-col-gold">
-							<h4>🎬 Clean Google Flow Video Clips</h4>
-							<p>By pairing concise scene prompts with your character and studio reference images in Google Flow, you can generate and export clean 10-second MP4 clips reliably.</p>
+							<h4>🌐 Stage 2: Website &amp; Agents ($199)</h4>
+							<p>Plugs directly into your Stage 1 AI Brain to build your dark-luxury website, YouTube Brand Channel, and Multi-Agent role workflows with a 7-day setup window (up to 5 questions).</p>
 						</div>
 						<div class="matrix-col matrix-col-blue">
-							<h4>🌐 Custom Website &amp; Multi-Agent</h4>
-							<p>Instead of wrestling with complicated page builders, our Tier 02 workflow walks you through building a fast, dark-luxury website and multi-agent system.</p>
+							<h4>🖥️ Stage 3: Tauri Desktop App ($800)</h4>
+							<p>Wraps your AI Brain, Website, and Multi-Agent workflows into your own Native Tauri Desktop Command Center app with a 14-day setup window (up to 8 questions).</p>
 						</div>
 						<div class="matrix-col matrix-col-gold">
-							<h4>🤖 One-Time Setup + 24/7 AI Assistant</h4>
-							<p>Every tier is a single one-time payment with recorded walkthrough videos, step-by-step PDF guides, and our automated 24/7 AI Setup Assistant to get you up and running.</p>
+							<h4>⏱️ Guided Setup Window (No Monthly Fee)</h4>
+							<p>Every tier is a single one-time payment with recorded walkthrough videos, printable %PDF-1.4 guides, and a clear time-bounded setup window—zero recurring subscriptions.</p>
 						</div>
 					</div>
 				</div>
@@ -1285,17 +1318,17 @@ Rules for every scene prompt:
 			Lock In Launch Rate — Tier 01 ($49.50 AI Brain, Flow Video &amp; Website Blueprint)
 		</h3>
 		<p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.55; margin: 0 0 18px 0;">
-			Enter your name and email below to lock in your launch price and generate your priority <strong>Reservation UID (<code class="kr-code-pill">KR-UID-...</code>)</strong> with zero payment today. Your verified UID immediately unlocks the <strong>6-Tab Self-Service Course Portal, Visual Brain Setup Diagram, Copy-Paste Prompts &amp; 24/7 AI Tutor</strong> on this page and emails your magic access link.
+			Enter your name and email below to lock in your launch rate and generate your priority <strong>Reservation UID (<code class="kr-code-pill">KR-UID-...</code>)</strong> with zero payment today. Your verified UID immediately unlocks the <strong>6-Tab Self-Service Course Portal, Visual Brain Setup Diagram, Copy-Paste Prompts &amp; Guided AI Setup Window</strong> on this page and emails your magic access link.
 		</p>
 
 		<form id="automatedProtocolOrderForm" style="display: flex; flex-direction: column; gap: 12px;">
 			<input type="hidden" id="orderTierInput" name="tier" value="1" />
 			<div>
-				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #f6d365; margin-bottom: 5px;">SELECTED PROTOCOL TIER</label>
+				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #f6d365; margin-bottom: 5px;">SELECTED CONNECTED SETUP TIER</label>
 				<select id="modalTierSelect" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.86rem; font-weight: 700; padding: 10px 12px;">
-					<option value="1">Tier 01 — $49.50 USD One-Time: AI Brain Setup &amp; Basic Google Flow Walkthrough</option>
-					<option value="2">Tier 02 — $199.00 USD One-Time: Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</option>
-					<option value="3">Tier 03 — $800.00 USD One-Time: Full Creator Workstation &amp; Studio Production Pipeline</option>
+					<option value="1">Tier 01 — $49.50 USD One-Time: AI Brain &amp; Basic Google Flow (7-Day Setup Window / 3 Qs)</option>
+					<option value="2">Tier 02 — $199.00 USD One-Time: Custom Website &amp; Multi-Agent Suite (7-Day Setup Window / 5 Qs)</option>
+					<option value="3">Tier 03 — $800.00 USD One-Time: Native Tauri Desktop App &amp; AI Command Center (14-Day Setup Window / 8 Qs)</option>
 				</select>
 			</div>
 			<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
@@ -1340,7 +1373,7 @@ Rules for every scene prompt:
 	</div>
 </div>
 
-<!-- 6. SELF-SERVICE PORTAL, 12 SPEC PDF ENGINE (%PDF-1.4), COPY-PASTE HELPERS, INTAKE FORM & 24/7 AI TUTOR SCRIPT -->
+<!-- 6. SELF-SERVICE PORTAL, 12 SPEC PDF ENGINE (%PDF-1.4), COPY-PASTE HELPERS, INTAKE FORM & Guided AI TUTOR SCRIPT -->
 <script>
 const KR_SPEC_PDF_CATALOG = {
 	'PDF-01': {
@@ -1466,40 +1499,41 @@ const KR_SPEC_PDF_CATALOG = {
 	'PDF-10': {
 		id: 'PDF-10',
 		tier: 'Tier 03 ($800)',
-		filename: 'KR_10_Multi_Brand_Creator_Workstation_Architecture.pdf',
-		title: 'PDF-10: Multi-Brand AI Creator Workstation & Folder Architecture',
+		filename: 'KR_10_Tauri_v2_Desktop_App_Scaffold_And_Rust_Shell.pdf',
+		title: 'PDF-10: Native Tauri v2 Desktop App Scaffold & Local Workspace Architecture',
 		steps: [
-			'Step 1: Organize your workstation into numbered project directories for scripts, video assets, websites, and CRM.',
-			'Step 2: Maintain a single masterbrand configuration file so every episode and article stays 100% consistent.'
+			'Step 1: Open your AI Brain workspace in Google Antigravity and create a dedicated 05_Desktop_App/ folder.',
+			'Step 2: Paste the Tauri v2 Desktop Scaffold Prompt below to generate src-tauri/Cargo.toml, tauri.conf.json, and your frontend shell.',
+			'Step 3: Configure window dimensions, dark-luxury titlebar styling, and local workspace path bindings.'
 		],
-		copyPromptLabel: 'COPY-PASTE WORKSTATION ARCHITECTURE PROMPT',
-		copyPrompt: 'Organize my full-stack AI Creator Workstation into numbered folders for Brand Rules, Video Scripts, Google Flow Exports, DaVinci Resolve Timelines, Website Pages, and Client CRM with a master README index.'
+		copyPromptLabel: 'COPY-PASTE TAURI V2 DESKTOP APP SCAFFOLD PROMPT',
+		copyPrompt: 'Create a clean Tauri v2 native desktop application inside 05_Desktop_App/ connected to my AI Brain folders (01_Brain_Rules through 04_YouTube_Channel). Configure tauri.conf.json with a 1440x900 dark-luxury window (#04070d Obsidian background, #d4af37 Gold & #38bdf8 Baby Blue accents).'
 	},
 	'PDF-11': {
 		id: 'PDF-11',
 		tier: 'Tier 03 ($800)',
-		filename: 'KR_11_DaVinci_Resolve_2_Track_Timeline_And_Audio_Ducking.pdf',
-		title: 'PDF-11: DaVinci Resolve 2-Track Video/B-Roll Assembly & -18dB Music Ducking',
+		filename: 'KR_11_Desktop_Command_Center_UI_And_Agent_Triggers.pdf',
+		title: 'PDF-11: Dark-Luxury Desktop Command Center UI & 1-Click Multi-Agent Triggers',
 		steps: [
-			'Step 1: Place your exported 10-second Google Flow spoken MP4 clips end-to-end on Video Track 1.',
-			'Step 2: Place visual B-roll cutaway clips on Video Track 2 over clip transitions to keep visual momentum high.',
-			'Step 3: Add instrumental background music on Audio Track 2 set to -18dB so your spoken voice stays crisp.'
+			'Step 1: Build your desktop navigation sidebar connecting your AI Brain, Website Builder, and Multi-Agent Role tabs.',
+			'Step 2: Add 1-click quick-action buttons that copy or dispatch your specialized Tier 02 agent prompts.',
+			'Step 3: Add real-time project status cards and quick folder openers for your local workspace.'
 		],
-		copyPromptLabel: 'COPY-PASTE B-ROLL CUTAWAY GENERATOR PROMPT',
-		copyPrompt: 'Write 6 cinematic 10-second Google Flow B-roll prompts (18 to 24 words each, zero spoken dialogue) to place on Video Track 2 in DaVinci Resolve over the transitions of my main spoken clips.'
+		copyPromptLabel: 'COPY-PASTE COMMAND CENTER DASHBOARD UI PROMPT',
+		copyPrompt: 'Build my Tauri Desktop Command Center UI (index.html, styles.css, app.js) featuring a 4-tab navigation bar (AI Brain, Video Prompts, Website & SEO, Multi-Agent Roles), 1-click prompt action buttons, and local workspace folder openers.'
 	},
 	'PDF-12': {
 		id: 'PDF-12',
 		tier: 'Tier 03 ($800)',
-		filename: 'KR_12_Omnichannel_Publishing_And_Conversion_Checklist.pdf',
-		title: 'PDF-12: Omnichannel Episode Launch & Conversion Funnel Checklist',
+		filename: 'KR_12_Native_Desktop_Compiler_And_Release_Checklist.pdf',
+		title: 'PDF-12: Compiling Your Standalone Desktop App (.EXE / .APP) & Launch Checklist',
 		steps: [
-			'Step 1: Publish your long-form 4K YouTube episode with your 480-character tag stack and website link in line 1.',
-			'Step 2: Publish your 30-50s Companion Vertical Short and link it to the main episode via Related Video.',
-			'Step 3: Publish the matching SEO article on your website with embedded video and request indexing in Search Console.'
+			'Step 1: Verify your custom app icon and metadata inside src-tauri/tauri.conf.json.',
+			'Step 2: Run the release build command to compile your standalone native desktop executable.',
+			'Step 3: Pin your custom AI Command Center app to your desktop or taskbar for daily 1-click execution.'
 		],
-		copyPromptLabel: 'COPY-PASTE OMNICHANNEL LAUNCH PACK PROMPT',
-		copyPrompt: 'Generate my complete Omnichannel Launch Pack for today\'s episode: 3 high-CTR YouTube titles, description with timestamps, Companion Short hook script, Facebook/Instagram Reel caption, and WordPress blog post summary.'
+		copyPromptLabel: 'COPY-PASTE DESKTOP BUILD & VERIFICATION PROMPT',
+		copyPrompt: 'Verify my Tauri v2 desktop app configuration in 05_Desktop_App/, run pre-flight syntax checks on all frontend and Rust files, and generate a 1-click build script that outputs my standalone desktop executable.'
 	}
 };
 
@@ -1931,7 +1965,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 
-	// 24/7 AI Architect Tutor Handler
+	// Guided AI Setup Assistant Handler
 	const tutorInput = document.getElementById('krTutorQuestionInput');
 	const tutorEmailInput = document.getElementById('krTutorEmailInput');
 	const askTutorBtn = document.getElementById('krAskTutorBtn');
@@ -1942,7 +1976,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (!questionText) return;
 		if (tutorAnswerBox) {
 			tutorAnswerBox.style.display = 'block';
-			tutorAnswerBox.innerHTML = '<div style="color:#38bdf8;font-weight:700;">🤖 24/7 AI Architect Tutor is preparing your step-by-step lesson...</div>';
+			tutorAnswerBox.innerHTML = '<div style="color:#38bdf8;font-weight:700;">🤖 Guided AI Setup Assistant is preparing your step-by-step answer...</div>';
 		}
 		const currentUid = (document.getElementById('existingVaultUidInput') && document.getElementById('existingVaultUidInput').value.trim()) || 'KR-DEMO-SELF-SERVICE';
 		fetch('/wp-json/keystone/v1/protocol-tutor', {
@@ -1957,7 +1991,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		})
 		.then(r => r.json())
 		.then(data => {
-			if (data && data.success && tutorAnswerBox) {
+			if (data && tutorAnswerBox) {
+				if (data.setup_quota_label) {
+					const qBadge = document.getElementById('krSetupQuotaBadge');
+					if (qBadge) qBadge.textContent = data.setup_quota_label;
+				}
+				if (!data.success) {
+					tutorAnswerBox.innerHTML = `<div style="color:#f6d365;font-weight:800;">${data.message || 'Guided setup question limit reached.'}</div>`;
+					return;
+				}
 				const emailNotice = data.email_sent ? `<div style="margin-top:8px;color:#f6d365;font-size:0.78rem;font-weight:800;">✔ A copy of this lesson was also emailed to your inbox!</div>` : '';
 				tutorAnswerBox.innerHTML = `
 					${data.answer_html}
@@ -2031,9 +2073,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	const tierNames = {
-		1: 'Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter',
-		2: 'Tier 02 — $199 USD One-Time: Custom Website Build & Multi-Agent Suite',
-		3: 'Tier 03 — $800 USD One-Time: Full Creator Workstation & Production Pipeline'
+		1: 'Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter (7-Day Setup Window)',
+		2: 'Tier 02 — $199 USD One-Time: Custom Website Build & Multi-Agent Suite (7-Day Setup Window)',
+		3: 'Tier 03 — $800 USD One-Time: Native Tauri Desktop App & AI Command Center (14-Day Setup Window)'
 	};
 
 	function formatPrice(val) {
@@ -2044,7 +2086,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (!expressBuyBtn) return;
 		const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
 		const labelText = activeTier === 3
-			? '🏛️ GET TIER 03 WORKSTATION ACCESS & OPEN BUYER VAULT →'
+			? '🖥️ GET TIER 03 TAURI DESKTOP APP ACCESS & OPEN VAULT ($800 USD) →'
 			: (activeTier === 2
 				? `🚀 GET TIER 02 WEBSITE & MULTI-AGENT ACCESS ($${formatPrice(finalPrice)} USD) →`
 				: `⚡ GET TIER 01 SETUP ACCESS & OPEN BUYER VAULT ($${formatPrice(finalPrice)} USD) →`);
@@ -2157,6 +2199,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		if (existingVaultUidInput) {
 			existingVaultUidInput.value = data.uid;
+		}
+		const wmEl = document.getElementById('portalWatermarkUid');
+		if (wmEl) {
+			wmEl.textContent = data.uid;
 		}
 		const zipBtn = document.getElementById('portalQuickZipBtn');
 		if (zipBtn) {
