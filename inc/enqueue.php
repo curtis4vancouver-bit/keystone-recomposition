@@ -5924,7 +5924,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     /* 15A. Clean Centered Executive Hero Header & 5-Pill Official Network Bar */
     .keystone-contact-page .contact-hero-header {
       text-align: center !important;
-      max-width: 1080px !important;
+      max-width: 1240px !important;
       margin: 0 auto 38px auto !important;
       padding: 14px 0 0 0 !important;
       display: flex !important;
@@ -5966,7 +5966,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     }
     .keystone-contact-page .contact-network-bar {
       display: flex !important;
-      flex-wrap: wrap !important;
+      flex-wrap: nowrap !important;
       justify-content: center !important;
       align-items: center !important;
       gap: 10px !important;
@@ -5976,12 +5976,12 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .keystone-contact-page .contact-net-pill {
       height: 40px !important;
       min-height: 40px !important;
-      padding: 0 16px !important;
+      padding: 0 14px !important;
       border-radius: 9999px !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: 0.74rem !important;
+      font-size: 0.72rem !important;
       font-weight: 800 !important;
-      letter-spacing: 0.04em !important;
+      letter-spacing: 0.03em !important;
       text-transform: uppercase !important;
       text-decoration: none !important;
       white-space: nowrap !important;
@@ -6042,19 +6042,19 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       margin: 0 0 16px 0 !important;
     }
     .keystone-contact-page .channel-pill {
-      padding: 4px 11px !important;
+      padding: 4px 10px !important;
       border-radius: 9999px !important;
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.64rem !important;
+      font-size: 0.61rem !important;
       font-weight: 800 !important;
-      letter-spacing: 0.04em !important;
+      letter-spacing: 0.03em !important;
       white-space: nowrap !important;
     }
     .keystone-contact-page .channel-cat {
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.63rem !important;
+      font-size: 0.60rem !important;
       font-weight: 800 !important;
-      letter-spacing: 0.06em !important;
+      letter-spacing: 0.04em !important;
       text-transform: uppercase !important;
       text-align: right !important;
       white-space: nowrap !important;
@@ -6230,6 +6230,11 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       border-radius: 12px !important;
       color: #f8fafc !important;
       padding: 12px 15px !important;
+      line-height: 1.45 !important;
+    }
+    .keystone-contact-page .luxury-form-select {
+      height: 48px !important;
+      padding: 0 15px !important;
     }
     .keystone-contact-page .contact-form-btn-pair {
       display: grid !important;
@@ -6327,6 +6332,9 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     }
 
     @media (max-width: 1120px) {
+      .keystone-contact-page .contact-network-bar {
+        flex-wrap: wrap !important;
+      }
       .keystone-contact-page .contact-channels-grid {
         grid-template-columns: 1fr !important;
       }

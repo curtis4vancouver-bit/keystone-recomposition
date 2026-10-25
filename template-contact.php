@@ -117,8 +117,8 @@ get_header();
 						<!-- CARD 01: SPOTIFY, APPLE MUSIC & YOUTUBE OFFICIAL CHANNELS (GOLD) -->
 						<article class="contact-channel-card contact-card-gold">
 							<div class="channel-card-top">
-								<span class="channel-pill ks-p3-pill-gold"><span class="ks-wave-text">01 &bull; SPOTIFY, APPLE &amp; YOUTUBE</span></span>
-								<span class="channel-cat channel-cat-gold">22 RELEASES &bull; 216 MASTERS</span>
+								<span class="channel-pill ks-p3-pill-gold"><span class="ks-wave-text">01 &bull; SPOTIFY &amp; YOUTUBE</span></span>
+								<span class="channel-cat channel-cat-gold">22 RELEASES &bull; 432HZ</span>
 							</div>
 
 							<h3 class="channel-title">Spotify, Apple Music &amp; YouTube Official Artist Channels</h3>
@@ -158,7 +158,7 @@ get_header();
 
 							<div class="channel-action">
 								<a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="channel-cta-btn ks-p3-btn-gold">
-									<span class="ks-wave-text">🎵 Stream on Spotify Artist Channel &#8599;</span>
+									<span class="ks-wave-text">🎵 Stream on Spotify Channel &#8599;</span>
 								</a>
 							</div>
 						</article>
@@ -166,8 +166,8 @@ get_header();
 						<!-- CARD 02: CUSTOM AI SYSTEMS, SWARMS & 3-TIER VAULT (BLUE) -->
 						<article class="contact-channel-card contact-card-blue">
 							<div class="channel-card-top">
-								<span class="channel-pill ks-p3-pill-blue"><span class="ks-wave-text">02 &bull; CUSTOM AI &amp; 3-TIER VAULT</span></span>
-								<span class="channel-cat channel-cat-blue">$49.50 &bull; $199 &bull; ENTERPRISE</span>
+								<span class="channel-pill ks-p3-pill-blue"><span class="ks-wave-text">02 &bull; CUSTOM AI &amp; VAULT</span></span>
+								<span class="channel-cat channel-cat-blue">3-TIER AI ECOSYSTEM</span>
 							</div>
 
 							<h3 class="channel-title">Custom AI Systems, Multi-Agent Swarms &amp; Website Builds</h3>
@@ -200,14 +200,14 @@ get_header();
 							</div>
 
 							<div class="channel-mini-links-row">
-								<a href="<?php echo esc_url( home_url( '/ai-protocols/#tier-blueprint' ) ); ?>" class="channel-mini-pill ks-p3-pill-blue"><span class="ks-wave-text">$49.50 Blueprint</span></a>
-								<a href="<?php echo esc_url( home_url( '/ai-protocols/#tier-swarm' ) ); ?>" class="channel-mini-pill ks-p3-pill-gold"><span class="ks-wave-text">$199 Swarms</span></a>
-								<a href="#inquiry-form" class="channel-mini-pill ks-p3-pill-blue" data-select-inquiry="enterprise"><span class="ks-wave-text">Custom Build &darr;</span></a>
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#tier-blueprint' ) ); ?>" class="channel-mini-pill ks-p3-pill-blue"><span class="ks-wave-text">$49.50 Tier 1</span></a>
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#tier-swarm' ) ); ?>" class="channel-mini-pill ks-p3-pill-gold"><span class="ks-wave-text">$199 Tier 2</span></a>
+								<a href="#inquiry-form" class="channel-mini-pill ks-p3-pill-blue" data-select-inquiry="enterprise"><span class="ks-wave-text">Custom AI &darr;</span></a>
 							</div>
 
 							<div class="channel-action">
 								<a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="channel-cta-btn ks-p3-btn-blue">
-									<span class="ks-wave-text">⚡ Explore AI Protocols &amp; Pricing Vault &rarr;</span>
+									<span class="ks-wave-text">⚡ Explore AI Protocols Vault &rarr;</span>
 								</a>
 							</div>
 						</article>
@@ -216,7 +216,7 @@ get_header();
 						<article class="contact-channel-card contact-card-gold">
 							<div class="channel-card-top">
 								<span class="channel-pill ks-p3-pill-gold"><span class="ks-wave-text">03 &bull; $800 MASTERCLASS</span></span>
-								<span class="channel-cat channel-cat-gold">1-ON-1 TAURI DESKTOP BUILD</span>
+								<span class="channel-cat channel-cat-gold">TAURI DESKTOP STUDIO</span>
 							</div>
 
 							<h3 class="channel-title">The $800 Masterclass &amp; Custom Tauri Desktop Command Center</h3>
@@ -249,14 +249,14 @@ get_header();
 							</div>
 
 							<div class="channel-mini-links-row">
-								<a href="<?php echo esc_url( home_url( '/ai-protocols/#tier-workstation' ) ); ?>" class="channel-mini-pill ks-p3-pill-gold"><span class="ks-wave-text">$800 Tier Specs</span></a>
-								<a href="#inquiry-form" class="channel-mini-pill ks-p3-pill-blue" data-select-inquiry="masterclass800"><span class="ks-wave-text">6-Day Priority SLA</span></a>
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#tier-workstation' ) ); ?>" class="channel-mini-pill ks-p3-pill-gold"><span class="ks-wave-text">$800 Specs</span></a>
+								<a href="#inquiry-form" class="channel-mini-pill ks-p3-pill-blue" data-select-inquiry="masterclass800"><span class="ks-wave-text">6-Day SLA &darr;</span></a>
 								<a href="mailto:keystonerecomposition@gmail.com?subject=%24800%20Masterclass%20%26%20Custom%20Tauri%20Desktop%20Command%20Center%20Booking" class="channel-mini-pill ks-p3-pill-gold"><span class="ks-wave-text">Direct Email &#8599;</span></a>
 							</div>
 
 							<div class="channel-action">
 								<a href="#inquiry-form" class="channel-cta-btn ks-p3-btn-gold" data-select-inquiry="masterclass800">
-									<span class="ks-wave-text">⚡ Book $800 Masterclass &amp; Desktop Build &darr;</span>
+									<span class="ks-wave-text">⚡ Book $800 Masterclass Build &darr;</span>
 								</a>
 							</div>
 						</article>
