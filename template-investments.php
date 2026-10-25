@@ -1,8 +1,8 @@
 <?php
 /**
  * Template Name: Keystone Investments
- * Description: High-Conviction Capital Allocation, Quantitative Market Intelligence, Autonomous AI Workstations & Digital IP, Mexico Coastal & EU Expansion
- * Version: 4.4.0 (High-End Dark Quiet Luxury Edition)
+ * Description: High-Conviction Capital Allocation, Quantitative Market Intelligence, AI Protocols & Digital IP, Mexico Coastal & EU Expansion
+ * Version: 4.6.0 (Sovereign Level-Grid & Pure-Black Wave Edition)
  * Stamped: October 2026
  *
  * @package KeystoneRecompositionChild
@@ -30,7 +30,9 @@ $theme_uri = get_stylesheet_directory_uri();
                      ============================================================== -->
                 <header class="investments-hero-header text-center">
                     <div class="hero-badge-row">
-                        <span class="gold-badge-pill">🏛️ CAPITAL ALLOCATION • AUTONOMOUS AI WORKSTATIONS &amp; QUANTITATIVE IP</span>
+                        <span class="ks-p3-pill-gold inv-hero-top-pill">
+                            <span class="ks-wave-text">🏛️ CAPITAL ALLOCATION &bull; AI PROTOCOLS, QUANTITATIVE TREASURY &amp; HARD ASSETS</span>
+                        </span>
                     </div>
 
                     <h1 class="investments-main-title">
@@ -39,9 +41,24 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
 
                     <p class="investments-hero-subtitle">
-                        Deploying balance-sheet capital across quantitative prediction engines, turnkey autonomous AI swarm workstations, 22-album 432Hz commercial music IP, and international luxury footholds in Mexico and Europe. Direct principal partnerships backed by sovereign digital infrastructure, tangible hard assets, and mathematical rigor.
+                        Deploying balance-sheet capital across quantitative market intelligence, one-time AI Brain &amp; desktop workstation architectures, 22 official 432Hz studio master releases, and international architectural footholds in Mexico and the European Union.
                     </p>
 
+                    <!-- 4 Equal Parallel Quick-Jump Navigation Buttons -->
+                    <div class="inv-hero-quicknav-grid">
+                        <a href="#quantitative-spotlight" class="ks-p3-btn-blue inv-quicknav-btn">
+                            <span class="ks-wave-text">📈 Quantitative Treasury</span>
+                        </a>
+                        <a href="#real-estate-pillars" class="ks-p3-btn-gold inv-quicknav-btn">
+                            <span class="ks-wave-text">⚡ 3 Sovereign Pillars</span>
+                        </a>
+                        <a href="#business-investments" class="ks-p3-btn-blue inv-quicknav-btn">
+                            <span class="ks-wave-text">🏗️ Strategic Investments</span>
+                        </a>
+                        <a href="#executive-gateway" class="ks-p3-btn-gold inv-quicknav-btn">
+                            <span class="ks-wave-text">🏛️ Principal Gateway</span>
+                        </a>
+                    </div>
                 </header>
 
                 <!-- ==============================================================
@@ -52,223 +69,250 @@ $theme_uri = get_stylesheet_directory_uri();
                         
                         <div class="spotlight-header text-center">
                             <div class="spotlight-badge-cluster">
-                                <span class="badge-pill-cyan">TOP SPOTLIGHT &bull; MARKET INTELLIGENCE</span>
-                                <span class="badge-pill-gold">PROPRIETARY TREASURY</span>
+                                <span class="ks-p3-pill-blue inv-cluster-pill">
+                                    <span class="ks-wave-text">TOP SPOTLIGHT &bull; MARKET INTELLIGENCE</span>
+                                </span>
+                                <span class="ks-p3-pill-gold inv-cluster-pill">
+                                    <span class="ks-wave-text">PROPRIETARY TREASURY</span>
+                                </span>
                             </div>
                             <h2 class="spotlight-title">
                                 Quantitative Market Intelligence &amp;<br>
                                 <span class="cyan-gold-gradient-text">Algorithmic Compounding</span>
                             </h2>
                             <p class="spotlight-subtitle">
-                                Systematized execution models that extract structural asymmetry from liquid global markets and prediction event contracts through rigorous statistical distribution modeling, risk ceilings, and mechanical trailing profit-locks.
+                                Systematized execution models that extract structural asymmetry from liquid global markets and event contracts through statistical probability modeling, strict risk ceilings, and automated trailing profit-locks.
                             </p>
                         </div>
 
-                        <!-- 16:9 Luxury Photo: Trading Terminal Workstation -->
-                        <div class="spotlight-image-container">
+                        <!-- 16:9 Luxury Photo: Trading Terminal Workstation (100% Clean Unobstructed Image) -->
+                        <div class="spotlight-image-container inv-clean-spotlight-frame">
                             <img src="<?php echo esc_url( $theme_uri . '/assets/images/trading_terminal_luxury.jpg' ); ?>" 
-                                 alt="Wayne Stevenson Quantitative Trading Dual-Monitor Execution Terminal" 
+                                 alt="Wayne Stevenson Quantitative Trading Multi-Monitor Execution Terminal" 
                                  class="spotlight-hero-img" 
                                  loading="eager" width="1792" height="1024">
-                            <div class="image-overlay-badge">
-                                <span class="badge-dot">●</span> 2026 QUANTITATIVE TRADING TERMINAL // SOVEREIGN ENGINE
-                            </div>
                         </div>
 
-                        <!-- Quantitative Market Principles Breakdown -->
-                        <div class="quant-pillars-grid quant-principles-grid">
-                            <div class="quant-pillar-item">
-                                <div class="quant-icon-wrap">📊</div>
+                        <!-- 4 Equal-Height Parallel Quantitative Market Principles Cards -->
+                        <div class="quant-pillars-grid quant-principles-grid inv-quant-4grid">
+                            <div class="quant-pillar-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-blue inv-mini-tag"><span class="ks-wave-text">METRIC 01</span></span>
+                                    <span class="inv-principle-icon">📊</span>
+                                </div>
                                 <h4>Expected Value Hurdle (EV &ge; +15%)</h4>
-                                <p>Every contractual deployment requires a verified positive expected value exceeding a +15% hurdle rate verified against historical distribution variance. Zero unmodeled capital is ever committed.</p>
+                                <p>Every capital deployment requires a verified positive expected value exceeding our +15% hurdle rate across historical distribution variance. Zero unmodeled capital is ever committed.</p>
                             </div>
-                            <div class="quant-pillar-item">
-                                <div class="quant-icon-wrap">🛡️</div>
+                            <div class="quant-pillar-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-gold inv-mini-tag"><span class="ks-wave-text">METRIC 02</span></span>
+                                    <span class="inv-principle-icon">🛡️</span>
+                                </div>
                                 <h4>Inviolable 40% Cash Fortress</h4>
-                                <p>Exactly 40% of balance-sheet NAV in Canadian Dollars (CAD) is locked permanently as an inviolable liquidity reserve, ensuring absolute survival against market black swans and zero risk of ruin.</p>
+                                <p>Exactly 40% of liquid treasury capital is locked permanently as an untouchable cash reserve, guaranteeing absolute resilience against market drawdowns and zero risk of ruin.</p>
                             </div>
-                            <div class="quant-pillar-item">
-                                <div class="quant-icon-wrap">⚡</div>
-                                <h4>Rule 25 Trailing Profit-Lock</h4>
-                                <p>Dynamic automated momentum-reversal locks capture profits systematically as positions advance, instantly shielding realized gains from reversals and eliminating emotional biases.</p>
+                            <div class="quant-pillar-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-blue inv-mini-tag"><span class="ks-wave-text">METRIC 03</span></span>
+                                    <span class="inv-principle-icon">⚡</span>
+                                </div>
+                                <h4>Automated Trailing Profit-Lock</h4>
+                                <p>Dynamic momentum-reversal stops capture realized gains systematically as positions advance, protecting compounded upside from late-stage volatility and emotional bias.</p>
                             </div>
-                            <div class="quant-pillar-item">
-                                <div class="quant-icon-wrap">🌐</div>
-                                <h4>Prediction Market Intelligence</h4>
-                                <p>Systematic modeling of high-spread probability distortions across liquid prediction event contracts, pairing real-time data ingestion with sovereign local execution engines without leverage.</p>
+                            <div class="quant-pillar-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-gold inv-mini-tag"><span class="ks-wave-text">METRIC 04</span></span>
+                                    <span class="inv-principle-icon">🌐</span>
+                                </div>
+                                <h4>Multi-Market Event Intelligence</h4>
+                                <p>Real-time statistical modeling of probability distortions across liquid North American equities, Canadian CDRs, and event contracts executed with zero margin leverage.</p>
                             </div>
                         </div>
 
                         <!-- Formal Fiduciary & Regulatory Compliance Disclaimer -->
-                        <div class="fiduciary-treasury-notice">
-                            <div class="notice-badge">🏛️ PROPRIETARY TREASURY &amp; QUANTITATIVE INTELLIGENCE NOTICE</div>
-                            <p>
-                                <strong>Proprietary Capital Only:</strong> All quantitative trading systems, mathematical edge frameworks, prediction market models, and algorithmic hedging operations described on this platform are deployed exclusively for Keystone's internal proprietary treasury and balance sheet assets.
-                            </p>
-                            <p>
-                                <strong>Zero Solicitation &amp; No Registered Advice:</strong> Keystone Recomposition is not a registered investment dealer, adviser, or pooled fund manager under the <em>British Columbia Securities Act</em> or Canadian securities regulations. We do not solicit, accept, pool, or manage third-party trading capital, nor do we provide trading signals or investment advice. All quantitative intelligence is published strictly for sovereign research and technological demonstration purposes.
-                            </p>
+                        <div class="fiduciary-treasury-notice inv-clean-notice-box">
+                            <div class="inv-notice-header-row">
+                                <span class="ks-p3-pill-gold inv-notice-pill">
+                                    <span class="ks-wave-text">🏛️ PROPRIETARY TREASURY &amp; REGULATORY COMPLIANCE NOTICE</span>
+                                </span>
+                            </div>
+                            <div class="inv-notice-two-col">
+                                <p>
+                                    <strong>Proprietary Balance-Sheet Capital Only:</strong> All quantitative trading frameworks, statistical probability models, and automated execution systems described on this page are operated exclusively for Keystone's internal proprietary treasury.
+                                </p>
+                                <p>
+                                    <strong>Zero Solicitation &amp; No Registered Advice:</strong> Keystone Recomposition is not a registered investment dealer or pooled fund manager under the <em>British Columbia Securities Act</em>. We do not solicit or manage third-party trading capital, nor do we issue public trading signals.
+                                </p>
+                            </div>
                         </div>
 
                     </div>
                 </section>
 
                 <!-- ==============================================================
-                     3. CORE DIGITAL IP & SOVEREIGN ASSET PILLARS
+                     3. CORE DIGITAL IP & SOVEREIGN ASSET PILLARS (3 EQUAL PARALLEL CARDS)
                      ============================================================== -->
                 <section class="investments-pillars-section" id="real-estate-pillars">
                     <div class="pillars-section-intro text-center">
-                        <span class="section-tag-gold">DIGITAL IP COMPOUNDING &bull; INTERNATIONAL HARD ASSETS</span>
+                        <span class="ks-p3-pill-gold inv-section-kicker">
+                            <span class="ks-wave-text">DIGITAL IP COMPOUNDING &bull; INTERNATIONAL HARD ASSETS</span>
+                        </span>
                         <h2 class="pillars-section-title">
-                            Autonomous AI Workstations, Digital IP &amp;<br>
+                            AI Protocols, 432Hz Music IP &amp;<br>
                             <span class="cyan-gold-gradient-text">International Sovereign Assets</span>
                         </h2>
                         <p class="pillars-section-desc">
-                            Combining high-margin digital intellectual property—turnkey 28-agent FastMCP workstations, UID-locked video vaults, and 216 mastered 432Hz recordings—with international architectural footholds across Mexico and the European Union.
+                            Combining high-margin digital intellectual property—our 3-Tier AI Brain, Multi-Agent Swarm &amp; Custom Tauri Desktop App Vault plus 22 official 432Hz studio releases—with international real estate footholds across Mexico and the European Union.
                         </p>
                     </div>
 
-                    <div class="investments-pillars-grid">
+                    <div class="investments-pillars-grid inv-three-pillars-grid">
                         
-                        <!-- PILLAR 01: AUTONOMOUS AI WORKSTATIONS & DIGITAL IP -->
-                        <div class="investment-pillar-card">
-                            <div class="pillar-image-wrap">
+                        <!-- PILLAR 01: AI PROTOCOLS, MULTI-AGENT SWARMS & 432HZ MUSIC IP -->
+                        <div class="investment-pillar-card inv-level-pillar-card">
+                            <div class="pillar-image-wrap inv-clean-pillar-thumb">
                                 <img src="<?php echo esc_url( $theme_uri . '/assets/images/ai_protocols_banner.png' ); ?>" 
-                                     alt="Keystone Recomposition Turnkey AI Swarm Workstations, Automated Video Vaults and 432Hz Music IP" 
+                                     alt="Keystone AI Brain, Multi-Agent Swarms, Tauri Desktop App & 432Hz Music IP" 
                                      class="pillar-hero-img" 
                                      loading="lazy" width="1792" height="1024">
-                                <span class="pillar-badge-float">PILLAR 01 &bull; AUTONOMOUS AI &amp; DIGITAL IP</span>
                             </div>
-                            <div class="pillar-body">
-                                <div class="pillar-card-header">
-                                    <span class="pillar-category-tag">AUTONOMOUS AI WORKSTATIONS &amp; DIGITAL IP</span>
+                            <div class="pillar-body inv-level-pillar-body">
+                                <div class="pillar-card-header inv-pillar-header-row">
+                                    <span class="ks-p3-pill-blue inv-pillar-badge">
+                                        <span class="ks-wave-text">PILLAR 01 &bull; AI &amp; DIGITAL IP</span>
+                                    </span>
+                                    <span class="inv-pillar-subtag">ONE-TIME VAULT</span>
                                 </div>
-                                <h3 class="pillar-title">Turnkey AI Swarm Workstations, Automated Video Vaults &amp; 432Hz Music IP</h3>
-                                <p class="pillar-summary">
-                                    Sovereign digital infrastructure generating scalable recurring cash flow with zero cloud lock-in—uniting recorded AI video masterclasses, enterprise multi-agent workstation buildouts, and commercial 432Hz acoustic licensing.
+                                <h3 class="pillar-title inv-level-pillar-title">AI Brain, Multi-Agent Swarms &amp; Tauri Desktop App Suite</h3>
+                                <p class="pillar-summary inv-level-pillar-summary">
+                                    Sovereign digital systems generating scalable one-time revenue with zero monthly cloud lock-in—uniting our 3-Tier AI Protocols Vault with our 22-release 432Hz commercial music catalog.
                                 </p>
-                                <div class="pillar-detail-list">
-                                    <div class="pillar-detail-item">
-                                        <span class="detail-icon">🎬</span>
+                                <div class="pillar-detail-list inv-level-detail-list">
+                                    <div class="pillar-detail-item inv-level-detail-box">
+                                        <span class="detail-icon">🧠</span>
                                         <div>
-                                            <strong>$49.50 &amp; $800 Automated AI Video Walkthrough + UID Download Vault:</strong>
-                                            <span>95%+ digital margin self-liquidating vault delivering recorded step-by-step AI architecture walkthroughs and instant UID-locked <code>.ZIP</code>/<code>.bat</code> workstation installers.</span>
+                                            <strong>$49.50 AI Brain &amp; Google Flow Blueprint:</strong>
+                                            <span>Step-by-step 4-part AI Brain workspace setup and ~20-word Google Flow video prompt system with 3-Day Setup Support.</span>
                                         </div>
                                     </div>
-                                    <div class="pillar-detail-item">
+                                    <div class="pillar-detail-item inv-level-detail-box">
                                         <span class="detail-icon">⚡</span>
                                         <div>
-                                            <strong>$3,500–$7,500 Custom Enterprise AI Workstation &amp; FastMCP Swarm Buildouts:</strong>
-                                            <span>Turnkey local-first Tauri HUD workstations, 28-agent FastMCP tool servers, and Chrome CDP Port 9222 production pipelines engineered directly for executive operators.</span>
+                                            <strong>$199 Multi-Agent Swarms &amp; Website Builder:</strong>
+                                            <span>Parallel multi-agent workflow orchestration and copy-paste dark-luxury WordPress website engineering with 6-Day Setup Support.</span>
                                         </div>
                                     </div>
-                                    <div class="pillar-detail-item">
-                                        <span class="detail-icon">🎵</span>
+                                    <div class="pillar-detail-item inv-level-detail-box">
+                                        <span class="detail-icon">🖥️</span>
                                         <div>
-                                            <strong>Direct-to-Creator 432Hz Commercial Sync Licensing:</strong>
-                                            <span>100% sovereign master and publishing control across 22 official albums (216 mastered ISRCs), providing direct commercial sync licensing without label intermediaries.</span>
+                                            <strong>$800 Tauri Desktop App &amp; 432Hz Music IP:</strong>
+                                            <span>Custom Rust &amp; WebView2 desktop command center build guide plus 100% master ownership across 22 official 432Hz studio releases.</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pillar-card-footer">
-                                    <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="pillar-link-btn">
-                                        Explore AI Protocols &amp; Pricing Vault &rarr;
+                                <div class="pillar-card-footer inv-level-pillar-footer">
+                                    <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="ks-p3-btn-blue inv-pillar-cta-btn">
+                                        <span class="ks-wave-text">Explore AI Protocols &amp; Pricing Vault &rarr;</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
                         <!-- PILLAR 02: MEXICO LUXURY COASTAL -->
-                        <div class="investment-pillar-card">
-                            <div class="pillar-image-wrap">
+                        <div class="investment-pillar-card inv-level-pillar-card">
+                            <div class="pillar-image-wrap inv-clean-pillar-thumb">
                                 <img src="<?php echo esc_url( $theme_uri . '/assets/images/mexico_development_masterplan.jpg' ); ?>" 
-                                     alt="Keystone Recomposition Mexico Pacific Coast Luxury Travertine Villa Development" 
+                                     alt="Keystone Mexico Pacific Coast Luxury Travertine Villa Development" 
                                      class="pillar-hero-img" 
                                      loading="lazy" width="1792" height="1024">
-                                <span class="pillar-badge-float">PILLAR 02 &bull; MEXICO</span>
                             </div>
-                            <div class="pillar-body">
-                                <div class="pillar-card-header">
-                                    <span class="pillar-category-tag">MEXICO LUXURY COASTAL SANCTUARIES</span>
+                            <div class="pillar-body inv-level-pillar-body">
+                                <div class="pillar-card-header inv-pillar-header-row">
+                                    <span class="ks-p3-pill-gold inv-pillar-badge">
+                                        <span class="ks-wave-text">PILLAR 02 &bull; MEXICO COASTAL</span>
+                                    </span>
+                                    <span class="inv-pillar-subtag">PACIFIC ENCLAVES</span>
                                 </div>
-                                <h3 class="pillar-title">Mexico Coastal Development &amp; Boutique Villas</h3>
-                                <p class="pillar-summary">
-                                    With an active operational foothold on the ground in Mexico, we co-develop world-class boutique residential villas and oceanfront retreats across high-demand coastal corridors in Riviera Nayarit and the Pacific coast.
+                                <h3 class="pillar-title inv-level-pillar-title">Mexico Coastal Development &amp; Boutique Luxury Villas</h3>
+                                <p class="pillar-summary inv-level-pillar-summary">
+                                    With an active operational foothold on the ground in Mexico, we co-develop boutique residential villas and oceanfront retreats across high-demand corridors in Riviera Nayarit and the Pacific coast.
                                 </p>
-                                <div class="pillar-detail-list">
-                                    <div class="pillar-detail-item">
+                                <div class="pillar-detail-list inv-level-detail-list">
+                                    <div class="pillar-detail-item inv-level-detail-box">
                                         <span class="detail-icon">🌴</span>
                                         <div>
-                                            <strong>Article 27 Fideicomiso Bank Trust Legal Shield:</strong>
-                                            <span>50-year renewable bank trust structure providing 100% legal ownership, rental rights, and seamless intergenerational transfer outside Mexican probate courts.</span>
+                                            <strong>Article 27 Fideicomiso Bank Trust Shield:</strong>
+                                            <span>50-year renewable Mexican bank trust structure providing 100% foreign legal ownership, rental rights, and seamless estate transfer.</span>
                                         </div>
                                     </div>
-                                    <div class="pillar-detail-item">
+                                    <div class="pillar-detail-item inv-level-detail-box">
                                         <span class="detail-icon">📉</span>
                                         <div>
                                             <strong>35%–50% Construction Cost Arbitrage:</strong>
-                                            <span>Ultra-luxury biophilic concrete and hardwood builds completed at $100–$140 USD/sq ft, generating substantial built-in equity on day one.</span>
+                                            <span>Architectural concrete, travertine, and hardwood coastal builds completed at $100–$140 USD/sq ft for immediate day-one equity.</span>
                                         </div>
                                     </div>
-                                    <div class="pillar-detail-item">
+                                    <div class="pillar-detail-item inv-level-detail-box">
                                         <span class="detail-icon">💵</span>
                                         <div>
-                                            <strong>8%–14% Net USD Annual Yields + Lifestyle Dividend:</strong>
-                                            <span>Premier short-term luxury vacation rental yields paired with private seasonal retreat access for co-investors in world-class architectural enclaves.</span>
+                                            <strong>8%–14% Net USD Yields &amp; Retreat Access:</strong>
+                                            <span>Premier short-term luxury vacation rental cash flow paired with private seasonal residence access for co-investing partners.</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pillar-card-footer">
-                                    <a href="#executive-gateway" class="pillar-link-btn">
-                                        Inquire About Mexico Syndication &rarr;
+                                <div class="pillar-card-footer inv-level-pillar-footer">
+                                    <a href="#executive-gateway" class="ks-p3-btn-gold inv-pillar-cta-btn">
+                                        <span class="ks-wave-text">Inquire About Mexico Syndication &rarr;</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
 
                         <!-- PILLAR 03: EUROPEAN UNION STRATEGIC EXPANSION -->
-                        <div class="investment-pillar-card">
-                            <div class="pillar-image-wrap">
+                        <div class="investment-pillar-card inv-level-pillar-card">
+                            <div class="pillar-image-wrap inv-clean-pillar-thumb">
                                 <img src="<?php echo esc_url( $theme_uri . '/assets/images/eu_luxury_infill.jpg' ); ?>" 
                                      alt="Keystone European Union Strategic Expansion Contemporary Stone and Glass Infill" 
                                      class="pillar-hero-img" 
                                      loading="lazy" width="1792" height="1024">
-                                <span class="pillar-badge-float">PILLAR 03 &bull; EUROPEAN UNION</span>
                             </div>
-                            <div class="pillar-body">
-                                <div class="pillar-card-header">
-                                    <span class="pillar-category-tag">EUROPEAN UNION EXPANSION</span>
+                            <div class="pillar-body inv-level-pillar-body">
+                                <div class="pillar-card-header inv-pillar-header-row">
+                                    <span class="ks-p3-pill-blue inv-pillar-badge">
+                                        <span class="ks-wave-text">PILLAR 03 &bull; EUROPEAN UNION</span>
+                                    </span>
+                                    <span class="inv-pillar-subtag">PORTUGAL &amp; SPAIN</span>
                                 </div>
-                                <h3 class="pillar-title">European Union Boutique Infill &amp; Restoration</h3>
-                                <p class="pillar-summary">
-                                    A forward-looking strategic pipeline developing boutique architectural properties across historic European coastal and alpine villages (Portugal: Lisbon, Cascais, Comporta; Spain: Costa del Sol, Mallorca).
+                                <h3 class="pillar-title inv-level-pillar-title">European Union Boutique Infill &amp; Heritage Restoration</h3>
+                                <p class="pillar-summary inv-level-pillar-summary">
+                                    A strategic acquisition pipeline developing and restoring boutique architectural properties across prime European coastal and alpine corridors in Portugal and Spain.
                                 </p>
-                                <div class="pillar-detail-list">
-                                    <div class="pillar-detail-item">
+                                <div class="pillar-detail-list inv-level-detail-list">
+                                    <div class="pillar-detail-item inv-level-detail-box">
                                         <span class="detail-icon">🏰</span>
                                         <div>
                                             <strong>Special Purpose Vehicle (SPV) Ring-Fencing:</strong>
-                                            <span>Corporate holding structures (Lda / S.L.) isolating liability, optimized under bilateral Canadian Double Taxation Treaties for frictionless capital repatriation.</span>
+                                            <span>Dedicated corporate holding structures (Lda / S.L.) isolating asset liability under bilateral Canadian double-taxation treaties.</span>
                                         </div>
                                     </div>
-                                    <div class="pillar-detail-item">
+                                    <div class="pillar-detail-item inv-level-detail-box">
                                         <span class="detail-icon">💶</span>
                                         <div>
                                             <strong>Urban Rehabilitation Fiscal Incentives:</strong>
-                                            <span>Benefiting from statutory property transfer tax exemptions and a reduced 6% VAT rate on historic rehabilitation works under urban renewal regimes.</span>
+                                            <span>Qualifying historic restoration projects benefit from statutory property transfer tax exemptions and reduced 6% VAT renovation rates.</span>
                                         </div>
                                     </div>
-                                    <div class="pillar-detail-item">
+                                    <div class="pillar-detail-item inv-level-detail-box">
                                         <span class="detail-icon">🌍</span>
                                         <div>
                                             <strong>Multi-Jurisdictional Generational Wealth:</strong>
-                                            <span>Hard assets denominated in prime European lifestyle havens with deep international liquidity, political stability, and high cultural prestige.</span>
+                                            <span>Tangible Euro-denominated hard assets in premier European lifestyle corridors with deep international liquidity and stability.</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="pillar-card-footer">
-                                    <a href="#executive-gateway" class="pillar-link-btn">
-                                        Review European Expansion Pipeline &rarr;
+                                <div class="pillar-card-footer inv-level-pillar-footer">
+                                    <a href="#executive-gateway" class="ks-p3-btn-blue inv-pillar-cta-btn">
+                                        <span class="ks-wave-text">Review European Expansion Pipeline &rarr;</span>
                                     </a>
                                 </div>
                             </div>
@@ -278,55 +322,79 @@ $theme_uri = get_stylesheet_directory_uri();
                 </section>
 
                 <!-- ==============================================================
-                     4. STRATEGIC BUSINESS INVESTMENTS & ENTERPRISE M&A
+                     4. AESTHETIC & STRATEGIC BUSINESS INVESTMENTS (2 EQUAL CARDS)
                      ============================================================== -->
                 <section class="investments-business-section" id="business-investments">
-                    <div class="business-section-card">
+                    <div class="business-section-card inv-business-master-card">
                         
                         <div class="business-header text-center">
-                            <span class="section-tag-cyan">OPERATIONAL ENTERPRISE COMPOUNDING</span>
+                            <span class="ks-p3-pill-blue inv-section-kicker">
+                                <span class="ks-wave-text">AESTHETIC &amp; OPERATIONAL COMPOUNDING</span>
+                            </span>
                             <h2 class="business-title">
-                                Strategic Business Investments &amp;<br>
+                                Aesthetic Architecture, Strategic M&amp;A &amp;<br>
                                 <span class="cyan-gold-gradient-text">Vertical Trade Integration</span>
                             </h2>
                             <p class="business-subtitle">
-                                The sovereign builder does not merely purchase land. Long-term capital compounding requires vertical integration—controlling the trades, eliminating subcontractor margin leakage, and deploying proprietary autonomous software to compress project lifecycles.
+                                True architectural and financial compounding requires controlling both high-design execution and the underlying operational engine—eliminating subcontractor margin leakage while deploying proprietary AI software to compress project timelines.
                             </p>
                         </div>
 
-                        <div class="business-grid-two">
+                        <div class="business-grid-two inv-business-two-grid">
                             
-                            <!-- Card 1: Specialty Trade Roll-Ups -->
-                            <div class="business-subcard">
+                            <!-- Card 1: Specialty Trade Roll-Ups & Architectural Execution -->
+                            <div class="business-subcard inv-equal-subcard">
                                 <div class="subcard-header">
-                                    <span class="subcard-tag-gold">SPECIALTY TRADE ROLL-UPS</span>
+                                    <span class="ks-p3-pill-gold inv-subcard-pill">
+                                        <span class="ks-wave-text">01 &bull; SPECIALTY TRADE ROLL-UPS</span>
+                                    </span>
                                     <span class="subcard-icon">🏗️</span>
                                 </div>
-                                <h3 class="subcard-title">Construction Trade Acquisitions</h3>
+                                <h3 class="subcard-title">Architectural Trade &amp; Heavy Civil Integration</h3>
                                 <p class="subcard-desc">
-                                    Acquiring equity stakes and controlling interests in bottleneck trade companies: high-end architectural concrete/formwork, heavy civil earthmoving, mass timber framing, and mechanical systems.
+                                    Acquiring equity stakes and operational control across bottleneck construction trades: architectural board-formed concrete, heavy civil earthmoving, custom millwork, and mechanical systems.
                                 </p>
-                                <ul class="subcard-list">
-                                    <li>&bull; <strong>Margin Capture:</strong> Eliminates trade markups, capturing 15%–25% subcontractor profit margins in-house.</li>
-                                    <li>&bull; <strong>Guaranteed Schedule:</strong> Completely eliminates labor shortages and subcontractor scheduling delays.</li>
-                                    <li>&bull; <strong>Independent Cash Flow:</strong> Generates profitable commercial contracting revenue beyond internal developments.</li>
+                                <ul class="subcard-list inv-subcard-list">
+                                    <li>
+                                        <strong>15%–25% Builder Margin Capture:</strong>
+                                        <span>Eliminates third-party subcontractor markups, retaining full construction profit margins inside the parent balance sheet.</span>
+                                    </li>
+                                    <li>
+                                        <strong>Guaranteed Critical-Path Schedule:</strong>
+                                        <span>Removes trade scheduling bottlenecks and labor delays across complex coastal, alpine, and urban multiplex builds.</span>
+                                    </li>
+                                    <li>
+                                        <strong>Independent Commercial Cash Flow:</strong>
+                                        <span>Generates external B2B contracting revenue alongside Keystone's internal real estate development pipeline.</span>
+                                    </li>
                                 </ul>
                             </div>
 
-                            <!-- Card 2: Proprietary AI Software & Autonomous Machine Swarms -->
-                            <div class="business-subcard">
+                            <!-- Card 2: Proprietary AI Software & Studio Automation -->
+                            <div class="business-subcard inv-equal-subcard">
                                 <div class="subcard-header">
-                                    <span class="subcard-tag-cyan">Sovereign Tech Infrastructure</span>
+                                    <span class="ks-p3-pill-blue inv-subcard-pill">
+                                        <span class="ks-wave-text">02 &bull; SOVEREIGN AI INFRASTRUCTURE</span>
+                                    </span>
                                     <span class="subcard-icon">🤖</span>
                                 </div>
-                                <h3 class="subcard-title">Proprietary Construction AI Platforms</h3>
+                                <h3 class="subcard-title">Proprietary Builder AI &amp; Studio Platforms</h3>
                                 <p class="subcard-desc">
-                                    Capital investment in Keystone's proprietary FastMCP Autonomous multi-agent swarms, automated municipal zoning yield parsers, and computer vision drone site monitoring systems.
+                                    Direct capital investment into Keystone's local-first multi-agent engineering workflows, automated municipal zoning feasibility parsers, and custom Tauri desktop command centers.
                                 </p>
-                                <ul class="subcard-list">
-                                    <li>&bull; <strong>Zero-Cloud Dependency:</strong> Self-hosted local workstations running private multi-agent models with zero recurring SaaS rents.</li>
-                                    <li>&bull; <strong>Compression of Soft Costs:</strong> Automating architectural compliance, civil estimating, and regulatory filings at machine speed.</li>
-                                    <li>&bull; <strong>Multiple Expansion:</strong> Transforming linear construction projects into scalable enterprise technology platforms commanding 4x–7x EBITDA valuations.</li>
+                                <ul class="subcard-list inv-subcard-list">
+                                    <li>
+                                        <strong>Zero Monthly SaaS Cloud Lock-In:</strong>
+                                        <span>Self-hosted workstation architectures running private multi-agent workflows with 100% principal code ownership.</span>
+                                    </li>
+                                    <li>
+                                        <strong>Soft-Cost &amp; Feasibility Compression:</strong>
+                                        <span>Automates BC Building Code / Bill 44 multiplex pro-formas, architectural takeoffs, and technical media production at machine speed.</span>
+                                    </li>
+                                    <li>
+                                        <strong>High-Margin Digital IP Valuation:</strong>
+                                        <span>Pairs tangible civil construction assets with 95%+ gross-margin digital products and global 432Hz streaming royalties.</span>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -336,79 +404,137 @@ $theme_uri = get_stylesheet_directory_uri();
                 </section>
 
                 <!-- ==============================================================
-                     5. FIDUCIARY GOVERNANCE & RISK MATRIX
+                     5. THE FOUR PRINCIPLES OF FIDUCIARY ENGINEERING (4 EQUAL CARDS)
                      ============================================================== -->
-                <section class="investments-risk-section">
-                    <div class="risk-matrix-card">
+                <section class="investments-risk-section" id="fiduciary-principles">
+                    <div class="risk-matrix-card inv-risk-master-card">
                         <div class="risk-card-header text-center">
-                            <span class="section-tag-gold">RISK MITIGATION STANDARD</span>
-                            <h2 class="risk-section-title">The Four Principles of Fiduciary Engineering</h2>
+                            <span class="ks-p3-pill-gold inv-section-kicker">
+                                <span class="ks-wave-text">FIDUCIARY GOVERNANCE &amp; RISK MITIGATION STANDARD</span>
+                            </span>
+                            <h2 class="risk-section-title">
+                                The Four Principles of <span class="cyan-gold-gradient-text">Fiduciary Engineering</span>
+                            </h2>
                             <p class="risk-section-desc">
-                                We operate on the foundational rule of civil engineering: calculate catastrophic shear loads before measuring architectural aesthetics.
+                                We govern capital allocation by the first law of structural civil engineering: calculate catastrophic shear loads and downside protection before measuring architectural upside.
                             </p>
                         </div>
 
-                        <div class="risk-principles-grid">
-                            <div class="risk-principle-item">
-                                <div class="risk-icon-wrap">⚖️</div>
+                        <div class="risk-principles-grid inv-risk-4grid">
+                            <div class="risk-principle-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-gold inv-mini-tag"><span class="ks-wave-text">PRINCIPLE 01</span></span>
+                                    <span class="inv-principle-icon">⚖️</span>
+                                </div>
                                 <h4>Sovereign IP Ownership</h4>
-                                <p>100% direct principal ownership across 28-agent FastMCP codebases, recorded AI video vaults, and 216 mastered 432Hz ISRC recordings.</p>
+                                <p>100% direct principal ownership across our AI Brain blueprints, multi-agent software architectures, custom desktop studio builds, and 22 official 432Hz studio master releases.</p>
                             </div>
-                            <div class="risk-principle-item">
-                                <div class="risk-icon-wrap">🧱</div>
-                                <h4>Bedrock Asset &amp; Digital IP Backing</h4>
-                                <p>Capital deployed across Autonomous AI Workstations, Quantitative Digital IP, and international real estate is anchored by fee-simple title, Fideicomiso bank trusts, and zero-debt local hardware.</p>
+                            <div class="risk-principle-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-blue inv-mini-tag"><span class="ks-wave-text">PRINCIPLE 02</span></span>
+                                    <span class="inv-principle-icon">🧱</span>
+                                </div>
+                                <h4>Tangible Bedrock Backing</h4>
+                                <p>Every capital allocation is anchored by fee-simple real estate title, Article 27 Fideicomiso bank trusts, ring-fenced European SPVs, and debt-free local workstation hardware.</p>
                             </div>
-                            <div class="risk-principle-item">
-                                <div class="risk-icon-wrap">📐</div>
-                                <h4>Mathematical Precision</h4>
-                                <p>Algorithmic models enforce strict positive expected value thresholds (EV &ge; +15%), Rule 25 trailing profit locks, and an inviolable 40% Cash Fortress floor.</p>
+                            <div class="risk-principle-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-gold inv-mini-tag"><span class="ks-wave-text">PRINCIPLE 03</span></span>
+                                    <span class="inv-principle-icon">📐</span>
+                                </div>
+                                <h4>Mathematical Risk Discipline</h4>
+                                <p>Quantitative treasury operations enforce strict +15% expected-value hurdles, automated trailing profit-locks, and an inviolable 40% liquid cash fortress reserve.</p>
                             </div>
-                            <div class="risk-principle-item">
-                                <div class="risk-icon-wrap">🔐</div>
-                                <h4>Data &amp; Code Sovereignty</h4>
-                                <p>All operational workflows, machine learning models, and media masters are hosted on sovereign local hardware with zero third-party platform counterparty risk.</p>
+                            <div class="risk-principle-item inv-equal-principle-card">
+                                <div class="inv-principle-top-row">
+                                    <span class="ks-p3-pill-blue inv-mini-tag"><span class="ks-wave-text">PRINCIPLE 04</span></span>
+                                    <span class="inv-principle-icon">🔐</span>
+                                </div>
+                                <h4>Local-First Data &amp; Code Security</h4>
+                                <p>All proprietary engineering workflows, media production pipelines, and financial models execute on sovereign local hardware with zero third-party platform counterparty risk.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- ==============================================================
-                     6. PRIVATE EXECUTIVE ENGAGEMENT GATEWAY (BOTTOM)
+                     6. REVAMPED PRIVATE EXECUTIVE ENGAGEMENT GATEWAY (BOTTOM)
                      ============================================================== -->
-                <section class="investments-cta-section text-center" id="executive-gateway">
-                    <div class="investments-cta-card">
-                        <div class="cta-badge-pill">PRIVATE STRATEGIC ENGAGEMENT &bull; CONFIDENTIAL REVIEW</div>
-                        <h2 class="cta-title">
-                            Direct Principal Engagement:<br>
-                            <span class="cyan-gold-gradient-text">Wayne Stevenson // Builder</span>
-                        </h2>
-                        <p class="cta-desc">
-                            We selectively review custom enterprise Autonomous AI Workstation buildouts, Quantitative Digital IP partnerships, 432Hz commercial sync licensing, and international co-investments across Mexico and the European Union. Discussions are conducted directly with Wayne Stevenson under strict non-disclosure agreements.
-                        </p>
-
-                        <!-- Direct Email Only Box (Strictly NO Phone Number) -->
-                        <div class="direct-email-gateway-box">
-                            <span class="gateway-email-label">DIRECT EXECUTIVE CONTACT (EMAIL ONLY):</span>
-                            <a href="mailto:keystonerecomposition@gmail.com" class="gateway-email-address">
-                                keystonerecomposition@gmail.com
-                            </a>
-                            <p class="gateway-email-notice">
-                                To protect focus and project execution, phone inquiries are not accepted. Qualified private investors and prospective partners are invited to email Wayne Stevenson directly for prompt, confidential review.
+                <section class="investments-cta-section" id="executive-gateway">
+                    <div class="investments-cta-card inv-private-portal-card">
+                        
+                        <div class="inv-portal-header text-center">
+                            <span class="ks-p3-pill-gold inv-section-kicker">
+                                <span class="ks-wave-text">PRIVATE STRATEGIC ENGAGEMENT &bull; CONFIDENTIAL REVIEW</span>
+                            </span>
+                            <h2 class="cta-title inv-portal-title">
+                                Direct Principal Engagement:<br>
+                                <span class="cyan-gold-gradient-text">Wayne Stevenson // Builder &amp; Architect</span>
+                            </h2>
+                            <p class="cta-desc inv-portal-subtitle">
+                                We selectively review custom AI Workstation &amp; Multi-Agent Swarm buildouts, 432Hz commercial sync licensing, and qualified real estate co-investments across British Columbia, Mexico, and the European Union. All discussions are conducted directly with Wayne Stevenson under strict non-disclosure agreements.
                             </p>
                         </div>
 
-                        <div class="cta-button-group">
-                            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-primary-gold">
-                                Schedule Consultation via Contact Page &rarr;
-                            </a>
-                            <a href="mailto:keystonerecomposition@gmail.com" class="btn-secondary-glass">
-                                Email Wayne Stevenson Directly &rarr;
-                            </a>
+                        <!-- 3 Equal Parallel Engagement Scope Cards -->
+                        <div class="inv-portal-scope-grid">
+                            <div class="inv-scope-item">
+                                <span class="ks-p3-pill-blue inv-scope-pill"><span class="ks-wave-text">01 // AI PROTOCOLS &amp; APPS</span></span>
+                                <h4>Custom AI &amp; Desktop Builds</h4>
+                                <p>Tier 01–03 AI Brain, Multi-Agent Swarm &amp; Custom Tauri Desktop Command Center onboarding and enterprise advisory.</p>
+                            </div>
+                            <div class="inv-scope-item">
+                                <span class="ks-p3-pill-gold inv-scope-pill"><span class="ks-wave-text">02 // 432HZ COMMERCIAL IP</span></span>
+                                <h4>Direct Master Sync Licensing</h4>
+                                <p>100% direct master and publishing clearance across 22 official 432Hz albums (216 studio tracks) for film, brand, and creator media.</p>
+                            </div>
+                            <div class="inv-scope-item">
+                                <span class="ks-p3-pill-blue inv-scope-pill"><span class="ks-wave-text">03 // INTERNATIONAL ASSETS</span></span>
+                                <h4>Mexico &amp; EU Co-Investment</h4>
+                                <p>Private architectural villa syndications in Riviera Nayarit, Mexico and heritage infill restoration across Portugal and Spain.</p>
+                            </div>
                         </div>
 
-                        <div class="cta-fiduciary-note">
-                            Strict Fiduciary Standards &bull; Non-Disclosure Agreements Honored &bull; Verified BC Housing Residential Builder #52603
+                        <!-- Level 2-Column Executive Contact Vault & Action Buttons -->
+                        <div class="inv-portal-bottom-split">
+                            
+                            <!-- Left Column: Direct Executive Email Vault (Strictly Email Only) -->
+                            <div class="direct-email-gateway-box inv-email-vault-box">
+                                <div class="inv-vault-badge-row">
+                                    <span class="ks-p3-pill-gold inv-vault-tag">
+                                        <span class="ks-wave-text">✉️ DIRECT EXECUTIVE CONTACT (EMAIL ONLY)</span>
+                                    </span>
+                                    <span class="inv-vault-nda-badge">NDA PROTECTED</span>
+                                </div>
+                                <a href="mailto:keystonerecomposition@gmail.com" class="gateway-email-address inv-email-link">
+                                    keystonerecomposition@gmail.com
+                                </a>
+                                <p class="gateway-email-notice inv-email-copy">
+                                    To protect deep engineering focus and active project execution, unscheduled phone calls are not accepted. Qualified partners and buyers are invited to email Wayne Stevenson directly or submit a brief via our Contact Portal.
+                                </p>
+                            </div>
+
+                            <!-- Right Column: 2 Equal Full-Width Pure-Black Pulsating Wave Action Buttons -->
+                            <div class="inv-portal-actions-col">
+                                <div class="inv-actions-card-head">
+                                    <span class="inv-actions-kicker">// INITIATE CONFIDENTIAL BRIEFING</span>
+                                    <h4>Select Your Preferred Channel</h4>
+                                    <p>Receive a direct principal response within 24–48 business hours.</p>
+                                </div>
+                                <div class="inv-portal-btn-stack">
+                                    <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="ks-p3-btn-gold inv-gateway-action-btn">
+                                        <span class="ks-wave-text">📅 Schedule Consultation via Contact Page &rarr;</span>
+                                    </a>
+                                    <a href="mailto:keystonerecomposition@gmail.com?subject=Confidential%20Principal%20Inquiry%20%E2%80%94%20Keystone%20Recomposition" class="ks-p3-btn-blue inv-gateway-action-btn">
+                                        <span class="ks-wave-text">✉️ Email Wayne Stevenson Directly &rarr;</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="cta-fiduciary-note inv-portal-fiduciary-footer">
+                            Strict Fiduciary Standards &bull; Non-Disclosure Agreements Honored &bull; Licensed BC Housing Builder #52603 &bull; Squamish, BC
                         </div>
                     </div>
                 </section>
