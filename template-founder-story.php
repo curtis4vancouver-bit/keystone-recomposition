@@ -349,9 +349,9 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					</div>
 
 					<div class="founder-domain-single-media">
-						<img src="<?php echo esc_url( $child_assets . '/trading_terminal_luxury.jpg' ); ?>"
-						     alt="Keystone Recomposition — -48 lb Physical Recomposition &amp; Quantitative Treasury Discipline"
-						     class="founder-domain-img"
+						<img src="<?php echo esc_url( $child_assets . '/wayne_cliff_recomposition.jpg' ); ?>"
+						     alt="Wayne Stevenson overlooking the Sea-to-Sky granite cliff precipice in Squamish, BC — -48 lb Physical Recomposition &amp; Quantitative Treasury Discipline"
+						     class="founder-domain-img founder-cliff-img"
 						     width="800" height="450"
 						     loading="lazy" />
 					</div>

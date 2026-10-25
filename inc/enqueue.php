@@ -5573,6 +5573,9 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       object-fit: cover !important;
       display: block !important;
     }
+    .keystone-founder-page .founder-domain-img.founder-cliff-img {
+      object-position: center 18% !important;
+    }
 
     /* Leveled Domain Titles, Summaries & 3-Row Inner Spec Stacks */
     .keystone-founder-page .founder-domain-title {
