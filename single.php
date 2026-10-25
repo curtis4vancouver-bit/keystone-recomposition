@@ -117,7 +117,7 @@ get_header(); ?>
                                 <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="ks-p3-btn-gold" style="min-height: 46px; padding: 0 24px; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;">
                                     <span class="ks-wave-text">Explore AI Protocols &rarr;</span>
                                 </a>
-                                <a href="<?php echo esc_url( home_url( '/intel-videos/' ) ); ?>" class="ks-p3-btn-blue" style="min-height: 46px; padding: 0 24px; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;">
+                                <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="ks-p3-btn-blue" style="min-height: 46px; padding: 0 24px; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;">
                                     <span class="ks-wave-text">&larr; Back to Intel &amp; Videos</span>
                                 </a>
                             </div>
