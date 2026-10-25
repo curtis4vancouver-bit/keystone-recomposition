@@ -4619,6 +4619,511 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         grid-template-columns: 1fr !important;
       }
     }
+
+    /* ==========================================================================
+     * 13. PAGE 6 (/lifestyle/ • template-lifestyle.php):
+     *     CENTERED CLEAN HERO, 6 EQUAL-HEIGHT PILLAR CARDS WITH 3 SUB-BOXES EACH,
+     *     4 EQUAL DAILY CADENCE CARDS & REVAMPED EXECUTIVE GATEWAY PORTAL
+     * ========================================================================== */
+    .keystone-lifestyle-page .lifestyle-hero-header {
+      padding: 28px 0 32px 0 !important;
+      text-align: center !important;
+      max-width: 980px !important;
+      margin: 0 auto 28px auto !important;
+    }
+    .keystone-lifestyle-page .text-center,
+    .keystone-lifestyle-page .pillars-section-intro,
+    .keystone-lifestyle-page .cadence-card-header,
+    .keystone-lifestyle-page .life-portal-header {
+      text-align: center !important;
+    }
+    .keystone-lifestyle-page .life-section-kicker {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 34px !important;
+      min-height: 34px !important;
+      padding: 0 18px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.71rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.07em !important;
+      line-height: 1 !important;
+      text-transform: uppercase !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-lifestyle-page .life-section-kicker .ks-wave-text {
+      height: auto !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      line-height: 1.15 !important;
+      display: inline-block !important;
+    }
+    .keystone-lifestyle-page .lifestyle-main-title {
+      margin: 6px 0 14px 0 !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(2.15rem, 3.6vw, 3.1rem) !important;
+      font-weight: 900 !important;
+      line-height: 1.15 !important;
+      color: #ffffff !important;
+      text-align: center !important;
+    }
+    .keystone-lifestyle-page .lifestyle-hero-subtitle {
+      max-width: 860px !important;
+      margin: 0 auto !important;
+      color: #cbd5e1 !important;
+      font-size: 0.98rem !important;
+      line-height: 1.65 !important;
+      text-align: center !important;
+    }
+    .keystone-lifestyle-page .pillars-section-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(1.75rem, 2.7vw, 2.35rem) !important;
+      font-weight: 900 !important;
+      line-height: 1.2 !important;
+      color: #ffffff !important;
+      margin: 12px 0 12px 0 !important;
+      text-align: center !important;
+    }
+    .keystone-lifestyle-page .pillars-section-desc {
+      max-width: 820px !important;
+      margin: 0 auto 24px auto !important;
+      color: #cbd5e1 !important;
+      font-size: 0.94rem !important;
+      line-height: 1.62 !important;
+      text-align: center !important;
+    }
+
+    /* Section 2: 6 Sovereign Pillars Grid (2 Rows of 3 Equal Parallel Cards) */
+    .keystone-lifestyle-page .life-six-pillars-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 26px !important;
+      align-items: stretch !important;
+      margin: 32px 0 56px 0 !important;
+    }
+    .keystone-lifestyle-page .life-six-pillars-grid > p {
+      display: none !important;
+    }
+    .keystone-lifestyle-page .lifestyle-pillar-card.life-level-pillar-card {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.42) !important;
+      border-radius: 20px !important;
+      padding: 24px 22px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.85) !important;
+    }
+    .keystone-lifestyle-page .lifestyle-pillar-card.life-level-pillar-card:nth-child(even) {
+      border-color: rgba(212, 175, 55, 0.48) !important;
+    }
+    .keystone-lifestyle-page .life-level-pillar-body {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      text-align: left !important;
+    }
+    .keystone-lifestyle-page .life-pillar-header-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 8px !important;
+      margin: 0 0 14px 0 !important;
+      min-height: 30px !important;
+    }
+    .keystone-lifestyle-page .life-pillar-badge {
+      padding: 4px 11px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.64rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      white-space: nowrap !important;
+    }
+    .keystone-lifestyle-page .life-pillar-subtag {
+      color: #94a3b8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      white-space: nowrap !important;
+    }
+    .keystone-lifestyle-page .life-level-pillar-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.22rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      line-height: 1.3 !important;
+      min-height: 2.65em !important;
+      margin: 0 0 12px 0 !important;
+      text-align: left !important;
+    }
+    .keystone-lifestyle-page .life-level-pillar-summary {
+      font-size: 0.84rem !important;
+      color: #cbd5e1 !important;
+      line-height: 1.56 !important;
+      min-height: 6.3em !important;
+      margin: 0 0 18px 0 !important;
+      text-align: left !important;
+    }
+    .keystone-lifestyle-page .life-level-detail-list {
+      display: grid !important;
+      grid-template-rows: repeat(3, 1fr) !important;
+      gap: 12px !important;
+      margin: 0 0 20px 0 !important;
+      flex: 1 1 auto !important;
+    }
+    .keystone-lifestyle-page .life-level-detail-box {
+      background: #070c16 !important;
+      border: 1px solid rgba(56, 189, 248, 0.22) !important;
+      border-radius: 12px !important;
+      padding: 13px 14px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 11px !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-lifestyle-page .life-level-detail-box strong {
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.84rem !important;
+      font-weight: 800 !important;
+      line-height: 1.32 !important;
+      display: block !important;
+      margin-bottom: 4px !important;
+    }
+    .keystone-lifestyle-page .life-level-detail-box span {
+      color: #cbd5e1 !important;
+      font-size: 0.78rem !important;
+      line-height: 1.48 !important;
+      display: block !important;
+    }
+    .keystone-lifestyle-page .life-level-pillar-footer {
+      margin-top: auto !important;
+      padding-top: 18px !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.24) !important;
+    }
+    .keystone-lifestyle-page .life-pillar-cta-btn {
+      width: 100% !important;
+      min-height: 48px !important;
+      height: 48px !important;
+      padding: 0 14px !important;
+      border-radius: 9999px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Section 3: Daily Operational Cadence (4 Equal Parallel Cards) */
+    .keystone-lifestyle-page .life-cadence-master-card {
+      background: linear-gradient(145deg, rgba(8, 13, 24, 0.96) 0%, #04070d 100%) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.44) !important;
+      border-radius: 24px !important;
+      padding: 36px 32px !important;
+      margin: 0 0 52px 0 !important;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85) !important;
+    }
+    .keystone-lifestyle-page .life-cadence-4grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      align-items: stretch !important;
+      margin: 24px 0 0 0 !important;
+    }
+    .keystone-lifestyle-page .life-cadence-4grid > p {
+      display: none !important;
+    }
+    .keystone-lifestyle-page .life-equal-cadence-card {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.38) !important;
+      border-radius: 18px !important;
+      padding: 22px 18px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.78) !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .keystone-lifestyle-page .life-equal-cadence-card:nth-child(odd) {
+      border-color: rgba(212, 175, 55, 0.45) !important;
+    }
+    .keystone-lifestyle-page .life-equal-cadence-card:hover {
+      transform: translateY(-3px) !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.28) !important;
+    }
+    .keystone-lifestyle-page .life-cadence-top-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 8px !important;
+      margin-bottom: 14px !important;
+      width: 100% !important;
+    }
+    .keystone-lifestyle-page .life-mini-tag {
+      padding: 4px 11px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.64rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+    }
+    .keystone-lifestyle-page .life-cadence-icon {
+      font-size: 1.35rem !important;
+      line-height: 1 !important;
+    }
+    .keystone-lifestyle-page .life-equal-cadence-card h4 {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.02rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      line-height: 1.32 !important;
+      min-height: 2.65em !important;
+      margin: 0 0 10px 0 !important;
+      text-align: left !important;
+    }
+    .keystone-lifestyle-page .life-equal-cadence-card p {
+      font-size: 0.81rem !important;
+      color: #cbd5e1 !important;
+      line-height: 1.56 !important;
+      margin: 0 !important;
+      text-align: left !important;
+      flex: 1 1 auto !important;
+    }
+
+    /* Section 4: Revamped Private Executive Engagement Gateway (#executive-contact) */
+    .keystone-lifestyle-page .life-private-portal-card {
+      background: linear-gradient(145deg, rgba(8, 13, 24, 0.98) 0%, #04070d 100%) !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.58) !important;
+      border-radius: 24px !important;
+      padding: 40px 36px !important;
+      margin: 0 0 56px 0 !important;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 32px rgba(212, 175, 55, 0.14) !important;
+    }
+    .keystone-lifestyle-page .life-portal-header {
+      text-align: center !important;
+      max-width: 860px !important;
+      margin: 0 auto 28px auto !important;
+    }
+    .keystone-lifestyle-page .life-portal-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(1.85rem, 2.8vw, 2.45rem) !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      line-height: 1.2 !important;
+      margin: 12px 0 12px 0 !important;
+      text-align: center !important;
+    }
+    .keystone-lifestyle-page .life-portal-subtitle {
+      max-width: 820px !important;
+      margin: 0 auto !important;
+      color: #cbd5e1 !important;
+      font-size: 0.94rem !important;
+      line-height: 1.62 !important;
+      text-align: center !important;
+    }
+    .keystone-lifestyle-page .life-portal-scope-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      align-items: stretch !important;
+      margin: 0 0 26px 0 !important;
+    }
+    .keystone-lifestyle-page .life-portal-scope-grid > p {
+      display: none !important;
+    }
+    .keystone-lifestyle-page .life-scope-item {
+      background: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.36) !important;
+      border-radius: 16px !important;
+      padding: 18px 18px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-lifestyle-page .life-scope-pill {
+      padding: 4px 11px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.64rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      margin-bottom: 10px !important;
+    }
+    .keystone-lifestyle-page .life-scope-item h4 {
+      margin: 0 0 6px 0 !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.02rem !important;
+      font-weight: 800 !important;
+    }
+    .keystone-lifestyle-page .life-scope-item p {
+      margin: 0 !important;
+      color: #cbd5e1 !important;
+      font-size: 0.80rem !important;
+      line-height: 1.5 !important;
+    }
+    .keystone-lifestyle-page .life-portal-bottom-split {
+      display: grid !important;
+      grid-template-columns: 1.08fr 0.92fr !important;
+      gap: 24px !important;
+      align-items: stretch !important;
+      margin: 0 0 22px 0 !important;
+    }
+    .keystone-lifestyle-page .life-portal-bottom-split > p {
+      display: none !important;
+    }
+    .keystone-lifestyle-page .direct-email-gateway-box.life-email-vault-box {
+      background: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+      border-radius: 18px !important;
+      padding: 24px 24px !important;
+      margin: 0 !important;
+      max-width: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-lifestyle-page .life-vault-badge-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 8px !important;
+      margin-bottom: 12px !important;
+    }
+    .keystone-lifestyle-page .life-vault-tag {
+      padding: 4px 12px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.65rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+    }
+    .keystone-lifestyle-page .life-vault-nda-badge {
+      color: #f6d365 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+    }
+    .keystone-lifestyle-page .life-email-link {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.42rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+      margin: 0 0 10px 0 !important;
+      text-align: left !important;
+    }
+    .keystone-lifestyle-page .life-email-copy {
+      margin: 0 !important;
+      color: #cbd5e1 !important;
+      font-size: 0.81rem !important;
+      line-height: 1.55 !important;
+      text-align: left !important;
+    }
+    .keystone-lifestyle-page .life-portal-actions-col {
+      background: #04070d !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
+      border-radius: 18px !important;
+      padding: 24px 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-lifestyle-page .life-actions-kicker {
+      display: block !important;
+      color: #f6d365 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.07em !important;
+      margin-bottom: 4px !important;
+    }
+    .keystone-lifestyle-page .life-actions-card-head h4 {
+      margin: 0 0 4px 0 !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.12rem !important;
+      font-weight: 800 !important;
+    }
+    .keystone-lifestyle-page .life-actions-card-head p {
+      margin: 0 0 14px 0 !important;
+      color: #94a3b8 !important;
+      font-size: 0.80rem !important;
+    }
+    .keystone-lifestyle-page .life-portal-btn-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+    .keystone-lifestyle-page .life-gateway-action-btn {
+      width: 100% !important;
+      min-height: 48px !important;
+      height: 48px !important;
+      padding: 0 20px !important;
+      border-radius: 9999px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.80rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-lifestyle-page .life-portal-fiduciary-footer {
+      text-align: center !important;
+      color: #94a3b8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
+      padding-top: 16px !important;
+      border-top: 1px solid rgba(212, 175, 55, 0.22) !important;
+    }
+
+    @media (max-width: 1080px) {
+      .keystone-lifestyle-page .life-cadence-4grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .keystone-lifestyle-page .life-six-pillars-grid,
+      .keystone-lifestyle-page .life-portal-scope-grid,
+      .keystone-lifestyle-page .life-portal-bottom-split {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    @media (max-width: 720px) {
+      .keystone-lifestyle-page .life-cadence-4grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
     </style>
     <script id="keystone-button-word-wave-init">
     document.addEventListener('DOMContentLoaded', function() {
