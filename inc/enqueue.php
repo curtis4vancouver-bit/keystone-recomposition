@@ -2918,6 +2918,690 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         min-height: 0 !important;
       }
     }
+    /* ==========================================================================
+     * 10. PAGE 3 (/intel-videos/ • home.php) & SINGLE POSTS (single.php):
+     *     CLEAN THUMBNAILS, PARALLEL CARDS, SEGMENTED COMMAND DOCK PAGINATION,
+     *     LONG-FORM (TOP 16:9) + SHORT-FORM (BOTTOM 9:16) & PURE-BLACK WAVE BUTTONS
+     * ========================================================================== */
+    .keystone-intel-archive .intel-archive-header {
+      margin-bottom: 2.6rem !important;
+      text-align: center !important;
+      max-width: 920px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .keystone-intel-archive .intel-telemetry-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 6px 16px !important;
+      margin-bottom: 14px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      cursor: pointer !important;
+    }
+    .keystone-intel-archive .archive-subtitle {
+      max-width: 820px !important;
+      margin: 12px auto 0 auto !important;
+      color: #cbd5e1 !important;
+      font-size: clamp(0.96rem, 1.25vw, 1.08rem) !important;
+      line-height: 1.65 !important;
+    }
+
+    /* Featured Hero Containers (Top AI Blue & Bottom Sound Gold) */
+    #recomp-featured-intel-container.recomp-featured-hero-wrap,
+    #recomp-featured-sound-container.recomp-featured-hero-wrap {
+      background: linear-gradient(145deg, rgba(8, 13, 24, 0.96) 0%, #04070d 100%) !important;
+      border-radius: 24px !important;
+      padding: 32px !important;
+      margin-bottom: 3.25rem !important;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85) !important;
+      position: relative !important;
+      z-index: 2 !important;
+      isolation: isolate !important;
+    }
+    #recomp-featured-intel-container.recomp-hero-blue {
+      border: 1.5px solid rgba(56, 189, 248, 0.55) !important;
+    }
+    #recomp-featured-sound-container.recomp-hero-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.62) !important;
+    }
+    .recomp-featured-layout {
+      display: grid !important;
+      grid-template-columns: 1.18fr 1fr !important;
+      gap: 34px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+    .recomp-featured-layout > p,
+    #recomp-intel-grid > p,
+    .recomp-blog-grid-section-wrap > p {
+      display: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+    .recomp-featured-left-col {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      gap: 16px !important;
+      min-width: 0 !important;
+      height: 100% !important;
+    }
+    .recomp-featured-video-frame {
+      position: relative !important;
+      width: 100% !important;
+      aspect-ratio: 16 / 9 !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      background: #000000 !important;
+    }
+    .recomp-featured-video-frame.recomp-frame-blue {
+      border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.14) !important;
+    }
+    .recomp-featured-video-frame.recomp-frame-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.5) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.14) !important;
+    }
+
+    /* 9:16 Companion Short Deck */
+    .recomp-featured-short-deck {
+      background: #04070d !important;
+      border-radius: 16px !important;
+      padding: 16px 18px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 18px !important;
+      margin-top: 0 !important;
+      box-sizing: border-box !important;
+    }
+    .recomp-featured-short-deck.recomp-short-deck-blue {
+      border: 1.5px solid rgba(56, 189, 248, 0.38) !important;
+    }
+    .recomp-featured-short-deck.recomp-short-deck-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.44) !important;
+    }
+    .recomp-featured-short-player-box {
+      position: relative !important;
+      width: 118px !important;
+      height: 210px !important;
+      min-width: 118px !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      background: #000000 !important;
+      flex-shrink: 0 !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.75) !important;
+    }
+    .recomp-featured-short-player-box.recomp-short-box-blue {
+      border: 1.5px solid rgba(56, 189, 248, 0.55) !important;
+    }
+    .recomp-featured-short-player-box.recomp-short-box-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.6) !important;
+    }
+    .recomp-featured-short-details {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    .recomp-short-kicker-pill {
+      padding: 3px 10px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      margin-bottom: 8px !important;
+    }
+    .recomp-featured-short-title {
+      margin: 0 0 6px 0 !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.0rem !important;
+      font-weight: 800 !important;
+      line-height: 1.3 !important;
+    }
+    .recomp-featured-short-desc {
+      margin: 0 0 12px 0 !important;
+      color: #cbd5e1 !important;
+      font-size: 0.80rem !important;
+      line-height: 1.48 !important;
+    }
+    .recomp-featured-short-actions {
+      display: flex !important;
+      gap: 8px !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+    }
+    .recomp-short-action-btn {
+      padding: 7px 14px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.76rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.03em !important;
+      text-decoration: none !important;
+    }
+
+    /* Featured Hero Right Column (Parallel Leveling with Left Column) */
+    .recomp-featured-content-wrap {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      min-width: 0 !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .recomp-featured-top-body {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .recomp-featured-meta-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      margin-bottom: 14px !important;
+      flex-wrap: wrap !important;
+    }
+    .recomp-cat-badge {
+      padding: 4px 12px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.70rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+    }
+    .recomp-meta-date {
+      color: #94a3b8 !important;
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+    }
+    .recomp-meta-read-pill {
+      padding: 3px 10px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.70rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+    }
+    .recomp-featured-h2 {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(1.45rem, 2.1vw, 1.9rem) !important;
+      font-weight: 900 !important;
+      line-height: 1.24 !important;
+      color: #ffffff !important;
+      margin: 0 0 14px 0 !important;
+      letter-spacing: -0.01em !important;
+    }
+    .recomp-featured-excerpt {
+      font-size: 0.95rem !important;
+      color: #cbd5e1 !important;
+      line-height: 1.68 !important;
+      margin: 0 0 18px 0 !important;
+    }
+    .recomp-featured-bottom-footer {
+      margin-top: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      width: 100% !important;
+    }
+    .recomp-author-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      padding: 14px 0 !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .recomp-author-avatar {
+      width: 48px !important;
+      height: 48px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      flex-shrink: 0 !important;
+    }
+    .recomp-avatar-blue {
+      border: 2px solid #38bdf8 !important;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35) !important;
+    }
+    .recomp-avatar-gold {
+      border: 2px solid #d4af37 !important;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.38) !important;
+    }
+    .recomp-author-name {
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      font-size: 0.94rem !important;
+      line-height: 1.2 !important;
+    }
+    .recomp-author-role {
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      margin-top: 2px !important;
+    }
+    .recomp-role-blue {
+      color: #38bdf8 !important;
+    }
+    .recomp-role-gold {
+      color: #f6d365 !important;
+    }
+    .recomp-featured-buttons-box {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .recomp-hero-cta-btn {
+      width: 100% !important;
+      min-height: 46px !important;
+      height: 46px !important;
+      padding: 0 22px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.84rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Section 3: Archive Grid Header & Segmented Command Dock Pagination (Top & Bottom) */
+    .recomp-blog-grid-section-wrap {
+      margin-top: 2.25rem !important;
+      padding-bottom: 24px !important;
+    }
+    .recomp-grid-header-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 18px !important;
+      margin-bottom: 2rem !important;
+      padding-bottom: 1.25rem !important;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.28) !important;
+    }
+    .recomp-grid-kicker {
+      color: #38bdf8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.74rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 4px !important;
+    }
+    .recomp-grid-heading {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem) !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      margin: 0 !important;
+      line-height: 1.22 !important;
+    }
+    .recomp-grid-controls-top {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex-wrap: wrap !important;
+    }
+    .recomp-page-telemetry-pill {
+      padding: 7px 14px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+    }
+
+    /* High-End Obsidian & Gold/Cyan Segmented Command Dock */
+    .recomp-command-dock {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 6px !important;
+      border-radius: 9999px !important;
+      background: rgba(6, 10, 19, 0.96) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.88), 0 0 22px rgba(56, 189, 248, 0.14) !important;
+      box-sizing: border-box !important;
+    }
+    .recomp-dock-top .recomp-dock-btn {
+      height: 38px !important;
+      min-height: 38px !important;
+      min-width: 102px !important;
+      padding: 0 15px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.76rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+    }
+    .recomp-pagination-bottom {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 2.25rem 0 5.5rem 0 !important;
+      width: 100% !important;
+    }
+    .recomp-dock-bottom {
+      padding: 8px !important;
+      gap: 10px !important;
+      border-color: rgba(212, 175, 55, 0.55) !important;
+    }
+    .recomp-dock-bottom .recomp-dock-bottom-btn {
+      width: 172px !important;
+      min-width: 172px !important;
+      max-width: 172px !important;
+      height: 44px !important;
+      min-height: 44px !important;
+      padding: 0 16px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.80rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 2x3 Chronological Technical Intel Cards (Clean Thumbnails & Equal Parallel Leveling) */
+    #recomp-intel-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 26px !important;
+      align-items: stretch !important;
+      margin-bottom: 1.5rem !important;
+    }
+    .recomp-grid-card {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.42) !important;
+      border-radius: 18px !important;
+      padding: 20px !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.78) !important;
+      cursor: pointer !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .recomp-grid-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.92), 0 0 24px rgba(56, 189, 248, 0.35) !important;
+    }
+    .recomp-card-top-body {
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
+    }
+    .recomp-card-thumb-frame {
+      position: relative !important;
+      width: 100% !important;
+      aspect-ratio: 16 / 9 !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      margin-bottom: 16px !important;
+      background: #000000 !important;
+      border: 1px solid rgba(56, 189, 248, 0.3) !important;
+    }
+    .recomp-card-thumb-img {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+      transition: transform 0.35s ease !important;
+    }
+    .recomp-grid-card:hover .recomp-card-thumb-img {
+      transform: scale(1.03) !important;
+    }
+    .recomp-card-meta-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-bottom: 10px !important;
+    }
+    .recomp-category-badge {
+      padding: 3px 10px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.68rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+    }
+    .recomp-card-date-label {
+      color: #94a3b8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.70rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.05em !important;
+    }
+    .recomp-card-title {
+      margin: 0 0 10px 0 !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.12rem !important;
+      font-weight: 800 !important;
+      line-height: 1.34 !important;
+      min-height: 3.0rem !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+    .recomp-card-excerpt {
+      margin: 0 0 16px 0 !important;
+      color: #cbd5e1 !important;
+      font-size: 0.86rem !important;
+      line-height: 1.56 !important;
+      min-height: 4.05rem !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 3 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+    .recomp-card-footer {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 10px !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.2) !important;
+      padding-top: 14px !important;
+      margin-top: auto !important;
+    }
+    .recomp-card-read-btn {
+      height: 36px !important;
+      min-height: 36px !important;
+      padding: 0 14px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.78rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.03em !important;
+    }
+    .recomp-card-readtime-pill {
+      height: 36px !important;
+      min-height: 36px !important;
+      padding: 0 12px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.68rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+    }
+
+    /* Single Post (single.php) 16:9 Top Long-Form Frame & 9:16 Bottom Vertical Short Frame */
+    .ks-single-long-video-frame,
+    body.single-post .watch-theater-embed {
+      position: relative !important;
+      width: 100% !important;
+      max-width: 940px !important;
+      aspect-ratio: 16 / 9 !important;
+      margin: 0 auto 26px auto !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.55) !important;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85), 0 0 24px rgba(56, 189, 248, 0.16) !important;
+      background: #000000 !important;
+    }
+    .ks-single-long-video-frame iframe,
+    body.single-post .watch-theater-embed iframe {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border: 0 !important;
+    }
+    .ks-single-short-9x16-frame {
+      position: relative !important;
+      width: 315px !important;
+      height: 560px !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      border: 2px solid #d4af37 !important;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.88), 0 0 22px rgba(56, 189, 248, 0.25) !important;
+      background: #04070d !important;
+    }
+
+    /* Page 3 & Single Post Unified Pure-Black (#04070d) Button & Pill Base + Hover Pulsating Wave */
+    .ks-p3-btn-blue,
+    .ks-p3-btn-gold,
+    .ks-p3-pill-blue,
+    .ks-p3-pill-gold {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      border-radius: 9999px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.82) !important;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .ks-p3-btn-blue,
+    .ks-p3-pill-blue {
+      border: 1.5px solid rgba(56, 189, 248, 0.78) !important;
+    }
+    .ks-p3-btn-gold,
+    .ks-p3-pill-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.85) !important;
+    }
+    .recomp-dock-btn.is-active {
+      border: 1.5px solid #f6d365 !important;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.45) !important;
+    }
+    .ks-p3-btn-blue .ks-wave-text,
+    .ks-p3-btn-gold .ks-wave-text,
+    .ks-p3-pill-blue .ks-wave-text,
+    .ks-p3-pill-gold .ks-wave-text {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background-image: none !important;
+      background-color: transparent !important;
+      animation: none !important;
+      display: inline-block !important;
+    }
+    .ks-p3-btn-blue:hover,
+    .ks-p3-pill-blue:hover,
+    .recomp-grid-card:hover .recomp-card-read-btn {
+      background: #04070d !important;
+      background-image: none !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.92), 0 0 22px rgba(56, 189, 248, 0.55) !important;
+      transform: translateY(-1px) !important;
+    }
+    .ks-p3-btn-gold:hover,
+    .ks-p3-pill-gold:hover,
+    .recomp-grid-card:hover .recomp-card-readtime-pill {
+      background: #04070d !important;
+      background-image: none !important;
+      border-color: #f6d365 !important;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.92), 0 0 22px rgba(212, 175, 55, 0.55) !important;
+      transform: translateY(-1px) !important;
+    }
+    .ks-p3-btn-blue:hover .ks-wave-text,
+    .ks-p3-pill-blue:hover .ks-wave-text,
+    .recomp-grid-card:hover .recomp-card-read-btn .ks-wave-text,
+    .recomp-grid-card:hover .recomp-category-badge .ks-wave-text {
+      background-image: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 16%,
+        #38bdf8 30%,
+        #00f2fe 40%,
+        #ffffff 52%,
+        #38bdf8 68%,
+        #00f2fe 78%,
+        #ffffff 92%,
+        #ffffff 100%
+      ) !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
+    }
+    .ks-p3-btn-gold:hover .ks-wave-text,
+    .ks-p3-pill-gold:hover .ks-wave-text,
+    .recomp-grid-card:hover .recomp-card-readtime-pill .ks-wave-text {
+      background-image: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 16%,
+        #f6d365 30%,
+        #ffd700 40%,
+        #ffffff 52%,
+        #d4af37 68%,
+        #ffd700 78%,
+        #ffffff 92%,
+        #ffffff 100%
+      ) !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
+    }
+
+    @media (max-width: 1080px) {
+      #recomp-intel-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .recomp-featured-layout {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    @media (max-width: 720px) {
+      #recomp-intel-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .recomp-command-dock {
+        flex-wrap: wrap !important;
+        border-radius: 20px !important;
+        justify-content: center !important;
+      }
+      .recomp-dock-bottom .recomp-dock-bottom-btn {
+        width: calc(50% - 6px) !important;
+        min-width: 135px !important;
+      }
+    }
     </style>
     <script id="keystone-button-word-wave-init">
     document.addEventListener('DOMContentLoaded', function() {
@@ -2963,7 +3647,11 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         '.badge-capacity-alert',
         '.matrix-tag',
         '.competitive-matrix-card .matrix-col h4',
-        '#submitAutomatedOrderBtn'
+        '#submitAutomatedOrderBtn',
+        '.ks-p3-btn-blue',
+        '.ks-p3-btn-gold',
+        '.ks-p3-pill-blue',
+        '.ks-p3-pill-gold'
       ].join(',');
       document.querySelectorAll(waveSelectors).forEach(function(btn) {
         if (btn.querySelector('.ks-wave-text')) {
