@@ -4223,7 +4223,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       font-size: 0.84rem !important;
       color: #cbd5e1 !important;
       line-height: 1.56 !important;
-      min-height: 6.3em !important;
+      min-height: 7.8em !important;
       margin: 0 0 18px 0 !important;
       text-align: left !important;
     }
@@ -4269,10 +4269,10 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       width: 100% !important;
       min-height: 48px !important;
       height: 48px !important;
-      padding: 0 18px !important;
+      padding: 0 14px !important;
       border-radius: 9999px !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: 0.78rem !important;
+      font-size: 0.72rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.04em !important;
       text-transform: uppercase !important;
