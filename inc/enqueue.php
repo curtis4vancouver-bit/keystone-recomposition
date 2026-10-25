@@ -3609,16 +3609,31 @@ function keystone_page1_hero_and_button_wave_engine(): void {
      *     100% CLEAN 1:1 ALBUM COVERS, PROTECTED UPC/ISRC METADATA,
      *     EQUAL-HEIGHT ALBUM CARDS & SEGMENTED COMMAND DOCK PAGINATION
      * ========================================================================== */
-    .keystone-sonic-universe-page .sonic-hero-18 {
-      padding: 40px 0 32px 0 !important;
+    .recomp-dock-btn,
+    .recomp-dock-btn.sonic-page-num-btn,
+    .recomp-dock-btn .ks-wave-text {
+      width: auto !important;
+      height: auto !important;
+      white-space: nowrap !important;
+    }
+    .recomp-dock-top .recomp-dock-btn.sonic-page-num-btn {
+      min-width: 114px !important;
+      padding: 8px 18px !important;
+    }
+    .recomp-dock-bottom .recomp-dock-btn.sonic-page-num-btn {
+      min-width: 148px !important;
+      padding: 11px 22px !important;
+    }
+    .keystone-sonic-universe-page .sonic-hero-section {
+      padding: 36px 0 18px 0 !important;
       text-align: center !important;
     }
     .keystone-sonic-universe-page .su-dsp-action-grid {
       display: grid !important;
       grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
       gap: 14px !important;
-      max-width: 960px !important;
-      margin: 22px auto 0 auto !important;
+      max-width: 1020px !important;
+      margin: 24px auto 0 auto !important;
       align-items: stretch !important;
     }
     .keystone-sonic-universe-page .su-dsp-action-grid > p {
@@ -3631,42 +3646,29 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       padding: 0 18px !important;
       border-radius: 9999px !important;
       font-family: 'Outfit', sans-serif !important;
-      font-size: 0.78rem !important;
+      font-size: 0.76rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.05em !important;
       text-transform: uppercase !important;
       text-decoration: none !important;
+      white-space: nowrap !important;
       box-sizing: border-box !important;
     }
-    .keystone-sonic-universe-page .su-synth-banner-wrap {
-      max-width: 860px !important;
-      margin: 24px auto 0 auto !important;
-      border-radius: 18px !important;
-      overflow: hidden !important;
-      border: 1.5px solid rgba(56, 189, 248, 0.38) !important;
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.78) !important;
-      background: #04070d !important;
-    }
-    .keystone-sonic-universe-page .su-synth-banner-img {
-      width: 100% !important;
-      max-height: 185px !important;
-      object-fit: cover !important;
-      display: block !important;
-      opacity: 0.92 !important;
-    }
 
-    /* Section 1B: Featured Music Video Card on /sonic-universe/ */
-    .keystone-sonic-universe-page .sonic-featured-video-section {
-      padding: 10px 0 28px 0 !important;
-    }
-    .keystone-sonic-universe-page #su-featured-music-container {
+    /* Section 1B: Featured Music Video Card on /sonic-universe/ (#su-featured-sound-container) */
+    #su-featured-sound-container.recomp-featured-hero-wrap {
+      background: linear-gradient(145deg, rgba(8, 13, 24, 0.96) 0%, #04070d 100%) !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.62) !important;
+      border-radius: 24px !important;
+      padding: 32px !important;
       margin-bottom: 1.5rem !important;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85) !important;
+      position: relative !important;
+      z-index: 2 !important;
+      isolation: isolate !important;
     }
 
     /* Section 2: 432Hz Music Graph Card & Toolbar Buttons */
-    .keystone-sonic-universe-page .sonic-graph-section-18 {
-      padding: 12px 0 36px 0 !important;
-    }
     .keystone-sonic-universe-page #sonicUniverseGraphCard {
       background: linear-gradient(145deg, rgba(8, 13, 24, 0.96) 0%, #04070d 100%) !important;
       border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
@@ -3674,77 +3676,64 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       padding: 24px !important;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
     }
-    .keystone-sonic-universe-page .sonic-graph-toolbar {
+    .keystone-sonic-universe-page .music-graph-toolbar {
       display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      flex-wrap: wrap !important;
-      gap: 14px !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
       margin-bottom: 16px !important;
     }
-    .keystone-sonic-universe-page .graph-toolbar-left,
-    .keystone-sonic-universe-page .graph-toolbar-modes,
-    .keystone-sonic-universe-page .graph-toolbar-presets {
+    .keystone-sonic-universe-page .graph-mode-pills,
+    .keystone-sonic-universe-page .graph-preset-pills {
       display: flex !important;
       align-items: center !important;
       gap: 8px !important;
       flex-wrap: wrap !important;
     }
-    .keystone-sonic-universe-page .graph-mode-pill,
-    .keystone-sonic-universe-page .freq-preset-chip,
-    .keystone-sonic-universe-page .sonic-play-pill {
-      padding: 8px 14px !important;
+    .keystone-sonic-universe-page .su-mode-btn,
+    .keystone-sonic-universe-page .su-preset-chip,
+    .keystone-sonic-universe-page .su-graph-play-pill {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      color: #ffffff !important;
+      padding: 8px 16px !important;
       border-radius: 9999px !important;
       font-family: 'JetBrains Mono', monospace !important;
       font-size: 0.72rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.05em !important;
+      white-space: nowrap !important;
       cursor: pointer !important;
     }
-    .keystone-sonic-universe-page .graph-mode-pill.active,
-    .keystone-sonic-universe-page .freq-preset-chip.active {
-      border-color: #f6d365 !important;
+    .keystone-sonic-universe-page .graph-mode-btn.su-mode-btn.active,
+    .keystone-sonic-universe-page .su-preset-chip.active {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      background-image: none !important;
+      color: #ffffff !important;
+      border: 1.5px solid #f6d365 !important;
       box-shadow: 0 0 16px rgba(212, 175, 55, 0.38) !important;
     }
-    .keystone-sonic-universe-page .sonic-canvas-wrapper {
-      position: relative !important;
-      border-radius: 16px !important;
-      overflow: hidden !important;
-      border: 1.5px solid rgba(56, 189, 248, 0.35) !important;
-      background: #020408 !important;
-    }
-    .keystone-sonic-universe-page #sonicUniverseCanvas {
-      display: block !important;
-      width: 100% !important;
-      height: 250px !important;
-    }
-    .keystone-sonic-universe-page .canvas-hud-overlay {
-      position: static !important;
-      display: grid !important;
-      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-      gap: 12px !important;
-      padding: 12px 16px !important;
-      background: #04070d !important;
-      border-top: 1px solid rgba(56, 189, 248, 0.28) !important;
-    }
-    .keystone-sonic-universe-page .hud-metric {
+    .keystone-sonic-universe-page .visualizer-hud-overlay {
       display: flex !important;
-      flex-direction: column !important;
-      gap: 2px !important;
-      text-align: left !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 16px !important;
+      margin-top: 14px !important;
+      padding-top: 14px !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.22) !important;
+      flex-wrap: wrap !important;
     }
-    .keystone-sonic-universe-page .hud-label {
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.65rem !important;
-      font-weight: 700 !important;
-      color: #64748b !important;
-      letter-spacing: 0.08em !important;
-    }
-    .keystone-sonic-universe-page .hud-val {
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.80rem !important;
-      font-weight: 800 !important;
-      color: #38bdf8 !important;
+    .keystone-sonic-universe-page .visualizer-hud-overlay .track-info {
+      background: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+      border-radius: 9999px !important;
+      padding: 8px 18px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      flex: 1 1 auto !important;
     }
 
     /* Section 3: 22-Album Catalog Grid — 100% Clean 1:1 Cover Art, Protected Metadata, Equal-Height Cards */
@@ -3764,7 +3753,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       border: 1.5px solid rgba(56, 189, 248, 0.42) !important;
       border-radius: 18px !important;
       padding: 18px !important;
-      display: flex !important;
+      display: flex;
       flex-direction: column !important;
       justify-content: space-between !important;
       height: 100% !important;
@@ -3773,6 +3762,10 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease !important;
       cursor: pointer !important;
       overflow: hidden !important;
+    }
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card[style*="display: none"],
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card[style*="display:none"] {
+      display: none !important;
     }
     .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover {
       transform: translateY(-4px) !important;
@@ -3806,7 +3799,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     .keystone-sonic-universe-page .album-card-art .art-play-overlay {
       display: none !important;
     }
-    .keystone-sonic-universe-page .album-card-body.su-clean-card-body {
+    .keystone-sonic-universe-page .album-card-details.su-clean-card-body {
       flex: 1 1 auto !important;
       display: flex !important;
       flex-direction: column !important;
@@ -3815,33 +3808,57 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       background: transparent !important;
       text-align: left !important;
     }
-    .keystone-sonic-universe-page .su-card-top-meta {
+    .keystone-sonic-universe-page .su-card-top-info {
       margin-bottom: 14px !important;
     }
-    .keystone-sonic-universe-page .album-card-title {
-      margin: 0 0 6px 0 !important;
+    .keystone-sonic-universe-page .su-genre-year-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 8px !important;
+      margin-bottom: 10px !important;
+    }
+    .keystone-sonic-universe-page .su-genre-pill {
+      padding: 4px 11px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.65rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+      white-space: nowrap !important;
+      max-width: calc(100% - 48px) !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .keystone-sonic-universe-page .su-release-year-label {
+      color: #94a3b8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      flex-shrink: 0 !important;
+    }
+    .keystone-sonic-universe-page .album-title.su-clean-album-title {
+      margin: 0 !important;
       color: #ffffff !important;
       font-family: 'Outfit', sans-serif !important;
       font-size: 1.18rem !important;
       font-weight: 800 !important;
       line-height: 1.3 !important;
-      min-height: 1.55em !important;
+      min-height: 1.5em !important;
       display: -webkit-box !important;
       -webkit-line-clamp: 1 !important;
       -webkit-box-orient: vertical !important;
       overflow: hidden !important;
     }
-    .keystone-sonic-universe-page .album-card-genre {
-      margin: 0 0 12px 0 !important;
-      color: #94a3b8 !important;
-      font-size: 0.84rem !important;
-      font-weight: 600 !important;
-      line-height: 1.4 !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
+    .keystone-sonic-universe-page .su-card-bottom-footer {
+      margin-top: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
     }
-    .keystone-sonic-universe-page .album-card-meta-row.su-clean-meta-row {
+    .keystone-sonic-universe-page .album-metadata-row.su-clean-meta-row {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
@@ -3850,8 +3867,8 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       padding-top: 12px !important;
       border-top: 1px solid rgba(56, 189, 248, 0.18) !important;
     }
-    .keystone-sonic-universe-page .su-meta-pill {
-      padding: 4px 11px !important;
+    .keystone-sonic-universe-page .su-meta-chip {
+      padding: 5px 12px !important;
       border-radius: 9999px !important;
       font-family: 'JetBrains Mono', monospace !important;
       font-size: 0.67rem !important;
@@ -3859,11 +3876,16 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       letter-spacing: 0.05em !important;
       white-space: nowrap !important;
     }
-    .keystone-sonic-universe-page .album-stream-btn.su-stream-card-btn {
+    .keystone-sonic-universe-page .album-actions-bar {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+    .keystone-sonic-universe-page .btn-open-album-modal.su-stream-card-btn {
       width: 100% !important;
       min-height: 44px !important;
       height: 44px !important;
-      margin-top: auto !important;
+      margin: 0 !important;
+      padding: 0 18px !important;
       border-radius: 9999px !important;
       font-family: 'Outfit', sans-serif !important;
       font-size: 0.78rem !important;
@@ -3876,7 +3898,8 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       border-color: #38bdf8 !important;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.9), 0 0 18px rgba(56, 189, 248, 0.48) !important;
     }
-    .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover .su-stream-card-btn .ks-wave-text {
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover .su-stream-card-btn .ks-wave-text,
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover .su-genre-pill .ks-wave-text {
       background-image: linear-gradient(
         90deg,
         #ffffff 0%,
@@ -3902,15 +3925,13 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       .keystone-sonic-universe-page #sonicAlbumGrid.discography-grid-18 {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       }
-      .keystone-sonic-universe-page .su-dsp-action-grid,
-      .keystone-sonic-universe-page .canvas-hud-overlay {
+      .keystone-sonic-universe-page .su-dsp-action-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       }
     }
     @media (max-width: 720px) {
       .keystone-sonic-universe-page #sonicAlbumGrid.discography-grid-18,
-      .keystone-sonic-universe-page .su-dsp-action-grid,
-      .keystone-sonic-universe-page .canvas-hud-overlay {
+      .keystone-sonic-universe-page .su-dsp-action-grid {
         grid-template-columns: 1fr !important;
       }
     }

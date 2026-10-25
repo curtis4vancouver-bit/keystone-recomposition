@@ -192,7 +192,7 @@ $feat_sound_link        = home_url( '/2026/10/23/heavy-civil-focus-keystone-reco
 $feat_sound_date        = 'October 2026';
 $feat_sound_long_id     = 'nKx8DiB_heM';
 $feat_sound_short_id    = '9Aa98IGWKpU';
-$feat_sound_kicker      = '🎵 24-BIT / 48kHz LOSSLESS MASTER • ISRC: QT4K52640747';
+$feat_sound_kicker      = '🎵 24-BIT / 48kHz LOSSLESS STUDIO MASTER • VERIFIED OAC';
 $feat_sound_short_title = 'Heavy Civil Focus — 9:16 Somatic Short';
 $feat_sound_short_desc  = '122 BPM Somatic Deep House & Solo Cello Vertical Drop • Too Lost Digital Distribution';
 
@@ -950,6 +950,8 @@ async function loadPublishedIntel() {
                 .replace(/New 2026 Keystone Engineering Briefing[\s\S]*/i, '')
                 .replace(/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i, '')
                 .replace(/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i, '')
+                .replace(/\s*\((?:ISRC|UPC)[^)]*\)/gi, '')
+                .replace(/\b(?:ISRC|UPC)\s*:?\s*[A-Z0-9-]{8,16}\b/gi, '')
                 .trim();
             if (cleanExcerpt.length > 20) {
                 featExcerpt.innerText = cleanExcerpt.substring(0, 240) + (cleanExcerpt.length > 240 ? '...' : '');

@@ -235,8 +235,8 @@ if ( $su_matched_post instanceof WP_Post ) {
                         <a href="https://music.youtube.com/search?q=Keystone+Recomposition" target="_blank" rel="noopener noreferrer" class="dsp-pill ks-p3-btn-blue su-dsp-btn" title="Stream on YouTube Music">
                             <span class="ks-wave-text">🎵 YouTube Music</span>
                         </a>
-                        <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="dsp-pill ks-p3-btn-gold su-dsp-btn" title="1-Click Subscribe to Keystone Recomposition">
-                            <span class="ks-wave-text">🔔 Subscribe (@KeyStoneRecomposition)</span>
+                        <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="dsp-pill ks-p3-btn-gold su-dsp-btn" title="1-Click Subscribe to @KeyStoneRecomposition on YouTube">
+                            <span class="ks-wave-text">🔔 Subscribe on YouTube</span>
                         </a>
                     </div>
 
