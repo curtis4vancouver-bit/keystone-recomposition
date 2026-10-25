@@ -183,7 +183,7 @@ if ( $su_matched_post instanceof WP_Post ) {
     $su_feat_title = html_entity_decode( wp_strip_all_tags( get_the_title( $su_matched_post ) ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
     $raw_ex        = ! empty( $su_matched_post->post_excerpt ) ? (string) $su_matched_post->post_excerpt : (string) $su_matched_post->post_content;
     $clean_ex      = keystone_su_clean_excerpt( $raw_ex, 240 );
-    if ( strlen( $clean_ex ) > 25 ) {
+    if ( strlen( $clean_ex ) > 45 && ! str_ends_with( $clean_ex, 'engin' ) && preg_match( '/[.!?…]$/u', $clean_ex ) ) {
         $su_feat_excerpt = $clean_ex;
     }
     $su_feat_link = (string) get_permalink( $su_matched_post );
@@ -287,7 +287,7 @@ if ( $su_matched_post instanceof WP_Post ) {
                                 <!-- Track Details & Audio Meta -->
                                 <div class="recomp-featured-short-details">
                                     <div id="su-featured-short-kicker" class="ks-p3-pill-gold recomp-short-kicker-pill">
-                                        <span class="ks-wave-text">🎵 24-BIT / 48kHz LOSSLESS STUDIO MASTER &bull; VERIFIED OAC</span>
+                                        <span class="ks-wave-text">🎵 24-BIT / 48kHz MASTER &bull; VERIFIED OAC</span>
                                     </div>
                                     <h4 id="su-featured-short-title" class="recomp-featured-short-title">
                                         <?php echo esc_html( $su_feat_short_title ); ?>
@@ -297,10 +297,10 @@ if ( $su_matched_post instanceof WP_Post ) {
                                     </p>
                                     <div class="recomp-featured-short-actions">
                                         <a id="su-featured-short-link" href="<?php echo esc_url( 'https://youtube.com/shorts/' . $su_feat_short_id ); ?>" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold recomp-short-action-btn">
-                                            <span class="ks-wave-text">▶ Watch 9:16 Short</span>
+                                            <span class="ks-wave-text">▶ 9:16 Short</span>
                                         </a>
                                         <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold recomp-short-action-btn">
-                                            <span class="ks-wave-text">🎧 Stream on Spotify</span>
+                                            <span class="ks-wave-text">🎧 Spotify OAC</span>
                                         </a>
                                         <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-blue recomp-short-action-btn">
                                             <span class="ks-wave-text">🔔 Subscribe</span>
@@ -762,7 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     .replace(/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i, '')
                     .replace(/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i, '')
                     .trim();
-                if (cleanEx.length > 20) {
+                if (cleanEx.length > 45 && !/engin$/i.test(cleanEx) && /[.!?…]$/u.test(cleanEx)) {
                     excerptEl.textContent = cleanEx.substring(0, 240) + (cleanEx.length > 240 ? '...' : '');
                 }
             }
