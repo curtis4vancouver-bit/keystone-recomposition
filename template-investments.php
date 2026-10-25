@@ -328,9 +328,6 @@ $theme_uri = get_stylesheet_directory_uri();
                     <div class="business-section-card inv-business-master-card">
                         
                         <div class="business-header text-center">
-                            <span class="ks-p3-pill-blue inv-section-kicker">
-                                <span class="ks-wave-text">AESTHETIC &amp; OPERATIONAL COMPOUNDING</span>
-                            </span>
                             <h2 class="business-title">
                                 Aesthetic Architecture, Strategic M&amp;A &amp;<br>
                                 <span class="cyan-gold-gradient-text">Vertical Trade Integration</span>

@@ -3948,17 +3948,43 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       max-width: 980px !important;
       margin: 0 auto 24px auto !important;
     }
+    .keystone-investments-page .text-center,
+    .keystone-investments-page .spotlight-header,
+    .keystone-investments-page .pillars-section-intro,
+    .keystone-investments-page .business-header,
+    .keystone-investments-page .risk-card-header {
+      text-align: center !important;
+    }
     .keystone-investments-page .inv-hero-top-pill,
     .keystone-investments-page .inv-section-kicker,
     .keystone-investments-page .inv-cluster-pill,
     .keystone-investments-page .inv-notice-pill {
-      padding: 6px 16px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 34px !important;
+      min-height: 34px !important;
+      padding: 0 18px !important;
       border-radius: 9999px !important;
       font-family: 'JetBrains Mono', monospace !important;
       font-size: 0.71rem !important;
       font-weight: 800 !important;
       letter-spacing: 0.07em !important;
+      line-height: 1 !important;
       text-transform: uppercase !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-investments-page .hero-badge-row .ks-wave-text,
+    .keystone-investments-page .inv-hero-top-pill .ks-wave-text,
+    .keystone-investments-page .inv-section-kicker .ks-wave-text,
+    .keystone-investments-page .inv-cluster-pill .ks-wave-text,
+    .keystone-investments-page .inv-notice-pill .ks-wave-text {
+      height: auto !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      line-height: 1.15 !important;
+      display: inline-block !important;
     }
     .keystone-investments-page .investments-main-title {
       margin: 14px 0 12px 0 !important;
