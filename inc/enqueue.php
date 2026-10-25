@@ -3602,6 +3602,318 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         min-width: 135px !important;
       }
     }
+    
+    /* ==========================================================================
+     * 11. PAGE 4 (/sonic-universe/ • template-sonic-universe.php):
+     *     AUTO-LOADED 16:9 + 9:16 MUSIC HERO, 432HZ GRAPH WAVE TOOLBAR,
+     *     100% CLEAN 1:1 ALBUM COVERS, PROTECTED UPC/ISRC METADATA,
+     *     EQUAL-HEIGHT ALBUM CARDS & SEGMENTED COMMAND DOCK PAGINATION
+     * ========================================================================== */
+    .keystone-sonic-universe-page .sonic-hero-18 {
+      padding: 40px 0 32px 0 !important;
+      text-align: center !important;
+    }
+    .keystone-sonic-universe-page .su-dsp-action-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 14px !important;
+      max-width: 960px !important;
+      margin: 22px auto 0 auto !important;
+      align-items: stretch !important;
+    }
+    .keystone-sonic-universe-page .su-dsp-action-grid > p {
+      display: none !important;
+    }
+    .keystone-sonic-universe-page .su-dsp-btn {
+      width: 100% !important;
+      min-height: 48px !important;
+      height: 48px !important;
+      padding: 0 18px !important;
+      border-radius: 9999px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.78rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-sonic-universe-page .su-synth-banner-wrap {
+      max-width: 860px !important;
+      margin: 24px auto 0 auto !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.38) !important;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.78) !important;
+      background: #04070d !important;
+    }
+    .keystone-sonic-universe-page .su-synth-banner-img {
+      width: 100% !important;
+      max-height: 185px !important;
+      object-fit: cover !important;
+      display: block !important;
+      opacity: 0.92 !important;
+    }
+
+    /* Section 1B: Featured Music Video Card on /sonic-universe/ */
+    .keystone-sonic-universe-page .sonic-featured-video-section {
+      padding: 10px 0 28px 0 !important;
+    }
+    .keystone-sonic-universe-page #su-featured-music-container {
+      margin-bottom: 1.5rem !important;
+    }
+
+    /* Section 2: 432Hz Music Graph Card & Toolbar Buttons */
+    .keystone-sonic-universe-page .sonic-graph-section-18 {
+      padding: 12px 0 36px 0 !important;
+    }
+    .keystone-sonic-universe-page #sonicUniverseGraphCard {
+      background: linear-gradient(145deg, rgba(8, 13, 24, 0.96) 0%, #04070d 100%) !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+      border-radius: 22px !important;
+      padding: 24px !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+    }
+    .keystone-sonic-universe-page .sonic-graph-toolbar {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 14px !important;
+      margin-bottom: 16px !important;
+    }
+    .keystone-sonic-universe-page .graph-toolbar-left,
+    .keystone-sonic-universe-page .graph-toolbar-modes,
+    .keystone-sonic-universe-page .graph-toolbar-presets {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      flex-wrap: wrap !important;
+    }
+    .keystone-sonic-universe-page .graph-mode-pill,
+    .keystone-sonic-universe-page .freq-preset-chip,
+    .keystone-sonic-universe-page .sonic-play-pill {
+      padding: 8px 14px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      cursor: pointer !important;
+    }
+    .keystone-sonic-universe-page .graph-mode-pill.active,
+    .keystone-sonic-universe-page .freq-preset-chip.active {
+      border-color: #f6d365 !important;
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.38) !important;
+    }
+    .keystone-sonic-universe-page .sonic-canvas-wrapper {
+      position: relative !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.35) !important;
+      background: #020408 !important;
+    }
+    .keystone-sonic-universe-page #sonicUniverseCanvas {
+      display: block !important;
+      width: 100% !important;
+      height: 250px !important;
+    }
+    .keystone-sonic-universe-page .canvas-hud-overlay {
+      position: static !important;
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 12px !important;
+      padding: 12px 16px !important;
+      background: #04070d !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.28) !important;
+    }
+    .keystone-sonic-universe-page .hud-metric {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2px !important;
+      text-align: left !important;
+    }
+    .keystone-sonic-universe-page .hud-label {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.65rem !important;
+      font-weight: 700 !important;
+      color: #64748b !important;
+      letter-spacing: 0.08em !important;
+    }
+    .keystone-sonic-universe-page .hud-val {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.80rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+    }
+
+    /* Section 3: 22-Album Catalog Grid — 100% Clean 1:1 Cover Art, Protected Metadata, Equal-Height Cards */
+    .keystone-sonic-universe-page #sonicAlbumGrid.discography-grid-18 {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 26px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+    .keystone-sonic-universe-page #sonicAlbumGrid > p {
+      display: none !important;
+    }
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card {
+      background: #04070d !important;
+      background-color: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.42) !important;
+      border-radius: 18px !important;
+      padding: 18px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.82) !important;
+      transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease !important;
+      cursor: pointer !important;
+      overflow: hidden !important;
+    }
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.92), 0 0 24px rgba(56, 189, 248, 0.28) !important;
+    }
+    .keystone-sonic-universe-page .album-card-art.su-clean-art-frame {
+      position: relative !important;
+      width: 100% !important;
+      aspect-ratio: 1 / 1 !important;
+      border-radius: 14px !important;
+      overflow: hidden !important;
+      background: #020408 !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      margin-bottom: 16px !important;
+      flex-shrink: 0 !important;
+    }
+    .keystone-sonic-universe-page .album-card-art.su-clean-art-frame img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+      transition: transform 0.35s ease !important;
+    }
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover .su-clean-art-frame img {
+      transform: scale(1.03) !important;
+    }
+    /* Ensure zero top badges or center overlays ever appear on the 1:1 album cover art */
+    .keystone-sonic-universe-page .album-card-art .art-badge-year,
+    .keystone-sonic-universe-page .album-card-art .art-badge-tracks,
+    .keystone-sonic-universe-page .album-card-art .art-play-overlay {
+      display: none !important;
+    }
+    .keystone-sonic-universe-page .album-card-body.su-clean-card-body {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      padding: 0 !important;
+      background: transparent !important;
+      text-align: left !important;
+    }
+    .keystone-sonic-universe-page .su-card-top-meta {
+      margin-bottom: 14px !important;
+    }
+    .keystone-sonic-universe-page .album-card-title {
+      margin: 0 0 6px 0 !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.18rem !important;
+      font-weight: 800 !important;
+      line-height: 1.3 !important;
+      min-height: 1.55em !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 1 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+    .keystone-sonic-universe-page .album-card-genre {
+      margin: 0 0 12px 0 !important;
+      color: #94a3b8 !important;
+      font-size: 0.84rem !important;
+      font-weight: 600 !important;
+      line-height: 1.4 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .keystone-sonic-universe-page .album-card-meta-row.su-clean-meta-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 8px !important;
+      margin: 0 !important;
+      padding-top: 12px !important;
+      border-top: 1px solid rgba(56, 189, 248, 0.18) !important;
+    }
+    .keystone-sonic-universe-page .su-meta-pill {
+      padding: 4px 11px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.67rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      white-space: nowrap !important;
+    }
+    .keystone-sonic-universe-page .album-stream-btn.su-stream-card-btn {
+      width: 100% !important;
+      min-height: 44px !important;
+      height: 44px !important;
+      margin-top: auto !important;
+      border-radius: 9999px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.78rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+    }
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover .su-stream-card-btn {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.9), 0 0 18px rgba(56, 189, 248, 0.48) !important;
+    }
+    .keystone-sonic-universe-page .album-card-18.su-clean-album-card:hover .su-stream-card-btn .ks-wave-text {
+      background-image: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 16%,
+        #38bdf8 30%,
+        #00f2fe 40%,
+        #ffffff 52%,
+        #38bdf8 68%,
+        #00f2fe 78%,
+        #ffffff 92%,
+        #ffffff 100%
+      ) !important;
+      background-size: 220% auto !important;
+      background-repeat: repeat !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+      animation: ksButtonWordWave 1.15s linear infinite !important;
+    }
+
+    @media (max-width: 1080px) {
+      .keystone-sonic-universe-page #sonicAlbumGrid.discography-grid-18 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .keystone-sonic-universe-page .su-dsp-action-grid,
+      .keystone-sonic-universe-page .canvas-hud-overlay {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+    @media (max-width: 720px) {
+      .keystone-sonic-universe-page #sonicAlbumGrid.discography-grid-18,
+      .keystone-sonic-universe-page .su-dsp-action-grid,
+      .keystone-sonic-universe-page .canvas-hud-overlay {
+        grid-template-columns: 1fr !important;
+      }
+    }
     </style>
     <script id="keystone-button-word-wave-init">
     document.addEventListener('DOMContentLoaded', function() {

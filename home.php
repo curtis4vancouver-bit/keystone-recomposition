@@ -129,6 +129,8 @@ function keystone_clean_intel_excerpt( string $raw_excerpt, int $max_chars = 235
     $text = (string) preg_replace( '/New 2026 Keystone Engineering Briefing[\s\S]*/i', '', $text );
     $text = (string) preg_replace( '/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i', '', $text );
     $text = (string) preg_replace( '/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i', '', $text );
+    $text = (string) preg_replace( '/\s*\((?:ISRC|UPC)[^)]*\)/i', '', $text );
+    $text = (string) preg_replace( '/\b(?:ISRC|UPC)\s*:?\s*[A-Z0-9-]{8,16}\b/i', '', $text );
     $text = trim( (string) preg_replace( '/\s+/', ' ', $text ) );
     if ( strlen( $text ) > $max_chars ) {
         $text = rtrim( substr( $text, 0, $max_chars ) ) . '...';
@@ -269,9 +271,7 @@ if ( $matched_sound_post instanceof WP_Post ) {
     } else {
         $feat_sound_short_id = $fallback_sound_short;
     }
-    if ( ! empty( $s_ids['isrc'] ) ) {
-        $feat_sound_kicker = '🎵 24-BIT / 48kHz LOSSLESS MASTER • ISRC: ' . $s_ids['isrc'];
-    }
+    $feat_sound_kicker = '🎵 24-BIT / 48kHz LOSSLESS STUDIO MASTER • VERIFIED OAC';
 
     $sound_parts            = explode( ':', $feat_sound_title );
     $sound_prefix           = trim( str_ireplace( 'Keystone Recomposition', '', $sound_parts[0] ) );
@@ -1023,6 +1023,8 @@ async function loadPublishedIntel() {
                     .replace(/New 2026 Keystone Engineering Briefing[\s\S]*/i, '')
                     .replace(/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i, '')
                     .replace(/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i, '')
+                    .replace(/\s*\((?:ISRC|UPC)[^)]*\)/gi, '')
+                    .replace(/\b(?:ISRC|UPC)\s*:?\s*[A-Z0-9-]{8,16}\b/gi, '')
                     .trim();
                 if (cleanSoundExcerpt.length > 20) {
                     soundExcerpt.innerText = cleanSoundExcerpt.substring(0, 240) + (cleanSoundExcerpt.length > 240 ? '...' : '');
@@ -1052,9 +1054,9 @@ async function loadPublishedIntel() {
                 }
                 if (soundShortLink) soundShortLink.href = 'https://youtube.com/shorts/' + activeSoundShortId;
             }
-            if (soundMedia.isrc && soundKicker) {
+            if (soundKicker) {
                 var kickerSpan = soundKicker.querySelector('.ks-wave-text') || soundKicker;
-                kickerSpan.textContent = '🎵 24-BIT / 48kHz LOSSLESS MASTER • ISRC: ' + soundMedia.isrc;
+                kickerSpan.textContent = '🎵 24-BIT / 48kHz LOSSLESS STUDIO MASTER • VERIFIED OAC';
             }
             if (decodedSoundTitle) {
                 var sPrefix = decodedSoundTitle.split(':')[0].replace(/Keystone Recomposition/i, '').trim();
@@ -1087,6 +1089,8 @@ async function loadPublishedIntel() {
                         .replace(/New 2026 Keystone Engineering Briefing[\s\S]*/i, '')
                         .replace(/^\/\/\s*2026[^\n\r.]*[\n\r.]*\s*/i, '')
                         .replace(/^\/\/\s*[A-Z0-9 _•&\/:-]{6,85}\s*/i, '')
+                        .replace(/\s*\((?:ISRC|UPC)[^)]*\)/gi, '')
+                        .replace(/\b(?:ISRC|UPC)\s*:?\s*[A-Z0-9-]{8,16}\b/gi, '')
                         .trim();
                     postExcerpt = cEx.substring(0, 130) + '...';
                 }
