@@ -4223,7 +4223,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       font-size: 0.84rem !important;
       color: #cbd5e1 !important;
       line-height: 1.56 !important;
-      min-height: 4.75em !important;
+      min-height: 6.3em !important;
       margin: 0 0 18px 0 !important;
       text-align: left !important;
     }
