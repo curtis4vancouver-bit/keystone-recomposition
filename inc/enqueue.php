@@ -5135,6 +5135,769 @@ function keystone_page1_hero_and_button_wave_engine(): void {
         grid-template-columns: 1fr !important;
       }
     }
+
+    /* ==========================================================================
+     * 14. PAGE 7 (/founder/ • template-founder-story.php):
+     *     CENTERED HERO, 2-COL EQUAL-HEIGHT PROFILE & FIDUCIARY SPLIT,
+     *     2x2 FOUR MASTERY DOMAINS GRID & SYMMETRICAL PRIVATE EXECUTIVE GATEWAY
+     * ========================================================================== */
+    .keystone-founder-page .founder-container {
+      max-width: 1320px !important;
+      margin: 0 auto !important;
+      padding: 0 24px 64px 24px !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page p:empty {
+      display: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 0 !important;
+    }
+
+    /* 14A. Clean Centered Executive Hero Header (Zero Top Button Clutter) */
+    .keystone-founder-page .founder-hero-header {
+      text-align: center !important;
+      max-width: 1080px !important;
+      margin: 0 auto 38px auto !important;
+      padding: 14px 0 0 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+    .keystone-founder-page .founder-hero-kicker,
+    .keystone-founder-page .founder-section-kicker {
+      display: inline-block !important;
+      color: #f6d365 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.73rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase !important;
+      margin: 0 auto 12px auto !important;
+      text-align: center !important;
+    }
+    .keystone-founder-page .founder-main-name {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(2.1rem, 3.6vw, 3.15rem) !important;
+      font-weight: 900 !important;
+      line-height: 1.16 !important;
+      letter-spacing: -0.02em !important;
+      color: #ffffff !important;
+      margin: 0 auto 16px auto !important;
+      text-align: center !important;
+    }
+    .keystone-founder-page .founder-lead-subtitle {
+      max-width: 900px !important;
+      margin: 0 auto 28px auto !important;
+      color: #cbd5e1 !important;
+      font-size: clamp(0.95rem, 1.18vw, 1.06rem) !important;
+      line-height: 1.66 !important;
+      text-align: center !important;
+    }
+
+    /* 4-Card Founder Benchmark Telemetry Row */
+    .keystone-founder-page .founder-telemetry-4grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+    }
+    .keystone-founder-page .founder-telemetry-4grid > p {
+      display: none !important;
+    }
+    .keystone-founder-page .founder-metric-card {
+      background: #04070d !important;
+      border-radius: 16px !important;
+      padding: 20px 16px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      text-align: center !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.82) !important;
+      transform: none !important;
+    }
+    .keystone-founder-page .founder-metric-card:hover {
+      transform: none !important;
+    }
+    .keystone-founder-page .founder-metric-card.founder-metric-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.52) !important;
+    }
+    .keystone-founder-page .founder-metric-card.founder-metric-blue {
+      border: 1.5px solid rgba(56, 189, 248, 0.48) !important;
+    }
+
+    /* 14B. Section 2: Balanced 2-Column Executive Profile & Fiduciary Credentials Split */
+    .keystone-founder-page .founder-top-profile-section {
+      margin: 0 0 54px 0 !important;
+    }
+    .keystone-founder-page .founder-top-profile-grid {
+      display: grid !important;
+      grid-template-columns: 0.88fr 1.12fr !important;
+      gap: 28px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+    .keystone-founder-page .founder-top-profile-grid > p {
+      display: none !important;
+    }
+    .keystone-founder-page .founder-portrait-card,
+    .keystone-founder-page .founder-philosophy-fiduciary-card,
+    .keystone-founder-page .founder-domain-card {
+      background: linear-gradient(155deg, rgba(8, 13, 24, 0.96) 0%, #04070d 100%) !important;
+      border-radius: 22px !important;
+      padding: 28px 26px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.86) !important;
+      transform: none !important;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+    .keystone-founder-page .founder-portrait-card:hover,
+    .keystone-founder-page .founder-philosophy-fiduciary-card:hover,
+    .keystone-founder-page .founder-domain-card:hover {
+      transform: none !important;
+    }
+    .keystone-founder-page .founder-card-gold {
+      border: 1.5px solid rgba(212, 175, 55, 0.56) !important;
+    }
+    .keystone-founder-page .founder-card-gold:hover {
+      border-color: #f6d365 !important;
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.94), 0 0 26px rgba(212, 175, 55, 0.26) !important;
+    }
+    .keystone-founder-page .founder-card-blue {
+      border: 1.5px solid rgba(56, 189, 248, 0.52) !important;
+    }
+    .keystone-founder-page .founder-card-blue:hover {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.94), 0 0 26px rgba(56, 189, 248, 0.26) !important;
+    }
+
+    /* Card Top Bar */
+    .keystone-founder-page .founder-card-top-bar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      margin: 0 0 18px 0 !important;
+    }
+    .keystone-founder-page .founder-card-pill {
+      padding: 5px 13px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.67rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      white-space: nowrap !important;
+    }
+    .keystone-founder-page .founder-card-cat {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.07em !important;
+      text-transform: uppercase !important;
+      text-align: right !important;
+    }
+    .keystone-founder-page .founder-cat-gold {
+      color: #f6d365 !important;
+    }
+    .keystone-founder-page .founder-cat-blue {
+      color: #38bdf8 !important;
+    }
+
+    /* Portrait Frame & 2x2 Quick Stat Grid */
+    .keystone-founder-page .founder-portrait-frame {
+      position: relative !important;
+      width: 100% !important;
+      aspect-ratio: 16 / 11 !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.55) !important;
+      background: #000000 !important;
+      margin: 0 0 18px 0 !important;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.85) !important;
+    }
+    .keystone-founder-page .founder-portrait-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 18% !important;
+      display: block !important;
+    }
+    .keystone-founder-page .founder-portrait-caption-bar {
+      position: absolute !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      padding: 10px 14px !important;
+      background: linear-gradient(180deg, rgba(4, 7, 13, 0.35) 0%, rgba(4, 7, 13, 0.94) 100%) !important;
+      border-top: 1px solid rgba(212, 175, 55, 0.35) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.07em !important;
+      color: #f8fafc !important;
+    }
+    .keystone-founder-page .portrait-status-dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: #38bdf8 !important;
+      box-shadow: 0 0 8px #38bdf8 !important;
+      flex-shrink: 0 !important;
+    }
+    .keystone-founder-page .founder-quick-2x2-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 12px !important;
+      margin: 0 0 20px 0 !important;
+      flex: 1 1 auto !important;
+    }
+    .keystone-founder-page .founder-quick-2x2-grid > p {
+      display: none !important;
+    }
+    .keystone-founder-page .founder-quick-stat-box {
+      background: #04070d !important;
+      border: 1px solid rgba(212, 175, 55, 0.32) !important;
+      border-radius: 14px !important;
+      padding: 14px 12px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      gap: 4px !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .quick-stat-val {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.32rem !important;
+      font-weight: 900 !important;
+      line-height: 1.15 !important;
+      white-space: nowrap !important;
+    }
+    .keystone-founder-page .quick-stat-val.gold-text {
+      color: #f6d365 !important;
+    }
+    .keystone-founder-page .quick-stat-val.cyan-text {
+      color: #38bdf8 !important;
+    }
+    .keystone-founder-page .quick-stat-lbl {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.62rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      color: #94a3b8 !important;
+      line-height: 1.25 !important;
+    }
+
+    /* Right Column: Philosophy & BC Housing #52603 Crest Box */
+    .keystone-founder-page .founder-philosophy-body {
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
+      text-align: left !important;
+    }
+    .keystone-founder-page .founder-section-h2 {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(1.5rem, 2.2vw, 1.95rem) !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      line-height: 1.22 !important;
+      margin: 0 0 14px 0 !important;
+    }
+    .keystone-founder-page .founder-quote-callout {
+      background: #04070d !important;
+      border-left: 3.5px solid #f6d365 !important;
+      border-top: 1px solid rgba(212, 175, 55, 0.25) !important;
+      border-right: 1px solid rgba(212, 175, 55, 0.25) !important;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+      border-radius: 0 14px 14px 0 !important;
+      padding: 15px 18px !important;
+      margin: 0 0 14px 0 !important;
+      color: #f8fafc !important;
+      font-size: 0.90rem !important;
+      font-style: italic !important;
+      line-height: 1.58 !important;
+    }
+    .keystone-founder-page .founder-narrative-para {
+      color: #cbd5e1 !important;
+      font-size: 0.87rem !important;
+      line-height: 1.62 !important;
+      margin: 0 0 12px 0 !important;
+    }
+    .keystone-founder-page .founder-narrative-para strong {
+      color: #ffffff !important;
+    }
+    .keystone-founder-page .founder-fiduciary-crest-box {
+      background: #04070d !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.48) !important;
+      border-radius: 16px !important;
+      padding: 16px 18px !important;
+      margin: auto 0 20px 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .fiduciary-crest-media {
+      flex-shrink: 0 !important;
+      width: 72px !important;
+      height: 72px !important;
+      border-radius: 14px !important;
+      overflow: hidden !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.55) !important;
+      background: #000000 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .keystone-founder-page .fiduciary-crest-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+    .keystone-founder-page .fiduciary-crest-copy {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 3px !important;
+      text-align: left !important;
+    }
+    .keystone-founder-page .fiduciary-crest-kicker {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.62rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      color: #f6d365 !important;
+    }
+    .keystone-founder-page .fiduciary-crest-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.02rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      margin: 0 !important;
+      line-height: 1.25 !important;
+    }
+    .keystone-founder-page .fiduciary-crest-desc {
+      color: #cbd5e1 !important;
+      font-size: 0.78rem !important;
+      line-height: 1.48 !important;
+      margin: 0 !important;
+    }
+
+    /* 14C. Section 3: The Four Founder Mastery Domains (2x2 Equal-Height Parallel Grid) */
+    .keystone-founder-page .founder-domains-section {
+      margin: 0 0 56px 0 !important;
+    }
+    .keystone-founder-page .founder-section-header {
+      text-align: center !important;
+      max-width: 920px !important;
+      margin: 0 auto 30px auto !important;
+    }
+    .keystone-founder-page .founder-domains-main-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(1.75rem, 2.7vw, 2.4rem) !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      line-height: 1.2 !important;
+      margin: 0 auto 12px auto !important;
+      text-align: center !important;
+    }
+    .keystone-founder-page .founder-domains-subtitle {
+      max-width: 820px !important;
+      margin: 0 auto !important;
+      color: #cbd5e1 !important;
+      font-size: 0.94rem !important;
+      line-height: 1.62 !important;
+      text-align: center !important;
+    }
+    .keystone-founder-page .founder-domains-2x2-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 28px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+    .keystone-founder-page .founder-domains-2x2-grid > p {
+      display: none !important;
+    }
+
+    /* Clean 16:9 Domain Media Frames (Zero Overlapping Tags) */
+    .keystone-founder-page .founder-domain-single-media {
+      width: 100% !important;
+      height: 224px !important;
+      min-height: 224px !important;
+      max-height: 224px !important;
+      border-radius: 14px !important;
+      overflow: hidden !important;
+      background: #000000 !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      margin: 0 0 18px 0 !important;
+    }
+    .keystone-founder-page .founder-domain-dual-media {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+      width: 100% !important;
+      height: 224px !important;
+      min-height: 224px !important;
+      max-height: 224px !important;
+      margin: 0 0 18px 0 !important;
+    }
+    .keystone-founder-page .founder-domain-dual-media > p {
+      display: none !important;
+    }
+    .keystone-founder-page .founder-media-half {
+      width: 100% !important;
+      height: 224px !important;
+      border-radius: 14px !important;
+      overflow: hidden !important;
+      background: #000000 !important;
+      border: 1px solid rgba(212, 175, 55, 0.35) !important;
+    }
+    .keystone-founder-page .founder-domain-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+
+    /* Leveled Domain Titles, Summaries & 3-Row Inner Spec Stacks */
+    .keystone-founder-page .founder-domain-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.28rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      line-height: 1.3 !important;
+      margin: 0 0 10px 0 !important;
+      min-height: 2.65em !important;
+      text-align: left !important;
+      display: flex !important;
+      align-items: flex-start !important;
+    }
+    .keystone-founder-page .founder-domain-summary {
+      color: #cbd5e1 !important;
+      font-size: 0.85rem !important;
+      line-height: 1.56 !important;
+      margin: 0 0 16px 0 !important;
+      min-height: 4.68em !important;
+      text-align: left !important;
+    }
+    .keystone-founder-page .founder-domain-spec-list {
+      display: grid !important;
+      grid-template-rows: repeat(3, 1fr) !important;
+      gap: 10px !important;
+      margin: 0 0 20px 0 !important;
+      flex: 1 1 auto !important;
+    }
+    .keystone-founder-page .founder-domain-spec-list > p {
+      display: none !important;
+    }
+    .keystone-founder-page .founder-domain-spec-item {
+      background: #04070d !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 12px !important;
+      padding: 12px 14px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .founder-card-gold .founder-domain-spec-item {
+      border-color: rgba(212, 175, 55, 0.24) !important;
+    }
+    .keystone-founder-page .founder-card-blue .founder-domain-spec-item {
+      border-color: rgba(56, 189, 248, 0.22) !important;
+    }
+    .keystone-founder-page .spec-icon {
+      font-size: 1.05rem !important;
+      line-height: 1.2 !important;
+      flex-shrink: 0 !important;
+      margin-top: 2px !important;
+    }
+    .keystone-founder-page .founder-domain-spec-item strong {
+      display: block !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.85rem !important;
+      font-weight: 800 !important;
+      line-height: 1.28 !important;
+      margin-bottom: 3px !important;
+    }
+    .keystone-founder-page .founder-domain-spec-item span {
+      display: block !important;
+      color: #94a3b8 !important;
+      font-size: 0.77rem !important;
+      line-height: 1.44 !important;
+    }
+
+    /* Card Footer & Full-Width Pure-Black Wave Buttons */
+    .keystone-founder-page .founder-card-footer {
+      margin-top: auto !important;
+      padding-top: 16px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      width: 100% !important;
+    }
+    .keystone-founder-page .founder-action-btn {
+      width: 100% !important;
+      min-height: 48px !important;
+      height: 48px !important;
+      padding: 0 18px !important;
+      border-radius: 9999px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.80rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 14D. Section 4: Revamped Private Executive Engagement Portal */
+    .keystone-founder-page .founder-cta-card.founder-executive-portal {
+      background: linear-gradient(150deg, rgba(8, 13, 24, 0.98) 0%, #04070d 100%) !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.62) !important;
+      border-radius: 26px !important;
+      padding: 40px 34px 30px 34px !important;
+      margin: 0 0 24px 0 !important;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 32px rgba(212, 175, 55, 0.14) !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .founder-portal-top-header {
+      text-align: center !important;
+      max-width: 880px !important;
+      margin: 0 auto 28px auto !important;
+    }
+    .keystone-founder-page .founder-portal-top-header .cta-title {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: clamp(1.75rem, 2.7vw, 2.35rem) !important;
+      font-weight: 900 !important;
+      color: #ffffff !important;
+      margin: 0 auto 12px auto !important;
+      text-align: center !important;
+    }
+    .keystone-founder-page .founder-portal-top-header .cta-desc {
+      max-width: 820px !important;
+      margin: 0 auto !important;
+      color: #cbd5e1 !important;
+      font-size: 0.92rem !important;
+      line-height: 1.62 !important;
+      text-align: center !important;
+    }
+    .keystone-founder-page .founder-portal-scope-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      align-items: stretch !important;
+      margin: 0 0 26px 0 !important;
+    }
+    .keystone-founder-page .founder-portal-scope-grid > p {
+      display: none !important;
+    }
+    .keystone-founder-page .founder-scope-item {
+      background: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.36) !important;
+      border-radius: 16px !important;
+      padding: 18px 18px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .founder-scope-pill {
+      padding: 4px 11px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.64rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+      margin-bottom: 10px !important;
+    }
+    .keystone-founder-page .founder-scope-item h4 {
+      margin: 0 0 6px 0 !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.02rem !important;
+      font-weight: 800 !important;
+    }
+    .keystone-founder-page .founder-scope-item p {
+      margin: 0 !important;
+      color: #cbd5e1 !important;
+      font-size: 0.80rem !important;
+      line-height: 1.5 !important;
+    }
+    .keystone-founder-page .founder-portal-bottom-split {
+      display: grid !important;
+      grid-template-columns: 1.08fr 0.92fr !important;
+      gap: 24px !important;
+      align-items: stretch !important;
+      margin: 0 0 22px 0 !important;
+    }
+    .keystone-founder-page .founder-portal-bottom-split > p {
+      display: none !important;
+    }
+    .keystone-founder-page .direct-email-gateway-box.founder-email-vault-box {
+      background: #04070d !important;
+      border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+      border-radius: 18px !important;
+      padding: 24px 24px !important;
+      margin: 0 !important;
+      max-width: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .founder-vault-badge-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 8px !important;
+      margin-bottom: 12px !important;
+    }
+    .keystone-founder-page .founder-vault-tag {
+      padding: 4px 12px !important;
+      border-radius: 9999px !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.65rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.05em !important;
+    }
+    .keystone-founder-page .founder-vault-nda-badge {
+      color: #f6d365 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+    }
+    .keystone-founder-page .founder-email-link {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.42rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+      margin: 0 0 10px 0 !important;
+      text-align: left !important;
+    }
+    .keystone-founder-page .founder-email-copy {
+      margin: 0 !important;
+      color: #cbd5e1 !important;
+      font-size: 0.81rem !important;
+      line-height: 1.55 !important;
+      text-align: left !important;
+    }
+    .keystone-founder-page .founder-portal-actions-col {
+      background: #04070d !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
+      border-radius: 18px !important;
+      padding: 24px 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      text-align: left !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .founder-actions-kicker {
+      display: block !important;
+      color: #f6d365 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.66rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.07em !important;
+      margin-bottom: 4px !important;
+    }
+    .keystone-founder-page .founder-actions-card-head h4 {
+      margin: 0 0 4px 0 !important;
+      color: #ffffff !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 1.12rem !important;
+      font-weight: 800 !important;
+    }
+    .keystone-founder-page .founder-actions-card-head p {
+      margin: 0 0 14px 0 !important;
+      color: #94a3b8 !important;
+      font-size: 0.80rem !important;
+    }
+    .keystone-founder-page .founder-portal-btn-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+    .keystone-founder-page .founder-gateway-action-btn {
+      width: 100% !important;
+      min-height: 48px !important;
+      height: 48px !important;
+      padding: 0 20px !important;
+      border-radius: 9999px !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 0.80rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+    }
+    .keystone-founder-page .founder-portal-fiduciary-footer {
+      text-align: center !important;
+      color: #94a3b8 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em !important;
+      padding-top: 16px !important;
+      border-top: 1px solid rgba(212, 175, 55, 0.22) !important;
+    }
+
+    @media (max-width: 1080px) {
+      .keystone-founder-page .founder-telemetry-4grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .keystone-founder-page .founder-top-profile-grid,
+      .keystone-founder-page .founder-domains-2x2-grid,
+      .keystone-founder-page .founder-portal-scope-grid,
+      .keystone-founder-page .founder-portal-bottom-split {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    @media (max-width: 720px) {
+      .keystone-founder-page .founder-telemetry-4grid,
+      .keystone-founder-page .founder-quick-2x2-grid,
+      .keystone-founder-page .founder-domain-dual-media {
+        grid-template-columns: 1fr !important;
+      }
+      .keystone-founder-page .founder-domain-dual-media {
+        height: auto !important;
+        max-height: none !important;
+      }
+      .keystone-founder-page .founder-fiduciary-crest-box {
+        flex-direction: column !important;
+        text-align: center !important;
+      }
+      .keystone-founder-page .fiduciary-crest-copy {
+        text-align: center !important;
+      }
+    }
     </style>
     <script id="keystone-button-word-wave-init">
     document.addEventListener('DOMContentLoaded', function() {
