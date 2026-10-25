@@ -4095,7 +4095,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
     }
     .keystone-investments-page .inv-equal-principle-card:hover {
-      transform: translateY(-3px) !important;
+      transform: none !important;
       border-color: #38bdf8 !important;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.28) !important;
     }
@@ -4720,8 +4720,19 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       box-sizing: border-box !important;
       box-shadow: 0 18px 44px rgba(0, 0, 0, 0.85) !important;
     }
+    .keystone-investments-page .investment-pillar-card.inv-level-pillar-card:hover,
+    .keystone-lifestyle-page .lifestyle-pillar-card.life-level-pillar-card:hover {
+      transform: none !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.92), 0 0 24px rgba(56, 189, 248, 0.25) !important;
+    }
     .keystone-lifestyle-page .lifestyle-pillar-card.life-level-pillar-card:nth-child(even) {
       border-color: rgba(212, 175, 55, 0.48) !important;
+    }
+    .keystone-lifestyle-page .lifestyle-pillar-card.life-level-pillar-card:nth-child(even):hover {
+      transform: none !important;
+      border-color: #f6d365 !important;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.92), 0 0 24px rgba(212, 175, 55, 0.28) !important;
     }
     .keystone-lifestyle-page .life-level-pillar-body {
       flex: 1 1 auto !important;
@@ -4757,7 +4768,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
     }
     .keystone-lifestyle-page .life-level-pillar-title {
       font-family: 'Outfit', sans-serif !important;
-      font-size: 1.22rem !important;
+      font-size: 1.13rem !important;
       font-weight: 800 !important;
       color: #ffffff !important;
       line-height: 1.3 !important;
@@ -4769,7 +4780,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       font-size: 0.84rem !important;
       color: #cbd5e1 !important;
       line-height: 1.56 !important;
-      min-height: 6.3em !important;
+      min-height: 7.6em !important;
       margin: 0 0 18px 0 !important;
       text-align: left !important;
     }
@@ -4865,7 +4876,7 @@ function keystone_page1_hero_and_button_wave_engine(): void {
       border-color: rgba(212, 175, 55, 0.45) !important;
     }
     .keystone-lifestyle-page .life-equal-cadence-card:hover {
-      transform: translateY(-3px) !important;
+      transform: none !important;
       border-color: #38bdf8 !important;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.28) !important;
     }
