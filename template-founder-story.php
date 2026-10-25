@@ -75,10 +75,10 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					</div>
 
 					<div class="founder-portrait-frame">
-						<img src="<?php echo esc_url( $child_assets . '/wayne_avatar.jpg' ); ?>"
+						<img src="<?php echo esc_url( $child_assets . '/wayne_possibilities_coastal_estate.jpg' ); ?>"
 						     alt="Wayne Stevenson — Founder of Keystone Recomposition &amp; Keystone Possibilities Ltd (BC Housing Licensed Builder #52603)"
 						     class="founder-portrait-img"
-						     width="640" height="640"
+						     width="800" height="450"
 						     loading="eager" fetchpriority="high" />
 						<div class="founder-portrait-caption-bar">
 							<span class="portrait-status-dot"></span>
@@ -247,8 +247,8 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					</div>
 
 					<div class="founder-domain-single-media">
-						<img src="<?php echo esc_url( $child_assets . '/ai_protocols_banner.png' ); ?>"
-						     alt="Keystone AI Protocols — AI Brain, Multi-Agent Swarms &amp; Custom Tauri Desktop Command Center"
+						<img src="<?php echo esc_url( $child_assets . '/wayne_ai_protocols_boardroom.jpg' ); ?>"
+						     alt="Wayne Stevenson in the Keystone AI Protocols Boardroom — AI Brain, Multi-Agent Swarms &amp; Custom Tauri Desktop Command Center"
 						     class="founder-domain-img"
 						     width="800" height="450"
 						     loading="lazy" />
