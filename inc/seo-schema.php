@@ -1213,7 +1213,7 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
         'purge_all_caches',
         'heal_video_meta',
         'run_keystone_migration',
-        'keystone_video_sitemap',
+        'keystone_video_sitemap', 'keystone_indexnow_ping', 'keystone_indexnow_key',
     );
 
     $known_301_sources = array(
@@ -1368,7 +1368,7 @@ function keystone_recomposition_child_seo_noindex() {
             // Internal Keystone endpoints
             'get_post_inventory', 'purge_all_caches', 'run_instant_indexing',
             'run_keystone_migration', 'heal_video_meta', 'check_rm_options',
-            'keystone_video_sitemap',
+            'keystone_video_sitemap', 'keystone_indexnow_ping', 'keystone_indexnow_key',
             // Rank Math / WP internals
             'replytocom', 'preview', 'preview_id', 'preview_nonce'
         );
@@ -1683,4 +1683,115 @@ function keystone_inject_city_landing_pages_geo_schema() {
         }
     }
 }
+/**
+ * 16. IndexNow Instant Search & AI Crawler Batch Ping (Bing, Copilot, ChatGPT Search, Yandex, Seznam, Naver)
+ * Serves verification key at /8f4b2e9a1c6d7e3f5a0b9c8d7e6f5a4b.txt and fires batch pings via ?keystone_indexnow_ping=1
+ * or automatically whenever a post/page is published.
+ */
+if ( ! defined( 'KEYSTONE_RECOMPOSITION_INDEXNOW_KEY' ) ) {
+    define( 'KEYSTONE_RECOMPOSITION_INDEXNOW_KEY', '8f4b2e9a1c6d7e3f5a0b9c8d7e6f5a4b' );
+}
 
+add_action( 'init', 'keystone_recomposition_handle_indexnow_endpoints', 0 );
+function keystone_recomposition_handle_indexnow_endpoints() {
+    $req_uri = $_SERVER['REQUEST_URI'] ?? '';
+    $path = strtok( (string) $req_uri, '?' );
+    $key = KEYSTONE_RECOMPOSITION_INDEXNOW_KEY;
+
+    // 1. Serve IndexNow Key Verification File (/8f4b2e9a1c6d7e3f5a0b9c8d7e6f5a4b.txt)
+    if ( $path === '/' . $key . '.txt' || isset( $_GET['keystone_indexnow_key'] ) ) {
+        status_header( 200 );
+        header( 'Content-Type: text/plain; charset=utf-8' );
+        header( 'Cache-Control: public, max-age=86400' );
+        echo $key;
+        exit;
+    }
+
+    // 2. On-Demand Batch Ping (?keystone_indexnow_ping=1)
+    if ( isset( $_GET['keystone_indexnow_ping'] ) ) {
+        $result = keystone_recomposition_execute_indexnow_batch_ping();
+        status_header( 200 );
+        header( 'Content-Type: application/json; charset=utf-8' );
+        header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
+        echo wp_json_encode( $result, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+        exit;
+    }
+}
+
+function keystone_recomposition_execute_indexnow_batch_ping( $specific_urls = array() ) {
+    $key = KEYSTONE_RECOMPOSITION_INDEXNOW_KEY;
+    $host = wp_parse_url( home_url(), PHP_URL_HOST );
+    $key_location = home_url( '/' . $key . '.txt' );
+
+    $url_list = array();
+    if ( ! empty( $specific_urls ) ) {
+        $url_list = array_values( array_unique( $specific_urls ) );
+    } else {
+        $url_list[] = home_url( '/' );
+        $url_list[] = home_url( '/ai-protocols/' );
+        $url_list[] = home_url( '/sonic-universe/' );
+        $url_list[] = home_url( '/founder/' );
+        $url_list[] = home_url( '/sitemap_index.xml' );
+        $url_list[] = home_url( '/keystone-video-sitemap.xml' );
+
+        $posts = get_posts( array(
+            'post_type'   => array( 'post', 'page' ),
+            'post_status' => 'publish',
+            'numberposts' => 100,
+        ) );
+        foreach ( $posts as $p ) {
+            $permalink = get_permalink( $p->ID );
+            if ( $permalink ) {
+                $url_list[] = $permalink;
+            }
+        }
+
+        // Include retired legacy URLs so IndexNow engines immediately process their 301 redirects
+        $retired_slugs = array(
+            '/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/',
+            '/2026/09/28/sovereign-reverb-functional-frequency-architecture/',
+            '/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/',
+            '/watch-heavy-civil-focus-deep-house-4k-music-video/',
+        );
+        foreach ( $retired_slugs as $slug ) {
+            $url_list[] = home_url( $slug );
+        }
+        $url_list = array_values( array_unique( $url_list ) );
+    }
+
+    $payload = array(
+        'host'        => $host,
+        'key'         => $key,
+        'keyLocation' => $key_location,
+        'urlList'     => $url_list,
+    );
+
+    $response = wp_remote_post( 'https://api.indexnow.org/indexnow', array(
+        'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+        'body'    => wp_json_encode( $payload ),
+        'timeout' => 15,
+    ) );
+
+    $http_code = is_wp_error( $response ) ? 0 : (int) wp_remote_retrieve_response_code( $response );
+    $body_text = is_wp_error( $response ) ? $response->get_error_message() : wp_remote_retrieve_body( $response );
+
+    return array(
+        'domain'          => $host,
+        'engine'          => 'https://api.indexnow.org/indexnow',
+        'http_code'       => $http_code,
+        'accepted'        => in_array( $http_code, array( 200, 202 ), true ),
+        'key_location'    => $key_location,
+        'submitted_count' => count( $url_list ),
+        'response_body'   => $body_text,
+        'url_list'        => $url_list,
+    );
+}
+
+add_action( 'transition_post_status', 'keystone_recomposition_auto_ping_indexnow_on_publish', 20, 3 );
+function keystone_recomposition_auto_ping_indexnow_on_publish( $new_status, $old_status, $post ) {
+    if ( 'publish' !== $new_status || ! in_array( $post->post_type, array( 'post', 'page' ), true ) ) {
+        return;
+    }
+    $urls = array( get_permalink( $post->ID ), home_url( '/' ), home_url( '/sitemap_index.xml' ), home_url( '/keystone-video-sitemap.xml' ) );
+    keystone_recomposition_execute_indexnow_batch_ping( $urls );
+}
