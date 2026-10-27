@@ -602,25 +602,12 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
         }
 
         // Connect Article, NewsArticle, BlogPosting, TechArticle, WebPage author to Wayne's Person ID
-        // and attach extracted PubMed citations to Article/TechArticle nodes
-        $citations = array();
-        if ( is_singular( 'post' ) && function_exists( 'keystone_extract_pubmed_citations' ) ) {
-            global $post;
-            if ( $post && ! empty( $post->post_content ) ) {
-                $citations = keystone_extract_pubmed_citations( (string) $post->post_content );
-            }
-        }
-
         foreach ( $data['@graph'] as $idx => $node ) {
             if ( isset( $node['@type'] ) ) {
                 $types = (array) $node['@type'];
                 if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage' ) ) ) {
                     if ( empty( $node['author'] ) || ( isset( $node['author']['@type'] ) && 'Person' === $node['author']['@type'] ) ) {
                         $data['@graph'][ $idx ]['author'] = array( '@id' => $person_id );
-                    }
-                    if ( ! empty( $citations ) && array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle' ) ) ) {
-                        $existing_citations = isset( $node['citation'] ) ? (array) $node['citation'] : array();
-                        $data['@graph'][ $idx ]['citation'] = array_merge( $existing_citations, $citations );
                     }
                 }
             }
@@ -634,11 +621,6 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
     }
     if ( isset( $data['publisher'] ) && is_array( $data['publisher'] ) && isset( $data['publisher']['@type'] ) && 'Person' === $data['publisher']['@type'] ) {
         $data['publisher'] = array_merge( $data['publisher'], $person_node );
-    }
-
-    if ( is_singular( 'post' ) && ! empty( $citations ) && isset( $data['Article'] ) && is_array( $data['Article'] ) ) {
-        $existing_citations = isset( $data['Article']['citation'] ) ? (array) $data['Article']['citation'] : array();
-        $data['Article']['citation'] = array_merge( $existing_citations, $citations );
     }
 
     return $data;
@@ -987,47 +969,6 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
     return $data;
 }
 
-/**
- * 8.3 Automated PubMed PMID Citation Extractor
- * Parses content for PubMed URLs (pubmed.ncbi.nlm.nih.gov/{pmid}) or PMID: {pmid} notations
- * and formats them as Schema.org ScholarlyArticle citation objects.
- *
- * @param string $content Post content HTML or raw string.
- * @return array List of Schema.org ScholarlyArticle citation arrays.
- */
-function keystone_extract_pubmed_citations( string $content ): array {
-    if ( empty( $content ) ) {
-        return array();
-    }
-
-    $citations = array();
-    $pmids     = array();
-
-    if ( preg_match_all( '~(?:pubmed\.ncbi\.nlm\.nih\.gov/(\d+)|PMID[:\s]+(\d+))~i', $content, $matches, PREG_SET_ORDER ) ) {
-        foreach ( $matches as $match ) {
-            $pmid = ! empty( $match[1] ) ? trim( $match[1] ) : ( ! empty( $match[2] ) ? trim( $match[2] ) : '' );
-            if ( ! empty( $pmid ) && is_numeric( $pmid ) && ! in_array( $pmid, $pmids, true ) ) {
-                $pmids[] = $pmid;
-            }
-        }
-    }
-
-    foreach ( $pmids as $pmid ) {
-        $citations[] = array(
-            '@type'      => 'ScholarlyArticle',
-            '@id'        => 'https://pubmed.ncbi.nlm.nih.gov/' . $pmid . '/#article',
-            'url'        => 'https://pubmed.ncbi.nlm.nih.gov/' . $pmid . '/',
-            'identifier' => array(
-                '@type'      => 'PropertyValue',
-                'propertyID' => 'PMID',
-                'value'      => (string) $pmid,
-            ),
-            'name'       => 'PubMed Clinical Reference PMID:' . $pmid,
-        );
-    }
-
-    return $citations;
-}
 
 
 
@@ -1462,6 +1403,41 @@ function keystone_recomposition_child_404_redirect() {
     $path = strtok( $request_uri, '?' );
     $trimmed_path = '/' . trim( (string) $path, '/' );
     $slashed_path = $trimmed_path === '//' ? '/' : ( $trimmed_path . '/' );
+
+    // 0. Legacy Pre-Channel & Duplicate Watch Page 301 Redirects (Single-Hop to Live New-Channel Pillar Posts)
+    $legacy_recomp_id_map = array(
+        2316 => '/2026/10/18/byok-local-ai-workstation-replaces-500-mo-saas-wrappers/',
+        2315 => '/2026/10/26/the-morning-march-deep-house-4k-music-video/',
+        2313 => '/2026/10/02/autonomous-multi-agent-swarms/',
+        2693 => '/watch-heavy-civil-focus-keystone-recomposition/',
+    );
+    $req_id = isset( $_GET['p'] ) ? (int) $_GET['p'] : ( isset( $_GET['page_id'] ) ? (int) $_GET['page_id'] : 0 );
+    if ( $req_id > 0 && isset( $legacy_recomp_id_map[ $req_id ] ) ) {
+        header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
+        header( 'X-LiteSpeed-Cache-Control: no-cache' );
+        wp_safe_redirect( home_url( $legacy_recomp_id_map[ $req_id ] ), 301 );
+        exit;
+    }
+
+    $legacy_recomp_path_map = array(
+        '/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation' => '/2026/10/18/byok-local-ai-workstation-replaces-500-mo-saas-wrappers/',
+        '/chrome-devtools-protocol-cdp-port-9222-automation' => '/2026/10/18/byok-local-ai-workstation-replaces-500-mo-saas-wrappers/',
+        '/watch-chrome-devtools-protocol-cdp-port-9222-automation' => '/watch-byok-local-ai-workstation-replaces-500-mo-saas-wrappers/',
+        '/2026/09/28/sovereign-reverb-functional-frequency-architecture' => '/2026/10/26/the-morning-march-deep-house-4k-music-video/',
+        '/sovereign-reverb-functional-frequency-architecture' => '/2026/10/26/the-morning-march-deep-house-4k-music-video/',
+        '/watch-sovereign-reverb-functional-frequency-architecture' => '/2026/10/26/the-morning-march-deep-house-4k-music-video/',
+        '/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture' => '/2026/10/02/autonomous-multi-agent-swarms/',
+        '/autonomous-multi-agent-swarms-fastmcp-architecture' => '/2026/10/02/autonomous-multi-agent-swarms/',
+        '/watch-autonomous-multi-agent-swarms-fastmcp-architecture' => '/watch-autonomous-multi-agent-swarms/',
+        '/watch-heavy-civil-focus-deep-house-4k-music-video' => '/watch-heavy-civil-focus-keystone-recomposition/',
+    );
+    $lower_trimmed = strtolower( $trimmed_path );
+    if ( isset( $legacy_recomp_path_map[ $lower_trimmed ] ) ) {
+        header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
+        header( 'X-LiteSpeed-Cache-Control: no-cache' );
+        wp_safe_redirect( home_url( $legacy_recomp_path_map[ $lower_trimmed ] ), 301 );
+        exit;
+    }
 
     // 1. Canonical Founder 301 Redirects (/about/, /about-the-founder/ -> /founder/)
     if ( in_array( strtolower( $trimmed_path ), array( '/about', '/about-the-founder', '/about-the-founder-the-keystone-blueprint' ), true ) ) {
