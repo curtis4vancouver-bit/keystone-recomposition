@@ -340,8 +340,8 @@ function keystone_recomposition_child_eeat_author_block( $content ) {
                 <img src="https://keystonerecomposition.com/wp-content/uploads/logo.png" alt="Wayne Stevenson" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
                 <div>
                     <h3 style="color: #ffffff; font-family: \'Outfit\', sans-serif; font-size: 1.2rem; margin: 0 0 5px 0;">Wayne Stevenson</h3>
-                    <p style="color: #c4a265; font-family: \'Outfit\', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0;">Metabolic Researcher &amp; Performance Specialist</p>
-                    <p style="color: #a3a3a3; font-family: \'Inter\', sans-serif; font-size: 0.85rem; line-height: 1.6; margin: 0;">This content is meticulously researched and documented for the preservation of male health and longevity. Operating under strict E-E-A-T principles for high-quality health information.</p>
+                    <p style="color: #c4a265; font-family: \'Outfit\', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0;">Wayne Stevenson — Licensed BC Builder #52603, Electronic Music Producer &amp; Autonomous AI Systems Architect</p>
+                    <p style="color: #a3a3a3; font-family: \'Inter\', sans-serif; font-size: 0.85rem; line-height: 1.6; margin: 0;">Evidence-based systems, functional sonic architecture, and autonomous multi-agent engineering for high-performance fitness, longevity, and mountain lifestyle design.</p>
                 </div>
             </div>
         </div>';
@@ -464,10 +464,25 @@ function keystone_serve_video_sitemap() {
     }
 
     status_header( 200 );
+    if ( function_exists( 'nocache_headers' ) ) {
+        nocache_headers();
+    }
     header( 'Content-Type: application/xml; charset=UTF-8' );
+    header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
+    header( 'Pragma: no-cache' );
+    header( 'Expires: 0' );
+    header( 'X-LiteSpeed-Cache-Control: no-cache' );
     header( 'X-Robots-Tag: noindex, follow' );
 
-    // Direct query for all published watch pages to guarantee 100% complete coverage of all canonical watch URLs
+    // Query all published posts first (authoritative video source) plus any standalone watch-* pages
+    $posts = get_posts( array(
+        'post_type'      => 'post',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ) );
+
     $pages = get_posts( array(
         'post_type'      => 'page',
         'post_status'    => 'publish',
@@ -476,24 +491,35 @@ function keystone_serve_video_sitemap() {
         'order'          => 'DESC',
     ) );
 
-    $target_items = array();
+    $retired_watch_slugs = array(
+        'watch-iron-grace-2',
+        'watch-heavy-civil-focus-deep-house-4k-music-video',
+    );
+    $watch_pages_by_slug = array();
     if ( ! empty( $pages ) ) {
         foreach ( $pages as $pg ) {
-            if ( is_object( $pg ) && 0 === strpos( $pg->post_name, 'watch-' ) ) {
-                $target_items[] = $pg;
+            if ( is_object( $pg ) && 0 === strpos( $pg->post_name, 'watch-' ) && ! in_array( $pg->post_name, $retired_watch_slugs, true ) ) {
+                $watch_pages_by_slug[ $pg->post_name ] = $pg;
             }
         }
     }
 
-    // Fallback if no watch pages exist (e.g. initial install or test environment)
-    if ( empty( $target_items ) ) {
-        $target_items = get_posts( array(
-            'post_type'      => 'post',
-            'post_status'    => 'publish',
-            'posts_per_page' => -1,
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-        ) );
+    $target_items = array();
+    if ( ! empty( $posts ) ) {
+        foreach ( $posts as $pt ) {
+            if ( ! is_object( $pt ) ) {
+                continue;
+            }
+            $expected_watch_slug = 'watch-' . $pt->post_name;
+            if ( isset( $watch_pages_by_slug[ $expected_watch_slug ] ) ) {
+                $target_items[] = $watch_pages_by_slug[ $expected_watch_slug ];
+            } else {
+                $target_items[] = $pt;
+            }
+        }
+    }
+    if ( empty( $target_items ) && ! empty( $watch_pages_by_slug ) ) {
+        $target_items = array_values( $watch_pages_by_slug );
     }
 
     echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
@@ -503,13 +529,19 @@ function keystone_serve_video_sitemap() {
 
     $video_count = 0;
     $seen_locs   = array();
+    $seen_yt_ids = array();
     foreach ( $target_items as $p ) {
         if ( ! is_object( $p ) || empty( $p->ID ) ) {
             continue;
         }
 
         $meta = function_exists( 'keystone_get_post_video_metadata' ) ? keystone_get_post_video_metadata( $p ) : null;
-        if ( ! $meta ) {
+        if ( ! $meta || empty( $meta['youtube_id'] ) ) {
+            continue;
+        }
+
+        $yt_id = (string) $meta['youtube_id'];
+        if ( isset( $seen_yt_ids[ $yt_id ] ) ) {
             continue;
         }
 
@@ -555,6 +587,7 @@ function keystone_serve_video_sitemap() {
             continue;
         }
         $seen_locs[ $permalink ] = true;
+        $seen_yt_ids[ $yt_id ]   = true;
 
         $title       = mb_substr( (string) $meta['title'], 0, 100 );
         $description = mb_substr( (string) $meta['description'], 0, 2048 );
@@ -566,7 +599,7 @@ function keystone_serve_video_sitemap() {
         echo "      <video:title><![CDATA[" . $title . "]]></video:title>\n";
         echo "      <video:description><![CDATA[" . $description . "]]></video:description>\n";
         echo "      <video:content_loc>" . esc_url( $meta['content_url'] ) . "</video:content_loc>\n";
-        echo "      <video:player_loc>" . esc_url( $meta['embed_url'] ) . "</video:player_loc>\n";
+        echo "      <video:player_loc allow_embed=\"yes\">" . esc_url( $meta['embed_url'] ) . "</video:player_loc>\n";
         echo "      <video:duration>" . (int) $meta['duration_seconds'] . "</video:duration>\n";
         echo "      <video:publication_date>" . esc_attr( $meta['upload_date'] ) . "</video:publication_date>\n";
         echo "      <video:family_friendly>yes</video:family_friendly>\n";
@@ -693,8 +726,8 @@ function keystone_recomposition_heal_watch_pages_trigger() {
 
 /**
  * 18. Keystone Evidence Base Shortcode [keystone_evidence_base]
- * Renders glassmorphic clinical citations card with gold PMID pills,
- * neon cyan PubMed links, and amber/cyan disclaimers.
+ * Renders glassmorphic clinical citations card with gold literature badges,
+ * scientific references, and amber/cyan disclaimers.
  * Stamped: 2026 - Wayne Stevenson & Keystone Orchestration Engine
  */
 function keystone_evidence_base_shortcode( $atts = array(), $content = null ) {
@@ -806,20 +839,12 @@ function keystone_evidence_base_shortcode( $atts = array(), $content = null ) {
                     <div class="evidence-citation-row">
                         <div class="evidence-citation-header">
                             <span class="evidence-authors"><?php echo esc_html( $evidence['authors'] ); ?></span>
-                            <a href="https://pubmed.ncbi.nlm.nih.gov/<?php echo esc_attr( $evidence['pmid'] ); ?>/" target="_blank" rel="noopener noreferrer" class="pmid-pill-badge" title="Verify record at PubMed National Library of Medicine">
-                                [PMID: <?php echo esc_html( $evidence['pmid'] ); ?>]
-                            </a>
                         </div>
                         <h4 class="evidence-paper-title"><?php echo esc_html( $evidence['title'] ); ?></h4>
                         <p class="evidence-journal"><?php echo esc_html( $evidence['journal'] ); ?></p>
                         <?php if ( ! empty( $evidence['key_takeaway'] ) ) : ?>
                             <p class="evidence-takeaway"><strong>Biological Finding:</strong> <?php echo esc_html( $evidence['key_takeaway'] ); ?></p>
                         <?php endif; ?>
-                        <div class="evidence-links-row">
-                            <a href="https://pubmed.ncbi.nlm.nih.gov/<?php echo esc_attr( $evidence['pmid'] ); ?>/" target="_blank" rel="noopener noreferrer" class="evidence-cyan-link">
-                                Access National Library of Medicine Record &rarr;
-                            </a>
-                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -842,3 +867,87 @@ function keystone_evidence_base_shortcode( $atts = array(), $content = null ) {
     return ob_get_clean();
 }
 add_shortcode( 'keystone_evidence_base', 'keystone_evidence_base_shortcode' );
+
+// Ensure youtube-nocookie.com/embed/ and keystone_youtube_id are prioritized when auto-creating watch pages
+add_action( 'init', function() {
+    remove_action( 'transition_post_status', 'keystone_auto_create_watch_page', 10 );
+}, 20 );
+add_action( 'transition_post_status', 'keystone_sovereign_auto_create_watch_page', 10, 3 );
+function keystone_sovereign_auto_create_watch_page( $new_status, $old_status, $post ) {
+    if ( 'publish' !== $new_status || 'post' !== $post->post_type ) {
+        return;
+    }
+    $youtube_id = get_post_meta( $post->ID, 'keystone_youtube_id', true );
+    if ( empty( $youtube_id ) ) {
+        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]{11})["\']~i', $post->post_content, $m ) ) {
+            $youtube_id = $m[1];
+        } elseif ( preg_match( '~youtube-nocookie\.com/embed/([a-zA-Z0-9_-]{11})~i', $post->post_content, $m ) ) {
+            $youtube_id = $m[1];
+        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $post->post_content, $m ) ) {
+            $youtube_id = $m[1];
+        }
+    }
+    if ( empty( $youtube_id ) ) {
+        return;
+    }
+    update_post_meta( $post->ID, 'keystone_youtube_id', $youtube_id );
+    $post_slug  = ! empty( $post->post_name ) ? sanitize_title( $post->post_name ) : sanitize_title( $post->post_title );
+    $watch_slug = 'watch-' . $post_slug;
+    $blog_permalink = get_permalink( $post->ID );
+    $clean_content  = preg_replace( '~\[keystone_video[^\]]*\]~i', '', (string) $post->post_content );
+    $content  = '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n" . $clean_content . "\n\n";
+    $content .= '<p class="wp-block-paragraph" style="text-align:center; margin-top:45px; margin-bottom:45px;"><a href="' . esc_url( $blog_permalink ) . '" style="background-color: #c4a265; color: #000; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; display: inline-block; text-transform: uppercase; letter-spacing: 1px;">Read the Full Protocol ?</a></p>';
+
+    remove_action( 'transition_post_status', 'keystone_sovereign_auto_create_watch_page', 10 );
+    $page_by_path = get_page_by_path( $watch_slug, OBJECT, 'page' );
+    if ( $page_by_path && ! empty( $page_by_path->ID ) ) {
+        wp_update_post( array(
+            'ID'           => (int) $page_by_path->ID,
+            'post_title'   => 'Watch: ' . $post->post_title,
+            'post_name'    => $watch_slug,
+            'post_content' => $content,
+            'post_status'  => 'publish',
+        ) );
+        $page_id = (int) $page_by_path->ID;
+    } else {
+        $page_id = wp_insert_post( array(
+            'post_title'   => 'Watch: ' . $post->post_title,
+            'post_name'    => $watch_slug,
+            'post_content' => $content,
+            'post_status'  => 'publish',
+            'post_type'    => 'page',
+            'post_author'  => $post->post_author,
+        ) );
+    }
+    if ( ! is_wp_error( $page_id ) && $page_id > 0 ) {
+        update_post_meta( $page_id, 'keystone_youtube_id', $youtube_id );
+        delete_transient( 'rank_math_sitemap_cache' );
+    }
+    add_action( 'transition_post_status', 'keystone_sovereign_auto_create_watch_page', 10, 3 );
+}
+
+// Emit X-LiteSpeed-Purge: * header when purging caches or serving sitemaps so Hostinger LiteSpeed evicts stale URI cache
+add_action( 'init', function() {
+    if ( isset( $_GET['keystone_ls_purge'] ) ) {
+        header( 'X-LiteSpeed-Purge: *' );
+        header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
+        header( 'X-LiteSpeed-Cache-Control: no-cache' );
+        delete_transient( 'rank_math_sitemap_cache' );
+        if ( class_exists( '\\RankMath\\Sitemap\\Cache' ) ) {
+            \RankMath\Sitemap\Cache::invalidate_storage();
+        }
+        wp_cache_flush();
+        status_header( 200 );
+        echo 'KEYSTONE_LITESPEED_CACHE_PURGED_ALL_10_VIDEOS';
+        exit;
+    }
+}, 1 );
+
+add_filter( 'rank_math/sitemap/index', function( $xml ) {
+    if ( ! headers_sent() ) {
+        header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
+        header( 'X-LiteSpeed-Cache-Control: no-cache' );
+    }
+    return $xml;
+}, 99 );
+

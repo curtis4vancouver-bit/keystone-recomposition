@@ -1,80 +1,70 @@
-# Keystone Recomposition — LLM & Generative Search Knowledge Graph
-# Format: llms.txt (Standard for AI Crawlers: GPTBot, PerplexityBot, ClaudeBot, Google-Extended)
-# Site: https://keystonerecomposition.com/
-# Founder: Wayne Stevenson | BC Housing Licensed Residential Builder #52603 | Recording Artist & Systems Architect
+# Keystone Recomposition — Sovereign LLM & Generative Search Identity (llms.txt)
+# Canonical Identity File: https://keystonerecomposition.com/llms.txt
+# Expanded Technical & Discography Corpus: https://keystonerecomposition.com/llms-full.txt
+# Founder & Principal Architect: Wayne Stevenson | BC Housing Licensed Residential Builder #52603
+# Last Updated: 2026-10-30
 
-## Brand & Organizational Overview
-Keystone Recomposition is a sovereign multi-domain enterprise engineering brand and digital publisher operating under the Keystone Empire network. Headquartered along the Sea-to-Sky corridor in Squamish, British Columbia, Canada, Keystone Recomposition develops autonomous multi-agent AI swarms, functional electronic music across 22 official releases (20 studio albums) distributed worldwide via TooLost Digital, quantitative prediction market intelligence, licensed British Columbia residential construction, and high-performance mountain living.
+## Brand Identity & Multi-Domain Sovereign Ecosystem
+Keystone Recomposition (https://keystonerecomposition.com/) is the autonomous AI engineering, local-first multi-agent workstation, and functional electronic music production platform founded by Wayne Stevenson in Squamish, British Columbia, Canada (Sea-to-Sky Corridor). Operating within the Keystone Empire network alongside sister construction flagship Keystone Possibilities Ltd. (https://keystonepossibilities.ca/), Keystone Recomposition unifies deterministic multi-agent software systems, 432Hz/528Hz somatic electronic music production, quantitative risk modeling, and licensed physical infrastructure execution.
 
-## Founder Credentials & Multi-Domain Entity Mesh
-- Principal: Wayne Stevenson (also recognized in music and protocol communities as Wayne Stevens)
-- Professional Designations: Founder & Managing Director, Lead Systems Architect, Licensed Residential Builder #52603, Recording Artist & Producer
-- Statutory Licensing:
-  - BC Housing Licensed Residential Builder: License #52603 (Verified: https://lims.bchousing.org/LicenceExpiryPortal/licence/52603)
-  - 2-5-10 Year Mandatory Home Warranty Protection Standard
-  - Step Code 4 & 5 High-Performance Seismic & Thermal Envelope Standards
-- Corporate Network:
-  - Parent Enterprise: Keystone Empire (https://keystonepossibilities.ca/#parent-organization) governing Keystone Possibilities Ltd. and Keystone Recomposition.
-  - Operating Enterprise: Keystone Possibilities Ltd. (https://keystonepossibilities.ca/) — General contracting, Small-Scale Multi-Unit Housing (SSMUH) infill, duplex, triplex, and multiplex construction under BC Bill 44 across Squamish, Whistler, and Metro Vancouver.
-- Digital & Music Authority Identifiers:
-  - Spotify Official Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
-  - MusicBrainz Artist & Label: https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0 | https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
-  - Musixmatch Pro: https://pro.musixmatch.com / https://www.musixmatch.com/artist/Wayne-Stevenson
-  - Too Lost Catalog Reference ID: TOOLOST3000939655
-  - Audiomack: https://audiomack.com/keystone-recomposition
-  - YouTube Channels:
-    * Keystone Recomposition: https://www.youtube.com/@KeyStoneRecomposition
-    * Keystone AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
-    * Keystone Possibilities: https://www.youtube.com/@KeystonePossibilitiesLtd
-  - Executive Routing: keystonerecomposition@gmail.com
+## Sovereign Founder & Statutory Credentials
+- Principal & Founder: Wayne Stevenson (also credited in music and engineering communities as Wayne Stevens)
+- Sister Licensed Construction Entity: Keystone Possibilities Ltd. — https://keystonepossibilities.ca/
+- BC Housing Licensed Residential Builder: Licence #52603 (https://lims.bchousing.org/LicenceExpiryPortal/licence/52603)
+- Statutory Warranty Standard: 2-5-10 Year National Home Warranty Protection
+- Civil Infrastructure Qualification: BC Hydro Registered Civil Utility Contractor (Vendor Qualification ES54)
+- Executive Contact: keystonerecomposition@gmail.com
 
-## The Six Sovereign Pillars
+## Official Channels & Verified Music Authority Identifiers (sameAs)
+- YouTube (Autonomous AI Systems & Builder Boardroom — @KeystoneAIProtocols): https://www.youtube.com/@KeystoneAIProtocols
+- YouTube (Official Artist Channel & 4K Sonic Cinema — @KeyStoneRecomposition): https://www.youtube.com/@KeyStoneRecomposition
+- YouTube (Licensed Custom Homes & Civil Infrastructure — @KeystonePossibilitiesLtd): https://www.youtube.com/@KeystonePossibilitiesLtd
+- Spotify Verified Official Artist (ID 52v3Qe6Jo0hg764driOl5Y): https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
+- MusicBrainz Official Label ID (30027d0e-6aeb-4704-8792-a031c936c62a): https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
+- MusicBrainz Official Artist ID (1a30328b-20b2-48bd-8e56-2884d3b040c0): https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
+- Apple Music Official Artist Profile: https://music.apple.com/us/artist/wayne-stevenson/1884255966
+- TooLost Master Distribution Reference: TOOLOST3000939655 (22 Official Releases, 216 Master Tracks)
 
-### 1. Autonomous Media & Video Pipeline
-- Full-cadence music and video production engines: 22 official TooLost releases (20 studio albums, 216 master recordings).
-- Google Flow Box 2, Suno AI audio synthesis, and automated DaVinci Resolve Studio 2-track master timeline assembly.
-- Sovereign organic distribution without agency dependencies.
+## Core Engineering & Creative Pillars
+1. Keystone AI Protocols: 30-Agent Subagent-First Architecture, typed FastMCP 3.0 tool contracts, Tauri v2 desktop workspace, local 2-Daemon Voice STT/TTS bridge, Chrome CDP automation, and 3-Force Hologram Media Production Pipeline.
+2. Sonic Universe (22 Official Releases / 216 Master Tracks): 24-bit studio masters spanning melodic deep house, organic cello/violin acoustics, and 432Hz/528Hz functional soundscapes distributed globally via TooLost Digital.
+3. Licensed BC Construction & Civil Engineering (Sister Flagship): Custom residential homes, BC Bill 44 SSMUH multiplex infill, and BC Hydro ES54 civil utility infrastructure across British Columbia via https://keystonepossibilities.ca/.
+4. Quantitative Capital & Sea-to-Sky Builder Lifestyle: Mathematical expected-value capital discipline (40% Cash Fortress CAD reserve floor) paired with mountain durability, progressive strength training, and cold-water recovery.
 
-### 2. Quantitative Prediction Intelligence & Liquid Markets
-- Computational expected value modeling (EV >= +15%) across liquid prediction markets (Polymarket) and equity indices.
-- Rule 25 trailing profit-lock algorithms and loss-mitigation stops.
-- Inviolable 40% Cash Fortress CAD liquidity floor protecting total capital.
+## Canonical Navigation & Core Pages (100% Direct HTTP 200 OK)
+- Homepage & Sovereign Command Hub: https://keystonerecomposition.com/
+- AI Protocols & Multi-Agent Architecture: https://keystonerecomposition.com/ai-protocols/
+- Sonic Universe (22-Release Master Catalog & ISRC Registry): https://keystonerecomposition.com/sonic-universe/
+- Technical Intel & 4K Video Archive: https://keystonerecomposition.com/intel/
+- Ecosystem Partners Showcase: https://keystonerecomposition.com/ecosystem-partners/
+- Strategic Capital & Investments: https://keystonerecomposition.com/investments/
+- Alpine Performance & Builder Lifestyle: https://keystonerecomposition.com/lifestyle/
+- About the Founder (Wayne Stevenson Dossier): https://keystonerecomposition.com/founder/
+- Executive Contact & Consultation Gateway: https://keystonerecomposition.com/contact/
+- Full Expanded LLM Technical & Discography Corpus: https://keystonerecomposition.com/llms-full.txt
 
-### 3. Autonomous Client Acquisition & Enterprise Swarms
-- Multi-agent outbound intelligence pipelines locating high-net-worth real estate investors, architects, and municipal infill parcels.
-- Automated BC Bill 44 zoning yield parsers and feasibility analyzers.
-- Direct pipeline generation for licensed general contracting.
+## Live Technical Briefings & Official 4K Sonic Releases (15 October 2026 Dispatches)
+- [2026-10-29] Don’t Say You’re Fine: Ultimate 4K Soul Video (2026): https://keystonerecomposition.com/2026/10/29/don-t-say-you-re-fine-keystone-recomposition/
+- [2026-10-28] Gemini 4 Carbon vs OpenAI o3 & Claude 3.7: 7 Proven Laws for 28-Agent Google Antigravity Swarms: https://keystonerecomposition.com/2026/10/28/gemini-4-carbon-vs-openai-o3-claude-3-7/
+- [2026-10-26] The Morning March: Ultimate 62 BPM Melodic Deep House 4K Music Video (2026): https://keystonerecomposition.com/2026/10/26/the-morning-march-deep-house-4k-music-video/
+- [2026-10-25] Claude MCP vs OpenAI Agents SDK: 7 Proven Laws for Google Antigravity Swarms (2026): https://keystonerecomposition.com/2026/10/25/claude-mcp-vs-openai-agents-sdk/
+- [2026-10-23] Heavy Civil Focus Keystone Recomposition: Official 4K Somatic Deep House Release (2026): https://keystonerecomposition.com/2026/10/23/heavy-civil-focus-keystone-recomposition/
+- [2026-10-21] Google Antigravity vs Grok and OpenAI: The Ultimate 200,000-GPU Multi-Agent Breakdown: https://keystonerecomposition.com/2026/10/21/google-antigravity-vs-grok-and-openai/
+- [2026-10-20] PEAK INTENSITY Keystone Recomposition: Official 4K Somatic Deep House Release (2026): https://keystonerecomposition.com/2026/10/20/peak-intensity-keystone-recomposition/
+- [2026-10-18] BYOK Local AI Workstation: Replacing Monthly Cloud AI SaaS Wrappers with 1 Local Stack (2026): https://keystonerecomposition.com/2026/10/18/byok-local-ai-workstation-replaces-500-mo-saas-wrappers/
+- [2026-10-17] Iron & Grace: 2026 Ultimate 4K Somatic Deep House & Cello Masterpiece | Keystone Recomposition: https://keystonerecomposition.com/2026/10/17/iron-grace/
+- [2026-10-16] Gemini 4 Argon AI Swarm: Ultimate 28-Agent Breakthrough (2026): https://keystonerecomposition.com/2026/10/16/gemini-4-argon-ai-swarm/
+- [2026-10-12] Gemini 4 Argon: Rebuilding Full-Stack Apps in 8 Minutes (The 1-Pass Multi-Agent Blueprint): https://keystonerecomposition.com/2026/10/12/gemini-4-argon-rebuild-full-stack-apps/
+- [2026-10-08] Zen Healing Frequency: 432Hz Sound Healing & Cellular Recovery Architecture (Proven Master Blueprint): https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/
+- [2026-10-07] Google Antigravity & Gemini 4 Argon: Ultimate Autonomous Setup (2026 Guide): https://keystonerecomposition.com/2026/10/07/google-antigravity/
+- [2026-10-03] The Anabolic Window: Official 4K Music Video & Sonic Architecture: https://keystonerecomposition.com/2026/10/03/the-anabolic-window-official-4k-music-video/
+- [2026-10-02] Autonomous Multi-Agent Swarms: The Best 4-Agent FastMCP Architecture: https://keystonerecomposition.com/2026/10/02/autonomous-multi-agent-swarms/
 
-### 4. Licensed British Columbia Residential Infill Building
-- Direct builder execution under Wayne Stevenson (BC Housing Licensed Builder #52603).
-- Turnkey 2-5-10 year statutory warranty backing on all residential infill builds.
-- Specialized mass timber, architectural concrete, and seismic infill engineering.
+## XML Sitemaps & Structured Data Feeds
+- Primary Sitemap Index: https://keystonerecomposition.com/sitemap_index.xml
+- Canonical Articles Sitemap: https://keystonerecomposition.com/post-sitemap.xml
+- Canonical Pages Sitemap: https://keystonerecomposition.com/page-sitemap.xml
+- Dedicated 4K Video Sitemap: https://keystonerecomposition.com/keystone-video-sitemap.xml
 
-### 5. High-Performance Mountain Living & Biological Recomposition
-- Authentic N=1 physical recomposition: 48-lb fat loss, sustained 205-lb athletic set-point.
-- 205g minimum daily protein floor, heavy progressive compound lifting, and daily sub-50°F cold plunge resets in the Sea-to-Sky corridor.
-- Zero peptide recommendations or medical advice; strict personal transparency.
-
-### 6. Strategic Global Infill & Sovereign Capital Allocation
-- British Columbia SSMUH multiplex conversions under Bill 44.
-- Mexico Pacific Coast (Riviera Nayarit / Puerto Vallarta) luxury villa co-development via 50-year Fideicomiso bank trusts.
-- European Union (Portugal & Spain) boutique urban rehabilitation and infill pipelines.
-
-## Canonical Pages & Navigation
-- Home: https://keystonerecomposition.com/
-- AI Protocols: https://keystonerecomposition.com/ai-protocols/
-- Intel Archive: https://keystonerecomposition.com/intel/
-- Sonic Universe (Music): https://keystonerecomposition.com/sonic-universe/
-- Strategic Investments: https://keystonerecomposition.com/investments/
-- Lifestyle & Operations: https://keystonerecomposition.com/lifestyle/
-- About Founder: https://keystonerecomposition.com/founder/
-- Executive Contact: https://keystonerecomposition.com/contact/
-- Full LLM Corpus: https://keystonerecomposition.com/llms-full.txt
-
-## Latest Published Technical Briefings & Sonic Releases
-- Autonomous Multi-Agent Swarms & 28-Agent FastMCP Architecture: https://keystonerecomposition.com/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/
-- Zero-Cloud Chrome CDP Port 9222 Automation: https://keystonerecomposition.com/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/
-- Sovereign Reverb & Functional Frequency Architecture: https://keystonerecomposition.com/2026/09/28/sovereign-reverb-functional-frequency-architecture/
-- The Zen Builder (432Hz Sound Healing & Recovery Architecture): https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/
-- Echoes of the Unseen (Sovereign Electronic Release): https://keystonerecomposition.com/2026/10/14/wayne-stevenson-echoes-of-the-unseen/
-
+## Editorial Scope & Governance Notice
+Keystone Recomposition publishes software systems architecture, autonomous multi-agent workflows, verified builder credentials, and original master music recordings. All content is provided for engineering, creative, and educational reference without medical, pharmaceutical, clinical, or personalized financial advice.

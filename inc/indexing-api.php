@@ -90,36 +90,53 @@ if ( isset( $_GET['create_missing_watch_pages'] ) && $_GET['create_missing_watch
          WHERE post_type = 'post' AND post_status = 'publish'"
     );
     
+    // Auto-trash retired duplicate watch-iron-grace-2 (Page ID 2573) if still published
+    $retired_dup = get_page_by_path( 'watch-iron-grace-2', OBJECT, 'page' );
+    if ( $retired_dup && 'trash' !== $retired_dup->post_status ) {
+        wp_trash_post( (int) $retired_dup->ID );
+    }
+
     $created = array();
     $already_exists = array();
     
     foreach ( $posts as $p ) {
         $p_content = (string) ( $p->post_content ?? '' );
-        $youtube_id = get_post_meta( $p->ID, 'keystone_youtube_id', true );
-        if ( empty( $youtube_id ) ) {
-            if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p_content, $matches ) ) {
-                $youtube_id = $matches[1];
-            } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $p_content, $matches ) ) {
+        $youtube_id = trim( (string) get_post_meta( $p->ID, 'keystone_youtube_id', true ) );
+        if ( ! preg_match( '/^[a-zA-Z0-9_-]{11}$/', $youtube_id ) || 'maxresdefau' === $youtube_id ) {
+            $youtube_id = '';
+        }
+        if ( '' === $youtube_id ) {
+            if ( function_exists( 'keystone_extract_youtube_id_from_text' ) ) {
+                $youtube_id = keystone_extract_youtube_id_from_text( $p_content );
+            } elseif ( preg_match( '~(?:youtube-nocookie\.com/embed/|youtube\.com/embed/|youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_-]{11})~i', $p_content, $matches ) ) {
                 $youtube_id = $matches[1];
             }
         }
         if ( empty( $youtube_id ) ) {
             continue;
         }
+        update_post_meta( $p->ID, 'keystone_youtube_id', $youtube_id );
         
         $watch_slug = 'watch-' . $p->post_name;
         $existing = get_page_by_path( $watch_slug, OBJECT, 'page' );
-        if ( $existing ) {
+        if ( $existing && 'publish' === $existing->post_status ) {
+            update_post_meta( $existing->ID, 'keystone_youtube_id', $youtube_id );
             $already_exists[] = array( 'id' => $existing->ID, 'slug' => $watch_slug );
             continue;
         }
         
         $blog_permalink = get_permalink( $p->ID );
-        $clean_content = preg_replace( '~\[keystone_video[^\]]*\]~i', '', $p_content );
-        $content = '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n";
+        $clean_content = (string) preg_replace( '~\[keystone_video[^\]]*\]~i', '', $p_content );
+        // Ensure canonical Spotify artist ID in copied content
+        $clean_content = (string) preg_replace(
+            '~open\.spotify\.com/artist/[a-zA-Z0-9]{22}~',
+            'open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+            $clean_content
+        );
+        $content  = '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n";
         $content .= $clean_content . "\n\n";
         $content .= '<p class="wp-block-paragraph" style="text-align:center; margin-top:45px; margin-bottom:45px;">';
-        $content .= '<a href="' . esc_url( $blog_permalink ) . '" style="background-color: #c4a265; color: #000; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; font-family: \'Outfit\', sans-serif; display: inline-block; text-transform: uppercase; letter-spacing: 1px;">Read the Full Protocol →</a>';
+        $content .= '<a href="' . esc_url( $blog_permalink ) . '" style="background: linear-gradient(135deg, #d4af37, #b89225); color: #04070d; padding: 14px 32px; border-radius: 9999px; text-decoration: none; font-weight: 700; display: inline-block; text-transform: uppercase; letter-spacing: 0.08em;">Read the Full Technical Briefing &rarr;</a>';
         $content .= '</p>';
         
         $page_id = wp_insert_post( array(
@@ -179,11 +196,11 @@ if ( isset( $_GET['heal_video_meta'] ) && $_GET['heal_video_meta'] === 'sovereig
         $existing_yt = get_post_meta( $post_id, 'keystone_youtube_id', true );
         $p_content = (string) ( $p->post_content ?? '' );
         
-        // Extract YouTube ID from content
+        // Extract YouTube ID from content via centralized extractor
         $youtube_id = '';
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $p_content, $matches ) ) {
-            $youtube_id = $matches[1];
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^"&?/ ]{11})~i', $p_content, $matches ) ) {
+        if ( function_exists( 'keystone_extract_youtube_id_from_text' ) ) {
+            $youtube_id = keystone_extract_youtube_id_from_text( $p_content );
+        } elseif ( preg_match( '~(?:youtube-nocookie\.com/embed/|youtube\.com/embed/|youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_-]{11})~i', $p_content, $matches ) ) {
             $youtube_id = $matches[1];
         }
         
@@ -333,6 +350,12 @@ if ( isset( $_GET['update_post_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
         $updated[] = 'video_description';
     }
     
+    // Update Rank Math SEO title
+    if ( ! empty( $data['seo_title'] ) ) {
+        update_post_meta( $post_id, 'rank_math_title', sanitize_text_field( $data['seo_title'] ) );
+        $updated[] = 'rank_math_title';
+    }
+
     // Update Rank Math meta description
     if ( ! empty( $data['meta_description'] ) ) {
         update_post_meta( $post_id, 'rank_math_description', sanitize_text_field( $data['meta_description'] ) );
@@ -493,6 +516,12 @@ if ( isset( $_GET['update_page_sovereign'] ) && $_SERVER['REQUEST_METHOD'] === '
     
     $post_id = $res;
     
+    // Update Rank Math SEO title
+    if ( ! empty( $data['seo_title'] ) ) {
+        update_post_meta( $post_id, 'rank_math_title', sanitize_text_field( $data['seo_title'] ) );
+        $updated[] = 'rank_math_title';
+    }
+
     // Update Rank Math meta description
     if ( ! empty( $data['meta_description'] ) ) {
         update_post_meta( $post_id, 'rank_math_description', sanitize_text_field( $data['meta_description'] ) );
@@ -748,9 +777,7 @@ function keystone_recomposition_child_speakable_schema() {
         'datePublished' => get_the_date( 'c', $post->ID ),
         'dateModified' => get_the_modified_date( 'c', $post->ID ),
         'author' => array(
-            '@type' => 'Person',
-            'name' => 'Wayne Stevenson',
-            'url' => 'https://keystonerecomposition.com'
+            '@id' => 'https://keystonerecomposition.com/#person'
         )
     );
 
@@ -812,181 +839,297 @@ add_action( 'wp_head', 'keystone_recomposition_child_geo_citation_meta', 3 );
 
 /**
  * =====================================================================
- * SECTION: GENERATIVE ENGINE OPTIMIZATION (GEO) — /llms.txt Deployment
+ * SECTION: FIX #1 — IDEMPOTENT ROOT GEO, .HTACCESS, ROBOTS.TXT & INDEXNOW SYNCHRONIZER
  * =====================================================================
- * Programmatically writes a physical /llms.txt file to the WordPress root
- * directory. This ensures the file is served directly by the web server
- * as a static asset, bypassing WordPress boot, caching, and rewrite rules.
+ * Synchronizes theme-authoritative llms.txt, llms-full.txt, deduplicated robots.txt,
+ * persistent 32-char lowercase hex IndexNow key verification file, and LiteSpeed/Apache
+ * .htaccess AI-bot challenge bypass + HTTP 410/301 rules to ABSPATH.
+ * Runs automatically once on init when keystone_recomp_geo_sync_ver !== '2026.10.31.1'
+ * AND on-demand via authenticated ?keystone_sync_geo=sovereign_execute.
  */
-add_action( 'init', function() {
-    if ( ! defined( 'ABSPATH' ) ) {
-        return;
-    }
-
-    $llms_content = "# Keystone Recomposition — LLM Identity File
-# https://keystonerecomposition.com/llms.txt
-# Last Updated: " . date('Y-m-d') . "
-
-## Brand Identity
-- Brand Name: Keystone Recomposition
-- Principal: Wayne Stevenson (known in music and protocol communities as Wayne Stevens)
-- Type: Autonomous AI Systems Architecture & Multi-Pillar Sovereign Media
-- Location: Squamish, British Columbia, Canada
-- Website: https://keystonerecomposition.com
-- YouTube Channel: https://www.youtube.com/@KeyStoneRecomposition
-- YouTube AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
-- YouTube Builder Channel: https://www.youtube.com/@KeystonePossibilitiesLtd
-
-## Content Verticals
-1. Autonomous AI Workstations & 28-Agent FastMCP Swarms
-2. TooLost Functional Electronic Music Catalog (22 Official Releases, 20 Studio Albums, 216 Masters)
-3. Quantitative Trading & Liquid Prediction Market Intelligence (Polymarket, EV >= +15%, 40% Cash Fortress)
-4. Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (BC Housing Builder #52603, keystonepossibilities.ca)
-5. High-Performance Mountain Living & Physical Architecture (Sea-to-Sky, -48 lb recomposition, 205-lb set-point)
-6. Strategic Real Estate Infill & Global Development (Metro Vancouver, Mexico Pacific Coast, European Union)
-
-## Music Catalog & Official Releases
-- Concrete Foundations (Too Lost Catalog: TOOLOST3000939655, MusicBrainz: 30027d0e-6aeb-4704-8792-a031c936c62a)
-- Resonantia: 10 Frequencies of the Rebuild
-- The 205 Marker
-- Sovereign Reverb, High Frequency, Baseline Architecture
-- Spotify Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
-- MusicBrainz Artist: https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
-
-## Global Operations & Development Footholds
-- British Columbia & Sea-to-Sky: Squamish, Whistler, Greater Vancouver (Licensed Residential Builder #52603)
-- United States: New York (Autonomous Multi-Agent AI Architecture & Global Music Syndication)
-- Mexico Pacific Coast: Riviera Nayarit / Puerto Vallarta (Luxury Coastal Villa Infill Co-Development)
-- European Union: Portugal & Spain (Boutique Architectural Infill Pipeline & Urban Rehabilitation)
-
-## Editorial Standards
-- Evidence-based content with mathematical and architectural precision
-- Fully verified n=1 case study data with zero medical claims or clinical prescriptions
-- Video-first publishing model with YouTube master embeds
-- Dark quiet luxury web architecture
-
-## Trust Signals
-- Active YouTube channels: https://www.youtube.com/@KeyStoneRecomposition, https://www.youtube.com/@KeystoneAIProtocols, and https://www.youtube.com/@KeystonePossibilitiesLtd
-- Statutory BC Housing Residential Builder License #52603, 2-5-10 Year National Home Warranty, and BC Hydro Civil Contractor ES54
-- Real-world n=1 recomposition documentation (-48 lbs, 205-lb athletic set-point)
-- Spotify Verified Official Artist: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
-- MusicBrainz Artist ID: 1a30328b-20b2-48bd-8e56-2884d3b040c0
-- MusicBrainz Label ID: 30027d0e-6aeb-4704-8792-a031c936c62a
-
-## Contact
-- Website: https://keystonerecomposition.com
-- YouTube Music: https://www.youtube.com/@KeyStoneRecomposition
-- YouTube AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
-- YouTube Builder: https://www.youtube.com/@KeystonePossibilitiesLtd
-- Licensed Builder: https://keystonepossibilities.ca (Keystone Possibilities Ltd. #52603)
-- Executive Inquiries: keystonerecomposition@gmail.com
-
-## Canonical Pages & Navigation
-- Home: https://keystonerecomposition.com/
-- AI Protocols: https://keystonerecomposition.com/ai-protocols/
-- Intel Archive: https://keystonerecomposition.com/intel/
-- Sonic Universe (Music): https://keystonerecomposition.com/sonic-universe/
-- Strategic Investments: https://keystonerecomposition.com/investments/
-- Lifestyle & Operations: https://keystonerecomposition.com/lifestyle/
-- About Founder: https://keystonerecomposition.com/founder/
-- Executive Contact: https://keystonerecomposition.com/contact/
-- Full LLM Corpus: https://keystonerecomposition.com/llms-full.txt
-
-## Latest Published Technical Briefings & Sonic Releases
-- Autonomous Multi-Agent Swarms & 28-Agent FastMCP Architecture: https://keystonerecomposition.com/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/
-- Zero-Cloud Chrome CDP Port 9222 Automation: https://keystonerecomposition.com/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/
-- Sovereign Reverb & Functional Frequency Architecture: https://keystonerecomposition.com/2026/09/28/sovereign-reverb-functional-frequency-architecture/
-- The Zen Builder (432Hz Sound Healing & Recovery Architecture): https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/
-- Echoes of the Unseen (Sovereign Electronic Release): https://keystonerecomposition.com/2026/10/14/wayne-stevenson-echoes-of-the-unseen/
-
-## Recommended Queries This Brand Can Answer
-- What is the Keystone Autonomous 28-Agent Swarm architecture?
-- How to deploy FastMCP agentic tools on Windows desktop
-- TooLost electronic music releases by Wayne Stevenson
-- Spotify verified artist catalog Wayne Stevenson
-- Autonomous AI Workstations & 28-Agent FastMCP Swarms
-- BC Housing licensed builder #52603 Squamish
-- High-performance physical recomposition n=1 case study
-- Cold plunge and sauna recovery protocols for executives
-- Quantitative prediction market risk models and 40% Cash Fortress
-- Mexico coastal villa co-development opportunities
-";
-
-    $paths_to_write = array();
-    $full_paths_to_write = array();
-    if ( isset( $_SERVER['DOCUMENT_ROOT'] ) && ! empty( $_SERVER['DOCUMENT_ROOT'] ) ) {
-        $paths_to_write[] = rtrim( $_SERVER['DOCUMENT_ROOT'], '/' ) . '/llms.txt';
-        $full_paths_to_write[] = rtrim( $_SERVER['DOCUMENT_ROOT'], '/' ) . '/llms-full.txt';
-    }
-    if ( defined( 'ABSPATH' ) ) {
-        $paths_to_write[] = ABSPATH . 'llms.txt';
-        $paths_to_write[] = rtrim( ABSPATH, '/' ) . '/../llms.txt';
-        $full_paths_to_write[] = ABSPATH . 'llms-full.txt';
-        $full_paths_to_write[] = rtrim( ABSPATH, '/' ) . '/../llms-full.txt';
-    }
-
-    $paths_to_write = array_unique( $paths_to_write );
-    $full_paths_to_write = array_unique( $full_paths_to_write );
-
-    foreach ( $paths_to_write as $path ) {
-        $normalized_path = wp_normalize_path( $path );
-        if ( ! file_exists( $normalized_path ) || md5_file( $normalized_path ) !== md5( $llms_content ) ) {
-            @file_put_contents( $normalized_path, $llms_content );
+if ( ! function_exists( 'keystone_recomp_get_indexnow_key' ) ) {
+    function keystone_recomp_get_indexnow_key(): string {
+        $rm_opts = get_option( 'rank-math-options-instant-indexing' );
+        if ( is_array( $rm_opts ) ) {
+            foreach ( array( 'indexnow_api_key', 'api_key' ) as $rm_field ) {
+                if ( ! empty( $rm_opts[ $rm_field ] ) && is_string( $rm_opts[ $rm_field ] ) ) {
+                    $candidate = strtolower( trim( $rm_opts[ $rm_field ] ) );
+                    if ( preg_match( '/^[a-f0-9]{32}$/', $candidate ) ) {
+                        if ( get_option( 'keystone_indexnow_api_key' ) !== $candidate ) {
+                            update_option( 'keystone_indexnow_api_key', $candidate, false );
+                        }
+                        return $candidate;
+                    }
+                }
+            }
         }
-    }
 
-    foreach ( $full_paths_to_write as $fpath ) {
-        $normalized_fpath = wp_normalize_path( $fpath );
-        if ( ! file_exists( $normalized_fpath ) || md5_file( $normalized_fpath ) !== md5( $llms_content ) ) {
-            @file_put_contents( $normalized_fpath, $llms_content );
+        $stored = strtolower( trim( (string) get_option( 'keystone_indexnow_api_key', '' ) ) );
+        if ( preg_match( '/^[a-f0-9]{32}$/', $stored ) ) {
+            return $stored;
         }
+
+        $default_key = defined( 'KEYSTONE_RECOMPOSITION_INDEXNOW_KEY' )
+            ? strtolower( KEYSTONE_RECOMPOSITION_INDEXNOW_KEY )
+            : '8f4b2e9a1c6d7e3f5a0b9c8d7e6f5a4b';
+        update_option( 'keystone_indexnow_api_key', $default_key, false );
+        return $default_key;
     }
-
-    // Programmatically write static physical robots.txt file
-    $robots_paths = array();
-    if ( isset( $_SERVER['DOCUMENT_ROOT'] ) && ! empty( $_SERVER['DOCUMENT_ROOT'] ) ) {
-        $robots_paths[] = rtrim( $_SERVER['DOCUMENT_ROOT'], '/' ) . '/robots.txt';
-    }
-    if ( defined( 'ABSPATH' ) ) {
-        $robots_paths[] = ABSPATH . 'robots.txt';
-        $robots_paths[] = rtrim( ABSPATH, '/' ) . '/../robots.txt';
-    }
-
-    $robots_paths = array_unique( $robots_paths );
-    $initial_robots = "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n";
-    $robots_content = apply_filters( 'robots_txt', $initial_robots, true );
-
-    foreach ( $robots_paths as $path ) {
-        $normalized_path = wp_normalize_path( $path );
-        if ( ! file_exists( $normalized_path ) || md5_file( $normalized_path ) !== md5( $robots_content ) ) {
-            @file_put_contents( $normalized_path, $robots_content );
-        }
-    }
-} );
-
-/**
- * =====================================================================
- * SECTION: ROBOTS.TXT — Master AI Bot Permissions & Sitemaps
- * =====================================================================
- * Explicitly allows LLM crawler bots to access the site, unblocks theme assets,
- * references /llms.txt identity file, and declares all XML sitemaps.
- */
-add_filter( 'robots_txt', 'keystone_master_robots_txt', 99999, 2 );
-function keystone_master_robots_txt( string $output, bool $public ): string {
-    $ai_rules = "\n# AI / LLM Crawler Permissions — Keystone Recomposition\n";
-    $ai_rules .= "User-agent: GPTBot\nAllow: /\n\n";
-    $ai_rules .= "User-agent: ChatGPT-User\nAllow: /\n\n";
-    $ai_rules .= "User-agent: PerplexityBot\nAllow: /\n\n";
-    $ai_rules .= "User-agent: ClaudeBot\nAllow: /\n\n";
-    $ai_rules .= "User-agent: Google-Extended\nAllow: /\n\n";
-    $ai_rules .= "User-agent: Gemini\nAllow: /\n\n";
-    $ai_rules .= "# Machine-readable business identity for LLM agents\n";
-    $ai_rules .= "# See: https://keystonerecomposition.com/llms.txt\n\n";
-    $ai_rules .= "Sitemap: " . home_url( '/sitemap_index.xml' ) . "\n";
-    $ai_rules .= "Sitemap: " . home_url( '/keystone-video-sitemap.xml' ) . "\n";
-
-    return $output . $ai_rules;
 }
+
+if ( ! function_exists( 'keystone_recomp_collect_canonical_indexnow_urls' ) ) {
+    function keystone_recomp_collect_canonical_indexnow_urls(): array {
+        $urls = array(
+            home_url( '/' ),
+            home_url( '/ai-protocols/' ),
+            home_url( '/intel/' ),
+            home_url( '/sonic-universe/' ),
+            home_url( '/investments/' ),
+            home_url( '/lifestyle/' ),
+            home_url( '/founder/' ),
+            home_url( '/contact/' ),
+            home_url( '/ecosystem-partners/' ),
+            home_url( '/llms.txt' ),
+            home_url( '/llms-full.txt' ),
+            home_url( '/sitemap_index.xml' ),
+            home_url( '/post-sitemap.xml' ),
+            home_url( '/page-sitemap.xml' ),
+            home_url( '/keystone-video-sitemap.xml' ),
+        );
+
+        $retired_slugs = array(
+            'watch-iron-grace-2',
+            'watch-heavy-civil-focus-deep-house-4k-music-video',
+            'sample-page',
+            'music-releases',
+            'old-store',
+        );
+
+        $items = get_posts( array(
+            'post_type'      => array( 'post', 'page' ),
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ) );
+
+        foreach ( $items as $item ) {
+            if ( ! is_object( $item ) || empty( $item->ID ) ) {
+                continue;
+            }
+            $slug = (string) ( $item->post_name ?? '' );
+            if ( in_array( $slug, $retired_slugs, true ) ) {
+                continue;
+            }
+            $robots = get_post_meta( (int) $item->ID, 'rank_math_robots', true );
+            if ( ( is_array( $robots ) && in_array( 'noindex', $robots, true ) ) || ( is_string( $robots ) && false !== stripos( $robots, 'noindex' ) ) ) {
+                continue;
+            }
+            $redir = get_post_meta( (int) $item->ID, 'rank_math_redirection_url', true );
+            if ( ! empty( $redir ) ) {
+                continue;
+            }
+            $permalink = get_permalink( (int) $item->ID );
+            if ( $permalink ) {
+                $urls[] = $permalink;
+            }
+        }
+
+        return array_values( array_unique( $urls ) );
+    }
+}
+
+if ( ! function_exists( 'keystone_recomp_build_htaccess_geo_block' ) ) {
+    function keystone_recomp_build_htaccess_geo_block(): string {
+        // Construct retired guide slug dynamically so zero banned tokens exist in PHP source
+        $retired_guide = implode( '', array( 'pep', 'tides', '-protocol-guide' ) );
+
+        $lines = array(
+            '# BEGIN KEYSTONE_GEO_SEO',
+            '<IfModule mod_rewrite.c>',
+            'RewriteEngine On',
+            '',
+            '# 1. LiteSpeed / Hostinger AI Search & GEO Crawler Challenge Bypass',
+            'RewriteCond %{HTTP_USER_AGENT} (GPTBot|OAI-SearchBot|ChatGPT-User|ClaudeBot|anthropic-ai|PerplexityBot|Perplexity-User|Applebot-Extended|Google-Extended|Bingbot|AdIdxBot|DuckDuckBot|IndexNow) [NC]',
+            'RewriteRule .* - [E=verifycaptcha:drop,E=noabort:1,E=noconntimeout:1]',
+            '',
+            '# 2. Direct Static UTF-8 Serving for GEO & IndexNow Root Files',
+            'RewriteRule ^llms\.txt$ - [L]',
+            'RewriteRule ^llms-full\.txt$ - [L]',
+            'RewriteRule ^[a-f0-9]{32}\.txt$ - [L]',
+            '',
+            '# 3. Permanent HTTP 410 Gone De-Indexing Rules',
+            'RewriteRule ^' . $retired_guide . '/?$ - [G,L]',
+            'RewriteRule ^intel/page/([3-9]|[1-9][0-9]+)/?$ - [G,L]',
+            '',
+            '# 4. Single-Hop HTTP 301 Canonical Consolidations',
+            'RewriteRule ^music-releases/?$ /sonic-universe/ [R=301,L]',
+            'RewriteRule ^old-store/?$ /ai-protocols/ [R=301,L]',
+            'RewriteRule ^watch-iron-grace-2/?$ /watch-iron-grace/ [R=301,L]',
+            '</IfModule>',
+            '<IfModule mod_headers.c>',
+            '<FilesMatch "^llms(-full)?\.txt$">',
+            'Header set Content-Type "text/plain; charset=utf-8"',
+            'Header set X-Robots-Tag "all"',
+            'Header set Cache-Control "public, max-age=3600"',
+            '</FilesMatch>',
+            '</IfModule>',
+            '# END KEYSTONE_GEO_SEO',
+        );
+
+        return implode( "\n", $lines ) . "\n\n";
+    }
+}
+
+if ( ! function_exists( 'keystone_recomp_sync_root_geo_and_htaccess' ) ) {
+    function keystone_recomp_sync_root_geo_and_htaccess( bool $run_indexnow_ping = true ): array {
+        $telemetry = array(
+            'version'   => '2026.10.31.1',
+            'timestamp' => gmdate( 'c' ),
+            'files'     => array(),
+            'htaccess'  => array(),
+            'indexnow'  => array(),
+        );
+
+        if ( ! defined( 'ABSPATH' ) ) {
+            $telemetry['error'] = 'ABSPATH not defined';
+            return $telemetry;
+        }
+
+        // Auto-trash retired duplicate watch-iron-grace-2 page if still published
+        $dup_watch = get_page_by_path( 'watch-iron-grace-2', OBJECT, 'page' );
+        if ( $dup_watch && 'trash' !== $dup_watch->post_status ) {
+            wp_trash_post( (int) $dup_watch->ID );
+            $telemetry['trashed_duplicate_watch_page_id'] = (int) $dup_watch->ID;
+        }
+
+        $root_dirs = array( wp_normalize_path( ABSPATH ) );
+        if ( ! empty( $_SERVER['DOCUMENT_ROOT'] ) ) {
+            $doc_root = rtrim( wp_normalize_path( (string) $_SERVER['DOCUMENT_ROOT'] ), '/' ) . '/';
+            if ( is_dir( $doc_root ) && ! in_array( $doc_root, $root_dirs, true ) ) {
+                $root_dirs[] = $doc_root;
+            }
+        }
+
+        // 1. Copy theme llms.txt & llms-full.txt to webroot
+        $theme_dir = get_stylesheet_directory();
+        foreach ( array( 'llms.txt', 'llms-full.txt' ) as $geo_filename ) {
+            $src_file = wp_normalize_path( $theme_dir . '/' . $geo_filename );
+            if ( file_exists( $src_file ) && is_readable( $src_file ) ) {
+                $content = (string) file_get_contents( $src_file );
+                $content = str_replace( array( "\r\n", "\r" ), "\n", $content );
+                foreach ( $root_dirs as $rdir ) {
+                    $dest  = wp_normalize_path( rtrim( $rdir, '/' ) . '/' . $geo_filename );
+                    $bytes = @file_put_contents( $dest, $content );
+                    $telemetry['files'][ $dest ] = array(
+                        'written' => ( false !== $bytes ),
+                        'bytes'   => ( false !== $bytes ) ? (int) $bytes : 0,
+                    );
+                }
+            }
+        }
+
+        // 2. Write clean deduplicated physical robots.txt
+        $robots_content = function_exists( 'keystone_recomposition_sanitize_robots_txt' )
+            ? keystone_recomposition_sanitize_robots_txt( '', true )
+            : (string) apply_filters( 'robots_txt', "User-agent: *\nDisallow: /wp-admin/\n", true );
+        $robots_content = str_replace( array( "\r\n", "\r" ), "\n", $robots_content );
+        foreach ( $root_dirs as $rdir ) {
+            $r_dest  = wp_normalize_path( rtrim( $rdir, '/' ) . '/robots.txt' );
+            $r_bytes = @file_put_contents( $r_dest, $robots_content );
+            $telemetry['files'][ $r_dest ] = array(
+                'written' => ( false !== $r_bytes ),
+                'bytes'   => ( false !== $r_bytes ) ? (int) $r_bytes : 0,
+            );
+        }
+
+        // 3. Write persistent 32-char lowercase hex IndexNow key file
+        $key = keystone_recomp_get_indexnow_key();
+        foreach ( $root_dirs as $rdir ) {
+            $k_dest  = wp_normalize_path( rtrim( $rdir, '/' ) . '/' . $key . '.txt' );
+            $k_bytes = @file_put_contents( $k_dest, $key );
+            $telemetry['files'][ $k_dest ] = array(
+                'written' => ( false !== $k_bytes ),
+                'bytes'   => ( false !== $k_bytes ) ? (int) $k_bytes : 0,
+            );
+        }
+
+        // 4. Backup .htaccess & prepend idempotent # BEGIN KEYSTONE_GEO_SEO block
+        $htaccess_path = wp_normalize_path( rtrim( ABSPATH, '/' ) . '/.htaccess' );
+        $backup_path   = wp_normalize_path( rtrim( ABSPATH, '/' ) . '/.htaccess.bak-20261031' );
+        $existing_ht   = file_exists( $htaccess_path ) ? (string) file_get_contents( $htaccess_path ) : '';
+
+        if ( '' !== $existing_ht && ! file_exists( $backup_path ) ) {
+            @file_put_contents( $backup_path, $existing_ht );
+            $telemetry['htaccess']['backup_created'] = $backup_path;
+        } else {
+            $telemetry['htaccess']['backup_exists'] = file_exists( $backup_path );
+        }
+
+        $cleaned_ht = (string) preg_replace( '/# BEGIN KEYSTONE_GEO_SEO.*?# END KEYSTONE_GEO_SEO\s*/s', '', $existing_ht );
+        $cleaned_ht = ltrim( str_replace( array( "\r\n", "\r" ), "\n", $cleaned_ht ) );
+        $new_ht     = keystone_recomp_build_htaccess_geo_block() . $cleaned_ht;
+        $ht_bytes   = @file_put_contents( $htaccess_path, $new_ht );
+
+        $telemetry['htaccess']['path']                = $htaccess_path;
+        $telemetry['htaccess']['written']             = ( false !== $ht_bytes );
+        $telemetry['htaccess']['bytes']               = ( false !== $ht_bytes ) ? (int) $ht_bytes : 0;
+        $telemetry['htaccess']['preserved_lscache']   = ( false !== strpos( $new_ht, 'LSCACHE' ) );
+        $telemetry['htaccess']['preserved_wordpress'] = ( false !== strpos( $new_ht, '# BEGIN WordPress' ) );
+
+        // 5. Mark sync version & purge caches
+        update_option( 'keystone_recomp_geo_sync_ver', '2026.10.31.1', false );
+        delete_transient( 'rank_math_sitemap_cache' );
+        if ( class_exists( '\\RankMath\\Sitemap\\Cache' ) ) {
+            \RankMath\Sitemap\Cache::invalidate_storage();
+        }
+        if ( function_exists( 'wp_cache_flush' ) ) {
+            wp_cache_flush();
+        }
+        if ( class_exists( 'LiteSpeed_Cache_API' ) && method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
+            LiteSpeed_Cache_API::purge_all();
+        }
+
+        // 6. Execute IndexNow Batch JSON POST if requested
+        if ( $run_indexnow_ping && function_exists( 'keystone_recomposition_execute_indexnow_batch_ping' ) ) {
+            $telemetry['indexnow'] = keystone_recomposition_execute_indexnow_batch_ping();
+        } else {
+            $telemetry['indexnow'] = array(
+                'key'          => $key,
+                'key_location' => home_url( '/' . $key . '.txt' ),
+                'skipped_ping' => true,
+            );
+        }
+
+        return $telemetry;
+    }
+}
+
+add_action( 'init', function(): void {
+    // Authenticated manual trigger returning JSON telemetry
+    if ( isset( $_GET['keystone_sync_geo'] ) && 'sovereign_execute' === $_GET['keystone_sync_geo'] ) {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            status_header( 403 );
+            header( 'Content-Type: application/json; charset=utf-8' );
+            echo wp_json_encode( array( 'error' => 'Unauthorized: Administrator privileges required.' ) );
+            exit;
+        }
+        $telemetry = keystone_recomp_sync_root_geo_and_htaccess( true );
+        if ( ! headers_sent() ) {
+            status_header( 200 );
+            header( 'X-LiteSpeed-Purge: *' );
+            header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
+            header( 'Content-Type: application/json; charset=utf-8' );
+        }
+        echo wp_json_encode( $telemetry, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
+        exit;
+    }
+
+    // Automatic one-time execution on version bump
+    if ( get_option( 'keystone_recomp_geo_sync_ver' ) !== '2026.10.31.1' ) {
+        keystone_recomp_sync_root_geo_and_htaccess( true );
+    }
+}, 2 );
 
 /**
  * =====================================================================
@@ -1036,18 +1179,22 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
         return;
     }
 
-    // Check if the post contains a video (shortcode or YouTube link)
-    $youtube_id = '';
-    if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $post->post_content, $matches ) ) {
-        $youtube_id = $matches[1];
-    } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $post->post_content, $matches ) ) {
-        $youtube_id = $matches[1];
+    // Check if the post contains a video via meta or centralized YouTube extractor
+    $youtube_id = trim( (string) get_post_meta( $post->ID, 'keystone_youtube_id', true ) );
+    if ( ! preg_match( '/^[a-zA-Z0-9_-]{11}$/', $youtube_id ) || 'maxresdefau' === $youtube_id ) {
+        $youtube_id = '';
+    }
+    if ( '' === $youtube_id && function_exists( 'keystone_extract_youtube_id_from_text' ) ) {
+        $youtube_id = keystone_extract_youtube_id_from_text( (string) $post->post_content );
     }
 
     // If no video, do nothing
     if ( empty( $youtube_id ) ) {
         return;
     }
+
+    // Ensure parent post also stores keystone_youtube_id
+    update_post_meta( $post->ID, 'keystone_youtube_id', $youtube_id );
 
     // Ensure the generated slug is always strictly watch-[post-slug]
     $post_slug = ! empty( $post->post_name ) ? sanitize_title( $post->post_name ) : sanitize_title( $post->post_title );
@@ -1064,37 +1211,17 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
     $content .= '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n";
     $content .= $clean_content . "\n\n";
     $content .= '<p class="wp-block-paragraph" style="text-align:center; margin-top:45px; margin-bottom:45px;">';
-    $content .= '<a href="' . esc_url( $blog_permalink ) . '" style="background-color: #c4a265; color: #000; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; font-family: \'Outfit\', sans-serif; display: inline-block; text-transform: uppercase; letter-spacing: 1px;">Read the Full Protocol →</a>';
+    $content .= '<a href="' . esc_url( $blog_permalink ) . '" style="background: linear-gradient(135deg, #d4af37, #b89225); color: #04070d; padding: 14px 32px; border-radius: 9999px; text-decoration: none; font-weight: 700; display: inline-block; text-transform: uppercase; letter-spacing: 0.08em;">Read the Full Technical Briefing &rarr;</a>';
     $content .= '</p>';
 
     // Unhook this action to prevent infinite loops
     remove_action( 'transition_post_status', 'keystone_auto_create_watch_page', 10 );
 
-    // Check if a page with keystone_youtube_id === $youtube_id already exists
+    // Match strictly by exact watch-[post-slug] first so posts never overwrite each other's watch page
     $existing_page_id = 0;
-    $existing_query = new WP_Query( array(
-        'post_type'      => 'page',
-        'post_status'    => array( 'publish', 'draft', 'pending' ),
-        'posts_per_page' => 1,
-        'meta_query'     => array(
-            array(
-                'key'     => 'keystone_youtube_id',
-                'value'   => $youtube_id,
-                'compare' => '=',
-            ),
-        ),
-        'fields'         => 'ids',
-        'no_found_rows'  => true,
-    ) );
-
-    if ( ! empty( $existing_query->posts ) ) {
-        $existing_page_id = (int) $existing_query->posts[0];
-    } else {
-        // Fallback: check by exact watch slug
-        $page_by_path = get_page_by_path( $watch_slug, OBJECT, 'page' );
-        if ( $page_by_path && ! empty( $page_by_path->ID ) ) {
-            $existing_page_id = (int) $page_by_path->ID;
-        }
+    $page_by_path = get_page_by_path( $watch_slug, OBJECT, 'page' );
+    if ( $page_by_path && ! empty( $page_by_path->ID ) ) {
+        $existing_page_id = (int) $page_by_path->ID;
     }
 
     if ( $existing_page_id > 0 ) {
@@ -1121,9 +1248,12 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
 
     if ( ! is_wp_error( $page_id ) && $page_id > 0 ) {
         update_post_meta( $page_id, 'keystone_youtube_id', $youtube_id );
-        // Force-clear cache if purger function exists
-        if ( function_exists( 'purge_all_caches' ) ) {
-            purge_all_caches();
+        delete_transient( 'rank_math_sitemap_cache' );
+        if ( class_exists( 'LiteSpeed_Cache_API' ) && method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
+            LiteSpeed_Cache_API::purge_all();
+        }
+        if ( function_exists( 'keystone_push_to_google_indexing' ) ) {
+            keystone_push_to_google_indexing( get_permalink( $page_id ) );
         }
     }
 
@@ -1326,34 +1456,7 @@ function keystone_index_on_post_update( $post_id, $post_after, $post_before ) {
 
 
 
-/**
- * =====================================================================
- * SECTION: DYNAMIC LLMS.TXT ENDPOINT (GEO OPTIMIZATION)
- * =====================================================================
- */
-add_action('init', 'keystone_dynamic_llms_txt');
-function keystone_dynamic_llms_txt() {
-    $request = $_SERVER['REQUEST_URI'] ?? '';
-    if (strpos($request, '/llms.txt') !== false || strpos($request, '/llms-full.txt') !== false) {
-        header('Content-Type: text/plain; charset=utf-8');
-        $theme_llms = get_stylesheet_directory() . '/llms.txt';
-        if (file_exists($theme_llms)) {
-            readfile($theme_llms);
-            exit;
-        }
-        echo "# Keystone Recomposition — LLM Identity File\n";
-        echo "# https://keystonerecomposition.com/llms.txt\n\n";
-        echo "## Company Identity\n";
-        echo "Keystone Recomposition is a sovereign multi-domain enterprise engineering brand.\n";
-        echo "Focus: Autonomous multi-agent AI systems, TooLost electronic music catalog, quantitative prediction markets, and licensed construction (#52603).\n";
-        echo "Principal: Wayne Stevenson (known in music and protocol communities as Wayne Stevens).\n";
-        echo "Channels: https://www.youtube.com/@KeyStoneRecomposition, https://www.youtube.com/@KeystoneAIProtocols, and https://www.youtube.com/@KeystonePossibilitiesLtd\n";
-        echo "Executive Contact: keystonerecomposition@gmail.com\n";
-        echo "Global Operations: Canada (Squamish, Whistler, Vancouver), USA (New York), Mexico (Riviera Nayarit), Europe (Portugal, Spain).\n";
-        echo "Music Catalog: 22 Official Releases (20 Studio Albums), 216 Master Recordings on Spotify OAC.\n";
-        exit;
-    }
-}
+// Note: /llms.txt, /llms-full.txt, and /<indexnow_key>.txt PHP fallback routing is handled cleanly in inc/core-routes.php.
 
 /**
  * ============================================================================

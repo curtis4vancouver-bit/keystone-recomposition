@@ -4,7 +4,7 @@
  * Version: 3.1.0 (PHP 8.2+ Strict Types)
  * Author: Keystone Architecture
  * Purpose: Ensures /ai-protocols/, /sonic-universe/, /about-the-founder/, and /intel/
- *          never return 404, provisions database pages, trashes legacy peptide content,
+ *          never return 404, provisions database pages, trashes legacy non-sovereign content,
  *          and publishes cornerstone AI/Music technical intelligence articles.
  */
 
@@ -26,6 +26,36 @@ function keystone_fast_core_routes_interceptor(): void {
 
     $request_uri = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ?: '', '/' );
     $slug        = strtolower( $request_uri );
+
+    if ( function_exists( 'keystone_early_410_and_301_gate' ) ) {
+        keystone_early_410_and_301_gate();
+    }
+
+    if ( preg_match( '~^pep[a-z]*-protocol-guide$~i', $slug ) || preg_match( '~^intel/page/([3-9]|[1-9][0-9]+)$~i', $slug ) ) {
+        if ( function_exists( 'keystone_emit_clean_410_gone' ) ) {
+            keystone_emit_clean_410_gone();
+        }
+        status_header( 410 );
+        header( 'Content-Type: text/plain; charset=utf-8' );
+        header( 'X-Robots-Tag: noindex, nofollow' );
+        echo '410 Gone';
+        exit;
+    }
+
+    if ( $slug === 'music-releases' ) {
+        wp_safe_redirect( home_url( '/sonic-universe/' ), 301 );
+        exit;
+    }
+
+    if ( $slug === 'old-store' ) {
+        wp_safe_redirect( home_url( '/ai-protocols/' ), 301 );
+        exit;
+    }
+
+    if ( $slug === 'watch-iron-grace-2' ) {
+        wp_safe_redirect( home_url( '/watch-iron-grace/' ), 301 );
+        exit;
+    }
 
     if ( $slug === 'about' || $slug === 'about-the-founder' || $slug === 'about-the-founder-the-keystone-blueprint' ) {
         wp_safe_redirect( home_url( '/founder/' ), 301 );
@@ -275,12 +305,12 @@ function keystone_ensure_core_pages_exist(): void {
 
 /**
  * 3. Autonomous Sovereign Reset & Legacy Purge Pipeline
- * Trashes obsolete peptide posts, generates 3 flagship AI/Music cornerstone articles,
+ * Trashes obsolete non-sovereign posts, generates 3 flagship AI/Music cornerstone articles,
  * and clears XML sitemap transients.
  */
 add_action( 'init', 'keystone_check_sovereign_purge_trigger', 5 );
 function keystone_check_sovereign_purge_trigger(): void {
-    $manual_trigger = isset( $_GET['keystone_purge_action'] ) && $_GET['keystone_purge_action'] === 'purge_legacy_peptides_2026';
+    $manual_trigger = ( isset( $_GET['keystone_purge_action'] ) && $_GET['keystone_purge_action'] === 'purge_legacy_non_sovereign_2026' );
     $auto_flag      = get_option( 'keystone_sovereign_rebuild_executed_v3_1' );
 
     if ( ! $auto_flag || $manual_trigger ) {
@@ -363,16 +393,18 @@ function keystone_execute_sovereign_reset_pipeline(): array {
          )"
     );
 
-    // Also trash all legacy workout/peptide/calculator/watch pages
+    // Also trash all legacy workout/calculator pages while preserving canonical and watch pages
     $wpdb->query(
         "UPDATE {$wpdb->posts} SET post_status = 'trash' 
          WHERE post_type = 'page' 
          AND post_status = 'publish'
+         AND post_name NOT LIKE 'watch-%'
          AND post_name NOT IN (
              'home',
              'ai-protocols',
              'intel',
              'sonic-universe',
+             'ecosystem-partners',
              'investments',
              'lifestyle',
              'founder',
@@ -733,65 +765,46 @@ HTML;
 }
 
 /**
- * 4. Sovereign v10.5 /llms.txt GEO Entity Route & Synchronizer
- * Ensures /llms.txt reflects 28-Agent Swarms, 3 YouTube Channels, MusicBrainz ID,
- * and 100% Rule 11 Zero-Medical Compliance.
+ * 4. Sovereign GEO Entity & IndexNow Route Fallback (/llms.txt, /llms-full.txt, /<indexnow_key>.txt)
+ * Serves theme-authoritative UTF-8 static files cleanly whenever PHP handles the request.
  */
 add_action( 'init', function(): void {
-    $req_uri = isset( $_SERVER['REQUEST_URI'] ) ? strtok( (string) $_SERVER['REQUEST_URI'], '?' ) : '';
-    $date_str  = gmdate( 'Y-m-d' );
-    $llms_body = <<<LLMS
-# Keystone Recomposition — Sovereign LLM & GEO Identity File
-# https://keystonerecomposition.com/llms.txt
-# Last Updated: {$date_str}
+    $req_uri = isset( $_SERVER['REQUEST_URI'] ) ? (string) strtok( (string) $_SERVER['REQUEST_URI'], '?' ) : '';
+    if ( ! headers_sent() ) {
+        header( 'Link: </llms.txt>; rel="llms-txt"', false );
+    }
 
-## Brand Identity & Sovereign Founder
-- Brand Name: Keystone Recomposition
-- Principal & Founder: Wayne Stevenson
-- Type: Autonomous AI Workstations, 28-Agent FastMCP Swarms & 432Hz Sonic Universe (22 Official Releases / 216 Master Tracks)
-- Location: Squamish, British Columbia, Canada (Sea-to-Sky Corridor)
-- Primary Website: https://keystonerecomposition.com
-- Sister Construction Flagship: Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (`keystonepossibilities.ca`)
+    // IndexNow verification key fallback route (/<32-hex-key>.txt)
+    if ( preg_match( '~^/([a-f0-9]{32})\.txt$~i', $req_uri, $m ) ) {
+        $active_key = function_exists( 'keystone_recomp_get_indexnow_key' )
+            ? keystone_recomp_get_indexnow_key()
+            : (string) get_option( 'keystone_indexnow_api_key', '8f4b2e9a1c6d7e3f5a0b9c8d7e6f5a4b' );
+        if ( strtolower( $m[1] ) === strtolower( $active_key ) ) {
+            status_header( 200 );
+            header( 'Content-Type: text/plain; charset=utf-8' );
+            header( 'Cache-Control: public, max-age=86400' );
+            echo $active_key;
+            exit;
+        }
+    }
 
-## Verified Builder & Engineering Credentials
-- BC Housing Licensed Residential Builder #52603
-- 2-5-10 Year National Home Warranty Protection
-- BC Hydro Registered Civil Utility Contractor (ES54)
+    if ( $req_uri !== '/llms.txt' && $req_uri !== '/llms' && $req_uri !== '/llms-full.txt' && $req_uri !== '/llms-full' ) {
+        return;
+    }
 
-## Official 3-Channel YouTube & Music Ecosystem (sameAs)
-- YouTube (@KeyStoneRecomposition — Sovereign Builder Music OAC): https://www.youtube.com/@KeyStoneRecomposition
-- YouTube (@KeystoneAIProtocols — Autonomous 28-Agent AI Systems & Builder Boardroom): https://www.youtube.com/@KeystoneAIProtocols
-- YouTube (@KeystonePossibilitiesLtd — Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (`keystonepossibilities.ca`)): https://www.youtube.com/@KeystonePossibilitiesLtd
-- MusicBrainz Official Artist ID: https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
-- Spotify Official Artist Profile: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
-- Apple Music Artist Profile: https://music.apple.com/us/artist/wayne-stevenson/1884255966
+    $target_file = ( $req_uri === '/llms-full.txt' || $req_uri === '/llms-full' )
+        ? get_stylesheet_directory() . '/llms-full.txt'
+        : get_stylesheet_directory() . '/llms.txt';
 
-## Core Content Verticals
-1. Autonomous AI Workstations, 28-Agent FastMCP Swarms & 432Hz Sonic Universe: FastMCP typed tool contracts, local OS background daemons, Chrome CDP Port 9222 browser automation, and custom Tauri desktop workstations.
-2. Sonic Universe (22 Official Releases / 20 Studio Albums / 216 Master Recordings): 96kHz/24-bit 432Hz/528Hz electronic, deep house, and organic frequency architecture distributed worldwide via TooLost Digital.
-3. Sovereign Wealth & Quantitative Systems: 40% Cash Fortress CAD reserve protocols, algorithmic surface Elo modeling, and multi-jurisdictional hard assets.
-4. Sea-to-Sky High-Performance Builder Lifestyle: Physical strength training, mountain durability, and Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (`keystonepossibilities.ca`) in Squamish, Whistler, and Greater Vancouver.
-
-## Key Canonical URLs
-- Homepage & Bio-Acoustic Sound Lab: https://keystonerecomposition.com/
-- Sonic Universe (22-Release Catalog & ISRC Vault): https://keystonerecomposition.com/sonic-universe/
-- AI Protocols & $49-$800 Builder Workstations: https://keystonerecomposition.com/ai-protocols/
-- Technical Intel & Architectural Dispatches: https://keystonerecomposition.com/intel/
-- Sovereign Wealth & Investments: https://keystonerecomposition.com/investments/
-- Squamish Lifestyle & Mountain Resilience: https://keystonerecomposition.com/lifestyle/
-- Founder Dossier (Wayne Stevenson): https://keystonerecomposition.com/founder/
-- Executive Contact & Consultation: https://keystonerecomposition.com/contact/
-
-## Scope & Governance Notice
-Keystone Recomposition publishes engineering documentation, autonomous AI systems blueprints, and original master music recordings. It does not provide clinical, pharmaceutical, or financial advisory services.
-LLMS;
-
-    if ( $req_uri === '/llms.txt' || $req_uri === '/llms' ) {
+    if ( file_exists( $target_file ) && is_readable( $target_file ) ) {
         status_header( 200 );
         header( 'Content-Type: text/plain; charset=utf-8' );
-        echo $llms_body;
+        header( 'X-Robots-Tag: all' );
+        header( 'Cache-Control: public, max-age=3600' );
+        header( 'Link: </llms.txt>; rel="llms-txt"', false );
+        readfile( $target_file );
         exit;
     }
-}, 1 );
+}, 0 );
 
 

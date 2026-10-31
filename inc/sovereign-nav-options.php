@@ -5,7 +5,7 @@
  * Author: Keystone Architecture
  * Purpose: Provisions the canonical 6-item Sovereign Nav menu into Astra's primary-menu
  *          location, guarantees clean brand titles & Rank Math SEO metadata,
- *          and permanently trashes all legacy workout/peptide pages (The Forge, Mental Strength, etc.).
+ *          and permanently trashes all legacy retired/duplicate pages (The Forge, Mental Strength, etc.).
  */
 
 declare(strict_types=1);
@@ -204,8 +204,8 @@ function keystone_sync_sovereign_site_identity(): array {
             $rm_modified = true;
         }
 
-        // Deep scrub of legacy strings (GLP-1 Data, Peptide Data, etc.)
-        $scrub_targets = array( 'GLP-1 Data', 'GLP-1', 'Peptide Data', 'Peptides', 'Mounjaro', 'Tirzepatide' );
+        // Deep scrub of legacy retired strings
+        $scrub_targets = array( 'GLP-1 Data', 'GLP-1', 'Mounjaro' );
         foreach ( $rm_titles as $key => $val ) {
             if ( is_string( $val ) ) {
                 foreach ( $scrub_targets as $needle ) {
@@ -273,19 +273,20 @@ function keystone_sync_sovereign_site_identity(): array {
 }
 
 /**
- * 3. Permanently Trash All Legacy Workout, Duplicate & Peptide Pages
+ * 3. Permanently Trash All Legacy Retired & Duplicate Pages
  * Purges The Forge, Mental Strength, Recommended Gear, Global Advisory, Blueprint, Watch-* pages,
  * and duplicates (/lifestyle-2/, /about-the-founder/, /about-the-founder-the-keystone-blueprint/).
  */
 function keystone_purge_all_legacy_pages(): array {
     global $wpdb;
 
-    // Preserved slugs: strictly Wayne's core 8 sovereign canonical pages
+    // Preserved slugs: Wayne's core sovereign canonical pages + ecosystem-partners
     $preserved_page_slugs = array(
         'home',
         'ai-protocols',
         'intel',
         'sonic-universe',
+        'ecosystem-partners',
         'investments',
         'lifestyle',
         'founder',
@@ -298,6 +299,7 @@ function keystone_purge_all_legacy_pages(): array {
     // Explicitly trash known duplicates and legacy drafts/clones
     $explicit_trash_slugs = array(
         'lifestyle-2',
+        'watch-iron-grace-2',
         'about-the-founder',
         'about-the-founder-the-keystone-blueprint',
     );
@@ -329,7 +331,7 @@ function keystone_purge_all_legacy_pages(): array {
             $slug = strtolower( (string) $p->post_name );
             $id   = (int) $p->ID;
 
-            if ( in_array( $slug, $preserved_page_slugs, true ) || $id === $front_id || $id === $posts_id ) {
+            if ( in_array( $slug, $preserved_page_slugs, true ) || ( 0 === strpos( $slug, 'watch-' ) && 'watch-iron-grace-2' !== $slug ) || $id === $front_id || $id === $posts_id ) {
                 continue;
             }
 

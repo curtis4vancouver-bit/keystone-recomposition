@@ -46,8 +46,8 @@ function keystone_recomposition_child_post_title_after( $after ) {
 function keystone_recomposition_child_inject_schema() {
     $custom_logo_id = get_theme_mod( 'custom_logo' );
     $logo_url = wp_get_attachment_image_url( $custom_logo_id, 'full' );
-    if ( ! $logo_url ) {
-        $logo_url = 'https://keystonerecomposition.com/wp-content/uploads/logo.png';
+    if ( ! $logo_url || false !== stripos( (string) $logo_url, '/wp-content/uploads/logo.png' ) ) {
+        $logo_url = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
     }
 
     // === Organization Schema (Keystone Recomposition Sovereign Brand) ===
@@ -192,21 +192,23 @@ function keystone_recomposition_child_inject_schema() {
     echo "</script>\n";
     echo "<!-- End Keystone Empire Network Schema -->\n";
 
-    // === Person Schema (Wayne Stevenson - Multi-Domain Entity Mesh) ===
-    $person_schema = array(
-        '@context' => 'https://schema.org',
-        '@graph'   => array(
-            keystone_get_wayne_stevenson_person_schema()
-        )
-    );
+    // === Person Schema (Only emit standalone block if Rank Math is NOT active; Rank Math @graph owns #person) ===
+    if ( ! class_exists( 'RankMath' ) ) {
+        $person_schema = array(
+            '@context' => 'https://schema.org',
+            '@graph'   => array(
+                keystone_get_wayne_stevenson_person_schema()
+            )
+        );
 
-    $json_person = wp_json_encode( $person_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+        $json_person = wp_json_encode( $person_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
 
-    echo "<!-- Keystone Person Schema (Knowledge Panel Anchor) -->\n";
-    echo "<script type=\"application/ld+json\">\n";
-    echo $json_person . "\n";
-    echo "</script>\n";
-    echo "<!-- End Person Schema -->\n";
+        echo "<!-- Keystone Person Schema (Knowledge Panel Anchor) -->\n";
+        echo "<script type=\"application/ld+json\">\n";
+        echo $json_person . "\n";
+        echo "</script>\n";
+        echo "<!-- End Person Schema -->\n";
+    }
 }
 add_action( 'wp_head', 'keystone_recomposition_child_inject_schema' );
 
@@ -346,22 +348,13 @@ function keystone_get_wayne_stevenson_person_schema(): array {
         ),
         'producerOf'       => array(
             array(
-                '@type'       => 'MusicAlbum',
-                '@id'         => 'https://keystonerecomposition.com/sonic-universe/#album-concrete-foundations',
-                'name'        => 'Concrete Foundations',
-                'description' => 'Functional bio-acoustic engineering and high-end electronic soundscapes composed by Wayne Stevenson for training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
+                '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-concrete-foundations',
             ),
             array(
-                '@type'       => 'MusicAlbum',
-                '@id'         => 'https://keystonerecomposition.com/sonic-universe/#album-resonantia',
-                'name'        => 'Resonantia: 10 Frequencies of the Rebuild',
-                'description' => '10 progressive functional bio-acoustic frequencies and deep house soundscapes engineered for circadian entrainment, metabolic focus, and autonomic state regulation in Keystone Protocols.',
+                '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-resonantia-10-frequencies-of-the-rebuild',
             ),
             array(
-                '@type'       => 'MusicAlbum',
-                '@id'         => 'https://keystonerecomposition.com/sonic-universe/#album-the-205-marker',
-                'name'        => 'The 205 Marker',
-                'description' => 'Cadence-synchronized electronic album engineered by Wayne Stevenson for sustained training cadence, neuromuscular drive, and autonomic state regulation in Keystone Protocols.',
+                '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-the-205-marker',
             ),
         ),
         'worksFor'         => array(
@@ -395,6 +388,16 @@ function keystone_get_wayne_stevenson_person_schema(): array {
  * composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.
  */
 function keystone_recomposition_child_music_schema() {
+    $req_path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
+    $is_allowed_music_graph_page = (
+        ( is_front_page() && ! is_home() && ! is_singular( 'post' ) ) ||
+        is_page( 'sonic-universe' ) ||
+        'sonic-universe' === $req_path
+    );
+    if ( ! $is_allowed_music_graph_page ) {
+        return;
+    }
+
     if ( ! function_exists( 'keystone_get_all_albums' ) ) {
         $catalog_file = get_stylesheet_directory() . '/inc/sonic-catalog-data.php';
         if ( file_exists( $catalog_file ) ) {
@@ -504,25 +507,15 @@ function keystone_sanitize_rank_math_json_ld_node( $node, array $person_node, st
             if ( 'curtis4vancouver@gmail.com' === strtolower( trim( $node ) ) ) {
                 return 'keystonerecomposition@gmail.com';
             }
-            $node = str_ireplace(
-                array(
-                    'https://www.youtube.com/@KeystoneProtocols',
-                    'https://www.youtube.com/@keystoneprotocols',
-                    'https://youtube.com/@KeystoneProtocols',
-                    'https://youtube.com/@keystoneprotocols',
-                    'https://www.youtube.com/@keystonepossibilities',
-                    'https://youtube.com/@keystonepossibilities',
-                    'curtis4vancouver@gmail.com',
-                ),
-                array(
-                    'https://www.youtube.com/@KeystoneAIProtocols',
-                    'https://www.youtube.com/@KeystoneAIProtocols',
-                    'https://www.youtube.com/@KeystoneAIProtocols',
-                    'https://www.youtube.com/@KeystoneAIProtocols',
-                    'https://www.youtube.com/@KeystonePossibilitiesLtd',
-                    'https://www.youtube.com/@KeystonePossibilitiesLtd',
-                    'keystonerecomposition@gmail.com',
-                ),
+            $node = str_ireplace( 'curtis4vancouver@gmail.com', 'keystonerecomposition@gmail.com', $node );
+            $node = (string) preg_replace(
+                '~https?://(?:www\.)?youtube\.com/@keystone(?:ai)?protocols(?![a-z0-9_])~i',
+                'https://www.youtube.com/@KeystoneAIProtocols',
+                $node
+            );
+            $node = (string) preg_replace(
+                '~https?://(?:www\.)?youtube\.com/@keystonepossibilities(?:ltd)*(?![a-z0-9_])~i',
+                'https://www.youtube.com/@KeystonePossibilitiesLtd',
                 $node
             );
             if ( false !== stripos( $node, 'Keystone_Recomposition_LTD_invert' ) || false !== stripos( $node, '/wp-content/uploads/logo.png' ) ) {
@@ -584,43 +577,66 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
     // Recursively scrub legacy email, YouTube handles, lowercase squamish, blocked logo URL, and stub Person nodes
     $data = keystone_sanitize_rank_math_json_ld_node( $data, $person_node, $clean_logo_url );
 
-    // 1. If Rank Math uses @graph array, enrich existing Person or inject new node
+    // 1. If Rank Math uses @graph array, keep strictly ONE Person node and collapse duplicates
     if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
         $found_person = false;
-        foreach ( $data['@graph'] as $idx => $node ) {
-            if ( isset( $node['@type'] ) ) {
-                $types = (array) $node['@type'];
-                if ( in_array( 'Person', $types, true ) ) {
-                    $data['@graph'][ $idx ] = array_merge( $node, $person_node );
-                    $found_person = true;
-                    break;
+        $clean_graph  = array();
+        foreach ( $data['@graph'] as $node ) {
+            if ( is_array( $node ) && isset( $node['@type'] ) && in_array( 'Person', (array) $node['@type'], true ) ) {
+                if ( ! $found_person ) {
+                    $clean_graph[] = array_merge( $node, $person_node );
+                    $found_person  = true;
                 }
+                continue;
             }
-        }
-        if ( ! $found_person ) {
-            $data['@graph'][] = $person_node;
-        }
-
-        // Connect Article, NewsArticle, BlogPosting, TechArticle, WebPage author to Wayne's Person ID
-        foreach ( $data['@graph'] as $idx => $node ) {
-            if ( isset( $node['@type'] ) ) {
+            if ( is_array( $node ) && isset( $node['@type'] ) ) {
                 $types = (array) $node['@type'];
                 if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage' ) ) ) {
-                    if ( empty( $node['author'] ) || ( isset( $node['author']['@type'] ) && 'Person' === $node['author']['@type'] ) ) {
-                        $data['@graph'][ $idx ]['author'] = array( '@id' => $person_id );
+                    if ( empty( $node['author'] ) || ( is_array( $node['author'] ) && isset( $node['author']['@type'] ) ) ) {
+                        $node['author'] = array( '@id' => $person_id );
                     }
                 }
             }
+            $clean_graph[] = $node;
         }
+        if ( ! $found_person ) {
+            $clean_graph[] = $person_node;
+        }
+        $data['@graph'] = $clean_graph;
+        return $data;
     }
 
-    // 2. Also inject into named Person entity and publisher node
-    $data['Person'] = $person_node;
+    // 2. Standard Rank Math associative $data array: keep strictly ONE top-level Person node
+    $found_top_person = false;
+    foreach ( array_keys( $data ) as $key ) {
+        if ( ! is_array( $data[ $key ] ) ) {
+            continue;
+        }
+        $types = isset( $data[ $key ]['@type'] ) ? (array) $data[ $key ]['@type'] : array();
+        if ( in_array( 'Person', $types, true ) ) {
+            if ( ! $found_top_person ) {
+                $data[ $key ]     = array_merge( $data[ $key ], $person_node );
+                $found_top_person = true;
+            } else {
+                unset( $data[ $key ] );
+            }
+            continue;
+        }
+        // Collapse inline nested Person sub-objects to pure @id pointer
+        foreach ( array( 'author', 'creator', 'founder', 'accountablePerson' ) as $rel_prop ) {
+            if ( isset( $data[ $key ][ $rel_prop ] ) && is_array( $data[ $key ][ $rel_prop ] ) && isset( $data[ $key ][ $rel_prop ]['@type'] ) ) {
+                $rel_types = (array) $data[ $key ][ $rel_prop ]['@type'];
+                if ( in_array( 'Person', $rel_types, true ) ) {
+                    $data[ $key ][ $rel_prop ] = array( '@id' => $person_id );
+                }
+            }
+        }
+    }
+    if ( ! $found_top_person ) {
+        $data['Person'] = $person_node;
+    }
     if ( isset( $data['ProfilePage'] ) && is_array( $data['ProfilePage'] ) ) {
         $data['ProfilePage']['mainEntity'] = array( '@id' => $person_id );
-    }
-    if ( isset( $data['publisher'] ) && is_array( $data['publisher'] ) && isset( $data['publisher']['@type'] ) && 'Person' === $data['publisher']['@type'] ) {
-        $data['publisher'] = array_merge( $data['publisher'], $person_node );
     }
 
     return $data;
@@ -682,6 +698,31 @@ add_action( 'init', function() {
  * @param int|WP_Post $post_or_id Post object or ID.
  * @return array|null Metadata array or null if no valid video found.
  */
+/**
+ * Centralized 11-char YouTube ID extractor supporting [keystone_video], data-video-id,
+ * youtube-nocookie.com/embed/, youtube.com/embed/, youtube.com/watch?v=, youtu.be/, and /shorts/.
+ */
+function keystone_extract_youtube_id_from_text( string $text ): string {
+    if ( '' === trim( $text ) ) {
+        return '';
+    }
+    $patterns = array(
+        '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]{11})["\']~i',
+        '~data-video-id=["\']([a-zA-Z0-9_-]{11})["\']~i',
+        '~youtube-nocookie\.com/embed/([a-zA-Z0-9_-]{11})~i',
+        '~youtube\.com/embed/([a-zA-Z0-9_-]{11})~i',
+        '~youtube\.com/watch\?(?:[^"\'<>\s]*&(?:amp;)?)?v=([a-zA-Z0-9_-]{11})~i',
+        '~youtu\.be/([a-zA-Z0-9_-]{11})~i',
+        '~youtube\.com/(?:shorts|v|e)/([a-zA-Z0-9_-]{11})~i',
+    );
+    foreach ( $patterns as $pattern ) {
+        if ( preg_match( $pattern, $text, $matches ) && 'maxresdefau' !== $matches[1] ) {
+            return $matches[1];
+        }
+    }
+    return '';
+}
+
 function keystone_get_post_video_metadata( $post_or_id = null ) {
     $post = get_post( $post_or_id );
     if ( ! $post ) {
@@ -724,36 +765,24 @@ function keystone_get_post_video_metadata( $post_or_id = null ) {
     }
 
     // Extract YouTube ID
-    $youtube_id = get_post_meta( $post_id, 'keystone_youtube_id', true );
-    $video_url = get_post_meta( $post_id, 'video_url', true );
+    $youtube_id = trim( (string) get_post_meta( $post_id, 'keystone_youtube_id', true ) );
+    if ( ! preg_match( '/^[a-zA-Z0-9_-]{11}$/', $youtube_id ) || 'maxresdefau' === $youtube_id ) {
+        $youtube_id = '';
+    }
+    $video_url = (string) get_post_meta( $post_id, 'video_url', true );
 
-    if ( empty( $youtube_id ) && ! empty( $video_url ) ) {
-        if ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/|youtube-nocookie\.com/embed/)([^"&?/ ]{11})~i', (string) $video_url, $matches ) ) {
-            $youtube_id = $matches[1];
-        }
+    if ( '' === $youtube_id && '' !== $video_url ) {
+        $youtube_id = keystone_extract_youtube_id_from_text( $video_url );
     }
 
-    if ( empty( $youtube_id ) ) {
+    if ( '' === $youtube_id ) {
         $source_post = ( $post_id !== $post->ID ) ? get_post( $post_id ) : $post;
-        $content = (string) ( $source_post ? $source_post->post_content : $post->post_content );
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $content, $matches ) ) {
-            $youtube_id = $matches[1];
-        } elseif ( preg_match( '~data-video-id=["\']([a-zA-Z0-9_-]{11})["\']~i', $content, $matches ) ) {
-            $youtube_id = $matches[1];
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/|youtube-nocookie\.com/embed/)([^"&?/ ]{11})~i', $content, $matches ) ) {
-            $youtube_id = $matches[1];
-        }
+        $content     = (string) ( $source_post ? $source_post->post_content : $post->post_content );
+        $youtube_id  = keystone_extract_youtube_id_from_text( $content );
     }
 
-    // Direct fallback on original post content if source post had no match
-    if ( empty( $youtube_id ) && ! empty( $post->post_content ) ) {
-        if ( preg_match( '~data-video-id=["\']([a-zA-Z0-9_-]{11})["\']~i', $post->post_content, $matches ) ) {
-            $youtube_id = $matches[1];
-        } elseif ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]+)["\']~i', $post->post_content, $matches ) ) {
-            $youtube_id = $matches[1];
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/|youtube-nocookie\.com/embed/)([^"&?/ ]{11})~i', $post->post_content, $matches ) ) {
-            $youtube_id = $matches[1];
-        }
+    if ( '' === $youtube_id && ! empty( $post->post_content ) ) {
+        $youtube_id = keystone_extract_youtube_id_from_text( (string) $post->post_content );
     }
 
     // Strict validation: Must be authentic 11-char ID and MUST NOT be 'maxresdefau'
@@ -846,7 +875,7 @@ function keystone_get_post_video_metadata( $post_or_id = null ) {
         'url'   => 'https://keystonerecomposition.com',
         'logo'  => array(
             '@type' => 'ImageObject',
-            'url'   => 'https://keystonerecomposition.com/wp-content/uploads/logo.png',
+            'url'   => get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png',
         ),
     );
 
@@ -874,10 +903,9 @@ function keystone_recomposition_child_youtube_schema() {
     if ( ! $post ) {
         return;
     }
-    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
-    // GSC Video Indexing Separation: ONLY emit VideoObject schema on dedicated watch-* pages
-    // where the video is the dominant hero element above the fold. Blog posts emit Article/TechArticle.
-    if ( ! $is_watch_page ) {
+    $is_watch_page = ( is_page() && 'page' === $post->post_type && 0 === strpos( (string) $post->post_name, 'watch-' ) );
+    $is_blog_post  = ( is_singular( 'post' ) && 'post' === $post->post_type );
+    if ( ! $is_watch_page && ! $is_blog_post ) {
         return;
     }
 
@@ -925,9 +953,9 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
     if ( ! $post ) {
         return $data;
     }
-    $is_watch_page = ( 'page' === $post->post_type && 0 === strpos( $post->post_name, 'watch-' ) );
-    // GSC Video Indexing Separation: ONLY emit VideoObject schema on dedicated watch-* pages
-    if ( ! $is_watch_page ) {
+    $is_watch_page = ( is_page() && 'page' === $post->post_type && 0 === strpos( (string) $post->post_name, 'watch-' ) );
+    $is_blog_post  = ( is_singular( 'post' ) && 'post' === $post->post_type );
+    if ( ! $is_watch_page && ! $is_blog_post ) {
         return $data;
     }
 
@@ -936,10 +964,17 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
         return $data;
     }
 
-    // Check if VideoObject already exists in Rank Math output
+    // Check if VideoObject already exists in Rank Math output or @graph
     foreach ( $data as $val ) {
-        if ( isset( $val['@type'] ) && $val['@type'] === 'VideoObject' ) {
-            return $data; // Already present, don't duplicate
+        if ( is_array( $val ) && isset( $val['@type'] ) && in_array( 'VideoObject', (array) $val['@type'], true ) ) {
+            return $data;
+        }
+    }
+    if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
+        foreach ( $data['@graph'] as $g_node ) {
+            if ( is_array( $g_node ) && isset( $g_node['@type'] ) && in_array( 'VideoObject', (array) $g_node['@type'], true ) ) {
+                return $data;
+            }
         }
     }
 
@@ -957,6 +992,11 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
         'duration'     => esc_attr( $meta['duration_iso'] ),
         'publisher'    => $meta['publisher'],
     );
+
+    if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
+        $data['@graph'][] = $data['VideoObject'];
+        unset( $data['VideoObject'] );
+    }
 
     // Link VideoObject to WebPage and Article to prevent Rank Math from stripping it as an orphan node
     if ( isset( $data['WebPage'] ) ) {
@@ -1077,18 +1117,69 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
 
 // Output buffer safety net: strip broken VideoObject schemas from Rank Math & DOM
 // Uses a robust approach that handles both top-level VideoObjects and @graph nested VideoObjects
+/**
+ * Recursively collapses nested Person sub-objects to pure @id pointers and
+ * guarantees strictly ONE top-level / @graph Person (#person) node per page.
+ */
+function keystone_dedup_person_jsonld_tree( $node, string $person_id, array $person_node, bool &$seen_primary_person, bool $is_root_entity = false ) {
+    if ( ! is_array( $node ) ) {
+        return $node;
+    }
+
+    $is_list = ( array_keys( $node ) === range( 0, count( $node ) - 1 ) );
+    if ( $is_list ) {
+        $out = array();
+        foreach ( $node as $item ) {
+            $res = keystone_dedup_person_jsonld_tree( $item, $person_id, $person_node, $seen_primary_person, false );
+            if ( null !== $res ) {
+                $out[] = $res;
+            }
+        }
+        return $out;
+    }
+
+    if ( isset( $node['@type'] ) && in_array( 'Person', (array) $node['@type'], true ) ) {
+        $nid  = isset( $node['@id'] ) ? (string) $node['@id'] : '';
+        $name = isset( $node['name'] ) ? trim( (string) $node['name'] ) : '';
+        $is_wayne = ( $nid === $person_id || in_array( $name, array( '', 'Wayne', 'Wayne Stevenson', 'Wayne Stevens' ), true ) );
+        if ( $is_wayne ) {
+            if ( $is_root_entity ) {
+                if ( ! $seen_primary_person ) {
+                    $seen_primary_person = true;
+                    return array_merge( $node, $person_node );
+                }
+                return null;
+            }
+            return array( '@id' => $person_id );
+        }
+    }
+
+    foreach ( $node as $k => $v ) {
+        if ( is_array( $v ) ) {
+            $res = keystone_dedup_person_jsonld_tree( $v, $person_id, $person_node, $seen_primary_person, false );
+            if ( null !== $res ) {
+                $node[ $k ] = $res;
+            }
+        }
+    }
+
+    return $node;
+}
+
 add_action( 'wp_head', function() {
     ob_start( function( $output ) {
-        $person_node    = function_exists( 'keystone_get_wayne_stevenson_person_schema' ) ? keystone_get_wayne_stevenson_person_schema() : array();
-        $clean_logo_url = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
+        $person_node         = function_exists( 'keystone_get_wayne_stevenson_person_schema' ) ? keystone_get_wayne_stevenson_person_schema() : array();
+        $person_id           = 'https://keystonerecomposition.com/#person';
+        $clean_logo_url      = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
+        $seen_primary_person = false;
 
-        // Strategy: find all JSON-LD script tags, decode, check for broken VideoObject and sanitize legacy fields
+        // Strategy: find all JSON-LD script tags, decode, sanitize legacy handles, strip corrupt VideoObject, and enforce single #person across page
         $output = preg_replace_callback(
             '~(<script\s+type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)~is',
-            function( $matches ) use ( $person_node, $clean_logo_url ) {
+            function( $matches ) use ( $person_node, $person_id, $clean_logo_url, &$seen_primary_person ) {
                 $json = json_decode( $matches[2], true );
                 if ( ! is_array( $json ) ) {
-                    return $matches[0]; // Can't parse, leave alone
+                    return $matches[0];
                 }
 
                 $before_serialized = wp_json_encode( $json );
@@ -1100,32 +1191,46 @@ add_action( 'wp_head', function() {
 
                 // 1. Single Top-Level VideoObject check
                 if ( isset( $json['@type'] ) && ( $json['@type'] === 'VideoObject' || in_array( 'VideoObject', (array) $json['@type'], true ) ) ) {
-                    // Kill it if embedUrl or contentUrl contains 'maxresdefau' (broken Rank Math detection)
-                    $embed = $json['embedUrl'] ?? '';
+                    $embed   = $json['embedUrl'] ?? '';
                     $content = $json['contentUrl'] ?? '';
                     if ( strpos( (string) $embed, 'maxresdefau' ) !== false || strpos( (string) $content, 'maxresdefau' ) !== false ) {
-                        return '<!-- Keystone: Removed corrupt VideoObject with invalid fake ID -->';
+                        return '';
                     }
-                    // Kill it if it has no publisher field (our custom schema always has publisher)
                     if ( ! isset( $json['publisher'] ) ) {
-                        return '<!-- Keystone: Removed duplicate VideoObject without publisher -->';
+                        return '';
                     }
                 }
 
-                // 2. Nested @graph VideoObject check
+                // 2. Nested @graph VideoObject + Page-Wide #person Deduplication
                 if ( isset( $json['@graph'] ) && is_array( $json['@graph'] ) ) {
                     $filtered_graph = array();
                     foreach ( $json['@graph'] as $node ) {
                         if ( isset( $node['@type'] ) && ( $node['@type'] === 'VideoObject' || in_array( 'VideoObject', (array) $node['@type'], true ) ) ) {
-                            $embed = $node['embedUrl'] ?? '';
+                            $embed   = $node['embedUrl'] ?? '';
                             $content = $node['contentUrl'] ?? '';
                             if ( strpos( (string) $embed, 'maxresdefau' ) !== false || strpos( (string) $content, 'maxresdefau' ) !== false || ! isset( $node['publisher'] ) ) {
-                                continue; // Strip corrupt / duplicate node
+                                continue;
                             }
+                        }
+                        if ( ! empty( $person_node ) ) {
+                            $deduped_node = keystone_dedup_person_jsonld_tree( $node, $person_id, $person_node, $seen_primary_person, true );
+                            if ( null === $deduped_node ) {
+                                continue;
+                            }
+                            $node = $deduped_node;
                         }
                         $filtered_graph[] = $node;
                     }
+                    if ( empty( $filtered_graph ) ) {
+                        return '';
+                    }
                     $json['@graph'] = $filtered_graph;
+                } elseif ( ! empty( $person_node ) ) {
+                    $deduped_root = keystone_dedup_person_jsonld_tree( $json, $person_id, $person_node, $seen_primary_person, true );
+                    if ( null === $deduped_root ) {
+                        return '';
+                    }
+                    $json = $deduped_root;
                 }
 
                 $after_serialized = wp_json_encode( $json );
@@ -1220,6 +1325,9 @@ function keystone_recomposition_sanitize_rank_math_sitemap( $url, $type, $object
         '/about/',
         '/about-the-founder/',
         '/about-the-founder-the-keystone-blueprint/',
+        '/music-releases/',
+        '/old-store/',
+        '/watch-iron-grace-2/',
     );
 
     if ( isset( $url['loc'] ) ) {
@@ -1307,43 +1415,75 @@ add_filter( 'rank_math/frontend/robots', function( array $robots ): array {
  * explicitly unblocking AI search crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended),
  * and referencing the primary sitemap index.
  */
-add_filter( 'robots_txt', 'keystone_recomposition_sanitize_robots_txt', 10, 2 );
+add_filter( 'robots_txt', 'keystone_recomposition_sanitize_robots_txt', 999999, 2 );
 function keystone_recomposition_sanitize_robots_txt( $output, $public ) {
-    $sitemap_url = home_url( '/sitemap_index.xml' );
+    $sitemap_url       = home_url( '/sitemap_index.xml' );
     $video_sitemap_url = home_url( '/keystone-video-sitemap.xml' );
 
-    $robots = "User-agent: *\n";
-    $robots .= "Disallow: /wp-admin/\n";
-    $robots .= "Allow: /wp-admin/admin-ajax.php\n";
-    $robots .= "Allow: /wp-content/uploads/\n";
-    $robots .= "Allow: /wp-content/themes/\n";
-    $robots .= "Allow: /wp-includes/\n";
-    $robots .= "Disallow: /wp-content/plugins/\n";
-    $robots .= "Disallow: /readme.html\n";
-    $robots .= "Disallow: /license.txt\n";
-    $robots .= "Disallow: /search/\n";
-    $robots .= "Disallow: /?s=\n";
-    $robots .= "Disallow: /*.html$\n";
-    $robots .= "\n";
+    $robots  = "# Keystone Recomposition - Sovereign Robots & GEO Crawl Policy
+";
+    $robots .= "# Machine-Readable LLM Corpus: https://keystonerecomposition.com/llms.txt
+";
+    $robots .= "# Expanded Technical & Sonic Corpus: https://keystonerecomposition.com/llms-full.txt
 
-    // AI Search Crawlers Explicit Directives
-    $robots .= "User-agent: GPTBot\n";
-    $robots .= "Allow: /\n\n";
+";
+    $robots .= "User-agent: *
+";
+    $robots .= "Allow: /llms.txt
+";
+    $robots .= "Allow: /llms-full.txt
+";
+    $robots .= "Disallow: /wp-admin/
+";
+    $robots .= "Allow: /wp-admin/admin-ajax.php
+";
+    $robots .= "Allow: /wp-content/uploads/
+";
+    $robots .= "Allow: /wp-content/themes/
+";
+    $robots .= "Allow: /wp-includes/
+";
+    $robots .= "Disallow: /wp-content/plugins/
+";
+    $robots .= "Disallow: /readme.html
+";
+    $robots .= "Disallow: /license.txt
+";
+    $robots .= "Disallow: /search/
+";
+    $robots .= "Disallow: /?s=
+";
+    $robots .= "Disallow: /*.html$
 
-    $robots .= "User-agent: ClaudeBot\n";
-    $robots .= "Allow: /\n\n";
+";
 
-    $robots .= "User-agent: PerplexityBot\n";
-    $robots .= "Allow: /\n\n";
+    // Explicit AI Search & Answer Engine Crawler Permissions
+    $ai_agents = array(
+        'GPTBot',
+        'OAI-SearchBot',
+        'ChatGPT-User',
+        'ClaudeBot',
+        'anthropic-ai',
+        'PerplexityBot',
+        'Perplexity-User',
+        'Google-Extended',
+        'Applebot-Extended',
+        'Bingbot',
+        'DuckDuckBot',
+        'CCBot',
+    );
+    foreach ( $ai_agents as $agent ) {
+        $robots .= "User-agent: {$agent}
+";
+        $robots .= "Allow: /
 
-    $robots .= "User-agent: Google-Extended\n";
-    $robots .= "Allow: /\n\n";
+";
+    }
 
-    $robots .= "User-agent: CCBot\n";
-    $robots .= "Allow: /\n\n";
-
-    $robots .= "Sitemap: " . esc_url( $sitemap_url ) . "\n";
-    $robots .= "Sitemap: " . esc_url( $video_sitemap_url ) . "\n";
+    $robots .= "Sitemap: " . esc_url( $sitemap_url ) . "
+";
+    $robots .= "Sitemap: " . esc_url( $video_sitemap_url ) . "
+";
 
     return $robots;
 }
@@ -1369,6 +1509,8 @@ function keystone_recomposition_child_seo_noindex() {
             'get_post_inventory', 'purge_all_caches', 'run_instant_indexing',
             'run_keystone_migration', 'heal_video_meta', 'check_rm_options',
             'keystone_video_sitemap', 'keystone_indexnow_ping', 'keystone_indexnow_key',
+            'keystone_sync_geo', 'create_missing_watch_pages', 'keystone_ls_purge',
+            'update_page_sovereign', 'update_post_sovereign',
             // Rank Math / WP internals
             'replytocom', 'preview', 'preview_id', 'preview_nonce'
         );
@@ -1695,20 +1837,23 @@ if ( ! defined( 'KEYSTONE_RECOMPOSITION_INDEXNOW_KEY' ) ) {
 add_action( 'init', 'keystone_recomposition_handle_indexnow_endpoints', 0 );
 function keystone_recomposition_handle_indexnow_endpoints() {
     $req_uri = $_SERVER['REQUEST_URI'] ?? '';
-    $path = strtok( (string) $req_uri, '?' );
-    $key = KEYSTONE_RECOMPOSITION_INDEXNOW_KEY;
+    $path    = strtok( (string) $req_uri, '?' );
+    $key     = function_exists( 'keystone_recomp_get_indexnow_key' )
+        ? keystone_recomp_get_indexnow_key()
+        : KEYSTONE_RECOMPOSITION_INDEXNOW_KEY;
 
-    // 1. Serve IndexNow Key Verification File (/8f4b2e9a1c6d7e3f5a0b9c8d7e6f5a4b.txt)
-    if ( $path === '/' . $key . '.txt' || isset( $_GET['keystone_indexnow_key'] ) ) {
+    // 1. Serve IndexNow Key Verification File (/<key>.txt)
+    if ( $path === '/' . $key . '.txt' || $path === '/' . KEYSTONE_RECOMPOSITION_INDEXNOW_KEY . '.txt' || isset( $_GET['keystone_indexnow_key'] ) ) {
+        $served_key = ( $path === '/' . KEYSTONE_RECOMPOSITION_INDEXNOW_KEY . '.txt' ) ? KEYSTONE_RECOMPOSITION_INDEXNOW_KEY : $key;
         status_header( 200 );
         header( 'Content-Type: text/plain; charset=utf-8' );
         header( 'Cache-Control: public, max-age=86400' );
-        echo $key;
+        echo $served_key;
         exit;
     }
 
     // 2. On-Demand Batch Ping (?keystone_indexnow_ping=1)
-    if ( isset( $_GET['keystone_indexnow_ping'] ) ) {
+    if ( isset( $_GET['keystone_indexnow_ping'] ) && current_user_can( 'manage_options' ) ) {
         $result = keystone_recomposition_execute_indexnow_batch_ping();
         status_header( 200 );
         header( 'Content-Type: application/json; charset=utf-8' );
@@ -1719,44 +1864,26 @@ function keystone_recomposition_handle_indexnow_endpoints() {
 }
 
 function keystone_recomposition_execute_indexnow_batch_ping( $specific_urls = array() ) {
-    $key = KEYSTONE_RECOMPOSITION_INDEXNOW_KEY;
-    $host = wp_parse_url( home_url(), PHP_URL_HOST );
+    $key          = function_exists( 'keystone_recomp_get_indexnow_key' )
+        ? keystone_recomp_get_indexnow_key()
+        : KEYSTONE_RECOMPOSITION_INDEXNOW_KEY;
+    $host         = (string) wp_parse_url( home_url(), PHP_URL_HOST );
     $key_location = home_url( '/' . $key . '.txt' );
 
-    $url_list = array();
     if ( ! empty( $specific_urls ) ) {
         $url_list = array_values( array_unique( $specific_urls ) );
+    } elseif ( function_exists( 'keystone_recomp_collect_canonical_indexnow_urls' ) ) {
+        $url_list = keystone_recomp_collect_canonical_indexnow_urls();
     } else {
-        $url_list[] = home_url( '/' );
-        $url_list[] = home_url( '/ai-protocols/' );
-        $url_list[] = home_url( '/sonic-universe/' );
-        $url_list[] = home_url( '/founder/' );
-        $url_list[] = home_url( '/sitemap_index.xml' );
-        $url_list[] = home_url( '/keystone-video-sitemap.xml' );
-
-        $posts = get_posts( array(
-            'post_type'   => array( 'post', 'page' ),
-            'post_status' => 'publish',
-            'numberposts' => 100,
-        ) );
-        foreach ( $posts as $p ) {
-            $permalink = get_permalink( $p->ID );
-            if ( $permalink ) {
-                $url_list[] = $permalink;
-            }
-        }
-
-        // Include retired legacy URLs so IndexNow engines immediately process their 301 redirects
-        $retired_slugs = array(
-            '/2026/09/28/chrome-devtools-protocol-cdp-port-9222-automation/',
-            '/2026/09/28/sovereign-reverb-functional-frequency-architecture/',
-            '/2026/09/28/autonomous-multi-agent-swarms-fastmcp-architecture/',
-            '/watch-heavy-civil-focus-deep-house-4k-music-video/',
+        $url_list = array(
+            home_url( '/' ),
+            home_url( '/ai-protocols/' ),
+            home_url( '/sonic-universe/' ),
+            home_url( '/founder/' ),
+            home_url( '/ecosystem-partners/' ),
+            home_url( '/llms.txt' ),
+            home_url( '/llms-full.txt' ),
         );
-        foreach ( $retired_slugs as $slug ) {
-            $url_list[] = home_url( $slug );
-        }
-        $url_list = array_values( array_unique( $url_list ) );
     }
 
     $payload = array(
@@ -1766,23 +1893,33 @@ function keystone_recomposition_execute_indexnow_batch_ping( $specific_urls = ar
         'urlList'     => $url_list,
     );
 
-    $response = wp_remote_post( 'https://api.indexnow.org/indexnow', array(
-        'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ),
-        'body'    => wp_json_encode( $payload ),
-        'timeout' => 15,
-    ) );
-
-    $http_code = is_wp_error( $response ) ? 0 : (int) wp_remote_retrieve_response_code( $response );
-    $body_text = is_wp_error( $response ) ? $response->get_error_message() : wp_remote_retrieve_body( $response );
+    $endpoints = array(
+        'api_indexnow'  => 'https://api.indexnow.org/indexnow',
+        'bing_indexnow' => 'https://www.bing.com/indexnow',
+    );
+    $results = array();
+    foreach ( $endpoints as $label => $endpoint_url ) {
+        $response  = wp_remote_post( $endpoint_url, array(
+            'headers' => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+            'body'    => wp_json_encode( $payload, JSON_UNESCAPED_SLASHES ),
+            'timeout' => 15,
+        ) );
+        $http_code = is_wp_error( $response ) ? 0 : (int) wp_remote_retrieve_response_code( $response );
+        $body_text = is_wp_error( $response ) ? $response->get_error_message() : wp_remote_retrieve_body( $response );
+        $results[ $label ] = array(
+            'endpoint'      => $endpoint_url,
+            'http_code'     => $http_code,
+            'accepted'      => in_array( $http_code, array( 200, 202 ), true ),
+            'response_body' => $body_text,
+        );
+    }
 
     return array(
         'domain'          => $host,
-        'engine'          => 'https://api.indexnow.org/indexnow',
-        'http_code'       => $http_code,
-        'accepted'        => in_array( $http_code, array( 200, 202 ), true ),
+        'key'             => $key,
         'key_location'    => $key_location,
         'submitted_count' => count( $url_list ),
-        'response_body'   => $body_text,
+        'endpoints'       => $results,
         'url_list'        => $url_list,
     );
 }

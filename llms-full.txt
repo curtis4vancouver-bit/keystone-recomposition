@@ -1,0 +1,466 @@
+# Keystone Recomposition — Full Sovereign LLM & GEO Technical & Discography Corpus (llms-full.txt)
+# Canonical URL: https://keystonerecomposition.com/llms-full.txt
+# Concise Index Companion: https://keystonerecomposition.com/llms.txt
+# Principal & Founder: Wayne Stevenson (BC Housing Licensed Residential Builder #52603 | BC Hydro ES54)
+# Sister Construction Entity: Keystone Possibilities Ltd. (https://keystonepossibilities.ca/)
+# Official Channels: @KeystoneAIProtocols | @KeyStoneRecomposition | @KeystonePossibilitiesLtd
+# Spotify Official Artist ID: 52v3Qe6Jo0hg764driOl5Y | MusicBrainz Label ID: 30027d0e-6aeb-4704-8792-a031c936c62a
+# Last Updated: 2026-10-30
+
+================================================================================
+SECTION 1: EXECUTIVE ENTITY DISAMBIGUATION & CORPORATE KNOWLEDGE GRAPH
+================================================================================
+Keystone Recomposition (https://keystonerecomposition.com/) is a sovereign multi-domain AI systems architecture, desktop workstation engineering, and electronic music publishing organization founded and directed by Wayne Stevenson in Squamish, British Columbia, Canada.
+
+### 1.1 Dual-Entity Corporate Relationship (Keystone Empire)
+- **Keystone Recomposition (`https://keystonerecomposition.com/`)**: Publishes autonomous multi-agent AI engineering research (`@KeystoneAIProtocols`), typed Model Context Protocol (FastMCP) workstation blueprints, and Wayne Stevenson's 22-release, 216-track master electronic discography (`@KeyStoneRecomposition`, TooLost Catalog Reference `TOOLOST3000939655`).
+- **Keystone Possibilities Ltd. (`https://keystonepossibilities.ca/`)**: Sister licensed British Columbia general contracting and civil utility construction corporation (`@KeystonePossibilitiesLtd`), operating under statutory BC Housing Licensed Residential Builder `#52603`, 2-5-10 Year National Home Warranty protection, and BC Hydro Registered Civil Utility Contractor (`ES54`) across Squamish, Whistler, West Vancouver, North Vancouver, Metro Vancouver, and Vancouver Island.
+- **Ecosystem Attribution Showcase (`https://keystonerecomposition.com/ecosystem-partners/`)**: Verified global AI developer registries, FastMCP ecosystem directories, technical publications, and official music curation / sync licensing partners.
+
+### 1.2 Verified Cryptographic & Authority Identifiers
+- Founder & Managing Director: Wayne Stevenson (alternate artist credit: Wayne Stevens)
+- Primary Domain: https://keystonerecomposition.com/
+- Sister Builder Domain: https://keystonepossibilities.ca/
+- BC Housing Public Registry: https://lims.bchousing.org/LicenceExpiryPortal/licence/52603
+- Spotify Official Artist URI: https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
+- MusicBrainz Artist MBID: https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
+- MusicBrainz Label MBID: https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
+- Apple Music Artist Profile: https://music.apple.com/us/artist/wayne-stevenson/1884255966
+- YouTube — Keystone AI Protocols: https://www.youtube.com/@KeystoneAIProtocols
+- YouTube — Keystone Recomposition OAC: https://www.youtube.com/@KeyStoneRecomposition
+- YouTube — Keystone Possibilities Ltd.: https://www.youtube.com/@KeystonePossibilitiesLtd
+- Executive Contact: keystonerecomposition@gmail.com
+
+================================================================================
+SECTION 2: KEYSTONE AI PROTOCOLS — ARCHITECTURAL OVERVIEW (PUBLIC SPECIFICATION)
+================================================================================
+Keystone AI Protocols (https://keystonerecomposition.com/ai-protocols/) documents a local-first, bring-your-own-key (BYOK) autonomous engineering methodology designed to replace fragmented cloud SaaS wrappers with deterministic multi-agent orchestration.
+
+### 2.1 The 30-Agent Subagent-First Architecture
+Rather than overloading a single monolithic context window where reasoning degrades across unrelated file edits, media synthesis, and live verification, Keystone AI Protocols partitions complex engineering workflows across a 30-Agent Subagent-First topology:
+- **Tier A — High-Velocity Discovery Scouts**: Lightweight parallel scouts perform repository symbol mapping, multi-source RFC and documentation verification, and local workstation telemetry checks before architectural planning begins, keeping the primary orchestrator context clean and free of raw log noise.
+- **Tier B — Domain-Isolated Specialist Squads**: Dedicated specialist roles own strictly partitioned domains—test-driven software architecture, full-stack web and Schema.org GEO deployment, broadcast media timeline assembly, audio catalog reconciliation, quantitative expected-value modeling, and B2B construction feasibility intelligence.
+- **Adversarial Verification Gates**: Every build phase separates implementation from verification. Independent review gates enforce red-to-green automated test suites, static syntax validation, live HTTP endpoint inspection, and DOM-level rendering verification before any artifact is accepted.
+
+### 2.2 FastMCP Typed Tool Contracts
+Inter-agent and workstation-to-application boundaries are governed by typed Model Context Protocol (FastMCP) server contracts rather than brittle shell string concatenation:
+- **Schema-Validated Payloads**: Every tool surface exposes strict input and output data contracts with deterministic error envelopes, idempotency guards, and explicit domain jails.
+- **Zero-Cloud Authenticated Browser Attachment**: Instead of spawning fragile headless browser containers that lose session state and trigger anti-automation loops, workstation workflows attach cleanly to dedicated temporary tabs inside an authenticated desktop Chrome session over the Chrome DevTools Protocol (CDP), preserving human-in-the-loop visibility and strict tab isolation.
+- **Hybrid Local Knowledge Retrieval**: Markdown engineering ledgers, canonical wikilinks, and structured JSON registries are indexed locally so multi-agent squads resolve exact architectural facts without hallucinating external assumptions.
+
+### 2.3 Tauri v2 Native Desktop Workspace
+The operator interface is built on a native Rust and Tauri v2 desktop workspace architecture:
+- **Low-Overhead Native Footprint**: Replaces memory-heavy Electron wrappers with a native OS webview and Rust systems core, leaving workstation GPU VRAM and system RAM dedicated to creative rendering, local inference, and 4K video mastering.
+- **Unified Command HUD**: Provides real-time visibility into active multi-agent squads, live verification receipts, asset pipelines, and sovereign audio playback in a Quiet Luxury obsidian-and-gold visual hierarchy.
+
+### 2.4 Local 2-Daemon Voice STT/TTS Bridge
+Hands-free architectural dictation and spoken executive telemetry operate through a streamlined 2-Daemon Voice Bridge:
+- **Dedicated Speech-to-Text (STT) Service**: Captures low-latency spoken engineering directives locally on workstation hardware with instant Push-to-Talk responsiveness.
+- **Dedicated Text-to-Speech (TTS) Service**: Delivers concise, natural spoken status briefings and verification confirmations while maintaining minimal background daemon overhead.
+
+### 2.5 The 3-Force Hologram Media Production Pipeline
+High-cadence 4K educational briefings and somatic music cinema are produced through a synchronized 3-Force pipeline:
+- **Force 1 — Generative Visual Direction**: Scene-consistent 16:9 4K visual sequences and holographic builder boardroom environments engineered with strict wardrobe, lighting, and framing continuity.
+- **Force 2 — Somatic & Bio-Acoustic Mastering**: Original 24-bit studio compositions (melodic deep house, organic cello and violin ensembles, and 432Hz/528Hz harmonic structures) produced and registered with canonical TooLost ISRCs.
+- **Force 3 — Automated Non-Linear Timeline Assembly**: Programmatic 2-track master timeline assembly in DaVinci Resolve Studio with precision voiceover loudness normalization, dynamic background music ducking, and direct 4K broadcast mastering.
+
+================================================================================
+SECTION 3: CANONICAL CORE PAGES & ECOSYSTEM DIRECTORY (100% HTTP 200 OK)
+================================================================================
+1. **Homepage & Sovereign Command Hub**
+   - URL: https://keystonerecomposition.com/
+   - Summary: Central gateway uniting Keystone AI Protocols, the 96kHz Sonic Vault player, featured technical intelligence dispatches, and founder authority credentials.
+2. **Keystone AI Protocols**
+   - URL: https://keystonerecomposition.com/ai-protocols/
+   - Summary: Architectural documentation for multi-agent FastMCP swarms, Tauri v2 desktop workstation workflows, Chrome CDP browser automation, and sovereign builder blueprints.
+3. **Sonic Universe — 22-Release Master Catalog & ISRC Registry**
+   - URL: https://keystonerecomposition.com/sonic-universe/
+   - Summary: Complete interactive discography of Wayne Stevenson's 22 official releases (20 full-length studio albums, 216 master recordings) with BPM metadata, genre filters, and 1-click ISRC verification.
+4. **INTEL & 4K Video Research Archive**
+   - URL: https://keystonerecomposition.com/intel/
+   - Summary: Chronological index of engineering teardowns, multi-agent benchmarks, BYOK local workstation blueprints, and official 4K somatic music video premieres.
+5. **Verified Ecosystem Partners Showcase**
+   - URL: https://keystonerecomposition.com/ecosystem-partners/
+   - Summary: Curated Quiet Luxury showcase of verified global AI & FastMCP registries, technical editorial publications, and official music curation & sync licensing partners.
+6. **Strategic Capital & High-Conviction Investments**
+   - URL: https://keystonerecomposition.com/investments/
+   - Summary: Quantitative expected-value risk discipline, the 40% Cash Fortress CAD liquidity reserve protocol, British Columbia infill real estate, and international coastal development footholds.
+7. **Alpine Performance & Sea-to-Sky Builder Lifestyle**
+   - URL: https://keystonerecomposition.com/lifestyle/
+   - Summary: High-performance mountain operations in Squamish and Whistler, documenting Wayne Stevenson's verified N=1 physical recomposition (-48 lbs fat loss, sustained 205-lb athletic set-point), strength training, and cold-water recovery.
+8. **About the Founder — Wayne Stevenson Executive Dossier**
+   - URL: https://keystonerecomposition.com/founder/
+   - Summary: Complete biographical dossier, BC Housing Licensed Residential Builder #52603 credentials, BC Hydro ES54 civil contractor qualification, AI systems architecture track record, and global music catalog.
+9. **Executive Contact & Private Consultation Gateway**
+   - URL: https://keystonerecomposition.com/contact/
+   - Summary: Direct executive inquiry gateway for AI systems architecture consultations, TooLost sync licensing requests, and licensed British Columbia construction referrals.
+
+================================================================================
+SECTION 4: COMPLETE OCTOBER 2026 TECHNICAL ARTICLES & COMPANION 4K WATCH PAGES
+================================================================================
+### 4.1 Don’t Say You’re Fine: Ultimate 4K Soul Video (2026)
+- Published Date: 2026-10-29
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/29/don-t-say-you-re-fine-keystone-recomposition/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-don-t-say-you-re-fine-keystone-recomposition/
+- Technical & Creative Synopsis: Don’t Say You’re Fine is our 65.2 BPM 1970s soul revival and late-night R&B duet (ISRC: QTA9R2619963) from the ten-track album Don’t Say You’re Fine, filmed in 4K candlelit walnut and velvet lounge cinema.
+
+### 4.2 Gemini 4 Carbon vs OpenAI o3 & Claude 3.7: 7 Proven Laws for 28-Agent Google Antigravity Swarms
+- Published Date: 2026-10-28
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/28/gemini-4-carbon-vs-openai-o3-claude-3-7/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-gemini-4-carbon-vs-openai-o3-claude-3-7/
+- Technical & Creative Synopsis: Gemini 4 Carbon vs OpenAI o3 & Claude 3.7 breakdown by Wayne Stevenson: why our 28-agent Google Gemini + Antigravity workstation, FastMCP contracts, and Po
+
+### 4.3 The Morning March: Ultimate 62 BPM Melodic Deep House 4K Music Video (2026)
+- Published Date: 2026-10-26
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/26/the-morning-march-deep-house-4k-music-video/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-the-morning-march-deep-house-4k-music-video/
+- Technical & Creative Synopsis: The Morning March Keystone Recomposition — Watch the official 4K music video for ‘The Morning March’ from ‘Structural Shift’ by Wayne Stevenson (Keystone Reco
+
+### 4.4 Claude MCP vs OpenAI Agents SDK: 7 Proven Laws for Google Antigravity Swarms (2026)
+- Published Date: 2026-10-25
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/25/claude-mcp-vs-openai-agents-sdk/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-claude-mcp-vs-openai-agents-sdk/
+- Technical & Creative Synopsis: Claude MCP vs OpenAI Agents SDK breakdown by Wayne Stevenson: why Anthropic’s USB-C for AI and Google Gemini + Antigravity beat cloud sandboxes.
+
+### 4.5 Heavy Civil Focus Keystone Recomposition: Official 4K Somatic Deep House Release (2026)
+- Published Date: 2026-10-23
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/23/heavy-civil-focus-keystone-recomposition/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-heavy-civil-focus-keystone-recomposition/
+- Technical & Creative Synopsis: Stream Heavy Civil Focus Keystone Recomposition from Concrete Foundations (ISRC QT4K52640747) by Wayne Stevenson. Melodic deep house and organic strings engin
+
+### 4.6 Google Antigravity vs Grok and OpenAI: The Ultimate 200,000-GPU Multi-Agent Breakdown
+- Published Date: 2026-10-21
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/21/google-antigravity-vs-grok-and-openai/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-google-antigravity-vs-grok-and-openai/
+- Technical & Creative Synopsis: Google Antigravity vs Grok and OpenAI breakdown by Wayne Stevenson: why xAI’s 200,000-GPU Colossus and OpenAI o3 hit multi-agent friction while Gemini works with whatever.
+
+### 4.7 PEAK INTENSITY Keystone Recomposition: Official 4K Somatic Deep House Release (2026)
+- Published Date: 2026-10-20
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/20/peak-intensity-keystone-recomposition/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-peak-intensity-keystone-recomposition/
+- Technical & Creative Synopsis: Stream PEAK INTENSITY Keystone Recomposition from Pulse of the Forge (ISRC QZVEM2620029) by Wayne Stevenson. Melodic deep house engineered in Squamish, BC.
+
+### 4.8 BYOK Local AI Workstation: Replacing Monthly Cloud AI SaaS Wrappers with 1 Local Stack (2026)
+- Published Date: 2026-10-18
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/18/byok-local-ai-workstation-replaces-500-mo-saas-wrappers/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-byok-local-ai-workstation-replaces-500-mo-saas-wrappers/
+- Technical & Creative Synopsis: BYOK Local AI Workstation architecture by Wayne Stevenson: how 90% prompt caching, FastMCP Pydantic V2 contracts, CUDA Faster-Whisper, and 6 OS daemons replace SaaS rent.
+
+### 4.9 Iron & Grace: 2026 Ultimate 4K Somatic Deep House & Cello Masterpiece | Keystone Recomposition
+- Published Date: 2026-10-17
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/17/iron-grace/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-iron-grace/
+- Technical & Creative Synopsis: Iron & Grace is the flagship 120 BPM F Minor somatic deep house and acoustic cello release from Foundation & Flux (Track 9, ISRC: QZVEM2653487). Produced in Squamish, BC by Wayne Stevenson and rendered in 4K with Google Flow and DaVinci Resolve Studio.
+
+### 4.10 Gemini 4 Argon AI Swarm: Ultimate 28-Agent Breakthrough (2026)
+- Published Date: 2026-10-16
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/16/gemini-4-argon-ai-swarm/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-gemini-4-argon-ai-swarm/
+- Technical & Creative Synopsis: Production engineering benchmark comparing Gemini 4 Argon High, Claude, and GPT across local 28-agent FastMCP tool execution, 90% prompt context caching, and Port 9222 Chrome DevTools automation.
+
+### 4.11 Gemini 4 Argon: Rebuilding Full-Stack Apps in 8 Minutes (The 1-Pass Multi-Agent Blueprint)
+- Published Date: 2026-10-12
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/12/gemini-4-argon-rebuild-full-stack-apps/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-gemini-4-argon-rebuild-full-stack-apps/
+- Technical & Creative Synopsis: // 2026 FRONTIER AI ARCHITECTURE • AUTONOMOUS SOFTWARE WORKSTATION Gemini 4 Argon: Rebuilding Full-Stack Apps in 8 Minutes (The 1-Pass […]
+
+### 4.12 Zen Healing Frequency: 432Hz Sound Healing & Cellular Recovery Architecture (Proven Master Blueprint)
+- Published Date: 2026-10-08
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-zen-healing-frequency-432hz/
+- Technical & Creative Synopsis: ⚡ SONIC UNIVERSE • ARCHITECTURAL FOCUS • 432Hz SOUND HEALING Zen Healing Frequency: 432Hz Sound Healing & Cellular Recovery Architecture […]
+
+### 4.13 Google Antigravity & Gemini 4 Argon: Ultimate Autonomous Setup (2026 Guide)
+- Published Date: 2026-10-07
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/07/google-antigravity/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-google-antigravity/
+- Technical & Creative Synopsis: // 2026 FRONTIER AI ARCHITECTURE • AUTONOMOUS WORKSTATIONS Google Antigravity & Gemini 4 Argon: Why Single AI Prompts Are Obsolete […]
+
+### 4.14 The Anabolic Window: Official 4K Music Video & Sonic Architecture
+- Published Date: 2026-10-03
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/03/the-anabolic-window-official-4k-music-video/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-the-anabolic-window-official-4k-music-video/
+- Technical & Creative Synopsis: // SONIC UNIVERSE • The Sovereign Protocol • 4K MUSIC RELEASE The Anabolic Window: High-Frequency Downtempo & Architectural Sound Design […]
+
+### 4.15 Autonomous Multi-Agent Swarms: The Best 4-Agent FastMCP Architecture
+- Published Date: 2026-10-02
+- Canonical Article Permalink: https://keystonerecomposition.com/2026/10/02/autonomous-multi-agent-swarms/
+- Dedicated 4K Video Watch Permalink: https://keystonerecomposition.com/watch-autonomous-multi-agent-swarms/
+- Technical & Creative Synopsis: // 2026 TECHNICAL INTEL • AI ARCHITECTURE & AUTONOMOUS SWARMS Autonomous Multi-Agent Swarms: Why I Stopped Using Cursor & Replaced […]
+
+================================================================================
+SECTION 5: COMPLETE 22-RELEASE SONIC UNIVERSE DISCOGRAPHY & 216-TRACK ISRC VAULT
+================================================================================
+All 22 official releases below are composed and produced by Wayne Stevenson, distributed globally via TooLost Digital (Catalog Reference ID: TOOLOST3000939655) to Spotify (https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y), Apple Music (https://music.apple.com/us/artist/wayne-stevenson/1884255966), YouTube Official Artist Channel (https://www.youtube.com/@KeyStoneRecomposition), and indexed on https://keystonerecomposition.com/sonic-universe/.
+
+### Release 01: Sovereign Reverb (2026-08-16 | UPC 0682286183785 | Organic Downtempo Chill House | 115 BPM | 10 Tracks)
+- 01. The Cold Reset [ISRC: QT62V2662081 | PT4M15S]
+- 02. Stature & Calm [ISRC: QT62V2662082 | PT4M15S]
+- 03. The Evening Taper [ISRC: QT62V2662083 | PT4M15S]
+- 04. Rest-Day Rhythm [ISRC: QT62V2662084 | PT4M15S]
+- 05. Echoes of the Scaffold [ISRC: QT62V2662085 | PT4M15S]
+- 06. Lakeside Shadows [ISRC: QT62V2662086 | PT4M15S]
+- 07. Thermal Shift [ISRC: QT62V2662087 | PT4M15S]
+- 08. Autophagy Flow [ISRC: QT62V2662088 | PT4M15S]
+- 09. Sea-to-Sky Horizon [ISRC: QT62V2662089 | PT4M15S]
+- 10. Quiet Scaffolding [ISRC: QT62V2662090 | PT4M15S]
+
+### Release 02: APOLLO Protocol (2026-08-07 | UPC 0682286183778 | Progressive Deep House | 124 BPM | 10 Tracks)
+- 01. Sovereign Signal [ISRC: QT62V2662071 | PT4M15S]
+- 02. Circadian Lock [ISRC: QT62V2662072 | PT4M15S]
+- 03. The 5-AM Cold Plunge [ISRC: QT62V2662073 | PT4M15S]
+- 04. Cellular Rebuild [ISRC: QT62V2662074 | PT4M15S]
+- 05. Systemic Yield [ISRC: QT62V2662075 | PT4M15S]
+- 06. The Sovereign Loop [ISRC: QT62V2662076 | PT4M15S]
+- 07. Optimal Axis [ISRC: QT62V2662077 | PT4M15S]
+- 08. Somatic Reset [ISRC: QT62V2662078 | PT4M15S]
+- 09. The Fasting Window [ISRC: QT62V2662079 | PT4M15S]
+- 10. Mitochondrial Fire [ISRC: QT62V2662080 | PT4M15S]
+
+### Release 03: Blue Collar Symphony (2026-07-28 | UPC 0682286183761 | Melodic Deep House | 120 BPM | 10 Tracks)
+- 01. Grade and Level [ISRC: QT62V2662061 | PT4M15S]
+- 02. Concrete Cure [ISRC: QT62V2662062 | PT4M15S]
+- 03. Grain of the Wood [ISRC: QT62V2662063 | PT4M15S]
+- 04. Shear Wall [ISRC: QT62V2662064 | PT4M15S]
+- 05. The First Footing [ISRC: QT62V2662065 | PT4M15S]
+- 06. Granite Ascent [ISRC: QT62V2662066 | PT4M15S]
+- 07. Legacy Frame [ISRC: QT62V2662067 | PT4M15S]
+- 08. The Plumb Line [ISRC: QT62V2662068 | PT4M15S]
+- 09. Timberline Resonance [ISRC: QT62V2662069 | PT4M15S]
+- 10. Squamish Ridge Orbit [ISRC: QT62V2662070 | PT4M15S]
+
+### Release 04: Sarcopenic Threshold (2026-07-27 | UPC 0682286183754 | Industrial Tech House | 122 BPM | 10 Tracks)
+- 01. Hypertrophic Shift [ISRC: QT62V2662051 | PT4M15S]
+- 02. Myosin Pulse [ISRC: QT62V2662052 | PT4M15S]
+- 03. The 205 Marker [ISRC: QT62V2662053 | PT4M15S]
+- 04. Load Vector [ISRC: QT62V2662054 | PT4M15S]
+- 05. Type II Fibers [ISRC: QT62V2662055 | PT4M15S]
+- 06. Density Index [ISRC: QT62V2662056 | PT4M15S]
+- 07. Anabolic Rhythm [ISRC: QT62V2662057 | PT4M15S]
+- 08. Myofibrillar Tension [ISRC: QT62V2662058 | PT4M15S]
+- 09. Threshold Cross [ISRC: QT62V2662059 | PT4M15S]
+- 10. Sovereign Fiber [ISRC: QT62V2662060 | PT4M15S]
+
+### Release 05: Concrete Foundations (2026-06-22 | UPC 0672896614533 | Deep Tech House | 126 BPM | 11 Tracks)
+- 01. Phase One Rebuild [ISRC: QT4K52640742 | PT4M15S]
+- 02. The Groundwork [ISRC: QT4K52640743 | PT4M15S]
+- 03. Pouring the Core [ISRC: QT4K52640744 | PT4M15S]
+- 04. Sea-to-Sky Horizon [ISRC: QT4K52640745 | PT4M15S]
+- 05. Structural Integrity [ISRC: QT4K52640746 | PT4M15S]
+- 06. Heavy Civil Focus [ISRC: QT4K52640747 | PT4M15S]
+- 07. The Master Blueprint [ISRC: QT4K52640748 | PT4M15S]
+- 08. Rising Architecture [ISRC: QT4K52640749 | PT4M15S]
+- 09. Cold Curing [ISRC: QT4K52640750 | PT4M15S]
+- 10. Setting the Line [ISRC: QT4K52640751 | PT4M15S]
+- 11. The Empire Base [ISRC: QT4K52640752 | PT4M15S]
+
+### Release 06: The Architect's Groove: Phase 2 Deep House (2026-05-27 | UPC 0672896329819 | Melodic Progressive House | 124 BPM | 10 Tracks)
+- 01. Phase Two (The Build) [ISRC: QT4K42635223 | PT4M15S]
+- 02. The 100K Push [ISRC: QT4K42635224 | PT4M15S]
+- 03. Sarcopenia Defense [ISRC: QT4K42635225 | PT4M15S]
+- 04. The Cadence (Five and Two) [ISRC: QT4K42635226 | PT4M15S]
+- 05. East Bending [ISRC: QT4K42635227 | PT4M15S]
+- 06. Squamish Dawn [ISRC: QT4K42635228 | PT4M15S]
+- 07. Two Hundred Grams [ISRC: QT4K42635229 | PT4M15S]
+- 08. The Set-Point [ISRC: QT4K42635230 | PT4M15S]
+- 09. Blueprint (Case Study) [ISRC: QT4K42635231 | PT4M15S]
+- 10. Hold The Line [ISRC: QT4K42635232 | PT4M15S]
+
+### Release 07: Resonantia: 10 Frequencies of the Rebuild (2026-05-17 | UPC 0672896293660 | Solfeggio & Ambient House | 120 BPM | 10 Tracks)
+- 01. Fundamentum (174 Hz Grounding & Pain Relief) [ISRC: QT4K42622855 | PT4M15S]
+- 02. Textura Sanat (285 Hz Tissue Repair) [ISRC: QT4K42622856 | PT4M15S]
+- 03. Timor Liberatus (396 Hz Releasing Fear) [ISRC: QT4K42622857 | PT4M15S]
+- 04. Mutatio (417 Hz Facilitating Change) [ISRC: QT4K42622858 | PT4M15S]
+- 05. Resonantia Terrae (432 Hz Earth Resonance) [ISRC: QT4K42622859 | PT4M15S]
+- 06. Renovatio Cellulae (528 Hz Miracle Tone) [ISRC: QT4K42622860 | PT4M15S]
+- 07. Harmonia (639 Hz Connection & Unity) [ISRC: QT4K42622861 | PT4M15S]
+- 08. Purificatio (741 Hz Cellular Detox) [ISRC: QT4K42622862 | PT4M15S]
+- 09. Ordo Spiritus (852 Hz Spiritual Awakening) [ISRC: QT4K42622863 | PT4M15S]
+- 10. Lux Aeterna (963 Hz Divine Consciousness) [ISRC: QT4K42622864 | PT4M15S]
+
+### Release 08: L’Architettura del Domani (2026-04-30 | UPC 672896091525 | Cinematic Synth House | 122 BPM | 10 Tracks)
+- 01. L’Inizio (The Foundation) [ISRC: QT4K32637284 | PT4M15S]
+- 02. Strings of Fire [ISRC: QT4K32637285 | PT4M15S]
+- 03. Il Canto della Forza (Song of Strength) [ISRC: QT4K32637286 | PT4M15S]
+- 04. Beyond the Horizon [ISRC: QT4K32637287 | PT4M15S]
+- 05. Battito d’Acciaio (Heartbeat of Steel) [ISRC: QT4K32637288 | PT4M15S]
+- 06. Midnight Cello [ISRC: QT4K32637289 | PT4M15S]
+- 07. The Ascent (L’Ascesa) [ISRC: QT4K32637290 | PT4M15S]
+- 08. Ombre e Luce (Shadows and Light) [ISRC: QT4K32637291 | PT4M15S]
+- 09. L’Orizzonte di Fuoco (The Horizon of Fire) [ISRC: QT4K32637292 | PT4M15S]
+- 10. L’Ultimo Mattino (The Final Dawn) [ISRC: QT4K32637293 | PT4M15S]
+
+### Release 09: The Gilded Pulse (2026-04-23 | UPC 672896018379 | Electro Deep House | 125 BPM | 10 Tracks)
+- 01. Kinetic Soul [ISRC: QT4K32605815 | PT4M15S]
+- 02. Track 2_ Deep Foundation [ISRC: QT4K32605816 | PT4M15S]
+- 03. The Next Phase [ISRC: QT4K32605807 | PT4M15S]
+- 04. Velvet Rhythm [ISRC: QT4K32605808 | PT4M15S]
+- 05. Cello Momentum [ISRC: QT4K32605809 | PT4M15S]
+- 06. Modern Blueprint [ISRC: QT4K32605810 | PT4M15S]
+- 07. Steady Drive [ISRC: QT4K32605811 | PT4M15S]
+- 08. Rhythmic Resilience [ISRC: QT4K32605812 | PT4M15S]
+- 09. Strength in Focus [ISRC: QT4K32605813 | PT4M15S]
+- 10. Midnight Pulse [ISRC: QT4K32605814 | PT4M15S]
+
+### Release 10: The Stabilization Frame (2026-04-16 | UPC 0609360922221 | Minimal Deep Tech | 123 BPM | 10 Tracks)
+- 01. The Level Line [ISRC: QT2VB2639786 | PT4M15S]
+- 02. Set-Point Soul [ISRC: QT2VB2639787 | PT4M15S]
+- 03. Hypertrophy in Blue [ISRC: QT2VB2639788 | PT4M15S]
+- 04. The Foreman’s Evening Brief [ISRC: QT2VB2639789 | PT4M15S]
+- 05. 205 on the Horizon [ISRC: QT2VB2639790 | PT4M15S]
+- 06. Structural Integrity [ISRC: QT2VB2639791 | PT4M15S]
+- 07. Sunday Plunge Blues [ISRC: QT2VB2639792 | PT4M15S]
+- 08. Polished Oak & Iron [ISRC: QT2VB2639793 | PT4M15S]
+- 09. The 100-Calorie Drift [ISRC: QT2VB2639794 | PT4M15S]
+- 10. Final Walkthrough [ISRC: QT2VB2639795 | PT4M15S]
+
+### Release 11: The Blueprint Reset (2026-04-09 | UPC 0609360888213 | Downtempo Electronic | 118 BPM | 9 Tracks)
+- 01. Steady Horizon [ISRC: QT2VB2623140 | PT4M15S]
+- 02. Deep Architecture [ISRC: QT2VB2623141 | PT4M15S]
+- 03. The Daily Cadence [ISRC: QT2VB2623142 | PT4M15S]
+- 04. Iron Elegance [ISRC: QT2VB2623143 | PT4M15S]
+- 05. Core Resonance [ISRC: QT2VB2623144 | PT4M15S]
+- 06. Persistent Drive [ISRC: QT2VB2623145 | PT4M15S]
+- 07. Structural Flow [ISRC: QT2VB2623146 | PT4M15S]
+- 08. Midnight Momentum [ISRC: QT2VB2623147 | PT4M15S]
+- 09. Final Symmetry [ISRC: QT2VB2623148 | PT4M15S]
+
+### Release 12: Structural Rhythm (2026-04-02 | UPC 0609360860981 | Progressive Tech House | 124 BPM | 10 Tracks)
+- 01. 174 Hz Foundation & Deep Pain Relief [ISRC: QT2VB2611909 | PT4M15S]
+- 02. 285 Hz Cellular Regeneration & Healing [ISRC: QT2VB2611910 | PT4M15S]
+- 03. 396 Hz Release Fear & Emotional Blockages [ISRC: QT2VB2611911 | PT4M15S]
+- 04. 417 Hz _ Clearing Negative Energy & Facilitating Change [ISRC: QT2VB2611912 | PT4M15S]
+- 05. 528 Hz Transformation & DNA Repair [ISRC: QT2VB2611913 | PT4M15S]
+- 06. 639 Hz Harmonic Relationships & Connection [ISRC: QT2VB2611914 | PT4M15S]
+- 07. 741 Hz Awakening Intuition & Detoxification [ISRC: QT2VB2611915 | PT4M15S]
+- 08. 852 Hz Spiritual Order & Clarity [ISRC: QT2VB2611916 | PT4M15S]
+- 09. 963 Hz _ The _God Frequency_ & Pineal Activation [ISRC: QT2VB2611917 | PT4M15S]
+- 10. 111 Hz _ Divine Unity & Cellular Reset [ISRC: QT2VB2611918 | PT4M15S]
+
+### Release 13: The Set-Point Shift (2026-03-26 | UPC 0609360793210 | Body Recomposition House | 126 BPM | 13 Tracks)
+- 01. Week Zero [ISRC: QZVEM2671155 | PT4M15S]
+- 02. Resonant Ground [ISRC: QZVEM2671156 | PT4M15S]
+- 03. 25 Weeks of Light [ISRC: QZVEM2671157 | PT4M15S]
+- 04. The Morning Blitz [ISRC: QZVEM2671158 | PT4M15S]
+- 05. Blueprint & Bone [ISRC: QZVEM2671159 | PT4M15S]
+- 06. The Sunday Plunge [ISRC: QZVEM2671160 | PT4M15S]
+- 07. Phase One (The Foundation) [ISRC: QZVEM2671161 | PT4M15S]
+- 08. Hypertrophy (The Muscle Grind) [ISRC: QZVEM2671162 | PT4M15S]
+- 09. Fresh Air & Footsteps [ISRC: QZVEM2671163 | PT4M15S]
+- 10. The 205 Vision [ISRC: QZVEM2671164 | PT4M15S]
+- 11. Global Frequency [ISRC: QZVEM2671165 | PT4M15S]
+- 12. The Set-Point Reset [ISRC: QZVEM2671166 | PT4M15S]
+- 13. The Foreman’s Briefing (Outro) [ISRC: QZVEM2671167 | PT4M15S]
+
+### Release 14: Foundation & Flux (2026-03-19 | UPC 0609360767198 | Deep Melodic House | 122 BPM | 12 Tracks)
+- 01. The First Foundation [ISRC: QZVEM2653480 | PT4M15S]
+- 02. Midnight Blueprints [ISRC: QZVEM2653481 | PT4M15S]
+- 03. Stone on Stone [ISRC: QZVEM2653482 | PT4M15S]
+- 04. Infrastructure of Hope [ISRC: QZVEM2653483 | PT4M15S]
+- 05. The Silent Forge [ISRC: QZVEM2653484 | PT4M15S]
+- 06. Micro-Dose Melody [ISRC: QZVEM2653485 | PT4M15S]
+- 07. The Squamish Ascent [ISRC: QZVEM2653486 | PT4M15S]
+- 08. Iron & Grace [ISRC: QZVEM2653487 | PT4M15S]
+- 09. The Weight of Discipline [ISRC: QZVEM2653488 | PT4M15S]
+- 10. The Architect’s Dream [ISRC: QZVEM2653489 | PT4M15S]
+- 11. 26 March [ISRC: QZVEM2653490 | PT4M15S]
+- 12. Legacy (Until 80) [ISRC: QZVEM2653491 | PT4M15S]
+
+### Release 15: Structural Shift (2026-03-12 | UPC 0609360743321 | Organic Downtempo | 116 BPM | 12 Tracks)
+- 01. First Light [ISRC: QZVEM2641406 | PT4M15S]
+- 02. The Cold Entry [ISRC: QZVEM2641407 | PT4M15S]
+- 03. Structural Shift [ISRC: QZVEM2641408 | PT4M15S]
+- 04. February Signals [ISRC: QZVEM2641409 | PT4M15S]
+- 05. Universal Blueprint [ISRC: QZVEM2641410 | PT4M15S]
+- 06. The Morning March [ISRC: QZVEM2641411 | PT4M15S]
+- 07. Momentum [ISRC: QZVEM2641412 | PT4M15S]
+- 08. Spring Horizon [ISRC: QZVEM2641413 | PT4M15S]
+- 09. System Flow [ISRC: QZVEM2641414 | PT4M15S]
+- 10. The Foundation [ISRC: QZVEM2641415 | PT4M15S]
+- 11. The Final Millimeter [ISRC: QZVEM2641416 | PT4M15S]
+- 12. Peak State [ISRC: QZVEM2641417 | PT4M15S]
+
+### Release 16: Pulse of the Forge (2026-03-04 | UPC 0609360701031 | Heavy Industrial House | 128 BPM | 13 Tracks)
+- 01. THE STARTING LINE [ISRC: QZVEM2620019 | PT4M15S]
+- 02. MOMENTUM [ISRC: QZVEM2620020 | PT4M15S]
+- 03. IRON PULSE [ISRC: QZVEM2620021 | PT4M15S]
+- 04. THE LEGACY FRAME [ISRC: QZVEM2620022 | PT4M15S]
+- 05. SUB-SURFACE [ISRC: QZVEM2620023 | PT4M15S]
+- 06. COLD STEEL [ISRC: QZVEM2620024 | PT4M15S]
+- 07. STONE BY STONE [ISRC: QZVEM2620025 | PT4M15S]
+- 08. THE TURNING POINT [ISRC: QZVEM2620026 | PT4M15S]
+- 09. THE COUNTDOWN [ISRC: QZVEM2620027 | PT4M15S]
+- 10. SHARPENING [ISRC: QZVEM2620028 | PT4M15S]
+- 11. PEAK INTENSITY [ISRC: QZVEM2620029 | PT4M15S]
+- 12. THE SHIFT [ISRC: QZVEM2620030 | PT4M15S]
+- 13. MARCH 26 (THE REVEAL) [ISRC: QZVEM2620031 | PT4M15S]
+
+### Release 17: 12 Solfeggio Protocols: Total Cellular Rebuild (2026-02-07 | UPC 0609360632663 | Cellular Rebuild Frequencies | 110 BPM | 12 Tracks)
+- 01. 174Hz Foundation - Ut Queant Laxis [ISRC: QZPEW2691327 | PT4M15S]
+- 02. 285Hz Reconstruction - El Na Refa Na La [ISRC: QZPEW2691328 | PT4M15S]
+- 03. 396Hz Liberation - Om Mani Padme Hum [ISRC: QZPEW2691329 | PT4M15S]
+- 04. 417Hz Change - Ya Tawwab [ISRC: QZPEW2691330 | PT4M15S]
+- 05. 432Hz Harmony - Lokah Samastah [ISRC: QZPEW2691331 | PT4M15S]
+- 06. 528Hz Transformation - Mira Gestorum [ISRC: QZPEW2691332 | PT4M15S]
+- 07. 639Hz Connection - Hine Ma Tov [ISRC: QZPEW2691333 | PT4M15S]
+- 08. 741Hz Detox - Namu Myoho Renge Kyo [ISRC: QZPEW2691334 | PT4M15S]
+- 09. 852Hz Order - Kyrie Eleison [ISRC: QZPEW2691335 | PT4M15S]
+- 10. 963Hz Divinity - Aham Brahmasmi [ISRC: QZPEW2691336 | PT4M15S]
+- 11. 1074Hz Awareness - Tayata Om Bekanze [ISRC: QZPEW2691337 | PT4M15S]
+- 12. 1152Hz Purification - Allah Hu [ISRC: QZPEW2691338 | PT4M15S]
+
+### Release 18: BIOLOGICAL OVERDRIVE (2026-01-22 | UPC 0609360527112 | High-Energy Fitness Electronic | 130 BPM | 11 Tracks)
+- 01. The Winter Arc [ISRC: QT62W2555506 | PT4M15S]
+- 02. The Unseen [ISRC: QT62W2566780 | PT4M15S]
+- 03. 9. Metabolic Fire [ISRC: QT62W2596145 | PT4M15S]
+- 04. 5. The Iron Resolve [ISRC: QT62W2596146 | PT4M15S]
+- 05. 11. Evergreen [ISRC: QT62W2596147 | PT4M15S]
+- 06. 6. The Honest Hour [ISRC: QT62W2596148 | PT4M15S]
+- 07. 3. The Unbroken Line [ISRC: QT62W2596149 | PT4M15S]
+- 08. 8. The Blueprint [ISRC: QT62W2596150 | PT4M15S]
+- 09. 4. The Second Wind [ISRC: QT62W2596151 | PT4M15S]
+- 10. 7. The Cold Reveal [ISRC: QT62W2596152 | PT4M15S]
+- 11. 10. frozen mirror [ISRC: QT62W2596153 | PT4M15S]
+
+### Release 19: The Unseen (2026-01-10 | UPC 0609360475222 | Cinematic Single | 110 BPM | 1 Tracks)
+- 01. The Unseen [ISRC: QT62W2566780 | PT4M15S]
+
+### Release 20: The Winter Arc (2026-01-06 | UPC 0609360455552 | Winter Arc Anthem | 128 BPM | 1 Tracks)
+- 01. The Winter Arc [ISRC: QT62W2555506 | PT4M15S]
+
+### Release 21: Iron & Ice (2025-12-14 | UPC 0609360358631 | Alpine Deep House | 124 BPM | 13 Tracks)
+- 01. Glacial Hymn [ISRC: QT62V2592405 | PT4M15S]
+- 02. The Winter Aria [ISRC: QT62V2592406 | PT4M15S]
+- 03. Frozen Momentum [ISRC: QT62V2592407 | PT4M15S]
+- 04. Titan’s Stride [ISRC: QT62V2592408 | PT4M15S]
+- 05. The Northern Saga [ISRC: QT62V2592409 | PT4M15S]
+- 06. Frozen Fire [ISRC: QT62V2592410 | PT4M15S]
+- 07. Storm Runner [ISRC: QT62V2592411 | PT4M15S]
+- 08. The Morning Protocol [ISRC: QT62V2592412 | PT4M15S]
+- 09. Thunder in the Deep [ISRC: QT62V2592413 | PT4M15S]
+- 10. Subzero Pulse [ISRC: QT62V2592414 | PT4M15S]
+- 11. The Northern Fortress [ISRC: QT62V2592415 | PT4M15S]
+- 12. iron Momentum [ISRC: QT62V2592416 | PT4M15S]
+- 13. Highland Echo [ISRC: QT62V2592417 | PT4M15S]
+
+### Release 22: Keystone: The Northern Saga (2025-12-04 | UPC 0609360356637 | Northern Electronic Saga | 120 BPM | 8 Tracks)
+- 01. The Warrior’s Charge [ISRC: QT62V2591834 | PT4M15S]
+- 02. The Forge of Iron. [ISRC: QT62V2591835 | PT4M15S]
+- 03. Echoes of the Mist [ISRC: QT62V2591836 | PT4M15S]
+- 04. The Turning Point [ISRC: QT62V2591837 | PT4M15S]
+- 05. The Legacy We Build [ISRC: QT62V2591838 | PT4M15S]
+- 06. The Unyielding Will [ISRC: QT62V2591839 | PT4M15S]
+- 07. Path of the Berserker [ISRC: QT62V2591840 | PT4M15S]
+- 08. A New Dawn [ISRC: QT62V2591841 | PT4M15S]
+
+================================================================================
+SECTION 6: XML SITEMAPS, MACHINE FEEDS & GOVERNANCE
+================================================================================
+- Sitemap Index: https://keystonerecomposition.com/sitemap_index.xml
+- Articles Sitemap: https://keystonerecomposition.com/post-sitemap.xml
+- Pages Sitemap: https://keystonerecomposition.com/page-sitemap.xml
+- 4K Video Sitemap: https://keystonerecomposition.com/keystone-video-sitemap.xml
+- Concise LLM Identity: https://keystonerecomposition.com/llms.txt
+- Full Technical & ISRC Corpus: https://keystonerecomposition.com/llms-full.txt
+
+Governance Notice: Keystone Recomposition publishes software systems architecture, autonomous multi-agent workflows, verified BC Housing builder credentials (#52603), and original 24-bit music recordings. Zero pharmaceutical, clinical, or personalized investment advice is offered.
