@@ -1054,9 +1054,13 @@ if ( ! function_exists( 'keystone_recomp_sync_root_geo_and_htaccess' ) ) {
             );
         }
 
-        // 4. Backup .htaccess & prepend idempotent # BEGIN KEYSTONE_GEO_SEO block
-        $htaccess_path = wp_normalize_path( rtrim( ABSPATH, '/' ) . '/.htaccess' );
-        $backup_path   = wp_normalize_path( rtrim( ABSPATH, '/' ) . '/.htaccess.bak-20261031' );
+        // 4. Backup .htaccess & prepend idempotent # BEGIN KEYSTONE_GEO_SEO block (supports writable DOCUMENT_ROOT on Atomic/WP Cloud)
+        $target_ht_dir = wp_normalize_path( rtrim( ABSPATH, '/' ) );
+        if ( ! is_writable( $target_ht_dir ) && ! empty( $_SERVER['DOCUMENT_ROOT'] ) && is_writable( (string) $_SERVER['DOCUMENT_ROOT'] ) ) {
+            $target_ht_dir = wp_normalize_path( rtrim( (string) $_SERVER['DOCUMENT_ROOT'], '/' ) );
+        }
+        $htaccess_path = $target_ht_dir . '/.htaccess';
+        $backup_path   = $target_ht_dir . '/.htaccess.bak-20261031';
         $existing_ht   = file_exists( $htaccess_path ) ? (string) file_get_contents( $htaccess_path ) : '';
 
         if ( '' !== $existing_ht && ! file_exists( $backup_path ) ) {

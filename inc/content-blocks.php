@@ -463,15 +463,14 @@ function keystone_serve_video_sitemap() {
         return;
     }
 
-    status_header( 200 );
-    if ( function_exists( 'nocache_headers' ) ) {
-        nocache_headers();
+    if ( function_exists( 'batcache_cancel' ) ) {
+        batcache_cancel();
     }
+    status_header( 200 );
     header( 'Content-Type: application/xml; charset=UTF-8' );
-    header( 'Cache-Control: no-cache, no-store, must-revalidate, max-age=0' );
-    header( 'Pragma: no-cache' );
-    header( 'Expires: 0' );
-    header( 'X-LiteSpeed-Cache-Control: no-cache' );
+    header( 'Cache-Control: public, max-age=60, s-maxage=60, must-revalidate' );
+    header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
+    header( 'X-LiteSpeed-Cache-Control: public, max-age=60' );
     header( 'X-Robots-Tag: noindex, follow' );
 
     // Query all published posts first (authoritative video source) plus any standalone watch-* pages
