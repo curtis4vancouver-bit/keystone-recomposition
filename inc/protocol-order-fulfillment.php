@@ -1090,7 +1090,122 @@ add_action( 'rest_api_init', function () {
 		'permission_callback' => '__return_true',
 		'callback'            => 'keystone_handle_protocol_tutor',
 	) );
+
+	register_rest_route( 'keystone/v1', '/set-avatar-video-ids', array(
+		'methods'             => 'POST',
+		'permission_callback' => function (): bool {
+			return current_user_can( 'manage_options' );
+		},
+		'callback'            => 'keystone_handle_set_com_avatar_video_ids',
+	) );
+
+	register_rest_route( 'keystone/v1', '/sync-theme-asset', array(
+		'methods'             => 'POST',
+		'permission_callback' => function (): bool {
+			return current_user_can( 'edit_themes' ) && current_user_can( 'manage_options' );
+		},
+		'callback'            => function ( WP_REST_Request $request ): WP_REST_Response {
+			$allowed = array(
+				'footer.php',
+				'inc/enqueue.php',
+				'template-ai-protocols.php',
+				'inc/protocol-order-fulfillment.php',
+				'inc/core-routes.php',
+				'llms.txt',
+				'llms-full.txt',
+			);
+			$params   = $request->get_json_params() ?: $request->get_params();
+			$rel_file = isset( $params['file'] ) ? (string) $params['file'] : '';
+			$content  = isset( $params['content'] ) ? (string) $params['content'] : '';
+			if ( ! in_array( $rel_file, $allowed, true ) || strlen( $content ) < 64 ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Invalid file or content' ), 400 );
+			}
+			$dest = trailingslashit( get_stylesheet_directory() ) . $rel_file;
+			$dir  = dirname( $dest );
+			if ( ! is_dir( $dir ) ) {
+				wp_mkdir_p( $dir );
+			}
+			$bytes = @file_put_contents( $dest, $content );
+			if ( false === $bytes ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Write failed', 'dest' => $dest ), 500 );
+			}
+			do_action( 'litespeed_purge_all' );
+			if ( function_exists( 'wp_cache_flush' ) ) {
+				wp_cache_flush();
+			}
+			return new WP_REST_Response( array( 'ok' => true, 'file' => $rel_file, 'bytes' => $bytes, 'dest' => $dest ), 200 );
+		},
+	) );
 } );
+
+/**
+ * Authenticated Admin Setter for Founder Avatar & Tier Walkthrough YouTube IDs (.com).
+ *
+ * Accepts JSON:
+ *   { "hero_intro": "11CHAR_YTID", "tier1": "...", "tier2": "...", "tier3": "..." }
+ * (Also accepts canonical option names like "keystone_hero_intro_video_id".)
+ */
+function keystone_handle_set_com_avatar_video_ids( WP_REST_Request $request ): WP_REST_Response {
+	$params = $request->get_json_params() ?: $request->get_params();
+	$key_map = array(
+		'hero_intro'                   => 'keystone_hero_intro_video_id',
+		'keystone_hero_intro_video_id' => 'keystone_hero_intro_video_id',
+		'tier1'                        => 'keystone_tier1_video_id',
+		'keystone_tier1_video_id'      => 'keystone_tier1_video_id',
+		'tier2'                        => 'keystone_tier2_video_id',
+		'keystone_tier2_video_id'      => 'keystone_tier2_video_id',
+		'tier3'                        => 'keystone_tier3_video_id',
+		'keystone_tier3_video_id'      => 'keystone_tier3_video_id',
+	);
+
+	$updated = array();
+	foreach ( $key_map as $input_key => $option_name ) {
+		if ( ! array_key_exists( $input_key, $params ) ) {
+			continue;
+		}
+		$raw_val = trim( sanitize_text_field( (string) $params[ $input_key ] ) );
+		if ( '' !== $raw_val && 1 !== preg_match( '/^[A-Za-z0-9_-]{11}$/', $raw_val ) ) {
+			return new WP_REST_Response(
+				array(
+					'ok'    => false,
+					'error' => sprintf( 'Invalid 11-character YouTube video ID for %s.', $input_key ),
+				),
+				400
+			);
+		}
+		update_option( $option_name, $raw_val, false );
+		$updated[ $option_name ] = $raw_val;
+	}
+
+	if ( empty( $updated ) ) {
+		return new WP_REST_Response(
+			array(
+				'ok'    => false,
+				'error' => 'Provide at least one video ID key: hero_intro, tier1, tier2, or tier3.',
+			),
+			400
+		);
+	}
+
+	do_action( 'litespeed_purge_all' );
+	if ( function_exists( 'wp_cache_flush' ) ) {
+		wp_cache_flush();
+	}
+
+	return new WP_REST_Response(
+		array(
+			'ok'      => true,
+			'updated' => $updated,
+			'active'  => array(
+				'keystone_hero_intro_video_id' => (string) get_option( 'keystone_hero_intro_video_id', 'JCgZ5SsN_bc' ),
+				'keystone_tier1_video_id'      => (string) get_option( 'keystone_tier1_video_id', '-ZYdbPXenCU' ),
+				'keystone_tier2_video_id'      => (string) get_option( 'keystone_tier2_video_id', 'LxbjlX_nh2Q' ),
+				'keystone_tier3_video_id'      => (string) get_option( 'keystone_tier3_video_id', '_bSpYdvm6tc' ),
+			),
+		),
+		200
+	);
+}
 
 /**
  * Process Automated AI Protocol Order / Priority Launch Rate Reservation.
@@ -1819,6 +1934,7 @@ function keystone_render_stripe_settings_page(): void {
 			'keystone_stripe_live_secret_key',
 			'keystone_stripe_live_publishable_key',
 			'keystone_stripe_live_webhook_secret',
+			'keystone_hero_intro_video_id',
 			'keystone_tier1_video_id',
 			'keystone_tier2_video_id',
 			'keystone_tier3_video_id',
@@ -1847,8 +1963,9 @@ function keystone_render_stripe_settings_page(): void {
 	$live_whsec   = (string) get_option( 'keystone_stripe_live_webhook_secret', '' );
 	$test_sk      = (string) get_option( 'keystone_stripe_test_secret_key', '' );
 	$test_pk      = (string) get_option( 'keystone_stripe_test_publishable_key', '' );
-	$test_whsec   = (string) get_option( 'keystone_stripe_test_webhook_secret', '' );
-	$t1_video_id  = (string) get_option( 'keystone_tier1_video_id', '-ZYdbPXenCU' );
+	$test_whsec     = (string) get_option( 'keystone_stripe_test_webhook_secret', '' );
+	$hero_video_id  = (string) get_option( 'keystone_hero_intro_video_id', 'JCgZ5SsN_bc' );
+	$t1_video_id    = (string) get_option( 'keystone_tier1_video_id', '-ZYdbPXenCU' );
 	$t2_video_id  = (string) get_option( 'keystone_tier2_video_id', 'LxbjlX_nh2Q' );
 	$t3_video_id  = (string) get_option( 'keystone_tier3_video_id', '_bSpYdvm6tc' );
 	$t1_link      = (string) get_option( 'keystone_tier1_stripe_link', '' );
@@ -1954,9 +2071,13 @@ function keystone_render_stripe_settings_page(): void {
 					</div>
 				</div>
 
-				<!-- Walkthrough Video IDs (Bug 3 Fix) -->
+				<!-- Walkthrough Video IDs (Bug 3 Fix + Hero Intro Slot) -->
 				<div style="background:#0b111e;border:1px solid rgba(212,175,55,0.3);border-radius:10px;padding:18px;margin-bottom:22px;">
-					<div style="color:#d4af37;font-weight:800;font-size:14px;margin-bottom:12px;">🎬 DEDICATED TIER WALKTHROUGH VIDEO IDs (UNLISTED YOUTUBE)</div>
+					<div style="color:#d4af37;font-weight:800;font-size:14px;margin-bottom:12px;">🎬 HERO INTRO &amp; DEDICATED TIER WALKTHROUGH VIDEO IDs (UNLISTED YOUTUBE)</div>
+					<div style="margin-bottom:14px;">
+						<label style="display:block;color:#38bdf8;font-size:12px;font-weight:700;margin-bottom:4px;">Hero Intro Overview Video ID (/ai-protocols/ Top-Left 3-Tier Overview)</label>
+						<input type="text" name="keystone_hero_intro_video_id" value="<?php echo esc_attr( $hero_video_id ); ?>" style="width:100%;max-width:340px;background:#04070d;color:#f8fafc;border:1px solid rgba(56,189,248,0.5);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;" />
+					</div>
 					<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
 						<div>
 							<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Tier 01 Video ID ($49.50)</label>

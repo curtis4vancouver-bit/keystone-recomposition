@@ -264,6 +264,54 @@ $theme_uri = get_stylesheet_directory_uri();
 	white-space: nowrap;
 	flex-shrink: 0;
 }
+.keystone-cyber-protocols .site-main {
+	padding-bottom: 96px !important;
+}
+.kr-hero-chapter-strip {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	padding: 10px 12px;
+	background: #04070d;
+	border-top: 1px solid rgba(212, 175, 55, 0.32);
+	max-width: 100%;
+	box-sizing: border-box;
+}
+.kr-hero-chapter-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(4, 7, 13, 0.96);
+	border: 1px solid rgba(56, 189, 248, 0.42);
+	border-radius: 9999px;
+	padding: 5px 11px;
+	color: #f8fafc;
+	font-family: 'Outfit', sans-serif;
+	font-size: 0.72rem;
+	font-weight: 800;
+	line-height: 1.2;
+	cursor: pointer;
+	transition: all 0.18s ease;
+	box-sizing: border-box;
+}
+.kr-hero-chapter-pill:hover,
+.kr-hero-chapter-pill.is-active {
+	border-color: #d4af37;
+	background: rgba(212, 175, 55, 0.16);
+	color: #ffffff;
+	box-shadow: 0 4px 14px rgba(212, 175, 55, 0.22);
+}
+.kr-hero-chapter-pill .kr-hero-pill-ts {
+	color: #38bdf8;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.68rem;
+	font-weight: 900;
+}
+.kr-hero-chapter-pill:hover .kr-hero-pill-ts,
+.kr-hero-chapter-pill.is-active .kr-hero-pill-ts {
+	color: #d4af37;
+}
 </style>
 
 <div id="primary" class="content-area primary keystone-cyber-protocols">
@@ -311,25 +359,115 @@ $theme_uri = get_stylesheet_directory_uri();
 						</p>
 
 						<?php
-						$kr_hero_intro_vid = (string) get_option( 'keystone_hero_intro_video_id', '' );
-						if ( empty( $kr_hero_intro_vid ) ) {
-							$kr_hero_intro_vid = defined( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID' ) ? (string) KEYSTONE_TIER1_PUBLIC_VIDEO_ID : 'JCgZ5SsN_bc';
+						$hero_intro_vid = trim( (string) get_option( 'keystone_hero_intro_video_id', 'JCgZ5SsN_bc' ) );
+						if ( '' === $hero_intro_vid ) {
+							$hero_intro_vid = ( defined( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID' ) && '' !== trim( (string) KEYSTONE_TIER1_PUBLIC_VIDEO_ID ) )
+								? trim( (string) KEYSTONE_TIER1_PUBLIC_VIDEO_ID )
+								: 'JCgZ5SsN_bc';
 						}
+						$kr_hero_intro_vid = $hero_intro_vid;
+						$kr_hero_page_url  = function_exists( 'home_url' ) ? home_url( '/ai-protocols/' ) : 'https://keystonerecomposition.com/ai-protocols/';
+						$kr_hero_video_ld  = array(
+							'@context'     => 'https://schema.org',
+							'@type'        => 'VideoObject',
+							'@id'          => $kr_hero_page_url . '#hero-intro-video',
+							'name'         => 'Keystone AI Builder Suite — 3-Tier Architecture Overview (Brain, Website & Tauri .EXE)',
+							'description'  => 'Founder walkthrough by Wayne Stevenson (Licensed BC Builder #52603) covering the 3-Tier Keystone AI Builder Suite: Sovereign Vault, Tier 01 Brain & Google Flow ($49.50 USD), Tier 02 Dark-Luxury Website & Multi-Agent Workflows ($199 USD), and Tier 03 Custom Tauri Desktop App .EXE ($800 USD).',
+							'thumbnailUrl' => array(
+								'https://i.ytimg.com/vi/' . $hero_intro_vid . '/maxresdefault.jpg',
+								'https://i.ytimg.com/vi/' . $hero_intro_vid . '/hqdefault.jpg',
+							),
+							'uploadDate'   => '2026-10-15T08:00:00-07:00',
+							'duration'     => 'PT2M40S',
+							'contentUrl'   => 'https://www.youtube.com/watch?v=' . $hero_intro_vid,
+							'embedUrl'     => 'https://www.youtube-nocookie.com/embed/' . $hero_intro_vid,
+							'publisher'    => array(
+								'@type' => 'Organization',
+								'name'  => 'Keystone Recomposition',
+								'url'   => function_exists( 'home_url' ) ? home_url( '/' ) : 'https://keystonerecomposition.com/',
+							),
+							'hasPart'      => array(
+								array(
+									'@type'       => 'Clip',
+									'name'        => 'Suite & Vault Overview',
+									'startOffset' => 0,
+									'endOffset'   => 40,
+									'url'         => 'https://www.youtube.com/watch?v=' . $hero_intro_vid . '&t=0s',
+								),
+								array(
+									'@type'       => 'Clip',
+									'name'        => 'Tier 01 — AI Brain & Google Flow ($49.50 USD)',
+									'startOffset' => 40,
+									'endOffset'   => 80,
+									'url'         => 'https://www.youtube.com/watch?v=' . $hero_intro_vid . '&t=40s',
+								),
+								array(
+									'@type'       => 'Clip',
+									'name'        => 'Tier 02 — Dark-Luxury Website & Multi-Agent Suite ($199 USD)',
+									'startOffset' => 80,
+									'endOffset'   => 120,
+									'url'         => 'https://www.youtube.com/watch?v=' . $hero_intro_vid . '&t=80s',
+								),
+								array(
+									'@type'       => 'Clip',
+									'name'        => 'Tier 03 — Standalone Tauri Desktop App .EXE ($800 USD)',
+									'startOffset' => 120,
+									'endOffset'   => 160,
+									'url'         => 'https://www.youtube.com/watch?v=' . $hero_intro_vid . '&t=120s',
+								),
+							),
+						);
 						?>
 						<!-- Featured Top-Left Hero Intro & Architecture Overview Video -->
-						<div id="krHeroIntroVideoCard" style="background: #04070d; border: 1.5px solid #d4af37; border-radius: 18px; overflow: hidden; margin: 14px 0 16px 0; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.78);">
+						<div id="krHeroIntroVideoCard" style="background: #04070d; border: 1.5px solid #d4af37; border-radius: 18px; overflow: hidden; margin: 14px 0 16px 0; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.78); max-width: 100%; box-sizing: border-box;">
 							<div style="padding: 8px 14px; background: rgba(8, 14, 26, 0.96); border-bottom: 1px solid rgba(212, 175, 55, 0.35); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
 								<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.04em;">🎬 START HERE • 3-TIER AI BUILDER SUITE OVERVIEW</span>
 								<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800;">BRAIN ($49.50) &rarr; WEBSITE ($199) &rarr; TAURI .EXE ($800)</span>
 							</div>
 							<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #02050a;">
 								<iframe id="krHeroIntroIframe"
-										src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_hero_intro_vid ); ?>?rel=0"
+										src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?rel=0&amp;modestbranding=1"
 										title="Keystone AI Builder Suite — 3-Tier Architecture Overview"
 										style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 										allowfullscreen loading="eager"></iframe>
 							</div>
+							<div class="kr-hero-chapter-strip" role="navigation" aria-label="Founder Overview Video Chapters">
+								<button type="button" class="kr-hero-chapter-pill is-active" data-start="0" onclick="krSeekHeroIntroVideo('<?php echo esc_js( $hero_intro_vid ); ?>', 0, this)">
+									<span class="kr-hero-pill-ts">0:00</span>
+									<span>Suite &amp; Vault</span>
+								</button>
+								<button type="button" class="kr-hero-chapter-pill" data-start="40" onclick="krSeekHeroIntroVideo('<?php echo esc_js( $hero_intro_vid ); ?>', 40, this)">
+									<span class="kr-hero-pill-ts">0:40</span>
+									<span>Tier 01 ($49.50)</span>
+								</button>
+								<button type="button" class="kr-hero-chapter-pill" data-start="80" onclick="krSeekHeroIntroVideo('<?php echo esc_js( $hero_intro_vid ); ?>', 80, this)">
+									<span class="kr-hero-pill-ts">1:20</span>
+									<span>Tier 02 ($199)</span>
+								</button>
+								<button type="button" class="kr-hero-chapter-pill" data-start="120" onclick="krSeekHeroIntroVideo('<?php echo esc_js( $hero_intro_vid ); ?>', 120, this)">
+									<span class="kr-hero-pill-ts">2:00</span>
+									<span>Tier 03 ($800 .EXE)</span>
+								</button>
+							</div>
+							<?php if ( '' !== $hero_intro_vid ) : ?>
+							<script type="application/ld+json"><?php echo wp_json_encode( $kr_hero_video_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
+							<?php endif; ?>
+							<script>
+							window.krSeekHeroIntroVideo = function(videoId, startSec, btnEl) {
+								var iframe = document.getElementById('krHeroIntroIframe');
+								if (!iframe || !videoId) return;
+								var sec = Math.max(0, parseInt(startSec, 10) || 0);
+								iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?start=' + sec + '&autoplay=1&rel=0&modestbranding=1';
+								if (btnEl && btnEl.parentNode) {
+									var pills = btnEl.parentNode.querySelectorAll('.kr-hero-chapter-pill');
+									for (var i = 0; i < pills.length; i++) {
+										pills[i].classList.remove('is-active');
+									}
+									btnEl.classList.add('is-active');
+								}
+							};
+							</script>
 						</div>
 
 						<!-- Clean 3-Tier Synergy Summary Strip -->
@@ -392,16 +530,16 @@ $theme_uri = get_stylesheet_directory_uri();
 								<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
 									<div>
 										<label for="heroBuyerName" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Full Name *</label>
-										<input type="text" id="heroBuyerName" required placeholder="John Builder" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
+										<input type="text" id="heroBuyerName" required placeholder="Alex Mercer" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
 									</div>
 									<div>
 										<label for="heroBuyerEmail" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Email Address *</label>
-										<input type="email" id="heroBuyerEmail" required placeholder="you@company.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
+										<input type="email" id="heroBuyerEmail" required placeholder="alex@mercerbuilds.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
 									</div>
 								</div>
 								<div>
 									<label for="heroBuyerNotes" class="checkout-label" style="margin-bottom: 4px; display: block;">Website Domain, Channel or App Goal (Optional)</label>
-									<input type="text" id="heroBuyerNotes" placeholder="e.g. mydomain.com or custom AI desktop workflow..." style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.32); border-radius: 10px; color: #f8fafc; font-size: 0.82rem; padding: 9px 11px; box-sizing: border-box;" />
+									<input type="text" id="heroBuyerNotes" placeholder="e.g. mercerbuilds.com or custom AI desktop workflow..." style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.32); border-radius: 10px; color: #f8fafc; font-size: 0.82rem; padding: 9px 11px; box-sizing: border-box;" />
 								</div>
 
 								<!-- Promo Code Entry -->
@@ -674,11 +812,11 @@ $theme_uri = get_stylesheet_directory_uri();
 							<form id="krChannelWebsiteSetupForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
 								<div>
 									<label style="display: block; font-size: 0.72rem; font-weight: 800; color: #f6d365; margin-bottom: 4px;">YOUR NAME *</label>
-									<input type="text" id="setupBuyerName" required placeholder="John Builder" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; padding: 9px 12px; font-size: 0.82rem; box-sizing: border-box;" />
+									<input type="text" id="setupBuyerName" required placeholder="Alex Mercer" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; padding: 9px 12px; font-size: 0.82rem; box-sizing: border-box;" />
 								</div>
 								<div>
 									<label style="display: block; font-size: 0.72rem; font-weight: 800; color: #f6d365; margin-bottom: 4px;">YOUR EMAIL (TO RECEIVE COPY) *</label>
-									<input type="email" id="setupBuyerEmail" required placeholder="you@yourdomain.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; padding: 9px 12px; font-size: 0.82rem; box-sizing: border-box;" />
+									<input type="email" id="setupBuyerEmail" required placeholder="alex@mercerbuilds.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; padding: 9px 12px; font-size: 0.82rem; box-sizing: border-box;" />
 								</div>
 								<div>
 									<label style="display: block; font-size: 0.72rem; font-weight: 800; color: #38bdf8; margin-bottom: 4px;">YOUTUBE CHANNEL NAME *</label>
@@ -1150,7 +1288,7 @@ Rules for every scene prompt:
 						<div class="product-media-col">
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
-									<iframe src="https://www.youtube.com/embed/JCgZ5SsN_bc?rel=0"
+									<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?rel=0&amp;modestbranding=1"
 											title="Wayne's Recorded Walkthrough: AI Brain Setup & Basic Google Flow Video Example"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1429,11 +1567,11 @@ Rules for every scene prompt:
 			<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
 				<div>
 					<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUR FULL NAME *</label>
-					<input type="text" id="orderBuyerName" required placeholder="John Builder" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.86rem; padding: 10px 12px; box-sizing: border-box;" />
+					<input type="text" id="orderBuyerName" required placeholder="Alex Mercer" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.86rem; padding: 10px 12px; box-sizing: border-box;" />
 				</div>
 				<div>
 					<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUR EMAIL ADDRESS *</label>
-					<input type="email" id="orderBuyerEmail" required placeholder="you@company.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.86rem; padding: 10px 12px; box-sizing: border-box;" />
+					<input type="email" id="orderBuyerEmail" required placeholder="alex@mercerbuilds.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.86rem; padding: 10px 12px; box-sizing: border-box;" />
 				</div>
 			</div>
 			<div>

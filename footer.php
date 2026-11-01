@@ -146,6 +146,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php
     $kr_vault_theme_uri = get_stylesheet_directory_uri();
     $kr_current_wp_uid  = is_user_logged_in() ? 'KR-WP-UID-' . (int) get_current_user_id() : 'KR-GUEST-SESSION';
+    $kr_req_uri_path    = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
+    $kr_is_ai_protocols_surface = ( function_exists( 'is_page_template' ) && is_page_template( 'template-ai-protocols.php' ) )
+        || ( function_exists( 'is_page' ) && is_page( 'ai-protocols' ) )
+        || ( 0 === strpos( strtolower( $kr_req_uri_path ), 'ai-protocols' ) );
+    if ( ! $kr_is_ai_protocols_surface ) :
     ?>
     <div id="kr-bottom-streaming-vault" class="kr-bottom-streaming-vault" data-nosnippet data-vault-uid="<?php echo esc_attr( $kr_current_wp_uid ); ?>" aria-label="Sovereign Audio Streaming Vault">
         <audio id="krVaultAudio" preload="none" crossorigin="anonymous"></audio>
@@ -280,6 +285,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         window.krPlayVaultTrack = loadAndPlay;
     })();
     </script>
+    <?php endif; ?>
 
 </div><!-- #page -->
 

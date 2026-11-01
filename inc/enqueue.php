@@ -104,6 +104,9 @@ function astra_child_keystone_header_overrides() {
       overflow-x: hidden !important;
       padding-bottom: 76px !important;
     }
+    .keystone-cyber-protocols .site-main {
+      padding-bottom: 96px !important;
+    }
 
     /* Hero section vertical cadence so all 3 CTA pills sit cleanly above the bottom streaming vault at y=0 */
     .cyber-hero-section {
