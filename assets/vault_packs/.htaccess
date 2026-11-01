@@ -1,6 +1,10 @@
-# Block direct unauthenticated static HTTP access to paid Buyer Vault assets.
+# Block direct unauthenticated static HTTP access to paid Buyer Vault assets on OpenLiteSpeed & Apache.
 # Verified buyers download via PHP readfile() (?vault_download=...&uid=KR-UID-...).
 Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^ - [F,L]
+</IfModule>
 <IfModule mod_authz_core.c>
     Require all denied
 </IfModule>

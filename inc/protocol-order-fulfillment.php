@@ -1920,14 +1920,14 @@ function keystone_render_stripe_settings_page(): void {
 					<label style="display:block;color:#f8fafc;font-weight:800;font-size:13px;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em;">Stripe Operational Mode</label>
 					<select name="keystone_stripe_mode" style="background:#0b111e;color:#f8fafc;border:1.5px solid #d4af37;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;width:240px;">
 						<option value="test" <?php selected( $mode, 'test' ); ?>>🟡 Test Mode (Sandbox Simulation)</option>
-						<option value="live" <?php selected( $mode, 'live' ); ?>>🟢 Live Mode (Real Visa/Mastercard USD)</option>
+						<option value="live" <?php selected( $mode, 'live' ); ?>>💎 Live Mode (Real Visa/Mastercard USD)</option>
 					</select>
 				</div>
 
 				<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px;">
 					<!-- Live Credentials -->
 					<div style="background:#0b111e;border:1px solid <?php echo 'live' === $mode ? '#d4af37' : 'rgba(255,255,255,0.1)'; ?>;border-radius:10px;padding:18px;">
-						<div style="color:#d4af37;font-weight:800;font-size:14px;margin-bottom:12px;">🟢 LIVE PRODUCTION CREDENTIALS (USD)</div>
+						<div style="color:#d4af37;font-weight:800;font-size:14px;margin-bottom:12px;">💎 LIVE PRODUCTION CREDENTIALS (USD)</div>
 						
 						<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Live Secret Key (sk_live_...)</label>
 						<input type="password" name="keystone_stripe_live_secret_key" placeholder="<?php echo esc_attr( $mask_key( $live_sk ) ?: 'sk_live_...' ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(212,175,55,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;margin-bottom:12px;" />
@@ -2469,4 +2469,33 @@ if ( ! function_exists( 'keystone_v10_handle_verify_vault_uid' ) ) {
 		$result = keystone_verify_user_vault_uid_internal( $uid );
 		return new WP_REST_Response( $result, 200 );
 	}
+}
+
+/**
+ * Enforce root .htaccess OpenLiteSpeed RewriteRule blocking direct unauthenticated static scraping
+ * of /wp-content/themes/keystone-recomposition-child/assets/vault_packs/* while PHP readfile()
+ * (?vault_download=...&uid=KR-UID-...) continues serving verified buyers seamlessly.
+ */
+function keystone_ensure_vault_packs_htaccess_guard(): void {
+	if ( ! defined( 'ABSPATH' ) ) {
+		return;
+	}
+	$ht_path = ABSPATH . '.htaccess';
+	if ( ! is_file( $ht_path ) || ! is_writable( $ht_path ) ) {
+		return;
+	}
+	$contents = (string) @file_get_contents( $ht_path );
+	if ( false !== strpos( $contents, 'BEGIN KeystoneVaultProtect' ) ) {
+		return;
+	}
+	$block = "# BEGIN KeystoneVaultProtect\n"
+		. "<IfModule mod_rewrite.c>\n"
+		. "RewriteEngine On\n"
+		. "RewriteRule ^wp-content/themes/keystone-recomposition-child/assets/vault_packs/ - [F,L]\n"
+		. "</IfModule>\n"
+		. "# END KeystoneVaultProtect\n\n";
+	@file_put_contents( $ht_path, $block . $contents );
+}
+if ( function_exists( 'add_action' ) ) {
+	add_action( 'init', 'keystone_ensure_vault_packs_htaccess_guard', 1 );
 }
