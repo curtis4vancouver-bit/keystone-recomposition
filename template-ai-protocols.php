@@ -396,6 +396,11 @@ $theme_uri = get_stylesheet_directory_uri();
 		</section>
 
 		<!-- 1B. DEDICATED BUYER LEAD PAGE / SELF-SERVICE VAULT (HIDDEN ON PUBLIC SALES PAGE UNTIL PAYMENT / UID VERIFICATION) -->
+		<?php
+		$kr_t1_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '1' ) : '-ZYdbPXenCU';
+		$kr_t2_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '2' ) : 'LxbjlX_nh2Q';
+		$kr_t3_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '3' ) : '_bSpYdvm6tc';
+		?>
 		<section id="kr-self-service-portal" style="display: none; padding: 36px 0 48px 0; background: linear-gradient(180deg, #04070d 0%, #070d19 100%); border-top: 1px solid rgba(212, 175, 55, 0.35); border-bottom: 1px solid rgba(56, 189, 248, 0.28);">
 			<div class="ast-container">
 				<div style="background: rgba(8, 13, 24, 0.96); border: 1.5px solid #d4af37; border-radius: 22px; padding: 28px 26px; box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85);">
@@ -404,7 +409,7 @@ $theme_uri = get_stylesheet_directory_uri();
 					<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid rgba(212, 175, 55, 0.28);">
 						<div>
 							<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.14); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; margin-bottom: 8px;">
-								✅ VERIFIED BUYER LEAD PAGE UNLOCKED • ALL VIDEOS, BRAIN DIAGRAMS, PROMPTS &amp; PDFs READY
+								💎 VERIFIED BUYER VAULT UNLOCKED • UNLISTED WALKTHROUGHS, STARTER .ZIPS &amp; 12 PDFS READY
 							</div>
 							<h2 style="font-family: 'Outfit', sans-serif; font-size: 1.65rem; font-weight: 900; color: #ffffff; margin: 0;">
 								Your Unlocked AI Brain, ~20-Word Google Flow Video &amp; Website Implementation Vault
@@ -455,7 +460,7 @@ $theme_uri = get_stylesheet_directory_uri();
 							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
 								<div>
 									<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.16); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; padding: 4px 12px; border-radius: 9999px; margin-bottom: 6px;">
-										🎬 STEP 1: WATCH VIDEO WALKTHROUGH FIRST &bull; MODULE V01 (4M 00S RUNTIME)
+										🎬 STEP 1: WATCH VIDEO WALKTHROUGH FIRST &bull; TIER 01 UNLISTED WALKTHROUGH (4M 30S RUNTIME)
 									</div>
 									<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.28rem; font-weight: 900; margin: 0;">
 										Module V01 Walkthrough: Building Your 4-Folder AI Brain on the $30/mo Antigravity Plan
@@ -476,14 +481,14 @@ $theme_uri = get_stylesheet_directory_uri();
 								<div style="background: #02050a; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
 									<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #04070d;">
 										<iframe id="krVideoPlayerV01"
-												src="https://www.youtube-nocookie.com/embed/JCgZ5SsN_bc?rel=0"
+												src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t1_vid ); ?>?rel=0"
 												title="Module V01 — $30 Antigravity Brain Setup & 4-Folder Architecture Walkthrough (4m 00s)"
 												style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 												allowfullscreen loading="lazy"></iframe>
 									</div>
 									<div style="padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: rgba(8, 14, 26, 0.96); border-top: 1px solid rgba(56, 189, 248, 0.25);">
-										<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">▶ MODULE V01 // 4M 00S STEP-BY-STEP VIDEO</span>
+										<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">▶ TIER 01 UNLISTED WALKTHROUGH // 4M 30S STEP-BY-STEP VIDEO</span>
 										<span style="color: #cbd5e1; font-size: 0.74rem;">Click any chapter on the right to jump to that timestamp &rarr;</span>
 									</div>
 								</div>
@@ -496,19 +501,19 @@ $theme_uri = get_stylesheet_directory_uri();
 											<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800;">TOTAL: 4M 00S</span>
 										</div>
 										<div style="display: flex; flex-direction: column; gap: 7px;">
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 0)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', '<?php echo esc_js( $kr_t1_vid ); ?>', 0)">
 												<span><strong>Ch 01:</strong> $30/mo Antigravity Plan &amp; Opening <code class="kr-code-pill">My_AI_Brain</code></span>
 												<span class="kr-chapter-time">▶ 00:00</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 65)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', '<?php echo esc_js( $kr_t1_vid ); ?>', 65)">
 												<span><strong>Ch 02:</strong> Pasting Prompt #1 to Build All 4 Brain Folders</span>
 												<span class="kr-chapter-time">▶ 01:05</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 135)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', '<?php echo esc_js( $kr_t1_vid ); ?>', 135)">
 												<span><strong>Ch 03:</strong> Dropping <code class="kr-code-pill">AGENTS.md</code> Inside <code class="kr-code-pill">01_Brain_Rules/</code></span>
 												<span class="kr-chapter-time">▶ 02:15</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', 'JCgZ5SsN_bc', 195)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV01', '<?php echo esc_js( $kr_t1_vid ); ?>', 195)">
 												<span><strong>Ch 04:</strong> Verifying 2M-Token Persistent Brand Memory</span>
 												<span class="kr-chapter-time">▶ 03:15</span>
 											</button>
@@ -730,7 +735,7 @@ $theme_uri = get_stylesheet_directory_uri();
 								<div style="background: #02050a; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
 									<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #04070d;">
 										<iframe id="krVideoPlayerV02"
-												src="https://www.youtube-nocookie.com/embed/k3fArbXUzQM?rel=0"
+												src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t1_vid ); ?>?start=135&amp;rel=0"
 												title="Module V02 — ~20-Word Google Flow Video Prompt Formula & 1080p MP4 Export Walkthrough (5m 00s)"
 												style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -750,19 +755,19 @@ $theme_uri = get_stylesheet_directory_uri();
 											<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800;">TOTAL: 5M 00S</span>
 										</div>
 										<div style="display: flex; flex-direction: column; gap: 7px;">
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 0)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', '<?php echo esc_js( $kr_t1_vid ); ?>', 0)">
 												<span><strong>Ch 01:</strong> Uploading 3 Reference Chips (Character, Outfit, Studio)</span>
 												<span class="kr-chapter-time">▶ 00:00</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 80)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', '<?php echo esc_js( $kr_t1_vid ); ?>', 80)">
 												<span><strong>Ch 02:</strong> Why 18–24 Words (~20 Words) Prevents Audio Cutoffs</span>
 												<span class="kr-chapter-time">▶ 01:20</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 165)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', '<?php echo esc_js( $kr_t1_vid ); ?>', 165)">
 												<span><strong>Ch 03:</strong> Generating 6 Sequential 10s Clips in Antigravity</span>
 												<span class="kr-chapter-time">▶ 02:45</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', 'k3fArbXUzQM', 240)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV02', '<?php echo esc_js( $kr_t1_vid ); ?>', 240)">
 												<span><strong>Ch 04:</strong> Exporting 1080p MP4s &amp; Numbering Clips Cleanly</span>
 												<span class="kr-chapter-time">▶ 04:00</span>
 											</button>
@@ -885,14 +890,14 @@ Rules for every scene prompt:
 								<div style="background: #02050a; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
 									<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #04070d;">
 										<iframe id="krVideoPlayerV03"
-												src="https://www.youtube-nocookie.com/embed/uMkZvTbqF2U?rel=0"
+												src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t2_vid ); ?>?rel=0"
 												title="Module V03 — Copy-Paste Website Builder & YouTube Brand Channel Walkthrough (4m 30s)"
 												style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 												allowfullscreen loading="lazy"></iframe>
 									</div>
 									<div style="padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: rgba(8, 14, 26, 0.96); border-top: 1px solid rgba(56, 189, 248, 0.25);">
-										<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">▶ MODULE V03 // 4M 30S STEP-BY-STEP VIDEO</span>
+										<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">▶ TIER 02 UNLISTED WALKTHROUGH // 5M 30S STEP-BY-STEP VIDEO</span>
 										<span style="color: #cbd5e1; font-size: 0.74rem;">Click any chapter on the right to jump to that timestamp &rarr;</span>
 									</div>
 								</div>
@@ -905,19 +910,19 @@ Rules for every scene prompt:
 											<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800;">TOTAL: 4M 30S</span>
 										</div>
 										<div style="display: flex; flex-direction: column; gap: 7px;">
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 0)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', '<?php echo esc_js( $kr_t2_vid ); ?>', 0)">
 												<span><strong>Ch 01:</strong> Creating Your Dedicated YouTube Brand Account</span>
 												<span class="kr-chapter-time">▶ 00:00</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 70)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', '<?php echo esc_js( $kr_t2_vid ); ?>', 70)">
 												<span><strong>Ch 02:</strong> Upload Defaults &amp; 480-Character SEO Tag Stack (<code class="kr-code-pill">PDF-03</code>)</span>
 												<span class="kr-chapter-time">▶ 01:10</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 145)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', '<?php echo esc_js( $kr_t2_vid ); ?>', 145)">
 												<span><strong>Ch 03:</strong> Pasting Dark-Luxury <code class="kr-code-pill">#04070d</code> Website Prompt (<code class="kr-code-pill">PDF-04</code>)</span>
 												<span class="kr-chapter-time">▶ 02:25</span>
 											</button>
-											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', 'uMkZvTbqF2U', 215)">
+											<button type="button" class="kr-chapter-btn" onclick="krSeekModuleVideo('krVideoPlayerV03', '<?php echo esc_js( $kr_t2_vid ); ?>', 215)">
 												<span><strong>Ch 04:</strong> JSON-LD Schema &amp; Search Console Indexing (<code class="kr-code-pill">PDF-05</code>)</span>
 												<span class="kr-chapter-time">▶ 03:35</span>
 											</button>
@@ -1011,7 +1016,7 @@ Rules for every scene prompt:
 								Set up your local Rust + Tauri + React desktop app project inside your AI Brain workspace, design custom dashboard tabs and one-click action buttons, and compile your standalone Windows <code class="kr-code-pill-gold">.exe</code> command center.
 							</p>
 							<div style="display: flex; gap: 8px; flex-wrap: wrap;">
-								<button type="button" onclick="krOpenSpecModal('PDF-10')" class="kr-copy-btn">👁️ PDF-10: Tauri App Project Setup</button>
+								<div style="width: 100%; margin-bottom: 14px; position: relative; padding-bottom: 56.25%; height: 0; background: #02050a; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(212, 175, 55, 0.45);"><iframe id="krVideoPlayerV05" src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t3_vid ); ?>?rel=0" title="Tier 03 Unlisted Buyer Walkthrough — Standalone Windows .EXE Tauri v2 Desktop Command Center (6m 00s)" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div><a href="?vault_download=tier3_workstation_pack" class="kr-copy-btn" style="text-decoration: none;">📦 Download Tier 03 Tauri v2 Starter (.ZIP)</a><button type="button" onclick="krOpenSpecModal('PDF-10')" class="kr-copy-btn">👁️ PDF-10: Tauri App Project Setup</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-11')" class="kr-copy-btn">👁️ PDF-11: Custom Tabs &amp; Buttons UI</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-12')" class="kr-copy-btn">👁️ PDF-12: Compiling Your .EXE Release</button>
 							</div>
@@ -1399,7 +1404,7 @@ Rules for every scene prompt:
 			<div id="fulfilledLiveDownloadsWrap" style="display: none; margin-top: 12px;">
 				<div style="margin-bottom: 12px;">
 					<div style="font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">🎬 STEP 1: WATCH WAYNE'S RECORDED STEP-BY-STEP WALKTHROUGH</div>
-					<a id="fulfilledVideoBtn" href="https://www.youtube.com/watch?v=JCgZ5SsN_bc" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 900; padding: 9px 18px; border-radius: 9999px; text-decoration: none !important;">
+					<a id="fulfilledVideoBtn" href="https://www.youtube.com/watch?v=<?php echo esc_attr( $kr_t1_vid ); ?>" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 900; padding: 9px 18px; border-radius: 9999px; text-decoration: none !important;">
 						▶ WATCH RECORDED AI VIDEO &amp; BRAIN WALKTHROUGH
 					</a>
 				</div>
