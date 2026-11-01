@@ -359,11 +359,11 @@ $theme_uri = get_stylesheet_directory_uri();
 						</p>
 
 						<?php
-						$hero_intro_vid = trim( (string) get_option( 'keystone_hero_intro_video_id', 'JCgZ5SsN_bc' ) );
+						$hero_intro_vid = trim( (string) get_option( 'keystone_hero_intro_video_id', 'u1gUjk9xcB4' ) );
 						if ( '' === $hero_intro_vid ) {
 							$hero_intro_vid = ( defined( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID' ) && '' !== trim( (string) KEYSTONE_TIER1_PUBLIC_VIDEO_ID ) )
 								? trim( (string) KEYSTONE_TIER1_PUBLIC_VIDEO_ID )
-								: 'JCgZ5SsN_bc';
+								: 'u1gUjk9xcB4';
 						}
 						$kr_hero_intro_vid = $hero_intro_vid;
 						$kr_hero_page_url  = function_exists( 'home_url' ) ? home_url( '/ai-protocols/' ) : 'https://keystonerecomposition.com/ai-protocols/';
@@ -377,8 +377,8 @@ $theme_uri = get_stylesheet_directory_uri();
 								'https://i.ytimg.com/vi/' . $hero_intro_vid . '/maxresdefault.jpg',
 								'https://i.ytimg.com/vi/' . $hero_intro_vid . '/hqdefault.jpg',
 							),
-							'uploadDate'   => '2026-10-15T08:00:00-07:00',
-							'duration'     => 'PT2M40S',
+							'uploadDate'   => '2026-11-01T08:00:00-07:00',
+							'duration'     => 'PT2M59S',
 							'contentUrl'   => 'https://www.youtube.com/watch?v=' . $hero_intro_vid,
 							'embedUrl'     => 'https://www.youtube-nocookie.com/embed/' . $hero_intro_vid,
 							'publisher'    => array(
@@ -412,7 +412,7 @@ $theme_uri = get_stylesheet_directory_uri();
 									'@type'       => 'Clip',
 									'name'        => 'Tier 03 — Standalone Tauri Desktop App .EXE ($800 USD)',
 									'startOffset' => 120,
-									'endOffset'   => 160,
+									'endOffset'   => 179,
 									'url'         => 'https://www.youtube.com/watch?v=' . $hero_intro_vid . '&t=120s',
 								),
 							),
@@ -1192,7 +1192,7 @@ Rules for every scene prompt:
 								Instead of overloading one chat window until it forgets your instructions, Tier 02 gives you dedicated <strong>Subagent Role Prompts</strong> (Researcher, Scriptwriter, Web Builder, Quality Checker, and B2B Outreach Specialist) plus our <strong>Locked Top-and-Bottom Logo HTML Email Template</strong>.
 							</p>
 							<div style="display: flex; gap: 8px; flex-wrap: wrap;">
-								<button type="button" onclick="krOpenSpecModal('PDF-06')" class="kr-copy-btn">👁️ PDF-06: Subagent Role Prompts</button>
+								<div style="width: 100%; margin-bottom: 14px; position: relative; padding-bottom: 56.25%; height: 0; background: #02050a; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(56, 189, 248, 0.45);"><iframe id="krVideoPlayerV04" src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t2_vid ); ?>?start=145&amp;rel=0" title="Tier 02 Unlisted Buyer Walkthrough — Multi-Agent Role Prompts, 3-Source Research Gate &amp; B2B Outreach (5m 28s)" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div><button type="button" onclick="krOpenSpecModal('PDF-06')" class="kr-copy-btn">👁️ PDF-06: Subagent Role Prompts</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-07')" class="kr-copy-btn">👁️ PDF-07: 3-Source Research Gate</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-08')" class="kr-copy-btn">👁️ PDF-08: B2B Outreach &amp; DNS Gate</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-09')" class="kr-copy-btn">👁️ PDF-09: Branded HTML Email Shell</button>
@@ -1288,7 +1288,7 @@ Rules for every scene prompt:
 						<div class="product-media-col">
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
-									<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?rel=0&amp;modestbranding=1"
+									<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?start=40&amp;rel=0&amp;modestbranding=1"
 											title="Wayne's Recorded Walkthrough: AI Brain Setup & Basic Google Flow Video Example"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1297,6 +1297,7 @@ Rules for every scene prompt:
 								<div class="video-card-meta">
 									<span class="video-title">Wayne's Recorded Walkthrough: Setting Up Your AI Brain &amp; Basic Google Flow Example</span>
 									<span class="video-desc">Watch a clean, step-by-step walkthrough of how we organize an AI Brain inside Google Antigravity and run a basic example in Google Flow to create and export 10-second MP4 video clips.</span>
+									<span style="display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 9999px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(212, 175, 55, 0.45); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">🔓 Full 4:26 Unlisted Tier 01 Setup Walkthrough unlocks inside the Buyer Vault</span>
 								</div>
 							</div>
 							<div class="t1-media-highlights-grid">
@@ -1371,7 +1372,7 @@ Rules for every scene prompt:
 						<div class="product-media-col">
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
-									<iframe src="https://www.youtube.com/embed/k3fArbXUzQM?rel=0"
+									<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?start=80&amp;rel=0&amp;modestbranding=1"
 											title="Custom Website Build, Multi-Agent Workflows & Brand Channel Setup"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1380,6 +1381,7 @@ Rules for every scene prompt:
 								<div class="video-card-meta">
 									<span class="video-title">Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</span>
 									<span class="video-desc">How we connect your Tier 01 AI Brain to build and launch a custom dark-luxury website, set up your YouTube Brand Channel, and run multi-agent workflows.</span>
+									<span style="display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 9999px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(212, 175, 55, 0.45); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">🔓 Full 5:28 Unlisted Tier 02 Multi-Agent Walkthrough unlocks inside the Buyer Vault</span>
 								</div>
 							</div>
 						</div>
@@ -1429,7 +1431,7 @@ Rules for every scene prompt:
 						<div class="product-media-col">
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
-									<iframe src="https://www.youtube.com/embed/uMkZvTbqF2U?rel=0"
+									<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?start=120&amp;rel=0&amp;modestbranding=1"
 											title="Custom Tauri Desktop App Build & AI Command Center"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1438,6 +1440,7 @@ Rules for every scene prompt:
 								<div class="video-card-meta">
 									<span class="video-title">Custom Tauri Desktop App Build (.EXE Command Center)</span>
 									<span class="video-desc">Watch how we take your AI Brain and Website setup and build a standalone Tauri desktop application with custom dashboard tabs and one-click action buttons.</span>
+									<span style="display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 9999px; background: rgba(212, 175, 55, 0.14); border: 1px solid rgba(212, 175, 55, 0.55); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">🔓 Full 5:54 Unlisted Tier 03 Tauri .EXE Walkthrough unlocks inside the Buyer Vault</span>
 								</div>
 							</div>
 						</div>

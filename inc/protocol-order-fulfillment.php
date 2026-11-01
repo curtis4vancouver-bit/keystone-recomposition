@@ -40,7 +40,7 @@ if ( ! defined( 'KEYSTONE_STRIPE_WEBHOOK_SECRET' ) ) {
 	define( 'KEYSTONE_STRIPE_WEBHOOK_SECRET', '' );
 }
 if ( ! defined( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID' ) ) {
-	define( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID', 'JCgZ5SsN_bc' ); // Video A: Public Overview on /ai-protocols/ Tier 01 Card
+	define( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID', 'u1gUjk9xcB4' ); // Video A: Public Overview on /ai-protocols/ Tier 01 Card
 }
 if ( ! defined( 'KEYSTONE_TIER1_BUYER_WALKTHROUGH_VIDEO_ID' ) ) {
 	define( 'KEYSTONE_TIER1_BUYER_WALKTHROUGH_VIDEO_ID', '-ZYdbPXenCU' ); // Video B: Unlisted Tier 01 Buyer Setup Walkthrough (4m30s) on @KeyStoneRecomposition
@@ -132,7 +132,7 @@ function keystone_is_stripe_ready(): bool {
 
 /**
  * Return dedicated Unlisted Walkthrough Video ID for each tier.
- * Fixes Bug 3 (Dedicated Per-Tier Video IDs, eliminating duplicate uMkZvTbqF2U or JCgZ5SsN_bc).
+ * Fixes Bug 3 (Dedicated Per-Tier Video IDs, eliminating duplicate fallback video IDs).
  */
 function keystone_get_tier_walkthrough_video_id( string $tier ): string {
 	switch ( $tier ) {
@@ -1129,14 +1129,112 @@ add_action( 'rest_api_init', function () {
 			if ( false === $bytes ) {
 				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Write failed', 'dest' => $dest ), 500 );
 			}
-			do_action( 'litespeed_purge_all' );
-			if ( function_exists( 'wp_cache_flush' ) ) {
-				wp_cache_flush();
-			}
-			return new WP_REST_Response( array( 'ok' => true, 'file' => $rel_file, 'bytes' => $bytes, 'dest' => $dest ), 200 );
+			$purge_info = keystone_com_purge_wpcloud_edge_cache();
+			return new WP_REST_Response(
+				array(
+					'ok'               => true,
+					'file'             => $rel_file,
+					'bytes'            => $bytes,
+					'dest'             => $dest,
+					'edge_cache_purge' => $purge_info,
+				),
+				200
+			);
 		},
 	) );
 } );
+
+/**
+ * Purge WP Cloud (_atomic_bur / wpcomsh), Batcache, LiteSpeed, and Object Cache for .com pages.
+ *
+ * Calling clean_post_cache() + wp_update_post( array( 'ID' => $pid ) ) triggers WordPress.com Atomic
+ * Nginx edge-cache PURGE requests for published pages so anonymous visitors see updated templates/videos immediately.
+ *
+ * @return array{purged_page_ids: array<int, int>}
+ */
+function keystone_com_purge_wpcloud_edge_cache(): array {
+	if ( function_exists( 'do_action' ) ) {
+		do_action( 'litespeed_purge_all' );
+	}
+	if ( function_exists( 'wp_cache_flush' ) ) {
+		wp_cache_flush();
+	}
+
+	$candidate_ids = array();
+	if ( function_exists( 'get_option' ) ) {
+		$front_id = (int) get_option( 'page_on_front', 0 );
+		if ( $front_id > 0 ) {
+			$candidate_ids[] = $front_id;
+		}
+	}
+
+	$target_slugs = array(
+		'ai-protocols',
+		'home',
+		'founder',
+		'sonic-universe',
+		'investments',
+		'lifestyle',
+		'contact',
+	);
+
+	if ( function_exists( 'get_page_by_path' ) ) {
+		foreach ( $target_slugs as $slug ) {
+			$page_obj = get_page_by_path( $slug, OBJECT, 'page' );
+			if ( is_object( $page_obj ) && isset( $page_obj->ID ) && (int) $page_obj->ID > 0 ) {
+				$candidate_ids[] = (int) $page_obj->ID;
+			}
+		}
+	}
+
+	if ( function_exists( 'get_posts' ) ) {
+		$found_ids = get_posts(
+			array(
+				'post_type'      => 'page',
+				'post_status'    => 'publish',
+				'post_name__in'  => $target_slugs,
+				'posts_per_page' => 50,
+				'fields'         => 'ids',
+			)
+		);
+		if ( is_array( $found_ids ) ) {
+			foreach ( $found_ids as $fid ) {
+				if ( (int) $fid > 0 ) {
+					$candidate_ids[] = (int) $fid;
+				}
+			}
+		}
+	}
+
+	$purged_ids = array_values(
+		array_unique(
+			array_filter(
+				array_map( 'intval', $candidate_ids ),
+				static function ( int $id ): bool {
+					return $id > 0;
+				}
+			)
+		)
+	);
+
+	foreach ( $purged_ids as $pid ) {
+		if ( function_exists( 'clean_post_cache' ) ) {
+			clean_post_cache( $pid );
+		}
+		if ( function_exists( 'wp_update_post' ) ) {
+			wp_update_post( array( 'ID' => $pid ) );
+		}
+	}
+
+	if ( function_exists( 'batcache_clear_url' ) && function_exists( 'home_url' ) ) {
+		batcache_clear_url( home_url( '/ai-protocols/' ) );
+		batcache_clear_url( home_url( '/' ) );
+	}
+
+	return array(
+		'purged_page_ids' => $purged_ids,
+	);
+}
 
 /**
  * Authenticated Admin Setter for Founder Avatar & Tier Walkthrough YouTube IDs (.com).
@@ -1187,21 +1285,19 @@ function keystone_handle_set_com_avatar_video_ids( WP_REST_Request $request ): W
 		);
 	}
 
-	do_action( 'litespeed_purge_all' );
-	if ( function_exists( 'wp_cache_flush' ) ) {
-		wp_cache_flush();
-	}
+	$purge_info = keystone_com_purge_wpcloud_edge_cache();
 
 	return new WP_REST_Response(
 		array(
-			'ok'      => true,
-			'updated' => $updated,
-			'active'  => array(
-				'keystone_hero_intro_video_id' => (string) get_option( 'keystone_hero_intro_video_id', 'JCgZ5SsN_bc' ),
+			'ok'               => true,
+			'updated'          => $updated,
+			'active'           => array(
+				'keystone_hero_intro_video_id' => (string) get_option( 'keystone_hero_intro_video_id', 'u1gUjk9xcB4' ),
 				'keystone_tier1_video_id'      => (string) get_option( 'keystone_tier1_video_id', '-ZYdbPXenCU' ),
 				'keystone_tier2_video_id'      => (string) get_option( 'keystone_tier2_video_id', 'LxbjlX_nh2Q' ),
 				'keystone_tier3_video_id'      => (string) get_option( 'keystone_tier3_video_id', '_bSpYdvm6tc' ),
 			),
+			'edge_cache_purge' => $purge_info,
 		),
 		200
 	);
@@ -1964,7 +2060,7 @@ function keystone_render_stripe_settings_page(): void {
 	$test_sk      = (string) get_option( 'keystone_stripe_test_secret_key', '' );
 	$test_pk      = (string) get_option( 'keystone_stripe_test_publishable_key', '' );
 	$test_whsec     = (string) get_option( 'keystone_stripe_test_webhook_secret', '' );
-	$hero_video_id  = (string) get_option( 'keystone_hero_intro_video_id', 'JCgZ5SsN_bc' );
+	$hero_video_id  = (string) get_option( 'keystone_hero_intro_video_id', 'u1gUjk9xcB4' );
 	$t1_video_id    = (string) get_option( 'keystone_tier1_video_id', '-ZYdbPXenCU' );
 	$t2_video_id  = (string) get_option( 'keystone_tier2_video_id', 'LxbjlX_nh2Q' );
 	$t3_video_id  = (string) get_option( 'keystone_tier3_video_id', '_bSpYdvm6tc' );
