@@ -310,6 +310,28 @@ $theme_uri = get_stylesheet_directory_uri();
 							A clean, 3-step builder progression where each tier builds directly on the last: start by organizing your <strong>AI Brain &amp; basic Google Flow video workflow</strong> (Tier 01), expand into your <strong>custom dark-luxury website &amp; multi-agent workflows</strong> (Tier 02), and build your own standalone <strong>Tauri Desktop App command center</strong> (Tier 03). Every tier is a <strong>single One-Time Payment</strong> with recorded walkthroughs, step-by-step PDF guides, and a dedicated <strong>Guided Setup Support Window</strong> to get you up and running.
 						</p>
 
+						<?php
+						$kr_hero_intro_vid = (string) get_option( 'keystone_hero_intro_video_id', '' );
+						if ( empty( $kr_hero_intro_vid ) ) {
+							$kr_hero_intro_vid = defined( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID' ) ? (string) KEYSTONE_TIER1_PUBLIC_VIDEO_ID : 'JCgZ5SsN_bc';
+						}
+						?>
+						<!-- Featured Top-Left Hero Intro & Architecture Overview Video -->
+						<div id="krHeroIntroVideoCard" style="background: #04070d; border: 1.5px solid #d4af37; border-radius: 18px; overflow: hidden; margin: 14px 0 16px 0; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.78);">
+							<div style="padding: 8px 14px; background: rgba(8, 14, 26, 0.96); border-bottom: 1px solid rgba(212, 175, 55, 0.35); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+								<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.04em;">🎬 START HERE • 3-TIER AI BUILDER SUITE OVERVIEW</span>
+								<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800;">BRAIN ($49.50) &rarr; WEBSITE ($199) &rarr; TAURI .EXE ($800)</span>
+							</div>
+							<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #02050a;">
+								<iframe id="krHeroIntroIframe"
+										src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_hero_intro_vid ); ?>?rel=0"
+										title="Keystone AI Builder Suite — 3-Tier Architecture Overview"
+										style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										allowfullscreen loading="eager"></iframe>
+							</div>
+						</div>
+
 						<!-- Clean 3-Tier Synergy Summary Strip -->
 						<div class="hero-tier-summary-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: auto 0 0 0; width: 100%; align-items: stretch;">
 							<div class="hero-tier-summary-box hero-tier-blue" style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.65); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: flex-start; gap: 6px;">
@@ -365,29 +387,61 @@ $theme_uri = get_stylesheet_directory_uri();
 								</div>
 							</div>
 
-							<!-- Promo Code Entry -->
-							<div class="promo-code-box">
-								<label for="promoInput" class="checkout-label">Have a Promo Code?</label>
-								<div class="promo-input-row">
-									<input type="text" id="promoInput" placeholder="Enter code (e.g. BUILDER10)" class="promo-input" />
-									<button type="button" id="applyPromoBtn" class="btn-promo-apply">APPLY</button>
+							<!-- Direct Buyer Details Form (Inline Ready-to-Buy Checkout) -->
+							<form id="heroDirectCheckoutForm" style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+								<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+									<div>
+										<label for="heroBuyerName" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Full Name *</label>
+										<input type="text" id="heroBuyerName" required placeholder="John Builder" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
+									</div>
+									<div>
+										<label for="heroBuyerEmail" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Email Address *</label>
+										<input type="email" id="heroBuyerEmail" required placeholder="you@company.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
+									</div>
 								</div>
-								<div id="promoFeedback" class="promo-feedback-msg" style="display:none;"></div>
-							</div>
+								<div>
+									<label for="heroBuyerNotes" class="checkout-label" style="margin-bottom: 4px; display: block;">Website Domain, Channel or App Goal (Optional)</label>
+									<input type="text" id="heroBuyerNotes" placeholder="e.g. mydomain.com or custom AI desktop workflow..." style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.32); border-radius: 10px; color: #f8fafc; font-size: 0.82rem; padding: 9px 11px; box-sizing: border-box;" />
+								</div>
 
-							<!-- Dynamic Express Reserve / Buy Button -->
-							<div class="checkout-cta-wrap">
-								<button type="button" id="portalExpressBuyBtn" class="btn-cyan-express-buy" style="width: 100%; cursor: pointer;">
-									⚡ GET TIER 01 SETUP ACCESS &amp; OPEN BUYER VAULT ($49.50 USD) →
-								</button>
-								<div class="checkout-payment-methods">
-									<span>💳 Visa &amp; Mastercard One-Time Checkout</span> • <span>🎬 Recorded Video + PDF Guides</span> • <span>🤖 Guided Setup Window</span>
+								<!-- Promo Code Entry -->
+								<div class="promo-code-box" style="margin-top: 2px;">
+									<label for="promoInput" class="checkout-label">Have a Promo Code?</label>
+									<div class="promo-input-row">
+										<input type="text" id="promoInput" placeholder="Enter code (e.g. BUILDER10 for 10% off)" class="promo-input" />
+										<button type="button" id="applyPromoBtn" class="btn-promo-apply">APPLY</button>
+									</div>
+									<div id="promoFeedback" class="promo-feedback-msg" style="display:none;"></div>
 								</div>
-								<div class="checkout-fiduciary-note">
-									🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Emailed Directly to Your Inbox
+
+								<!-- Primary Direct Visa / Mastercard Checkout Button -->
+								<div class="checkout-cta-wrap" style="margin-top: 4px;">
+									<button type="submit" id="portalExpressBuyBtn" class="btn-cyan-express-buy btn-gold-portal" style="width: 100%; cursor: pointer; background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; -webkit-text-fill-color: #04070d !important; font-weight: 900; border-radius: 9999px; border: none; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.38);">
+										💳 PAY WITH VISA / MASTERCARD &amp; UNLOCK VAULT ($49.50 USD) →
+									</button>
+									<div id="heroCheckoutFeedback" style="display: none; margin-top: 8px; padding: 10px 12px; border-radius: 12px; background: rgba(4, 7, 13, 0.96); border: 1px solid #38bdf8; font-size: 0.78rem; color: #f8fafc; line-height: 1.45;"></div>
+									<div class="checkout-payment-methods" style="margin-top: 8px;">
+										<span>💳 256-Bit Stripe USD Checkout</span> • <span>🎬 Unlisted Video + PDFs + .ZIP</span> • <span>🤖 Guided Setup Window</span>
+									</div>
+									<div class="checkout-fiduciary-note">
+										🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Instant Vault Unlock &amp; Email Receipt
+									</div>
 								</div>
+							</form>
+
+							<!-- Returning Buyer KR-UID Instant Vault Unlock Bar -->
+							<div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(56, 189, 248, 0.25);">
+								<label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px; letter-spacing: 0.03em;">
+									🔑 ALREADY PURCHASED? ENTER YOUR BUYER UID TO OPEN VAULT:
+								</label>
+								<div style="display: flex; gap: 8px;">
+									<input type="text" id="existingVaultUidInput" value="" placeholder="KR-UID-..." style="flex: 1; background: #04070d; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 9999px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; padding: 7px 14px;" />
+									<button type="button" id="verifyVaultUidBtn" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
+										OPEN VAULT &rarr;
+									</button>
+								</div>
+								<div id="vaultUidVerifyFeedback" style="display: none; margin-top: 8px; padding: 10px 12px; border-radius: 12px; background: #04070d; border: 1px solid #d4af37; font-size: 0.76rem;"></div>
 							</div>
-							<input type="hidden" id="existingVaultUidInput" value="" />
 						</div>
 					</div>
 
@@ -396,11 +450,16 @@ $theme_uri = get_stylesheet_directory_uri();
 		</section>
 
 		<!-- 1B. DEDICATED BUYER LEAD PAGE / SELF-SERVICE VAULT (HIDDEN ON PUBLIC SALES PAGE UNTIL PAYMENT / UID VERIFICATION) -->
-		<?php
-		$kr_t1_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '1' ) : '-ZYdbPXenCU';
-		$kr_t2_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '2' ) : 'LxbjlX_nh2Q';
-		$kr_t3_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '3' ) : '_bSpYdvm6tc';
-		?>
+		<?php
+
+		$kr_t1_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '1' ) : '-ZYdbPXenCU';
+
+		$kr_t2_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '2' ) : 'LxbjlX_nh2Q';
+
+		$kr_t3_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '3' ) : '_bSpYdvm6tc';
+
+		?>
+
 		<section id="kr-self-service-portal" style="display: none; padding: 36px 0 48px 0; background: linear-gradient(180deg, #04070d 0%, #070d19 100%); border-top: 1px solid rgba(212, 175, 55, 0.35); border-bottom: 1px solid rgba(56, 189, 248, 0.28);">
 			<div class="ast-container">
 				<div style="background: rgba(8, 13, 24, 0.96); border: 1.5px solid #d4af37; border-radius: 22px; padding: 28px 26px; box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85);">
@@ -1346,15 +1405,15 @@ Rules for every scene prompt:
 	<div style="background: linear-gradient(145deg, #0b111e 0%, #060a12 100%); border: 1.5px solid #38bdf8; border-radius: 22px; max-width: 660px; width: 100%; padding: 28px 26px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(56, 189, 248, 0.25); position: relative; color: #f8fafc;">
 		<button type="button" id="closeAutomatedOrderModal" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-size: 1rem; font-weight: 800; cursor: pointer;">✕</button>
 
-		<div style="display: inline-block; background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; letter-spacing: 0.06em; margin-bottom: 10px;">
-			🔒 NEXT COHORT RELEASING SOON • NO CARD REQUIRED TODAY
+		<div style="display: inline-block; background: rgba(212, 175, 55, 0.15); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; letter-spacing: 0.06em; margin-bottom: 10px;">
+			💳 INSTANT VISA / MASTERCARD USD CHECKOUT • IMMEDIATE VAULT DELIVERY
 		</div>
 
 		<h3 id="modalTierHeadline" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 900; color: #ffffff; margin: 0 0 8px 0;">
-			Lock In Launch Rate — Tier 01 ($49.50 AI Brain, Flow Video &amp; Website Blueprint)
+			Complete Your Order — Tier 01 ($49.50 USD: AI Brain &amp; Google Flow Starter)
 		</h3>
 		<p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.55; margin: 0 0 18px 0;">
-			Enter your name and email below to lock in your launch price and generate your priority <strong>Reservation UID (<code class="kr-code-pill">KR-UID-...</code>)</strong> with zero payment today. Your verified UID immediately unlocks your <strong>Buyer Setup Page, Recorded Walkthrough Video, Step-by-Step PDF Guides &amp; Guided Setup Assistant</strong> (with your active setup window and follow-up question allowance) and emails your access link.
+			Enter your full name and email below to complete secure <strong>USD Visa / Mastercard Checkout</strong> and immediately unlock your <strong>Verified Buyer UID (<code class="kr-code-pill">KR-UID-...</code>), Unlisted 4K Avatar Walkthrough Video, Printable <code class="kr-code-pill">%PDF-1.4</code> Guides, Clean-Room <code class="kr-code-pill-gold">.ZIP</code> Starter Pack &amp; Guided Setup Window</strong>—delivered on screen and straight to your inbox.
 		</p>
 
 		<form id="automatedProtocolOrderForm" style="display: flex; flex-direction: column; gap: 12px;">
@@ -2074,10 +2133,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	const stripeCardBtn = document.getElementById('submitStripeCardBtn');
 	const stripeCardBtnText = document.getElementById('stripeCardBtnText');
 
+	function computeFinalUsdPrice(baseUsd, pctOff) {
+		if (!pctOff || pctOff <= 0) return baseUsd;
+		const baseCents = Math.round(baseUsd * 100);
+		const discCents = Math.round((baseCents * pctOff) / 100);
+		return Math.max(0, (baseCents - discCents) / 100);
+	}
+
 	function updateStripeButtonText() {
-		if (!stripeCardBtnText) return;
-		const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
-		stripeCardBtnText.textContent = `PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(finalPrice)} USD) →`;
+		const finalPrice = computeFinalUsdPrice(activePrice, discountPct);
+		if (stripeCardBtnText) {
+			stripeCardBtnText.textContent = `PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(finalPrice)} USD) →`;
+		}
 	}
 
 	const promoInput = document.getElementById('promoInput');
@@ -2105,13 +2172,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	let activeTier = 1;
 	let activePrice = 49.50;
-	let discount = 0;
+	let discountPct = 0;
+
+	const tierBasePrices = { 1: 49.50, 2: 199.00, 3: 800.00 };
 
 	const promoCodes = {
 		'BUILDER10': 10,
 		'WAYNE10': 10,
-		'KEYSTONE20': 20,
-		'PROMO2026': 15
+		'KEYSTONE20': 20
 	};
 
 	const tierNames = {
@@ -2121,27 +2189,29 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	function formatPrice(val) {
-		return (Math.round(val * 100) / 100).toFixed(val % 1 === 0 ? 0 : 2);
+		const rounded = Math.round(val * 100) / 100;
+		return rounded % 1 === 0 ? rounded.toFixed(0) : rounded.toFixed(2);
 	}
 
 	function updateCTA() {
 		updateStripeButtonText();
 		if (!expressBuyBtn) return;
-		const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
+		const finalPrice = computeFinalUsdPrice(activePrice, discountPct);
 		const labelText = activeTier === 3
-			? '🖥️ GET TIER 03 TAURI DESKTOP APP ACCESS ($800 USD) →'
+			? `💳 PAY WITH VISA / MASTERCARD — TIER 03 TAURI .EXE ($${formatPrice(finalPrice)} USD) →`
 			: (activeTier === 2
-				? `🚀 GET TIER 02 WEBSITE & MULTI-AGENT ACCESS ($${formatPrice(finalPrice)} USD) →`
-				: `⚡ GET TIER 01 SETUP ACCESS & OPEN BUYER VAULT ($${formatPrice(finalPrice)} USD) →`);
+				? `💳 PAY WITH VISA / MASTERCARD — TIER 02 WEBSITE & AGENTS ($${formatPrice(finalPrice)} USD) →`
+				: `💳 PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(finalPrice)} USD) →`);
 		expressBuyBtn.innerHTML = `<span class="ks-wave-text">${labelText}</span>`;
-		expressBuyBtn.className = activeTier === 3 ? 'btn-cyan-express-buy btn-gold-portal' : 'btn-cyan-express-buy';
 	}
 
 	function openOrderModal(tierNum) {
 		activeTier = parseInt(tierNum, 10) || 1;
+		activePrice = tierBasePrices[activeTier] || 49.50;
+		updateCTA();
 		if (modalTierSelect) modalTierSelect.value = String(activeTier);
 		if (orderTierInput) orderTierInput.value = String(activeTier);
-		if (modalTierHeadline) modalTierHeadline.textContent = 'One-Time Access — ' + (tierNames[activeTier] || tierNames[1]);
+		if (modalTierHeadline) modalTierHeadline.textContent = 'Complete Your Order — ' + (tierNames[activeTier] || tierNames[1]);
 		if (modal) modal.style.display = 'flex';
 	}
 
@@ -2155,10 +2225,94 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 
-	if (expressBuyBtn) {
-		expressBuyBtn.addEventListener('click', function(e) {
+	const heroDirectForm = document.getElementById('heroDirectCheckoutForm');
+	const heroFeedback = document.getElementById('heroCheckoutFeedback');
+	if (heroDirectForm) {
+		heroDirectForm.addEventListener('submit', function(e) {
 			e.preventDefault();
-			openOrderModal(activeTier);
+			const bName = (document.getElementById('heroBuyerName')?.value || '').trim();
+			const bEmail = (document.getElementById('heroBuyerEmail')?.value || '').trim();
+			const bNotes = (document.getElementById('heroBuyerNotes')?.value || '').trim();
+			const pCode = promoInput ? promoInput.value.trim().toUpperCase() : '';
+			if (!bName || !bEmail) {
+				if (heroFeedback) {
+					heroFeedback.style.display = 'block';
+					heroFeedback.style.borderColor = '#f87171';
+					heroFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">Please enter your full name and email address above to proceed to checkout.</span>';
+				}
+				return;
+			}
+			if (expressBuyBtn) {
+				expressBuyBtn.disabled = true;
+				expressBuyBtn.style.opacity = '0.75';
+				expressBuyBtn.textContent = '⏳ CONNECTING TO SECURE STRIPE USD CHECKOUT...';
+			}
+			if (heroFeedback) {
+				heroFeedback.style.display = 'block';
+				heroFeedback.style.borderColor = '#38bdf8';
+				heroFeedback.innerHTML = '<span style="color:#38bdf8;font-weight:700;">Initializing encrypted Stripe Visa / Mastercard session...</span>';
+			}
+			fetch('/wp-json/keystone/v1/create-checkout-session', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					tier: String(activeTier),
+					buyer_name: bName,
+					buyer_email: bEmail,
+					notes: bNotes,
+					promo_code: pCode
+				})
+			})
+			.then(r => r.json())
+			.then(data => {
+				if (data && data.success && data.checkout_url) {
+					if (expressBuyBtn) expressBuyBtn.textContent = '✔ REDIRECTING TO STRIPE CHECKOUT...';
+					window.location.href = data.checkout_url;
+				} else {
+					// Pre-copy details into order modal / direct priority order endpoint so buyer never hits a dead end
+					const mName = document.getElementById('orderBuyerName');
+					const mEmail = document.getElementById('orderBuyerEmail');
+					const mNotes = document.getElementById('orderBuyerNotes');
+					if (mName) mName.value = bName;
+					if (mEmail) mEmail.value = bEmail;
+					if (mNotes) mNotes.value = bNotes;
+					if (expressBuyBtn) {
+						expressBuyBtn.disabled = false;
+						expressBuyBtn.style.opacity = '1';
+						updateCTA();
+					}
+					if (heroFeedback) {
+						heroFeedback.style.display = 'block';
+						heroFeedback.style.borderColor = '#d4af37';
+						heroFeedback.innerHTML = '<div style="color:#f6d365;font-weight:800;margin-bottom:6px;">⚡ Instant Priority Access Ready</div><div style="color:#cbd5e1;">' + ((data && data.message) ? data.message : 'Live card gateway is in final key-activation mode.') + ' Locking in your Priority Buyer UID &amp; emailing your Vault link now...</div>';
+					}
+					fetch('/wp-json/keystone/v1/protocol-order', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							tier: String(activeTier),
+							buyer_name: bName,
+							buyer_email: bEmail,
+							notes: bNotes,
+							promo_code: pCode
+						})
+					})
+					.then(r2 => r2.json())
+					.then(d2 => {
+						if (d2 && d2.success) {
+							applyVerifiedVaultState({ valid: true, uid: d2.user_uid, tier_name: d2.tier_name, walkthrough_video_url: d2.walkthrough_video_url, unlocked_downloads: d2.unlocked_downloads });
+						}
+					})
+					.catch(() => {});
+				}
+			})
+			.catch(() => {
+				if (expressBuyBtn) {
+					expressBuyBtn.disabled = false;
+					expressBuyBtn.style.opacity = '1';
+					updateCTA();
+				}
+			});
 		});
 	}
 
@@ -2174,8 +2328,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		modalTierSelect.addEventListener('change', function() {
 			const t = parseInt(this.value, 10) || 1;
 			activeTier = t;
+			activePrice = tierBasePrices[t] || 49.50;
 			if (orderTierInput) orderTierInput.value = String(t);
-			if (modalTierHeadline) modalTierHeadline.textContent = 'Lock In Launch Rate — ' + (tierNames[t] || tierNames[1]);
+			if (modalTierHeadline) modalTierHeadline.textContent = 'Complete Your Order — ' + (tierNames[t] || tierNames[1]);
+			updateCTA();
 		});
 	}
 
@@ -2192,18 +2348,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		applyPromoBtn.addEventListener('click', function() {
 			const code = promoInput.value.trim().toUpperCase();
 			if (promoCodes[code]) {
-				discount = promoCodes[code];
+				discountPct = promoCodes[code];
+				const newPrice = computeFinalUsdPrice(activePrice, discountPct);
 				promoFeedback.style.display = 'block';
 				promoFeedback.style.color = '#38bdf8';
-				promoFeedback.textContent = `✔ Promo code applied: $${discount} USD discount!`;
+				promoFeedback.textContent = `✔ Promo code ${code} applied: ${discountPct}% OFF ($${formatPrice(newPrice)} USD)!`;
 			} else if (code === '') {
-				discount = 0;
+				discountPct = 0;
 				promoFeedback.style.display = 'none';
 			} else {
-				discount = 0;
+				discountPct = 0;
 				promoFeedback.style.display = 'block';
 				promoFeedback.style.color = '#f87171';
-				promoFeedback.textContent = '✖ Invalid promo code.';
+				promoFeedback.textContent = '✖ Invalid promo code (try BUILDER10).';
 			}
 			updateCTA();
 		});
