@@ -491,8 +491,8 @@ $theme_uri = get_stylesheet_directory_uri();
 					</div>
 
 					<!-- Right Column: Top-Right Express Checkout & Direct One-Time Setup Access -->
-					<div class="protocols-hero-right">
-						<div class="express-checkout-card">
+					<div class="protocols-hero-right" style="align-self: start; position: sticky; top: 96px;">
+						<div class="express-checkout-card" style="height: auto !important; justify-content: flex-start !important; gap: 16px;">
 							<div class="checkout-card-header">
 								<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
 									<span class="checkout-badge-live">💎 ONE-TIME PAYMENT • GUIDED SETUP • ZERO MONTHLY FEES</span>
