@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6d365" />
+      <stop offset="100%" stop-color="#d4af37" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e1726" />
+      <stop offset="100%" stop-color="#04070d" />
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#d4af37" />
+    </linearGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#04070d" />
+  <rect x="15" y="15" width="1170" height="645" rx="16" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.85" />
+  <rect x="18" y="18" width="1164" height="639" rx="14" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.4" />
+
+  <!-- Top Header Banner -->
+  <rect x="35" y="30" width="1130" height="85" rx="12" fill="url(#cardGrad)" stroke="#d4af37" stroke-width="1.5" />
+  <rect x="50" y="42" width="220" height="24" rx="12" fill="rgba(212,175,55,0.15)" stroke="#d4af37" stroke-width="1" />
+  <text x="160" y="58" fill="#d4af37" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="1">TIER 03 // $800.00 USD FLAGSHIP</text>
+  <text x="50" y="92" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">Tauri v2 Sovereign Desktop Command Center Architecture</text>
+  <text x="1150" y="78" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="end">Rust Core + Microsoft Edge WebView2 + Typed IPC</text>
+
+  <!-- 3 Layer Stack (Top: WebView2 UI, Middle: IPC Bridge, Bottom: Rust Backend) -->
+
+  <!-- Layer 1: Frontend WebView2 (Top) -->
+  <rect x="35" y="135" width="1130" height="155" rx="14" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="55" y="165" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">LAYER 01 // FRONTEND PRESENTATION</text>
+  <text x="55" y="185" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">Microsoft Edge WebView2 UI (HTML5 / Vanilla JavaScript / CSS)</text>
+
+  <!-- 5 UI Tabs -->
+  <rect x="55" y="200" width="195" height="75" rx="8" fill="#0b111e" stroke="#d4af37" stroke-width="1" />
+  <text x="70" y="222" fill="#d4af37" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Tab 1: Dashboard</text>
+  <text x="70" y="240" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="9.5">• 4 Quick Stat Cards</text>
+  <text x="70" y="258" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9.5">• Fast 1-Click Action Hub</text>
+
+  <rect x="260" y="200" width="195" height="75" rx="8" fill="#0b111e" stroke="#38bdf8" stroke-width="1" />
+  <text x="275" y="222" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Tab 2: AI Swarm</text>
+  <text x="275" y="240" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="9.5">• 4 Specialist Role Cards</text>
+  <text x="275" y="258" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9.5">• Run Task Buttons</text>
+
+  <rect x="465" y="200" width="195" height="75" rx="8" fill="#0b111e" stroke="#d4af37" stroke-width="1" />
+  <text x="480" y="222" fill="#d4af37" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Tab 3: Workspace</text>
+  <text x="480" y="240" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="9.5">• 4-Folder Health Check</text>
+  <text x="480" y="258" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9.5">• File Count &amp; Rule Audit</text>
+
+  <rect x="670" y="200" width="195" height="75" rx="8" fill="#0b111e" stroke="#38bdf8" stroke-width="1" />
+  <text x="685" y="222" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Tab 4: Terminal Log</text>
+  <text x="685" y="240" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="9.5">• Live Telemetry Console</text>
+  <text x="685" y="258" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9.5">• Real Output Stream</text>
+
+  <rect x="875" y="200" width="270" height="75" rx="8" fill="#0b111e" stroke="#d4af37" stroke-width="1" />
+  <text x="890" y="222" fill="#d4af37" font-family="system-ui, sans-serif" font-size="11" font-weight="bold">Dark-Luxury Styling</text>
+  <text x="890" y="240" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="9.5">• #04070d Obsidian &amp; #d4af37 Gold</text>
+  <text x="890" y="258" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="9.5">• 18px Card Radius &amp; 9999px Pills</text>
+
+  <!-- Layer 2: IPC Bridge (Middle) -->
+  <rect x="35" y="305" width="1130" height="75" rx="14" fill="#0b111e" stroke="#d4af37" stroke-width="1.8" />
+  <text x="55" y="335" fill="#d4af37" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">LAYER 02 // BIDIRECTIONAL ASYNC IPC BRIDGE</text>
+  <text x="55" y="360" fill="#ffffff" font-family="monospace" font-size="13">window.__TAURI__.core.invoke("command_name", { payload }) &lt;=== JSON over Named Pipes ===&gt; #[tauri::command]</text>
+
+  <!-- Layer 3: Rust Backend Core (Bottom) -->
+  <rect x="35" y="395" width="1130" height="245" rx="14" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="55" y="425" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">LAYER 03 // HIGH-PERFORMANCE RUST CORE</text>
+  <text x="55" y="445" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">Native OS Execution &amp; Typed Handlers (`src-tauri/src/main.rs`)</text>
+
+  <!-- 3 Command Handlers -->
+  <rect x="55" y="460" width="345" height="165" rx="10" fill="#0b111e" stroke="#d4af37" stroke-width="1.2" />
+  <text x="70" y="485" fill="#d4af37" font-family="monospace" font-size="12" font-weight="bold">#[tauri::command] get_system_status()</text>
+  <text x="70" y="510" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Returns: App version, OS platform, timestamp</text>
+  <text x="70" y="530" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Telemetry: CPU &amp; RAM footprint (&lt;40MB memory)</text>
+  <text x="70" y="550" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Active workspace path resolution</text>
+  <text x="70" y="575" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10">Sub-millisecond native response time</text>
+
+  <rect x="420" y="460" width="345" height="165" rx="10" fill="#0b111e" stroke="#38bdf8" stroke-width="1.2" />
+  <text x="435" y="485" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold">#[tauri::command] check_folder_health()</text>
+  <text x="435" y="510" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Input: Path to My_AI_Brain directory</text>
+  <text x="435" y="530" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Scans 4 core folders for missing rules</text>
+  <text x="435" y="550" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Counts video scripts, blogs &amp; exports</text>
+  <text x="435" y="575" fill="#d4af37" font-family="system-ui, sans-serif" font-size="10">Returns structured JSON HealthReport</text>
+
+  <rect x="785" y="460" width="360" height="165" rx="10" fill="#0b111e" stroke="#d4af37" stroke-width="1.2" />
+  <text x="800" y="485" fill="#d4af37" font-family="monospace" font-size="12" font-weight="bold">#[tauri::command] run_workflow_task()</text>
+  <text x="800" y="510" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Input: task_name ("research", "script", "audit")</text>
+  <text x="800" y="530" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Executes local task pipeline asynchronously</text>
+  <text x="800" y="550" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Streams status events back to UI terminal</text>
+  <text x="800" y="575" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10">Zero external server or cloud dependency</text>
+</svg>

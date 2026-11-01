@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6d365" />
+      <stop offset="100%" stop-color="#d4af37" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e1726" />
+      <stop offset="100%" stop-color="#04070d" />
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#d4af37" />
+    </linearGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#04070d" />
+  <rect x="15" y="15" width="1170" height="645" rx="16" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.85" />
+  <rect x="18" y="18" width="1164" height="639" rx="14" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.4" />
+
+  <!-- Top Header Banner -->
+  <rect x="35" y="30" width="1130" height="85" rx="12" fill="url(#cardGrad)" stroke="#d4af37" stroke-width="1.5" />
+  <rect x="50" y="42" width="230" height="24" rx="12" fill="rgba(212,175,55,0.15)" stroke="#d4af37" stroke-width="1" />
+  <text x="165" y="58" fill="#d4af37" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="1">TIER 01 // $49.50 USD FOUNDATION</text>
+  <text x="50" y="92" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">4-Folder AI Brain Workspace &amp; Google Flow 10s Video Pipeline</text>
+  <text x="820" y="78" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" text-anchor="end">Google Antigravity ($30/mo) + Google Flow</text>
+
+  <!-- Left Column: The 4 Brain Folders -->
+  <rect x="35" y="135" width="350" height="505" rx="14" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="55" y="165" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" letter-spacing="1">LOCAL AI BRAIN DIRECTORY</text>
+  <text x="55" y="185" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Permanent Context Loaded on Every Session</text>
+
+  <!-- Folder 1 -->
+  <rect x="50" y="200" width="320" height="92" rx="10" fill="#0b111e" stroke="#d4af37" stroke-width="1.2" />
+  <text x="65" y="222" fill="#d4af37" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">01_Brain_Rules/ &gt; AGENTS.md</text>
+  <text x="65" y="242" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Founder Voice &amp; Target Niche Profile</text>
+  <text x="65" y="260" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• ~20-Word (18-24w) Pacing Rule for 10s Clips</text>
+  <text x="65" y="278" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10.5">• 3-Chip Invariant (Avatar + cloth_1 + background_1)</text>
+
+  <!-- Folder 2 -->
+  <rect x="50" y="305" width="320" height="92" rx="10" fill="#0b111e" stroke="#38bdf8" stroke-width="1.2" />
+  <text x="65" y="327" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">02_Video_Prompts/</text>
+  <text x="65" y="347" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Sequential 10s Scene Prompts (Scenes 1..N)</text>
+  <text x="65" y="365" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Visual B-Roll Prompts (Cutaways &amp; Blueprints)</text>
+  <text x="65" y="383" fill="#d4af37" font-family="system-ui, sans-serif" font-size="10.5">• Exact Word Count Verification</text>
+
+  <!-- Folder 3 -->
+  <rect x="50" y="410" width="320" height="92" rx="10" fill="#0b111e" stroke="#d4af37" stroke-width="1.2" />
+  <text x="65" y="432" fill="#d4af37" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">03_Website_Builder/</text>
+  <text x="65" y="452" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Dark-Luxury Gutenberg HTML Blocks</text>
+  <text x="65" y="470" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• 18px Flow-Through Comparison Tables</text>
+  <text x="65" y="488" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10.5">• #04070d Obsidian &amp; #d4af37 Gold Tokens</text>
+
+  <!-- Folder 4 -->
+  <rect x="50" y="515" width="320" height="92" rx="10" fill="#0b111e" stroke="#38bdf8" stroke-width="1.2" />
+  <text x="65" y="537" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">04_YouTube_Channel/</text>
+  <text x="65" y="557" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Brand Account Upload Defaults &amp; Footer</text>
+  <text x="65" y="575" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• 480-Character Tag Stacks &amp; Timestamps</text>
+  <text x="65" y="593" fill="#d4af37" font-family="system-ui, sans-serif" font-size="10.5">• Short-to-Long Related Video Bridge</text>
+
+  <!-- Center Column: Antigravity Engine -->
+  <rect x="420" y="135" width="360" height="505" rx="14" fill="url(#cardGrad)" stroke="#d4af37" stroke-width="1.8" />
+  <text x="445" y="165" fill="#d4af37" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" letter-spacing="1">GOOGLE ANTIGRAVITY ENGINE</text>
+  <text x="445" y="185" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">$30/mo Pro Plan Workspace Memory &amp; Execution</text>
+
+  <!-- Antigravity Core Features -->
+  <rect x="440" y="205" width="320" height="70" rx="8" fill="#0b111e" stroke="#38bdf8" stroke-width="1" />
+  <text x="455" y="230" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Automatic Rule Ingestion</text>
+  <text x="455" y="250" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10.5">Reads 01_Brain_Rules/AGENTS.md on launch</text>
+
+  <rect x="440" y="285" width="320" height="120" rx="8" fill="#0b111e" stroke="#d4af37" stroke-width="1" />
+  <text x="455" y="310" fill="#d4af37" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Copy-Paste Prompt Scaffolding</text>
+  <text x="455" y="330" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Prompt #1: Builds 4 folders + starter AGENTS.md</text>
+  <text x="455" y="350" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Prompt #2: Interactive 5-Question Brand Interview</text>
+  <text x="455" y="370" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Prompt #3: Verifies links &amp; 30-day topic roadmap</text>
+  <text x="455" y="390" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10.5">• Flow Prompt: Generates 18-24w single-line scenes</text>
+
+  <rect x="440" y="415" width="320" height="100" rx="8" fill="#0b111e" stroke="#38bdf8" stroke-width="1" />
+  <text x="455" y="440" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Pacing &amp; Format Verification</text>
+  <text x="455" y="460" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Validates word counts strictly between 18 and 24</text>
+  <text x="455" y="480" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Appends camera movement &amp; gesture directions</text>
+  <text x="455" y="500" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Outputs ready-to-paste single-line blocks</text>
+
+  <!-- Connective Arrows -->
+  <path d="M 385 300 L 420 300" stroke="#d4af37" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <path d="M 780 300 L 815 300" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+
+  <!-- Right Column: Google Flow Video Production -->
+  <rect x="815" y="135" width="350" height="505" rx="14" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="835" y="165" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" letter-spacing="1">GOOGLE FLOW VIDEO ENGINE</text>
+  <text x="835" y="185" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Consistent 10-Second Scene Generation &amp; Export</text>
+
+  <rect x="830" y="205" width="320" height="110" rx="10" fill="#0b111e" stroke="#d4af37" stroke-width="1.2" />
+  <text x="845" y="228" fill="#d4af37" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">3 Reference Chips Invariant</text>
+  <text x="845" y="250" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Chip 1: Me Avatar (Consistent Face &amp; Identity)</text>
+  <text x="845" y="270" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Chip 2: cloth_1 (Quiet Luxury Tailored Blazer)</text>
+  <text x="845" y="290" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Chip 3: background_1 (Modern AI Studio)</text>
+
+  <rect x="830" y="325" width="320" height="110" rx="10" fill="#0b111e" stroke="#38bdf8" stroke-width="1.2" />
+  <text x="845" y="348" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">Single-Line Prompt Execution</text>
+  <text x="845" y="370" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">Presenter says: "[18-24 Spoken Words]"</text>
+  <text x="845" y="390" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">Camera: With reference to me avatar...</text>
+  <text x="845" y="410" fill="#d4af37" font-family="system-ui, sans-serif" font-size="10.5">Finishes at ~8.8s with zero sentence cutoff</text>
+
+  <rect x="830" y="445" width="320" height="85" rx="10" fill="#0b111e" stroke="#d4af37" stroke-width="1.2" />
+  <text x="845" y="468" fill="#d4af37" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">1080p MP4 Export &amp; Staging</text>
+  <text x="845" y="490" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10.5">• Export high-bitrate 1080p clips to 04_Exports/</text>
+  <text x="845" y="510" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10.5">• Ready for CapCut, Premiere, or DaVinci Resolve</text>
+
+  <rect x="830" y="540" width="320" height="75" rx="10" fill="rgba(212,175,55,0.12)" stroke="#d4af37" stroke-width="1.2" />
+  <text x="845" y="563" fill="#d4af37" font-family="system-ui, sans-serif" font-size="11.5" font-weight="bold">7-Day Guided Setup Support</text>
+  <text x="845" y="583" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="10">Up to 3 setup questions answered directly</text>
+  <text x="845" y="600" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10">Portal: keystonerecomposition.com/ai-protocols/</text>
+</svg>

@@ -1,5 +1,5 @@
 ---
-name: "Keystone Recomposition \u2014 Sovereign Child Theme"
+name: "Keystone Recomposition — Sovereign Child Theme"
 description: "**Sovereign multi-domain enterprise engineering platform for Keystone Recomposition.**"
 folder: "09_Keystone_websites/themes/keystone-recomposition-child"
 tags: ["keystone_websites", "52603", "000000", "050505", "ffffff", "38bdf8", "vector_brain"]
@@ -130,7 +130,7 @@ Wayne Stevenson is the certified Licensed Residential Builder (#52603) and Manag
 - **Rank Math 100/100 Calibration**:
   - Every canonical page includes explicit `rank_math_title`, `rank_math_description`, `rank_math_focus_keyword`, and OpenGraph/Twitter summary large image cards.
 - **HTTP 301 & 410 Permanent Hygiene**:
-  - `inc/gsc-410-purge.php` permanently strips 40+ legacy peptide/workout URL patterns, redirecting them to canonical routes or returning HTTP 410 Gone to cleanly purge Google Search Console indexes.
+  - `inc/gsc-410-purge.php` permanently strips 40+ legacy non-sovereign/workout URL patterns, redirecting them to canonical routes or returning HTTP 410 Gone to cleanly purge Google Search Console indexes.
 - **Sitemap Sanitization**:
   - Filters Rank Math XML sitemaps to prevent indexing of orphaned scratch files, legacy posts, or malformed media queries.
 - **LLM Knowledge Architecture**:

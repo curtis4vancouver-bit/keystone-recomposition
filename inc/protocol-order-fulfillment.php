@@ -39,6 +39,267 @@ if ( ! defined( 'KEYSTONE_STRIPE_TIER3_URL' ) ) {
 if ( ! defined( 'KEYSTONE_STRIPE_WEBHOOK_SECRET' ) ) {
 	define( 'KEYSTONE_STRIPE_WEBHOOK_SECRET', '' );
 }
+if ( ! defined( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID' ) ) {
+	define( 'KEYSTONE_TIER1_PUBLIC_VIDEO_ID', 'JCgZ5SsN_bc' ); // Video A: Public Overview on /ai-protocols/ Tier 01 Card
+}
+if ( ! defined( 'KEYSTONE_TIER1_BUYER_WALKTHROUGH_VIDEO_ID' ) ) {
+	define( 'KEYSTONE_TIER1_BUYER_WALKTHROUGH_VIDEO_ID', '-ZYdbPXenCU' ); // Video B: Unlisted Tier 01 Buyer Setup Walkthrough (4m30s) on @KeyStoneRecomposition
+}
+if ( ! defined( 'KEYSTONE_TIER2_BUYER_WALKTHROUGH_VIDEO_ID' ) ) {
+	define( 'KEYSTONE_TIER2_BUYER_WALKTHROUGH_VIDEO_ID', 'LxbjlX_nh2Q' ); // Video C: Unlisted Tier 02 Buyer Setup Walkthrough (5m30s) on @KeyStoneRecomposition
+}
+if ( ! defined( 'KEYSTONE_TIER3_BUYER_WALKTHROUGH_VIDEO_ID' ) ) {
+	define( 'KEYSTONE_TIER3_BUYER_WALKTHROUGH_VIDEO_ID', '_bSpYdvm6tc' ); // Video D: Unlisted Tier 03 Tauri App Walkthrough (6m00s) on @KeyStoneRecomposition
+}
+
+/**
+ * Get the current Stripe Checkout mode: 'auto' | 'live' | 'test' | 'reservation'.
+ */
+function keystone_get_stripe_mode(): string {
+	$mode = (string) get_option( 'keystone_stripe_mode', 'auto' );
+	if ( 'auto' === $mode ) {
+		$live_key = (string) get_option( 'keystone_stripe_live_secret_key', '' );
+		if ( empty( $live_key ) && defined( 'KEYSTONE_STRIPE_LIVE_SECRET_KEY' ) ) {
+			$live_key = (string) KEYSTONE_STRIPE_LIVE_SECRET_KEY;
+		}
+		if ( ! empty( $live_key ) ) {
+			return 'live';
+		}
+		$test_key = (string) get_option( 'keystone_stripe_test_secret_key', '' );
+		if ( empty( $test_key ) && defined( 'KEYSTONE_STRIPE_TEST_SECRET_KEY' ) ) {
+			$test_key = (string) KEYSTONE_STRIPE_TEST_SECRET_KEY;
+		}
+		if ( ! empty( $test_key ) ) {
+			return 'test';
+		}
+		if ( defined( 'KEYSTONE_VISA_AND_VIDEOS_LIVE' ) && KEYSTONE_VISA_AND_VIDEOS_LIVE ) {
+			return 'live';
+		}
+		return 'reservation';
+	}
+	return in_array( $mode, array( 'live', 'test', 'reservation' ), true ) ? $mode : 'auto';
+}
+
+/**
+ * Retrieve active Stripe Secret Key (sk_live_..., rk_live_..., or sk_test_...).
+ */
+function keystone_get_stripe_secret_key(): string {
+	$mode = keystone_get_stripe_mode();
+	if ( 'test' === $mode ) {
+		$key = (string) get_option( 'keystone_stripe_test_secret_key', '' );
+		if ( empty( $key ) && defined( 'KEYSTONE_STRIPE_TEST_SECRET_KEY' ) ) {
+			$key = (string) KEYSTONE_STRIPE_TEST_SECRET_KEY;
+		}
+		return $key;
+	}
+	$key = (string) get_option( 'keystone_stripe_live_secret_key', '' );
+	if ( empty( $key ) && defined( 'KEYSTONE_STRIPE_LIVE_SECRET_KEY' ) ) {
+		$key = (string) KEYSTONE_STRIPE_LIVE_SECRET_KEY;
+	}
+	if ( empty( $key ) && defined( 'KEYSTONE_STRIPE_SECRET_KEY' ) ) {
+		$key = (string) KEYSTONE_STRIPE_SECRET_KEY;
+	}
+	return $key;
+}
+
+/**
+ * Retrieve active Stripe Webhook Signing Secret (whsec_...).
+ */
+function keystone_get_stripe_webhook_secret(): string {
+	$mode = keystone_get_stripe_mode();
+	if ( 'test' === $mode ) {
+		$whsec = (string) get_option( 'keystone_stripe_test_webhook_secret', '' );
+		if ( empty( $whsec ) && defined( 'KEYSTONE_STRIPE_TEST_WEBHOOK_SECRET' ) ) {
+			$whsec = (string) KEYSTONE_STRIPE_TEST_WEBHOOK_SECRET;
+		}
+		return $whsec;
+	}
+	$whsec = (string) get_option( 'keystone_stripe_live_webhook_secret', '' );
+	if ( empty( $whsec ) && defined( 'KEYSTONE_STRIPE_WEBHOOK_SECRET' ) ) {
+		$whsec = (string) KEYSTONE_STRIPE_WEBHOOK_SECRET;
+	}
+	return $whsec;
+}
+
+/**
+ * Check if Stripe is configured and ready for live or test checkout.
+ */
+function keystone_is_stripe_ready(): bool {
+	$sec  = keystone_get_stripe_secret_key();
+	$mode = keystone_get_stripe_mode();
+	return ( 'reservation' !== $mode ) && ! empty( $sec );
+}
+
+/**
+ * Return dedicated Unlisted Walkthrough Video ID for each tier.
+ * Fixes Bug 3 (Dedicated Per-Tier Video IDs, eliminating duplicate uMkZvTbqF2U or JCgZ5SsN_bc).
+ */
+function keystone_get_tier_walkthrough_video_id( string $tier ): string {
+	switch ( $tier ) {
+		case '3':
+			$opt = (string) get_option( 'keystone_tier3_video_id', '' );
+			if ( ! empty( $opt ) ) {
+				return $opt;
+			}
+			return defined( 'KEYSTONE_TIER3_BUYER_WALKTHROUGH_VIDEO_ID' ) ? (string) KEYSTONE_TIER3_BUYER_WALKTHROUGH_VIDEO_ID : '_bSpYdvm6tc';
+		case '2':
+			$opt = (string) get_option( 'keystone_tier2_video_id', '' );
+			if ( ! empty( $opt ) ) {
+				return $opt;
+			}
+			return defined( 'KEYSTONE_TIER2_BUYER_WALKTHROUGH_VIDEO_ID' ) ? (string) KEYSTONE_TIER2_BUYER_WALKTHROUGH_VIDEO_ID : 'LxbjlX_nh2Q';
+		case '1':
+		default:
+			$opt = (string) get_option( 'keystone_tier1_video_id', '' );
+			if ( ! empty( $opt ) ) {
+				return $opt;
+			}
+			return defined( 'KEYSTONE_TIER1_BUYER_WALKTHROUGH_VIDEO_ID' ) ? (string) KEYSTONE_TIER1_BUYER_WALKTHROUGH_VIDEO_ID : '-ZYdbPXenCU';
+	}
+}
+
+/**
+ * Calculate exact USD pricing in cents with percentage-based promo code math.
+ * Strict US Funds:
+ *   Tier 01: 4950 cents ($49.50 USD)
+ *   Tier 02: 19900 cents ($199.00 USD)
+ *   Tier 03: 80000 cents ($800.00 USD)
+ * Promo Codes:
+ *   BUILDER10 -> 10% off (4455 / 17910 / 72000 cents)
+ *   WAYNE10   -> 10% off (4455 / 17910 / 72000 cents)
+ *   KEYSTONE20 -> 20% off (3960 / 15920 / 64000 cents)
+ */
+function keystone_calculate_tier_price( string $tier, string $promo_code = '' ): array {
+	$base_cents_map = array(
+		'1' => 4950,
+		'2' => 19900,
+		'3' => 80000,
+	);
+	$tier_key   = in_array( $tier, array( '1', '2', '3' ), true ) ? $tier : '1';
+	$base_cents = $base_cents_map[ $tier_key ];
+
+	$promo      = strtoupper( trim( $promo_code ) );
+	$promo_pcts = array(
+		'BUILDER10'  => 10,
+		'WAYNE10'    => 10,
+		'KEYSTONE20' => 20,
+	);
+
+	$discount_pct   = $promo_pcts[ $promo ] ?? 0;
+	$discount_cents = 0;
+	if ( $discount_pct > 0 ) {
+		$discount_cents = (int) round( ( $base_cents * $discount_pct ) / 100 );
+	}
+	$final_cents = max( 0, $base_cents - $discount_cents );
+
+	return array(
+		'tier'             => $tier_key,
+		'currency'         => 'usd',
+		'base_cents'       => $base_cents,
+		'discount_pct'     => $discount_pct,
+		'discount_percent' => $discount_pct,
+		'discount_cents'   => $discount_cents,
+		'final_cents'      => $final_cents,
+		'cent_price'       => $final_cents,
+		'formatted_price'  => number_format( $final_cents / 100, 2, '.', '' ),
+		'promo_code'       => $discount_pct > 0 ? $promo : '',
+		'has_promo'        => $discount_pct > 0,
+	);
+}
+
+/**
+ * Check whether a user UID has cumulative entitlement to download a vault pack or PDF.
+ */
+function keystone_verify_tier_download_access( string $pack_slug, string $uid ): bool {
+	$verification = keystone_verify_user_vault_uid_internal( $uid );
+	if ( empty( $verification['verified'] ) ) {
+		return false;
+	}
+	$user_tier   = (int) ( $verification['tier'] ?? 1 );
+	$tier3_packs = array( 'tier3_zip', 'tier3_workstation_pack', 'tier3_pdf_10', 'tier3_pdf_11', 'tier3_pdf_12' );
+	$tier2_packs = array( 'tier2_zip', 'tier2_swarm_pack', 'tier2_pdf_05', 'tier2_pdf_06', 'tier2_pdf_07', 'tier2_pdf_08', 'tier2_pdf_09' );
+
+	if ( in_array( $pack_slug, $tier3_packs, true ) ) {
+		return $user_tier >= 3;
+	}
+	if ( in_array( $pack_slug, $tier2_packs, true ) ) {
+		return $user_tier >= 2;
+	}
+	return $user_tier >= 1;
+}
+
+/**
+ * On-the-fly valid %PDF-1.4 spec generator for graceful fallback when physical PDF is still generating.
+ */
+function keystone_generate_fallback_pdf_bytes( string $title, string $uid ): string {
+	$clean_title = preg_replace( '/[^a-zA-Z0-9_\-\.\:\s\(\)\/]/', ' ', $title );
+	$lines = array(
+		'KEYSTONE AI PROTOCOLS // OFFICIAL BREAKDOWN SPEC SHEET',
+		(string) $clean_title,
+		'Verified Buyer UID: ' . $uid,
+		'Author: Wayne Stevenson (BC Licensed Builder #52603)',
+		'Platform: https://keystonerecomposition.com/ai-protocols/',
+		'----------------------------------------------------------------------',
+		'1. AI BRAIN & PROMPT SPECIFICATION OVERVIEW:',
+		'Drop this specification into your 01_Brain_Rules/ or 02_Video_Prompts/ workspace.',
+		'Maintain 18 to 24 words (~20 words) for 10-second Google Flow video scene prompts.',
+		'Enforce strict Obsidian #04070d and Sovereign Gold #d4af37 brand styling tokens.',
+		'----------------------------------------------------------------------',
+		'Official Keystone AI Protocols Digital Deliverable %PDF-1.4'
+	);
+	$stream_cmds = "BT\n/F1 10 Tf\n50 740 Td\n15 TL\n";
+	foreach ( $lines as $idx => $line ) {
+		$escaped = str_replace( array( '\\', '(', ')' ), array( '\\\\', '\\(', '\\)' ), $line );
+		if ( 0 === $idx ) {
+			$stream_cmds .= "({$escaped}) Tj\n";
+		} else {
+			$stream_cmds .= "T* ({$escaped}) Tj\n";
+		}
+	}
+	$stream_cmds .= "ET\n";
+
+	$stream_len  = strlen( $stream_cmds );
+	$obj1        = "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n";
+	$obj2        = "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n";
+	$obj3        = "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n";
+	$obj4        = "4 0 obj\n<< /Length {$stream_len} >>\nstream\n{$stream_cmds}endstream\nendobj\n";
+	$obj5        = "5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n";
+
+	$header      = "%PDF-1.4\n";
+	$body        = $obj1 . $obj2 . $obj3 . $obj4 . $obj5;
+	$xref_offset = strlen( $header . $body );
+	$xref        = "xref\n0 6\n0000000000 65535 f \n";
+	$trailer     = "trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n{$xref_offset}\n%%EOF";
+	return $header . $body . $xref . $trailer;
+}
+
+/**
+ * Return file attachments (the .ZIP starter pack + 4 printable PDF setup guides) for wp_mail() delivery.
+ */
+function keystone_get_tier_email_attachments( string $tier ): array {
+	$vault_dir   = get_stylesheet_directory() . '/assets/vault_packs/';
+	$attachments = array();
+
+	$candidate_files = array(
+		$vault_dir . 'Keystone_Tier01_Antigravity_Brain_And_Flow_Prompt_Pack.zip',
+		$vault_dir . 'tier01_pdfs/KR_T1_01_AI_Brain_Workspace_QuickStart.pdf',
+		$vault_dir . 'tier01_pdfs/KR_T1_02_AGENTS_MD_Memory_And_Rules_Guide.pdf',
+		$vault_dir . 'tier01_pdfs/KR_T1_03_Google_Flow_Basic_10s_Video_Guide.pdf',
+		$vault_dir . 'tier01_pdfs/KR_T1_04_Scene_Prompt_Templates_And_Setup_Support.pdf',
+	);
+	if ( '2' === $tier || '3' === $tier ) {
+		$candidate_files[] = $vault_dir . 'Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip';
+	}
+	if ( '3' === $tier ) {
+		$candidate_files[] = $vault_dir . 'Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip';
+	}
+	foreach ( $candidate_files as $fp ) {
+		if ( file_exists( $fp ) && is_readable( $fp ) ) {
+			$attachments[] = $fp;
+		}
+	}
+	return $attachments;
+}
 
 /**
  * Return unlocked video modules (V01-V06) and breakdown PDFs (PDF-01 to PDF-12) for a given tier.
@@ -58,8 +319,8 @@ function keystone_get_tier_unlocked_curriculum( string $tier ): array {
 		case '1':
 		default:
 			return array(
-				'unlocked_modules' => array( 'V01', 'V02', 'V03' ),
-				'unlocked_pdfs'    => array( 'PDF-01', 'PDF-02', 'PDF-03', 'PDF-04', 'PDF-05' ),
+				'unlocked_modules' => array( 'V01', 'V02' ),
+				'unlocked_pdfs'    => array( 'PDF-01', 'PDF-02', 'PDF-03', 'PDF-04' ),
 			);
 	}
 }
@@ -97,15 +358,31 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 	$t1_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
-				'label' => '📦 Keystone_Tier01_Antigravity_Brain_And_Flow_Prompt_Pack.zip (Visual Brain Setup Diagram PDF + Copy-Paste Brain Prompts + ~20-Word Google Flow Prompt Generator)',
-				'url'   => home_url( '/ai-protocols/?vault_download=tier1_blueprint_pack' ),
+				'label' => '📦 Keystone_Tier01_Antigravity_Brain_And_Flow_Prompt_Pack.zip (Complete 4-Folder AI Brain Starter Workspace + All 4 PDF Setup Guides + ~20-Word Google Flow Prompts)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier1_zip' ),
 			),
 			array(
-				'label' => '🌐 Keystone_Tier01_Website_And_YouTube_Channel_Prompts.zip (Copy-Paste Website Builder Prompts + YouTube Brand Channel Upload Defaults & 480-Char Tags)',
+				'label' => '🌐 Keystone_Tier01_AI_Video_Website_Blueprint_Pack.zip (AI Video, Channel & Luxury Website Blueprint Pack)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier1_website_channel_pack' ),
 			),
 			array(
-				'label' => '🎬 Module V01–V03 Step-by-Step Video Walkthroughs (Protected Buyer Lead Page Player)',
+				'label' => '📄 PDF-01: Setting Up Your 4-Folder AI Brain Workspace in Google Antigravity (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier1_pdf_01' ),
+			),
+			array(
+				'label' => '📄 PDF-02: Locking In Your AI Memory & Brand Voice with AGENTS.md (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier1_pdf_02' ),
+			),
+			array(
+				'label' => '📄 PDF-03: Basic Google Flow 10-Second Video Walkthrough & MP4 Export (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier1_pdf_03' ),
+			),
+			array(
+				'label' => '📄 PDF-04: 15 Plug-and-Play Scene Prompts & Your 7-Day Guided Setup Window (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier1_pdf_04' ),
+			),
+			array(
+				'label' => '🎬 Wayne\'s Recorded Buyer Walkthrough Video & 7-Day Guided Setup Assistant (Up to 3 Follow-Up Questions)',
 				'url'   => $lead_page_url,
 			),
 		),
@@ -115,11 +392,31 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 	$t2_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
-				'label' => '📦 Keystone_Tier02_Multi_Agent_Role_Prompts_And_B2B_Suite.zip (Copy-Paste Subagent Role Prompt Templates + B2B Outreach & DNS Verification Starter Kit)',
-				'url'   => home_url( '/ai-protocols/?vault_download=tier2_swarm_pack' ),
+				'label' => '📦 Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip (Copy-Paste Subagent Role Prompt Templates + B2B Outreach & DNS Verification Starter Kit)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier2_zip' ),
 			),
 			array(
-				'label' => '🎬 Module V04–V05 Multi-Agent Workflow Walkthroughs (Protected Buyer Lead Page Player)',
+				'label' => '📄 PDF-05: Turning Video Scripts into Rank Math 100/100 SEO Articles & GSC Indexing (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_05' ),
+			),
+			array(
+				'label' => '📄 PDF-06: Multi-Agent Role Prompt Templates (Researcher, Scriptwriter, Web Builder, QA) (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_06' ),
+			),
+			array(
+				'label' => '📄 PDF-07: The 3-Source Fact Verification Protocol (Zero Hallucinations) (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_07' ),
+			),
+			array(
+				'label' => '📄 PDF-08: B2B Client Outreach & Domain Email Verification Workflow (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_08' ),
+			),
+			array(
+				'label' => '📄 PDF-09: Locked Top-and-Bottom Logo HTML Email Shell Architecture (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_09' ),
+			),
+			array(
+				'label' => '🎬 Module V04–V05 Multi-Agent Workflow Walkthroughs & 7-Day Setup Assistant (Up to 5 Follow-Up Questions)',
 				'url'   => $lead_page_url,
 			),
 		),
@@ -129,15 +426,27 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 	$t3_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
-				'label' => '🖥️ Keystone_Tier03_Custom_Tauri_Desktop_App_Suite.zip (Custom Tauri Desktop App Setup + Dashboard UI Templates + .EXE Build Guide)',
-				'url'   => home_url( '/ai-protocols/?vault_download=tier3_workstation_pack' ),
+				'label' => '🖥️ Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip (Custom Tauri Desktop App Setup + Dashboard UI Templates + .EXE Build Guide)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier3_zip' ),
+			),
+			array(
+				'label' => '📄 PDF-10: Custom Tauri Desktop App Architecture & Project Setup (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier3_pdf_10' ),
+			),
+			array(
+				'label' => '📄 PDF-11: Building Custom Dashboard Tabs & One-Click Action Buttons (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier3_pdf_11' ),
+			),
+			array(
+				'label' => '📄 PDF-12: Compiling & Launching Your Standalone Windows .EXE Desktop App (%PDF-1.4)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier3_pdf_12' ),
 			),
 			array(
 				'label' => '🎬 Module V06 Custom Tauri Desktop App Build & .EXE Command Center Walkthrough (Protected Buyer Lead Page Player)',
 				'url'   => $lead_page_url,
 			),
 			array(
-				'label' => '🤖 Guided Setup Assistant (7–14 Day Setup Window + Follow-Up Q&A) & Complete PDF Setup Library',
+				'label' => '🤖 Guided Setup Assistant (14-Day Setup Window + 8 Follow-Up Questions) & Full 12-PDF Spec Library',
 				'url'   => $lead_page_url,
 			),
 		),
@@ -150,8 +459,8 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 			'code'                  => 'tier1_blueprint',
 			'name'                  => 'Tier 01 — $49.50 USD AI Brain Setup & Basic Google Flow Walkthrough (One-Time Payment)',
 			'price'                 => '49.50',
-			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER1_URL,
-			'walkthrough_video_id'  => 'JCgZ5SsN_bc',
+			'stripe_checkout_url'   => (string) ( get_option( 'keystone_stripe_tier1_url' ) ?: KEYSTONE_STRIPE_TIER1_URL ),
+			'walkthrough_video_id'  => keystone_get_tier_walkthrough_video_id( '1' ),
 			'walkthrough_video_url' => $lead_page_url,
 			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Setting Up Your AI Brain & Basic Google Flow Video Example (One-Time Payment)',
 			'unlocked_downloads'    => $t1_downloads,
@@ -163,8 +472,8 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 			'code'                  => 'tier2_swarm',
 			'name'                  => 'Tier 02 — $199 USD Custom Website Build, Multi-Agent Workflows & Brand Channel (One-Time Payment)',
 			'price'                 => '199.00',
-			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER2_URL,
-			'walkthrough_video_id'  => 'k3fArbXUzQM',
+			'stripe_checkout_url'   => (string) ( get_option( 'keystone_stripe_tier2_url' ) ?: KEYSTONE_STRIPE_TIER2_URL ),
+			'walkthrough_video_id'  => keystone_get_tier_walkthrough_video_id( '2' ),
 			'walkthrough_video_url' => $lead_page_url,
 			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Custom Website Build, Multi-Agent Workflows & Brand Channel Setup (One-Time Payment)',
 			'unlocked_downloads'    => array_merge( $t1_downloads, $t2_downloads ),
@@ -176,8 +485,8 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 			'code'                  => 'tier3_workstation',
 			'name'                  => 'Tier 03 — $800 USD Custom Tauri Desktop App Build & Standalone .EXE Command Center (One-Time Payment)',
 			'price'                 => '800.00',
-			'stripe_checkout_url'   => (string) KEYSTONE_STRIPE_TIER3_URL,
-			'walkthrough_video_id'  => 'uMkZvTbqF2U',
+			'stripe_checkout_url'   => (string) ( get_option( 'keystone_stripe_tier3_url' ) ?: KEYSTONE_STRIPE_TIER3_URL ),
+			'walkthrough_video_id'  => keystone_get_tier_walkthrough_video_id( '3' ),
 			'walkthrough_video_url' => $lead_page_url,
 			'walkthrough_title'     => 'Wayne Stevenson Recorded Walkthrough: Custom Tauri Desktop App Build & Standalone .EXE Command Center (One-Time Payment)',
 			'unlocked_downloads'    => array_merge( $t1_downloads, $t2_downloads, $t3_downloads ),
@@ -443,30 +752,152 @@ function keystone_handle_vault_download_stream(): void {
 			'mime'     => 'application/zip',
 			'type'     => 'zip',
 			'min_tier' => 1,
+			'title'    => 'Keystone Tier 01 Antigravity Brain & Flow Prompt Pack (.ZIP)',
+		),
+		'tier1_zip'                  => array(
+			'filename' => 'Keystone_Tier01_Antigravity_Brain_And_Flow_Prompt_Pack.zip',
+			'mime'     => 'application/zip',
+			'type'     => 'zip',
+			'min_tier' => 1,
+			'title'    => 'Keystone Tier 01 Antigravity Brain & Flow Prompt Pack (.ZIP)',
+		),
+		'tier1_pdf_01'               => array(
+			'filename' => 'tier01_pdfs/KR_T1_01_AI_Brain_Workspace_QuickStart.pdf',
+			'dl_name'  => 'KR_T1_01_AI_Brain_Workspace_QuickStart.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 1,
+			'title'    => 'PDF-01: Setting Up Your 4-Folder AI Brain Workspace in Google Antigravity',
+		),
+		'tier1_pdf_02'               => array(
+			'filename' => 'tier01_pdfs/KR_T1_02_AGENTS_MD_Memory_And_Rules_Guide.pdf',
+			'dl_name'  => 'KR_T1_02_AGENTS_MD_Memory_And_Rules_Guide.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 1,
+			'title'    => 'PDF-02: Locking In Your AI Memory & Brand Voice with AGENTS.md',
+		),
+		'tier1_pdf_03'               => array(
+			'filename' => 'tier01_pdfs/KR_T1_03_Google_Flow_Basic_10s_Video_Guide.pdf',
+			'dl_name'  => 'KR_T1_03_Google_Flow_Basic_10s_Video_Guide.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 1,
+			'title'    => 'PDF-03: Basic Google Flow 10-Second Video Walkthrough & MP4 Export',
+		),
+		'tier1_pdf_04'               => array(
+			'filename' => 'tier01_pdfs/KR_T1_04_Scene_Prompt_Templates_And_Setup_Support.pdf',
+			'dl_name'  => 'KR_T1_04_Scene_Prompt_Templates_And_Setup_Support.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 1,
+			'title'    => 'PDF-04: 15 Plug-and-Play Scene Prompts & Your 7-Day Guided Setup Window',
 		),
 		'tier1_website_channel_pack' => array(
-			'filename' => 'Keystone_Tier01_Website_And_YouTube_Channel_Prompts.zip',
+			'filename' => 'Keystone_Tier01_AI_Video_Website_Blueprint_Pack.zip',
 			'mime'     => 'application/zip',
 			'type'     => 'zip',
 			'min_tier' => 1,
+			'title'    => 'Keystone Tier 01 AI Video & Website Blueprint Pack (.ZIP)',
 		),
 		'tier1_gsc_indexer'          => array(
-			'filename' => 'Keystone_Tier01_Website_And_YouTube_Channel_Prompts.zip',
+			'filename' => 'Keystone_Tier01_AI_Video_Website_Blueprint_Pack.zip',
 			'mime'     => 'application/zip',
 			'type'     => 'zip',
 			'min_tier' => 1,
+			'title'    => 'Keystone Tier 01 GSC Indexer & Website Pack (.ZIP)',
 		),
 		'tier2_swarm_pack'           => array(
-			'filename' => 'Keystone_Tier02_Multi_Agent_Role_Prompts_And_B2B_Suite.zip',
+			'filename' => 'Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip',
 			'mime'     => 'application/zip',
 			'type'     => 'zip',
 			'min_tier' => 2,
+			'title'    => 'Keystone Tier 02 28-Agent Swarm FastMCP Suite (.ZIP)',
+		),
+		'tier2_zip'                  => array(
+			'filename' => 'Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip',
+			'mime'     => 'application/zip',
+			'type'     => 'zip',
+			'min_tier' => 2,
+			'title'    => 'Keystone Tier 02 28-Agent Swarm FastMCP Suite (.ZIP)',
+		),
+		'tier2_pdf_05'               => array(
+			'filename' => 'tier02_pdfs/KR_T2_05_Website_Builder_And_RankMath_SEO.pdf',
+			'dl_name'  => 'KR_T2_05_Website_Builder_And_RankMath_SEO.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 2,
+			'title'    => 'PDF-05: Turning Video Scripts into SEO Articles, JSON-LD Schema & GSC Indexing',
+		),
+		'tier2_pdf_06'               => array(
+			'filename' => 'tier02_pdfs/KR_T2_06_YouTube_Brand_Channel_And_Tag_Stack.pdf',
+			'dl_name'  => 'KR_T2_06_YouTube_Brand_Channel_And_Tag_Stack.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 2,
+			'title'    => 'PDF-06: Multi-Agent Role Prompt Templates (Researcher, Scriptwriter, Web Builder, QA)',
+		),
+		'tier2_pdf_07'               => array(
+			'filename' => 'tier02_pdfs/KR_T2_07_Multi_Agent_Role_Swarm_Prompts.pdf',
+			'dl_name'  => 'KR_T2_07_Multi_Agent_Role_Swarm_Prompts.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 2,
+			'title'    => 'PDF-07: The 3-Source Fact Verification Protocol (Zero Hallucinations)',
+		),
+		'tier2_pdf_08'               => array(
+			'filename' => 'tier02_pdfs/KR_T2_08_B2B_DNS_MX_Lead_Verification_Outreach.pdf',
+			'dl_name'  => 'KR_T2_08_B2B_DNS_MX_Lead_Verification_Outreach.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 2,
+			'title'    => 'PDF-08: B2B Client Outreach & Domain Email Verification Workflow',
+		),
+		'tier2_pdf_09'               => array(
+			'filename' => 'tier02_pdfs/KR_T2_09_30_Day_Omnichannel_Publishing_Blueprint.pdf',
+			'dl_name'  => 'KR_T2_09_30_Day_Omnichannel_Publishing_Blueprint.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 2,
+			'title'    => 'PDF-09: Locked Top-and-Bottom Logo HTML Email Shell Architecture',
 		),
 		'tier3_workstation_pack'     => array(
-			'filename' => 'Keystone_Tier03_Full_Stack_Creator_Workstation_Suite.zip',
+			'filename' => 'Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip',
 			'mime'     => 'application/zip',
 			'type'     => 'zip',
 			'min_tier' => 3,
+			'title'    => 'Keystone Tier 03 Sovereign Workstation Installer Suite (.ZIP)',
+		),
+		'tier3_zip'                  => array(
+			'filename' => 'Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip',
+			'mime'     => 'application/zip',
+			'type'     => 'zip',
+			'min_tier' => 3,
+			'title'    => 'Keystone Tier 03 Sovereign Workstation Installer Suite (.ZIP)',
+		),
+		'tier3_pdf_10'               => array(
+			'filename' => 'tier03_pdfs/KR_T3_10_Tauri_v2_Desktop_Toolchain_Scaffold.pdf',
+			'dl_name'  => 'KR_T3_10_Tauri_v2_Desktop_Toolchain_Scaffold.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 3,
+			'title'    => 'PDF-10: Custom Tauri Desktop App Architecture & Project Setup',
+		),
+		'tier3_pdf_11'               => array(
+			'filename' => 'tier03_pdfs/KR_T3_11_Command_Center_UI_And_Rust_IPC.pdf',
+			'dl_name'  => 'KR_T3_11_Command_Center_UI_And_Rust_IPC.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 3,
+			'title'    => 'PDF-11: Building Custom Dashboard Tabs & One-Click Action Buttons',
+		),
+		'tier3_pdf_12'               => array(
+			'filename' => 'tier03_pdfs/KR_T3_12_Compiling_Signing_Windows_EXE.pdf',
+			'dl_name'  => 'KR_T3_12_Compiling_Signing_Windows_EXE.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 3,
+			'title'    => 'PDF-12: Compiling & Launching Your Standalone Windows .EXE Desktop App',
 		),
 	);
 
@@ -487,15 +918,51 @@ function keystone_handle_vault_download_stream(): void {
 	}
 
 	$pack_info = $allowed_packs[ $pack_slug ];
+
+	// Cumulative Tier Entitlement Enforcement (Tier 3 >= Tier 2 >= Tier 1)
+	$user_tier = (int) ( $verification['tier'] ?? 1 );
+	$min_tier  = (int) ( $pack_info['min_tier'] ?? 1 );
+	$is_admin  = ! empty( $verification['is_admin'] ) ||
+		( function_exists( 'is_user_logged_in' ) && is_user_logged_in() && current_user_can( 'manage_options' ) ) ||
+		in_array( $verification['uid'] ?? '', array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603' ), true ) ||
+		( 0 === strpos( (string) ( $verification['uid'] ?? '' ), 'KR-ADMIN-UID-' ) );
+
+	if ( ! $is_admin && $user_tier < $min_tier ) {
+		wp_die(
+			sprintf(
+				'🔒 Upgrade Required: %s requires Tier 0%d setup access or higher. Your verified pass is Tier 0%d. Please upgrade on /ai-protocols/ to unlock.',
+				esc_html( $pack_info['title'] ?? $pack_slug ),
+				$min_tier,
+				$user_tier
+			),
+			'Upgrade Required',
+			array( 'response' => 403 )
+		);
+	}
+
 	$file_path = get_stylesheet_directory() . '/assets/vault_packs/' . $pack_info['filename'];
 
 	if ( file_exists( $file_path ) && is_readable( $file_path ) ) {
-		$size = (int) filesize( $file_path );
+		$size    = (int) filesize( $file_path );
+		$dl_name = ! empty( $pack_info['dl_name'] ) ? $pack_info['dl_name'] : basename( $pack_info['filename'] );
 		nocache_headers();
 		header( 'Content-Type: ' . $pack_info['mime'] );
-		header( 'Content-Disposition: attachment; filename="' . $pack_info['filename'] . '"' );
+		header( 'Content-Disposition: attachment; filename="' . $dl_name . '"' );
 		header( 'Content-Length: ' . $size );
 		readfile( $file_path );
+		exit;
+	}
+
+	// Graceful On-the-Fly Fallback when physical file is still rendering/compiling
+	if ( 'pdf' === ( $pack_info['type'] ?? 'zip' ) ) {
+		$dl_name   = ! empty( $pack_info['dl_name'] ) ? $pack_info['dl_name'] : basename( $pack_info['filename'] );
+		$pdf_title = ! empty( $pack_info['title'] ) ? $pack_info['title'] : $dl_name;
+		$pdf_bytes = keystone_generate_fallback_pdf_bytes( $pdf_title, (string) $verification['uid'] );
+		nocache_headers();
+		header( 'Content-Type: application/pdf' );
+		header( 'Content-Disposition: attachment; filename="' . $dl_name . '"' );
+		header( 'Content-Length: ' . strlen( $pdf_bytes ) );
+		echo $pdf_bytes;
 		exit;
 	}
 
@@ -560,6 +1027,18 @@ add_action( 'template_redirect', 'keystone_handle_vault_download_stream', 5 );
  * Stripe Webhook, Interactive Brain/Channel/Website Setup Intake Form & Guided Setup Assistant.
  */
 add_action( 'rest_api_init', function () {
+	register_rest_route( 'keystone/v1', '/create-checkout-session', array(
+		'methods'             => 'POST',
+		'permission_callback' => '__return_true',
+		'callback'            => 'keystone_handle_create_checkout_session',
+	) );
+
+	register_rest_route( 'keystone/v1', '/verify-checkout-session', array(
+		'methods'             => array( 'GET', 'POST' ),
+		'permission_callback' => '__return_true',
+		'callback'            => 'keystone_handle_verify_checkout_session',
+	) );
+
 	register_rest_route( 'keystone/v1', '/protocol-order', array(
 		'methods'             => 'POST',
 		'permission_callback' => '__return_true',
@@ -640,17 +1119,8 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 	$tier_info    = $tier_catalog[ $tier ];
 	$price        = (float) $tier_info['price'];
 
-	$promo_discounts = array(
-		'BUILDER10'  => 10.0,
-		'WAYNE10'    => 10.0,
-		'KEYSTONE20' => 20.0,
-		'PROMO2026'  => 15.0,
-	);
-	if ( isset( $promo_discounts[ $promo_code ] ) && '3' !== $tier ) {
-		$price = max( 0.0, $price - $promo_discounts[ $promo_code ] );
-	}
-
-	$formatted_price = number_format( $price, 2, '.', '' );
+	$pricing         = keystone_calculate_tier_price( $tier, $promo_code );
+	$formatted_price = $pricing['formatted_price'];
 	$live_mode       = (bool) KEYSTONE_VISA_AND_VIDEOS_LIVE;
 	$order_id        = 'KR-ORD-' . gmdate( 'Ymd-His' ) . '-' . strtoupper( wp_generate_password( 4, false ) );
 
@@ -694,38 +1164,17 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 
 	$pdf_list_html = '<li style="margin-bottom:6px;"><a href="' . esc_url( $magic_portal_url ) . '" style="color:#d4af37;font-weight:700;text-decoration:none;">📄 Interactive Breakdown PDFs (' . esc_html( implode( ', ', $tier_info['unlocked_pdfs'] ) ) . ') — View Visual Brain Diagram &amp; Copy-Paste Prompts On-Screen or Download %PDF-1.4</a></li>';
 
-	$inner_email_html = '
-		<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Thank you for ' . ( $live_mode ? 'ordering' : 'locking in your priority launch rate for' ) . ' <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>. Your unique Vault UID is active and unlocks the <strong>Self-Service 6-Tab Course, Visual Brain Setup Diagram, Copy-Paste Antigravity &amp; Google Flow Prompts, Breakdown PDFs &amp; Guided Setup Assistant</strong> immediately:</p>
-		<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:12px;padding:14px 18px;margin:16px 0;">
-			<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR VERIFIED VAULT UID</div>
-			<div style="font-size:19px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
-			<div style="font-size:11.5px;color:#f6d365;margin-top:4px;">Order / Reservation ID: ' . esc_html( $order_id ) . ' &bull; Locked Rate: $' . esc_html( $formatted_price ) . ' USD</div>
-		</div>
-		<h3 style="color:#38bdf8;font-size:15px;margin:18px 0 8px 0;">🎬 Step 1: 6-Tab Video Walkthroughs, Visual Brain Diagram &amp; Spec PDFs</h3>
-		<ul style="color:#cbd5e1;font-size:13.5px;line-height:1.6;padding-left:18px;">
-			<li style="margin-bottom:6px;"><a href="' . esc_url( $tier_info['walkthrough_video_url'] ) . '" style="color:#ffffff;font-weight:800;text-decoration:underline;">▶ Watch Wayne\'s Recorded Step-by-Step AI Video &amp; Brain Setup Walkthrough</a></li>
-			' . $pdf_list_html . '
-		</ul>
-		<h3 style="color:#d4af37;font-size:15px;margin:18px 0 8px 0;">📦 Step 2: Copy-Paste Antigravity Brain, Google Flow &amp; Website Prompt Packs (.ZIP)</h3>
-		<ul style="color:#cbd5e1;font-size:13.5px;line-height:1.6;padding-left:18px;">' . $downloads_html . '</ul>';
-
-	$buyer_subject = sprintf(
-		'[Keystone AI Protocols] %s: %s (UID: %s)',
-		$live_mode ? 'Instant Vault Access Unlocked' : 'Launch Rate Locked In + Self-Service Portal Unlocked',
-		$tier_info['name'],
-		$user_uid
-	);
-
-	$buyer_body = keystone_build_locked_protocol_email_shell(
+	// Dispatch Tier-Accurate Dark-Luxury Welcome Email (Tier 01, Tier 02, or Tier 03)
+	keystone_send_tier_fulfillment_email(
+		$buyer_email,
 		$buyer_name,
-		$live_mode ? 'AUTOMATED FULFILLMENT VAULT // INSTANT ACCESS' : 'PRIORITY LAUNCH RESERVATION // SELF-SERVICE PORTAL UNLOCKED',
-		'Your 6-Tab Course Portal, Visual Brain Diagram & Copy-Paste Prompts Are Ready',
-		$inner_email_html,
-		$magic_portal_url,
-		'OPEN MY 6-TAB COURSE & AI TUTOR PORTAL'
+		$tier,
+		$user_uid,
+		$order_id,
+		$formatted_price,
+		$live_mode,
+		false
 	);
-
-	@wp_mail( $buyer_email, $buyer_subject, $buyer_body, $headers );
 
 	$admin_subject = sprintf( '[Keystone AI Protocols %s] %s ($%s USD) — %s [%s]', $live_mode ? 'Order' : 'Launch Reservation', $tier_info['name'], $formatted_price, $buyer_name, $user_uid );
 	$admin_body    = sprintf(
@@ -778,15 +1227,383 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 }
 
 /**
+ * Dispatch Tier-Accurate Dark-Luxury Welcome Email (Tier 01, Tier 02, or Tier 03).
+ *
+ * @param string $buyer_email
+ * @param string $buyer_name
+ * @param string $tier ('1', '2', or '3')
+ * @param string $user_uid
+ * @param string $order_id
+ * @param string $formatted_price
+ * @param bool   $live_mode
+ * @param bool   $sandbox_mode
+ * @return bool Whether the email was sent
+ */
+function keystone_send_tier_fulfillment_email(
+	string $buyer_email,
+	string $buyer_name,
+	string $tier,
+	string $user_uid,
+	string $order_id,
+	string $formatted_price,
+	bool $live_mode,
+	bool $sandbox_mode = false
+): bool {
+	if ( ! is_email( $buyer_email ) ) {
+		return false;
+	}
+
+	$tier_catalog     = keystone_get_protocol_tier_catalog( $user_uid );
+	$tier_info        = $tier_catalog[ $tier ] ?? $tier_catalog['1'];
+	$magic_portal_url = home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#kr-self-service-portal' );
+	$video_id         = keystone_get_tier_walkthrough_video_id( $tier );
+	$video_url        = 'https://www.youtube.com/watch?v=' . $video_id;
+
+	$downloads_html = '';
+	foreach ( $tier_info['unlocked_downloads'] as $dl ) {
+		$downloads_html .= '<li style="margin-bottom:8px;"><a href="' . esc_url( $dl['url'] ) . '" style="color:#38bdf8;font-weight:700;text-decoration:none;">' . esc_html( $dl['label'] ) . '</a></li>';
+	}
+
+	$badge_tag = $sandbox_mode ? ' <span style="background:#eab308;color:#000;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:900;">SANDBOX TEST</span>' : '';
+
+	if ( '3' === $tier ) {
+		$eyebrow    = 'TIER 03 DESKTOP COMMAND // TAURI BUILDER SUITE & 1-ON-1 ARCHITECTURE' . ( $sandbox_mode ? ' [TEST]' : '' );
+		$headline   = 'Welcome to Tier 03 — Custom Tauri Desktop Command Suite & Direct Founder Architecture';
+		$inner_html = '
+			<p style="color:#cbd5e1;font-size:14.5px;line-height:1.68;">Welcome to the top tier of Keystone AI Protocols, <strong>' . esc_html( $buyer_name ) . '</strong>! Your one-time investment in <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>' . $badge_tag . ' is verified and fully unlocked.</p>
+			<p style="color:#cbd5e1;font-size:14px;line-height:1.65;">Tier 03 gives you the entire sovereign tech stack: from your 4-Folder AI Brain and ~20-word Google Flow pipelines, to multi-agent FastMCP swarms, up to compiling your own standalone <strong>Windows .EXE Desktop Command Center</strong> using Rust and Tauri. Plus, you have an extended <strong>14-Day Setup Window</strong> with up to <strong>8 direct follow-up questions</strong> and direct architectural review with Wayne Stevenson.</p>
+			<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:12px;padding:16px 20px;margin:18px 0;">
+				<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR VERIFIED BUYER ACCESS UID (14-DAY SETUP WINDOW ACTIVE)</div>
+				<div style="font-size:20px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
+				<div style="font-size:11.5px;color:#f6d365;margin-top:4px;">Order ID: ' . esc_html( $order_id ) . ' &bull; Investment: $' . esc_html( $formatted_price ) . ' USD &bull; Status: ' . ( $sandbox_mode ? 'PAID_VERIFIED_SANDBOX' : ( $live_mode ? 'PAID_VERIFIED' : 'WAITLIST_RESERVED' ) ) . '</div>
+			</div>
+			<div style="background:#0b111e;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:16px;margin:18px 0;">
+				<div style="color:#38bdf8;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">🎬 TIER 03 UNLISTED WALKTHROUGH VIDEO (DEDICATED FOUNDER WALKTHROUGH)</div>
+				<p style="color:#e2e8f0;font-size:13px;margin:0 0 10px 0;line-height:1.5;">Watch Wayne walk you through setting up your Tauri workspace, wiring your buttons to your AI Brain, and compiling your Windows .EXE installer step-by-step:</p>
+				<a href="' . esc_url( $video_url ) . '" target="_blank" style="display:inline-block;background:#38bdf8;color:#04070d;font-weight:800;font-size:12.5px;padding:8px 18px;border-radius:9999px;text-decoration:none;">▶ WATCH TIER 03 WALKTHROUGH VIDEO ON YOUTUBE</a>
+			</div>
+			<h3 style="color:#d4af37;font-size:15px;margin:20px 0 8px 0;">📦 Instant Downloads &amp; All 12 PDF Breakdown Guides (Cumulative Access)</h3>
+			<ul style="color:#cbd5e1;font-size:13.5px;line-height:1.6;padding-left:18px;">' . $downloads_html . '</ul>';
+	} elseif ( '2' === $tier ) {
+		$eyebrow    = 'TIER 02 MULTI-AGENT SWARMS // FULL AUTONOMOUS PROTOCOLS' . ( $sandbox_mode ? ' [TEST]' : '' );
+		$headline   = 'Welcome to Tier 02 — Multi-Agent Swarms, 9 PDF Guides & Full Code Packs Unlocked';
+		$inner_html = '
+			<p style="color:#cbd5e1;font-size:14.5px;line-height:1.68;">Welcome to Tier 02 of Keystone AI Protocols, <strong>' . esc_html( $buyer_name ) . '</strong>! Your access to <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>' . $badge_tag . ' is verified and active.</p>
+			<p style="color:#cbd5e1;font-size:14px;line-height:1.65;">You now have full access to our multi-agent swarm architecture: discrete researcher, scriptwriter, and web builder roles, FastMCP IPC contracts, 3-source research validation, and automated B2B outreach tools. You also receive cumulative access to all Tier 01 foundational assets (PDF-01 through PDF-09) and a <strong>7-Day Setup Window</strong> with up to <strong>5 direct follow-up questions</strong>.</p>
+			<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:12px;padding:16px 20px;margin:18px 0;">
+				<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR VERIFIED BUYER ACCESS UID (7-DAY SETUP WINDOW ACTIVE)</div>
+				<div style="font-size:20px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
+				<div style="font-size:11.5px;color:#f6d365;margin-top:4px;">Order ID: ' . esc_html( $order_id ) . ' &bull; Investment: $' . esc_html( $formatted_price ) . ' USD &bull; Status: ' . ( $sandbox_mode ? 'PAID_VERIFIED_SANDBOX' : ( $live_mode ? 'PAID_VERIFIED' : 'WAITLIST_RESERVED' ) ) . '</div>
+			</div>
+			<div style="background:#0b111e;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:16px;margin:18px 0;">
+				<div style="color:#38bdf8;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">🎬 TIER 02 UNLISTED WALKTHROUGH VIDEO (SWARM ARCHITECTURE)</div>
+				<p style="color:#e2e8f0;font-size:13px;margin:0 0 10px 0;line-height:1.5;">Watch Wayne explain how multi-agent role prompts communicate, how to wire FastMCP tools, and how to verify facts without hallucinations:</p>
+				<a href="' . esc_url( $video_url ) . '" target="_blank" style="display:inline-block;background:#38bdf8;color:#04070d;font-weight:800;font-size:12.5px;padding:8px 18px;border-radius:9999px;text-decoration:none;">▶ WATCH TIER 02 WALKTHROUGH VIDEO ON YOUTUBE</a>
+			</div>
+			<h3 style="color:#d4af37;font-size:15px;margin:20px 0 8px 0;">📦 Instant Downloads &amp; Breakdown PDFs 01–09 (Cumulative Access)</h3>
+			<ul style="color:#cbd5e1;font-size:13.5px;line-height:1.6;padding-left:18px;">' . $downloads_html . '</ul>';
+	} else {
+		$eyebrow    = 'TIER 01 FOUNDATION // AI BRAIN & GOOGLE FLOW WALKTHROUGH' . ( $sandbox_mode ? ' [TEST]' : '' );
+		$headline   = 'Welcome to Tier 01 — Your Walkthrough Video, 4 PDF Setup Guides & Starter .ZIP Are Ready';
+		$inner_html = '
+			<p style="color:#cbd5e1;font-size:14.5px;line-height:1.68;">Welcome aboard, and thank you for ' . ( $live_mode ? 'getting started with' : 'locking in your one-time setup access for' ) . ' <strong>' . esc_html( $tier_info['name'] ) . ' ($' . esc_html( $formatted_price ) . ' USD)</strong>' . $badge_tag . '.</p>
+			<p style="color:#cbd5e1;font-size:14px;line-height:1.65;">Just like pouring a level concrete foundation on a job site, setting up your AI properly takes away all the guesswork. Instead of typing random prompts into messy chat windows that forget your project, we are going to set up your clean <strong>4-Folder AI Brain</strong> inside Google Antigravity and walk through a simple <strong>10-second Google Flow video example</strong> together.</p>
+			<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:12px;padding:16px 20px;margin:18px 0;">
+				<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR VERIFIED BUYER ACCESS UID (7-DAY SETUP WINDOW ACTIVE)</div>
+				<div style="font-size:20px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
+				<div style="font-size:11.5px;color:#f6d365;margin-top:4px;">Order ID: ' . esc_html( $order_id ) . ' &bull; One-Time Payment: $' . esc_html( $formatted_price ) . ' USD &bull; Includes 7-Day Setup Support (Up to 3 Follow-Up Questions)</div>
+			</div>
+			<div style="background:#0b111e;border:1px solid rgba(56,189,248,0.4);border-radius:12px;padding:16px;margin:18px 0;">
+				<div style="color:#38bdf8;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">🎬 TIER 01 UNLISTED WALKTHROUGH VIDEO (STEP-BY-STEP FOUNDATION)</div>
+				<p style="color:#e2e8f0;font-size:13px;margin:0 0 10px 0;line-height:1.5;">Watch Wayne walk you through your initial 4-folder AI Brain setup, Google Flow reference images, and prompt generation:</p>
+				<a href="' . esc_url( $video_url ) . '" target="_blank" style="display:inline-block;background:#38bdf8;color:#04070d;font-weight:800;font-size:12.5px;padding:8px 18px;border-radius:9999px;text-decoration:none;">▶ WATCH TIER 01 WALKTHROUGH VIDEO ON YOUTUBE</a>
+			</div>
+			<h3 style="color:#d4af37;font-size:15px;margin:20px 0 8px 0;">📦 Instant Downloads &amp; 4 PDF Setup Guides</h3>
+			<ul style="color:#cbd5e1;font-size:13.5px;line-height:1.6;padding-left:18px;">' . $downloads_html . '</ul>';
+	}
+
+	$email_body = keystone_build_locked_protocol_email_shell(
+		$buyer_name,
+		$eyebrow,
+		$headline,
+		$inner_html,
+		$magic_portal_url,
+		'OPEN MY BUYER SETUP PAGE & WATCH WALKTHROUGH VIDEO'
+	);
+
+	$subject_prefix = $sandbox_mode ? '[SANDBOX TEST] ' : '';
+	$buyer_subject  = sprintf( '%s[Keystone AI Protocols] %s — Walkthrough Video & Buyer Vault Ready (UID: %s)', $subject_prefix, $tier_info['name'], $user_uid );
+
+	$headers = array(
+		'Content-Type: text/html; charset=UTF-8',
+		'From: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
+		'Reply-To: keystonerecomposition@gmail.com',
+	);
+
+	$attachments = keystone_get_tier_email_attachments( $tier );
+	return (bool) @wp_mail( $buyer_email, $buyer_subject, $email_body, $headers, $attachments );
+}
+
+/**
+ * Create Stripe Checkout Session endpoint (`POST /wp-json/keystone/v1/create-checkout-session`).
+ *
+ * Implements the Stripe Mutual Exclusion Law:
+ * - If a promo code was applied in the UI ($pricing['has_promo'] === true), we pass the pre-discounted
+ *   `unit_amount` and omit `allow_promotion_codes`.
+ * - If NO promo code was applied, we pass the standard unit amount and pass `'allow_promotion_codes' => 'true'`.
+ */
+function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP_REST_Response {
+	$params      = $request->get_json_params() ?: $request->get_params();
+	$tier        = sanitize_text_field( (string) ( $params['tier'] ?? '1' ) );
+	$promo_code  = strtoupper( sanitize_text_field( (string) ( $params['promo_code'] ?? '' ) ) );
+	$buyer_name  = sanitize_text_field( (string) ( $params['buyer_name'] ?? '' ) );
+	$buyer_email = sanitize_email( (string) ( $params['buyer_email'] ?? '' ) );
+
+	if ( ! in_array( $tier, array( '1', '2', '3' ), true ) ) {
+		$tier = '1';
+	}
+
+	$secret_key = keystone_get_stripe_secret_key();
+	if ( empty( $secret_key ) ) {
+		return new WP_REST_Response( array(
+			'success'          => false,
+			'stripe_available' => false,
+			'message'          => 'Stripe live card checkout is being configured by the site administrator. Please use the Reservation form below to lock in your rate immediately.',
+		), 400 );
+	}
+
+	$pricing      = keystone_calculate_tier_price( $tier, $promo_code );
+	$cent_price   = (int) $pricing['cent_price'];
+	$tier_catalog = keystone_get_protocol_tier_catalog();
+	$tier_info    = $tier_catalog[ $tier ];
+
+	$success_url = home_url( '/ai-protocols/?session_id={CHECKOUT_SESSION_ID}#buyer-setup-vault' );
+	$cancel_url  = home_url( '/ai-protocols/#kr-tier-' . $tier );
+
+	// Build Stripe API payload
+	$post_data = array(
+		'mode'                                                 => 'payment',
+		'payment_method_types[0]'                             => 'card',
+		'line_items[0][price_data][currency]'                  => 'usd',
+		'line_items[0][price_data][unit_amount]'               => (string) $cent_price,
+		'line_items[0][price_data][product_data][name]'        => $tier_info['name'],
+		'line_items[0][price_data][product_data][description]' => 'Instant digital access to Keystone AI Protocols ' . $tier_info['name'] . ' with Setup Guides and Walkthrough Video.',
+		'line_items[0][quantity]'                              => '1',
+		'metadata[tier]'                                      => $tier,
+		'metadata[buyer_name]'                                 => $buyer_name,
+		'metadata[promo_code]'                                 => $promo_code,
+		'success_url'                                          => $success_url,
+		'cancel_url'                                           => $cancel_url,
+	);
+
+	if ( is_email( $buyer_email ) ) {
+		$post_data['customer_email'] = $buyer_email;
+	}
+
+	// Stripe Mutual Exclusion Law:
+	if ( ! empty( $pricing['has_promo'] ) ) {
+		// Promo was already calculated and applied; do NOT pass allow_promotion_codes to prevent Stripe 400
+	} else {
+		// Allow buyer to enter promo code on Stripe checkout page
+		$post_data['allow_promotion_codes'] = 'true';
+	}
+
+	$response = wp_remote_post( 'https://api.stripe.com/v1/checkout/sessions', array(
+		'headers' => array(
+			'Authorization'  => 'Bearer ' . $secret_key,
+			'Stripe-Version' => '2024-06-20',
+			'Content-Type'   => 'application/x-www-form-urlencoded',
+		),
+		'body'    => http_build_query( $post_data ),
+		'timeout' => 20,
+	) );
+
+	if ( is_wp_error( $response ) ) {
+		return new WP_REST_Response( array(
+			'success' => false,
+			'message' => 'Failed to connect to Stripe: ' . $response->get_error_message(),
+		), 502 );
+	}
+
+	$code = wp_remote_retrieve_response_code( $response );
+	$body = wp_remote_retrieve_body( $response );
+	$data = json_decode( $body, true );
+
+	if ( 200 !== $code || empty( $data['url'] ) ) {
+		$err_msg = $data['error']['message'] ?? ( 'Stripe returned HTTP ' . $code );
+		return new WP_REST_Response( array(
+			'success' => false,
+			'message' => 'Stripe Checkout error: ' . $err_msg,
+			'debug'   => WP_DEBUG ? $data : null,
+		), 400 );
+	}
+
+	return new WP_REST_Response( array(
+		'success'      => true,
+		'checkout_url' => $data['url'],
+		'session_id'   => $data['id'],
+		'tier'         => $tier,
+		'cent_price'   => $cent_price,
+	), 200 );
+}
+
+/**
+ * Verify Checkout Session endpoint (`GET|POST /wp-json/keystone/v1/verify-checkout-session`).
+ *
+ * Verifies a returning buyer's `session_id=cs_...` against the Stripe API, retrieves
+ * or creates their order and UID, and returns their unlocked curriculum and video.
+ */
+function keystone_handle_verify_checkout_session( WP_REST_Request $request ): WP_REST_Response {
+	$session_id = sanitize_text_field( (string) ( $request->get_param( 'session_id' ) ?? '' ) );
+	if ( '' === $session_id || 0 !== strpos( $session_id, 'cs_' ) ) {
+		return new WP_REST_Response( array(
+			'verified' => false,
+			'message'  => 'Invalid or missing Stripe session ID.',
+		), 400 );
+	}
+
+	$secret_key = keystone_get_stripe_secret_key();
+	if ( empty( $secret_key ) ) {
+		return new WP_REST_Response( array(
+			'verified' => false,
+			'message'  => 'Stripe secret key not configured on server.',
+		), 500 );
+	}
+
+	$response = wp_remote_get( 'https://api.stripe.com/v1/checkout/sessions/' . rawurlencode( $session_id ), array(
+		'headers' => array(
+			'Authorization'  => 'Bearer ' . $secret_key,
+			'Stripe-Version' => '2024-06-20',
+		),
+		'timeout' => 20,
+	) );
+
+	if ( is_wp_error( $response ) ) {
+		return new WP_REST_Response( array(
+			'verified' => false,
+			'message'  => 'Unable to contact Stripe: ' . $response->get_error_message(),
+		), 502 );
+	}
+
+	$code    = wp_remote_retrieve_response_code( $response );
+	$body    = wp_remote_retrieve_body( $response );
+	$session = json_decode( $body, true );
+
+	if ( 200 !== $code || empty( $session['id'] ) ) {
+		return new WP_REST_Response( array(
+			'verified' => false,
+			'message'  => 'Stripe session not found or invalid.',
+		), 404 );
+	}
+
+	$is_paid = ( 'paid' === ( $session['payment_status'] ?? '' ) ) || ( 'complete' === ( $session['status'] ?? '' ) );
+	if ( ! $is_paid ) {
+		return new WP_REST_Response( array(
+			'verified'       => false,
+			'payment_status' => $session['payment_status'] ?? 'unpaid',
+			'status'         => $session['status'] ?? 'open',
+			'message'        => 'Payment is not yet confirmed by Stripe.',
+		), 200 );
+	}
+
+	$buyer_email = sanitize_email( (string) ( $session['customer_details']['email'] ?? $session['customer_email'] ?? '' ) );
+	$buyer_name  = sanitize_text_field( (string) ( $session['customer_details']['name'] ?? 'Verified Stripe Buyer' ) );
+	$tier        = sanitize_text_field( (string) ( $session['metadata']['tier'] ?? '1' ) );
+	if ( ! in_array( $tier, array( '1', '2', '3' ), true ) ) {
+		$tier = '1';
+	}
+
+	$is_live      = ! empty( $session['livemode'] );
+	$user_uid     = keystone_generate_user_vault_uid( $buyer_email ?: ( 'buyer-' . substr( $session['id'], -8 ) ), $tier );
+	$tier_catalog = keystone_get_protocol_tier_catalog( $user_uid );
+	$tier_info    = $tier_catalog[ $tier ];
+
+	$amount_cents    = isset( $session['amount_total'] ) ? (int) $session['amount_total'] : (int) round( (float) $tier_info['price'] * 100 );
+	$formatted_price = number_format( $amount_cents / 100, 2, '.', '' );
+
+	// Ensure order record is saved if webhook was delayed
+	$orders = get_option( 'keystone_protocol_orders_v10', array() );
+	if ( ! is_array( $orders ) ) {
+		$orders = array();
+	}
+	$order_exists = false;
+	foreach ( $orders as $ord ) {
+		if ( isset( $ord['stripe_session_id'] ) && $ord['stripe_session_id'] === $session['id'] ) {
+			$order_exists = true;
+			break;
+		}
+	}
+	if ( ! $order_exists ) {
+		$order_id     = ( $is_live ? 'KR-STRIPE-' : 'KR-TEST-' ) . gmdate( 'Ymd-His' ) . '-' . strtoupper( substr( md5( $session['id'] ), 0, 6 ) );
+		$order_record = array(
+			'order_id'              => $order_id,
+			'stripe_session_id'     => $session['id'],
+			'user_uid'              => $user_uid,
+			'tier'                  => $tier,
+			'tier_name'             => $tier_info['name'],
+			'price'                 => $formatted_price,
+			'buyer_name'            => $buyer_name,
+			'buyer_email'           => $buyer_email,
+			'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
+			'status'                => $is_live ? 'paid_verified' : 'paid_verified_sandbox',
+			'created_at'            => gmdate( 'c' ),
+		);
+		array_unshift( $orders, $order_record );
+		if ( count( $orders ) > 250 ) {
+			$orders = array_slice( $orders, 0, 250 );
+		}
+		update_option( 'keystone_protocol_orders_v10', $orders, false );
+
+		// Dispatch welcome email if email is present
+		if ( is_email( $buyer_email ) ) {
+			keystone_send_tier_fulfillment_email(
+				$buyer_email,
+				$buyer_name,
+				$tier,
+				$user_uid,
+				$order_id,
+				$formatted_price,
+				$is_live,
+				! $is_live
+			);
+		}
+	}
+
+	return new WP_REST_Response( array(
+		'verified'              => true,
+		'session_id'            => $session['id'],
+		'uid'                   => $user_uid,
+		'tier'                  => $tier,
+		'tier_name'             => $tier_info['name'],
+		'buyer_name'            => $buyer_name,
+		'buyer_email'           => $buyer_email,
+		'amount_cents'          => $amount_cents,
+		'formatted_price'       => $formatted_price,
+		'live_mode'             => $is_live,
+		'walkthrough_video_id'  => $tier_info['walkthrough_video_id'],
+		'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
+		'unlocked_downloads'    => $tier_info['unlocked_downloads'],
+		'unlocked_modules'      => $tier_info['unlocked_modules'],
+		'unlocked_pdfs'         => $tier_info['unlocked_pdfs'],
+		'portal_url'            => home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#buyer-setup-vault' ),
+	), 200 );
+}
+
+/**
  * Stripe Hosted Checkout HMAC-SHA256 Webhook Endpoint (`POST /wp-json/keystone/v1/stripe-webhook`).
- * Verifies `HTTP_STRIPE_SIGNATURE`, checks idempotency (`keystone_stripe_processed_events`),
- * mints deterministic `KR-UID-XXXXXXXXXXXX`, saves order with `status = 'paid_verified'`,
- * and dispatches the Locked Top-and-Bottom Logo Welcome Email.
+ * Verifies `HTTP_STRIPE_SIGNATURE`, checks 300s replay window, atomic idempotency lock via add_option,
+ * mints deterministic `KR-UID-XXXXXXXXXXXX`, saves order with `status = 'paid_verified'` (or sandbox),
+ * and dispatches the Distinct Tier-Accurate Dark-Luxury Welcome Email.
  */
 function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Response {
+	// LiteSpeed Cache Control
+	if ( ! headers_sent() ) {
+		header( 'X-LiteSpeed-Cache-Control: no-cache, no-store, must-revalidate' );
+	}
+
 	$raw_payload = (string) $request->get_body();
 	$sig_header  = (string) ( $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? $request->get_header( 'stripe-signature' ) ?? '' );
-	$secret      = (string) KEYSTONE_STRIPE_WEBHOOK_SECRET;
+	$secret      = (string) keystone_get_stripe_webhook_secret();
 
 	if ( '' === $secret ) {
 		return new WP_REST_Response( array(
@@ -822,6 +1639,14 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
 		), 400 );
 	}
 
+	// 300s Replay Protection
+	if ( abs( time() - (int) $timestamp ) > 300 ) {
+		return new WP_REST_Response( array(
+			'success' => false,
+			'message' => 'Webhook timestamp expired or too far in future (replay protection).',
+		), 400 );
+	}
+
 	$expected_sig = hash_hmac( 'sha256', $timestamp . '.' . $raw_payload, $secret );
 	$sig_matched  = false;
 	foreach ( $v1_sigs as $candidate ) {
@@ -849,27 +1674,29 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
 	$event_id   = sanitize_text_field( (string) $event['id'] );
 	$event_type = sanitize_text_field( (string) ( $event['type'] ?? '' ) );
 
-	// Idempotency guard
-	$processed_events = get_option( 'keystone_stripe_processed_events', array() );
-	if ( ! is_array( $processed_events ) ) {
-		$processed_events = array();
-	}
-	if ( in_array( $event_id, $processed_events, true ) ) {
+	// Atomic Idempotency Guard via add_option
+	$opt_key = 'keystone_stripe_evt_' . $event_id;
+	if ( false === add_option( $opt_key, time(), '', 'no' ) ) {
 		return new WP_REST_Response( array(
 			'success'    => true,
 			'idempotent' => true,
 			'event_id'   => $event_id,
-			'message'    => 'Event already processed.',
+			'message'    => 'Event already processed (atomic lock).',
 		), 200 );
 	}
 
+	// Also maintain circular array for admin logging
+	$processed_events = get_option( 'keystone_stripe_processed_events', array() );
+	if ( ! is_array( $processed_events ) ) {
+		$processed_events = array();
+	}
 	$processed_events[] = $event_id;
 	if ( count( $processed_events ) > 500 ) {
 		$processed_events = array_slice( $processed_events, -500 );
 	}
 	update_option( 'keystone_stripe_processed_events', $processed_events, false );
 
-	if ( 'checkout.session.completed' !== $event_type ) {
+	if ( 'checkout.session.completed' !== $event_type && 'checkout.session.async_payment_succeeded' !== $event_type ) {
 		return new WP_REST_Response( array(
 			'success'    => true,
 			'event_type' => $event_type,
@@ -877,7 +1704,16 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
 		), 200 );
 	}
 
-	$session     = $event['data']['object'] ?? array();
+	$session        = $event['data']['object'] ?? array();
+	$payment_status = (string) ( $session['payment_status'] ?? 'paid' );
+	if ( 'paid' !== $payment_status ) {
+		return new WP_REST_Response( array(
+			'success'        => true,
+			'payment_status' => $payment_status,
+			'message'        => 'Checkout session completed but payment is pending asynchronous settlement.',
+		), 200 );
+	}
+
 	$buyer_email = sanitize_email( (string) ( $session['customer_details']['email'] ?? $session['customer_email'] ?? '' ) );
 	$buyer_name  = sanitize_text_field( (string) ( $session['customer_details']['name'] ?? 'Verified Stripe Buyer' ) );
 	$tier        = sanitize_text_field( (string) ( $session['metadata']['tier'] ?? '1' ) );
@@ -888,16 +1724,17 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
 	if ( ! is_email( $buyer_email ) ) {
 		return new WP_REST_Response( array(
 			'success' => false,
-			'message' => 'No valid customer email in checkout.session.completed.',
+			'message' => 'No valid customer email in checkout session payload.',
 		), 400 );
 	}
 
+	$is_live         = ! empty( $event['livemode'] );
 	$user_uid        = keystone_generate_user_vault_uid( $buyer_email, $tier );
 	$tier_catalog    = keystone_get_protocol_tier_catalog( $user_uid );
 	$tier_info       = $tier_catalog[ $tier ];
 	$amount_cents    = isset( $session['amount_total'] ) ? (int) $session['amount_total'] : (int) round( (float) $tier_info['price'] * 100 );
 	$formatted_price = number_format( $amount_cents / 100, 2, '.', '' );
-	$order_id        = 'KR-STRIPE-' . gmdate( 'Ymd-His' ) . '-' . strtoupper( substr( md5( $event_id ), 0, 6 ) );
+	$order_id        = ( $is_live ? 'KR-STRIPE-' : 'KR-TEST-' ) . gmdate( 'Ymd-His' ) . '-' . strtoupper( substr( md5( $event_id ), 0, 6 ) );
 
 	$order_record = array(
 		'order_id'              => $order_id,
@@ -910,7 +1747,7 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
 		'buyer_name'            => $buyer_name,
 		'buyer_email'           => $buyer_email,
 		'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
-		'status'                => 'paid_verified',
+		'status'                => $is_live ? 'paid_verified' : 'paid_verified_sandbox',
 		'created_at'            => gmdate( 'c' ),
 	);
 
@@ -924,46 +1761,246 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
 	}
 	update_option( 'keystone_protocol_orders_v10', $orders, false );
 
-	$magic_portal_url = home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#kr-self-service-portal' );
-	$downloads_html   = '';
-	foreach ( $tier_info['unlocked_downloads'] as $dl ) {
-		$downloads_html .= '<li style="margin-bottom:8px;"><a href="' . esc_url( $dl['url'] ) . '" style="color:#38bdf8;font-weight:700;text-decoration:none;">' . esc_html( $dl['label'] ) . '</a></li>';
-	}
-
-	$inner_html = '
-		<p style="color:#cbd5e1;font-size:14px;line-height:1.6;">Your Stripe payment of <strong>$' . esc_html( $formatted_price ) . ' USD</strong> for <strong>' . esc_html( $tier_info['name'] ) . '</strong> is verified! Your permanent Vault UID is unlocked below:</p>
-		<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:12px;padding:14px 18px;margin:16px 0;">
-			<div style="font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.06em;">YOUR PAID &amp; VERIFIED VAULT UID</div>
-			<div style="font-size:19px;font-weight:900;color:#38bdf8;font-family:monospace;margin-top:4px;">' . esc_html( $user_uid ) . '</div>
-			<div style="font-size:11.5px;color:#f6d365;margin-top:4px;">Order ID: ' . esc_html( $order_id ) . ' &bull; Status: PAID_VERIFIED</div>
-		</div>
-		<h3 style="color:#d4af37;font-size:15px;margin:18px 0 8px 0;">📦 Instant Copy-Paste Prompt Packs &amp; Breakdown PDFs</h3>
-		<ul style="color:#cbd5e1;font-size:13.5px;line-height:1.6;padding-left:18px;">' . $downloads_html . '</ul>';
-
-	$email_body = keystone_build_locked_protocol_email_shell(
+	// Dispatch Distinct Tier-Accurate Dark-Luxury Welcome Email
+	keystone_send_tier_fulfillment_email(
+		$buyer_email,
 		$buyer_name,
-		'STRIPE PAYMENT VERIFIED // INSTANT VAULT UNLOCK',
-		'Welcome to Keystone AI Protocols — Your Vault Is Unlocked',
-		$inner_html,
-		$magic_portal_url,
-		'LAUNCH MY 6-TAB COURSE & AI TUTOR PORTAL'
+		$tier,
+		$user_uid,
+		$order_id,
+		$formatted_price,
+		$is_live,
+		! $is_live
 	);
-
-	$headers = array(
-		'Content-Type: text/html; charset=UTF-8',
-		'From: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
-		'Reply-To: keystonerecomposition@gmail.com',
-	);
-	@wp_mail( $buyer_email, sprintf( '[Keystone AI Protocols] Paid & Unlocked: %s (UID: %s)', $tier_info['name'], $user_uid ), $email_body, $headers );
 
 	return new WP_REST_Response( array(
 		'success'          => true,
-		'status'           => 'paid_verified',
+		'status'           => $is_live ? 'paid_verified' : 'paid_verified_sandbox',
 		'order_id'         => $order_id,
 		'user_uid'         => $user_uid,
 		'tier'             => $tier,
-		'magic_portal_url' => $magic_portal_url,
+		'magic_portal_url' => home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#kr-self-service-portal' ),
 	), 200 );
+}
+
+/**
+ * Register WP-Admin Menu for Keystone Stripe USD & Visa Gateway.
+ */
+add_action( 'admin_menu', 'keystone_register_stripe_admin_menu' );
+function keystone_register_stripe_admin_menu(): void {
+	add_options_page(
+		'Keystone Stripe USD & Visa Gateway',
+		'Keystone Stripe USD',
+		'manage_options',
+		'keystone-stripe-settings',
+		'keystone_render_stripe_settings_page'
+	);
+}
+
+/**
+ * 1-Screen Owner Setup UI in WP-Admin for Wayne Stevenson.
+ * Allows entering live/test Stripe keys, webhook secret, video IDs, and payment links.
+ * All keys stored in non-autoloaded options (`autoload = 'no'`).
+ */
+function keystone_render_stripe_settings_page(): void {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_die( 'Access denied.' );
+	}
+
+	$saved = false;
+	if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && check_admin_referer( 'keystone_stripe_settings_nonce', 'keystone_stripe_nonce' ) ) {
+		$mode = sanitize_text_field( (string) ( $_POST['keystone_stripe_mode'] ?? 'test' ) );
+		update_option( 'keystone_stripe_mode', in_array( $mode, array( 'test', 'live' ), true ) ? $mode : 'test', false );
+
+		$fields = array(
+			'keystone_stripe_test_secret_key',
+			'keystone_stripe_test_publishable_key',
+			'keystone_stripe_test_webhook_secret',
+			'keystone_stripe_live_secret_key',
+			'keystone_stripe_live_publishable_key',
+			'keystone_stripe_live_webhook_secret',
+			'keystone_tier1_video_id',
+			'keystone_tier2_video_id',
+			'keystone_tier3_video_id',
+			'keystone_tier1_stripe_link',
+			'keystone_tier2_stripe_link',
+			'keystone_tier3_stripe_link',
+		);
+
+		foreach ( $fields as $f ) {
+			if ( isset( $_POST[ $f ] ) ) {
+				$val = trim( sanitize_text_field( (string) $_POST[ $f ] ) );
+				// If submitted value is masked (starts with ***), do not overwrite existing key!
+				if ( '' !== $val && 0 !== strpos( $val, '***' ) ) {
+					update_option( $f, $val, false );
+				} elseif ( '' === $val && false !== strpos( $f, '_link' ) ) {
+					update_option( $f, '', false );
+				}
+			}
+		}
+		$saved = true;
+	}
+
+	$mode         = (string) get_option( 'keystone_stripe_mode', 'test' );
+	$live_sk      = (string) get_option( 'keystone_stripe_live_secret_key', '' );
+	$live_pk      = (string) get_option( 'keystone_stripe_live_publishable_key', '' );
+	$live_whsec   = (string) get_option( 'keystone_stripe_live_webhook_secret', '' );
+	$test_sk      = (string) get_option( 'keystone_stripe_test_secret_key', '' );
+	$test_pk      = (string) get_option( 'keystone_stripe_test_publishable_key', '' );
+	$test_whsec   = (string) get_option( 'keystone_stripe_test_webhook_secret', '' );
+	$t1_video_id  = (string) get_option( 'keystone_tier1_video_id', '-ZYdbPXenCU' );
+	$t2_video_id  = (string) get_option( 'keystone_tier2_video_id', 'LxbjlX_nh2Q' );
+	$t3_video_id  = (string) get_option( 'keystone_tier3_video_id', '_bSpYdvm6tc' );
+	$t1_link      = (string) get_option( 'keystone_tier1_stripe_link', '' );
+	$t2_link      = (string) get_option( 'keystone_tier2_stripe_link', '' );
+	$t3_link      = (string) get_option( 'keystone_tier3_stripe_link', '' );
+
+	$active_sk    = 'live' === $mode ? $live_sk : $test_sk;
+	$active_whsec = 'live' === $mode ? $live_whsec : $test_whsec;
+	$is_ready     = ! empty( $active_sk ) && ! empty( $active_whsec );
+
+	$mask_key = function( string $k ): string {
+		if ( empty( $k ) ) {
+			return '';
+		}
+		if ( strlen( $k ) <= 8 ) {
+			return '********';
+		}
+		return substr( $k, 0, 4 ) . '...' . substr( $k, -4 );
+	};
+
+	$webhook_url = home_url( '/wp-json/keystone/v1/stripe-webhook' );
+	?>
+	<div class="wrap" style="max-width:1050px;margin-top:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+		<div style="background:#04070d;border:1.5px solid #d4af37;border-radius:14px;padding:26px 32px;color:#f8fafc;box-shadow:0 12px 36px rgba(0,0,0,0.6);">
+			
+			<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(212,175,55,0.25);padding-bottom:18px;margin-bottom:22px;">
+				<div>
+					<div style="color:#38bdf8;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;">Keystone Sovereignty Infrastructure</div>
+					<h1 style="color:#d4af37;font-size:24px;margin:4px 0 0 0;font-weight:900;">💳 Stripe USD &amp; Visa Gateway — 1-Screen Setup</h1>
+				</div>
+				<div style="text-align:right;">
+					<span style="display:inline-block;padding:6px 14px;border-radius:9999px;font-size:12px;font-weight:800;letter-spacing:0.04em;background:<?php echo $is_ready ? 'rgba(56,189,248,0.2)' : 'rgba(239,68,68,0.2)'; ?>;color:<?php echo $is_ready ? '#38bdf8' : '#ef4444'; ?>;border:1px solid <?php echo $is_ready ? '#38bdf8' : '#ef4444'; ?>;">
+						<?php echo $is_ready ? '● GATEWAY LIVE &amp; READY' : '○ PENDING STRIPE KEYS'; ?>
+					</span>
+					<div style="color:#94a3b8;font-size:11px;margin-top:4px;">Active Mode: <strong style="color:#f8fafc;text-transform:uppercase;"><?php echo esc_html( $mode ); ?></strong> &bull; Currency: <strong style="color:#d4af37;">USD ($)</strong></div>
+				</div>
+			</div>
+
+			<?php if ( $saved ) : ?>
+				<div style="background:rgba(56,189,248,0.12);border:1px solid #38bdf8;border-radius:8px;padding:12px 18px;margin-bottom:20px;color:#38bdf8;font-weight:700;font-size:13px;">
+					✔ Stripe configuration saved successfully! Non-autoloaded options updated.
+				</div>
+			<?php endif; ?>
+
+			<!-- 3-Minute Setup Checklist -->
+			<div style="background:#0b111e;border:1px solid rgba(212,175,55,0.4);border-radius:12px;padding:20px;margin-bottom:24px;">
+				<h3 style="color:#d4af37;font-size:15px;margin:0 0 10px 0;letter-spacing:0.03em;">⚡ 3-Minute Stripe USD &amp; Bank Payout Setup Checklist (Canadian Business Ready)</h3>
+				<ol style="color:#cbd5e1;font-size:13px;line-height:1.7;margin:0;padding-left:20px;">
+					<li><strong>Stripe Account &amp; Currency:</strong> Log in to <a href="https://dashboard.stripe.com" target="_blank" style="color:#38bdf8;text-decoration:none;font-weight:700;">dashboard.stripe.com</a>. Canadian corporations and sole proprietorships can charge in <strong>USD ($)</strong> directly.</li>
+					<li><strong>Bank Payout Options:</strong> In Stripe &rarr; <em>Settings &rarr; Bank accounts and scheduling</em>, connect either:
+						<br/>&bull; A <strong>US Dollar bank account located in Canada</strong> (e.g. RBC, TD, BMO US Dollar business accounts) for zero-conversion USD payouts.
+						<br/>&bull; Or your standard <strong>Canadian CAD bank account</strong> (Stripe will automatically convert USD to CAD at mid-market rates on payout).
+					</li>
+					<li><strong>Copy API Keys:</strong> Go to <em>Developers &rarr; API keys</em>. Copy your <strong>Secret key</strong> and <strong>Publishable key</strong>.</li>
+					<li><strong>Set Webhook:</strong> Go to <em>Developers &rarr; Webhooks &rarr; Add endpoint</em>. Paste the exact URL below and select events: <code>checkout.session.completed</code> and <code>checkout.session.async_payment_succeeded</code>:
+						<div style="background:#04070d;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:8px 12px;margin:6px 0;font-family:monospace;color:#38bdf8;font-size:12px;">
+							<?php echo esc_html( $webhook_url ); ?>
+						</div>
+						Copy the Signing Secret (starts with <code>whsec_</code>) into the field below.
+					</li>
+					<li><strong>Flip to Live:</strong> Toggle Mode to <strong>Live Mode</strong>, paste your keys below, click <strong>Save Stripe Configuration</strong>, and your site is instantly ready to process live Visa / Mastercard payments in US Dollars!</li>
+				</ol>
+			</div>
+
+			<form method="post" action="">
+				<?php wp_nonce_field( 'keystone_stripe_settings_nonce', 'keystone_stripe_nonce' ); ?>
+
+				<div style="margin-bottom:22px;">
+					<label style="display:block;color:#f8fafc;font-weight:800;font-size:13px;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em;">Stripe Operational Mode</label>
+					<select name="keystone_stripe_mode" style="background:#0b111e;color:#f8fafc;border:1.5px solid #d4af37;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;width:240px;">
+						<option value="test" <?php selected( $mode, 'test' ); ?>>🟡 Test Mode (Sandbox Simulation)</option>
+						<option value="live" <?php selected( $mode, 'live' ); ?>>🟢 Live Mode (Real Visa/Mastercard USD)</option>
+					</select>
+				</div>
+
+				<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px;">
+					<!-- Live Credentials -->
+					<div style="background:#0b111e;border:1px solid <?php echo 'live' === $mode ? '#d4af37' : 'rgba(255,255,255,0.1)'; ?>;border-radius:10px;padding:18px;">
+						<div style="color:#d4af37;font-weight:800;font-size:14px;margin-bottom:12px;">🟢 LIVE PRODUCTION CREDENTIALS (USD)</div>
+						
+						<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Live Secret Key (sk_live_...)</label>
+						<input type="password" name="keystone_stripe_live_secret_key" placeholder="<?php echo esc_attr( $mask_key( $live_sk ) ?: 'sk_live_...' ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(212,175,55,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;margin-bottom:12px;" />
+
+						<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Live Publishable Key (pk_live_...)</label>
+						<input type="text" name="keystone_stripe_live_publishable_key" value="<?php echo esc_attr( $live_pk ); ?>" placeholder="pk_live_..." style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(212,175,55,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;margin-bottom:12px;" />
+
+						<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Live Webhook Signing Secret (whsec_...)</label>
+						<input type="password" name="keystone_stripe_live_webhook_secret" placeholder="<?php echo esc_attr( $mask_key( $live_whsec ) ?: 'whsec_...' ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(212,175,55,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;" />
+					</div>
+
+					<!-- Test Credentials -->
+					<div style="background:#0b111e;border:1px solid <?php echo 'test' === $mode ? '#38bdf8' : 'rgba(255,255,255,0.1)'; ?>;border-radius:10px;padding:18px;">
+						<div style="color:#38bdf8;font-weight:800;font-size:14px;margin-bottom:12px;">🟡 TEST / SANDBOX CREDENTIALS</div>
+						
+						<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Test Secret Key (sk_test_...)</label>
+						<input type="password" name="keystone_stripe_test_secret_key" placeholder="<?php echo esc_attr( $mask_key( $test_sk ) ?: 'sk_test_...' ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;margin-bottom:12px;" />
+
+						<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Test Publishable Key (pk_test_...)</label>
+						<input type="text" name="keystone_stripe_test_publishable_key" value="<?php echo esc_attr( $test_pk ); ?>" placeholder="pk_test_..." style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;margin-bottom:12px;" />
+
+						<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Test Webhook Signing Secret (whsec_...)</label>
+						<input type="password" name="keystone_stripe_test_webhook_secret" placeholder="<?php echo esc_attr( $mask_key( $test_whsec ) ?: 'whsec_...' ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;" />
+					</div>
+				</div>
+
+				<!-- Walkthrough Video IDs (Bug 3 Fix) -->
+				<div style="background:#0b111e;border:1px solid rgba(212,175,55,0.3);border-radius:10px;padding:18px;margin-bottom:22px;">
+					<div style="color:#d4af37;font-weight:800;font-size:14px;margin-bottom:12px;">🎬 DEDICATED TIER WALKTHROUGH VIDEO IDs (UNLISTED YOUTUBE)</div>
+					<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+						<div>
+							<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Tier 01 Video ID ($49.50)</label>
+							<input type="text" name="keystone_tier1_video_id" value="<?php echo esc_attr( $t1_video_id ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(212,175,55,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;" />
+						</div>
+						<div>
+							<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Tier 02 Video ID ($199.00)</label>
+							<input type="text" name="keystone_tier2_video_id" value="<?php echo esc_attr( $t2_video_id ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(212,175,55,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;" />
+						</div>
+						<div>
+							<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Tier 03 Video ID ($800.00)</label>
+							<input type="text" name="keystone_tier3_video_id" value="<?php echo esc_attr( $t3_video_id ); ?>" style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(212,175,55,0.4);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:12px;" />
+						</div>
+					</div>
+				</div>
+
+				<!-- Optional Direct Stripe Payment Links -->
+				<div style="background:#0b111e;border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:18px;margin-bottom:24px;">
+					<div style="color:#38bdf8;font-weight:800;font-size:14px;margin-bottom:12px;">🔗 OPTIONAL DIRECT STRIPE PAYMENT LINKS (FALLBACK BYPASS)</div>
+					<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+						<div>
+							<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Tier 01 Stripe Link (buy.stripe.com/...)</label>
+							<input type="url" name="keystone_tier1_stripe_link" value="<?php echo esc_attr( $t1_link ); ?>" placeholder="https://buy.stripe.com/..." style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:8px 10px;font-size:12px;" />
+						</div>
+						<div>
+							<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Tier 02 Stripe Link</label>
+							<input type="url" name="keystone_tier2_stripe_link" value="<?php echo esc_attr( $t2_link ); ?>" placeholder="https://buy.stripe.com/..." style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:8px 10px;font-size:12px;" />
+						</div>
+						<div>
+							<label style="display:block;color:#cbd5e1;font-size:12px;margin-bottom:4px;">Tier 03 Stripe Link</label>
+							<input type="url" name="keystone_tier3_stripe_link" value="<?php echo esc_attr( $t3_link ); ?>" placeholder="https://buy.stripe.com/..." style="width:100%;background:#04070d;color:#f8fafc;border:1px solid rgba(56,189,248,0.4);border-radius:6px;padding:8px 10px;font-size:12px;" />
+						</div>
+					</div>
+				</div>
+
+				<div style="text-align:right;">
+					<button type="submit" class="button" style="background:#d4af37;color:#04070d;font-weight:900;font-size:14px;padding:10px 28px;border-radius:9999px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(212,175,55,0.4);">
+						💾 SAVE STRIPE CONFIGURATION
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<?php
 }
 
 /**

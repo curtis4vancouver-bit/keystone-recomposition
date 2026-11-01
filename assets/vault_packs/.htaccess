@@ -1,0 +1,10 @@
+# Block direct unauthenticated static HTTP access to paid Buyer Vault assets.
+# Verified buyers download via PHP readfile() (?vault_download=...&uid=KR-UID-...).
+Options -Indexes
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

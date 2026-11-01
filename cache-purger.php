@@ -128,8 +128,8 @@ if ( function_exists( 'wp_cache_flush' ) ) {
 $post_id = 1149;
 update_post_meta( $post_id, 'keystone_youtube_id', 'aXY9S_K88sk' );
 update_post_meta( $post_id, 'video_url', 'https://www.youtube.com/watch?v=aXY9S_K88sk' );
-update_post_meta( $post_id, 'video_title', 'I LOST 48 LBS ON MOUNJARO — HERE’S HOW MUCH WAS MUSCLE | MEN OVER 40' );
-update_post_meta( $post_id, 'video_description', 'Wayne Stevenson lost 48 lbs on Mounjaro. Learn how much was actual muscle loss vs visceral organ shrinkage, and the exact 4-Pillars Protocol to prevent it.' );
+update_post_meta( $post_id, 'video_title', 'Keystone AI Protocols & Builder Boardroom | Wayne Stevenson' );
+update_post_meta( $post_id, 'video_description', 'Official system architecture for autonomous swarms and sovereign builders by Wayne Stevenson.' );
 update_post_meta( $post_id, 'video_duration', 'PT8M15S' );
 update_post_meta( $post_id, 'video_upload_date', '2026-05-22T20:04:10-07:00' );
 echo "POST_1149_META_UPDATE: SUCCESS\n";

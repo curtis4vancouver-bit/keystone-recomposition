@@ -20,7 +20,6 @@ $keystone_sovereign_actions = array(
     'purge_all_caches',
     'get_post_inventory',
     'run_keystone_migration',
-    'restore_mounjaro_post',
     'list_revisions',
     'restore_revision_id',
     'check_rm_options',
@@ -261,25 +260,6 @@ if ( isset( $_GET['run_keystone_migration'] ) && $_GET['run_keystone_migration']
     exit;
 }
 
-if ( isset( $_GET['restore_mounjaro_post'] ) ) {
-    $file_path = __DIR__ . '/mounjaro_backup.txt';
-    if ( file_exists( $file_path ) ) {
-        $content = file_get_contents( $file_path );
-        $post_data = array(
-            'ID'           => 1149,
-            'post_content' => $content,
-        );
-        $res = wp_update_post( $post_data );
-        if ( is_wp_error( $res ) ) {
-            echo "ERROR RESTORING POST: " . $res->get_error_message();
-        } else {
-            echo "POST RESTORED SUCCESSFULLY: ID " . $res;
-        }
-    } else {
-        echo "BACKUP FILE NOT FOUND AT: " . $file_path;
-    }
-    exit;
-}
 
 if ( isset( $_GET['list_revisions'] ) ) {
     $revisions = wp_get_post_revisions( 1149 );

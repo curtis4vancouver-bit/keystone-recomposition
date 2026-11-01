@@ -1,22 +1,27 @@
 {
-  "generated_at": "2026-10-22T21:25:48.659433+00:00",
+  "generated_at": "2026-10-25T01:05:45.955563+00:00",
   "rule_30_air_gap_verified": true,
   "violations": [],
   "artifacts": {
     "Keystone_Tier01_AI_Video_Website_Blueprint_Pack.zip": {
-      "files_count": 12,
-      "uncompressed_bytes": 25326,
-      "zip_bytes": 14256
+      "files_count": 10,
+      "uncompressed_bytes": 738621,
+      "zip_bytes": 710055
     },
     "Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip": {
       "files_count": 18,
       "uncompressed_bytes": 30568,
-      "zip_bytes": 18785
+      "zip_bytes": 18787
     },
     "Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip": {
       "files_count": 22,
       "uncompressed_bytes": 35010,
-      "zip_bytes": 22370
+      "zip_bytes": 22374
+    },
+    "Keystone_Tier01_Antigravity_Brain_And_Flow_Prompt_Pack.zip": {
+      "files_count": 10,
+      "uncompressed_bytes": 738621,
+      "zip_bytes": 710055
     }
   }
 }

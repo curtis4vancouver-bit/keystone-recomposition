@@ -18,6 +18,82 @@ get_header();
 $theme_uri = get_stylesheet_directory_uri();
 ?>
 
+<!-- JSON-LD Structured Data Schema: 3 Tier Offers in USD for US, CA, GB, AU Builders -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": "https://keystonerecomposition.com/ai-protocols/#tier1",
+      "name": "Keystone AI Protocols — Tier 01: AI Brain & Google Flow Starter",
+      "description": "One-time setup access to 4-folder AI Brain architecture in Google Antigravity, ~20-word Google Flow video prompts, step-by-step PDF setup guides, and 7-day guided setup support.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Keystone AI Protocols"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "49.50",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": ["US", "CA", "GB", "AU"],
+        "url": "https://keystonerecomposition.com/ai-protocols/#kr-tier-1",
+        "seller": {
+          "@type": "Organization",
+          "name": "Keystone Possibilities Ltd."
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://keystonerecomposition.com/ai-protocols/#tier2",
+      "name": "Keystone AI Protocols — Tier 02: Custom Website Build & Multi-Agent Swarms",
+      "description": "Includes Tier 01 plus custom dark-luxury WordPress website engineering, YouTube Brand Channel upload defaults, multi-agent swarm role prompts, 3-source research gate, and 7-day guided setup support.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Keystone AI Protocols"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "199.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": ["US", "CA", "GB", "AU"],
+        "url": "https://keystonerecomposition.com/ai-protocols/#kr-tier-2",
+        "seller": {
+          "@type": "Organization",
+          "name": "Keystone Possibilities Ltd."
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://keystonerecomposition.com/ai-protocols/#tier3",
+      "name": "Keystone AI Protocols — Tier 03: Custom Tauri Desktop App Build (.EXE)",
+      "description": "Complete sovereign tech stack: Tiers 01 & 02 plus Rust and Tauri desktop application scaffolding, custom dashboard tabs, Windows .EXE compilation, all 12 breakdown PDF guides, and 14-day setup support with direct architectural review.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Keystone AI Protocols"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "800.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": ["US", "CA", "GB", "AU"],
+        "url": "https://keystonerecomposition.com/ai-protocols/#kr-tier-3",
+        "seller": {
+          "@type": "Organization",
+          "name": "Keystone Possibilities Ltd."
+        }
+      }
+    }
+  ]
+}
+</script>
+
+
 <style>
 .kr-code-pill {
 	display: inline-block;
@@ -203,6 +279,13 @@ $theme_uri = get_stylesheet_directory_uri();
 						<div class="cyber-telemetry-pill">
 							<span class="telemetry-pulse"></span>
 							<span class="telemetry-text">// 2026 AI BUILDER SUITE • ONE-TIME SETUP • BRAIN, WEBSITE &amp; TAURI DESKTOP APP</span>
+						</div>
+						<div class="kr-trust-badge-strip" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.12); border: 1px solid #38bdf8; border-radius: 9999px; padding: 5px 14px; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800; color: #38bdf8;">
+							<span>🇺🇸 ALL PRICES IN USD</span>
+							<span style="color: rgba(255,255,255,0.4);">&bull;</span>
+							<span style="color: #f6d365;">INSTANT VISA / MASTERCARD DIGITAL CHECKOUT</span>
+							<span style="color: rgba(255,255,255,0.4);">&bull;</span>
+							<span style="color: #cbd5e1;">US &amp; GLOBAL BUILDER ACCESS</span>
 						</div>
 
 						<div class="cyber-founder-chip">
@@ -1293,9 +1376,17 @@ Rules for every scene prompt:
 				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUTUBE CHANNEL OR WEBSITE GOALS (OPTIONAL)</label>
 				<input type="text" id="orderBuyerNotes" placeholder="Tell us your channel niche or website domain..." style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 10px 12px; box-sizing: border-box;" />
 			</div>
-			<button type="submit" id="submitAutomatedOrderBtn" style="margin-top: 4px; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: #04070d; font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 900; letter-spacing: 0.05em; padding: 13px 20px; border-radius: 9999px; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35);">
-				⚡ LOCK IN LAUNCH RATE &amp; UNLOCK PORTAL →
-			</button>
+			<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+				<button type="button" id="submitStripeCardBtn" style="background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.94rem; font-weight: 900; letter-spacing: 0.04em; padding: 14px 22px; border-radius: 9999px; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4); display: flex; align-items: center; justify-content: center; gap: 8px;">
+					<span>💳</span> <span id="stripeCardBtnText">PAY WITH VISA / MASTERCARD &amp; UNLOCK VAULT ($49.50 USD) →</span>
+				</button>
+				<button type="submit" id="submitAutomatedOrderBtn" style="background: rgba(11, 17, 30, 0.9); border: 1px solid rgba(56, 189, 248, 0.5); color: #38bdf8; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.04em; padding: 11px 18px; border-radius: 9999px; cursor: pointer;">
+					🔒 OR RESERVE LAUNCH RATE WITH ZERO PAYMENT TODAY →
+				</button>
+			</div>
+			<div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
+				<span>🛡️ 256-Bit Encrypted Stripe Hosted Checkout</span> &bull; <span>🇺🇸 USD Funds</span> &bull; <span>⚡ Immediate Vault Unlock</span>
+			</div>
 		</form>
 
 		<!-- Instant Reservation / Fulfillment Result Screen -->
@@ -1975,6 +2066,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Checkout & UID Verification Logic
 	const tierBtns = document.querySelectorAll('.tier-select-btn');
 	const expressBuyBtn = document.getElementById('portalExpressBuyBtn');
+	const stripeCardBtn = document.getElementById('submitStripeCardBtn');
+	const stripeCardBtnText = document.getElementById('stripeCardBtnText');
+
+	function updateStripeButtonText() {
+		if (!stripeCardBtnText) return;
+		const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
+		stripeCardBtnText.textContent = `PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(finalPrice)} USD) →`;
+	}
+
 	const promoInput = document.getElementById('promoInput');
 	const applyPromoBtn = document.getElementById('applyPromoBtn');
 	const promoFeedback = document.getElementById('promoFeedback');
@@ -2020,6 +2120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function updateCTA() {
+		updateStripeButtonText();
 		if (!expressBuyBtn) return;
 		const finalPrice = activeTier === 3 ? 800 : Math.max(0, activePrice - discount);
 		const labelText = activeTier === 3
@@ -2166,6 +2267,50 @@ document.addEventListener('DOMContentLoaded', function() {
 			.catch(() => {});
 	}
 
+	
+	// Detect Stripe Checkout Return (?session_id=cs_...)
+	try {
+		const urlParams = new URLSearchParams(window.location.search);
+		const stripeSessionId = urlParams.get('session_id');
+		if (stripeSessionId && stripeSessionId.indexOf('cs_') === 0) {
+			const returnNotice = document.createElement('div');
+			returnNotice.id = 'stripeReturnNotice';
+			returnNotice.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:99999;background:#04070d;border:2px solid #d4af37;border-radius:12px;padding:14px 24px;box-shadow:0 12px 36px rgba(0,0,0,0.85);color:#f8fafc;font-family:\'Outfit\',sans-serif;font-weight:800;display:flex;align-items:center;gap:12px;';
+			returnNotice.innerHTML = '<span style="color:#38bdf8;font-size:1.2rem;">⏳</span> <span>Verifying your Stripe Visa/Mastercard payment...</span>';
+			document.body.appendChild(returnNotice);
+
+			fetch('/wp-json/keystone/v1/verify-checkout-session?session_id=' + encodeURIComponent(stripeSessionId))
+				.then(r => r.json())
+				.then(data => {
+					if (data && data.verified) {
+						returnNotice.innerHTML = '<span style="color:#f6d365;font-size:1.2rem;">✔</span> <span>Payment Verified ($' + (data.formatted_price || '') + ' USD)! Unlocking your Buyer Vault...</span>';
+						returnNotice.style.borderColor = '#38bdf8';
+						applyVerifiedVaultState({
+							valid: true,
+							uid: data.uid,
+							tier_name: data.tier_name,
+							walkthrough_video_url: data.walkthrough_video_url,
+							unlocked_downloads: data.unlocked_downloads
+						});
+						setTimeout(() => {
+							if (returnNotice.parentNode) returnNotice.parentNode.removeChild(returnNotice);
+						}, 6000);
+					} else {
+						returnNotice.innerHTML = '<span style="color:#ef4444;font-size:1.2rem;">✖</span> <span>' + (data && data.message ? data.message : 'Stripe payment verification pending.') + '</span>';
+						setTimeout(() => {
+							if (returnNotice.parentNode) returnNotice.parentNode.removeChild(returnNotice);
+						}, 6000);
+					}
+				})
+				.catch(() => {
+					returnNotice.innerHTML = '<span style="color:#ef4444;font-size:1.2rem;">✖</span> <span>Network error verifying Stripe session.</span>';
+					setTimeout(() => {
+						if (returnNotice.parentNode) returnNotice.parentNode.removeChild(returnNotice);
+					}, 4000);
+				});
+		}
+	} catch (e) {}
+
 	let initialUid = '';
 	try {
 		const urlParams = new URLSearchParams(window.location.search);
@@ -2179,6 +2324,70 @@ document.addEventListener('DOMContentLoaded', function() {
 		verifyVaultUidBtn.addEventListener('click', function() {
 			const val = existingVaultUidInput.value.trim();
 			if (val) verifyUidWithServer(val, true);
+		});
+	}
+
+	
+	if (stripeCardBtn) {
+		stripeCardBtn.addEventListener('click', function(e) {
+			e.preventDefault();
+			const buyerNameInput = document.getElementById('orderBuyerName');
+			const buyerEmailInput = document.getElementById('orderBuyerEmail');
+			const buyerName = buyerNameInput ? buyerNameInput.value.trim() : '';
+			const buyerEmail = buyerEmailInput ? buyerEmailInput.value.trim() : '';
+			const promoCode = promoInput ? promoInput.value.trim().toUpperCase() : '';
+
+			if (!buyerName || !buyerEmail) {
+				alert('Please enter your full name and email address to continue to secure Visa / Mastercard checkout.');
+				if (buyerNameInput && !buyerName) buyerNameInput.focus();
+				else if (buyerEmailInput && !buyerEmail) buyerEmailInput.focus();
+				return;
+			}
+
+			stripeCardBtn.disabled = true;
+			stripeCardBtn.style.opacity = '0.7';
+			if (stripeCardBtnText) stripeCardBtnText.textContent = 'CONNECTING TO STRIPE HOSTED CHECKOUT...';
+
+			const payload = {
+				tier: modalTierSelect ? modalTierSelect.value : String(activeTier),
+				buyer_name: buyerName,
+				buyer_email: buyerEmail,
+				promo_code: promoCode
+			};
+
+			fetch('/wp-json/keystone/v1/create-checkout-session', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(payload)
+			})
+			.then(r => r.json())
+			.then(data => {
+				if (data && data.success && data.checkout_url) {
+					if (stripeCardBtnText) stripeCardBtnText.textContent = 'REDIRECTING TO STRIPE...';
+					window.location.href = data.checkout_url;
+				} else {
+					stripeCardBtn.disabled = false;
+					stripeCardBtn.style.opacity = '1';
+					updateStripeButtonText();
+					const msg = (data && data.message) ? data.message : 'Stripe live checkout is initializing. Falling back to Launch Reservation.';
+					alert(msg);
+					// Fallback: trigger standard reservation
+					if (orderForm) {
+						const submitBtn = document.getElementById('submitAutomatedOrderBtn');
+						if (submitBtn) submitBtn.click();
+					}
+				}
+			})
+			.catch(err => {
+				stripeCardBtn.disabled = false;
+				stripeCardBtn.style.opacity = '1';
+				updateStripeButtonText();
+				alert('Network error connecting to Stripe. Submitting priority launch reservation instead.');
+				if (orderForm) {
+					const submitBtn = document.getElementById('submitAutomatedOrderBtn');
+					if (submitBtn) submitBtn.click();
+				}
+			});
 		});
 	}
 
