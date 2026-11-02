@@ -1180,7 +1180,7 @@ function keystone_com_purge_wpcloud_edge_cache(): array {
 
 	if ( function_exists( 'get_page_by_path' ) ) {
 		foreach ( $target_slugs as $slug ) {
-			$page_obj = get_page_by_path( $slug, OBJECT, 'page' );
+			$page_obj = get_page_by_path( $slug, 'OBJECT', 'page' );
 			if ( is_object( $page_obj ) && isset( $page_obj->ID ) && (int) $page_obj->ID > 0 ) {
 				$candidate_ids[] = (int) $page_obj->ID;
 			}
