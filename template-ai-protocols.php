@@ -1678,7 +1678,7 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-05': {
 		id: 'PDF-05',
-		tier: 'Tier 01 ($49.50)',
+		tier: 'Tier 02 ($199)',
 		filename: 'KR_05_SEO_Article_Generator_RankMath_And_GSC_Indexing.pdf',
 		title: 'PDF-05: Turning Video Scripts into SEO Articles, JSON-LD Schema & Google Search Console',
 		steps: [
@@ -1805,8 +1805,30 @@ function krCopyPromptText(elementId, btnEl) {
 	}
 }
 
+window.krVerifiedBuyerTier = 0;
+
+function krGetRequiredTierForPdf(pdfId) {
+	const num = parseInt(String(pdfId || '').replace(/[^0-9]/g, ''), 10) || 1;
+	if (num >= 10) return 3;
+	if (num >= 5) return 2;
+	return 1;
+}
+
+window.krPromptTierUpgrade = function(requiredTier) {
+	const t = parseInt(requiredTier, 10) || 2;
+	if (typeof window.krOpenOrderModalForTier === 'function') {
+		window.krOpenOrderModalForTier(t);
+	}
+};
+
 function krOpenSpecModal(pdfId) {
 	const spec = KR_SPEC_PDF_CATALOG[pdfId] || KR_SPEC_PDF_CATALOG['PDF-01'];
+	const reqTier = krGetRequiredTierForPdf(spec.id);
+	const userTier = parseInt(window.krVerifiedBuyerTier || 1, 10);
+	if (userTier < reqTier) {
+		window.krPromptTierUpgrade(reqTier);
+		return;
+	}
 	const modal = document.getElementById('krSpecPdfModal');
 	const badge = document.getElementById('krSpecPdfModalBadge');
 	const title = document.getElementById('krSpecPdfModalTitle');
@@ -2056,6 +2078,12 @@ function krEscapePdfText(str) {
 
 function krDownloadRealPdf(pdfId) {
 	const spec = KR_SPEC_PDF_CATALOG[pdfId] || KR_SPEC_PDF_CATALOG['PDF-01'];
+	const reqTier = krGetRequiredTierForPdf(spec.id);
+	const userTier = parseInt(window.krVerifiedBuyerTier || 1, 10);
+	if (userTier < reqTier) {
+		window.krPromptTierUpgrade(reqTier);
+		return;
+	}
 	const lines = [
 		'KEYSTONE AI PROTOCOLS // OFFICIAL BREAKDOWN SPEC SHEET',
 		spec.id + ' - ' + spec.title,
@@ -2113,24 +2141,84 @@ function krDownloadRealPdf(pdfId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	// Populate the 12 PDF cards in Tab 6
-	const pdfGrid = document.getElementById('krPdfLibraryGrid');
-	if (pdfGrid) {
+	function renderPdfLibraryGrid(buyerTier) {
+		const pdfGrid = document.getElementById('krPdfLibraryGrid');
+		if (!pdfGrid) return;
+		const uTier = parseInt(buyerTier || 1, 10);
 		pdfGrid.innerHTML = Object.keys(KR_SPEC_PDF_CATALOG).map(key => {
 			const item = KR_SPEC_PDF_CATALOG[key];
-			return `
-				<div style="background:#081020;border:1px solid rgba(56,189,248,0.32);border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;">
-					<div>
-						<div style="color:#f6d365;font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:800;">${item.id} • ${item.tier}</div>
-						<div style="color:#ffffff;font-family:'Outfit',sans-serif;font-size:0.84rem;font-weight:800;margin-top:3px;">${item.title}</div>
-					</div>
-					<div style="display:flex;gap:6px;flex-wrap:wrap;">
+			const reqTier = krGetRequiredTierForPdf(item.id);
+			const isLocked = uTier < reqTier;
+			const tierPriceStr = reqTier === 3 ? '$800 USD' : '$199 USD';
+			const actionHtml = isLocked
+				? `<button type="button" onclick="window.krPromptTierUpgrade(${reqTier})" style="width:100%;background:rgba(212,175,55,0.14);border:1px solid #d4af37;color:#f6d365;border-radius:9999px;padding:6px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;">🔒 Locked — Upgrade to Tier 0${reqTier} (${tierPriceStr}) &rarr;</button>`
+				: `<div style="display:flex;gap:6px;flex-wrap:wrap;">
 						<button type="button" onclick="krOpenSpecModal('${item.id}')" style="background:rgba(56,189,248,0.16);border:1px solid #38bdf8;color:#38bdf8;border-radius:9999px;padding:5px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;">👁️ View &amp; Copy Prompts</button>
 						<button type="button" onclick="krDownloadRealPdf('${item.id}')" style="background:rgba(212,175,55,0.18);border:1px solid #d4af37;color:#f6d365;border-radius:9999px;padding:5px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;">⬇ %PDF-1.4</button>
+					</div>`;
+			return `
+				<div data-pdf-card="${item.id}" data-required-tier="${reqTier}" data-locked="${isLocked ? '1' : '0'}" style="background:#081020;border:1px solid ${isLocked ? 'rgba(212,175,55,0.28)' : 'rgba(56,189,248,0.32)'};border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;opacity:${isLocked ? '0.78' : '1'};">
+					<div>
+						<div style="color:${isLocked ? '#94a3b8' : '#f6d365'};font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:800;">${isLocked ? '🔒 ' : '✔ '}${item.id} • ${item.tier}</div>
+						<div style="color:#ffffff;font-family:'Outfit',sans-serif;font-size:0.84rem;font-weight:800;margin-top:3px;">${item.title}</div>
 					</div>
+					${actionHtml}
 				</div>`;
 		}).join('');
 	}
+
+	function krEnforceTierPortalLocks(buyerTier) {
+		const uTier = Math.max(1, Math.min(3, parseInt(buyerTier || 1, 10) || 1));
+		window.krVerifiedBuyerTier = uTier;
+		renderPdfLibraryGrid(uTier);
+
+		const paneConfigs = [
+			{ tabId: 'tab3', reqTier: 2, price: '$199 USD', title: 'Tier 02 — Custom Website Build & YouTube Brand Channel', desc: 'Your current Tier 01 ($49.50 USD) pass unlocks Tab 1 (AI Brain Setup), Tab 2 (~20-Word Google Flow Prompts), and PDF-01 to PDF-04. Upgrade to Tier 02 ($199 USD) to unlock the Custom Dark-Luxury Website Builder, YouTube Brand Channel module, and PDF-05 to PDF-09.' },
+			{ tabId: 'tab4', reqTier: 2, price: '$199 USD', title: 'Tier 02 — Multi-Agent Role Prompts & B2B Outreach Suite', desc: 'Your current Tier 01 ($49.50 USD) pass unlocks Tab 1 & Tab 2. Upgrade to Tier 02 ($199 USD) to unlock the 5:28 Unlisted Multi-Agent Walkthrough Video, Subagent Role Prompts, B2B DNS Outreach Gate, and PDF-05 to PDF-09.' },
+			{ tabId: 'tab5', reqTier: 3, price: '$800 USD', title: 'Tier 03 — Standalone Custom Tauri Desktop App Build (.EXE Command Center)', desc: 'This flagship module is exclusive to Tier 03 ($800 USD). Upgrade to Tier 03 to unlock the 6:00 Unlisted Tauri v2 Desktop App Walkthrough, the Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip Starter Pack, and PDF-10 to PDF-12.' }
+		];
+
+		paneConfigs.forEach(cfg => {
+			const pane = document.getElementById('kr-portal-pane-' + cfg.tabId);
+			const btn = document.querySelector(`.kr-portal-tab-btn[data-portal-tab="${cfg.tabId}"]`);
+			if (!pane) return;
+			if (!pane.dataset.unlockedHtml) {
+				pane.dataset.unlockedHtml = pane.innerHTML;
+			}
+			if (btn && !btn.dataset.unlockedLabel) {
+				btn.dataset.unlockedLabel = btn.innerHTML;
+			}
+			if (uTier < cfg.reqTier) {
+				pane.setAttribute('data-tier-locked', '1');
+				pane.innerHTML = `
+					<div style="background:linear-gradient(145deg,#09101f 0%,#04070d 100%);border:1.5px solid #d4af37;border-radius:18px;padding:32px 26px;text-align:center;max-width:680px;margin:12px auto;">
+						<div style="display:inline-block;background:rgba(212,175,55,0.16);border:1px solid #d4af37;color:#f6d365;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:900;padding:5px 14px;border-radius:9999px;margin-bottom:12px;">
+							🔒 LOCKED MODULE • REQUIRES TIER 0${cfg.reqTier} (${cfg.price} ONE-TIME)
+						</div>
+						<h3 style="color:#ffffff;font-family:'Outfit',sans-serif;font-size:1.38rem;font-weight:900;margin:0 0 10px 0;">
+							${cfg.title}
+						</h3>
+						<p style="color:#cbd5e1;font-size:0.88rem;line-height:1.6;margin:0 0 20px 0;">
+							${cfg.desc}
+						</p>
+						<button type="button" onclick="window.krPromptTierUpgrade(${cfg.reqTier})" style="background:linear-gradient(135deg,#f3e5ab 0%,#d4af37 50%,#aa8010 100%);color:#04070d !important;border:none;border-radius:9999px;padding:12px 26px;font-family:'Outfit',sans-serif;font-size:0.88rem;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(212,175,55,0.38);">
+							🔓 UPGRADE TO TIER 0${cfg.reqTier} (${cfg.price}) TO UNLOCK THIS MODULE &rarr;
+						</button>
+					</div>`;
+				if (btn) {
+					btn.innerHTML = btn.dataset.unlockedLabel + ` <span style="margin-left:4px;color:#f6d365;font-size:0.68rem;">🔒 Tier 0${cfg.reqTier}</span>`;
+				}
+			} else {
+				pane.setAttribute('data-tier-locked', '0');
+				pane.innerHTML = pane.dataset.unlockedHtml;
+				if (btn && btn.dataset.unlockedLabel) {
+					btn.innerHTML = btn.dataset.unlockedLabel;
+				}
+			}
+		});
+	}
+	window.krEnforceTierPortalLocks = krEnforceTierPortalLocks;
+	krEnforceTierPortalLocks(1);
 
 	// 6-Tab Switcher
 	const tabBtns = document.querySelectorAll('.kr-portal-tab-btn');
@@ -2355,6 +2443,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (modalTierHeadline) modalTierHeadline.textContent = 'Complete Your Order — ' + (tierNames[activeTier] || tierNames[1]);
 		if (modal) modal.style.display = 'flex';
 	}
+	window.krOpenOrderModalForTier = openOrderModal;
 
 	tierBtns.forEach(btn => {
 		btn.addEventListener('click', function() {
@@ -2441,7 +2530,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					.then(r2 => r2.json())
 					.then(d2 => {
 						if (d2 && d2.success) {
-							applyVerifiedVaultState({ valid: true, uid: d2.user_uid, tier_name: d2.tier_name, walkthrough_video_url: d2.walkthrough_video_url, unlocked_downloads: d2.unlocked_downloads });
+							applyVerifiedVaultState({ valid: true, uid: d2.user_uid, tier: d2.tier || String(activeTier), tier_name: d2.tier_name, walkthrough_video_url: d2.walkthrough_video_url, unlocked_downloads: d2.unlocked_downloads });
 						}
 					})
 					.catch(() => {});
@@ -2532,9 +2621,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	function applyVerifiedVaultState(data) {
 		if (!data || !data.valid) return;
 		window.krVerifiedBuyerUid = data.uid;
+		let resolvedTier = parseInt(data.tier, 10);
+		if (!resolvedTier || isNaN(resolvedTier)) {
+			const tName = String(data.tier_name || '');
+			if (/Tier\s*0?3|800/i.test(tName)) resolvedTier = 3;
+			else if (/Tier\s*0?2|199/i.test(tName)) resolvedTier = 2;
+			else resolvedTier = 1;
+		}
+		krEnforceTierPortalLocks(resolvedTier);
 		try { localStorage.setItem('kr_user_vault_uid', data.uid); } catch (e) {}
 		if (vaultUidStatusBadge) {
-			vaultUidStatusBadge.textContent = '✔ UID UNLOCKED: ' + data.uid;
+			vaultUidStatusBadge.textContent = '✔ TIER 0' + resolvedTier + ' UID UNLOCKED: ' + data.uid;
 			vaultUidStatusBadge.style.borderColor = '#d4af37';
 			vaultUidStatusBadge.style.color = '#f6d365';
 		}
@@ -2543,7 +2640,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		const zipBtn = document.getElementById('portalQuickZipBtn');
 		if (zipBtn) {
-			zipBtn.href = '?vault_download=tier1_blueprint_pack&uid=' + encodeURIComponent(data.uid);
+			const packSlug = resolvedTier >= 3 ? 'tier3_workstation_pack' : (resolvedTier === 2 ? 'tier2_swarm_pack' : 'tier1_blueprint_pack');
+			zipBtn.href = '?vault_download=' + packSlug + '&uid=' + encodeURIComponent(data.uid);
 		}
 		openBuyerLeadVaultView();
 	}
@@ -2591,6 +2689,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						applyVerifiedVaultState({
 							valid: true,
 							uid: data.uid,
+							tier: data.tier,
 							tier_name: data.tier_name,
 							walkthrough_video_url: data.walkthrough_video_url,
 							unlocked_downloads: data.unlocked_downloads
@@ -2721,7 +2820,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					submitBtn.textContent = '✔ LAUNCH RATE LOCKED IN & PRIORITY UID SAVED';
 				}
 				if (data && data.success) {
-					applyVerifiedVaultState({ valid: true, uid: data.user_uid, tier_name: data.tier_name, walkthrough_video_url: data.walkthrough_video_url, unlocked_downloads: data.unlocked_downloads });
+					applyVerifiedVaultState({ valid: true, uid: data.user_uid, tier: data.tier || (modalTierSelect ? modalTierSelect.value : String(activeTier)), tier_name: data.tier_name, walkthrough_video_url: data.walkthrough_video_url, unlocked_downloads: data.unlocked_downloads });
 					if (successBox) successBox.style.display = 'block';
 					if (fulfilledUidReadout) fulfilledUidReadout.textContent = 'UID: ' + data.user_uid;
 					if (fulfilledMessageText) fulfilledMessageText.textContent = data.message;
