@@ -289,9 +289,17 @@ function keystone_get_tier_email_attachments( string $tier ): array {
 	);
 	if ( '2' === $tier || '3' === $tier ) {
 		$candidate_files[] = $vault_dir . 'Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip';
+		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_05_Website_Builder_And_RankMath_SEO.pdf';
+		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_06_YouTube_Brand_Channel_And_Tag_Stack.pdf';
+		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_07_Multi_Agent_Role_Swarm_Prompts.pdf';
+		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_08_B2B_DNS_MX_Lead_Verification_Outreach.pdf';
+		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_09_30_Day_Omnichannel_Publishing_Blueprint.pdf';
 	}
 	if ( '3' === $tier ) {
 		$candidate_files[] = $vault_dir . 'Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip';
+		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_10_Tauri_v2_Desktop_Toolchain_Scaffold.pdf';
+		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_11_Command_Center_UI_And_Rust_IPC.pdf';
+		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_12_Compiling_Signing_Windows_EXE.pdf';
 	}
 	foreach ( $candidate_files as $fp ) {
 		if ( file_exists( $fp ) && is_readable( $fp ) ) {
