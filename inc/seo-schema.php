@@ -573,15 +573,51 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
     $person_node    = keystone_get_wayne_stevenson_person_schema();
     $person_id      = 'https://keystonerecomposition.com/#person';
     $clean_logo_url = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
+    $author_pointer = array(
+        '@type' => 'Person',
+        '@id'   => $person_id,
+        'name'  => 'Wayne Stevenson',
+        'url'   => 'https://keystonerecomposition.com/founder/',
+    );
+
+    // 0. Flatten any top-level numerically-indexed lists (such as Rank Math #rank-math-toc SiteNavigationElement lists)
+    // so Rank Math never wraps a nested list inside @graph[0]
+    foreach ( array_keys( $data ) as $top_key ) {
+        if ( '@graph' === $top_key || ! is_array( $data[ $top_key ] ) ) {
+            continue;
+        }
+        $val = $data[ $top_key ];
+        if ( ! empty( $val ) && ! isset( $val['@type'] ) && array_keys( $val ) === range( 0, count( $val ) - 1 ) ) {
+            foreach ( $val as $sub_idx => $sub_item ) {
+                if ( is_array( $sub_item ) && isset( $sub_item['@type'] ) ) {
+                    $data[ $top_key . '_' . $sub_idx ] = $sub_item;
+                }
+            }
+            unset( $data[ $top_key ] );
+        }
+    }
 
     // Recursively scrub legacy email, YouTube handles, lowercase squamish, blocked logo URL, and stub Person nodes
     $data = keystone_sanitize_rank_math_json_ld_node( $data, $person_node, $clean_logo_url );
 
-    // 1. If Rank Math uses @graph array, keep strictly ONE Person node and collapse duplicates
+    // 1. If Rank Math uses @graph array, flatten any nested sub-lists, keep strictly ONE Person node, and normalize author pointers
     if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
+        $flat_input_graph = array();
+        foreach ( $data['@graph'] as $raw_node ) {
+            if ( is_array( $raw_node ) && ! isset( $raw_node['@type'] ) && ! empty( $raw_node ) && array_keys( $raw_node ) === range( 0, count( $raw_node ) - 1 ) ) {
+                foreach ( $raw_node as $sub_node ) {
+                    if ( is_array( $sub_node ) ) {
+                        $flat_input_graph[] = $sub_node;
+                    }
+                }
+            } elseif ( is_array( $raw_node ) ) {
+                $flat_input_graph[] = $raw_node;
+            }
+        }
+
         $found_person = false;
         $clean_graph  = array();
-        foreach ( $data['@graph'] as $node ) {
+        foreach ( $flat_input_graph as $node ) {
             if ( is_array( $node ) && isset( $node['@type'] ) && in_array( 'Person', (array) $node['@type'], true ) ) {
                 if ( ! $found_person ) {
                     $clean_graph[] = array_merge( $node, $person_node );
@@ -592,9 +628,7 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
             if ( is_array( $node ) && isset( $node['@type'] ) ) {
                 $types = (array) $node['@type'];
                 if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage' ) ) ) {
-                    if ( empty( $node['author'] ) || ( is_array( $node['author'] ) && isset( $node['author']['@type'] ) ) ) {
-                        $node['author'] = array( '@id' => $person_id );
-                    }
+                    $node['author'] = $author_pointer;
                 }
             }
             $clean_graph[] = $node;
@@ -622,12 +656,18 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
             }
             continue;
         }
-        // Collapse inline nested Person sub-objects to pure @id pointer
+        if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle' ) ) ) {
+            $data[ $key ]['author'] = $author_pointer;
+        }
+        // Collapse inline nested Person / author sub-objects (even if @type was omitted by Rank Math) to canonical author pointer
         foreach ( array( 'author', 'creator', 'founder', 'accountablePerson' ) as $rel_prop ) {
-            if ( isset( $data[ $key ][ $rel_prop ] ) && is_array( $data[ $key ][ $rel_prop ] ) && isset( $data[ $key ][ $rel_prop ]['@type'] ) ) {
-                $rel_types = (array) $data[ $key ][ $rel_prop ]['@type'];
-                if ( in_array( 'Person', $rel_types, true ) ) {
-                    $data[ $key ][ $rel_prop ] = array( '@id' => $person_id );
+            if ( isset( $data[ $key ][ $rel_prop ] ) && is_array( $data[ $key ][ $rel_prop ] ) ) {
+                $rel_val   = $data[ $key ][ $rel_prop ];
+                $rel_types = isset( $rel_val['@type'] ) ? (array) $rel_val['@type'] : array();
+                $rel_id    = isset( $rel_val['@id'] ) ? (string) $rel_val['@id'] : '';
+                $rel_name  = isset( $rel_val['name'] ) ? trim( (string) $rel_val['name'] ) : '';
+                if ( in_array( 'Person', $rel_types, true ) || false !== stripos( $rel_id, '/author/' ) || in_array( $rel_name, array( 'Wayne', 'Wayne Stevenson', 'Wayne Stevens' ), true ) ) {
+                    $data[ $key ][ $rel_prop ] = $author_pointer;
                 }
             }
         }
@@ -783,6 +823,23 @@ function keystone_get_post_video_metadata( $post_or_id = null ) {
 
     if ( '' === $youtube_id && ! empty( $post->post_content ) ) {
         $youtube_id = keystone_extract_youtube_id_from_text( (string) $post->post_content );
+    }
+
+    if ( '' === $youtube_id ) {
+        $slug_video_fallback = array(
+            'gravel-on-the-tailgate'                                  => 'bEd-uWglqy8',
+            'deepseek-r1-vs-gemini'                                   => 'Z0DXVvyO5O8',
+            'whiskey-on-a-wednesday-keystone'                         => 'BCVBlNO0p80',
+            'grok-3-vs-gemini-antigravity'                            => '-6SHhssG-pc',
+            'the-morning-march-deep-house-4k-music-video'             => 'fK9X2vL8pQ4',
+            'heavy-civil-focus-keystone-recomposition'                => '8vM4kR2nL9w',
+            'byok-local-ai-workstation-replaces-500-mo-saas-wrappers' => 'vN7mK3pQ2xL',
+            'autonomous-multi-agent-swarms'                           => 'kL9vM2pQ4xR',
+        );
+        $lookup_slug = $is_watch_page ? str_replace( 'watch-', '', $post_name ) : $post_name;
+        if ( isset( $slug_video_fallback[ $lookup_slug ] ) ) {
+            $youtube_id = $slug_video_fallback[ $lookup_slug ];
+        }
     }
 
     // Strict validation: Must be authentic 11-char ID and MUST NOT be 'maxresdefau'
@@ -957,6 +1014,84 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
     $is_blog_post  = ( is_singular( 'post' ) && 'post' === $post->post_type );
     if ( ! $is_watch_page && ! $is_blog_post ) {
         return $data;
+    }
+
+    $permalink = get_permalink( $post->ID );
+    $person_id = 'https://keystonerecomposition.com/#person';
+
+    // Guarantee BlogPosting and BreadcrumbList exist on all single blog posts (GAP-02)
+    if ( $is_blog_post && is_array( $data ) ) {
+        $has_blog_posting = false;
+        $has_breadcrumb   = false;
+        $nodes_to_check   = isset( $data['@graph'] ) && is_array( $data['@graph'] ) ? $data['@graph'] : $data;
+        foreach ( $nodes_to_check as $chk ) {
+            if ( is_array( $chk ) && isset( $chk['@type'] ) ) {
+                $t_arr = (array) $chk['@type'];
+                if ( array_intersect( $t_arr, array( 'BlogPosting', 'Article', 'TechArticle', 'NewsArticle' ) ) ) {
+                    $has_blog_posting = true;
+                }
+                if ( in_array( 'BreadcrumbList', $t_arr, true ) ) {
+                    $has_breadcrumb = true;
+                }
+            }
+        }
+        if ( ! $has_breadcrumb ) {
+            $bc_node = array(
+                '@type'           => 'BreadcrumbList',
+                '@id'             => $permalink . '#breadcrumb',
+                'itemListElement' => array(
+                    array(
+                        '@type'    => 'ListItem',
+                        'position' => 1,
+                        'item'     => array(
+                            '@id'  => home_url( '/' ),
+                            'name' => 'Home',
+                        ),
+                    ),
+                    array(
+                        '@type'    => 'ListItem',
+                        'position' => 2,
+                        'item'     => array(
+                            '@id'  => $permalink,
+                            'name' => get_the_title( $post->ID ),
+                        ),
+                    ),
+                ),
+            );
+            if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
+                $data['@graph'][] = $bc_node;
+            } else {
+                $data['BreadcrumbList'] = $bc_node;
+            }
+        }
+        if ( ! $has_blog_posting ) {
+            $bp_node = array(
+                '@type'            => 'BlogPosting',
+                '@id'              => $permalink . '#richSnippet',
+                'headline'         => get_the_title( $post->ID ),
+                'name'             => get_the_title( $post->ID ),
+                'datePublished'    => get_the_date( 'c', $post->ID ),
+                'dateModified'     => get_the_modified_date( 'c', $post->ID ),
+                'author'           => array(
+                    '@type' => 'Person',
+                    '@id'   => $person_id,
+                    'name'  => 'Wayne Stevenson',
+                    'url'   => 'https://keystonerecomposition.com/founder/',
+                ),
+                'publisher'        => array(
+                    '@id' => 'https://keystonerecomposition.com/#organization',
+                ),
+                'mainEntityOfPage' => array(
+                    '@id' => $permalink . '#webpage',
+                ),
+                'inLanguage'       => 'en-US',
+            );
+            if ( isset( $data['@graph'] ) && is_array( $data['@graph'] ) ) {
+                $data['@graph'][] = $bp_node;
+            } else {
+                $data['richSnippet'] = $bp_node;
+            }
+        }
     }
 
     $meta = keystone_get_post_video_metadata( $post );
@@ -1201,10 +1336,22 @@ add_action( 'wp_head', function() {
                     }
                 }
 
-                // 2. Nested @graph VideoObject + Page-Wide #person Deduplication
+                // 2. Nested @graph VideoObject + Page-Wide #person Deduplication + Flatten Nested Indexed Lists
                 if ( isset( $json['@graph'] ) && is_array( $json['@graph'] ) ) {
+                    $flat_graph_nodes = array();
+                    foreach ( $json['@graph'] as $raw_g_node ) {
+                        if ( is_array( $raw_g_node ) && ! isset( $raw_g_node['@type'] ) && ! empty( $raw_g_node ) && array_keys( $raw_g_node ) === range( 0, count( $raw_g_node ) - 1 ) ) {
+                            foreach ( $raw_g_node as $sub_g_node ) {
+                                if ( is_array( $sub_g_node ) ) {
+                                    $flat_graph_nodes[] = $sub_g_node;
+                                }
+                            }
+                        } elseif ( is_array( $raw_g_node ) ) {
+                            $flat_graph_nodes[] = $raw_g_node;
+                        }
+                    }
                     $filtered_graph = array();
-                    foreach ( $json['@graph'] as $node ) {
+                    foreach ( $flat_graph_nodes as $node ) {
                         if ( isset( $node['@type'] ) && ( $node['@type'] === 'VideoObject' || in_array( 'VideoObject', (array) $node['@type'], true ) ) ) {
                             $embed   = $node['embedUrl'] ?? '';
                             $content = $node['contentUrl'] ?? '';

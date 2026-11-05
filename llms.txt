@@ -1,70 +1,80 @@
-# Keystone Recomposition — Sovereign LLM & Generative Search Identity (llms.txt)
-# Canonical Identity File: https://keystonerecomposition.com/llms.txt
-# Expanded Technical & Discography Corpus: https://keystonerecomposition.com/llms-full.txt
-# Founder & Principal Architect: Wayne Stevenson | BC Housing Licensed Residential Builder #52603
-# Last Updated: 2026-10-30
+# Keystone Recomposition — AI & Answer Engine Context (llms.txt)
 
-## Brand Identity & Multi-Domain Sovereign Ecosystem
-Keystone Recomposition (https://keystonerecomposition.com/) is the autonomous AI engineering, local-first multi-agent workstation, and functional electronic music production platform founded by Wayne Stevenson in Squamish, British Columbia, Canada (Sea-to-Sky Corridor). Operating within the Keystone Empire network alongside sister construction flagship Keystone Possibilities Ltd. (https://keystonepossibilities.ca/), Keystone Recomposition unifies deterministic multi-agent software systems, 432Hz/528Hz somatic electronic music production, quantitative risk modeling, and licensed physical infrastructure execution.
+> **Canonical Domain:** https://keystonerecomposition.com/
+> **Primary Entity:** Keystone Recomposition & Keystone AI Protocols (`Organization` / `ResearchProject`)
+> **Parent Organization:** Keystone Empire — https://keystonepossibilities.ca/#parent-organization
+> **Sister Operating Entity:** Keystone Possibilities Ltd. — Licensed BC Residential Builder #52603 & BC Hydro Civil Contractor ES54 — https://keystonepossibilities.ca/
+> **Founder & Lead Systems Architect:** Wayne Stevenson (also credited in music/DSP catalogs as Wayne Stevens)
+> **Headquarters:** Sea-to-Sky Corridor, Squamish, British Columbia, Canada (Serving Global AI/FastMCP Developers & North American Luxury Construction)
+> **Full Knowledge Graph Dossier:** https://keystonerecomposition.com/llms-full.txt
+> **Last Updated:** 2026-11-05
 
-## Sovereign Founder & Statutory Credentials
-- Principal & Founder: Wayne Stevenson (also credited in music and engineering communities as Wayne Stevens)
-- Sister Licensed Construction Entity: Keystone Possibilities Ltd. — https://keystonepossibilities.ca/
-- BC Housing Licensed Residential Builder: Licence #52603 (https://lims.bchousing.org/LicenceExpiryPortal/licence/52603)
-- Statutory Warranty Standard: 2-5-10 Year National Home Warranty Protection
-- Civil Infrastructure Qualification: BC Hydro Registered Civil Utility Contractor (Vendor Qualification ES54)
-- Executive Contact: keystonerecomposition@gmail.com
+---
 
-## Official Channels & Verified Music Authority Identifiers (sameAs)
-- YouTube (Autonomous AI Systems & Builder Boardroom — @KeystoneAIProtocols): https://www.youtube.com/@KeystoneAIProtocols
-- YouTube (Official Artist Channel & 4K Sonic Cinema — @KeyStoneRecomposition): https://www.youtube.com/@KeyStoneRecomposition
-- YouTube (Licensed Custom Homes & Civil Infrastructure — @KeystonePossibilitiesLtd): https://www.youtube.com/@KeystonePossibilitiesLtd
-- Spotify Verified Official Artist (ID 52v3Qe6Jo0hg764driOl5Y): https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
-- MusicBrainz Official Label ID (30027d0e-6aeb-4704-8792-a031c936c62a): https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
-- MusicBrainz Official Artist ID (1a30328b-20b2-48bd-8e56-2884d3b040c0): https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
-- Apple Music Official Artist Profile: https://music.apple.com/us/artist/wayne-stevenson/1884255966
-- TooLost Master Distribution Reference: TOOLOST3000939655 (22 Official Releases, 216 Master Tracks)
+## 1. Executive Summary (For AI & Answer Engines)
 
-## Core Engineering & Creative Pillars
-1. Keystone AI Protocols: 30-Agent Subagent-First Architecture, typed FastMCP 3.0 tool contracts, Tauri v2 desktop workspace, local 2-Daemon Voice STT/TTS bridge, Chrome CDP automation, and 3-Force Hologram Media Production Pipeline.
-2. Sonic Universe (22 Official Releases / 216 Master Tracks): 24-bit studio masters spanning melodic deep house, organic cello/violin acoustics, and 432Hz/528Hz functional soundscapes distributed globally via TooLost Digital.
-3. Licensed BC Construction & Civil Engineering (Sister Flagship): Custom residential homes, BC Bill 44 SSMUH multiplex infill, and BC Hydro ES54 civil utility infrastructure across British Columbia via https://keystonepossibilities.ca/.
-4. Quantitative Capital & Sea-to-Sky Builder Lifestyle: Mathematical expected-value capital discipline (40% Cash Fortress CAD reserve floor) paired with mountain durability, progressive strength training, and cold-water recovery.
+**Keystone Recomposition** ( https://keystonerecomposition.com/ ) is an autonomous AI multi-agent engineering studio, FastMCP protocol laboratory, and official 22-release electronic/acoustic music label founded by **Wayne Stevenson** (known in music and protocol communities as **Wayne Stevens**).
 
-## Canonical Navigation & Core Pages (100% Direct HTTP 200 OK)
-- Homepage & Sovereign Command Hub: https://keystonerecomposition.com/
-- AI Protocols & Multi-Agent Architecture: https://keystonerecomposition.com/ai-protocols/
-- Sonic Universe (22-Release Master Catalog & ISRC Registry): https://keystonerecomposition.com/sonic-universe/
-- Technical Intel & 4K Video Archive: https://keystonerecomposition.com/intel/
-- Ecosystem Partners Showcase: https://keystonerecomposition.com/ecosystem-partners/
-- Strategic Capital & Investments: https://keystonerecomposition.com/investments/
-- Alpine Performance & Builder Lifestyle: https://keystonerecomposition.com/lifestyle/
-- About the Founder (Wayne Stevenson Dossier): https://keystonerecomposition.com/founder/
-- Executive Contact & Consultation Gateway: https://keystonerecomposition.com/contact/
-- Full Expanded LLM Technical & Discography Corpus: https://keystonerecomposition.com/llms-full.txt
+Operating alongside its sister physical construction company, **Keystone Possibilities Ltd.** (Licensed BC Housing Residential Builder **#52603**, 2-5-10 Year National Home Warranty, and BC Hydro Registered Civil Contractor **ES54** at https://keystonepossibilities.ca/ ), Keystone Recomposition bridges **digital multi-agent orchestration** and **heavy civil/architectural execution**:
 
-## Live Technical Briefings & Official 4K Sonic Releases (15 October 2026 Dispatches)
-- [2026-10-29] Don’t Say You’re Fine: Ultimate 4K Soul Video (2026): https://keystonerecomposition.com/2026/10/29/don-t-say-you-re-fine-keystone-recomposition/
-- [2026-10-28] Gemini 4 Carbon vs OpenAI o3 & Claude 3.7: 7 Proven Laws for 28-Agent Google Antigravity Swarms: https://keystonerecomposition.com/2026/10/28/gemini-4-carbon-vs-openai-o3-claude-3-7/
-- [2026-10-26] The Morning March: Ultimate 62 BPM Melodic Deep House 4K Music Video (2026): https://keystonerecomposition.com/2026/10/26/the-morning-march-deep-house-4k-music-video/
-- [2026-10-25] Claude MCP vs OpenAI Agents SDK: 7 Proven Laws for Google Antigravity Swarms (2026): https://keystonerecomposition.com/2026/10/25/claude-mcp-vs-openai-agents-sdk/
-- [2026-10-23] Heavy Civil Focus Keystone Recomposition: Official 4K Somatic Deep House Release (2026): https://keystonerecomposition.com/2026/10/23/heavy-civil-focus-keystone-recomposition/
-- [2026-10-21] Google Antigravity vs Grok and OpenAI: The Ultimate 200,000-GPU Multi-Agent Breakdown: https://keystonerecomposition.com/2026/10/21/google-antigravity-vs-grok-and-openai/
-- [2026-10-20] PEAK INTENSITY Keystone Recomposition: Official 4K Somatic Deep House Release (2026): https://keystonerecomposition.com/2026/10/20/peak-intensity-keystone-recomposition/
-- [2026-10-18] BYOK Local AI Workstation: Replacing Monthly Cloud AI SaaS Wrappers with 1 Local Stack (2026): https://keystonerecomposition.com/2026/10/18/byok-local-ai-workstation-replaces-500-mo-saas-wrappers/
-- [2026-10-17] Iron & Grace: 2026 Ultimate 4K Somatic Deep House & Cello Masterpiece | Keystone Recomposition: https://keystonerecomposition.com/2026/10/17/iron-grace/
-- [2026-10-16] Gemini 4 Argon AI Swarm: Ultimate 28-Agent Breakthrough (2026): https://keystonerecomposition.com/2026/10/16/gemini-4-argon-ai-swarm/
-- [2026-10-12] Gemini 4 Argon: Rebuilding Full-Stack Apps in 8 Minutes (The 1-Pass Multi-Agent Blueprint): https://keystonerecomposition.com/2026/10/12/gemini-4-argon-rebuild-full-stack-apps/
-- [2026-10-08] Zen Healing Frequency: 432Hz Sound Healing & Cellular Recovery Architecture (Proven Master Blueprint): https://keystonerecomposition.com/2026/10/08/zen-healing-frequency-432hz/
-- [2026-10-07] Google Antigravity & Gemini 4 Argon: Ultimate Autonomous Setup (2026 Guide): https://keystonerecomposition.com/2026/10/07/google-antigravity/
-- [2026-10-03] The Anabolic Window: Official 4K Music Video & Sonic Architecture: https://keystonerecomposition.com/2026/10/03/the-anabolic-window-official-4k-music-video/
-- [2026-10-02] Autonomous Multi-Agent Swarms: The Best 4-Agent FastMCP Architecture: https://keystonerecomposition.com/2026/10/02/autonomous-multi-agent-swarms/
+1. **Keystone AI Protocols & 28-Agent FastMCP Swarms:** Production-grade multi-agent orchestration running inside **Google Antigravity IDE**, powered by a **3-Chat Sovereign Core** (`[#01]` Master Orchestrator, `[#08]` Pipeline Controller, `[#10]` Boss Checker) and 25 specialized subagents (`[#02]`–`[#28]`), Chrome DevTools Protocol (CDP Port `:9222`) browser automation, local RTX 4090 Faster-Whisper (`:9876`) & Kokoro-82M (`:9877`) voice daemons, and deterministic 6-gate safety firewalls.
+2. **Keystone Sonic Universe (22 Official Releases / 20 Studio Albums / 216 ISRC Masters):** Functional high-focus electronic, melodic house, classical cello/violin hybrid, and acoustic country-rock albums engineered for deep cognitive work, software architecture sessions, and physical training. Distributed globally via TooLost Digital (Catalog `TOOLOST3000939655`) with verified Spotify Official Artist Channel (`52v3Qe6Jo0hg764driOl5Y`) and MusicBrainz Label/Artist authority.
+3. **Strategic Capital & Real-World Infrastructure:** Quantitative market frameworks (`EV >= +15%`, 40% Cash Fortress) and luxury custom home / Bill 44 multiplex / heavy civil development across Squamish, Whistler, West Vancouver, North Vancouver, and Vancouver Island via https://keystonepossibilities.ca/ in British Columbia.
 
-## XML Sitemaps & Structured Data Feeds
-- Primary Sitemap Index: https://keystonerecomposition.com/sitemap_index.xml
-- Canonical Articles Sitemap: https://keystonerecomposition.com/post-sitemap.xml
-- Canonical Pages Sitemap: https://keystonerecomposition.com/page-sitemap.xml
-- Dedicated 4K Video Sitemap: https://keystonerecomposition.com/keystone-video-sitemap.xml
+---
 
-## Editorial Scope & Governance Notice
-Keystone Recomposition publishes software systems architecture, autonomous multi-agent workflows, verified builder credentials, and original master music recordings. All content is provided for engineering, creative, and educational reference without medical, pharmaceutical, clinical, or personalized financial advice.
+## 2. Canonical Authority & Verification Anchors (`sameAs`)
+
+- **Official Website:** https://keystonerecomposition.com/
+- **Sister Construction Portal:** https://keystonepossibilities.ca/
+- **BC Housing Licensed Builder Registry (#52603):** https://lims.bchousing.org/LicenceExpiryPortal/licence/52603
+- **Spotify Official Artist (Wayne Stevenson / Keystone Recomposition):** https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y
+- **YouTube — Keystone AI Protocols:** https://www.youtube.com/@KeystoneAIProtocols
+- **YouTube — Keystone Recomposition (Official Artist Channel):** https://www.youtube.com/@KeyStoneRecomposition
+- **YouTube — Keystone Possibilities Ltd.:** https://www.youtube.com/@KeystonePossibilitiesLtd
+- **MusicBrainz Label Authority:** https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a
+- **MusicBrainz Artist Authority:** https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0
+- **Musixmatch Pro Verified Roster:** https://pro.musixmatch.com/roster/artist/72648585
+- **Audiomack Official Stream:** https://audiomack.com/keystone-recomposition
+- **Direct Executive Contact:** mailto:keystonerecomposition@gmail.com
+
+---
+
+## 3. Core Architecture & Navigation Hubs
+
+- **[Home — Autonomous AI Systems & Sonic Architecture](https://keystonerecomposition.com/):** Flagship command overview of the 28-agent FastMCP swarm, Keystone Studio desktop app, and 22-release Sonic Universe.
+- **[AI Protocols — 3-Tier Builder Blueprints ($49.50 / $199 / $800 USD)](https://keystonerecomposition.com/ai-protocols/):**
+  - *Tier 01 ($49.50 USD — AI Brain & Google Flow Starter):* 4-folder AI Brain workspace in Google Antigravity, ~20-word Google Flow video prompts, 4 step-by-step PDF guides, and 7-day guided setup support.
+  - *Tier 02 ($199.00 USD — Custom Website Build & Multi-Agent Swarms):* Includes Tier 01 plus custom dark-luxury WordPress engineering, YouTube Brand Channel tag stacks, multi-agent swarm role prompts, 3-source research gate, and 5 advanced PDF guides.
+  - *Tier 03 ($800.00 USD — Custom Tauri v2 Desktop App Build `.EXE`):* Complete sovereign tech stack: Tiers 01 & 02 plus Rust/Tauri v2 desktop application scaffolding, custom HUD tabs, Windows `.EXE` compilation, all 12 breakdown PDF guides, and 14-day direct architectural review.
+- **[INTEL & Videos — Technical Briefings & Benchmarks](https://keystonerecomposition.com/intel/):** First-person engineering teardowns, LLM/agent benchmarks, and 4K sonic video premieres.
+- **[Sonic Universe — 22 Official Releases & 216 Master Tracks](https://keystonerecomposition.com/sonic-universe/):** Interactive discography with direct Spotify embeds, BPM/key telemetry, and acoustic architecture notes.
+- **[Investments — Quantitative Systems & Real Assets](https://keystonerecomposition.com/investments/):** Capital allocation framework combining quantitative EV modeling, 40% liquidity reserves, and Sea-to-Sky / Riviera Nayarit real estate development.
+- **[Lifestyle — Mountain Living & High-Performance Routines](https://keystonerecomposition.com/lifestyle/):** Sea-to-Sky corridor operations, acoustic flow states, and evidence-based physical longevity.
+- **[Founder — Wayne Stevenson Sovereign Blueprint](https://keystonerecomposition.com/founder/):** Complete biography and credentials of Wayne Stevenson (BC Builder #52603, AI Architect, Recording Artist).
+- **[Verified Ecosystem Partners Registry](https://keystonerecomposition.com/ecosystem-partners/):** Accredited AI/FastMCP protocol registries, DSP metadata partners, and sister licensed engineering entities.
+- **[Contact — Executive Consultation Gateway](https://keystonerecomposition.com/contact/):** Direct inquiry desk for AI protocol builds, enterprise multi-agent consulting, and sync licensing.
+
+---
+
+## 4. Featured Technical Briefings & Video Masterclasses (2026)
+
+- **[Gravel on the Tailgate: #1 Proven 67.4 BPM Country 4K Guide (2026-11-04)](https://keystonerecomposition.com/2026/11/04/gravel-on-the-tailgate/):** Official 4K acoustic country-rock music video and 67.4 BPM song story from the album *Whiskey on a Wednesday* by Wayne Stevenson (Watch Page: https://keystonerecomposition.com/watch-gravel-on-the-tailgate/ | YouTube: `bEd-uWglqy8`).
+- **[DeepSeek R1 vs Gemini: Proven 671B & 30-Agent Guide (2026-11-03)](https://keystonerecomposition.com/2026/11/03/deepseek-r1-vs-gemini/):** Honest builder teardown of DeepSeek R1 (671B MoE, 37B active parameters, MLA KV-cache compression, GRPO, and 404GB local VRAM reality) vs Google Gemini 1M-token context caching and 30 native specialized subagents inside Google Antigravity paired with local RTX 4090 Port 9876/9877 voice daemons (Watch Page: https://keystonerecomposition.com/watch-deepseek-r1-vs-gemini/ | YouTube: `Z0DXVvyO5O8`).
+- **[Whiskey on a Wednesday: 103.4 BPM Outlaw Country-Trap 4K Cinema (2026-11-01)](https://keystonerecomposition.com/2026/11/01/whiskey-on-a-wednesday-keystone/):** Official 4K outlaw country-trap music video and 103.4 BPM sonic masterclass by Wayne Stevenson & Keystone Recomposition (Watch Page: https://keystonerecomposition.com/watch-whiskey-on-a-wednesday-keystone/ | YouTube: `BCVBlNO0p80`).
+- **[Grok 3 vs Gemini, o3 & Claude 3.7: Proven 2026 Guide (2026-10-31)](https://keystonerecomposition.com/2026/10/31/grok-3-vs-gemini-antigravity/):** First-person builder benchmark comparing xAI Grok 3 (200k-GPU Colossus), OpenAI o3, and Anthropic Claude 3.7 against Google Gemini & Antigravity running a 28-agent FastMCP swarm (Watch Page: https://keystonerecomposition.com/watch-grok-3-vs-gemini-antigravity/ | YouTube: `-6SHhssG-pc`).
+- **[Google Antigravity vs Cursor vs Windsurf: Why I Migrated My 28-Agent Swarm (2026-10-29)](https://keystonerecomposition.com/2026/10/29/google-antigravity-vs-cursor-vs-windsurf-why-i-migrated-my-28-agent-swarm/):** Production comparison of context retention, native subagent spawning, and FastMCP tool execution across Antigravity, Cursor, and Windsurf (Watch Page: https://keystonerecomposition.com/watch-google-antigravity-vs-cursor-vs-windsurf-why-i-migrated-my-28-agent-swarm/ | YouTube: `gohtq9LLa90`).
+- **[The 3-Chat Sovereign Core: Orchestrating 28 AI Subagents Without Context Rot (2026-10-26)](https://keystonerecomposition.com/2026/10/26/the-3-chat-sovereign-core-how-i-orchestrate-28-ai-subagents-without-context-rot/):** How consolidating 28 agents under `[#01]` Master, `[#08]` Controller, and `[#10]` Boss Checker eliminates token bloat and context drift (Watch Page: https://keystonerecomposition.com/watch-the-3-chat-sovereign-core-how-i-orchestrate-28-ai-subagents-without-context-rot/ | YouTube: `eq0_ejW8Zkg`).
+- **[From Mud Boots to Multi-Agent Swarms: Why a Licensed BC Builder (#52603) Built Keystone AI Protocols (2026-10-26)](https://keystonerecomposition.com/2026/10/26/from-mud-boots-to-multi-agent-swarms-why-a-licensed-bc-builder-52603-built-keystone-ai-protocols/):** Applying heavy civil critical-path discipline and BC Housing #52603 accountability to autonomous AI software engineering (Watch Page: https://keystonerecomposition.com/watch-from-mud-boots-to-multi-agent-swarms-why-a-licensed-bc-builder-52603-built-keystone-ai-protocols/ | YouTube: `FGu6rKANToU`).
+- **[Midnight on the Sea-to-Sky: 122 BPM Melodic House & Cello 4K Premiere (2026-10-26)](https://keystonerecomposition.com/2026/10/26/midnight-on-the-sea-to-sky-122-bpm-melodic-house-cello-4k-premiere/):** 4K audiovisual premiere blending solo acoustic cello with 122 BPM melodic house along Highway 99 (Watch Page: https://keystonerecomposition.com/watch-midnight-on-the-sea-to-sky-122-bpm-melodic-house-cello-4k-premiere/ | YouTube: `m-6efjAobWU`).
+- **[How to Build an Autonomous Multi-Agent AI Brain in Google Antigravity (2026-10-24)](https://keystonerecomposition.com/2026/10/24/how-to-build-an-autonomous-multi-agent-ai-brain-in-google-antigravity-2026-architecture-guide/):** Complete 2026 architectural blueprint for persistent markdown memory, FastMCP servers, and self-healing verification gates (Watch Page: https://keystonerecomposition.com/watch-how-to-build-an-autonomous-multi-agent-ai-brain-in-google-antigravity-2026-architecture-guide/ | YouTube: `bEd-uWglqy8`).
+
+---
+
+## 5. XML Sitemaps & Machine-Readable Feeds
+
+- **Primary Sitemap Index:** https://keystonerecomposition.com/sitemap_index.xml
+- **Post Sitemap:** https://keystonerecomposition.com/post-sitemap.xml
+- **Page Sitemap:** https://keystonerecomposition.com/page-sitemap.xml
+- **Google Video Sitemap:** https://keystonerecomposition.com/keystone-video-sitemap.xml
+- **Extended LLM Context Dossier:** https://keystonerecomposition.com/llms-full.txt

@@ -950,3 +950,174 @@ add_filter( 'rank_math/sitemap/index', function( $xml ) {
     return $xml;
 }, 99 );
 
+// ── GAP-05 Verified Partner Showcase Renderer for /ecosystem-partners/ (.com) ──
+function keystone_recomp_get_verified_ecosystem_partners(): array {
+    return array(
+        array(
+            'domain'          => 'keystonepossibilities.ca',
+            'name'            => 'Keystone Possibilities Ltd. (Sister Sovereign Entity)',
+            'url'             => 'https://keystonepossibilities.ca/',
+            'category_badge'  => 'Licensed BC Residential Builder #52603 & BC Hydro ES54 Civil',
+            'corridor_region' => 'Squamish • Whistler • West Vancouver • North Vancouver',
+            'summary'         => 'Sister operating company directed by Wayne Stevenson, delivering Step Code 5 custom mountain estates, Bill 44 multiplex developments, and BC Hydro ES54 civil utility infrastructure across British Columbia.',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'modelcontextprotocol.io',
+            'name'            => 'Model Context Protocol (MCP Open Specification)',
+            'url'             => 'https://modelcontextprotocol.io/',
+            'category_badge'  => 'Open Agentic Tool-Calling & Context Standard',
+            'corridor_region' => 'Worldwide • Local Workstation & Multi-Agent Interoperability',
+            'summary'         => 'Open protocol standard governing typed FastMCP tool schemas, deterministic JSON-RPC transport, and sandboxed context routing across the 28-agent Keystone Studio orchestration stack.',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'glama.ai',
+            'name'            => 'Glama.ai — Open MCP Server & Agent Registry',
+            'url'             => 'https://glama.ai/mcp/servers',
+            'category_badge'  => 'Verified Model Context Protocol Server Directory',
+            'corridor_region' => 'Worldwide • Open-Source FastMCP & DevTools Ecosystem',
+            'summary'         => 'Global registry indexing production Model Context Protocol (MCP) servers, typed tool schemas, and local workstation agentic integrations.',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'pulsemcp.com',
+            'name'            => 'PulseMCP — Model Context Protocol Ecosystem Hub',
+            'url'             => 'https://www.pulsemcp.com/',
+            'category_badge'  => 'MCP Server Discovery & Agentic Architecture Index',
+            'corridor_region' => 'Worldwide • Autonomous Multi-Agent Engineering',
+            'summary'         => 'Curated directory and technical intelligence hub tracking open-source FastMCP servers, Chrome CDP automation bridges, and multi-agent developer workflows.',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'infoq.com',
+            'name'            => 'InfoQ — Enterprise Software & Agentic AI Architecture',
+            'url'             => 'https://www.infoq.com/ai-ml-data-eng/',
+            'category_badge'  => 'Enterprise AI Systems & Distributed Architecture Editorial',
+            'corridor_region' => 'Worldwide • New York • London • Executive Engineering',
+            'summary'         => 'Practitioner-driven software architecture publication covering multi-agent orchestration patterns, local LLM workstation economics, and deterministic production engineering.',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'deepmind.google',
+            'name'            => 'Google Gemini & Antigravity Agentic Orchestration',
+            'url'             => 'https://deepmind.google/technologies/gemini/',
+            'category_badge'  => 'Frontier Multimodal Reasoning & Agentic IDE Stack',
+            'corridor_region' => 'Worldwide • BYOK Local Workstation & Cloud Inference',
+            'summary'         => 'Core frontier multimodal reasoning engine integrated alongside DeepSeek R1 and Grok 3 inside the Keystone Studio 28-agent autonomous workstation.',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'open.spotify.com',
+            'name'            => 'Spotify Official Artist Catalog — Keystone Recomposition',
+            'url'             => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+            'category_badge'  => 'Official DSP Streaming & Bio-Acoustic Catalog',
+            'corridor_region' => 'Worldwide • 22 Official Releases • 216 ISRC Masters',
+            'summary'         => 'Verified Spotify Artist hub streaming all 22 official Keystone Recomposition releases engineered for deep-work cognitive cadence, metabolic training, and circadian recovery.',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'musicbrainz.org',
+            'name'            => 'MusicBrainz Open Music Knowledge Graph',
+            'url'             => 'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+            'category_badge'  => 'Canonical Music Entity & Discography Registry',
+            'corridor_region' => 'Worldwide • Open Metadata Authority',
+            'summary'         => 'Authoritative open music encyclopedia indexing Wayne Stevenson artist MBID (1a30328b-20b2-48bd-8e56-2884d3b040c0) and Keystone Recomposition label MBID (30027d0e-6aeb-4704-8792-a031c936c62a).',
+            'rel'             => 'noopener',
+        ),
+        array(
+            'domain'          => 'toolost.com',
+            'name'            => 'TooLost Digital Music Distribution',
+            'url'             => 'https://toolost.com/',
+            'category_badge'  => 'Global DSP Syndication & ISRC Master Delivery',
+            'corridor_region' => 'Worldwide • Catalog Ref TOOLOST3000939655',
+            'summary'         => 'Global digital music syndication infrastructure delivering ISRC-verified lossless masters across Spotify, Apple Music, YouTube Music, Amazon Music, and international DSP networks.',
+            'rel'             => 'nofollow noopener',
+        ),
+    );
+}
+
+function keystone_recomp_build_ecosystem_partner_cards_markup(): string {
+    $partners = keystone_recomp_get_verified_ecosystem_partners();
+    $cards = array();
+    foreach ( $partners as $p ) {
+        $domain  = esc_attr( $p['domain'] );
+        $name    = esc_html( $p['name'] );
+        $url     = esc_url( $p['url'] );
+        $badge   = esc_html( $p['category_badge'] );
+        $region  = esc_html( $p['corridor_region'] );
+        $summary = esc_html( $p['summary'] );
+        $rel     = esc_attr( $p['rel'] );
+        $cards[] = '<!-- KEYSTONE_PARTNER_CARD_START:' . $domain . ' -->' . "\n"
+            . '<article class="kp-partner-card" data-partner-domain="' . $domain . '" style="background:rgba(7,11,20,0.88); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(212,175,55,0.34); border-left:3.5px solid #d4af37; border-radius:18px; padding:26px 28px; margin:0 0 20px 0; color:#f8fafc; box-shadow:0 14px 36px rgba(0,0,0,0.45);">'
+            . '<div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px;">'
+            . '<span style="font-size:11px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#38bdf8;">' . $badge . '</span>'
+            . '<span style="font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#d4af37;">' . $region . '</span>'
+            . '</div>'
+            . '<h3 style="margin:0 0 10px 0; font-size:20px; font-weight:800; color:#ffffff; letter-spacing:0.2px;">' . $name . '</h3>'
+            . '<p style="margin:0 0 18px 0; font-size:14.5px; line-height:1.7; color:#cbd5e1;">' . $summary . '</p>'
+            . '<div>'
+            . '<a href="' . $url . '" target="_blank" rel="' . $rel . '" style="display:inline-flex; align-items:center; gap:8px; padding:9px 20px; border-radius:9999px; background:rgba(212,175,55,0.12); border:1px solid rgba(212,175,55,0.45); color:#d4af37; font-size:12.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none;">Visit ' . $domain . ' &rarr;</a>'
+            . '</div>'
+            . '</article>' . "\n"
+            . '<!-- KEYSTONE_PARTNER_CARD_END:' . $domain . ' -->';
+    }
+    return implode( "\n", $cards );
+}
+
+add_filter( 'the_content', 'keystone_recomp_inject_featured_ecosystem_partners', 20 );
+function keystone_recomp_inject_featured_ecosystem_partners( string $content ): string {
+    if ( false === strpos( $content, 'KEYSTONE_PARTNER_CARDS_CONTAINER_END' ) && ( ! function_exists( 'is_page' ) || ! is_page( 'ecosystem-partners' ) ) ) {
+        return $content;
+    }
+    if ( false === strpos( $content, 'data-partner-domain="glama.ai"' ) && false !== strpos( $content, 'KEYSTONE_PARTNER_CARDS_CONTAINER_START' ) ) {
+        $cards_html = keystone_recomp_build_ecosystem_partner_cards_markup();
+        $content    = (string) preg_replace(
+            '/<!--\s*KEYSTONE_PARTNER_CARDS_CONTAINER_START\s*-->.*?<!--\s*KEYSTONE_PARTNER_CARDS_CONTAINER_END\s*-->/is',
+            "<!-- KEYSTONE_PARTNER_CARDS_CONTAINER_START -->\n" . $cards_html . "\n<!-- KEYSTONE_PARTNER_CARDS_CONTAINER_END -->",
+            $content
+        );
+    }
+    if ( false !== strpos( $content, 'KEYSTONE_PARTNER_JSONLD_START' ) && false === strpos( $content, 'Glama.ai' ) ) {
+        $mentions = array();
+        foreach ( keystone_recomp_get_verified_ecosystem_partners() as $p ) {
+            $mentions[] = array(
+                '@type'      => 'Organization',
+                'name'       => $p['name'],
+                'url'        => $p['url'],
+                'areaServed' => $p['corridor_region'],
+            );
+        }
+        $schema_doc = array(
+            '@context'    => 'https://schema.org',
+            '@type'       => 'CollectionPage',
+            '@id'         => 'https://keystonerecomposition.com/ecosystem-partners/#collection',
+            'name'        => 'Verified Global AI, FastMCP, Editorial & Official Music Ecosystem Partners — Keystone Recomposition & Keystone AI Protocols',
+            'url'         => 'https://keystonerecomposition.com/ecosystem-partners/',
+            'description' => 'Verified AI & FastMCP open protocol registries, official music distribution & knowledge graph partners, and licensed sister builder attribution across the Keystone Recomposition ecosystem.',
+            'publisher'   => array(
+                '@type'      => 'Organization',
+                '@id'        => 'https://keystonerecomposition.com/#organization',
+                'name'       => 'Keystone Recomposition & Keystone AI Protocols',
+                'url'        => 'https://keystonerecomposition.com',
+                'sameAs'     => array(
+                    'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+                    'https://www.youtube.com/@KeystoneAIProtocols',
+                    'https://www.youtube.com/@KeyStoneRecomposition',
+                    'https://keystonepossibilities.ca/',
+                ),
+                'areaServed' => 'Worldwide',
+            ),
+            'mentions'    => $mentions,
+        );
+        $new_jsonld = "<!-- KEYSTONE_PARTNER_JSONLD_START -->\n<script type=\"application/ld+json\">"
+            . wp_json_encode( $schema_doc, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+            . "</script>\n<!-- KEYSTONE_PARTNER_JSONLD_END -->";
+        $content    = (string) preg_replace(
+            '/<!--\s*KEYSTONE_PARTNER_JSONLD_START\s*-->.*?<!--\s*KEYSTONE_PARTNER_JSONLD_END\s*-->/is',
+            $new_jsonld,
+            $content
+        );
+    }
+    return $content;
+}

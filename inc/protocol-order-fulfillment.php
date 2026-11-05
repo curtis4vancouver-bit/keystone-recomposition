@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'KEYSTONE_VISA_AND_VIDEOS_LIVE' ) ) {
-	define( 'KEYSTONE_VISA_AND_VIDEOS_LIVE', false ); // Flip to true once Wayne connects Stripe & finalizes walkthrough videos
+	define( 'KEYSTONE_VISA_AND_VIDEOS_LIVE', true ); // Live Stripe (rk_live_...OMwZ) & 4 Unlisted Walkthrough Videos Active
 }
 
 if ( ! defined( 'KEYSTONE_STRIPE_TIER1_URL' ) ) {
