@@ -280,26 +280,15 @@ function keystone_get_tier_email_attachments( string $tier ): array {
 	$vault_dir   = get_stylesheet_directory() . '/assets/vault_packs/';
 	$attachments = array();
 
+	// Use lightweight Combined Master PDF Guidebooks (0.9 MB - 3.1 MB total) so wp_mail() stays well under WordPress.com's 10MB SMTP ceiling
 	$candidate_files = array(
-		$vault_dir . 'Keystone_Tier01_Antigravity_Brain_And_Flow_Prompt_Pack.zip',
-		$vault_dir . 'tier01_pdfs/KR_T1_01_AI_Brain_Workspace_QuickStart.pdf',
-		$vault_dir . 'tier01_pdfs/KR_T1_02_AGENTS_MD_Memory_And_Rules_Guide.pdf',
-		$vault_dir . 'tier01_pdfs/KR_T1_03_Google_Flow_Basic_10s_Video_Guide.pdf',
-		$vault_dir . 'tier01_pdfs/KR_T1_04_Scene_Prompt_Templates_And_Setup_Support.pdf',
+		$vault_dir . 'tier01_pdfs/KR_T1_00_ALL_4_GUIDES_COMBINED.pdf',
 	);
 	if ( '2' === $tier || '3' === $tier ) {
-		$candidate_files[] = $vault_dir . 'Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip';
-		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_05_Website_Builder_And_RankMath_SEO.pdf';
-		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_06_YouTube_Brand_Channel_And_Tag_Stack.pdf';
-		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_07_Multi_Agent_Role_Swarm_Prompts.pdf';
-		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_08_B2B_DNS_MX_Lead_Verification_Outreach.pdf';
-		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_09_30_Day_Omnichannel_Publishing_Blueprint.pdf';
+		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_00_ALL_5_TIER02_GUIDES_COMBINED.pdf';
 	}
 	if ( '3' === $tier ) {
-		$candidate_files[] = $vault_dir . 'Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip';
-		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_10_Tauri_v2_Desktop_Toolchain_Scaffold.pdf';
-		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_11_Command_Center_UI_And_Rust_IPC.pdf';
-		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_12_Compiling_Signing_Windows_EXE.pdf';
+		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_00_ALL_3_TIER03_GUIDES_COMBINED.pdf';
 	}
 	foreach ( $candidate_files as $fp ) {
 		if ( file_exists( $fp ) && is_readable( $fp ) ) {
@@ -1553,14 +1542,18 @@ function keystone_send_tier_fulfillment_email(
 	$subject_prefix = $sandbox_mode ? '[SANDBOX TEST] ' : '';
 	$buyer_subject  = sprintf( '%s[Keystone AI Protocols] %s — Walkthrough Video & Buyer Vault Ready (UID: %s)', $subject_prefix, $tier_info['name'], $user_uid );
 
+	// Use authenticated WordPress.com domain sender (prevents Gmail DMARC rejection of spoofed @gmail.com From header)
 	$headers = array(
 		'Content-Type: text/html; charset=UTF-8',
-		'From: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
-		'Reply-To: keystonerecomposition@gmail.com',
+		'Reply-To: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
 	);
 
 	$attachments = keystone_get_tier_email_attachments( $tier );
-	return (bool) @wp_mail( $buyer_email, $buyer_subject, $email_body, $headers, $attachments );
+	$sent        = (bool) @wp_mail( $buyer_email, $buyer_subject, $email_body, $headers, $attachments );
+	if ( ! $sent && ! empty( $attachments ) ) {
+		$sent = (bool) @wp_mail( $buyer_email, $buyer_subject, $email_body, $headers );
+	}
+	return $sent;
 }
 
 /**
