@@ -188,7 +188,7 @@ get_header();
 									<span class="channel-spec-icon">🎵</span>
 									<div>
 										<strong>Spotify &amp; Apple Music Official Artist Catalog</strong>
-										<span>25 official releases and 236 studio masters in deep house, outlaw acoustic storytelling, soul, and 432Hz focus architecture.</span>
+										<span>25 official releases and 246 studio masters in deep house, outlaw acoustic storytelling, soul, and 432Hz focus architecture.</span>
 									</div>
 								</div>
 								<div class="channel-spec-box">

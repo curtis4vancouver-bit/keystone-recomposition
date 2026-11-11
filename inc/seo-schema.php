@@ -186,6 +186,11 @@ function keystone_recomposition_child_inject_schema() {
         $entity_graph[] = keystone_get_music_group_schema();
     }
 
+    // 3B. Always emit canonical ProfilePage on /founder/ when Rank Math is inactive (and upgrade Rank Math's richSnippet node when active)
+    if ( $is_founder_page && class_exists( 'RankMath' ) ) {
+        $entity_graph[] = keystone_get_founder_profile_page_schema();
+    }
+
     // 4. Emit Person, WebSite & ProfilePage directly when Rank Math is inactive (Rank Math @graph handles them when active)
     if ( ! class_exists( 'RankMath' ) ) {
         if ( $is_founder_page ) {
@@ -808,12 +813,8 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
             }
             if ( is_array( $node ) && isset( $node['@type'] ) ) {
                 $types = (array) $node['@type'];
-                if ( $is_founder_page && ( in_array( 'WebPage', $types, true ) || in_array( 'ProfilePage', $types, true ) ) ) {
-                    $node['@type']      = 'ProfilePage';
-                    $node['@id']        = 'https://keystonerecomposition.com/founder/#profilepage';
-                    $node['mainEntity'] = array( '@id' => $person_id );
-                    $node['about']      = array( '@id' => 'https://keystonerecomposition.com/#organization' );
-                    $found_profile_page = true;
+                if ( $is_founder_page && array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage', 'AboutPage', 'ProfilePage' ) ) ) {
+                    continue;
                 }
                 if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage' ) ) ) {
                     $node['author'] = $author_pointer;
@@ -824,21 +825,13 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
         if ( ! $found_person ) {
             $clean_graph[] = $person_node;
         }
-        if ( $is_founder_page && ! $found_profile_page ) {
-            $clean_graph[] = array(
-                '@type'      => 'ProfilePage',
-                '@id'        => 'https://keystonerecomposition.com/founder/#profilepage',
-                'url'        => 'https://keystonerecomposition.com/founder/',
-                'name'       => 'Wayne Stevenson — Founder, AI Architect & BC Licensed Builder #52603',
-                'mainEntity' => array( '@id' => $person_id ),
-                'about'      => array( '@id' => 'https://keystonerecomposition.com/#organization' ),
-            );
-        }
         $data['@graph'] = $clean_graph;
         return $data;
     }
 
     // 2. Standard Rank Math associative $data array: keep strictly ONE top-level Person node
+    $req_founder_path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
+    $is_founder_page  = ( function_exists( 'is_page' ) && is_page( 'founder' ) ) || 'founder' === $req_founder_path;
     $found_top_person = false;
     foreach ( array_keys( $data ) as $key ) {
         if ( ! is_array( $data[ $key ] ) ) {
@@ -852,6 +845,10 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
             } else {
                 unset( $data[ $key ] );
             }
+            continue;
+        }
+        if ( $is_founder_page && ( 'richSnippet' === $key || array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage', 'AboutPage', 'ProfilePage' ) ) ) ) {
+            unset( $data[ $key ] );
             continue;
         }
         if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle' ) ) ) {
@@ -872,30 +869,6 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
     }
     if ( ! $found_top_person ) {
         $data['Person'] = $person_node;
-    }
-    $req_founder_path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
-    $is_founder_page  = ( function_exists( 'is_page' ) && is_page( 'founder' ) ) || 'founder' === $req_founder_path;
-    if ( $is_founder_page ) {
-        if ( isset( $data['WebPage'] ) && is_array( $data['WebPage'] ) ) {
-            $data['WebPage']['@type']      = 'ProfilePage';
-            $data['WebPage']['@id']        = 'https://keystonerecomposition.com/founder/#profilepage';
-            $data['WebPage']['mainEntity'] = array( '@id' => $person_id );
-            $data['WebPage']['about']      = array( '@id' => 'https://keystonerecomposition.com/#organization' );
-            $data['ProfilePage']           = $data['WebPage'];
-            unset( $data['WebPage'] );
-        } elseif ( ! isset( $data['ProfilePage'] ) || ! is_array( $data['ProfilePage'] ) ) {
-            $data['ProfilePage'] = array(
-                '@type'      => 'ProfilePage',
-                '@id'        => 'https://keystonerecomposition.com/founder/#profilepage',
-                'url'        => 'https://keystonerecomposition.com/founder/',
-                'name'       => 'Wayne Stevenson — Founder, AI Architect & BC Licensed Builder #52603',
-                'mainEntity' => array( '@id' => $person_id ),
-                'about'      => array( '@id' => 'https://keystonerecomposition.com/#organization' ),
-            );
-        }
-    }
-    if ( isset( $data['ProfilePage'] ) && is_array( $data['ProfilePage'] ) ) {
-        $data['ProfilePage']['mainEntity'] = array( '@id' => $person_id );
     }
 
     return $data;

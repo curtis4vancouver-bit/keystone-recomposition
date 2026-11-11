@@ -182,7 +182,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
             <div class="kr-vault-actions">
                 <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="kr-vault-link-pill" id="krVaultProtocolsBtn">⚡ AI Protocols Vault</a>
-                <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">24-Release Catalog</a>
+                <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">25-Release Catalog</a>
                 <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="kr-vault-spotify-pill">Spotify OAC ↗</a>
             </div>
             <button type="button" id="krVaultMinBtn" class="kr-vault-min-btn" aria-label="Minimize or Expand Audio Bar" title="Minimize / Expand Audio Vault">&#9662;</button>
