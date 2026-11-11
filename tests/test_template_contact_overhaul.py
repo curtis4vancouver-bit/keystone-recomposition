@@ -129,7 +129,7 @@ class TestTemplateContactOverhaul:
 
         assert "spotify" in card_1_lower
         assert "25 official releases" in card_1_lower or "25 releases" in card_1_lower
-        assert "236" in card_1
+        assert "246" in card_1
         assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in card_1
         assert "https://music.apple.com/us/artist/keystone-recomposition/1862989452" in card_1
         assert 'target="_blank"' in card_1

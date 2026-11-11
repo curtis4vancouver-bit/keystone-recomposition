@@ -1796,7 +1796,7 @@ function keystone_get_all_albums(): array {
             'bpm'          => 124,
             'track_count'  => 13,
             'cover_image'  => get_stylesheet_directory_uri() . '/assets/images/albums/iron_and_ice.jpg',
-            'spotify_url'  => 'https://open.spotify.com/album/live_album_21_of_22',
+            'spotify_url'  => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'apple_url'    => 'https://music.apple.com/us/artist/keystone-recomposition/1862989452',
             'youtube_url'  => 'https://www.youtube.com/@KeyStoneRecomposition',
             'smartlink'    => 'https://too.fm/dxex5zr',
