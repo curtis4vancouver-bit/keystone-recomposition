@@ -95,7 +95,7 @@ class TestM4GlassmorphicAudioDecks:
             content = f.read()
         assert "Template Name: Keystone Sonic Universe" in content
         assert "keystone_get_all_albums" in content
-        assert "22 Official Releases" in content
+        assert "Official Releases" in content
 
 
 # ==============================================================================

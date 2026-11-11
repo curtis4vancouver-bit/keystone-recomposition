@@ -28,17 +28,23 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
 
                 <!-- Featured Prominent Subscribe Row -->
-                <div style="display: flex; justify-content: center; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 20px;">
                     <!-- YouTube Subscribe Pill: @KEYSTONERECOMPOSITION (Gold Border + Gold-to-White Letter Pulse on Hover) -->
-                    <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-gold" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; height: 56px; min-width: 340px; padding: 0 32px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.90rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#f6d365" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 8px rgba(246, 211, 101, 0.75)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-gold" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; height: 54px; min-width: 296px; padding: 0 24px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#f6d365" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 8px rgba(246, 211, 101, 0.75)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         <span class="ks-wave-text">SUBSCRIBE &bull; @KEYSTONERECOMPOSITION</span>
                     </a>
 
                     <!-- YouTube Subscribe Pill: @KEYSTONEAIPROTOCOLS (Blue Border + Blue-to-White Letter Pulse on Hover) -->
-                    <a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-cyan" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 56px; height: 56px; min-width: 340px; padding: 0 32px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.90rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#38bdf8" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.75)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="footer-subscribe-btn footer-subscribe-btn-cyan" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; height: 54px; min-width: 296px; padding: 0 24px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#38bdf8" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.75)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         <span class="ks-wave-text">SUBSCRIBE &bull; @KEYSTONEAIPROTOCOLS</span>
+                    </a>
+
+                    <!-- YouTube Subscribe Pill: @KEYSTONEPOSSIBILITIESLTD (Sovereign Builder #52603 Channel) -->
+                    <a href="https://www.youtube.com/@KeystonePossibilitiesLtd?sub_confirmation=1" target="_blank" rel="noopener" class="footer-subscribe-btn footer-subscribe-btn-gold" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; height: 54px; min-width: 296px; padding: 0 24px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#d4af37" class="footer-btn-play-svg" style="filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.75)); flex-shrink: 0;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <span class="ks-wave-text">SUBSCRIBE &bull; @KEYSTONEPOSSIBILITIESLTD</span>
                     </a>
                 </div>
 
@@ -46,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;">
                     
                     <!-- Facebook Page -->
-                    <a href="https://www.facebook.com/profile.php?id=61561081702787" target="_blank" rel="noopener noreferrer" class="footer-social-circle" aria-label="Facebook Page" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px; border-radius: 50%; background: rgba(8, 8, 8, 0.95); border: 1.5px solid rgba(212, 175, 55, 0.35); color: #f6d365; display: inline-flex; align-items: center; justify-content: center; text-decoration: none !important; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);">
+                    <a href="https://www.facebook.com/KeystoneRecomposition" target="_blank" rel="noopener noreferrer" class="footer-social-circle" aria-label="Facebook Page" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px; border-radius: 50%; background: rgba(8, 8, 8, 0.95); border: 1.5px solid rgba(212, 175, 55, 0.35); color: #f6d365; display: inline-flex; align-items: center; justify-content: center; text-decoration: none !important; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
 
@@ -71,10 +77,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- B. Centered High-End Copyright & Credentials Line -->
             <div class="footer-copyright-center" style="margin-bottom: 28px; line-height: 1.6; text-align: center;">
                 <p class="footer-copyright-primary" style="margin: 0 0 6px 0; color: #CBD5E1; font-weight: 500; font-size: 0.86rem; letter-spacing: 0.02em;">
-                    Copyright &copy; 2023–2026 Keystone Possibilities Ltd &amp; Keystone Recomposition &bull; All Rights Reserved.
+                    Copyright &copy; 2023–2026 <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color: #f8fafc; text-decoration: none !important; border-bottom: 1px solid rgba(212, 175, 55, 0.45);">Keystone Possibilities Ltd</a> &amp; Keystone Recomposition &bull; All Rights Reserved.
                 </p>
                 <p class="footer-copyright-sub" style="margin: 0; color: #c5a059; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;">
-                    Certified BC Housing Residential Builder #52603 &bull; 2-5-10 National Home Warranty &bull; BC Hydro Civil Contractor ES54
+                    <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color: #d4af37 !important; text-decoration: none !important;">Certified BC Housing Residential Builder #52603 ↗</a> &bull; 2-5-10 National Home Warranty &bull; BC Hydro Civil Contractor ES54 &bull; <a href="https://keystonepossibilities.ca/feasibility-plan/" target="_blank" rel="noopener" style="color: #38bdf8 !important; text-decoration: none !important;">48-Hr BC Custom &amp; Multiplex Feasibility Plan ↗</a>
                 </p>
             </div>
 
@@ -90,7 +96,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Sonic Universe Catalog:</strong>
                         <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Sovereign Reverb (10-Track Master)</a>
                         <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• APOLLO Protocol (Melodic Deep House)</a>
-                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 22 Official Releases (20 Studio Albums)</a>
+                        <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• 25 Official Releases (23 Studio Albums)</a>
                         <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="footer-cyan-link" style="color: #38bdf8 !important; text-decoration: none !important; display: block; margin-bottom: 5px; transition: color 0.2s ease;">• Global Streaming Distribution ↗</a>
                     </div>
 
@@ -116,9 +122,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div class="regional-col">
                         <strong style="color: #ffffff; display: block; margin-bottom: 8px; font-size: 0.85rem;">Direct Authority &amp; Contact:</strong>
                         <span class="founder-title-blue" style="color: #38bdf8 !important; font-weight: 700; font-size: 0.82rem; display: block; margin-bottom: 4px;">Wayne Stevenson // Principal Builder</span>
-                        <span class="license-white" style="color: #f6d365 !important; font-weight: 600; font-size: 0.80rem; display: block; margin-bottom: 4px;">🏛️ Certified BC Housing Builder #52603</span>
+                        <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" class="license-white" style="color: #f6d365 !important; font-weight: 600; font-size: 0.80rem; display: block; margin-bottom: 4px; text-decoration: none !important; transition: color 0.2s ease;">🏛️ Certified BC Housing Builder #52603 ↗</a>
+                        <a href="https://keystonepossibilities.ca/feasibility-plan/" target="_blank" rel="noopener" style="color: #d4af37 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important; transition: color 0.2s ease;">• BC Custom Estates &amp; 48-Hr Feasibility Plan ↗</a>
                         <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" style="color: #94a3b8; text-decoration: none !important; display: block; margin-bottom: 4px; font-size: 0.80rem; transition: color 0.2s ease;">• Wayne Stevenson Executive Dossier</a>
-                        <a href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>" class="sister-flagship-link" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• PropTech &amp; AI Systems Case Studies →</a>
+                        <a href="<?php echo esc_url( home_url( '/ecosystem-partners/' ) ); ?>" class="sister-flagship-link" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• PropTech &amp; AI Systems Ecosystem →</a>
                         <a href="mailto:keystonerecomposition@gmail.com" style="color: #38bdf8 !important; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.80rem; text-decoration: none !important;">• Direct Email: keystonerecomposition@gmail.com</a>
                         <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="consultation-sub-link" style="color: #94A3B8 !important; font-size: 0.80rem; display: block; text-decoration: none !important;">• Schedule Direct Builder Consultation</a>
                     </div>
@@ -131,11 +138,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div class="empire-left">
                     <span class="network-title-gold" style="color: #d4af37; font-weight: 700; letter-spacing: 0.04em;">⚔️ KEYSTONE EMPIRE NETWORK</span> 
                     <span class="network-sep" style="color: rgba(255, 255, 255, 0.2); margin: 0 6px;">|</span> 
-                    <span class="network-desc">Keystone Recomposition — Evidence-Based AI Systems, Sonic Architecture &amp; Lifestyle Investments</span>
+                    <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" class="sister-link" style="color: #d4af37; text-decoration: none !important; font-weight: 600;">🏛️ BC Custom Estates, Bill 44 Multiplexes &amp; ES54 Civil — Keystone Possibilities Ltd. (#52603) ↗</a>
                 </div>
-                <div class="empire-right">
+                <div class="empire-right" style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                    <a href="https://keystonepossibilities.ca/feasibility-plan/" target="_blank" rel="noopener" style="color: #38bdf8; text-decoration: none !important; font-weight: 600;">48-Hr Feasibility Plan ↗</a>
+                    <span style="color: rgba(255, 255, 255, 0.2);">|</span>
                     <span class="sister-label">Executive Leadership:</span> 
-                    <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="sister-link" style="color: #f6d365; text-decoration: none !important; font-weight: 600;">Wayne Stevenson — Founder Dossier &amp; Architecture Roadmap →</a>
+                    <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="sister-link" style="color: #f6d365; text-decoration: none !important; font-weight: 600;">Wayne Stevenson — Founder Dossier →</a>
                 </div>
             </div>
 
@@ -173,7 +182,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
             <div class="kr-vault-actions">
                 <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="kr-vault-link-pill" id="krVaultProtocolsBtn">⚡ AI Protocols Vault</a>
-                <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">22-Release Catalog</a>
+                <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-vault-link-pill">24-Release Catalog</a>
                 <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="kr-vault-spotify-pill">Spotify OAC ↗</a>
             </div>
             <button type="button" id="krVaultMinBtn" class="kr-vault-min-btn" aria-label="Minimize or Expand Audio Bar" title="Minimize / Expand Audio Vault">&#9662;</button>

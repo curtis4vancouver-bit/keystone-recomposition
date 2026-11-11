@@ -1,8 +1,8 @@
 <?php
 /**
  * Template Name: Keystone Sonic Universe
- * Description: Master 22-Release Discography, Auto-Loaded 4K Music Video + 9:16 Short, 432Hz Harmonic Graph & Spotify Stream Hub
- * Version: 4.6.0 (PHP 8.2+ Strict Types — Clean Cover Art, Protected Catalog Metadata & Segmented Command Dock)
+ * Description: Master 24-Release Discography, Auto-Loaded 4K Music Video + 9:16 Short, 432Hz Harmonic Graph & Spotify Stream Hub
+ * Version: 4.6.1 (PHP 8.2+ Strict Types — Clean Cover Art, Protected Catalog Metadata & Segmented Command Dock)
  */
 
 declare(strict_types=1);
@@ -141,17 +141,17 @@ $su_recent_posts = get_posts(
     )
 );
 
-$su_feat_title       = 'Heavy Civil Focus Keystone Recomposition: Official 4K Somatic Deep House Release (2026)';
-$su_feat_excerpt     = 'Engineered in Squamish, BC by Wayne Stevenson — uniting 122 BPM warm analog sub-bass foundations with expressive solo cello phrasing and a continuous 4K visual film assembled in DaVinci Resolve Studio.';
-$su_feat_link        = home_url( '/2026/10/23/heavy-civil-focus-keystone-recomposition/' );
-$su_feat_date        = 'October 2026';
-$su_feat_long_id     = 'nKx8DiB_heM';
-$su_feat_short_id    = '9Aa98IGWKpU';
-$su_feat_short_title = 'Heavy Civil Focus — 9:16 Somatic Short';
-$su_feat_short_desc  = '24-Bit / 48kHz Lossless Somatic Deep House & Solo Cello Vertical Drop • Too Lost Digital Distribution';
+$su_feat_title       = 'Diesel in the Rain — Official 4K Music Video | Whiskey on a Wednesday (2026)';
+$su_feat_excerpt     = 'Produced in Squamish, BC by Wayne Stevenson — uniting gritty baritone storytelling, fingerpicked steel-string acoustic guitar, crying pedal steel, and warm 808 sub-bass with a continuous 4K visual film.';
+$su_feat_link        = home_url( '/2026/11/10/diesel-in-the-rain/' );
+$su_feat_date        = 'November 2026';
+$su_feat_long_id     = 'nyQwl-7-vH0';
+$su_feat_short_id    = 'Omt_pYMlRSM';
+$su_feat_short_title = 'Diesel in the Rain — 9:16 Official Short';
+$su_feat_short_desc  = '24-Bit / 48kHz Modern Outlaw Country-Trap & Acoustic Vertical Drop • Too Lost Digital Distribution';
 
 $su_matched_post   = null;
-$su_fallback_short = '9Aa98IGWKpU';
+$su_fallback_short = 'Omt_pYMlRSM';
 
 foreach ( $su_recent_posts as $su_p ) {
     if ( ! ( $su_p instanceof WP_Post ) ) {
@@ -165,12 +165,24 @@ foreach ( $su_recent_posts as $su_p ) {
         || str_contains( $slug, 'sovereign-reverb' )
         || str_contains( $slug, 'heavy-civil-focus' )
         || str_contains( $slug, 'peak-intensity' )
+        || str_contains( $slug, 'diesel-in-the-rain' )
+        || str_contains( $slug, 'three-miles-past' )
+        || str_contains( $slug, 'gravel-on-the-tailgate' )
+        || str_contains( $slug, 'whiskey-on-a-wednesday' )
+        || str_contains( $slug, 'don-t-say-you-re-fine' )
+        || str_contains( $slug, 'dont-say-youre-fine' )
+        || str_contains( $slug, 'the-morning-march' )
         || str_contains( $title, 'somatic deep house' )
-        || str_contains( $title, 'official 4k music video' );
+        || str_contains( $title, 'official 4k' )
+        || str_contains( $title, '4k music video' )
+        || str_contains( $title, 'official music video' )
+        || str_contains( $title, 'whiskey on a wednesday' )
+        || str_contains( $title, 'diesel in the rain' )
+        || str_contains( $title, "don't say you're fine" );
 
     if ( $is_music ) {
         $ids = keystone_su_extract_youtube_ids( (string) $su_p->post_content );
-        if ( ! empty( $ids['short'] ) && '9Aa98IGWKpU' === $su_fallback_short ) {
+        if ( ! empty( $ids['short'] ) && 'Omt_pYMlRSM' === $su_fallback_short ) {
             $su_fallback_short = $ids['short'];
         }
         if ( null === $su_matched_post && ! empty( $ids['long'] ) ) {
@@ -218,10 +230,10 @@ if ( $su_matched_post instanceof WP_Post ) {
                         <span class="ks-wave-text">// OFFICIAL ARTIST CHANNEL &bull; TOO LOST DIGITAL DISTRIBUTION</span>
                     </div>
                     
-                    <h1 class="sonic-hero-title">The Sonic Universe:<br><span class="cyan-gold-gradient-text">22 Official Releases</span></h1>
+                    <h1 class="sonic-hero-title">The Sonic Universe:<br><span class="cyan-gold-gradient-text"><?php echo esc_html( (string) $total_albums ); ?> Official Releases</span></h1>
                     
                     <p class="page-subtitle">
-                        Original electronic compositions, melodic progressive house, and somatic frequency soundscapes produced in Squamish, BC by Wayne Stevenson. Stream <?php echo esc_html( (string) $total_tracks ); ?> studio master tracks across <?php echo esc_html( (string) $studio_count ); ?> studio albums and 2 singles on Spotify, Apple Music, and YouTube.
+                        Original electronic compositions, melodic progressive house, outlaw acoustic storytelling, and somatic frequency soundscapes produced in Squamish, BC by Wayne Stevenson. Stream <?php echo esc_html( (string) $total_tracks ); ?> studio master tracks across <?php echo esc_html( (string) $studio_count ); ?> studio albums and 2 singles on Spotify, Apple Music, and YouTube.
                     </p>
 
                     <!-- HIGH-END STREAMING & SUBSCRIBE ACTION BAR (4 Equal Parallel Pure-Black Wave Buttons) -->
@@ -229,7 +241,7 @@ if ( $su_matched_post instanceof WP_Post ) {
                         <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="dsp-pill ks-p3-btn-gold su-dsp-btn" title="Follow on Spotify">
                             <span class="ks-wave-text">🎧 Follow on Spotify OAC</span>
                         </a>
-                        <a href="https://music.apple.com/search?term=Keystone%20Recomposition" target="_blank" rel="noopener noreferrer" class="dsp-pill ks-p3-btn-blue su-dsp-btn" title="Stream on Apple Music">
+                        <a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer" class="dsp-pill ks-p3-btn-blue su-dsp-btn" title="Stream on Apple Music">
                             <span class="ks-wave-text">🍎 Apple Music</span>
                         </a>
                         <a href="https://music.youtube.com/search?q=Keystone+Recomposition" target="_blank" rel="noopener noreferrer" class="dsp-pill ks-p3-btn-blue su-dsp-btn" title="Stream on YouTube Music">
@@ -243,7 +255,7 @@ if ( $su_matched_post instanceof WP_Post ) {
                     <!-- STUDIO AUDIO BANNER FRAME (WAYNE'S SYNTHESIZER PHOTO) -->
                     <div class="hero-banner-frame" style="margin-top: 36px;">
                         <img src="<?php echo esc_url( $theme_uri . '/assets/images/sonic_universe_banner.png' ); ?>" 
-                             alt="Keystone Recomposition 22-Release Sonic Universe Studio Banner" 
+                             alt="Keystone Recomposition <?php echo esc_attr( (string) $total_albums ); ?>-Release Sonic Universe Studio Banner" 
                              class="hero-banner-image" 
                              fetchpriority="high" />
                         <div class="banner-glass-reflection"></div>
@@ -378,7 +390,7 @@ if ( $su_matched_post instanceof WP_Post ) {
                         Master Catalog &amp; 432Hz Harmonic Music Graph
                     </h2>
                     <p style="color: #cbd5e1; font-size: 0.94rem; max-width: 740px; margin: 8px auto 0; line-height: 1.65;">
-                        Inspect real-time 432Hz frequency harmonic telemetry across all devices, or select any of the 22 official releases below to launch the interactive Spotify web player and full album tracklist.
+                        Inspect real-time 432Hz frequency harmonic telemetry across all devices, or select any of the <?php echo esc_html( (string) $total_albums ); ?> official releases below to launch the interactive Spotify web player and full album tracklist.
                     </p>
                 </div>
 
@@ -418,7 +430,7 @@ if ( $su_matched_post instanceof WP_Post ) {
                             ✦ OFFICIAL DISCOGRAPHY &bull; 12 RELEASES PER VIEW
                         </div>
                         <h3 class="recomp-grid-heading">
-                            22-Release Studio Master Catalog
+                            <?php echo esc_html( (string) $total_albums ); ?>-Release Studio Master Catalog
                         </h3>
                     </div>
 
@@ -715,11 +727,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const slug = (p.slug || '').toLowerCase();
                 const title = ((p.title && p.title.rendered) || '').toLowerCase();
                 if (cats.indexOf(1442) !== -1 && cats.indexOf(1538) === -1) return true;
-                if (slug.indexOf('iron-grace') !== -1 || slug.indexOf('sovereign-reverb') !== -1 || slug.indexOf('heavy-civil-focus') !== -1 || slug.indexOf('peak-intensity') !== -1 || title.indexOf('somatic deep house') !== -1 || title.indexOf('official 4k music video') !== -1) return true;
+                const musicSlugs = ['iron-grace', 'sovereign-reverb', 'heavy-civil-focus', 'peak-intensity', 'diesel-in-the-rain', 'three-miles-past', 'gravel-on-the-tailgate', 'whiskey-on-a-wednesday', 'don-t-say-you-re-fine', 'dont-say-youre-fine', 'the-morning-march'];
+                for (let m = 0; m < musicSlugs.length; m++) {
+                    if (slug.indexOf(musicSlugs[m]) !== -1) return true;
+                }
+                if (title.indexOf('somatic deep house') !== -1 || title.indexOf('official 4k') !== -1 || title.indexOf('4k music video') !== -1 || title.indexOf('official music video') !== -1 || title.indexOf('whiskey on a wednesday') !== -1 || title.indexOf('diesel in the rain') !== -1 || title.indexOf("don't say you're fine") !== -1) return true;
                 return false;
             };
 
-            let fallbackShort = '9Aa98IGWKpU';
+            let fallbackShort = 'Omt_pYMlRSM';
             for (let k = 0; k < posts.length; k++) {
                 if (isMusicPost(posts[k]) && posts[k].content && posts[k].content.rendered) {
                     const pr = suExtractYoutubeIds(posts[k].content.rendered);

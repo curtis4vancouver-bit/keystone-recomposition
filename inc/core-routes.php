@@ -42,7 +42,7 @@ function keystone_fast_core_routes_interceptor(): void {
         exit;
     }
 
-    if ( $slug === 'music-releases' ) {
+    if ( in_array( $slug, array( 'music', 'discography', 'music-releases' ), true ) ) {
         wp_safe_redirect( home_url( '/sonic-universe/' ), 301 );
         exit;
     }
@@ -57,8 +57,13 @@ function keystone_fast_core_routes_interceptor(): void {
         exit;
     }
 
-    if ( $slug === 'about' || $slug === 'about-the-founder' || $slug === 'about-the-founder-the-keystone-blueprint' ) {
+    if ( in_array( $slug, array( 'about', 'about-the-founder', 'about-the-founder-the-keystone-blueprint', 'wayne-stevenson' ), true ) ) {
         wp_safe_redirect( home_url( '/founder/' ), 301 );
+        exit;
+    }
+
+    if ( 'case-studies' === $slug ) {
+        wp_safe_redirect( home_url( '/ecosystem-partners/' ), 301 );
         exit;
     }
 
@@ -70,6 +75,11 @@ function keystone_fast_core_routes_interceptor(): void {
     if ( $slug === 'founder' ) {
         $file = get_stylesheet_directory() . '/template-founder-story.php';
         if ( file_exists( $file ) ) {
+            global $wp_query;
+            if ( $wp_query ) {
+                $wp_query->is_404  = false;
+                $wp_query->is_page = true;
+            }
             status_header( 200 );
             include $file;
             exit;
@@ -607,7 +617,7 @@ HTML;
 function keystone_get_article_content_sovereign_reverb(): string {
     return <<<'HTML'
 <!-- wp:paragraph {"className":"lead-paragraph"} -->
-<p class="lead-paragraph">Sound is not background decoration—it is neurochemical architecture. In high-performance engineering, deep creative flow states and sustained autonomic regulation require precise acoustic frequencies. Across 22 official releases (20 studio albums) and 216 cataloged tracks, Wayne Stevenson’s TooLost discography bridges electronic dance music, ambient soundscapes, and cellular circadian entrainment.</p>
+<p class="lead-paragraph">Sound is not background decoration—it is neurochemical architecture. In high-performance engineering, deep creative flow states and sustained autonomic regulation require precise acoustic frequencies. Across 25 official releases (23 studio albums) and 236 cataloged tracks, Wayne Stevenson’s TooLost discography bridges electronic dance music, outlaw acoustic storytelling, ambient soundscapes, and cellular circadian entrainment.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":2} -->

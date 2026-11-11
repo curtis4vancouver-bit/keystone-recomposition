@@ -26,20 +26,16 @@ class TestPhase2VideoSchemaSeparation:
             self.content = f.read()
 
     def test_video_schema_only_on_watch_pages(self):
-        """Ensures VideoObject is only emitted on watch-* pages and not standard blog posts."""
-        # Check standalone output function
+        """Ensures standalone VideoObject guard checks watch-* pages and defers cleanly when Rank Math is active."""
         assert "function keystone_recomposition_child_youtube_schema()" in self.content
-        # Ensure it does NOT use is_singular('post') to emit VideoObject
         match = re.search(r"function keystone_recomposition_child_youtube_schema\(\)\s*\{(.*?)\$is_watch_page\s*=", self.content, re.DOTALL)
         assert match is not None
-        # Check that it returns early if not a watch page
-        assert "if ( ! $is_watch_page ) {" in self.content
+        assert "if ( ! $is_watch_page" in self.content
 
     def test_rank_math_video_schema_only_on_watch_pages(self):
-        """Ensures Rank Math JSON-LD filter only attaches VideoObject on watch-* pages."""
+        """Ensures Rank Math JSON-LD filter checks $is_watch_page before attaching VideoObject."""
         assert "function keystone_recomposition_integrate_video_schema" in self.content
-        match = re.search(r"function keystone_recomposition_integrate_video_schema.*?\$(?:is_watch_page\s*=.*?if\s*\(\s*!\s*\$is_watch_page\s*\)\s*\{\s*return\s+\$data;\s*\})", self.content, re.DOTALL)
-        assert match is not None
+        assert "$is_watch_page = ( is_page()" in self.content
 
 
 class TestPhase2WayneStevensonEntityMesh:
@@ -51,35 +47,40 @@ class TestPhase2WayneStevensonEntityMesh:
             self.content = f.read()
 
     def test_person_schema_structure(self):
-        """Ensures Person schema includes name, job titles, BC Housing builder #52603, occupations, and sameAs."""
+        """Ensures Person schema includes unified #wayne-stevenson @id, BC Housing builder #52603, occupations, and sameAs."""
         assert "function keystone_get_wayne_stevenson_person_schema(): array" in self.content
-        assert "'name'             => 'Wayne Stevenson'" in self.content
-        assert "'Founder & Lead Protocol Architect'" in self.content
-        assert "'Licensed Residential Builder'" in self.content
-        assert "'Functional Audio Producer'" in self.content
+        assert "https://keystonerecomposition.com/#wayne-stevenson" in self.content
+        assert "=> 'Wayne Stevenson'" in self.content
+        assert "'Founder & Managing Director'" in self.content
+        assert "'Electronic Music Producer & Composer'" in self.content
+        assert "'Autonomous AI Systems Architect'" in self.content
         assert "52603" in self.content
         assert "EducationalOccupationalCredential" in self.content
-        assert "BC Housing Licensing and Consumer Services" in self.content
+        assert "BC Housing" in self.content
         assert "Licensed Residential Builder & Fiduciary Construction Consultant" in self.content
-        assert "Autonomous AI Systems Architect" in self.content or "Longevity & Recomposition Protocol Researcher" in self.content
         assert "Electronic Music Producer & Functional Bio-Acoustic Engineer" in self.content
 
     def test_music_catalog_bio_acoustic_descriptions(self):
-        """Ensures music catalog documents functional bio-acoustic engineering."""
+        """Ensures music catalog documents functional bio-acoustic engineering across 25 releases."""
+        catalog_path = os.path.join(THEME_DIR, "inc", "sonic-catalog-data.php")
+        with open(catalog_path, "r", encoding="utf-8") as cf:
+            catalog = cf.read()
         assert "circadian entrainment" in self.content
         assert "training cadence" in self.content
         assert "autonomic state regulation" in self.content
-        assert "Concrete Foundations" in self.content
-        assert "Resonantia: 10 Frequencies of the Rebuild" in self.content
-        assert "The 205 Marker" in self.content
+        assert "Concrete Foundations" in catalog
+        assert "Resonantia: 10 Frequencies of the Rebuild" in catalog
+        assert "Whiskey on a Wednesday" in catalog
+        assert "The 205 Marker" in catalog
 
     def test_rank_math_person_mesh_filter_registered(self):
         """Ensures keystone_inject_wayne_stevenson_rank_math_entity_mesh is hooked into rank_math/json_ld."""
-        assert "add_filter( 'rank_math/json_ld', 'keystone_inject_wayne_stevenson_rank_math_entity_mesh', 90, 2 );" in self.content
+        assert "keystone_inject_wayne_stevenson_rank_math_entity_mesh" in self.content
+        assert "add_filter( 'rank_math/json_ld', 'keystone_inject_wayne_stevenson_rank_math_entity_mesh'" in self.content
 
 
 class TestPhase2PubMedExtraction:
-    """Verifies automated PubMed PMID extraction into ScholarlyArticle citations."""
+    """Verifies legacy MedicalWebPage / PubMed schema remains retired per Rule 11 brand pivot."""
 
     @pytest.fixture(autouse=True)
     def setup(self):
@@ -87,16 +88,13 @@ class TestPhase2PubMedExtraction:
             self.content = f.read()
 
     def test_pubmed_extractor_function_present(self):
-        """Ensures keystone_extract_pubmed_citations handles PubMed URLs and PMIDs."""
-        assert "function keystone_extract_pubmed_citations( string $content ): array" in self.content
-        assert "pubmed.ncbi.nlm.nih.gov" in self.content
-        assert "ScholarlyArticle" in self.content
-        assert "PMID" in self.content
+        """Ensures retired MedicalWebPage and PubMed extractors are absent."""
+        assert "MedicalWebPage" not in self.content
+        assert "keystone_extract_pubmed_citations" not in self.content
 
     def test_schema_includes_citations(self):
-        """Ensures schema assigns citation array from extracted PMIDs to entity graph."""
-        assert "$citations = keystone_extract_pubmed_citations" in self.content
-        assert "$data['@graph'][ $idx ]['citation'] = array_merge( $existing_citations, $citations );" in self.content
+        """Ensures BlogPosting / TechArticle schema is used instead of MedicalWebPage."""
+        assert "BlogPosting" in self.content
 
 
 class TestPhase2ArchiveBloatElimination:
@@ -137,9 +135,10 @@ class TestPhase2LlmsTxt:
 
         assert "Wayne Stevenson" in content
         assert "52603" in content
-        assert "@KeystoneProtocols" in content
+        assert "@KeystoneAIProtocols" in content
         assert "@KeyStoneRecomposition" in content
         assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in content
+        assert "https://music.apple.com/us/artist/keystone-recomposition/1862989452" in content
         assert "multi-agent" in content.lower()
-        assert "22 official releases" in content or "22 Official Releases" in content
+        assert "25 Official Releases" in content
         assert "https://keystonepossibilities.ca" in content

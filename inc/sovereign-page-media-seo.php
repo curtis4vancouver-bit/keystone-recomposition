@@ -118,10 +118,10 @@ function keystone_execute_sovereign_page_media_seo_sync(): array {
             'clean_title'  => 'Sonic Universe',
             'slug'         => 'sonic-universe',
             'asset_rel'    => 'assets/images/sonic_universe_banner.png',
-            'attach_title' => 'Keystone Sonic Universe — 22 Official Releases',
+            'attach_title' => 'Keystone Sonic Universe — 25 Official Releases',
             'focus_kw'     => 'Keystone Sonic Universe',
-            'seo_title'    => 'Sonic Universe %sep% 22 Official Releases & Spotify OAC Discography',
-            'seo_desc'     => 'Wayne Stevenson official music catalog: 22 releases, 20 studio albums, 216 master recordings distributed worldwide via TooLost Digital on Spotify OAC.',
+            'seo_title'    => 'Sonic Universe %sep% 25 Official Releases & Spotify Discography',
+            'seo_desc'     => 'Wayne Stevenson official music catalog: 25 releases, 23 studio albums, 246 master recordings distributed worldwide via TooLost Digital on Spotify & Apple Music.',
         ),
         'investments' => array(
             'preferred_id' => 2364,

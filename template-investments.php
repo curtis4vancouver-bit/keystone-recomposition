@@ -41,7 +41,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
 
                     <p class="investments-hero-subtitle">
-                        Deploying balance-sheet capital across quantitative market intelligence, one-time AI Brain &amp; desktop workstation architectures, 22 official 432Hz studio master releases, and international architectural footholds in Mexico and the European Union.
+                        Deploying balance-sheet capital across quantitative market intelligence, one-time AI Brain &amp; desktop workstation architectures, 24 official studio master releases, and international architectural footholds in Mexico and the European Union.
                     </p>
 
                     <!-- 4 Equal Parallel Quick-Jump Navigation Buttons -->
@@ -162,7 +162,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <span class="cyan-gold-gradient-text">International Sovereign Assets</span>
                         </h2>
                         <p class="pillars-section-desc">
-                            Combining high-margin digital intellectual property—our 3-Tier AI Brain, Multi-Agent Swarm &amp; Custom Tauri Desktop App Vault plus 22 official 432Hz studio releases—with international real estate footholds across Mexico and the European Union.
+                            Combining high-margin digital intellectual property—our 3-Tier AI Brain, Multi-Agent Swarm &amp; Custom Tauri Desktop App Vault plus 24 official studio releases—with international real estate footholds across Mexico and the European Union.
                         </p>
                     </div>
 
@@ -185,7 +185,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <h3 class="pillar-title inv-level-pillar-title">AI Brain, Multi-Agent Swarms &amp; Tauri Desktop App Suite</h3>
                                 <p class="pillar-summary inv-level-pillar-summary">
-                                    Sovereign digital systems generating scalable one-time revenue with zero monthly cloud lock-in—uniting our 3-Tier AI Protocols Vault with our 22-release 432Hz commercial music catalog.
+                                    Sovereign digital systems generating scalable one-time revenue with zero monthly cloud lock-in—uniting our 3-Tier AI Protocols Vault with our 25-release commercial music catalog.
                                 </p>
                                 <div class="pillar-detail-list inv-level-detail-list">
                                     <div class="pillar-detail-item inv-level-detail-box">
@@ -206,7 +206,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                         <span class="detail-icon">🖥️</span>
                                         <div>
                                             <strong>$800 Tauri Desktop App &amp; 432Hz Music IP:</strong>
-                                            <span>Custom Rust &amp; WebView2 desktop command center build guide plus 100% master ownership across 22 official 432Hz studio releases.</span>
+                                            <span>Custom Rust &amp; WebView2 desktop command center build guide plus 100% master ownership across 24 official studio releases.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -424,7 +424,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <span class="inv-principle-icon">⚖️</span>
                                 </div>
                                 <h4>Sovereign IP Ownership</h4>
-                                <p>100% direct principal ownership across our AI Brain blueprints, multi-agent software architectures, custom desktop studio builds, and 22 official 432Hz studio master releases.</p>
+                                <p>100% direct principal ownership across our AI Brain blueprints, multi-agent software architectures, custom desktop studio builds, and 24 official studio master releases.</p>
                             </div>
                             <div class="risk-principle-item inv-equal-principle-card">
                                 <div class="inv-principle-top-row">
@@ -483,7 +483,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="inv-scope-item">
                                 <span class="ks-p3-pill-gold inv-scope-pill"><span class="ks-wave-text">02 // 432HZ COMMERCIAL IP</span></span>
                                 <h4>Direct Master Sync Licensing</h4>
-                                <p>100% direct master and publishing clearance across 22 official 432Hz albums (216 studio tracks) for film, brand, and creator media.</p>
+                                <p>100% direct master and publishing clearance across 25 official releases (236 studio tracks) for film, brand, and creator media.</p>
                             </div>
                             <div class="inv-scope-item">
                                 <span class="ks-p3-pill-blue inv-scope-pill"><span class="ks-wave-text">03 // INTERNATIONAL ASSETS</span></span>

@@ -94,140 +94,77 @@ class TestTemplateContactOverhaul:
         )
 
     def test_three_engagement_channels_order_and_count(self):
-        """3. Verifies exactly 3 engagement channel cards exist in the correct Wayne order:
-        Channel 1: Spotify
-        Channel 2: BC Builder
-        Channel 3: Masterclass
+        """3. Verifies 3 primary engagement channel cards exist in template-contact.php v4.6:
+        Card 1: Spotify, Apple Music & YouTube Official Channels
+        Card 2: Custom AI Systems, Multi-Agent Swarms & 3-Tier Vault
+        Card 3: $800 Masterclass & Custom Tauri Desktop Command Center
         """
-        grid_match = re.search(
-            r'<div[^>]*class=["\'][^"\']*contact-channels-grid[^"\']*["\']>(.*?)</div>\s*</section>',
-            self.content,
-            re.DOTALL
-        )
-        assert grid_match is not None, "FAIL (RED): .contact-channels-grid section not found"
-        grid_html = grid_match.group(1)
-
         cards = re.findall(
-            r'<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)(?=<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']|\s*</div>\s*$)',
-            grid_html,
+            r'<article[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)</article>',
+            self.content,
             re.DOTALL
         )
         assert len(cards) == 3, (
-            f"FAIL (RED): Expected exactly 3 .contact-channel-card elements in channels grid, found {len(cards)}."
+            f"FAIL: Expected 3 .contact-channel-card articles, found {len(cards)}."
         )
 
-        card_1_html = cards[0].lower()
-        card_2_html = cards[1].lower()
-        card_3_html = cards[2].lower()
-
-        assert "spotify" in card_1_html, (
-            "FAIL (RED): Channel 1 must be Spotify per Wayne's directive: "
-            "'take the Artist out of there and put Spotify, the BC Builder, and the Masterclass'."
-        )
-        assert ("bc builder" in card_2_html or "builder #52603" in card_2_html or "keystone possibilities" in card_2_html), (
-            "FAIL (RED): Channel 2 must be BC Builder / Keystone Possibilities Ltd."
-        )
-        assert ("masterclass" in card_3_html or "800" in card_3_html), (
-            "FAIL (RED): Channel 3 must be the $800 Masterclass."
-        )
+        assert "spotify" in cards[0].lower()
+        assert "multi-agent" in cards[1].lower() or "ai protocols" in cards[1].lower()
+        assert "masterclass" in cards[2].lower() and "$800" in cards[2]
 
     def test_channel_1_spotify_card(self):
-        """3. Channel 1 (Spotify):
-        - Contains 'Spotify'
-        - Contains '22 official releases' (or '22 releases')
-        - Contains '216' (master recordings / tracks)
-        - Link to 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y'
-        - Link has target="_blank"
+        """3. Card 1 (Spotify, Apple Music & YouTube):
+        - Contains 'Spotify' and Apple Music artist ID '1862989452'
+        - Contains '25 official releases' and '236' master recordings
+        - Links to 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y' with target="_blank"
         """
-        grid_match = re.search(
-            r'<div[^>]*class=["\'][^"\']*contact-channels-grid[^"\']*["\']>(.*?)</div>\s*</section>',
+        cards = re.findall(
+            r'<article[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)</article>',
             self.content,
             re.DOTALL
         )
-        assert grid_match is not None, "FAIL (RED): .contact-channels-grid section not found"
-        cards = re.findall(
-            r'<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)(?=<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']|\s*</div>\s*$)',
-            grid_match.group(1),
-            re.DOTALL
-        )
-        assert len(cards) >= 1, "FAIL (RED): No cards found in contact-channels-grid"
+        assert len(cards) >= 1
         card_1 = cards[0]
         card_1_lower = card_1.lower()
 
-        assert "spotify" in card_1_lower, "FAIL (RED): Channel 1 must contain 'Spotify'"
-        assert ("22 official releases" in card_1_lower or "22 releases" in card_1_lower), (
-            "FAIL (RED): Channel 1 missing reference to '22 official releases' or '22 releases'"
-        )
-        assert "216" in card_1, "FAIL (RED): Channel 1 missing '216' master recordings count"
-        assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in card_1, (
-            "FAIL (RED): Channel 1 missing Spotify artist URL 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y'"
-        )
-        assert 'target="_blank"' in card_1, (
-            "FAIL (RED): Spotify link must open in a new tab with target=\"_blank\""
-        )
+        assert "spotify" in card_1_lower
+        assert "25 official releases" in card_1_lower or "25 releases" in card_1_lower
+        assert "236" in card_1
+        assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in card_1
+        assert "https://music.apple.com/us/artist/keystone-recomposition/1862989452" in card_1
+        assert 'target="_blank"' in card_1
 
     def test_channel_2_bc_builder_card(self):
-        """3. Channel 2 (BC Builder):
-        - Contains 'BC BUILDER #52603'
-        - Contains 'Keystone Possibilities Ltd'
-        - Contains 'Bill 44'
-        - Link to 'https://keystonepossibilities.ca' with target="_blank"
-        """
-        grid_match = re.search(
-            r'<div[^>]*class=["\'][^"\']*contact-channels-grid[^"\']*["\']>(.*?)</div>\s*</section>',
+        """3. Card 2 (Custom AI Systems & Vault) + BC Builder #52603 authority in template-contact.php."""
+        cards = re.findall(
+            r'<article[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)</article>',
             self.content,
             re.DOTALL
         )
-        assert grid_match is not None, "FAIL (RED): .contact-channels-grid section not found"
-        cards = re.findall(
-            r'<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)(?=<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']|\s*</div>\s*$)',
-            grid_match.group(1),
-            re.DOTALL
-        )
-        assert len(cards) >= 2, "FAIL (RED): Second card missing in contact-channels-grid"
+        assert len(cards) >= 2
         card_2 = cards[1]
 
-        assert "52603" in card_2, "FAIL (RED): Channel 2 missing BC Housing License #52603"
-        assert "Keystone Possibilities Ltd" in card_2, (
-            "FAIL (RED): Channel 2 missing 'Keystone Possibilities Ltd' corporate entity"
-        )
-        assert "Bill 44" in card_2, "FAIL (RED): Channel 2 missing 'Bill 44' legislative reference"
-        assert "https://keystonepossibilities.ca" in card_2, (
-            "FAIL (RED): Channel 2 missing link to 'https://keystonepossibilities.ca'"
-        )
-        assert 'target="_blank"' in card_2, (
-            "FAIL (RED): Channel 2 external link must have target=\"_blank\""
-        )
+        assert "$49.50" in card_2 and "$199" in card_2
+        assert "/ai-protocols/" in card_2
+        # BC Builder #52603 and Keystone Possibilities Ltd remain featured in quick-launch bar and detail card 04
+        assert "52603" in self.content
+        assert "Keystone Possibilities Ltd" in self.content
+        assert "Bill 44" in self.content
+        assert "https://keystonepossibilities.ca" in self.content
 
     def test_channel_3_masterclass_card(self):
-        """3. Channel 3 (Masterclass):
-        - Contains '$800 MASTERCLASS'
-        - Contains 'Executive Workstation Architecture'
-        - Contains 'FastMCP'
-        - Link to '#inquiry-form'
-        """
-        grid_match = re.search(
-            r'<div[^>]*class=["\'][^"\']*contact-channels-grid[^"\']*["\']>(.*?)</div>\s*</section>',
+        """3. Card 3 ($800 Masterclass & Custom Tauri Desktop Command Center)."""
+        cards = re.findall(
+            r'<article[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)</article>',
             self.content,
             re.DOTALL
         )
-        assert grid_match is not None, "FAIL (RED): .contact-channels-grid section not found"
-        cards = re.findall(
-            r'<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']>(.*?)(?=<div[^>]*class=["\'][^"\']*contact-channel-card[^"\']*["\']|\s*</div>\s*$)',
-            grid_match.group(1),
-            re.DOTALL
-        )
-        assert len(cards) >= 3, "FAIL (RED): Third card missing in contact-channels-grid"
+        assert len(cards) >= 3
         card_3 = cards[2]
 
-        assert ("$800" in card_3 and "MASTERCLASS" in card_3), (
-            "FAIL (RED): Channel 3 missing '$800 MASTERCLASS' badge or title"
-        )
-        assert "Executive Workstation Architecture" in card_3, (
-            "FAIL (RED): Channel 3 missing 'Executive Workstation Architecture'"
-        )
-        assert "FastMCP" in card_3, "FAIL (RED): Channel 3 missing 'FastMCP' swarms reference"
-        assert "#inquiry-form" in card_3, "FAIL (RED): Channel 3 missing smooth jump link to '#inquiry-form'"
+        assert "$800" in card_3 and "MASTERCLASS" in card_3.upper()
+        assert "Tauri Desktop Command Center" in card_3
+        assert "#inquiry-form" in card_3
 
     def test_form_compact_three_row_layout(self):
         """4. Form Shortening & Structure:
@@ -279,39 +216,32 @@ class TestTemplateContactOverhaul:
         )
 
     def test_inked_inquiry_categories(self):
-        """5. Inked Inquiry Categories under contact_category:
-        Must include exact required categories:
-        - 'Executive Workstation Architecture ($800 Masterclass)'
-        - 'BC Bill 44 General Contracting & Infill (BC Builder #52603)'
-        - 'Private Real Estate Infill Investment & Co-Development'
-        - 'Spotify Music Catalog, Sync & Audio Architecture'
-        - 'General Executive Consultation'
-        """
+        """5. Inked Inquiry Categories under contact_category in v4.6."""
         cat_match = re.search(
             r'<select[^>]*name=["\']contact_category["\'][^>]*>(.*?)</select>',
             self.content,
             re.DOTALL
         )
-        assert cat_match is not None, "FAIL (RED): contact_category select element not found"
+        assert cat_match is not None, "FAIL: contact_category select element not found"
         cat_html = cat_match.group(1)
 
-        required_categories = [
-            "Executive Workstation Architecture ($800 Masterclass)",
-            "BC Bill 44 General Contracting & Infill (BC Builder #52603)",
-            "Private Real Estate Infill Investment & Co-Development",
-            "Spotify Music Catalog, Sync & Audio Architecture",
-            "General Executive Consultation",
-        ]
-
-        # Normalization helper for HTML entities
         def normalize_text(text: str) -> str:
-            return text.replace("&amp;", "&").replace("&#038;", "&").strip()
+            return text.replace("&amp;", "&").replace("&#038;", "&").replace("&mdash;", "—").replace("&ndash;", "–").strip()
 
         normalized_cat_html = normalize_text(cat_html)
 
+        required_categories = [
+            "Tier 3 — $800 Masterclass",
+            "Tier 2 — $199 Multi-Agent Swarms",
+            "Tier 1 — $49.50 AI Brain",
+            "432Hz Commercial Music Sync Licensing",
+            "BC Housing #52603",
+            "General Executive Consultation",
+        ]
+
         for category in required_categories:
             assert category in normalized_cat_html, (
-                f"FAIL (RED): Required category '{category}' not found in contact_category select options."
+                f"FAIL: Required category '{category}' not found in contact_category select options."
             )
 
     def test_inked_project_budgets_cad(self):
@@ -345,16 +275,12 @@ class TestTemplateContactOverhaul:
             )
 
     def test_direct_executive_email_routing_curtis4vancouver(self):
-        """6. Direct Executive Routing to curtis4vancouver@gmail.com:
-        - $to = 'curtis4vancouver@gmail.com' in the PHP mail handler.
-        - Mail recipient is curtis4vancouver@gmail.com.
-        - Direct Email link in the SLA section points to mailto:curtis4vancouver@gmail.com.
-        """
-        assert re.search(r'\$to\s*=\s*[\'"]curtis4vancouver@gmail\.com[\'"]', self.content) is not None, (
-            "FAIL (RED): PHP mail handler must set $to = 'curtis4vancouver@gmail.com'"
+        """6. Direct Executive Routing to canonical keystonerecomposition@gmail.com."""
+        assert re.search(r'\$to\s*=\s*[\'"]keystonerecomposition@gmail\.com[\'"]', self.content) is not None, (
+            "FAIL: PHP mail handler must set $to = 'keystonerecomposition@gmail.com'"
         )
-        assert ("mailto:curtis4vancouver@gmail.com" in self.content), (
-            "FAIL (RED): Direct Email link pointing to mailto:curtis4vancouver@gmail.com missing"
+        assert "mailto:keystonerecomposition@gmail.com" in self.content, (
+            "FAIL: Direct Email link pointing to mailto:keystonerecomposition@gmail.com missing"
         )
 
     def test_strictly_zero_peptides_invariant(self):
@@ -366,6 +292,8 @@ class TestTemplateContactOverhaul:
 
     def test_strictly_zero_phone_numbers_invariant(self):
         """STRICT INVARIANT: Strictly NO phone numbers allowed anywhere on template-contact.php."""
+        # Strip URLs first so Apple Music artist ID 1862989452 is not false-matched as a 10-digit phone number
+        scrubbed = re.sub(r'https?://[^\s"\'<>]+', '', self.content)
         phone_patterns = [
             r'\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}',
             r'tel:\+?1?\d{10,}',
@@ -373,8 +301,7 @@ class TestTemplateContactOverhaul:
             r'604[-.\s]?848[-.\s]?9688',
         ]
         for pattern in phone_patterns:
-            matches = re.findall(pattern, self.content)
-            # Filter false positives: license #52603, year 2026/2025/2024, or SLA hours 24-48
+            matches = re.findall(pattern, scrubbed)
             actual_phones = [
                 m for m in matches
                 if "52603" not in m and "2026" not in m and "2025" not in m and "2024" not in m

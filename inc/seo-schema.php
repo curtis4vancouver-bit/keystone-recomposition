@@ -41,110 +41,191 @@ function keystone_recomposition_child_post_title_after( $after ) {
 }
 
 /**
- * 7. Inject Premium Organization & Person JSON-LD Schema (Knowledge Panel Anchor)
+ * 7. Inject Premium Organization, Sister Entity, MusicGroup & Person JSON-LD Schema (Knowledge Panel Anchor)
  */
-function keystone_recomposition_child_inject_schema() {
-    $custom_logo_id = get_theme_mod( 'custom_logo' );
-    $logo_url = wp_get_attachment_image_url( $custom_logo_id, 'full' );
-    if ( ! $logo_url || false !== stripos( (string) $logo_url, '/wp-content/uploads/logo.png' ) ) {
-        $logo_url = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
-    }
+add_filter( 'rank_math/json_ld/disable_search', '__return_true' );
 
-    // === Organization Schema (Keystone Recomposition Sovereign Brand) ===
-    $schema = array(
-        '@context' => 'https://schema.org',
-        '@type' => 'Organization',
-        '@id' => 'https://keystonerecomposition.com/#organization',
-        'name' => 'Keystone Recomposition',
-        'url' => 'https://keystonerecomposition.com',
-        'description' => 'Specializing in Autonomous AI Multi-Agent Systems, FastMCP Server Architecture, and High-Performance Electronic Music Production.',
-        'keywords' => 'Keystone Recomposition, Autonomous AI, FastMCP, DevTools, Deep House Music, Sound Design, Recomposition Architecture',
-        'logo' => $logo_url,
-        'areaServed' => array(
-            array(
-                '@type' => 'Country',
-                'name' => 'United States'
-            ),
-            array(
-                '@type' => 'Country',
-                'name' => 'United Kingdom'
-            ),
-            array(
-                '@type' => 'Country',
-                'name' => 'Canada'
-            ),
-            array(
-                '@type' => 'Country',
-                'name' => 'Switzerland'
-            ),
-            array(
-                '@type' => 'Country',
-                'name' => 'Mexico'
-            ),
-            array(
-                '@type' => 'City',
-                'name' => 'New York',
-                'sameAs' => 'https://en.wikipedia.org/wiki/New_York_City'
-            ),
-            array(
-                '@type' => 'City',
-                'name' => 'Los Angeles',
-                'sameAs' => 'https://en.wikipedia.org/wiki/Los_Angeles'
-            ),
-            array(
-                '@type' => 'City',
-                'name' => 'London',
-                'sameAs' => 'https://en.wikipedia.org/wiki/London'
-            )
+function keystone_get_founder_profile_page_schema(): array {
+    return array(
+        '@type'              => 'ProfilePage',
+        '@id'                => 'https://keystonerecomposition.com/founder/#webpage',
+        'url'                => 'https://keystonerecomposition.com/founder/',
+        'name'               => 'Wayne Stevenson — Founder, Licensed BC Builder & Electronic Music Producer',
+        'description'        => 'Official entity profile of Wayne Stevenson, Canadian founder of Keystone Possibilities Ltd. (BC Housing Licensed Builder #52603) and Keystone Recomposition.',
+        'inLanguage'         => 'en-CA',
+        'isPartOf'           => array(
+            '@id' => 'https://keystonerecomposition.com/#website',
         ),
-        'currenciesAccepted' => 'USD, GBP, CAD, EUR',
-        'availableLanguage' => array( 'en-US', 'en-GB', 'en-CA' ),
-        'parentOrganization' => array(
-            '@type' => 'Organization',
-            '@id' => 'https://keystonepossibilities.ca/#parent-organization',
-            'name' => 'Keystone Empire',
-            'alternateName' => 'Keystone Group',
-            'url' => 'https://keystonepossibilities.ca',
-            'description' => 'Master parent organization network governing Keystone Possibilities Ltd. and Keystone Recomposition.',
-            'subOrganization' => array(
+        'mainEntity'         => array(
+            '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+        ),
+        'about'              => array(
+            '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+        ),
+        'primaryImageOfPage' => array(
+            '@id' => 'https://keystonerecomposition.com/#wayne-portrait',
+        ),
+        'breadcrumb'         => array(
+            '@id' => 'https://keystonerecomposition.com/founder/#breadcrumb',
+        ),
+    );
+}
+
+function keystone_recomposition_child_inject_schema() {
+    $logo_url = get_stylesheet_directory_uri() . '/assets/images/keystone_real_logo_badge_bold.png';
+    $req_path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
+    $is_sonic_universe = ( ( function_exists( 'is_page' ) && is_page( 'sonic-universe' ) ) || 'sonic-universe' === $req_path );
+    $is_founder_page   = ( ( function_exists( 'is_page' ) && is_page( 'founder' ) ) || 'founder' === $req_path );
+
+    $entity_graph = array(
+        // 1. Primary Organization (Keystone Recomposition Sovereign Brand)
+        array(
+            '@type'              => 'Organization',
+            '@id'                => 'https://keystonerecomposition.com/#organization',
+            'name'               => 'Keystone Recomposition',
+            'url'                => 'https://keystonerecomposition.com/',
+            'description'        => 'Sovereign autonomous AI systems engineering studio, FastMCP protocol laboratory, and electronic/acoustic music record label founded by Wayne Stevenson in Squamish, British Columbia.',
+            'keywords'           => 'Keystone Recomposition, Autonomous AI, FastMCP, DevTools, Deep House Music, Sound Design, Recomposition Architecture',
+            'logo'               => array(
+                '@type'      => 'ImageObject',
+                '@id'        => 'https://keystonerecomposition.com/#logo',
+                'url'        => $logo_url,
+                'contentUrl' => $logo_url,
+                'width'      => 512,
+                'height'     => 512,
+            ),
+            'founder'            => array(
+                '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+            ),
+            'address'            => array(
+                '@type'           => 'PostalAddress',
+                'addressLocality' => 'Squamish',
+                'addressRegion'   => 'BC',
+                'postalCode'      => 'V8B 0B1',
+                'addressCountry'  => 'CA',
+            ),
+            'areaServed'         => array(
                 array(
-                    '@type' => 'Organization',
-                    '@id' => 'https://keystonepossibilities.ca/#organization',
-                    'name' => 'Keystone Possibilities Ltd.',
-                    'url' => 'https://keystonepossibilities.ca'
+                    '@type' => 'Country',
+                    'name'  => 'United States',
                 ),
                 array(
-                    '@type' => 'Organization',
-                    '@id' => 'https://keystonerecomposition.com/#organization',
-                    'name' => 'Keystone Recomposition',
-                    'url' => 'https://keystonerecomposition.com'
-                )
+                    '@type' => 'Country',
+                    'name'  => 'United Kingdom',
+                ),
+                array(
+                    '@type' => 'Country',
+                    'name'  => 'Canada',
+                ),
+                array(
+                    '@type' => 'Country',
+                    'name'  => 'Switzerland',
+                ),
+                array(
+                    '@type' => 'Country',
+                    'name'  => 'Mexico',
+                ),
+                array(
+                    '@type'  => 'City',
+                    'name'   => 'New York',
+                    'sameAs' => 'https://en.wikipedia.org/wiki/New_York_City',
+                ),
+                array(
+                    '@type'  => 'City',
+                    'name'   => 'Los Angeles',
+                    'sameAs' => 'https://en.wikipedia.org/wiki/Los_Angeles',
+                ),
+                array(
+                    '@type'  => 'City',
+                    'name'   => 'London',
+                    'sameAs' => 'https://en.wikipedia.org/wiki/London',
+                ),
             ),
-            'sameAs' => array(
-                'https://keystonepossibilities.ca',
-                'https://keystonerecomposition.com'
-            )
+            'currenciesAccepted' => 'USD, GBP, CAD, EUR',
+            'availableLanguage'  => array( 'en-US', 'en-GB', 'en-CA' ),
+            'identifier'         => array(
+                array(
+                    '@type'      => 'PropertyValue',
+                    'propertyID' => 'MusicBrainz Label ID',
+                    'value'      => '30027d0e-6aeb-4704-8792-a031c936c62a',
+                    'url'        => 'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+                ),
+                array(
+                    '@type'      => 'PropertyValue',
+                    'propertyID' => 'Too Lost Catalog Reference ID',
+                    'value'      => 'TOOLOST3000939655',
+                ),
+            ),
+            'sameAs'             => array(
+                'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+                'https://www.youtube.com/@KeyStoneRecomposition',
+                'https://www.youtube.com/@KeystoneAIProtocols',
+                'https://www.instagram.com/keystonerecomposition/',
+                'https://www.tiktok.com/@keystonerecomposition',
+            ),
         ),
-        'sameAs' => array(
-            'https://keystonepossibilities.ca',
-            'https://www.youtube.com/@KeyStoneRecomposition',
-            'https://www.youtube.com/@KeystoneAIProtocols',
-            'https://www.youtube.com/@KeystonePossibilitiesLtd',
-            'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
-            'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
-            'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
-            'https://audiomack.com/keystone-recomposition',
-            'https://toolost.com',
-            'https://www.tiktok.com/@keystonerecomposition'
+        // 2. Sister Operating Entity (Keystone Possibilities Ltd. — Linked via Shared Founder)
+        array(
+            '@type'     => array( 'Organization', 'HomeAndConstructionBusiness' ),
+            '@id'       => 'https://keystonepossibilities.ca/#organization',
+            'name'      => 'Keystone Possibilities Ltd.',
+            'legalName' => 'Keystone Possibilities Ltd.',
+            'url'       => 'https://keystonepossibilities.ca/',
+            'founder'   => array(
+                '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+            ),
+            'sameAs'    => array(
+                'https://www.youtube.com/@KeystonePossibilitiesLtd',
+                'https://www.instagram.com/keystonepossibilities',
+            ),
         ),
-        'identifier' => array(
-            '@type' => 'PropertyValue',
-            'propertyID' => 'Too Lost Catalog Reference ID',
-            'value' => 'TOOLOST3000939655'
-        ),
-        'founder' => array(
-            '@id' => 'https://keystonerecomposition.com/#person'
-        )
+    );
+
+    // 3. Emit lightweight MusicGroup anchor site-wide (on /sonic-universe/, keystone_recomposition_child_music_schema emits it inside CollectionPage @graph)
+    if ( ! $is_sonic_universe && function_exists( 'keystone_get_music_group_schema' ) ) {
+        $entity_graph[] = keystone_get_music_group_schema();
+    }
+
+    // 4. Emit Person, WebSite & ProfilePage directly when Rank Math is inactive (Rank Math @graph handles them when active)
+    if ( ! class_exists( 'RankMath' ) ) {
+        if ( $is_founder_page ) {
+            $entity_graph[] = keystone_get_founder_profile_page_schema();
+            $entity_graph[] = array(
+                '@type'           => 'BreadcrumbList',
+                '@id'             => 'https://keystonerecomposition.com/founder/#breadcrumb',
+                'itemListElement' => array(
+                    array(
+                        '@type'    => 'ListItem',
+                        'position' => 1,
+                        'name'     => 'Home',
+                        'item'     => 'https://keystonerecomposition.com/',
+                    ),
+                    array(
+                        '@type'    => 'ListItem',
+                        'position' => 2,
+                        'name'     => 'Wayne Stevenson',
+                        'item'     => 'https://keystonerecomposition.com/founder/',
+                    ),
+                ),
+            );
+        }
+        $entity_graph[] = keystone_get_wayne_stevenson_person_schema();
+        $entity_graph[] = array(
+            '@type'         => 'WebSite',
+            '@id'           => 'https://keystonerecomposition.com/#website',
+            'url'           => 'https://keystonerecomposition.com/',
+            'name'          => 'Keystone Recomposition',
+            'alternateName' => 'Keystone AI Protocols',
+            'publisher'     => array(
+                '@id' => 'https://keystonerecomposition.com/#organization',
+            ),
+            'inLanguage'    => 'en-CA',
+        );
+    }
+
+    $schema = array(
+        '@context' => 'https://schema.org',
+        '@graph'   => $entity_graph,
     );
 
     $json_schema = wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
@@ -154,108 +235,134 @@ function keystone_recomposition_child_inject_schema() {
     echo $json_schema . "\n";
     echo "</script>\n";
     echo "<!-- End Keystone Digital JSON-LD Schema -->\n";
-
-    // === Parent Organization Schema (Keystone Empire / Keystone Group) ===
-    $parent_org_schema = array(
-        '@context' => 'https://schema.org',
-        '@type' => 'Organization',
-        '@id' => 'https://keystonepossibilities.ca/#parent-organization',
-        'name' => 'Keystone Empire',
-        'alternateName' => 'Keystone Group',
-        'url' => 'https://keystonepossibilities.ca',
-        'description' => 'Master parent organization network governing Keystone Possibilities Ltd. and Keystone Recomposition.',
-        'subOrganization' => array(
-            array(
-                '@type' => 'Organization',
-                '@id' => 'https://keystonepossibilities.ca/#organization',
-                'name' => 'Keystone Possibilities Ltd.',
-                'url' => 'https://keystonepossibilities.ca'
-            ),
-            array(
-                '@type' => 'Organization',
-                '@id' => 'https://keystonerecomposition.com/#organization',
-                'name' => 'Keystone Recomposition',
-                'url' => 'https://keystonerecomposition.com'
-            )
-        ),
-        'sameAs' => array(
-            'https://keystonepossibilities.ca',
-            'https://keystonerecomposition.com'
-        )
-    );
-
-    $json_parent_org = wp_json_encode( $parent_org_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
-
-    echo "<!-- Keystone Empire Network ParentOrganization Schema -->\n";
-    echo "<script type=\"application/ld+json\">\n";
-    echo $json_parent_org . "\n";
-    echo "</script>\n";
-    echo "<!-- End Keystone Empire Network Schema -->\n";
-
-    // === Person Schema (Only emit standalone block if Rank Math is NOT active; Rank Math @graph owns #person) ===
-    if ( ! class_exists( 'RankMath' ) ) {
-        $person_schema = array(
-            '@context' => 'https://schema.org',
-            '@graph'   => array(
-                keystone_get_wayne_stevenson_person_schema()
-            )
-        );
-
-        $json_person = wp_json_encode( $person_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
-
-        echo "<!-- Keystone Person Schema (Knowledge Panel Anchor) -->\n";
-        echo "<script type=\"application/ld+json\">\n";
-        echo $json_person . "\n";
-        echo "</script>\n";
-        echo "<!-- End Person Schema -->\n";
-    }
 }
 add_action( 'wp_head', 'keystone_recomposition_child_inject_schema' );
 
 /**
  * 7.2 Master Wayne Stevenson Schema.org Person Definition
  * Multi-domain entity mesh spanning BC Housing builder licensing (#52603),
- * autonomous 28-agent AI systems, and functional bio-acoustic audio engineering.
+ * autonomous multi-agent AI systems, and functional bio-acoustic audio engineering.
  *
  * @return array Schema.org Person definition.
  */
 function keystone_get_wayne_stevenson_person_schema(): array {
     return array(
-        '@type'            => 'Person',
-        '@id'              => 'https://keystonerecomposition.com/#person',
-        'name'             => 'Wayne Stevenson',
-        'alternateName'    => array( 'Wayne Stevens', 'Keystone Recomposition', 'Keystone Protocols' ),
-        'url'              => 'https://keystonerecomposition.com/founder/',
-        'mainEntityOfPage' => 'https://keystonerecomposition.com/founder/',
-        'image'            => array(
-            '@type' => 'ImageObject',
-            'url'   => 'https://keystonerecomposition.com/wp-content/themes/keystone-recomposition-child/assets/images/wayne_avatar.jpg',
+        '@type'                     => 'Person',
+        '@id'                       => 'https://keystonerecomposition.com/#wayne-stevenson',
+        'name'                      => 'Wayne Stevenson',
+        'givenName'                 => 'Wayne',
+        'familyName'                => 'Stevenson',
+        'birthDate'                 => '1983-03-26',
+        'gender'                    => 'Male',
+        'nationality'               => array(
+            '@type' => 'Country',
+            'name'  => 'Canada',
         ),
-        'jobTitle'         => array(
+        'url'                       => 'https://keystonerecomposition.com/founder/',
+        'mainEntityOfPage'          => array(
+            '@id' => 'https://keystonerecomposition.com/founder/#webpage',
+        ),
+        'image'                     => array(
+            '@type'      => 'ImageObject',
+            '@id'        => 'https://keystonerecomposition.com/#wayne-portrait',
+            'url'        => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/wayne_avatar.jpg',
+            'contentUrl' => 'https://keystonerecomposition.com/wp-content/uploads/2026/09/wayne_avatar.jpg',
+            'width'      => 1376,
+            'height'     => 768,
+            'caption'    => 'Wayne Stevenson — Founder of Keystone Recomposition and Keystone Possibilities Ltd.',
+        ),
+        'description'               => 'Wayne Stevenson is a Canadian entrepreneur, BC Housing Licensed Residential Builder (#52603), autonomous AI systems architect, and electronic/country-soul music composer and record producer based in Squamish, British Columbia. He is the founder of Keystone Possibilities Ltd. and Keystone Recomposition.',
+        'disambiguatingDescription' => 'Canadian entrepreneur, BC Housing Licensed Residential Builder (#52603), autonomous AI systems architect, and electronic/country-soul record producer based in Squamish, British Columbia — founder of Keystone Possibilities Ltd. and Keystone Recomposition (distinct from 1949 American singer Wayne Stevenson and economist Dr. Wayne Stevenson).',
+        'jobTitle'                  => array(
             'Founder & Managing Director',
-            'Founder & Lead Protocol Architect',
-            'Lead Systems Architect',
-            'Licensed Residential Builder',
-            'Licensed Residential Builder #52603',
-            'Functional Audio Producer',
-            'Recording Artist & Producer',
+            'Electronic Music Producer & Composer',
+            'Autonomous AI Systems Architect',
         ),
-        'description'      => 'Founder and Managing Director of Keystone Possibilities Ltd (BC Housing Builder #52603) and creator of Keystone Recomposition. Wayne Stevenson engineers autonomous 28-agent AI swarms, functional electronic music across 22 official releases (20 studio albums) distributed worldwide via TooLost Digital, quantitative market intelligence, and high-performance mountain living across the Sea-to-Sky corridor.',
-        'hasCredential'    => array(
+        'homeLocation'              => array(
+            '@type'   => 'Place',
+            'name'    => 'Squamish, British Columbia, Canada',
+            'address' => array(
+                '@type'           => 'PostalAddress',
+                'addressLocality' => 'Squamish',
+                'addressRegion'   => 'BC',
+                'addressCountry'  => 'CA',
+            ),
+        ),
+        'worksFor'                  => array(
+            array(
+                '@id' => 'https://keystonerecomposition.com/#organization',
+            ),
+            array(
+                '@id' => 'https://keystonepossibilities.ca/#organization',
+            ),
+        ),
+        'affiliation'               => array(
+            array(
+                '@id' => 'https://keystonerecomposition.com/#musicgroup',
+            ),
+            array(
+                '@id' => 'https://keystonepossibilities.ca/#organization',
+            ),
+        ),
+        'hasOccupation'             => array(
+            array(
+                '@type'                => 'Occupation',
+                'name'                 => 'Founder & Licensed Residential Builder',
+                'description'          => 'Licensed Residential Builder & Fiduciary Construction Consultant directing custom estates, multiplexes, and civil utility infrastructure in British Columbia.',
+                'occupationalCategory' => '11-9021.00',
+                'occupationLocation'   => array(
+                    '@type' => 'AdministrativeArea',
+                    'name'  => 'British Columbia, Canada',
+                ),
+            ),
+            array(
+                '@type'                => 'Occupation',
+                'name'                 => 'Electronic Music Producer & Functional Bio-Acoustic Engineer',
+                'description'          => 'Record producer and composer engineering electronic, outlaw country-trap, soul, and bio-acoustic soundscapes for circadian entrainment, training cadence, and autonomic state regulation.',
+                'occupationalCategory' => '27-2041.00',
+                'occupationLocation'   => array(
+                    '@type' => 'Country',
+                    'name'  => 'Canada',
+                ),
+            ),
+            array(
+                '@type'                => 'Occupation',
+                'name'                 => 'Autonomous AI Systems Architect',
+                'description'          => 'Principal AI architect engineering autonomous multi-agent FastMCP swarms, Tauri v2 desktop command centers, and Chrome DevTools Protocol automation.',
+                'occupationalCategory' => '15-1299.08',
+                'occupationLocation'   => array(
+                    '@type' => 'Country',
+                    'name'  => 'Canada',
+                ),
+            ),
+        ),
+        'hasCredential'             => array(
             array(
                 '@type'              => 'EducationalOccupationalCredential',
                 'name'               => 'BC Housing Licensed Residential Builder (Licence #52603)',
+                'identifier'         => '52603',
                 'credentialCategory' => 'Professional License',
                 'recognizedBy'       => array(
                     '@type' => 'GovernmentOrganization',
                     'name'  => 'BC Housing Licensing and Consumer Services',
-                    'url'   => 'https://www.bchousing.org',
+                    'url'   => 'https://www.bchousing.org/licensing-consumer-disclosure/licencee-search',
                 ),
                 'validIn'            => array(
                     '@type' => 'AdministrativeArea',
                     'name'  => 'British Columbia, Canada',
                 ),
-                'url'                => 'https://lims.bchousing.org/LicenceExpiryPortal/licence/52603',
+                'url'                => 'https://www.bchousing.org/licensing-consumer-disclosure/licencee-search',
+            ),
+            array(
+                '@type'              => 'EducationalOccupationalCredential',
+                'name'               => 'BC Hydro Registered Civil Utility Contractor (ES54)',
+                'identifier'         => 'ES54',
+                'credentialCategory' => 'Civil Utility Infrastructure Qualification',
+                'validIn'            => array(
+                    '@type' => 'AdministrativeArea',
+                    'name'  => 'British Columbia, Canada',
+                ),
+                'url'                => 'https://keystonepossibilities.ca/',
             ),
             array(
                 '@type'              => 'EducationalOccupationalCredential',
@@ -265,49 +372,10 @@ function keystone_get_wayne_stevenson_person_schema(): array {
                     '@type' => 'AdministrativeArea',
                     'name'  => 'British Columbia, Canada',
                 ),
-                'url'                => 'https://keystonepossibilities.ca',
-            ),
-            array(
-                '@type'              => 'EducationalOccupationalCredential',
-                'name'               => 'BC Hydro Registered Civil Utility Contractor (ES54)',
-                'credentialCategory' => 'Civil Utility Infrastructure Qualification',
-                'validIn'            => array(
-                    '@type' => 'AdministrativeArea',
-                    'name'  => 'British Columbia, Canada',
-                ),
-                'url'                => 'https://keystonepossibilities.ca',
+                'url'                => 'https://keystonepossibilities.ca/',
             ),
         ),
-        'hasOccupation'    => array(
-            array(
-                '@type'                => 'Occupation',
-                'name'                 => 'AI Systems Architect, FastMCP Multi-Agent Engineer & 22-Album Electronic Music Producer',
-                'description'          => 'AI Systems Architect, FastMCP Multi-Agent Engineer & 22-Album Electronic Music Producer, alongside Luxury Custom Homes & BC Hydro ES54 Civil Infrastructure (keystonepossibilities.ca) in British Columbia.',
-                'occupationalCategory' => 'Autonomous Software Engineering & AI Architecture',
-                'occupationLocation'   => array(
-                    '@type' => 'AdministrativeArea',
-                    'name'  => 'British Columbia, Canada',
-                ),
-            ),
-            array(
-                '@type'                => 'Occupation',
-                'name'                 => 'Autonomous AI Systems Architect & Multi-Agent Engineer',
-                'description'          => 'Lead Systems Architect engineering 28-agent autonomous swarms, FastMCP server infrastructure, and Chrome DevTools Protocol automation.',
-                'occupationalCategory' => 'Autonomous Software Engineering & AI Architecture',
-            ),
-            array(
-                '@type'                => 'Occupation',
-                'name'                 => 'Electronic Music Producer & Functional Bio-Acoustic Engineer',
-                'description'          => 'Electronic music producer engineering functional bio-acoustic soundscapes for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.',
-                'occupationalCategory' => 'Audio Production & Functional Acoustics',
-            ),
-        ),
-        'knowsAbout'       => array(
-            array(
-                '@type'  => 'Thing',
-                'name'   => 'Quantitative Prediction Markets',
-                'sameAs' => 'https://en.wikipedia.org/wiki/Prediction_market',
-            ),
+        'knowsAbout'                => array(
             array(
                 '@type'  => 'Thing',
                 'name'   => 'Autonomous AI Agent Swarms',
@@ -320,8 +388,18 @@ function keystone_get_wayne_stevenson_person_schema(): array {
             ),
             array(
                 '@type'  => 'Thing',
+                'name'   => 'Electronic Music Production',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Record_producer',
+            ),
+            array(
+                '@type'  => 'Thing',
                 'name'   => 'Solfeggio Soundscapes',
                 'sameAs' => 'https://en.wikipedia.org/wiki/Solfeggio',
+            ),
+            array(
+                '@type'  => 'Thing',
+                'name'   => 'Quantitative Prediction Markets',
+                'sameAs' => 'https://en.wikipedia.org/wiki/Prediction_market',
             ),
             array(
                 '@type'  => 'Thing',
@@ -329,72 +407,108 @@ function keystone_get_wayne_stevenson_person_schema(): array {
                 'sameAs' => 'https://en.wikipedia.org/wiki/Building_code',
             ),
         ),
-        'sameAs'           => array(
-            'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+        'identifier'                => array(
+            array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'MusicBrainz Artist ID',
+                'value'      => '1a30328b-20b2-48bd-8e56-2884d3b040c0',
+                'url'        => 'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
+            ),
+        ),
+        'sameAs'                    => array(
             'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
-            'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+            'https://keystonepossibilities.ca/about-us-general-contractor-squamish/',
             'https://pro.musixmatch.com/roster/artist/72648585',
-            'https://www.musixmatch.com/artist/Wayne-Stevenson',
-            'https://www.youtube.com/@KeyStoneRecomposition',
-            'https://www.youtube.com/@KeystoneAIProtocols',
-            'https://www.youtube.com/@KeystonePossibilitiesLtd',
-            'https://keystonepossibilities.ca',
-            'https://lims.bchousing.org/LicenceExpiryPortal/licence/52603',
-            'https://audiomack.com/keystone-recomposition',
-            'https://www.linkedin.com/in/wayne-stevenson',
-            'https://www.facebook.com/profile.php?id=61561081702787',
-            'https://www.instagram.com/keystonerecomposition/',
-            'https://www.tiktok.com/@keystonerecomposition',
-        ),
-        'producerOf'       => array(
-            array(
-                '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-concrete-foundations',
-            ),
-            array(
-                '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-resonantia-10-frequencies-of-the-rebuild',
-            ),
-            array(
-                '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-the-205-marker',
-            ),
-        ),
-        'worksFor'         => array(
-            array(
-                '@type'    => 'OrganizationRole',
-                'worksFor' => array(
-                    '@type' => 'Organization',
-                    '@id'   => 'https://keystonepossibilities.ca/#organization',
-                    'name'  => 'Keystone Possibilities Ltd.',
-                ),
-                'roleName'  => 'Managing Director & Licensed Residential Builder',
-                'startDate' => '2018',
-            ),
-            array(
-                '@type'    => 'OrganizationRole',
-                'worksFor' => array(
-                    '@type' => 'Organization',
-                    '@id'   => 'https://keystonerecomposition.com/#organization',
-                    'name'  => 'Keystone Recomposition',
-                ),
-                'roleName'  => 'Founder & Lead Protocol Architect',
-                'startDate' => '2021',
-            ),
         ),
     );
 }
 
 /**
- * 7.5 Inject MusicGroup & MusicAlbum JSON-LD Schema Nodes
- * Documents Wayne's music catalog as functional bio-acoustic engineering
- * composed for circadian entrainment, training cadence, and autonomic state regulation in Keystone Protocols.
+ * 7.4 Canonical MusicGroup Definition (#musicgroup)
+ */
+function keystone_get_music_group_schema(): array {
+    return array(
+        '@type'       => 'MusicGroup',
+        '@id'         => 'https://keystonerecomposition.com/#musicgroup',
+        'name'        => 'Keystone Recomposition',
+        'url'         => 'https://keystonerecomposition.com/sonic-universe/',
+        'description' => 'Electronic, melodic house, modern outlaw country-trap, soul revival, and functional bio-acoustic music project founded and produced by Wayne Stevenson.',
+        'founder'     => array(
+            '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+        ),
+        'member'      => array(
+            array(
+                '@type'    => 'OrganizationRole',
+                'member'   => array(
+                    '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+                ),
+                'roleName' => array(
+                    'Founder',
+                    'Composer',
+                    'Record Producer',
+                    'Lyricist',
+                ),
+            ),
+        ),
+        'genre'       => array(
+            'Modern Outlaw Country-Trap',
+            'Soul Revival & R&B',
+            'Southern Soul-Blues Rock',
+            'Deep House',
+            'Melodic House',
+            'Organic House',
+            'Ambient Electronic',
+        ),
+        'identifier'  => array(
+            array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'Spotify Artist ID',
+                'value'      => '52v3Qe6Jo0hg764driOl5Y',
+                'url'        => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+            ),
+            array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'Apple Music Artist ID',
+                'value'      => '1862989452',
+                'url'        => 'https://music.apple.com/us/artist/keystone-recomposition/1862989452',
+            ),
+            array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'YouTube Official Artist Channel ID',
+                'value'      => 'UCMn1f9DTF_iybKmv5WlTm9Q',
+                'url'        => 'https://www.youtube.com/@KeyStoneRecomposition',
+            ),
+            array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'MusicBrainz Label ID',
+                'value'      => '30027d0e-6aeb-4704-8792-a031c936c62a',
+                'url'        => 'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
+            ),
+        ),
+        'sameAs'      => array(
+            'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
+            'https://music.apple.com/us/artist/keystone-recomposition/1862989452',
+            'https://www.youtube.com/@KeyStoneRecomposition',
+            'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
+            'https://audiomack.com/keystone-recomposition',
+            'https://pro.musixmatch.com/roster/artist/72648585',
+            'https://www.instagram.com/keystonerecomposition/',
+            'https://www.tiktok.com/@keystonerecomposition',
+        ),
+    );
+}
+
+/**
+ * 7.5 Inject CollectionPage, MusicGroup & MusicAlbum JSON-LD Schema Nodes Strictly on /sonic-universe/
+ * Keeps Homepage / <head> fast and lean while providing full ISRC/UPC discography graph on /sonic-universe/.
  */
 function keystone_recomposition_child_music_schema() {
     $req_path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
-    $is_allowed_music_graph_page = (
-        ( is_front_page() && ! is_home() && ! is_singular( 'post' ) ) ||
-        is_page( 'sonic-universe' ) ||
+    $is_sonic_universe_page = (
+        ( function_exists( 'is_page' ) && is_page( 'sonic-universe' ) ) ||
         'sonic-universe' === $req_path
     );
-    if ( ! $is_allowed_music_graph_page ) {
+    if ( ! $is_sonic_universe_page ) {
         return;
     }
 
@@ -408,60 +522,131 @@ function keystone_recomposition_child_music_schema() {
     }
 
     $albums_data = keystone_get_all_albums();
-    $graph = array();
+    $graph       = array();
 
-    // 1. MusicGroup Node
+    // 1. CollectionPage Wrapper for /sonic-universe/
     $graph[] = array(
-        '@type'     => 'MusicGroup',
-        '@id'       => 'https://keystonerecomposition.com/#musicgroup',
-        'name'      => 'Keystone Recomposition',
-        'url'       => 'https://keystonerecomposition.com',
-        'genre'     => array( 'Deep House', 'Melodic Techno', 'Organic Downtempo', 'Solfeggio Frequencies', 'Bio-Acoustic Functional Audio' ),
-        'spotifyId' => '52v3Qe6Jo0hg764driOl5Y',
-        'sameAs'    => array(
-            'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
-            'https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0',
-            'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
-            'https://pro.musixmatch.com/roster/artist/72648585',
-            'https://www.youtube.com/@KeyStoneRecomposition',
+        '@type'       => 'CollectionPage',
+        '@id'         => 'https://keystonerecomposition.com/sonic-universe/#webpage',
+        'url'         => 'https://keystonerecomposition.com/sonic-universe/',
+        'name'        => 'Keystone Recomposition — Official Sonic Universe Catalog',
+        'description' => 'Official discography and canonical ISRC registry of Keystone Recomposition, composed and produced by Wayne Stevenson.',
+        'inLanguage'  => 'en-CA',
+        'isPartOf'    => array(
+            '@id' => 'https://keystonerecomposition.com/#website',
+        ),
+        'about'       => array(
+            '@id' => 'https://keystonerecomposition.com/#musicgroup',
+        ),
+        'mainEntity'  => array(
+            '@id' => 'https://keystonerecomposition.com/#musicgroup',
         ),
     );
 
-    // 2. All 22 MusicAlbum Nodes with Embedded Tracks & Canonical ISRCs
+    // 2. Canonical MusicGroup Node
+    $graph[] = keystone_get_music_group_schema();
+
+    // 3. All MusicAlbum Nodes with Embedded Tracks & Canonical ISRCs
     foreach ( $albums_data as $album ) {
-        $album_slug = sanitize_title( $album['title'] );
+        $album_slug = sanitize_title( (string) $album['title'] );
+        $raw_cover  = (string) ( $album['cover_image'] ?? '' );
+        $cover_url  = ( '' !== $raw_cover && ! preg_match( '~^https?://~i', $raw_cover ) )
+            ? get_stylesheet_directory_uri() . '/assets/images/albums/' . ltrim( $raw_cover, '/' )
+            : $raw_cover;
+
+        $upc_digits = preg_replace( '/\D+/', '', (string) ( $album['upc'] ?? '' ) );
+        $track_cnt  = (int) ( $album['track_count'] ?? 0 );
         $album_node = array(
-            '@type'         => 'MusicAlbum',
-            '@id'           => 'https://keystonerecomposition.com/sonic-universe/#album-' . $album_slug,
-            'name'          => $album['title'],
-            'datePublished' => $album['release_date'],
-            'numTracks'     => (int) $album['track_count'],
-            'genre'         => $album['genre'],
-            'byArtist'      => array(
-                '@type' => 'MusicGroup',
-                '@id'   => 'https://keystonerecomposition.com/#musicgroup',
+            '@type'               => 'MusicAlbum',
+            '@id'                 => 'https://keystonerecomposition.com/sonic-universe/#album-' . $album_slug,
+            'name'                => $album['title'],
+            'datePublished'       => $album['release_date'],
+            'albumProductionType' => 'https://schema.org/StudioAlbum',
+            'albumReleaseType'    => ( $track_cnt <= 2 ) ? 'https://schema.org/SingleRelease' : 'https://schema.org/AlbumRelease',
+            'numTracks'           => $track_cnt,
+            'genre'               => $album['genre'],
+            'byArtist'            => array(
+                '@id' => 'https://keystonerecomposition.com/#musicgroup',
             ),
-            'image'         => $album['cover_image'],
-            'url'           => home_url( '/sonic-universe/#' . $album_slug ),
+            'producer'            => array(
+                '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+            ),
+            'recordLabel'         => array(
+                '@id' => 'https://keystonerecomposition.com/#organization',
+            ),
+            'image'               => $cover_url,
+            'url'                 => home_url( '/sonic-universe/#' . $album_slug ),
         );
+
+        if ( '' !== $upc_digits ) {
+            $album_node['identifier'] = array(
+                '@type'      => 'PropertyValue',
+                'propertyID' => 'UPC',
+                'value'      => $upc_digits,
+            );
+            $release_node = array(
+                '@type'              => array( 'MusicRelease', 'Product' ),
+                '@id'                => 'https://keystonerecomposition.com/sonic-universe/#release-' . $album_slug,
+                'name'               => $album['title'],
+                'musicReleaseFormat' => 'https://schema.org/DigitalFormat',
+                'recordLabel'        => array(
+                    '@id' => 'https://keystonerecomposition.com/#organization',
+                ),
+            );
+            if ( 12 === strlen( $upc_digits ) ) {
+                $release_node['gtin12'] = $upc_digits;
+            } else {
+                $release_node['gtin13'] = str_pad( $upc_digits, 13, '0', STR_PAD_LEFT );
+            }
+            if ( ! empty( $album['mbid'] ) ) {
+                $release_node['sameAs'] = 'https://musicbrainz.org/release/' . $album['mbid'];
+            }
+            $album_node['albumRelease'] = $release_node;
+        }
+
+        $album_same_as = array();
+        if ( ! empty( $album['spotify_url'] ) && false !== strpos( (string) $album['spotify_url'], 'open.spotify.com/album/' ) ) {
+            $album_same_as[] = $album['spotify_url'];
+        }
+        if ( ! empty( $album['mbid'] ) ) {
+            $album_same_as[] = 'https://musicbrainz.org/release/' . $album['mbid'];
+        }
+        if ( ! empty( $album_same_as ) ) {
+            $album_node['sameAs'] = $album_same_as;
+        }
 
         if ( ! empty( $album['tracks'] ) && is_array( $album['tracks'] ) ) {
             $track_items = array();
             foreach ( $album['tracks'] as $t ) {
+                $t_slug = sanitize_title( (string) $t['title'] );
                 $track_items[] = array(
-                    '@type'          => 'ListItem',
-                    'position'       => (int) $t['pos'],
-                    'item'           => array(
-                        '@type'         => 'MusicRecording',
-                        '@id'           => 'https://keystonerecomposition.com/sonic-universe/#track-' . sanitize_title( $t['title'] ),
-                        'name'          => $t['title'],
-                        'isrcCode'      => $t['isrc'],
-                        'duration'      => $t['duration'] ?? 'PT4M00S',
-                        'byArtist'      => array(
+                    '@type'    => 'ListItem',
+                    'position' => (int) $t['pos'],
+                    'item'     => array(
+                        '@type'       => 'MusicRecording',
+                        '@id'         => 'https://keystonerecomposition.com/sonic-universe/#track-' . $t_slug,
+                        'name'        => $t['title'],
+                        'isrcCode'    => $t['isrc'],
+                        'duration'    => $t['duration'] ?? 'PT3M45S',
+                        'byArtist'    => array(
                             '@id' => 'https://keystonerecomposition.com/#musicgroup',
                         ),
-                        'inAlbum'       => array(
+                        'producer'    => array(
+                            '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+                        ),
+                        'inAlbum'     => array(
                             '@id' => 'https://keystonerecomposition.com/sonic-universe/#album-' . $album_slug,
+                        ),
+                        'recordingOf' => array(
+                            '@type'    => 'MusicComposition',
+                            '@id'      => 'https://keystonerecomposition.com/sonic-universe/#composition-' . $t_slug,
+                            'name'     => $t['title'],
+                            'composer' => array(
+                                '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+                            ),
+                            'lyricist' => array(
+                                '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+                            ),
                         ),
                     ),
                 );
@@ -481,17 +666,10 @@ function keystone_recomposition_child_music_schema() {
         '@graph'   => $graph,
     );
 
-    echo "
-<!-- Keystone 22-Release Master MusicGroup & MusicAlbum JSON-LD Graph -->
-";
-    echo "<script type=\"application/ld+json\">
-";
-    echo wp_json_encode( $schema_payload, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "
-";
-    echo "</script>
-<!-- End Keystone Music Graph -->
-
-";
+    echo "\n<!-- Keystone Master MusicGroup & MusicAlbum JSON-LD Graph -->\n";
+    echo "<script type=\"application/ld+json\">\n";
+    echo wp_json_encode( $schema_payload, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
+    echo "</script>\n<!-- End Keystone Music Graph -->\n\n";
 }
 add_action( 'wp_head', 'keystone_recomposition_child_music_schema' );
 
@@ -571,7 +749,7 @@ function keystone_sanitize_rank_math_json_ld_node( $node, array $person_node, st
 add_filter( 'rank_math/json_ld', 'keystone_inject_wayne_stevenson_rank_math_entity_mesh', 99999, 2 );
 function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $jsonld ): array {
     $person_node    = keystone_get_wayne_stevenson_person_schema();
-    $person_id      = 'https://keystonerecomposition.com/#person';
+    $person_id      = 'https://keystonerecomposition.com/#wayne-stevenson';
     $clean_logo_url = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
     $author_pointer = array(
         '@type' => 'Person',
@@ -615,8 +793,11 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
             }
         }
 
-        $found_person = false;
-        $clean_graph  = array();
+        $found_person       = false;
+        $found_profile_page = false;
+        $req_founder_path   = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
+        $is_founder_page    = ( function_exists( 'is_page' ) && is_page( 'founder' ) ) || 'founder' === $req_founder_path;
+        $clean_graph        = array();
         foreach ( $flat_input_graph as $node ) {
             if ( is_array( $node ) && isset( $node['@type'] ) && in_array( 'Person', (array) $node['@type'], true ) ) {
                 if ( ! $found_person ) {
@@ -627,6 +808,13 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
             }
             if ( is_array( $node ) && isset( $node['@type'] ) ) {
                 $types = (array) $node['@type'];
+                if ( $is_founder_page && ( in_array( 'WebPage', $types, true ) || in_array( 'ProfilePage', $types, true ) ) ) {
+                    $node['@type']      = 'ProfilePage';
+                    $node['@id']        = 'https://keystonerecomposition.com/founder/#profilepage';
+                    $node['mainEntity'] = array( '@id' => $person_id );
+                    $node['about']      = array( '@id' => 'https://keystonerecomposition.com/#organization' );
+                    $found_profile_page = true;
+                }
                 if ( array_intersect( $types, array( 'Article', 'NewsArticle', 'BlogPosting', 'TechArticle', 'WebPage' ) ) ) {
                     $node['author'] = $author_pointer;
                 }
@@ -635,6 +823,16 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
         }
         if ( ! $found_person ) {
             $clean_graph[] = $person_node;
+        }
+        if ( $is_founder_page && ! $found_profile_page ) {
+            $clean_graph[] = array(
+                '@type'      => 'ProfilePage',
+                '@id'        => 'https://keystonerecomposition.com/founder/#profilepage',
+                'url'        => 'https://keystonerecomposition.com/founder/',
+                'name'       => 'Wayne Stevenson — Founder, AI Architect & BC Licensed Builder #52603',
+                'mainEntity' => array( '@id' => $person_id ),
+                'about'      => array( '@id' => 'https://keystonerecomposition.com/#organization' ),
+            );
         }
         $data['@graph'] = $clean_graph;
         return $data;
@@ -674,6 +872,27 @@ function keystone_inject_wayne_stevenson_rank_math_entity_mesh( array $data, $js
     }
     if ( ! $found_top_person ) {
         $data['Person'] = $person_node;
+    }
+    $req_founder_path = trim( (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH ), '/' );
+    $is_founder_page  = ( function_exists( 'is_page' ) && is_page( 'founder' ) ) || 'founder' === $req_founder_path;
+    if ( $is_founder_page ) {
+        if ( isset( $data['WebPage'] ) && is_array( $data['WebPage'] ) ) {
+            $data['WebPage']['@type']      = 'ProfilePage';
+            $data['WebPage']['@id']        = 'https://keystonerecomposition.com/founder/#profilepage';
+            $data['WebPage']['mainEntity'] = array( '@id' => $person_id );
+            $data['WebPage']['about']      = array( '@id' => 'https://keystonerecomposition.com/#organization' );
+            $data['ProfilePage']           = $data['WebPage'];
+            unset( $data['WebPage'] );
+        } elseif ( ! isset( $data['ProfilePage'] ) || ! is_array( $data['ProfilePage'] ) ) {
+            $data['ProfilePage'] = array(
+                '@type'      => 'ProfilePage',
+                '@id'        => 'https://keystonerecomposition.com/founder/#profilepage',
+                'url'        => 'https://keystonerecomposition.com/founder/',
+                'name'       => 'Wayne Stevenson — Founder, AI Architect & BC Licensed Builder #52603',
+                'mainEntity' => array( '@id' => $person_id ),
+                'about'      => array( '@id' => 'https://keystonerecomposition.com/#organization' ),
+            );
+        }
     }
     if ( isset( $data['ProfilePage'] ) && is_array( $data['ProfilePage'] ) ) {
         $data['ProfilePage']['mainEntity'] = array( '@id' => $person_id );
@@ -1017,7 +1236,7 @@ function keystone_recomposition_integrate_video_schema( $data, $jsonld ) {
     }
 
     $permalink = get_permalink( $post->ID );
-    $person_id = 'https://keystonerecomposition.com/#person';
+    $person_id = 'https://keystonerecomposition.com/#wayne-stevenson';
 
     // Guarantee BlogPosting and BreadcrumbList exist on all single blog posts (GAP-02)
     if ( $is_blog_post && is_array( $data ) ) {
@@ -1276,7 +1495,7 @@ function keystone_dedup_person_jsonld_tree( $node, string $person_id, array $per
     if ( isset( $node['@type'] ) && in_array( 'Person', (array) $node['@type'], true ) ) {
         $nid  = isset( $node['@id'] ) ? (string) $node['@id'] : '';
         $name = isset( $node['name'] ) ? trim( (string) $node['name'] ) : '';
-        $is_wayne = ( $nid === $person_id || in_array( $name, array( '', 'Wayne', 'Wayne Stevenson', 'Wayne Stevens' ), true ) );
+        $is_wayne = ( $nid === $person_id || false !== strpos( $nid, '/#person' ) || in_array( $name, array( '', 'Wayne', 'Wayne Stevenson' ), true ) );
         if ( $is_wayne ) {
             if ( $is_root_entity ) {
                 if ( ! $seen_primary_person ) {
@@ -1304,7 +1523,7 @@ function keystone_dedup_person_jsonld_tree( $node, string $person_id, array $per
 add_action( 'wp_head', function() {
     ob_start( function( $output ) {
         $person_node         = function_exists( 'keystone_get_wayne_stevenson_person_schema' ) ? keystone_get_wayne_stevenson_person_schema() : array();
-        $person_id           = 'https://keystonerecomposition.com/#person';
+        $person_id           = 'https://keystonerecomposition.com/#wayne-stevenson';
         $clean_logo_url      = get_stylesheet_directory_uri() . '/assets/images/kp_badge_icon.png';
         $seen_primary_person = false;
 
@@ -1728,9 +1947,15 @@ function keystone_recomposition_child_404_redirect() {
         exit;
     }
 
-    // 1. Canonical Founder 301 Redirects (/about/, /about-the-founder/ -> /founder/)
-    if ( in_array( strtolower( $trimmed_path ), array( '/about', '/about-the-founder', '/about-the-founder-the-keystone-blueprint' ), true ) ) {
+    // 1. Canonical Founder 301 Redirects (/about/, /about-the-founder/, /wayne-stevenson/ -> /founder/)
+    if ( in_array( strtolower( $trimmed_path ), array( '/about', '/about-the-founder', '/about-the-founder-the-keystone-blueprint', '/wayne-stevenson' ), true ) ) {
         wp_safe_redirect( home_url( '/founder/' ), 301 );
+        exit;
+    }
+
+    // 1b. Legacy Case Studies 301 Redirect (/case-studies/ -> /ecosystem-partners/)
+    if ( '/case-studies' === strtolower( $trimmed_path ) ) {
+        wp_safe_redirect( home_url( '/ecosystem-partners/' ), 301 );
         exit;
     }
 
@@ -1814,7 +2039,7 @@ function keystone_inject_ai_protocols_software_schema() {
                     'applicationCategory' => 'DeveloperApplication',
                     'operatingSystem' => 'Windows, Linux, macOS',
                     'author' => array(
-                        '@id' => 'https://keystonerecomposition.com/#person'
+                        '@id' => 'https://keystonerecomposition.com/#wayne-stevenson'
                     ),
                     'publisher' => array(
                         '@id' => 'https://keystonerecomposition.com/#organization'
@@ -1837,7 +2062,7 @@ function keystone_inject_ai_protocols_software_schema() {
                             'name' => 'How does Keystone integrate music production and multi-channel video pipelines?',
                             'acceptedAnswer' => array(
                                 '@type' => 'Answer',
-                                'text' => 'Audio architecture generated across 22 official TooLost releases is dynamically synchronized with Google Flow Box 2 and DaVinci Resolve automated 2-track master timeline assembly.'
+                                'text' => 'Audio architecture generated across 25 official releases is dynamically synchronized with Google Flow Box 2 and DaVinci Resolve automated 2-track master timeline assembly.'
                             )
                         )
                     )
@@ -1870,7 +2095,7 @@ function keystone_inject_city_landing_pages_geo_schema() {
         'vancouver' => array(
             'slugs'       => array( 'vancouver-sea-to-sky', 'lifestyle', 'squamish', 'vancouver-construction-infill', 'vancouver-ai-systems-architect' ),
             'name'        => 'Keystone Recomposition — Vancouver & Sea-to-Sky Hub',
-            'description' => 'AI Systems Architect, FastMCP Multi-Agent Engineer & 22-Album Electronic Music Producer across Vancouver, Squamish, and Whistler.',
+            'description' => 'AI Systems Architect, FastMCP Multi-Agent Engineer & 24-Release Electronic Music Producer across Vancouver, Squamish, and Whistler.',
             'url'         => home_url( '/lifestyle/' ),
             'locality'    => 'Squamish',
             'region'      => 'BC',
@@ -1912,9 +2137,9 @@ function keystone_inject_city_landing_pages_geo_schema() {
             'longitude'   => -74.0060,
         ),
         'worldwide' => array(
-            'slugs'       => array( 'worldwide', 'ai-protocols', 'sonic-universe', 'newyork-executive-ai-systems', 'new-york-autonomous-agent-swarms' ),
+            'slugs'       => array( 'worldwide', 'ai-protocols', 'newyork-executive-ai-systems', 'new-york-autonomous-agent-swarms' ),
             'name'        => 'Keystone Protocols — Worldwide Autonomous Intelligence & Music Publishing Hub',
-            'description' => 'Autonomous multi-agent AI swarms, quantitative prediction market intelligence, and 22-release TooLost functional electronic music universe distributed globally.',
+            'description' => 'Autonomous multi-agent AI swarms, quantitative prediction market intelligence, and 25-release TooLost functional electronic music universe distributed globally.',
             'url'         => home_url( '/ai-protocols/' ),
             'locality'    => 'Squamish',
             'region'      => 'BC',
@@ -1958,7 +2183,7 @@ function keystone_inject_city_landing_pages_geo_schema() {
                             '@id' => 'https://keystonerecomposition.com/#organization',
                         ),
                         'founder' => array(
-                            '@id' => 'https://keystonerecomposition.com/#person',
+                            '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
                         ),
                     ),
                 ),

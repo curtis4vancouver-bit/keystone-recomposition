@@ -151,13 +151,32 @@ function keystone_is_music_intel_post( WP_Post $p ): bool {
     if ( in_array( 1442, $cats, true ) && ! in_array( 1538, $cats, true ) ) {
         return true;
     }
+    $music_slugs = array(
+        'iron-grace',
+        'sovereign-reverb',
+        'heavy-civil-focus',
+        'peak-intensity',
+        'diesel-in-the-rain',
+        'three-miles-past',
+        'gravel-on-the-tailgate',
+        'whiskey-on-a-wednesday',
+        'don-t-say-you-re-fine',
+        'dont-say-youre-fine',
+        'the-morning-march',
+    );
+    foreach ( $music_slugs as $ms ) {
+        if ( str_contains( $slug, $ms ) ) {
+            return true;
+        }
+    }
     if (
-        str_contains( $slug, 'iron-grace' ) ||
-        str_contains( $slug, 'sovereign-reverb' ) ||
-        str_contains( $slug, 'heavy-civil-focus' ) ||
-        str_contains( $slug, 'peak-intensity' ) ||
         str_contains( $title, 'somatic deep house' ) ||
-        str_contains( $title, 'official 4k music video' )
+        str_contains( $title, 'official 4k' ) ||
+        str_contains( $title, '4k music video' ) ||
+        str_contains( $title, 'official music video' ) ||
+        str_contains( $title, 'whiskey on a wednesday' ) ||
+        str_contains( $title, 'diesel in the rain' ) ||
+        str_contains( $title, "don't say you're fine" )
     ) {
         return true;
     }
@@ -175,31 +194,31 @@ $published_posts = get_posts(
 );
 
 // Defaults for Featured Hero 1 (AI Systems & Architecture - Blue)
-$feat_ai_title       = 'Google Antigravity vs Grok and OpenAI: The Ultimate 200,000-GPU Multi-Agent Breakdown';
-$feat_ai_excerpt     = 'Inside Wayne Stevenson\'s multi-agent workstation architecture, Google Flow visual pipelines, and live browser automation built in Squamish and Vancouver, BC to replace fragile cloud wrappers with deterministic local execution.';
-$feat_ai_link        = home_url( '/ai-protocols/' );
-$feat_ai_date        = 'October 2026';
+$feat_ai_title       = 'Chrome DevTools Protocol Port 9222: Zero-Wrapper Browser Control & Multi-Agent Execution';
+$feat_ai_excerpt     = 'Inside Wayne Stevenson\'s multi-agent workstation architecture, Chrome DevTools Port 9222 direct socket orchestration, and deterministic local execution built in Squamish and Vancouver, BC.';
+$feat_ai_link        = home_url( '/2026/11/09/chrome-devtools-protocol-port-9222/' );
+$feat_ai_date        = 'November 2026';
 $feat_ai_read        = '12 MIN READ';
-$feat_ai_long_id     = 'nl1yJq45fTs';
-$feat_ai_short_id    = '8oPAZPsTOiw';
-$feat_ai_short_title = 'Google Antigravity vs Grok and OpenAI — 9:16 Field Short';
-$feat_ai_short_desc  = 'Rapid 40-second vertical field briefing & companion architectural breakdown for this episode.';
+$feat_ai_long_id     = 'BuGR4MsghGs';
+$feat_ai_short_id    = '3KRrFfUiyuw';
+$feat_ai_short_title = 'Chrome DevTools Protocol Port 9222 — 9:16 Field Short';
+$feat_ai_short_desc  = 'Rapid vertical field briefing & companion architectural breakdown for Chrome CDP Port 9222 automation.';
 
 // Defaults for Featured Hero 2 (Sonic Universe / Music - Gold)
-$feat_sound_title       = 'Heavy Civil Focus Keystone Recomposition: Official 4K Somatic Deep House Release (2026)';
-$feat_sound_excerpt     = 'Engineered in Squamish, BC by Wayne Stevenson — uniting 122 BPM warm analog sub-bass foundations with expressive solo cello phrasing and a continuous 4K visual film assembled in DaVinci Resolve Studio.';
-$feat_sound_link        = home_url( '/2026/10/23/heavy-civil-focus-keystone-recomposition/' );
-$feat_sound_date        = 'October 2026';
-$feat_sound_long_id     = 'nKx8DiB_heM';
-$feat_sound_short_id    = '9Aa98IGWKpU';
+$feat_sound_title       = 'Diesel in the Rain — Official 4K Music Video | Whiskey on a Wednesday (2026)';
+$feat_sound_excerpt     = 'Produced in Squamish, BC by Wayne Stevenson — uniting gritty baritone storytelling, fingerpicked steel-string acoustic guitar, crying pedal steel, and warm 808 sub-bass with a continuous 4K visual film.';
+$feat_sound_link        = home_url( '/2026/11/10/diesel-in-the-rain/' );
+$feat_sound_date        = 'November 2026';
+$feat_sound_long_id     = 'nyQwl-7-vH0';
+$feat_sound_short_id    = 'Omt_pYMlRSM';
 $feat_sound_kicker      = '🎵 24-BIT / 48kHz LOSSLESS STUDIO MASTER • VERIFIED OAC';
-$feat_sound_short_title = 'Heavy Civil Focus — 9:16 Somatic Short';
-$feat_sound_short_desc  = '122 BPM Somatic Deep House & Solo Cello Vertical Drop • Too Lost Digital Distribution';
+$feat_sound_short_title = 'Diesel in the Rain — 9:16 Official Short';
+$feat_sound_short_desc  = '92 BPM Modern Outlaw Country-Trap & Acoustic Vertical Drop • Too Lost Digital Distribution';
 
 $matched_ai_post      = null;
 $matched_sound_post   = null;
-$fallback_ai_short    = '8oPAZPsTOiw';
-$fallback_sound_short = '9Aa98IGWKpU';
+$fallback_ai_short    = '3KRrFfUiyuw';
+$fallback_sound_short = 'Omt_pYMlRSM';
 
 foreach ( $published_posts as $p_candidate ) {
     if ( ! ( $p_candidate instanceof WP_Post ) ) {
@@ -207,14 +226,14 @@ foreach ( $published_posts as $p_candidate ) {
     }
     $ids = keystone_extract_post_youtube_ids( (string) $p_candidate->post_content );
     if ( ! keystone_is_music_intel_post( $p_candidate ) ) {
-        if ( ! empty( $ids['short'] ) && '8oPAZPsTOiw' === $fallback_ai_short ) {
+        if ( ! empty( $ids['short'] ) && '3KRrFfUiyuw' === $fallback_ai_short ) {
             $fallback_ai_short = $ids['short'];
         }
         if ( null === $matched_ai_post && ! empty( $ids['long'] ) ) {
             $matched_ai_post = $p_candidate;
         }
     } else {
-        if ( ! empty( $ids['short'] ) && '9Aa98IGWKpU' === $fallback_sound_short ) {
+        if ( ! empty( $ids['short'] ) && 'Omt_pYMlRSM' === $fallback_sound_short ) {
             $fallback_sound_short = $ids['short'];
         }
         if ( null === $matched_sound_post && ! empty( $ids['long'] ) ) {
@@ -469,7 +488,7 @@ get_header(); ?>
                             <!-- Metadata Pill Row -->
                             <div class="recomp-featured-meta-row">
                                 <span id="recomp-featured-sound-cat" class="recomp-cat-badge ks-p3-pill-gold">
-                                    <span class="ks-wave-text">SOMATIC DEEP HOUSE // SONIC UNIVERSE</span>
+                                    <span class="ks-wave-text">OFFICIAL 4K RELEASE // SONIC UNIVERSE</span>
                                 </span>
                                 <span id="recomp-featured-sound-date" class="recomp-meta-date"><?php echo esc_html( $feat_sound_date ); ?></span>
                                 <span id="recomp-featured-sound-duration" class="ks-p3-pill-blue recomp-meta-read-pill">
@@ -511,6 +530,31 @@ get_header(); ?>
 
                     </div>
 
+                </div>
+            </section>
+
+            <!-- 2C. Cross-Empire Sovereign Builder Executive Bridge (Keystone Possibilities Ltd. — BC Builder #52603 · ES54 Civil) -->
+            <section id="recomp-sovereign-builder-bridge" aria-label="Real-World Infrastructure and BC Custom Estate Division" style="margin: 0 auto 42px auto; max-width: 1200px; background: linear-gradient(135deg, #04070d 0%, #0a101d 100%); border: 1px solid rgba(212, 175, 55, 0.42); border-radius: 20px; padding: 26px 30px; box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(212, 175, 55, 0.22); position: relative; overflow: hidden;">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+                    <div style="flex: 1 1 560px; min-width: 280px;">
+                        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: 9999px; background: rgba(212, 175, 55, 0.10); border: 1px solid rgba(212, 175, 55, 0.45); font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #d4af37; margin-bottom: 12px;">
+                            <span>🏛️</span> <span>PHYSICAL INFRASTRUCTURE &bull; BC HOUSING LICENSED BUILDER #52603 &bull; ES54 CIVIL</span>
+                        </div>
+                        <h3 style="margin: 0 0 10px 0; font-family: 'Outfit', 'Inter', sans-serif; font-size: clamp(1.18rem, 2vw, 1.48rem); font-weight: 800; line-height: 1.28; color: #f8fafc; letter-spacing: -0.01em;">
+                            Real-World Infrastructure &amp; BC Custom Estate Division &mdash; <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color: #d4af37; text-decoration: none !important; border-bottom: 1px solid rgba(212, 175, 55, 0.45);">Keystone Possibilities Ltd. (BC Builder #52603 &middot; ES54 Civil)</a>
+                        </h3>
+                        <p style="margin: 0; font-family: 'Inter', sans-serif; font-size: 0.92rem; line-height: 1.62; color: #cbd5e1; max-width: 780px;">
+                            Alongside autonomous AI orchestration and sonic architecture, Principal Builder <strong style="color: #f8fafc;">Wayne Stevenson</strong> leads licensed heavy-civil siteworks, West Vancouver &amp; Whistler custom estates, and Bill 44 SSMUH 3&ndash;6 unit multiplex builds under statutory 2-5-10 Year National Home Warranty and open-book CCDC 5B fiduciary governance.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px; flex: 0 1 320px; min-width: 260px;">
+                        <a href="https://keystonepossibilities.ca/feasibility-plan/" target="_blank" rel="noopener" class="ks-p3-btn-gold" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 22px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; text-align: center;">
+                            <span class="ks-wave-text">🏛️ 48-HR BC FEASIBILITY PLAN ↗</span>
+                        </a>
+                        <a href="https://keystonepossibilities.ca/private-investors/" target="_blank" rel="noopener" class="ks-p3-btn-blue" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 22px; border-radius: 9999px; text-decoration: none !important; font-family: 'Outfit', sans-serif; font-size: 0.80rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; text-align: center;">
+                            <span class="ks-wave-text">🛡️ PRIVATE INVESTORS &amp; ALPINE JVS ↗</span>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -574,7 +618,7 @@ get_header(); ?>
                         3 => array(
                             'page' => 1, 'slot' => '03', 'cat' => 'SONIC ARCHITECTURE', 'date' => 'OCT 2026', 'read' => '15 MIN READ',
                             'title' => 'Sovereign Reverb: Functional Frequency Architecture &amp; High-Cadence Focus',
-                            'excerpt' => 'Engineering electronic audio frequencies to sustain deep flow state during intensive building sprints. Complete 22-release studio master telemetry.',
+                            'excerpt' => 'Engineering electronic audio frequencies to sustain deep flow state during intensive building sprints. Complete 25-release studio master telemetry.',
                             'image' => $theme_assets_uri . '/albums/sovereign_reverb.jpg',
                             'link' => '/2026/09/28/sovereign-reverb-functional-frequency-architecture/',
                         ),
@@ -903,22 +947,26 @@ async function loadPublishedIntel() {
             var slug = (p.slug || '').toLowerCase();
             var title = ((p.title && p.title.rendered) || '').toLowerCase();
             if (cats.indexOf(1442) !== -1 && cats.indexOf(1538) === -1) return true;
-            if (slug.indexOf('iron-grace') !== -1 || slug.indexOf('sovereign-reverb') !== -1 || slug.indexOf('heavy-civil-focus') !== -1 || slug.indexOf('peak-intensity') !== -1 || title.indexOf('somatic deep house') !== -1 || title.indexOf('official 4k music video') !== -1) return true;
+            var musicSlugs = ['iron-grace', 'sovereign-reverb', 'heavy-civil-focus', 'peak-intensity', 'diesel-in-the-rain', 'three-miles-past', 'gravel-on-the-tailgate', 'whiskey-on-a-wednesday', 'don-t-say-you-re-fine', 'dont-say-youre-fine', 'the-morning-march'];
+            for (var m = 0; m < musicSlugs.length; m++) {
+                if (slug.indexOf(musicSlugs[m]) !== -1) return true;
+            }
+            if (title.indexOf('somatic deep house') !== -1 || title.indexOf('official 4k') !== -1 || title.indexOf('4k music video') !== -1 || title.indexOf('official music video') !== -1 || title.indexOf('whiskey on a wednesday') !== -1 || title.indexOf('diesel in the rain') !== -1 || title.indexOf("don't say you're fine") !== -1) return true;
             return false;
         };
         var isAiProtocolsPost = function(p) {
             return !isMusicPost(p);
         };
 
-        var latestAiShortFallback = '8oPAZPsTOiw';
-        var latestSoundShortFallback = '9Aa98IGWKpU';
+        var latestAiShortFallback = '3KRrFfUiyuw';
+        var latestSoundShortFallback = 'Omt_pYMlRSM';
         for (var k = 0; k < posts.length; k++) {
             if (posts[k].content && posts[k].content.rendered) {
                 var probeIds = recompExtractYoutubeIds(posts[k].content.rendered, retiredIds);
-                if (isAiProtocolsPost(posts[k]) && probeIds.shortId && latestAiShortFallback === '8oPAZPsTOiw') {
+                if (isAiProtocolsPost(posts[k]) && probeIds.shortId && latestAiShortFallback === '3KRrFfUiyuw') {
                     latestAiShortFallback = probeIds.shortId;
                 }
-                if (isMusicPost(posts[k]) && probeIds.shortId && latestSoundShortFallback === '9Aa98IGWKpU') {
+                if (isMusicPost(posts[k]) && probeIds.shortId && latestSoundShortFallback === 'Omt_pYMlRSM') {
                     latestSoundShortFallback = probeIds.shortId;
                 }
             }

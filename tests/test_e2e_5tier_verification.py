@@ -102,9 +102,10 @@ class TestTier2SchemaAndRichResults:
             code = f.read()
 
         assert "52v3Qe6Jo0hg764driOl5Y" in code, "Missing Spotify Artist ID"
+        assert "1862989452" in code, "Missing Apple Music Artist ID"
         assert "30027d0e-6aeb-4704-8792-a031c936c62a" in code, "Missing MusicBrainz Label ID"
         assert "TOOLOST3000939655" in code, "Missing Too Lost catalog ID"
-        assert "@KeystoneRecomposition" in code, "Missing YouTube channel handle"
+        assert "@KeyStoneRecomposition" in code, "Missing YouTube channel handle"
         assert "Wayne Stevenson" in code, "Missing Founder Person node"
 
 

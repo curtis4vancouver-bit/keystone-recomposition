@@ -9,9 +9,11 @@ Template: astra
    Keystone Dark Quiet Luxury System Tokens & Variables
    ========================================================================== */
 :root {
-  --bg-primary: #000000;
-  --bg-surface: rgba(8, 8, 8, 0.95);
-  --bg-card: rgba(10, 10, 10, 0.90);
+  --bg-obsidian: #04070d;
+  --bg-primary: #04070d;
+  --bg-pure-black: #000000;
+  --bg-surface: rgba(8, 12, 20, 0.95);
+  --bg-card: rgba(10, 14, 24, 0.92);
   --gold-primary: #d4af37;
   --gold-secondary: #c4a265;
   --gold-light: #f6d365;
@@ -26,14 +28,15 @@ Template: astra
   --radius-pill: 9999px;
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
 
-  /* Legacy Alias Mapping for Full Backward Compatibility */
-  --ks-gold-primary: var(--gold-secondary);
-  --ks-gold-hover: var(--gold-primary);
-  --ks-gold-dim: rgba(196, 162, 101, 0.15);
-  --ks-bg-black: #080808;
-  --ks-card-black: #111111;
-  --ks-card-border: rgba(196, 162, 101, 0.2);
+  /* Harmonized Canonical Quiet Luxury Alias Mapping (100% Backward Compatible) */
+  --ks-gold-primary: var(--gold-primary);
+  --ks-gold-hover: var(--gold-light);
+  --ks-gold-dim: rgba(212, 175, 55, 0.15);
+  --ks-bg-black: var(--bg-obsidian);
+  --ks-card-black: rgba(10, 14, 24, 0.95);
+  --ks-card-border: rgba(212, 175, 55, 0.25);
   --ks-text-muted: var(--text-secondary);
 }
 
@@ -832,13 +835,13 @@ Template: astra
    ========================================================================== */
 
 :root {
-  --ks-gold-primary: #C4A265;
-  --ks-gold-hover: #D4AF37;
-  --ks-gold-dim: rgba(196, 162, 101, 0.15);
-  --ks-bg-black: #080808;
-  --ks-card-black: #111111;
-  --ks-card-border: rgba(196, 162, 101, 0.2);
-  --ks-text-muted: #9CA3AF;
+  --ks-gold-primary: var(--gold-primary, #d4af37);
+  --ks-gold-hover: var(--gold-light, #f6d365);
+  --ks-gold-dim: rgba(212, 175, 55, 0.15);
+  --ks-bg-black: var(--bg-obsidian, #04070d);
+  --ks-card-black: rgba(10, 14, 24, 0.95);
+  --ks-card-border: rgba(212, 175, 55, 0.25);
+  --ks-text-muted: var(--text-secondary, #94a3b8);
 }
 
 .keystone-tool-card,
@@ -3279,9 +3282,9 @@ footer.site-footer,
    ========================================================================== */
 
 :root {
-  --bg-dark-obsidian: #000000;
-  --bg-slate-card: rgba(10, 10, 10, 0.95);
-  --bg-slate-elevated: rgba(18, 18, 18, 0.95);
+  --bg-dark-obsidian: var(--bg-obsidian, #04070d);
+  --bg-slate-card: rgba(10, 14, 24, 0.95);
+  --bg-slate-elevated: rgba(16, 22, 35, 0.95);
   --gold-primary: #d4af37;
   --gold-light: #f6d365;
   --gold-dark: #aa820a;
@@ -3289,7 +3292,7 @@ footer.site-footer,
   --gold-glow: 0 0 24px rgba(212, 175, 55, 0.22);
   --cyan-neon: #38bdf8;
   --cyan-glow: 0 0 16px rgba(56, 189, 248, 0.35);
-  --text-pure-white: #ffffff;
+  --text-pure-white: #f8fafc;
   --text-muted: #94a3b8;
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -9610,9 +9613,9 @@ body.page-template-template-ai-protocols #content > .ast-container {
 }
 
 .alert-success {
-  background: rgba(56, 189, 248, 0.15) !important;
-  border: 1px solid rgba(56, 189, 248, 0.4) !important;
-  color: #86efac !important;
+  background: rgba(56, 189, 248, 0.14) !important;
+  border: 1px solid rgba(212, 175, 55, 0.45) !important;
+  color: #f8fafc !important;
 }
 
 .alert-error {

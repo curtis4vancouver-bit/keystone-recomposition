@@ -867,64 +867,6 @@ function keystone_evidence_base_shortcode( $atts = array(), $content = null ) {
 }
 add_shortcode( 'keystone_evidence_base', 'keystone_evidence_base_shortcode' );
 
-// Ensure youtube-nocookie.com/embed/ and keystone_youtube_id are prioritized when auto-creating watch pages
-add_action( 'init', function() {
-    remove_action( 'transition_post_status', 'keystone_auto_create_watch_page', 10 );
-}, 20 );
-add_action( 'transition_post_status', 'keystone_sovereign_auto_create_watch_page', 10, 3 );
-function keystone_sovereign_auto_create_watch_page( $new_status, $old_status, $post ) {
-    if ( 'publish' !== $new_status || 'post' !== $post->post_type ) {
-        return;
-    }
-    $youtube_id = get_post_meta( $post->ID, 'keystone_youtube_id', true );
-    if ( empty( $youtube_id ) ) {
-        if ( preg_match( '~\[keystone_video[^\]]*id=["\']([a-zA-Z0-9_-]{11})["\']~i', $post->post_content, $m ) ) {
-            $youtube_id = $m[1];
-        } elseif ( preg_match( '~youtube-nocookie\.com/embed/([a-zA-Z0-9_-]{11})~i', $post->post_content, $m ) ) {
-            $youtube_id = $m[1];
-        } elseif ( preg_match( '~(?:youtube\.com/(?:[^/]+/.+/(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/|youtube\.com/shorts/)([^\"&?/ ]{11})~i', $post->post_content, $m ) ) {
-            $youtube_id = $m[1];
-        }
-    }
-    if ( empty( $youtube_id ) ) {
-        return;
-    }
-    update_post_meta( $post->ID, 'keystone_youtube_id', $youtube_id );
-    $post_slug  = ! empty( $post->post_name ) ? sanitize_title( $post->post_name ) : sanitize_title( $post->post_title );
-    $watch_slug = 'watch-' . $post_slug;
-    $blog_permalink = get_permalink( $post->ID );
-    $clean_content  = preg_replace( '~\[keystone_video[^\]]*\]~i', '', (string) $post->post_content );
-    $content  = '[keystone_video id="' . esc_attr( $youtube_id ) . '" type="youtube"]' . "\n\n" . $clean_content . "\n\n";
-    $content .= '<p class="wp-block-paragraph" style="text-align:center; margin-top:45px; margin-bottom:45px;"><a href="' . esc_url( $blog_permalink ) . '" style="background-color: #c4a265; color: #000; padding: 15px 30px; border-radius: 4px; text-decoration: none; font-weight: bold; display: inline-block; text-transform: uppercase; letter-spacing: 1px;">Read the Full Protocol ?</a></p>';
-
-    remove_action( 'transition_post_status', 'keystone_sovereign_auto_create_watch_page', 10 );
-    $page_by_path = get_page_by_path( $watch_slug, OBJECT, 'page' );
-    if ( $page_by_path && ! empty( $page_by_path->ID ) ) {
-        wp_update_post( array(
-            'ID'           => (int) $page_by_path->ID,
-            'post_title'   => 'Watch: ' . $post->post_title,
-            'post_name'    => $watch_slug,
-            'post_content' => $content,
-            'post_status'  => 'publish',
-        ) );
-        $page_id = (int) $page_by_path->ID;
-    } else {
-        $page_id = wp_insert_post( array(
-            'post_title'   => 'Watch: ' . $post->post_title,
-            'post_name'    => $watch_slug,
-            'post_content' => $content,
-            'post_status'  => 'publish',
-            'post_type'    => 'page',
-            'post_author'  => $post->post_author,
-        ) );
-    }
-    if ( ! is_wp_error( $page_id ) && $page_id > 0 ) {
-        update_post_meta( $page_id, 'keystone_youtube_id', $youtube_id );
-        delete_transient( 'rank_math_sitemap_cache' );
-    }
-    add_action( 'transition_post_status', 'keystone_sovereign_auto_create_watch_page', 10, 3 );
-}
-
 // Emit X-LiteSpeed-Purge: * header when purging caches or serving sitemaps so Hostinger LiteSpeed evicts stale URI cache
 add_action( 'init', function() {
     if ( isset( $_GET['keystone_ls_purge'] ) ) {
@@ -1012,8 +954,8 @@ function keystone_recomp_get_verified_ecosystem_partners(): array {
             'name'            => 'Spotify Official Artist Catalog — Keystone Recomposition',
             'url'             => 'https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y',
             'category_badge'  => 'Official DSP Streaming & Bio-Acoustic Catalog',
-            'corridor_region' => 'Worldwide • 22 Official Releases • 216 ISRC Masters',
-            'summary'         => 'Verified Spotify Artist hub streaming all 22 official Keystone Recomposition releases engineered for deep-work cognitive cadence, metabolic training, and circadian recovery.',
+            'corridor_region' => 'Worldwide • 25 Official Releases • 246 ISRC Masters',
+            'summary'         => 'Verified Spotify Artist hub streaming all 24 official Keystone Recomposition releases engineered for deep-work cognitive cadence, metabolic training, and circadian recovery.',
             'rel'             => 'noopener',
         ),
         array(

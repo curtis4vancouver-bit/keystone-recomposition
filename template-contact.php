@@ -18,46 +18,103 @@ $feedback_message = '';
 
 // Handle Direct Inquiry Form Submission
 if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_contact_submitted'] ) ) {
-	$nonce = $_POST['keystone_contact_nonce'] ?? '';
+	$nonce    = $_POST['keystone_contact_nonce'] ?? '';
+	$honeypot = trim( (string) ( $_POST['website_url'] ?? '' ) );
+
 	if ( ! wp_verify_nonce( (string) $nonce, 'keystone_contact_action' ) ) {
 		$feedback_status  = 'error';
 		$feedback_message = 'Security validation failed. Please refresh the page and try again.';
+	} elseif ( '' !== $honeypot ) {
+		// Silent anti-bot honeypot trap: return polite confirmation without persisting or mailing spam.
+		$feedback_status  = 'success';
+		$feedback_message = 'Consultation request received.';
 	} else {
-		$name     = sanitize_text_field( $_POST['contact_name'] ?? '' );
-		$email    = sanitize_email( $_POST['contact_email'] ?? '' );
-		$category = sanitize_text_field( $_POST['contact_category'] ?? '' );
-		$budget   = sanitize_text_field( $_POST['contact_budget'] ?? '' );
-		$details  = sanitize_textarea_field( $_POST['contact_message'] ?? '' );
+		$name     = sanitize_text_field( (string) ( $_POST['contact_name'] ?? '' ) );
+		$email    = sanitize_email( (string) ( $_POST['contact_email'] ?? '' ) );
+		$category = sanitize_text_field( (string) ( $_POST['contact_category'] ?? '' ) );
+		$budget   = sanitize_text_field( (string) ( $_POST['contact_budget'] ?? '' ) );
+		$details  = sanitize_textarea_field( (string) ( $_POST['contact_message'] ?? '' ) );
 
-		if ( empty( $name ) || empty( $email ) || empty( $details ) ) {
+		if ( empty( $name ) || ! is_email( $email ) || '' === trim( $details ) ) {
 			$feedback_status  = 'error';
 			$feedback_message = 'Please provide your full name, valid email address, and a project overview.';
 		} else {
+			$resolved_category = '' !== $category ? $category : 'General Executive Consultation';
+			$resolved_budget   = '' !== $budget ? $budget : 'Not Specified';
+
+			if ( function_exists( 'keystone_persist_client_inquiry_record' ) ) {
+				$client_ip = function_exists( 'keystone_get_lead_consultation_client_ip' )
+					? keystone_get_lead_consultation_client_ip()
+					: (string) ( $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0' );
+				$ip_salt   = function_exists( 'wp_salt' ) ? (string) wp_salt( 'auth' ) : 'kr_lead_salt_v1';
+				$store_res = keystone_persist_client_inquiry_record(
+					array(
+						'name'        => $name,
+						'email'       => $email,
+						'category'    => $resolved_category,
+						'budget'      => $resolved_budget,
+						'message'     => $details,
+						'page_source' => function_exists( 'get_permalink' ) ? (string) get_permalink() : 'https://keystonerecomposition.com/contact/',
+						'ip_hash'     => substr( hash( 'sha256', $client_ip . '|' . $ip_salt ), 0, 16 ),
+					)
+				);
+				$inquiry_id = (string) ( $store_res['entry']['id'] ?? '' );
+			} else {
+				$inquiry_id = 'KR-INQ-' . gmdate( 'YmdHis' ) . '-' . strtoupper( substr( md5( uniqid( '', true ) ), 0, 4 ) );
+				$entry      = array(
+					'id'           => $inquiry_id,
+					'submitted_at' => gmdate( 'c' ),
+					'name'         => $name,
+					'email'        => $email,
+					'category'     => $resolved_category,
+					'budget'       => $resolved_budget,
+					'message'      => $details,
+					'page_source'  => 'https://keystonerecomposition.com/contact/',
+				);
+				$existing = get_option( 'keystone_client_inquiries_ledger', array() );
+				$ledger   = is_array( $existing ) ? $existing : array();
+				array_unshift( $ledger, $entry );
+				$ledger = array_slice( $ledger, 0, 200 );
+				update_option( 'keystone_client_inquiries_ledger', $ledger, false );
+
+				$log_dir = get_stylesheet_directory() . '/logs';
+				if ( ! is_dir( $log_dir ) ) {
+					wp_mkdir_p( $log_dir );
+				}
+				if ( is_dir( $log_dir ) ) {
+					if ( ! file_exists( $log_dir . '/.htaccess' ) ) {
+						@file_put_contents( $log_dir . '/.htaccess', "Order deny,allow\nDeny from all\n", LOCK_EX );
+					}
+					if ( ! file_exists( $log_dir . '/index.php' ) ) {
+						@file_put_contents( $log_dir . '/index.php', "<?php\n// Silence is golden.\n", LOCK_EX );
+					}
+					$json_line = wp_json_encode( $entry, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+					if ( is_string( $json_line ) ) {
+						@file_put_contents( $log_dir . '/inquiries.log', $json_line . "\n", FILE_APPEND | LOCK_EX );
+					}
+				}
+			}
+
+			$safe_reply_name  = trim( (string) preg_replace( '/[\r\n\0<>"]+/', ' ', $name ) );
+			$safe_reply_email = trim( (string) preg_replace( '/[\r\n\0\s]+/', '', $email ) );
+
 			$to      = 'keystonerecomposition@gmail.com';
-			$subject = '[Keystone Recomposition Inquiry] ' . ( $category ? $category : 'Executive Consultation' ) . ' - ' . $name;
-			$body    = "Name: {$name}\n";
+			$subject = trim( (string) preg_replace( '/[\r\n\0]+/', ' ', '[Keystone Recomposition Inquiry] ' . $resolved_category . ' - ' . $name ) );
+			$body    = ( '' !== $inquiry_id ? "Inquiry ID: {$inquiry_id}\n" : '' );
+			$body   .= "Name: {$name}\n";
 			$body   .= "Email: {$email}\n";
-			$body   .= "Category: {$category}\n";
-			$body   .= "Budget/Scale: {$budget}\n\n";
+			$body   .= "Category: {$resolved_category}\n";
+			$body   .= "Budget/Scale: {$resolved_budget}\n\n";
 			$body   .= "Project Overview:\n{$details}\n\n";
 			$body   .= "---\nSent from keystonerecomposition.com/contact/ on " . gmdate( 'Y-m-d H:i:s' ) . " UTC\n";
 
 			$headers = [
 				'Content-Type: text/plain; charset=UTF-8',
 				'From: Keystone Recomposition <contact@keystonerecomposition.com>',
-				'Reply-To: ' . $name . ' <' . $email . '>',
+				'Reply-To: ' . ( '' !== $safe_reply_name ? $safe_reply_name . ' <' . $safe_reply_email . '>' : $safe_reply_email ),
 			];
 
 			wp_mail( $to, $subject, $body, $headers );
-
-			$log_dir = get_stylesheet_directory() . '/logs';
-			if ( ! is_dir( $log_dir ) ) {
-				@mkdir( $log_dir, 0755, true );
-			}
-			if ( is_dir( $log_dir ) ) {
-				$log_line = sprintf( "[%s] [%s] %s <%s> - %s\n", gmdate( 'Y-m-d H:i:s' ), $category, $name, $email, $budget );
-				@file_put_contents( $log_dir . '/inquiries.log', $log_line, FILE_APPEND | LOCK_EX );
-			}
 
 			$feedback_status  = 'success';
 			$feedback_message = 'Thank you, ' . esc_html( $name ) . '. Your inquiry has been routed directly to Wayne Stevenson (keystonerecomposition@gmail.com). You will receive a personal response within 24–48 hours.';
@@ -93,7 +150,7 @@ get_header();
 						<a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
 							<span class="ks-wave-text">🎵 Spotify Artist Channel &#8599;</span>
 						</a>
-						<a href="https://music.apple.com/us/artist/keystone-recomposition/1802976268" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-blue">
+						<a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-blue">
 							<span class="ks-wave-text">🍎 Apple Music Catalog &#8599;</span>
 						</a>
 						<a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
@@ -118,12 +175,12 @@ get_header();
 						<article class="contact-channel-card contact-card-gold">
 							<div class="channel-card-top">
 								<span class="channel-pill ks-p3-pill-gold"><span class="ks-wave-text">01 &bull; SPOTIFY &amp; YOUTUBE</span></span>
-								<span class="channel-cat channel-cat-gold">22 RELEASES &bull; 432HZ</span>
+								<span class="channel-cat channel-cat-gold">25 RELEASES &bull; 432HZ</span>
 							</div>
 
 							<h3 class="channel-title">Spotify, Apple Music &amp; YouTube Official Artist Channels</h3>
 							<p class="channel-desc">
-								Stream Wayne Stevenson&rsquo;s 22 official releases (20 studio albums and 2 singles &mdash; 216 master recordings) engineered at 432Hz across Spotify, Apple Music, and YouTube, or request direct commercial sync licensing.
+								Stream Wayne Stevenson&rsquo;s 25 official releases (23 studio albums and 2 singles &mdash; 246 master recordings) engineered across Spotify, Apple Music, and YouTube, or request direct commercial sync licensing.
 							</p>
 
 							<div class="channel-spec-stack">
@@ -131,7 +188,7 @@ get_header();
 									<span class="channel-spec-icon">🎵</span>
 									<div>
 										<strong>Spotify &amp; Apple Music Official Artist Catalog</strong>
-										<span>22 official releases and 216 studio masters in deep house, organic strings, and 432Hz focus architecture.</span>
+										<span>25 official releases and 236 studio masters in deep house, outlaw acoustic storytelling, soul, and 432Hz focus architecture.</span>
 									</div>
 								</div>
 								<div class="channel-spec-box">
@@ -152,7 +209,7 @@ get_header();
 
 							<div class="channel-mini-links-row">
 								<a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="channel-mini-pill ks-p3-pill-gold"><span class="ks-wave-text">Spotify &#8599;</span></a>
-								<a href="https://music.apple.com/us/artist/keystone-recomposition/1802976268" target="_blank" rel="noopener noreferrer" class="channel-mini-pill ks-p3-pill-blue"><span class="ks-wave-text">Apple Music &#8599;</span></a>
+								<a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer" class="channel-mini-pill ks-p3-pill-blue"><span class="ks-wave-text">Apple Music &#8599;</span></a>
 								<a href="https://www.youtube.com/@KeyStoneRecomposition" target="_blank" rel="noopener noreferrer" class="channel-mini-pill ks-p3-pill-gold"><span class="ks-wave-text">YouTube OAC &#8599;</span></a>
 							</div>
 
@@ -287,9 +344,13 @@ get_header();
 							</div>
 						<?php endif; ?>
 
-						<form action="<?php echo esc_url( get_permalink() ); ?>#inquiry-form" method="POST" class="luxury-inquiry-form">
+						<form action="<?php echo esc_url( get_permalink() ); ?>#inquiry-form" method="POST" class="luxury-inquiry-form" data-keystone-lead-form="consultation">
 							<?php wp_nonce_field( 'keystone_contact_action', 'keystone_contact_nonce' ); ?>
 							<input type="hidden" name="keystone_contact_submitted" value="1">
+							<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;" aria-hidden="true">
+								<label for="kr_website_url">Website</label>
+								<input type="text" id="kr_website_url" name="website_url" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+							</div>
 
 							<!-- Row 1: Name and Email -->
 							<div class="form-grid-two">
@@ -316,7 +377,7 @@ get_header();
 										<option value="Tier 2 — $199 Multi-Agent Swarms & Website Builder (6-Day Setup Support)">Tier 2 &mdash; $199 Multi-Agent Swarms &amp; Website Builder (6-Day Setup Support)</option>
 										<option value="Tier 1 — $49.50 AI Brain & Google Flow Blueprint (3-Day Setup Support)">Tier 1 &mdash; $49.50 AI Brain &amp; Google Flow Blueprint (3-Day Setup Support)</option>
 										<option value="Custom Enterprise AI Workstation & Full-Stack Buildout ($3,500–$7,500)">Custom Enterprise AI Workstation &amp; Full-Stack Buildout ($3,500&ndash;$7,500)</option>
-										<option value="432Hz Commercial Music Sync Licensing (Spotify / Apple / YouTube — 22 Releases)">432Hz Commercial Music Sync Licensing (Spotify / Apple / YouTube &mdash; 22 Releases)</option>
+										<option value="432Hz Commercial Music Sync Licensing (Spotify / Apple / YouTube — 25 Releases)">432Hz Commercial Music Sync Licensing (Spotify / Apple / YouTube &mdash; 25 Releases)</option>
 										<option value="BC Housing #52603 Custom Estate, Bill 44 Multiplex & Civil Consultation">BC Housing #52603 Custom Estate, Bill 44 Multiplex &amp; Civil Consultation</option>
 										<option value="International Real Estate & Strategic Co-Investment">International Real Estate &amp; Strategic Co-Investment</option>
 										<option value="General Executive Consultation">General Executive Consultation</option>

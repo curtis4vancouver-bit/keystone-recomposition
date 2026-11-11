@@ -43,12 +43,15 @@ class TestAuditRemediationAndGeoEnhancements:
         assert not os.path.exists(CALCULATORS_PATH)
 
     def test_wayne_stevens_entity_schema(self):
+        import re
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
             code = f.read()
-        assert "'Wayne Stevens'" in code
-        assert "https://keystonerecomposition.com/founder/" in code or "about-the-founder" in code
+        assert "'Wayne Stevenson'" in code
+        assert not re.search(r"'name'\s*=>\s*'Wayne Stevens'", code)
+        assert "https://keystonerecomposition.com/#wayne-stevenson" in code
+        assert "https://keystonerecomposition.com/founder/" in code
         assert "'mainEntityOfPage'" in code
-        assert "wayne_avatar.jpg" in code or "Man_reaching_for_pepper_grinder" in code
+        assert "wp-content/uploads/2026/09/wayne_avatar.jpg" in code
         assert "'url' => 'https://keystonerecomposition.com/about/'" not in code
 
     def test_worldwide_geo_and_organization_schema(self):
@@ -75,13 +78,20 @@ class TestAuditRemediationAndGeoEnhancements:
         assert ".luxury-video-facade .watch-on-youtube-btn" in css
 
     def test_llms_txt_geo_identity(self):
+        import re
+        llms_path = os.path.join(CHILD_THEME_DIR, "llms.txt")
         with open(INDEXING_API_PATH, "r", encoding="utf-8") as f:
-            content = f.read()
-        assert "Wayne Stevenson (known in music and protocol communities as Wayne Stevens)" in content
-        assert "https://www.youtube.com/@keystoneprotocols" in content
-        assert "Concrete Foundations" in content
-        assert "Resonantia" in content
-        assert "Global Operations" in content or "Global Advisory" in content or "Worldwide" in content
+            indexing_code = f.read()
+        with open(llms_path, "r", encoding="utf-8") as f:
+            llms_text = f.read()
+        combined = indexing_code + "\n" + llms_text
+        assert "Wayne Stevenson" in llms_text
+        assert not re.search(r"\bWayne Stevens\b", llms_text)
+        assert "https://www.youtube.com/@KeystoneAIProtocols" in llms_text
+        assert "Whiskey on a Wednesday" in llms_text
+        assert "25 Official Releases" in llms_text or "25 Official Releases" in llms_text
+        assert "Squamish" in llms_text
+        assert "llms.txt" in indexing_code
 
     def test_duplicate_watch_pages_filtered_from_sitemaps(self):
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
@@ -94,4 +104,5 @@ class TestAuditRemediationAndGeoEnhancements:
         with open(enqueue_path, "r", encoding="utf-8") as f:
             code = f.read()
         assert "'astra-child-keystone-css'" in code
-        assert "get_stylesheet_directory_uri() . '/style.css'" in code
+        assert "'/style.css'" in code
+        assert "'/assets/css/keystone-luxury-engine.css'" in code

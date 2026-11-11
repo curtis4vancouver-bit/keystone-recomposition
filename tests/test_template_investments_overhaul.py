@@ -77,10 +77,10 @@ class TestWayneFooterOverhaul:
     def test_copyright_and_credentials_lines(self):
         assert "Copyright" in self.content
         assert "2023–2026" in self.content or "2023-2026" in self.content
-        assert "Keystone Possibilities Ltd &amp; Keystone Recomposition" in self.content or "Keystone Possibilities Ltd & Keystone Recomposition" in self.content
+        assert "Keystone Possibilities Ltd" in self.content and "Keystone Recomposition" in self.content
         assert "All Rights Reserved" in self.content
         assert "Certified BC Housing Residential Builder #52603" in self.content
-        assert "Autonomous AI Systems &amp; Audio Architecture" in self.content or "Autonomous AI Systems & Audio Architecture" in self.content
+        assert "2-5-10 National Home Warranty" in self.content or "BC Hydro Civil Contractor ES54" in self.content
 
     def test_subtle_gold_divider_header(self):
         assert "KEYSTONE RECOMPOSITION — PRODUCTION SYSTEMS &amp; SOVEREIGN CAPABILITIES" in self.content or \
@@ -89,17 +89,17 @@ class TestWayneFooterOverhaul:
     def test_clean_four_column_grid(self):
         assert "Sonic Universe Catalog:" in self.content
         assert "Autonomous AI Protocols:" in self.content
-        assert "Strategic Investments &amp; Infill:" in self.content or "Strategic Investments & Infill:" in self.content
+        assert "Capital &amp; Mountain Lifestyle:" in self.content or "Capital & Mountain Lifestyle:" in self.content
         assert "Direct Authority &amp; Contact:" in self.content or "Direct Authority & Contact:" in self.content
         assert "Wayne Stevenson // Principal Builder" in self.content
         assert "52603" in self.content
         assert "keystonepossibilities.ca" in self.content
-        assert "curtis4vancouver@gmail.com" in self.content
+        assert "keystonerecomposition@gmail.com" in self.content
 
     def test_empire_network_single_line_bar(self):
         assert "KEYSTONE EMPIRE NETWORK" in self.content
-        assert "Sister Flagship:" in self.content
         assert "Keystone Possibilities Ltd." in self.content
+        assert "Wayne Stevenson" in self.content
 
 
 class TestStyleCssPureBlackAndTokens:
@@ -186,18 +186,15 @@ class TestTemplateInvestmentsOverhaul:
         assert "trading_terminal_luxury.jpg" in self.content
         assert "Algorithmic Compounding" in self.content or "Quantitative Market Intelligence" in self.content
         assert "EV &ge; +15%" in self.content or "EV >= +15%" in self.content
-        assert "Rule 25" in self.content
         assert "40%" in self.content and "Cash Fortress" in self.content
         assert "fiduciary-treasury-notice" in self.content
-        assert "Proprietary Capital Only" in self.content
+        assert "Proprietary Balance-Sheet Capital Only" in self.content or "Proprietary Capital Only" in self.content
 
     def test_three_core_real_estate_pillars(self):
-        # Pillar 1: BC Infill
-        assert "bc_luxury_multiplex.jpg" in self.content
-        assert "Bill 44" in self.content
-        assert "52603" in self.content
-        assert "2-5-10" in self.content
-        assert "BC Hydro" in self.content
+        # Pillar 1: AI Protocols, Multi-Agent Swarms & 432Hz Music IP
+        assert "ai_protocols_banner.png" in self.content
+        assert "Multi-Agent Swarms" in self.content
+        assert "Tauri Desktop" in self.content
 
         # Pillar 2: Mexico Luxury Coastal
         assert "mexico_development_masterplan.jpg" in self.content
@@ -213,21 +210,20 @@ class TestTemplateInvestmentsOverhaul:
         assert "6% VAT" in self.content or "rehabilitation" in self.content.lower()
 
     def test_strategic_business_investment_section(self):
-        assert "Specialty Trade Roll-Ups" in self.content or "Construction Trade Acquisitions" in self.content
-        assert "Autonomous" in self.content
-        assert "FastMCP" in self.content or "Toolchains" in self.content
+        assert "Specialty Trade Roll-Ups" in self.content or "SPECIALTY TRADE ROLL-UPS" in self.content
+        assert "Sovereign AI Infrastructure" in self.content or "SOVEREIGN AI INFRASTRUCTURE" in self.content
+        assert "multi-agent" in self.content.lower()
 
     def test_fiduciary_governance_principles(self):
         assert "risk-principles-grid" in self.content
-        assert "Fiduciary Licensing" in self.content
-        assert "Bedrock Asset Backing" in self.content
-        assert "Mathematical Precision" in self.content
-        assert "Data &amp; Code Sovereignty" in self.content or "Data & Code Sovereignty" in self.content
+        assert "Sovereign IP Ownership" in self.content
+        assert "Tangible Bedrock Backing" in self.content
+        assert "Mathematical Risk Discipline" in self.content
+        assert "Local-First Data &amp; Code Security" in self.content or "Local-First Data & Code Security" in self.content
 
     def test_private_executive_contact_gateway(self):
-        assert "curtis4vancouver@gmail.com" in self.content
-        assert "Email Curtis Directly" in self.content or "Email Wayne Stevenson Directly" in self.content
-        assert "keystonepossibilities.ca" in self.content
+        assert "keystonerecomposition@gmail.com" in self.content
+        assert "Email Wayne Stevenson Directly" in self.content
         assert "/contact/" in self.content
 
     def test_strictly_zero_phone_numbers_invariant(self):

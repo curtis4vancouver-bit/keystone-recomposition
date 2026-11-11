@@ -65,13 +65,14 @@ class TestKeystoneRecompositionNavigation:
         with open(HEADER_PATH, "r", encoding="utf-8") as f:
             code = f.read()
 
-        mobile_nav_match = re.search(r'<div class="mobile-menu-drawer" id="mobileDrawer">(.*?)</div>', code, re.DOTALL)
+        mobile_nav_match = re.search(r'<div class="mobile-menu-drawer" id="mobileDrawer"[^>]*>(.*?)(?:<!-- SCRIPT FOR MOBILE DRAWER|<script)', code, re.DOTALL)
         assert mobile_nav_match is not None, "mobileDrawer not found in header.php"
         drawer_html = mobile_nav_match.group(1)
 
+        # Featured AI Protocols card sits at top of drawer, followed by Home -> Intel -> Sonic -> Investments -> Lifestyle -> Founder -> Contact
         expected_order = [
-            "home_url( '/' )",
             "home_url( '/ai-protocols/' )",
+            "home_url( '/' )",
             "home_url( '/intel/' )",
             "home_url( '/sonic-universe/' )",
             "home_url( '/investments/' )",
@@ -97,9 +98,8 @@ class TestKeystonePageTemplates:
             content = f.read()
 
         assert "Template Name: Keystone Investments" in content
-        assert "Bill 44" in content
         assert "Algorithmic Compounding" in content
-        assert "Sovereign Tech Infrastructure" in content
+        assert "Sovereign AI Infrastructure" in content or "SOVEREIGN AI INFRASTRUCTURE" in content
         assert "52603" in content
         assert "/contact/" in content
 
@@ -117,7 +117,7 @@ class TestKeystonePageTemplates:
         assert "205-lb" in content or "205 LBS" in content
         assert "protein" in content.lower()
         assert "cold plunge" in content.lower()
-        assert ("20" in content or "22" in content or "18" in content) and "albums" in content.lower()
+        assert ("24" in content or "22" in content) and "albums" in content.lower()
 
         # STRICT RULE: ZERO PEPTIDES
         assert "peptide" not in content.lower(), "VIOLATION: 'peptide' found in template-lifestyle.php"
@@ -130,8 +130,8 @@ class TestKeystonePageTemplates:
         assert "Template Name: Keystone Contact" in content
         assert "$800" in content
         assert "52603" in content
-        assert "TooLost" in content
-        assert "curtis4vancouver@gmail.com" in content
+        assert "Spotify" in content
+        assert "keystonerecomposition@gmail.com" in content
         assert "luxury-inquiry-form" in content or "contact-form" in content
         assert "SLA" in content
 
@@ -146,14 +146,19 @@ class TestKeystoneFooterAndStyles:
         with open(FOOTER_PATH, "r", encoding="utf-8") as f:
             content = f.read()
 
-        assert 'href="/investments/"' in content, "Missing /investments/ in footer.php"
-        assert 'href="/lifestyle/"' in content, "Missing /lifestyle/ in footer.php"
-        assert 'href="/founder/"' in content, "Missing /founder/ in footer.php"
-        assert 'href="/contact/"' in content, "Missing /contact/ in footer.php"
+        assert "'/investments/'" in content or '"/investments/"' in content, "Missing /investments/ in footer.php"
+        assert "'/lifestyle/'" in content or '"/lifestyle/"' in content, "Missing /lifestyle/ in footer.php"
+        assert "'/founder/'" in content or '"/founder/"' in content, "Missing /founder/ in footer.php"
+        assert "'/contact/'" in content or '"/contact/"' in content, "Missing /contact/ in footer.php"
+        assert "'/ecosystem-partners/'" in content, "Missing /ecosystem-partners/ in footer.php"
 
     def test_style_css_rules(self):
+        engine_css_path = os.path.join(CHILD_THEME_DIR, "assets", "css", "keystone-luxury-engine.css")
         with open(STYLE_PATH, "r", encoding="utf-8") as f:
             css = f.read()
+        if os.path.exists(engine_css_path):
+            with open(engine_css_path, "r", encoding="utf-8") as ef:
+                css += "\n" + ef.read()
 
         # Nav menu gap 16px & font-size 0.70rem
         assert "gap: 16px !important;" in css, "Missing gap: 16px !important in style.css"
@@ -162,10 +167,10 @@ class TestKeystoneFooterAndStyles:
         # Breakpoint 1100px
         assert "@media (max-width: 1100px)" in css, "Missing @media (max-width: 1100px) in style.css"
 
-        # Contact form styling & cyan glow
+        # Contact form styling & Quiet Luxury baby blue / gold glow
         assert ".contact-form-glass-card" in css
-        assert "rgba(0, 240, 255" in css or "#00f0ff" in css
-        assert ".btn-cyan-submit" in css
+        assert "rgba(56, 189, 248" in css or "#38bdf8" in css
+        assert ".btn-cyan-submit" in css or ".contact-submit-btn" in css
 
         # Investment & lifestyle card layouts
         assert ".investments-pillars-grid" in css

@@ -1102,35 +1102,93 @@ add_action( 'rest_api_init', function () {
 			return current_user_can( 'edit_themes' ) && current_user_can( 'manage_options' );
 		},
 		'callback'            => function ( WP_REST_Request $request ): WP_REST_Response {
-			$allowed = array(
-				'footer.php',
-				'inc/enqueue.php',
-				'template-ai-protocols.php',
-				'inc/protocol-order-fulfillment.php',
-				'inc/core-routes.php',
-				'llms.txt',
-				'llms-full.txt',
-			);
 			$params   = $request->get_json_params() ?: $request->get_params();
-			$rel_file = isset( $params['file'] ) ? (string) $params['file'] : '';
+			$raw_file = isset( $params['file'] ) ? trim( (string) $params['file'] ) : '';
 			$content  = isset( $params['content'] ) ? (string) $params['content'] : '';
-			if ( ! in_array( $rel_file, $allowed, true ) || strlen( $content ) < 64 ) {
-				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Invalid file or content' ), 400 );
+			$encoding = isset( $params['encoding'] ) ? strtolower( trim( (string) $params['encoding'] ) ) : '';
+
+			// Strict path security gate: block empty, null bytes, traversal, colons, leading slashes/backslashes, dotfiles, logs/, and tests/.
+			if (
+				'' === $raw_file ||
+				false !== strpos( $raw_file, "\0" ) ||
+				false !== strpos( $raw_file, '..' ) ||
+				false !== strpos( $raw_file, ':' ) ||
+				0 === strpos( $raw_file, '/' ) ||
+				0 === strpos( $raw_file, '\\' )
+			) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Forbidden path traversal or leading slash.' ), 403 );
 			}
-			$dest = trailingslashit( get_stylesheet_directory() ) . $rel_file;
-			$dir  = dirname( $dest );
-			if ( ! is_dir( $dir ) ) {
-				wp_mkdir_p( $dir );
+
+			$rel_file = str_replace( '\\', '/', $raw_file );
+			if (
+				1 === preg_match( '#(?:^|/)\.#', $rel_file ) ||
+				0 === strpos( $rel_file, 'logs/' ) ||
+				'logs' === $rel_file ||
+				0 === strpos( $rel_file, 'tests/' ) ||
+				'tests' === $rel_file
+			) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Protected or hidden path rejected.' ), 403 );
 			}
-			$bytes = @file_put_contents( $dest, $content );
+
+			$is_text_asset = (
+				1 === preg_match( '#^[a-zA-Z0-9_-]+\.php$#', $rel_file ) ||
+				1 === preg_match( '#^inc/[a-zA-Z0-9_-]+\.php$#', $rel_file ) ||
+				1 === preg_match( '#^template-parts/content/[a-zA-Z0-9_-]+\.php$#', $rel_file ) ||
+				1 === preg_match( '#^(?:style\.css|llms\.txt|llms-full\.txt|README\.md)$#', $rel_file ) ||
+				1 === preg_match( '#^assets/css/[a-zA-Z0-9_-]+\.css$#', $rel_file ) ||
+				1 === preg_match( '#^js/[a-zA-Z0-9_-]+\.js$#', $rel_file )
+			);
+			$is_image_asset = (
+				1 === preg_match( '#^assets/images/(?:albums/)?[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$#i', $rel_file )
+			);
+
+			if ( ! $is_text_asset && ! $is_image_asset ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'File path not in child theme allowlist.' ), 403 );
+			}
+
+			if ( $is_image_asset && 'base64' !== $encoding ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Binary image assets require encoding="base64".' ), 400 );
+			}
+
+			if ( 'base64' === $encoding ) {
+				$decoded = base64_decode( $content, true );
+				if ( false === $decoded || strlen( $decoded ) < 16 ) {
+					return new WP_REST_Response( array( 'ok' => false, 'error' => 'Invalid or truncated base64 payload.' ), 400 );
+				}
+				$raw_bytes = $decoded;
+			} else {
+				if ( strlen( $content ) < 16 ) {
+					return new WP_REST_Response( array( 'ok' => false, 'error' => 'Invalid or truncated file content.' ), 400 );
+				}
+				$raw_bytes = $content;
+			}
+
+			$theme_root = wp_normalize_path( untrailingslashit( get_stylesheet_directory() ) );
+			$dest       = wp_normalize_path( $theme_root . '/' . $rel_file );
+			if ( 0 !== strpos( $dest, $theme_root . '/' ) ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Destination escapes child theme root.' ), 403 );
+			}
+
+			$dir = dirname( $dest );
+			if ( ! is_dir( $dir ) && ! wp_mkdir_p( $dir ) ) {
+				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Failed to create parent directory.' ), 500 );
+			}
+
+			$bytes = @file_put_contents( $dest, $raw_bytes, LOCK_EX );
 			if ( false === $bytes ) {
 				return new WP_REST_Response( array( 'ok' => false, 'error' => 'Write failed', 'dest' => $dest ), 500 );
 			}
+
+			if ( '.php' === substr( strtolower( $rel_file ), -4 ) && function_exists( 'opcache_invalidate' ) ) {
+				@opcache_invalidate( $dest, true );
+			}
+
 			$purge_info = keystone_com_purge_wpcloud_edge_cache();
 			return new WP_REST_Response(
 				array(
 					'ok'               => true,
 					'file'             => $rel_file,
+					'encoding'         => '' !== $encoding ? $encoding : 'utf8',
 					'bytes'            => $bytes,
 					'dest'             => $dest,
 					'edge_cache_purge' => $purge_info,
@@ -1139,7 +1197,287 @@ add_action( 'rest_api_init', function () {
 			);
 		},
 	) );
+
+	register_rest_route( 'keystone/v1', '/lead-consultation', array(
+		'methods'             => 'POST',
+		'permission_callback' => '__return_true',
+		'callback'            => 'keystone_handle_lead_consultation_rest',
+	) );
 } );
+
+/**
+ * Resolve best-effort client IP address for consultation rate-limiting and SHA-256 telemetry hashing.
+ */
+function keystone_get_lead_consultation_client_ip(): string {
+	$headers = array(
+		'HTTP_CF_CONNECTING_IP',
+		'HTTP_X_FORWARDED_FOR',
+		'REMOTE_ADDR',
+	);
+	foreach ( $headers as $header_key ) {
+		if ( empty( $_SERVER[ $header_key ] ) ) {
+			continue;
+		}
+		$raw_list  = explode( ',', (string) $_SERVER[ $header_key ] );
+		$candidate = trim( (string) ( $raw_list[0] ?? '' ) );
+		if ( '' !== $candidate && false !== filter_var( $candidate, FILTER_VALIDATE_IP ) ) {
+			return $candidate;
+		}
+	}
+	return '0.0.0.0';
+}
+
+/**
+ * Persist a sanitized client consultation inquiry into both `keystone_client_inquiries_ledger`
+ * (capped at latest 200 entries, autoload = false) and protected `logs/inquiries.log`.
+ *
+ * @param array<string, mixed> $record Sanitized inquiry attributes.
+ * @return array{persisted: bool, option_saved: bool, log_saved: bool, entry: array<string, string>}
+ */
+function keystone_persist_client_inquiry_record( array $record ): array {
+	$rand_suffix = function_exists( 'wp_generate_password' )
+		? strtoupper( (string) wp_generate_password( 4, false, false ) )
+		: strtoupper( substr( md5( uniqid( '', true ) ), 0, 4 ) );
+	$inquiry_id  = ! empty( $record['id'] )
+		? (string) $record['id']
+		: ( 'KR-INQ-' . gmdate( 'YmdHis' ) . '-' . $rand_suffix );
+
+	$entry = array(
+		'id'              => $inquiry_id,
+		'submitted_at'    => gmdate( 'c' ),
+		'name'            => (string) ( $record['name'] ?? '' ),
+		'email'           => (string) ( $record['email'] ?? '' ),
+		'category'        => (string) ( $record['category'] ?? 'General Executive Consultation' ),
+		'budget'          => (string) ( $record['budget'] ?? 'Not Specified' ),
+		'project_address' => (string) ( $record['project_address'] ?? '' ),
+		'message'         => (string) ( $record['message'] ?? '' ),
+		'page_source'     => (string) ( $record['page_source'] ?? '' ),
+		'ip_hash'         => (string) ( $record['ip_hash'] ?? '' ),
+	);
+
+	$existing = get_option( 'keystone_client_inquiries_ledger', array() );
+	$ledger   = is_array( $existing ) ? $existing : array();
+	array_unshift( $ledger, $entry );
+	$ledger       = array_slice( $ledger, 0, 200 );
+	$option_saved = (bool) update_option( 'keystone_client_inquiries_ledger', $ledger, false );
+
+	$log_saved = false;
+	$log_dir   = get_stylesheet_directory() . '/logs';
+	if ( ! is_dir( $log_dir ) ) {
+		if ( function_exists( 'wp_mkdir_p' ) ) {
+			wp_mkdir_p( $log_dir );
+		} else {
+			@mkdir( $log_dir, 0755, true );
+		}
+	}
+	if ( is_dir( $log_dir ) ) {
+		$htaccess_file = $log_dir . '/.htaccess';
+		if ( ! file_exists( $htaccess_file ) ) {
+			@file_put_contents(
+				$htaccess_file,
+				"Order deny,allow\nDeny from all\n<IfModule mod_authz_core.c>\n    Require all denied\n</IfModule>\n",
+				LOCK_EX
+			);
+		}
+		$index_file = $log_dir . '/index.php';
+		if ( ! file_exists( $index_file ) ) {
+			@file_put_contents( $index_file, "<?php\n// Silence is golden.\n", LOCK_EX );
+		}
+		$json_line = function_exists( 'wp_json_encode' )
+			? wp_json_encode( $entry, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+			: json_encode( $entry, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+		if ( is_string( $json_line ) && '' !== $json_line ) {
+			$written   = @file_put_contents( $log_dir . '/inquiries.log', $json_line . "\n", FILE_APPEND | LOCK_EX );
+			$log_saved = ( false !== $written );
+		}
+	}
+
+	return array(
+		'persisted'    => ( $option_saved || $log_saved ),
+		'option_saved' => $option_saved,
+		'log_saved'    => $log_saved,
+		'entry'        => $entry,
+	);
+}
+
+/**
+ * Public REST endpoint handler for `POST /wp-json/keystone/v1/lead-consultation`.
+ */
+function keystone_handle_lead_consultation_rest( WP_REST_Request $request ): WP_REST_Response {
+	$json_params = $request->get_json_params();
+	$body_params = $request->get_params();
+	$params      = ( is_array( $json_params ) && ! empty( $json_params ) )
+		? array_merge( is_array( $body_params ) ? $body_params : array(), $json_params )
+		: ( is_array( $body_params ) ? $body_params : array() );
+
+	// 1. Silent anti-bot honeypot check (`website_url` / `company_fax`).
+	$honeypot = trim( (string) ( $params['website_url'] ?? $params['company_fax'] ?? '' ) );
+	if ( '' !== $honeypot ) {
+		return new WP_REST_Response(
+			array(
+				'ok'      => true,
+				'ignored' => true,
+				'message' => 'Consultation request received.',
+			),
+			200
+		);
+	}
+
+	// 2. Transient IP rate limit (<= 5 submissions per 15 minutes per SHA-256 hashed client IP).
+	$client_ip = keystone_get_lead_consultation_client_ip();
+	$salt      = function_exists( 'wp_salt' ) ? (string) wp_salt( 'auth' ) : 'kr_lead_salt_v1';
+	$ip_sha256 = hash( 'sha256', $client_ip . '|' . $salt );
+	$rl_key    = 'kr_lead_rl_' . substr( $ip_sha256, 0, 24 );
+	$rl_count  = (int) get_transient( $rl_key );
+
+	if ( $rl_count >= 5 ) {
+		return new WP_REST_Response(
+			array(
+				'ok'      => false,
+				'code'    => 'rate_limited',
+				'message' => 'Too many consultation requests from this network. Please wait 15 minutes or email keystonerecomposition@gmail.com directly.',
+			),
+			429
+		);
+	}
+
+	// 3. Multi-form field normalization & sanitization (`contact_*` + legacy aliases).
+	$legacy_name = trim(
+		sanitize_text_field( (string) ( $params['first_name'] ?? '' ) ) . ' ' .
+		sanitize_text_field( (string) ( $params['surname'] ?? $params['last_name'] ?? '' ) )
+	);
+	$raw_name = ( isset( $params['contact_name'] ) && '' !== trim( (string) $params['contact_name'] ) )
+		? (string) $params['contact_name']
+		: ( ( isset( $params['name'] ) && '' !== trim( (string) $params['name'] ) ) ? (string) $params['name'] : $legacy_name );
+	$name = sanitize_text_field( $raw_name );
+
+	$raw_email = ( isset( $params['contact_email'] ) && '' !== trim( (string) $params['contact_email'] ) )
+		? (string) $params['contact_email']
+		: (string) ( $params['email'] ?? '' );
+	$email = sanitize_email( $raw_email );
+
+	$raw_category = ( isset( $params['contact_category'] ) && '' !== trim( (string) $params['contact_category'] ) )
+		? (string) $params['contact_category']
+		: (string) ( $params['category'] ?? $params['consultation_type'] ?? '' );
+	$category = sanitize_text_field( $raw_category );
+	if ( '' === $category ) {
+		$category = 'General Executive Consultation';
+	}
+
+	$raw_budget = ( isset( $params['contact_budget'] ) && '' !== trim( (string) $params['contact_budget'] ) )
+		? (string) $params['contact_budget']
+		: (string) ( $params['budget'] ?? '' );
+	$budget = sanitize_text_field( $raw_budget );
+	if ( '' === $budget ) {
+		$budget = 'Not Specified';
+	}
+
+	$project_address = sanitize_text_field( (string) ( $params['project_address'] ?? '' ) );
+
+	$raw_message = ( isset( $params['contact_message'] ) && '' !== trim( (string) $params['contact_message'] ) )
+		? (string) $params['contact_message']
+		: ( ( isset( $params['message'] ) && '' !== trim( (string) $params['message'] ) )
+			? (string) $params['message']
+			: (string) ( $params['notes'] ?? '' ) );
+	$message = sanitize_textarea_field( $raw_message );
+
+	$page_source = esc_url_raw( (string) ( $params['page_source'] ?? '' ) );
+
+	// 4. Input validation (`400` JSON on invalid name, email, or message).
+	if ( '' === $name || ! is_email( $email ) || '' === trim( $message ) ) {
+		return new WP_REST_Response(
+			array(
+				'ok'      => false,
+				'code'    => 'validation_failed',
+				'message' => 'Please enter your full name, a valid email address, and project details.',
+			),
+			400
+		);
+	}
+
+	$window_seconds = 15 * ( defined( 'MINUTE_IN_SECONDS' ) ? (int) MINUTE_IN_SECONDS : 60 );
+	set_transient( $rl_key, $rl_count + 1, $window_seconds );
+
+	// 5. Persist into WordPress option ledger + protected theme inquiries.log.
+	$persistence = keystone_persist_client_inquiry_record(
+		array(
+			'name'            => $name,
+			'email'           => $email,
+			'category'        => $category,
+			'budget'          => $budget,
+			'project_address' => $project_address,
+			'message'         => $message,
+			'page_source'     => $page_source,
+			'ip_hash'         => substr( $ip_sha256, 0, 16 ),
+		)
+	);
+	$persisted = (bool) $persistence['persisted'];
+	$entry     = $persistence['entry'];
+
+	// 6. Executive email dispatch (stripping CR/LF/NUL header injection characters).
+	$safe_reply_name  = trim( (string) preg_replace( '/[\r\n\0<>"]+/', ' ', $name ) );
+	$safe_reply_email = trim( (string) preg_replace( '/[\r\n\0\s]+/', '', $email ) );
+	$subject_line     = trim(
+		(string) preg_replace(
+			'/[\r\n\0]+/',
+			' ',
+			sprintf( '[Keystone Consultation] %s — %s (%s)', $category, $name, $budget )
+		)
+	);
+
+	$mail_body  = "EXECUTIVE CONSULTATION INQUIRY — KEYSTONE RECOMPOSITION\n";
+	$mail_body .= "========================================================\n";
+	$mail_body .= 'Inquiry ID:      ' . $entry['id'] . "\n";
+	$mail_body .= 'Submitted (UTC): ' . $entry['submitted_at'] . "\n";
+	$mail_body .= 'Full Name:       ' . $name . "\n";
+	$mail_body .= 'Client Email:    ' . $email . "\n";
+	$mail_body .= 'Category:        ' . $category . "\n";
+	$mail_body .= 'Budget / Scale:  ' . $budget . "\n";
+	if ( '' !== $project_address ) {
+		$mail_body .= 'Project Address: ' . $project_address . "\n";
+	}
+	if ( '' !== $page_source ) {
+		$mail_body .= 'Page Source:     ' . $page_source . "\n";
+	}
+	$mail_body .= "--------------------------------------------------------\n\n";
+	$mail_body .= "Project Overview & Requirements:\n" . $message . "\n\n";
+	$mail_body .= "--------------------------------------------------------\n";
+	$mail_body .= "Direct Principal Routing • keystonerecomposition.com\n";
+
+	$headers = array(
+		'Content-Type: text/plain; charset=UTF-8',
+		'From: Keystone Recomposition <contact@keystonerecomposition.com>',
+		'Reply-To: ' . ( '' !== $safe_reply_name ? $safe_reply_name . ' <' . $safe_reply_email . '>' : $safe_reply_email ),
+	);
+
+	$email_sent = (bool) wp_mail( 'keystonerecomposition@gmail.com', $subject_line, $mail_body, $headers );
+
+	if ( ! $persisted && ! $email_sent ) {
+		return new WP_REST_Response(
+			array(
+				'ok'         => false,
+				'code'       => 'persistence_failed',
+				'persisted'  => false,
+				'email_sent' => false,
+				'message'    => 'Unable to record inquiry right now. Please email keystonerecomposition@gmail.com directly.',
+			),
+			500
+		);
+	}
+
+	return new WP_REST_Response(
+		array(
+			'ok'         => true,
+			'success'    => true,
+			'inquiry_id' => $entry['id'],
+			'email_sent' => $email_sent,
+			'mail_sent'  => $email_sent,
+			'persisted'  => $persisted,
+			'message'    => "Executive Inquiry Logged. Wayne Stevenson's desk responds within 24–48 business hours.",
+		),
+		200
+	);
+}
 
 /**
  * Purge WP Cloud (_atomic_bur / wpcomsh), Batcache, LiteSpeed, and Object Cache for .com pages.
@@ -1173,6 +1511,8 @@ function keystone_com_purge_wpcloud_edge_cache(): array {
 		'investments',
 		'lifestyle',
 		'contact',
+		'ecosystem-partners',
+		'intel',
 	);
 
 	if ( function_exists( 'get_page_by_path' ) ) {
@@ -1224,8 +1564,20 @@ function keystone_com_purge_wpcloud_edge_cache(): array {
 	}
 
 	if ( function_exists( 'batcache_clear_url' ) && function_exists( 'home_url' ) ) {
-		batcache_clear_url( home_url( '/ai-protocols/' ) );
-		batcache_clear_url( home_url( '/' ) );
+		$clear_paths = array(
+			'/',
+			'/ai-protocols/',
+			'/founder/',
+			'/sonic-universe/',
+			'/investments/',
+			'/lifestyle/',
+			'/contact/',
+			'/ecosystem-partners/',
+			'/intel/',
+		);
+		foreach ( $clear_paths as $clear_path ) {
+			batcache_clear_url( home_url( $clear_path ) );
+		}
 	}
 
 	return array(
@@ -2127,7 +2479,7 @@ function keystone_render_stripe_settings_page(): void {
 				</ol>
 			</div>
 
-			<form method="post" action="">
+			<form method="post" action="" data-keystone-form-ignore="true">
 				<?php wp_nonce_field( 'keystone_stripe_settings_nonce', 'keystone_stripe_nonce' ); ?>
 
 				<div style="margin-bottom:22px;">

@@ -777,7 +777,7 @@ function keystone_recomposition_child_speakable_schema() {
         'datePublished' => get_the_date( 'c', $post->ID ),
         'dateModified' => get_the_modified_date( 'c', $post->ID ),
         'author' => array(
-            '@id' => 'https://keystonerecomposition.com/#person'
+            '@id' => 'https://keystonerecomposition.com/#wayne-stevenson'
         )
     );
 
@@ -844,7 +844,7 @@ add_action( 'wp_head', 'keystone_recomposition_child_geo_citation_meta', 3 );
  * Synchronizes theme-authoritative llms.txt, llms-full.txt, deduplicated robots.txt,
  * persistent 32-char lowercase hex IndexNow key verification file, and LiteSpeed/Apache
  * .htaccess AI-bot challenge bypass + HTTP 410/301 rules to ABSPATH.
- * Runs automatically once on init when keystone_recomp_geo_sync_ver !== '2026.11.05.1'
+ * Runs automatically once on init when keystone_recomp_geo_sync_ver !== '2026.11.10.1'
  * AND on-demand via authenticated ?keystone_sync_geo=sovereign_execute.
  */
 if ( ! function_exists( 'keystone_recomp_get_indexnow_key' ) ) {
@@ -903,6 +903,10 @@ if ( ! function_exists( 'keystone_recomp_collect_canonical_indexnow_urls' ) ) {
             'sample-page',
             'music-releases',
             'old-store',
+            'wayne-stevenson',
+            'case-studies',
+            'the-new-metabolic-system-kwikpen-logistics-cardio-protection-and-the-phase-2-stabilization-protocol',
+            'mounjaro-whoosh-effect',
         );
 
         $items = get_posts( array(
@@ -961,11 +965,15 @@ if ( ! function_exists( 'keystone_recomp_build_htaccess_geo_block' ) ) {
             '# 3. Permanent HTTP 410 Gone De-Indexing Rules',
             'RewriteRule ^' . $retired_guide . '/?$ - [G,L]',
             'RewriteRule ^intel/page/([3-9]|[1-9][0-9]+)/?$ - [G,L]',
+            'RewriteRule ^(?:2026/02/27/)?the-new-metabolic-system-kwikpen-logistics-cardio-protection-and-the-phase-2-stabilization-protocol/?$ - [G,L]',
+            'RewriteRule ^(?:2026/03/10/)?mounjaro-whoosh-effect/?$ - [G,L]',
             '',
             '# 4. Single-Hop HTTP 301 Canonical Consolidations',
             'RewriteRule ^music-releases/?$ /sonic-universe/ [R=301,L]',
             'RewriteRule ^old-store/?$ /ai-protocols/ [R=301,L]',
             'RewriteRule ^watch-iron-grace-2/?$ /watch-iron-grace/ [R=301,L]',
+            'RewriteRule ^wayne-stevenson/?$ /founder/ [R=301,L]',
+            'RewriteRule ^case-studies/?$ /ecosystem-partners/ [R=301,L]',
             '</IfModule>',
             '<IfModule mod_headers.c>',
             '<FilesMatch "^llms(-full)?\.txt$">',
@@ -984,7 +992,7 @@ if ( ! function_exists( 'keystone_recomp_build_htaccess_geo_block' ) ) {
 if ( ! function_exists( 'keystone_recomp_sync_root_geo_and_htaccess' ) ) {
     function keystone_recomp_sync_root_geo_and_htaccess( bool $run_indexnow_ping = true ): array {
         $telemetry = array(
-            'version'   => '2026.11.05.1',
+            'version'   => '2026.11.10.1',
             'timestamp' => gmdate( 'c' ),
             'files'     => array(),
             'htaccess'  => array(),
@@ -1082,7 +1090,7 @@ if ( ! function_exists( 'keystone_recomp_sync_root_geo_and_htaccess' ) ) {
         $telemetry['htaccess']['preserved_wordpress'] = ( false !== strpos( $new_ht, '# BEGIN WordPress' ) );
 
         // 5. Mark sync version & purge caches
-        update_option( 'keystone_recomp_geo_sync_ver', '2026.11.05.1', false );
+        update_option( 'keystone_recomp_geo_sync_ver', '2026.11.10.1', false );
         delete_transient( 'rank_math_sitemap_cache' );
         if ( class_exists( '\\RankMath\\Sitemap\\Cache' ) ) {
             \RankMath\Sitemap\Cache::invalidate_storage();
@@ -1130,7 +1138,7 @@ add_action( 'init', function(): void {
     }
 
     // Automatic one-time execution on version bump
-    if ( get_option( 'keystone_recomp_geo_sync_ver' ) !== '2026.11.05.1' ) {
+    if ( get_option( 'keystone_recomp_geo_sync_ver' ) !== '2026.11.10.1' ) {
         keystone_recomp_sync_root_geo_and_htaccess( true );
     }
 }, 2 );
@@ -1177,7 +1185,11 @@ function keystone_recomposition_add_sister_site_backlink() {
  * is published. This ensures all future video posts are automatically indexed.
  */
 add_action( 'transition_post_status', 'keystone_auto_create_watch_page', 10, 3 );
+if ( ! function_exists( 'keystone_auto_create_watch_page' ) ) {
 function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
+    if ( has_action( 'save_post_post', 'keystone_sovereign_auto_create_watch_page' ) ) {
+        remove_action( 'save_post_post', 'keystone_sovereign_auto_create_watch_page', 20 );
+    }
     // Only run when a standard post is published
     if ( 'publish' !== $new_status || 'post' !== $post->post_type ) {
         return;
@@ -1263,6 +1275,7 @@ function keystone_auto_create_watch_page( $new_status, $old_status, $post ) {
 
     // Re-hook
     add_action( 'transition_post_status', 'keystone_auto_create_watch_page', 10, 3 );
+}
 }
 
 /**

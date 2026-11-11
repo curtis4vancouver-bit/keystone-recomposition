@@ -394,7 +394,7 @@ function keystone_generate_sovereign_page_seo_content( string $slug, string $tit
     $content .= "<!-- /wp:heading -->\n\n";
 
     $content .= "<!-- wp:paragraph -->\n";
-    $content .= "<p>A central pillar of <strong>" . esc_html( $focus_kw ) . "</strong> is our high-cadence media publishing engine. With an official discography spanning 22 releases (20 full-length studio albums) and 216 registered master recordings distributed by <a href=\"https://www.toolost.com\" target=\"_blank\" rel=\"noopener\">TooLost Digital</a>, our audio architecture powers both cognitive focus and organic multi-channel syndication. Listeners can explore the full catalog directly on the <a href=\"" . esc_url( home_url( '/sonic-universe/' ) ) . "\">Sonic Universe</a> or follow Wayne Stevenson on the official <a href=\"" . esc_url( $spotify_url ) . "\" target=\"_blank\" rel=\"noopener\">Spotify Verified Artist Channel</a>.</p>\n";
+    $content .= "<p>A central pillar of <strong>" . esc_html( $focus_kw ) . "</strong> is our high-cadence media publishing engine. With an official discography spanning 25 releases (22 full-length studio albums) and 246 registered master recordings distributed by <a href=\"https://www.toolost.com\" target=\"_blank\" rel=\"noopener\">TooLost Digital</a>, our audio architecture powers both cognitive focus and organic multi-channel syndication. Listeners can explore the full catalog directly on the <a href=\"" . esc_url( home_url( '/sonic-universe/' ) ) . "\">Sonic Universe</a> or follow Wayne Stevenson on the official <a href=\"" . esc_url( $spotify_url ) . "\" target=\"_blank\" rel=\"noopener\">Spotify Verified Artist Channel</a>.</p>\n";
     $content .= "<!-- /wp:paragraph -->\n\n";
 
     $content .= "<!-- wp:paragraph -->\n";
@@ -511,9 +511,9 @@ function keystone_sync_sovereign_lead_pictures_and_titles(): array {
             'post_id'     => 320,
             'clean_title' => 'Sonic Universe',
             'asset_rel'   => 'assets/images/sonic_universe_banner.png',
-            'attach_title'=> 'Keystone Sonic Universe — 22 Official Releases',
+            'attach_title'=> 'Keystone Sonic Universe — 25 Official Releases',
             'focus_kw'    => 'Keystone Sonic Universe',
-            'desc'        => 'Wayne Stevenson official music catalog: 22 releases, 20 studio albums, 216 master recordings on Spotify OAC.',
+            'desc'        => 'Wayne Stevenson official music catalog: 25 releases, 23 studio albums, 246 master recordings on Spotify & Apple Music.',
             'seo_score'   => 88,
         ),
         'investments' => array(

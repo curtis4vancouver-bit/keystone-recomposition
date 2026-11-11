@@ -50,8 +50,8 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 				</div>
 				<div class="luxury-metric-card founder-metric-card founder-metric-gold">
 					<span class="metric-label">SONIC ARCHITECTURE</span>
-					<span class="metric-value-gold">22 RELEASES</span>
-					<span class="metric-caption">20 Studio Albums &bull; 216 432Hz Master Tracks</span>
+					<span class="metric-value-gold">25 RELEASES</span>
+					<span class="metric-caption">23 Studio Albums &bull; 246 Master Tracks</span>
 				</div>
 				<div class="luxury-metric-card founder-metric-card founder-metric-blue">
 					<span class="metric-label">AI SOFTWARE SYSTEMS</span>
@@ -96,8 +96,8 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 							<span class="quick-stat-lbl">LEAN ATHLETIC SET-POINT</span>
 						</div>
 						<div class="founder-quick-stat-box">
-							<span class="quick-stat-val cyan-text">22 RELEASES</span>
-							<span class="quick-stat-lbl">216 432HZ STUDIO MASTERS</span>
+							<span class="quick-stat-val cyan-text">25 RELEASES</span>
+							<span class="quick-stat-lbl">236 STUDIO MASTERS</span>
 						</div>
 						<div class="founder-quick-stat-box">
 							<span class="quick-stat-val gold-text">#52603</span>
@@ -154,7 +154,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					</div>
 
 					<div class="founder-card-footer">
-						<a href="https://lims.bchousing.org/LicenceExpiryPortal/licence/52603" target="_blank" rel="noopener noreferrer" class="founder-action-btn ks-p3-btn-gold">
+						<a href="https://www.bchousing.org/licensing-consumer-disclosure/licencee-search" target="_blank" rel="noopener noreferrer" class="founder-action-btn ks-p3-btn-gold">
 							<span class="ks-wave-text">🏛️ Verify Licence #52603 on BC Housing Portal &#8599;</span>
 						</a>
 					</div>
@@ -290,32 +290,32 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					</div>
 				</article>
 
-				<!-- DOMAIN 03: 432HZ SONIC ARCHITECTURE & 22 OFFICIAL RELEASES (BLUE) -->
+				<!-- DOMAIN 03: 432HZ SONIC ARCHITECTURE & 25 OFFICIAL RELEASES (BLUE) -->
 				<article class="founder-domain-card founder-card-blue">
 					<div class="founder-card-top-bar">
 						<span class="founder-card-pill ks-p3-pill-blue"><span class="ks-wave-text">03 &bull; 432HZ SONIC ARCHITECTURE</span></span>
-						<span class="founder-card-cat founder-cat-blue">22 RELEASES &bull; 216 MASTERS</span>
+						<span class="founder-card-cat founder-cat-blue">25 RELEASES &bull; 246 MASTERS</span>
 					</div>
 
 					<div class="founder-domain-single-media">
 						<img src="<?php echo esc_url( $child_assets . '/sonic_universe_banner.png' ); ?>"
-						     alt="Keystone Recomposition Sonic Universe — 22 Official Releases &amp; 216 432Hz Studio Masters"
+						     alt="Keystone Recomposition Sonic Universe — 25 Official Releases &amp; 236 Studio Masters"
 						     class="founder-domain-img"
 						     width="800" height="450"
 						     loading="lazy" />
 					</div>
 
-					<h3 class="founder-domain-title">The Sonic Universe: 22 Official Releases &amp; 216 Studio Masters</h3>
+					<h3 class="founder-domain-title">The Sonic Universe: 25 Official Releases &amp; 236 Studio Masters</h3>
 					<p class="founder-domain-summary">
-						Executive producer and recording artist behind a 22-release catalog (20 studio albums and 2 singles &mdash; 216 master tracks) engineered for deep cognitive focus, physical training, and architectural flow.
+						Executive producer and recording artist behind a 25-release catalog (23 studio albums and 2 singles &mdash; 246 master tracks) engineered for deep cognitive focus, physical training, and architectural flow.
 					</p>
 
 					<div class="founder-domain-spec-list">
 						<div class="founder-domain-spec-item">
 							<span class="spec-icon">🎵</span>
 							<div>
-								<strong>22 Official Releases &amp; 216 Master Tracks</strong>
-								<span>Spanning 432Hz acoustic resonance, progressive deep house, organic orchestral strings, and high-output training instrumentals.</span>
+								<strong>25 Official Releases &amp; 246 Master Tracks</strong>
+								<span>Spanning 432Hz acoustic resonance, progressive deep house, outlaw acoustic storytelling, soul, and high-output training instrumentals.</span>
 							</div>
 						</div>
 						<div class="founder-domain-spec-item">
@@ -336,7 +336,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 
 					<div class="founder-card-footer">
 						<a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="founder-action-btn ks-p3-btn-blue">
-							<span class="ks-wave-text">🎵 Stream the 22-Release Sonic Universe &rarr;</span>
+							<span class="ks-wave-text">🎵 Stream the 24-Release Sonic Universe &rarr;</span>
 						</a>
 					</div>
 				</article>
@@ -426,7 +426,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					<div class="founder-scope-item">
 						<span class="founder-scope-pill ks-p3-pill-gold"><span class="ks-wave-text">03 // MUSIC SYNC &amp; CO-INVESTMENT</span></span>
 						<h4>432Hz Catalog Sync &amp; Strategic Ventures</h4>
-						<p>Direct commercial sync licensing across 216 studio masters and private real-asset or technology co-investment inquiries.</p>
+						<p>Direct commercial sync licensing across 236 studio masters and private real-asset or technology co-investment inquiries.</p>
 					</div>
 				</div>
 
@@ -471,51 +471,6 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 
 	</div>
 </main>
-
-<!-- JSON-LD Person & Organization Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "mainEntity": {
-    "@type": "Person",
-    "@id": "https://keystonerecomposition.com/#wayne-stevenson",
-    "name": "Wayne Stevenson",
-    "jobTitle": "Founder, BC Housing Licensed Builder #52603, Recording Artist & Principal AI Systems Architect",
-    "description": "Founder of Keystone Recomposition and Keystone Possibilities Ltd (BC Housing Licensed Builder #52603). Architect of a 48-lb physical recomposition, 22 official 432Hz music releases (216 master tracks), and the 3-tier Keystone AI Protocols & Tauri Desktop software ecosystem.",
-    "url": "https://keystonerecomposition.com/founder/",
-    "image": "<?php echo esc_url( $child_assets . '/wayne_avatar.jpg' ); ?>",
-    "email": "mailto:keystonerecomposition@gmail.com",
-    "worksFor": [
-      {
-        "@type": "Organization",
-        "name": "Keystone Recomposition",
-        "url": "https://keystonerecomposition.com"
-      },
-      {
-        "@type": "GeneralContractor",
-        "name": "Keystone Possibilities Ltd",
-        "url": "https://keystonepossibilities.ca",
-        "identifier": "BC Housing Licence #52603"
-      }
-    ],
-    "knowsAbout": [
-      "Custom Luxury Residential Construction (BC Housing #52603)",
-      "BC Bill 44 Multi-Unit Residential Infill & Multiplexes",
-      "High-Voltage Civil & Substation Infrastructure",
-      "Multi-Agent AI Software & Tauri Desktop Applications",
-      "432Hz Acoustic Engineering & Music Production",
-      "Metabolic Recomposition & Whole-Food Performance Nutrition"
-    ],
-    "sameAs": [
-      "https://keystonepossibilities.ca",
-      "https://lims.bchousing.org/LicenceExpiryPortal/licence/52603",
-      "https://www.youtube.com/@KeystoneAIProtocols",
-      "https://www.youtube.com/@KeyStoneRecomposition"
-    ]
-  }
-}
-</script>
 
 <?php
 get_footer();

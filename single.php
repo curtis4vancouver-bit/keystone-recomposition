@@ -86,7 +86,7 @@ get_header(); ?>
                                 </div>
                                 <h3 class="author-dossier-name" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 800;">Wayne Stevenson</h3>
                                 <p class="author-dossier-bio" style="color: #cbd5e1; line-height: 1.65;">
-                                    Certified BC Housing Licensed Residential Builder (#52603), electronic music producer with 22 official releases on Too Lost, and lead architect of autonomous multi-agent desktop workstations. Operating across Squamish, Whistler, and Greater Vancouver.
+                                    Certified BC Housing Licensed Residential Builder (#52603), recording artist and producer with 25 official releases across Spotify, Apple Music, and Too Lost, and lead architect of autonomous multi-agent desktop workstations. Operating across Squamish, Whistler, and Greater Vancouver.
                                 </p>
                                 <div class="author-dossier-links" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;">
                                     <a href="<?php echo esc_url( home_url( '/founder/' ) ); ?>" class="dossier-link ks-p3-btn-blue" style="padding: 9px 18px; font-size: 0.78rem; font-weight: 800; text-decoration: none;">
@@ -96,7 +96,7 @@ get_header(); ?>
                                         <span class="ks-wave-text">Explore AI Protocols &rarr;</span>
                                     </a>
                                     <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="dossier-link ks-p3-btn-blue" style="padding: 9px 18px; font-size: 0.78rem; font-weight: 800; text-decoration: none;">
-                                        <span class="ks-wave-text">22-Release Sonic Universe &rarr;</span>
+                                        <span class="ks-wave-text">24-Release Sonic Universe &rarr;</span>
                                     </a>
                                 </div>
                             </div>

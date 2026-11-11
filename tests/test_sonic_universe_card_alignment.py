@@ -58,16 +58,10 @@ class TestSonicUniverseTemplateCardAlignment:
         )
 
     def test_preserves_album_card_play_overlay_and_pill(self):
-        """Preserves .album-card-play-overlay and 'STREAM RELEASE' overlay pill."""
-        assert "album-card-play-overlay" in self.content, "Missing .album-card-play-overlay container in template"
-        assert "play-overlay-pill" in self.content, "Missing .play-overlay-pill element in template"
-        assert "STREAM RELEASE" in self.content, "Missing 'STREAM RELEASE' pill text in template"
-
-        # Verify overlay structure inside .album-card-art
-        overlay_pattern = r'<div class="album-card-play-overlay">\s*<span class="play-overlay-pill">\s*▶ STREAM RELEASE\s*</span>\s*</div>'
-        assert re.search(overlay_pattern, self.content) is not None, (
-            "Expected .album-card-play-overlay with ▶ STREAM RELEASE pill inside .album-card-art"
-        )
+        """Verifies clean unobstructed 1:1 album artwork container in template-sonic-universe.php."""
+        assert "album-card-art" in self.content, "Missing .album-card-art container in template"
+        assert "su-clean-art-frame" in self.content, "Missing .su-clean-art-frame class on artwork container"
+        assert "album-cover-img" in self.content, "Missing .album-cover-img element in template"
 
     def test_preserves_btn_open_album_modal(self):
         """Preserves .btn-open-album-modal button in the template."""

@@ -62,7 +62,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 <span class="triad-eq-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                                 <div class="triad-copy">
                                     <span class="triad-title">INTERNATIONAL MUSIC PRODUCER</span>
-                                    <span class="triad-sub">22 Releases • 216 Master Tracks • 96kHz Global Catalog</span>
+                                    <span class="triad-sub">25 Releases • 246 Master Tracks • 96kHz Global Catalog</span>
                                 </div>
                             </div>
                             <div class="triad-pill triad-ai">
@@ -83,7 +83,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </div>
                     
                     <p class="cyber-hero-subtitle">
-                        The sovereign digital headquarters of Wayne Stevenson — uniting a 22-release international electronic music catalog, deterministic 28-agent FastMCP engineering, and licensed mountain construction discipline.
+                        The sovereign digital headquarters of Wayne Stevenson — uniting a 25-release international music catalog, deterministic 28-agent FastMCP engineering, and licensed mountain construction discipline.
                     </p>
 
                 </div>
@@ -186,7 +186,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <h3 class="sound-lab-title">Bio-Acoustic Synthesizer</h3>
                                 <p class="sound-lab-desc">
-                                    Master electronic recordings from Wayne Stevenson's 22-release catalog with real-time 60Hz sub-harmonic &amp; 432Hz frequency switching.
+                                    Master electronic recordings from Wayne Stevenson's 25-release catalog with real-time 60Hz sub-harmonic &amp; 432Hz frequency switching.
                                 </p>
                             </div>
 
@@ -290,7 +290,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <span id="playLabel">INITIATE REAL MUSIC STREAM</span>
                                 </button>
                                 <a href="/sonic-universe/" class="btn-gold-subtle">
-                                    🎵 Explore All 22 Official Releases (20 Studio Albums) →
+                                    🎵 Explore All 25 Official Releases (23 Studio Albums) →
                                 </a>
                             </div>
 
@@ -310,8 +310,77 @@ $theme_uri = get_stylesheet_directory_uri();
                     <span class="cyber-section-tag">OFFICIAL ARTIST CATALOG</span>
                     <h2 class="cyber-section-title">Latest Master <span class="cyan-gold-gradient-text">Studio Releases</span></h2>
                     <p class="cyber-section-desc">
-                        22 Official Releases • 20 Full Studio Albums • 216 Master Recordings distributed globally via TooLost across Spotify, Apple Music &amp; YouTube Music.
+                        25 Official Releases • 22 Full Studio Albums • 246 Master Recordings distributed globally via TooLost across Spotify, Apple Music &amp; YouTube Music.
                     </p>
+                </div>
+
+                <!-- Q4 2026 OFFICIAL 4K RELEASES & STREAMING SPOTLIGHT -->
+                <div id="q4-2026-official-releases" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; margin-bottom: 28px;">
+
+                    <!-- Spotlight 1: Whiskey on a Wednesday + Diesel in the Rain 4K -->
+                    <div class="q4-release-spotlight-card" style="display: flex; align-items: center; gap: 18px; background: rgba(10, 14, 24, 0.94); border: 1px solid rgba(212, 175, 55, 0.42); border-radius: 18px; padding: 18px 20px; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.62);">
+                        <a href="/sonic-universe/#whiskey-on-a-wednesday" style="flex: 0 0 108px; width: 108px; height: 108px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.35); display: block;">
+                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/whiskey_on_a_wednesday.jpg' ); ?>"
+                                 alt="Whiskey on a Wednesday Official Album Cover Art"
+                                 width="108" height="108" loading="lazy" decoding="async"
+                                 style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                        </a>
+                        <div style="flex: 1; min-width: 0;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; color: #d4af37; text-transform: uppercase; margin-bottom: 4px;">
+                                NEW NOV 2026 LP &bull; 10 TRACKS &bull; 92 BPM
+                            </div>
+                            <h3 style="margin: 0 0 6px 0; font-family: 'Outfit', sans-serif; font-size: 1.16rem; font-weight: 800; color: #f8fafc; line-height: 1.25;">
+                                Whiskey on a Wednesday
+                            </h3>
+                            <p style="margin: 0 0 10px 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.48;">
+                                Modern outlaw country-trap &amp; steel-string acoustic storytelling featuring the official 4K film <em>&ldquo;Diesel in the Rain&rdquo;</em>.
+                            </p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <a href="https://www.youtube.com/watch?v=nyQwl-7-vH0" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
+                                    <span class="ks-wave-text">▶ &ldquo;Diesel in the Rain&rdquo; 4K ↗</span>
+                                </a>
+                                <a href="https://too.fm/qv7jb0e" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-blue" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
+                                    <span class="ks-wave-text">🎧 Stream LP ↗</span>
+                                </a>
+                                <a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-blue" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
+                                    <span class="ks-wave-text">🍎 Apple Music ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spotlight 2: Don't Say You're Fine + Late-Night Soul 4K -->
+                    <div class="q4-release-spotlight-card" style="display: flex; align-items: center; gap: 18px; background: rgba(10, 14, 24, 0.94); border: 1px solid rgba(56, 189, 248, 0.36); border-radius: 18px; padding: 18px 20px; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.62);">
+                        <a href="/sonic-universe/#dont-say-youre-fine" style="flex: 0 0 108px; width: 108px; height: 108px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.35); display: block;">
+                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/dont_say_youre_fine.jpg' ); ?>"
+                                 alt="Don't Say You're Fine Official Album Cover Art"
+                                 width="108" height="108" loading="lazy" decoding="async"
+                                 style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                        </a>
+                        <div style="flex: 1; min-width: 0;">
+                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; color: #38bdf8; text-transform: uppercase; margin-bottom: 4px;">
+                                NEW OCT 2026 LP &bull; 10 TRACKS &bull; 88 BPM
+                            </div>
+                            <h3 style="margin: 0 0 6px 0; font-family: 'Outfit', sans-serif; font-size: 1.16rem; font-weight: 800; color: #f8fafc; line-height: 1.25;">
+                                Don&rsquo;t Say You&rsquo;re Fine
+                            </h3>
+                            <p style="margin: 0 0 10px 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.48;">
+                                1970s soul revival &amp; late-night R&amp;B duets built on warm Rhodes electric piano, analog pocket bass, and live brass swells.
+                            </p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <a href="https://www.youtube.com/watch?v=7Cbp8Vhy970" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
+                                    <span class="ks-wave-text">▶ Official 4K Video ↗</span>
+                                </a>
+                                <a href="https://too.fm/6a3aroo" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-blue" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
+                                    <span class="ks-wave-text">🎧 Stream LP ↗</span>
+                                </a>
+                                <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
+                                    <span class="ks-wave-text">Spotify OAC ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="albums-grid">
@@ -392,7 +461,7 @@ $theme_uri = get_stylesheet_directory_uri();
 
                 <div class="albums-footer-cta text-center">
                     <a href="/sonic-universe/" class="btn-gold-subtle">
-                        🎵 Explore All 22 Official Releases (20 Studio Albums) in Sonic Universe →
+                        🎵 Explore All 25 Official Releases (23 Studio Albums) in Sonic Universe →
                     </a>
                 </div>
 
@@ -414,28 +483,28 @@ $theme_uri = get_stylesheet_directory_uri();
                 // Wayne's 3 Staged Video Drops for fallback/population
                 $staged_drops = array(
                     array(
+                        'title'    => 'Chrome DevTools Protocol Port 9222: Zero-Wrapper Browser Control & Multi-Agent Execution',
+                        'category' => 'CHROME CDP AUTOMATION',
+                        'date'     => 'NOV 2026',
+                        'excerpt'  => 'Bypassing brittle web drivers: connecting autonomous subagents directly to Chrome Port 9222 for zero-fallback publishing and instant GSC indexing.',
+                        'url'      => home_url( '/2026/11/09/chrome-devtools-protocol-port-9222/' ),
+                        'image'    => 'https://img.youtube.com/vi/BuGR4MsghGs/hqdefault.jpg',
+                    ),
+                    array(
+                        'title'    => 'Diesel in the Rain — Official 4K Music Video | Whiskey on a Wednesday',
+                        'category' => 'OFFICIAL 4K RELEASE',
+                        'date'     => 'NOV 2026',
+                        'excerpt'  => 'Produced in Squamish, BC by Wayne Stevenson — gritty baritone storytelling, fingerpicked steel-string acoustic guitar, crying pedal steel, and warm 808 sub-bass.',
+                        'url'      => home_url( '/2026/11/10/diesel-in-the-rain/' ),
+                        'image'    => 'https://img.youtube.com/vi/nyQwl-7-vH0/hqdefault.jpg',
+                    ),
+                    array(
                         'title'    => 'Autonomous Multi-Agent Swarms: Architecting 28-Agent Concurrency on Port 9879',
                         'category' => 'AUTONOMOUS AGENTS',
                         'date'     => 'OCT 2026',
                         'excerpt'  => 'How we isolate research scouts, test-driven engineers, and live browsers across detached background daemons without thread collisions.',
                         'url'      => home_url( '/ai-protocols/' ),
-                        'image'    => '',
-                    ),
-                    array(
-                        'title'    => 'Zero-Cloud Chrome CDP Automation: Headless DOM Control & Instant Indexing',
-                        'category' => 'CHROME CDP AUTOMATION',
-                        'date'     => 'OCT 2026',
-                        'excerpt'  => 'Bypassing brittle web drivers: connecting autonomous subagents directly to Chrome Port 9222 for zero-fallback publishing and instant GSC indexing.',
-                        'url'      => home_url( '/ai-protocols/' ),
-                        'image'    => '',
-                    ),
-                    array(
-                        'title'    => 'Bio-Acoustic Frequency Synthesis: Engineering Analog Harmonics for High-Cadence Focus',
-                        'category' => 'BIO-ACOUSTIC SOUND',
-                        'date'     => 'OCT 2026',
-                        'excerpt'  => 'Designing 96kHz master electronic frequencies and Moog basslines to sustain cognitive focus during complex full-stack architectural sprints.',
-                        'url'      => home_url( '/sonic-universe/' ),
-                        'image'    => '',
+                        'image'    => $theme_uri . '/assets/images/ai_protocols_banner.png',
                     ),
                 );
 
@@ -475,8 +544,8 @@ $theme_uri = get_stylesheet_directory_uri();
                             $raw_exp = wp_trim_words( wp_strip_all_tags( get_the_content() ), 24, '...' );
                         }
                         $raw_exp = str_replace(
-                            array( '196-track', '196 track', '196 cataloged', '18 albums', '18-album' ),
-                            array( '216-track', '216 track', '216 registered', '22 releases', '22-release' ),
+                            array( '196-track', '196 track', '196 cataloged', '18 albums', '18-album', '216-track', '216 track', '22 releases', '22-release' ),
+                            array( '236-track', '236 track', '236 registered', '25 releases', '25-release', '236-track', '236 track', '25 releases', '25-release' ),
                             $raw_exp
                         );
                         $carousel_items[] = array(
@@ -792,7 +861,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 "Machine intelligence without physical grounding is guesswork. Every autonomous 28-agent swarm, local OS daemon, and 96kHz master recording we engineer is built on the uncompromising discipline of real-world mountain construction."
                             </p>
                             <p class="founder-detail-para">
-                                Uniting a 216-track international electronic music catalog with deterministic AI engineering, Wayne Stevenson is the Founder &amp; Principal Architect of <strong>Keystone Possibilities Ltd.</strong> (BC Housing Licensed Builder #52603) — delivering high-performance custom mountain residences, Bill 44 multiplexes, and heavy civil execution across Squamish, Whistler, and the Sea-to-Sky corridor.
+                                Uniting a 236-track international music catalog with deterministic AI engineering, Wayne Stevenson is the Founder &amp; Principal Architect of <strong>Keystone Possibilities Ltd.</strong> (BC Housing Licensed Builder #52603) — delivering high-performance custom mountain residences, Bill 44 multiplexes, and heavy civil execution across Squamish, Whistler, and the Sea-to-Sky corridor.
                             </p>
                             <div class="founder-actions-row">
                                 <a href="/founder/" class="btn-cyan-primary">

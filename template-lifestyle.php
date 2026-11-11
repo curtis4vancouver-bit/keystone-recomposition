@@ -35,7 +35,7 @@ $theme_uri = get_stylesheet_directory_uri();
                     </h1>
 
                     <p class="lifestyle-hero-subtitle">
-                        Engineered from the Sea-to-Sky alpine corridor in Squamish and Whistler, British Columbia. We unite local-first AI Brain &amp; custom desktop workstation engineering, 22 official 432Hz studio releases, automated cinematic video pipelines, disciplined quantitative market execution, and rigorous physical recomposition under one roof.
+                        Engineered from the Sea-to-Sky alpine corridor in Squamish and Whistler, British Columbia. We unite local-first AI Brain &amp; custom desktop workstation engineering, 24 official studio releases, automated cinematic video pipelines, disciplined quantitative market execution, and rigorous physical recomposition under one roof.
                     </p>
                 </header>
 
@@ -101,25 +101,25 @@ $theme_uri = get_stylesheet_directory_uri();
                             </div>
                         </div>
 
-                        <!-- PILLAR 02: 432HZ SONIC ARCHITECTURE & 22 RELEASES -->
+                        <!-- PILLAR 02: 432HZ SONIC ARCHITECTURE & 25 RELEASES -->
                         <div class="lifestyle-pillar-card life-level-pillar-card">
                             <div class="pillar-body life-level-pillar-body">
                                 <div class="pillar-card-header life-pillar-header-row">
                                     <span class="ks-p3-pill-gold life-pillar-badge">
                                         <span class="ks-wave-text">PILLAR 02 &bull; 432HZ AUDIO IP</span>
                                     </span>
-                                    <span class="life-pillar-subtag">22 RELEASES</span>
+                                    <span class="life-pillar-subtag">25 RELEASES</span>
                                 </div>
                                 <h3 class="pillar-title life-level-pillar-title">432Hz Acoustic Production &amp; Global Catalog Ownership</h3>
                                 <p class="pillar-summary life-level-pillar-summary">
-                                    Studio-grade electronic and orchestral soundscapes engineered for deep cognitive focus, high-output training, and worldwide commercial streaming distribution.
+                                    Studio-grade electronic, acoustic, and orchestral soundscapes engineered for deep cognitive focus, high-output training, and worldwide commercial streaming distribution.
                                 </p>
                                 <div class="pillar-detail-list life-level-detail-list">
                                     <div class="pillar-detail-item life-level-detail-box">
                                         <span class="detail-icon">🎵</span>
                                         <div>
-                                            <strong>22 Official Releases &bull; 216 Studio Masters:</strong>
-                                            <span>20 full-length studio albums and 2 singles distributed globally across Spotify, Apple Music, Amazon Music, and YouTube Music.</span>
+                                            <strong>25 Official Releases &bull; 236 Studio Masters:</strong>
+                                            <span>22 full-length studio albums and 2 singles distributed globally across Spotify, Apple Music, Amazon Music, and YouTube Music.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item life-level-detail-box">
@@ -139,7 +139,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <div class="pillar-card-footer life-level-pillar-footer">
                                     <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="ks-p3-btn-gold life-pillar-cta-btn">
-                                        <span class="ks-wave-text">Stream the 22-Release Sonic Universe &rarr;</span>
+                                        <span class="ks-wave-text">Stream the 24-Release Sonic Universe &rarr;</span>
                                     </a>
                                 </div>
                             </div>
@@ -407,7 +407,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="life-scope-item">
                                 <span class="ks-p3-pill-gold life-scope-pill"><span class="ks-wave-text">02 // 432HZ AUDIO &amp; MEDIA</span></span>
                                 <h4>Direct Master Sync &amp; Studio Pipelines</h4>
-                                <p>100% direct master clearance across 22 official 432Hz releases (216 studio tracks) plus automated Google Flow &amp; DaVinci Resolve media systems.</p>
+                                <p>100% direct master clearance across 25 official releases (236 studio tracks) plus automated Google Flow &amp; DaVinci Resolve media systems.</p>
                             </div>
                             <div class="life-scope-item">
                                 <span class="ks-p3-pill-blue life-scope-pill"><span class="ks-wave-text">03 // REAL ESTATE &amp; VENTURES</span></span>

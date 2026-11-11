@@ -526,7 +526,7 @@ $theme_uri = get_stylesheet_directory_uri();
 							</div>
 
 							<!-- Direct Buyer Details Form (Inline Ready-to-Buy Checkout) -->
-							<form id="heroDirectCheckoutForm" style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+							<form id="heroDirectCheckoutForm" data-keystone-form-ignore="true" style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
 								<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
 									<div>
 										<label for="heroBuyerName" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Full Name *</label>
@@ -809,7 +809,7 @@ $theme_uri = get_stylesheet_directory_uri();
 								Enter your YouTube channel name, niche, and website domain below. The portal will immediately generate your tailored <strong>Brain Setup Prompt</strong>, <strong>3 custom ~20-word Google Flow video prompts</strong>, <strong>Website Builder prompt</strong>, and <strong>480-character YouTube tag stack</strong> on screen—and email a copy to your inbox!
 							</p>
 
-							<form id="krChannelWebsiteSetupForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+							<form id="krChannelWebsiteSetupForm" data-keystone-form-ignore="true" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
 								<div>
 									<label style="display: block; font-size: 0.72rem; font-weight: 800; color: #f6d365; margin-bottom: 4px;">YOUR NAME *</label>
 									<input type="text" id="setupBuyerName" required placeholder="Alex Mercer" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; padding: 9px 12px; font-size: 0.82rem; box-sizing: border-box;" />
@@ -1557,7 +1557,7 @@ Rules for every scene prompt:
 			Enter your full name and email below to complete secure <strong>USD Visa / Mastercard Checkout</strong> and immediately unlock your <strong>Verified Buyer UID (<code class="kr-code-pill">KR-UID-...</code>), Unlisted 4K Avatar Walkthrough Video, Printable <code class="kr-code-pill">%PDF-1.4</code> Guides, Clean-Room <code class="kr-code-pill-gold">.ZIP</code> Starter Pack &amp; Guided Setup Window</strong>—delivered on screen and straight to your inbox.
 		</p>
 
-		<form id="automatedProtocolOrderForm" style="display: flex; flex-direction: column; gap: 12px;">
+		<form id="automatedProtocolOrderForm" data-keystone-form-ignore="true" style="display: flex; flex-direction: column; gap: 12px;">
 			<input type="hidden" id="orderTierInput" name="tier" value="1" />
 			<div>
 				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #f6d365; margin-bottom: 5px;">SELECTED PROTOCOL TIER</label>

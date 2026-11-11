@@ -62,6 +62,15 @@ function keystone_early_410_and_301_gate(): void {
     if ( preg_match( '~^intel/page/([3-9]|[1-9][0-9]+)$~i', $path ) ) {
         keystone_emit_clean_410_gone();
     }
+    $retired_410_paths = array(
+        '2026/02/27/the-new-metabolic-system-kwikpen-logistics-cardio-protection-and-the-phase-2-stabilization-protocol',
+        'the-new-metabolic-system-kwikpen-logistics-cardio-protection-and-the-phase-2-stabilization-protocol',
+        '2026/03/10/mounjaro-whoosh-effect',
+        'mounjaro-whoosh-effect',
+    );
+    if ( in_array( $path, $retired_410_paths, true ) ) {
+        keystone_emit_clean_410_gone();
+    }
 
     // 2. Clean single-hop HTTP 301 Redirects for legacy slugs
     if ( 'music-releases' === $path ) {
@@ -79,8 +88,14 @@ function keystone_early_410_and_301_gate(): void {
         wp_safe_redirect( home_url( '/watch-iron-grace/' ), 301 );
         exit;
     }
-    if ( in_array( $path, array( 'about', 'about-the-founder', 'about-the-founder-the-keystone-blueprint' ), true ) ) {
+    if ( in_array( $path, array( 'about', 'about-the-founder', 'about-the-founder-the-keystone-blueprint', 'wayne-stevenson' ), true ) ) {
+        header( 'X-LiteSpeed-Cache-Control: no-cache' );
         wp_safe_redirect( home_url( '/founder/' ), 301 );
+        exit;
+    }
+    if ( 'case-studies' === $path ) {
+        header( 'X-LiteSpeed-Cache-Control: no-cache' );
+        wp_safe_redirect( home_url( '/ecosystem-partners/' ), 301 );
         exit;
     }
     if ( 'album' === $path || str_starts_with( $path, 'album/' ) || 'track' === $path || str_starts_with( $path, 'track/' ) ) {
@@ -117,6 +132,8 @@ function keystone_get_purged_slug_patterns(): array {
         'la-longevity',
         'newyork-longevity',
         'workout',
+        'mounjaro-whoosh-effect',
+        'kwikpen-logistics',
     );
 }
 

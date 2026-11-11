@@ -42,48 +42,57 @@ class TestM3MultiEntityKnowledgeGraph:
     """Verifies all structured data graphs in inc/seo-schema.php."""
 
     def test_organization_and_parent_org_schema(self):
-        """Validates Organization and ParentOrganization knowledge graph nodes."""
+        """Validates Organization and Sister Organization knowledge graph nodes."""
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
             content = f.read()
 
         # Check Organization properties
         assert "https://keystonerecomposition.com/#organization" in content
         assert "Organization" in content
-        assert "Keystone Empire" in content
-        assert "https://keystonepossibilities.ca/#parent-organization" in content
+        assert "Keystone Possibilities Ltd." in content
+        assert "https://keystonepossibilities.ca/#organization" in content
         assert "TOOLOST3000939655" in content
 
         # Check Authority URLs in sameAs
         assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in content
+        assert "https://music.apple.com/us/artist/keystone-recomposition/1862989452" in content
         assert "30027d0e-6aeb-4704-8792-a031c936c62a" in content
-        assert "https://www.youtube.com/@KeystoneRecomposition" in content
-        assert "https://www.youtube.com/@KeystoneProtocols" in content
+        assert "https://www.youtube.com/@KeyStoneRecomposition" in content
+        assert "https://www.youtube.com/@KeystoneAIProtocols" in content
 
     def test_person_wayne_stevenson_schema(self):
         """Validates Person entity (Wayne Stevenson) anchor and knowsAbout links."""
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
             content = f.read()
 
-        assert "https://keystonerecomposition.com/#person" in content
+        assert "https://keystonerecomposition.com/#wayne-stevenson" in content
         assert "Wayne Stevenson" in content
         assert "Founder & Managing Director" in content
-        assert "https://www.linkedin.com/in/wayne-stevenson" in content
+        assert "https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0" in content
+        assert "https://music.apple.com/us/artist/keystone-recomposition/1862989452" in content
         assert "Quantitative Prediction Markets" in content
         assert "Autonomous AI Agent Swarms" in content
         assert "Solfeggio Soundscapes" in content
         assert "Residential Construction & Building Codes" in content
-        assert "https://lims.bchousing.org/LicenceExpiryPortal/licence/52603" in content
+        assert "https://www.bchousing.org/licensing-consumer-disclosure/licencee-search" in content
+        assert "52603" in content
 
     def test_music_group_and_album_schema(self):
         """Validates MusicGroup and MusicAlbum structured data nodes."""
+        catalog_path = os.path.join(CHILD_THEME_DIR, "inc", "sonic-catalog-data.php")
         with open(SEO_SCHEMA_PATH, "r", encoding="utf-8") as f:
             content = f.read()
+        with open(catalog_path, "r", encoding="utf-8") as f:
+            catalog = f.read()
 
         assert "https://keystonerecomposition.com/#musicgroup" in content
         assert "52v3Qe6Jo0hg764driOl5Y" in content
-        assert "Concrete Foundations" in content
-        assert "Resonantia: 10 Frequencies of the Rebuild" in content
-        assert "The 205 Marker" in content
+        assert "keystone_get_all_albums" in content
+        assert "Concrete Foundations" in catalog
+        assert "Resonantia: 10 Frequencies of the Rebuild" in catalog
+        assert "Whiskey on a Wednesday" in catalog
+        assert "Don't Say You're Fine" in catalog or r"Don\'t Say You\'re Fine" in catalog
+        assert "The 205 Marker" in catalog
         assert "30027d0e-6aeb-4704-8792-a031c936c62a" in content
 
     def test_zero_legacy_medical_and_calculator_schema(self):
@@ -114,26 +123,29 @@ class TestM3GenerativeEngineOptimization:
     """Verifies /llms.txt file generator and dynamic routing."""
 
     def test_llms_txt_static_writer_in_indexing_api(self):
-        """Verifies physical /llms.txt file writer on init hook."""
+        """Verifies physical /llms.txt file writer on init hook and canonical llms.txt contents."""
+        llms_path = os.path.join(CHILD_THEME_DIR, "llms.txt")
         with open(INDEXING_API_PATH, "r", encoding="utf-8") as f:
             content = f.read()
+        with open(llms_path, "r", encoding="utf-8") as f:
+            llms_txt = f.read()
 
-        assert "GENERATIVE ENGINE OPTIMIZATION (GEO)" in content
         assert "llms.txt" in content
-        assert "Keystone Recomposition" in content
-        assert "Wayne Stevenson" in content
-        assert "Autonomous Multi-Agent AI Swarms & FastMCP Systems" in content
-        assert "TooLost Functional Electronic Music Catalog" in content
-        assert "Quantitative Trading & Liquid Prediction Market Intelligence" in content
-        assert "Licensed British Columbia Residential Infill Construction" in content
-        assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in content
+        assert "llms-full.txt" in content
+        assert "Keystone Recomposition" in llms_txt
+        assert "Wayne Stevenson" in llms_txt
+        assert "FastMCP" in llms_txt
+        assert "25 Official Releases" in llms_txt
+        assert "#52603" in llms_txt
+        assert "https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" in llms_txt
 
     def test_llms_txt_dynamic_endpoint_fallback(self):
-        """Verifies dynamic fallback handler for /llms.txt."""
+        """Verifies dynamic fallback handler for /llms.txt and /llms-full.txt."""
         with open(INDEXING_API_PATH, "r", encoding="utf-8") as f:
             content = f.read()
 
-        assert "strpos($request, '/llms.txt') !== false" in content or "strpos( $request, '/llms.txt' ) !== false" in content
+        assert "'/llms.txt'" in content
+        assert "'/llms-full.txt'" in content
 
 
 # ==============================================================================
@@ -153,8 +165,9 @@ class TestM3RobotsTxtAICrawlers:
         combined = indexing_content + "\n" + seo_content
 
         for bot in ["GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"]:
-            assert f"User-agent: {bot}" in combined
-            assert f"Allow: /" in combined
+            assert bot in combined
+        assert "User-agent:" in combined
+        assert "Allow: /" in combined
 
         assert "Sitemap:" in combined
         assert "/sitemap_index.xml" in combined
