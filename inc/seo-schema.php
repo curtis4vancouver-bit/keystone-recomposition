@@ -258,7 +258,7 @@ function keystone_recomposition_child_inject_schema() {
         '@graph'   => $entity_graph,
     );
 
-    $json_schema = wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+    $json_schema = wp_json_encode( $schema, JSON_UNESCAPED_SLASHES );
 
     echo "<!-- Keystone Digital JSON-LD Schema -->\n";
     echo "<script type=\"application/ld+json\">\n";
@@ -711,7 +711,7 @@ function keystone_recomposition_child_music_schema() {
 
     echo "\n<!-- Keystone Master MusicGroup & MusicAlbum JSON-LD Graph -->\n";
     echo "<script type=\"application/ld+json\">\n";
-    echo wp_json_encode( $schema_payload, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
+    echo wp_json_encode( $schema_payload, JSON_UNESCAPED_SLASHES ) . "\n";
     echo "</script>\n<!-- End Keystone Music Graph -->\n\n";
 }
 add_action( 'wp_head', 'keystone_recomposition_child_music_schema' );
@@ -2165,7 +2165,7 @@ function keystone_inject_ai_protocols_software_schema() {
 
         echo "\n<!-- Keystone 2026 AI Protocols SoftwareApplication & FAQPage JSON-LD Schema -->\n";
         echo "<script type=\"application/ld+json\">\n";
-        echo wp_json_encode( $ai_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
+        echo wp_json_encode( $ai_schema, JSON_UNESCAPED_SLASHES ) . "\n";
         echo "</script>\n<!-- End AI Protocols Schema -->\n\n";
     }
 }
@@ -2284,7 +2284,7 @@ function keystone_inject_city_landing_pages_geo_schema() {
 
             echo "\n<!-- Keystone Localized City Hub Geo JSON-LD Schema -->\n";
             echo "<script type=\"application/ld+json\">\n";
-            echo wp_json_encode( $place_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . "\n";
+            echo wp_json_encode( $place_schema, JSON_UNESCAPED_SLASHES ) . "\n";
             echo "</script>\n<!-- End Localized City Hub Schema -->\n\n";
             break;
         }
