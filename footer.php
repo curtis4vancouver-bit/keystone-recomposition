@@ -73,8 +73,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <strong class="kr-footer-col-heading">Sonic Universe Catalog:</strong>
                     <ul class="kr-footer-links">
                         <li><a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>">Sovereign Reverb (10-Track Master)</a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>">APOLLO Protocol (Melodic Deep House)</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>">25 Official Releases (246 ISRC Tracks)</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/sonic-universe/#sonic-verified-credentials' ) ); ?>" class="kr-link-gold">Certified Musixmatch Graduate (Feb 2026) &rarr;</a></li>
                         <li><a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="kr-link-cyan">Spotify Verified Artist OAC &nearr;</a></li>
                         <li><a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer">Apple Music Lossless Catalog &nearr;</a></li>
                     </ul>
@@ -109,13 +109,14 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <strong class="kr-footer-col-heading">Direct Authority &amp; Contact:</strong>
                     <ul class="kr-footer-links">
                         <li><span style="color:#38bdf8;font-weight:700;">Wayne Stevenson // Principal Builder</span></li>
+                        <li><span style="color:#f6d365;font-size:0.78rem;font-weight:600;">Keystone Recomposition Ltd. (BC Corp #BC1573685)</span></li>
                         <li><a href="mailto:keystonerecomposition@gmail.com" class="kr-link-cyan">keystonerecomposition@gmail.com</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Schedule Direct Builder Consultation &rarr;</a></li>
                     </ul>
 
                     <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" class="kr-sister-empire-card">
                         <span class="kr-sister-empire-kicker">Sister Empire Division &middot; DoFollow</span>
-                        <span class="kr-sister-empire-title">Keystone Possibilities Ltd. &mdash; Licensed BC Builder #52603 &middot; Slope-Critical Estates, Bill 44 Multiplexes &amp; BC Hydro ES54 Civil &rarr;</span>
+                        <span class="kr-sister-empire-title">Keystone Possibilities Ltd. (BC Corp #BC1408830) &mdash; BC Housing Licensed Developer &amp; General Contractor #52603 &middot; 305 Verified CPD Points &middot; WBI #230088 &middot; BC Hydro ES54 &rarr;</span>
                     </a>
                 </div>
 
@@ -125,10 +126,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="kr-footer-bottom-meta">
                 <div class="footer-copyright-center kr-footer-copyright-row">
                     <p style="color:#cbd5e1;font-weight:500;font-size:0.84rem;">
-                        Copyright &copy; 2023–2026 <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#f8fafc;text-decoration:none;border-bottom:1px solid rgba(212,175,55,0.45);">Keystone Possibilities Ltd</a> &amp; Keystone Recomposition &bull; All Rights Reserved.
+                        Copyright &copy; 2023–2026 <strong style="color:#f8fafc;">Keystone Recomposition Ltd. (BC Corp #BC1573685)</strong> &amp; <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#f8fafc;text-decoration:none;border-bottom:1px solid rgba(212,175,55,0.45);">Keystone Possibilities Ltd. (BC Corp #BC1408830)</a> &bull; All Rights Reserved.
                     </p>
                     <p style="color:#d4af37;font-size:0.77rem;font-weight:600;">
-                        <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#d4af37;text-decoration:none;">Certified BC Housing Residential Builder #52603 &nearr;</a> &bull; 2-5-10 National Home Warranty &bull; BC Hydro Civil Contractor ES54 &bull; <a href="https://keystonepossibilities.ca/feasibility-plan/" target="_blank" rel="noopener" style="color:#38bdf8;text-decoration:none;">48-Hr BC Custom &amp; Multiplex Feasibility Plan &nearr;</a>
+                        <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#d4af37;text-decoration:none;">Certified BC Housing Residential Builder #52603 (Licensed Developer &amp; General Contractor #52603) &nearr;</a> &bull; 305 Verified CPD Points (100% Active-Term Compliant) &bull; WBI Home Warranty #230088 &bull; BC Hydro Civil Contractor ES54 &bull; <a href="<?php echo esc_url( home_url( '/sonic-universe/#sonic-verified-credentials' ) ); ?>" style="color:#38bdf8;text-decoration:none;">Certified Musixmatch Graduate (Feb 2026) &rarr;</a>
                     </p>
                 </div>
 

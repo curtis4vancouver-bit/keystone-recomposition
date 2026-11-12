@@ -209,9 +209,9 @@ $staged_drops = array(
 
 				<div class="kr-sister-banner">
 					<div>
-						<span class="kr-v4-kicker kr-v4-kicker--gold" style="margin-bottom:8px;">SISTER PHYSICAL ENGINEERING DIVISION &middot; BC HOUSING LICENSED BUILDER #52603</span>
-						<h3 class="kr-card-title" style="font-size:1.22rem;">Keystone Possibilities Ltd. &mdash; Custom Residences, Bill 44 Multiplexes &amp; BC Hydro ES54 Civil</h3>
-						<p class="kr-card-sub" style="margin-top:4px;max-width:780px;">Explore our sister construction division delivering architectural homes and underground civil infrastructure across Squamish, Whistler, West Vancouver, and the Lower Mainland.</p>
+						<span class="kr-v4-kicker kr-v4-kicker--gold" style="margin-bottom:8px;">SISTER PHYSICAL ENGINEERING DIVISION &middot; BC HOUSING DEVELOPER &amp; GENERAL CONTRACTOR #52603 &middot; 305 CPD POINTS</span>
+						<h3 class="kr-card-title" style="font-size:1.22rem;">Keystone Possibilities Ltd. (BC Corp #BC1408830) &mdash; Custom Residences, Bill 44 Multiplexes &amp; BC Hydro ES54 Civil</h3>
+						<p class="kr-card-sub" style="margin-top:4px;max-width:780px;">Explore our sister construction division (BC Housing Licensed Developer &amp; General Contractor #52603 &middot; 305 Verified CPD Points &middot; WBI Home Warranty #230088) delivering architectural homes and underground civil infrastructure across Squamish, Whistler, West Vancouver, and the Lower Mainland.</p>
 					</div>
 					<a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener noreferrer" class="kr-btn-gold">
 						Visit KeystonePossibilities.ca &nearr;

@@ -45,6 +45,7 @@ V4_FILES = (
     "inc/sync-theme-endpoint.php",
     "inc/core-routes.php",
     "home.php",
+    "template-sonic-universe.php",
     "template-founder-story.php",
     "template-contact.php",
     "template-investments.php",
@@ -275,3 +276,128 @@ def test_php_syntax_lint_passes_every_php_file_in_child_theme() -> None:
     for php_file in php_files:
         proc = subprocess.run([PHP_BIN, "-l", str(php_file)], capture_output=True, text=True, check=False)
         assert proc.returncode == 0, f"php -l failed on {php_file}: {proc.stdout}\n{proc.stderr}"
+
+
+# ── 8. Musixmatch Graduate Diploma, Corporate #BC1573685 & Sister 305 CPD ───
+
+
+def test_musixmatch_diploma_asset_staged_clean_and_allowlisted() -> None:
+    diploma_path = THEME_DIR / "assets" / "images" / "musixmatch-academy-graduate-2026.jpg"
+    assert diploma_path.is_file(), "Missing staged Musixmatch graduate diploma JPEG"
+    raw = diploma_path.read_bytes()
+    assert 50_000 < len(raw) < 600_000, f"Unexpected diploma byte size: {len(raw)}"
+    assert raw[:3] == b"\xff\xd8\xff", "Diploma file is not a valid JPEG"
+
+    php_probe = r"""
+    define('ABSPATH', __DIR__ . '/');
+    function add_action($h, $c, $p = 10) {}
+    require '09_Keystone_websites/themes/keystone-recomposition-child/inc/sync-theme-endpoint.php';
+    echo json_encode([
+        'allowed' => kr_v4_is_allowed_theme_rel_path('assets/images/musixmatch-academy-graduate-2026.jpg'),
+    ]);
+    """
+    res = subprocess.run([PHP_BIN, "-r", php_probe], cwd=str(THEME_DIR.parents[2]), capture_output=True, text=True, check=True)
+    assert json.loads(res.stdout.strip())["allowed"] is True
+
+
+@pytest.mark.parametrize("tpl_rel", ["template-sonic-universe.php", "template-founder-story.php"])
+def test_sonic_and_founder_showcase_musixmatch_diploma_and_statutory_credentials(tpl_rel: str) -> None:
+    src = _read(tpl_rel)
+    for token in (
+        "Certified Musixmatch Graduate",
+        "Class of February 2026",
+        "Vanessa Hurst",
+        "musixmatch-academy-graduate-2026.jpg",
+        'data-kr-lightbox="1"',
+        "data-kr-lightbox-open=",
+        "72648585",
+        "1a30328b-20b2-48bd-8e56-2884d3b040c0",
+        "52v3Qe6Jo0hg764driOl5Y",
+        "BC1573685",
+        "BC1408830",
+        "BC Housing Licensed Developer &amp; General Contractor #52603",
+        "305 Verified CPD Points",
+        "230088",
+        "ES54",
+    ):
+        assert token in src, f"{tpl_rel} missing required credential token: {token}"
+
+
+def test_footer_and_frontpage_corporate_bc1573685_and_305_cpd_badges() -> None:
+    ftr = _read("footer.php")
+    for token in (
+        "Keystone Recomposition Ltd. (BC Corp #BC1573685)",
+        "Keystone Possibilities Ltd. (BC Corp #BC1408830)",
+        "Certified Musixmatch Graduate",
+        "305 Verified CPD Points",
+        "230088",
+        "Developer &amp; General Contractor #52603",
+    ):
+        assert token in ftr, f"footer.php missing {token}"
+
+    fp = _read("front-page.php")
+    for token in ("BC1408830", "305", "230088", "Developer &amp; General Contractor #52603"):
+        assert token in fp, f"front-page.php missing {token}"
+
+
+def test_seo_schema_bc1573685_musixmatch_diploma_and_head_budget_under_30kb() -> None:
+    php_probe = r"""
+    define('ABSPATH', __DIR__ . '/');
+    function add_filter($h, $c, $p = 10, $a = 1) {}
+    function add_action($h, $c, $p = 10, $a = 1) {}
+    function get_stylesheet_directory_uri() { return 'https://keystonerecomposition.com/wp-content/themes/keystone-recomposition'; }
+    function get_stylesheet_directory() { return __DIR__ . '/09_Keystone_websites/themes/keystone-recomposition-child'; }
+    function home_url($p = '/') { return 'https://keystonerecomposition.com/' . ltrim($p, '/'); }
+    function wp_json_encode($d, $f = 0) { return json_encode($d, $f); }
+    function is_page($s = '') { return false; }
+    function is_front_page() { return true; }
+    function is_home() { return false; }
+    function is_singular($t = '') { return false; }
+    $_SERVER['REQUEST_URI'] = '/';
+    require '09_Keystone_websites/themes/keystone-recomposition-child/inc/seo-schema.php';
+    ob_start();
+    keystone_recomposition_child_inject_schema();
+    keystone_inject_ai_protocols_software_schema();
+    $head_out = ob_get_clean();
+    $person = keystone_get_wayne_stevenson_person_schema();
+    echo json_encode([
+        'head_bytes' => strlen($head_out),
+        'head_out'   => $head_out,
+        'person'     => $person,
+    ]);
+    """
+    res = subprocess.run([PHP_BIN, "-r", php_probe], cwd=str(THEME_DIR.parents[2]), capture_output=True, text=True, check=True)
+    payload = json.loads(res.stdout.strip())
+    assert payload["head_bytes"] < 30_000, f"<head> JSON-LD exceeded 30KB budget: {payload['head_bytes']} bytes"
+    head_out = payload["head_out"]
+    for token in ("Keystone Recomposition Ltd.", "BC1573685", "BC1408830", "Certified Musixmatch Graduate", "305 Verified CPD Points", "230088"):
+        assert token in head_out, f"Rendered <head> JSON-LD missing {token}"
+    cred_names = " | ".join(c.get("name", "") for c in payload["person"].get("hasCredential", []))
+    assert "Certified Musixmatch Graduate" in cred_names
+    assert "305 Verified CPD Points" in cred_names
+    assert "230088" in cred_names
+
+
+@pytest.mark.parametrize("geo_file", ["llms.txt", "llms-full.txt"])
+def test_geo_files_sync_musixmatch_diploma_bc1573685_and_305_cpd(geo_file: str) -> None:
+    doc = _read(geo_file)
+    for token in (
+        "BC1573685",
+        "BC1408830",
+        "Certified Musixmatch Graduate",
+        "Vanessa Hurst",
+        "72648585",
+        "305 Verified CPD Points",
+        "Developer and General Contractor",
+        "230088",
+        "musixmatch-academy-graduate-2026.jpg",
+    ):
+        assert token in doc, f"{geo_file} missing {token}"
+
+
+def test_zero_public_vault_pack_zip_or_pdf_binaries_in_theme() -> None:
+    vault_dir = THEME_DIR / "assets" / "vault_packs"
+    if vault_dir.exists():
+        leaked = [p.name for p in vault_dir.rglob("*") if p.is_file() and p.suffix.lower() in {".zip", ".pdf"}]
+        assert not leaked, f"Forbidden public binaries in assets/vault_packs/: {leaked}"
+

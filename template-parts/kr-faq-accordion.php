@@ -34,7 +34,7 @@ $kr_faqs = function_exists( 'keystone_get_homepage_executive_faqs' )
 		),
 		array(
 			'q' => 'How does Keystone Recomposition connect to Keystone Possibilities Ltd. (#52603)?',
-			'a' => 'Both divisions are led by Wayne Stevenson out of Squamish & Whistler, BC. Keystone Possibilities Ltd. is our licensed BC residential construction and BC Hydro ES54 civil contracting firm (BC Housing Builder #52603), delivering custom homes and Bill 44 multiplexes under open-book CCDC 5B contracts—bringing real-world critical-path engineering discipline to every digital system we ship.',
+			'a' => 'Both Canadian corporations are founded and led by Wayne Stevenson out of Squamish & Whistler, BC: Keystone Recomposition Ltd. (BC Corp #BC1573685) directs AI protocols and our 25-release music catalog, while Keystone Possibilities Ltd. (BC Corp #BC1408830) is our BC Housing Licensed Developer & General Contractor #52603 (305 Verified CPD Points, WBI Home Warranty #230088, and BC Hydro Civil Contractor List ES54)—bringing real-world critical-path engineering discipline to every digital system we ship.',
 		),
 	);
 ?>

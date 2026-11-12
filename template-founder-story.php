@@ -137,9 +137,9 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 
 			<div class="founder-telemetry-4grid">
 				<div class="luxury-metric-card founder-metric-card founder-metric-gold">
-					<span class="metric-label">BC HOUSING LICENCE</span>
+					<span class="metric-label">BC HOUSING DEVELOPER &amp; GC</span>
 					<span class="metric-value-gold">#52603</span>
-					<span class="metric-caption">Keystone Possibilities Ltd &bull; Custom Estates &amp; Multiplexes</span>
+					<span class="metric-caption">305 Verified CPD Points &bull; WBI #230088 &bull; BC Hydro ES54</span>
 				</div>
 				<div class="luxury-metric-card founder-metric-card founder-metric-blue">
 					<span class="metric-label">PHYSICAL RECOMPOSITION</span>
@@ -149,7 +149,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 				<div class="luxury-metric-card founder-metric-card founder-metric-gold">
 					<span class="metric-label">SONIC ARCHITECTURE</span>
 					<span class="metric-value-gold">25 RELEASES</span>
-					<span class="metric-caption">23 Studio Albums &bull; 246 Master Tracks</span>
+					<span class="metric-caption">246 Master Tracks &bull; Certified Musixmatch Graduate</span>
 				</div>
 				<div class="luxury-metric-card founder-metric-card founder-metric-blue">
 					<span class="metric-label">AI SOFTWARE SYSTEMS</span>
@@ -225,27 +225,27 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 						</blockquote>
 
 						<p class="founder-narrative-para">
-							Based in the Sea-to-Sky Corridor of British Columbia, <strong>Wayne Stevenson</strong> is the founder and principal of <strong>Keystone Possibilities Ltd (BC Housing Licensed Builder #52603)</strong> and the architect behind <strong>Keystone Recomposition</strong>. Over two decades of directing custom mountain and coastal estates, residential multiplexes, and civil infrastructure taught a singular truth: complex systems only fail when their underlying architecture is left uninspected.
+							Based in the Sea-to-Sky Corridor of British Columbia, <strong>Wayne Stevenson</strong> is the founder and principal of <strong>Keystone Possibilities Ltd. (BC Corp #BC1408830 &bull; BC Housing Licensed Developer &amp; General Contractor #52603)</strong> and the founder of <strong>Keystone Recomposition Ltd. (BC Corp #BC1573685)</strong>. Over two decades of directing custom mountain and coastal estates, residential multiplexes, and civil infrastructure taught a singular truth: complex systems only fail when their underlying architecture is left uninspected.
 						</p>
 
 						<p class="founder-narrative-para">
-							Applying structural engineering discipline to his own biology, Wayne executed a documented <strong>48-pound physical recomposition</strong>—establishing a permanent <strong>205-lb lean athletic set-point</strong> powered by whole-food nutrition, heavy compound strength training, and cold-water recovery—while building a <strong>25-release (246-track) 432Hz music catalog</strong> and our <strong>3-tier AI Protocols &amp; Tauri Desktop software suite</strong>.
+							Applying structural engineering discipline to his own biology, Wayne executed a documented <strong>48-pound physical recomposition</strong>—establishing a permanent <strong>205-lb lean athletic set-point</strong> powered by whole-food nutrition, heavy compound strength training, and cold-water recovery—while earning his <strong>Certified Musixmatch Graduate</strong> diploma (<em>Class of February 2026</em>), producing a <strong>25-release (246-track) 432Hz music catalog</strong>, and engineering our <strong>3-tier AI Protocols &amp; Tauri Desktop software suite</strong>.
 						</p>
 
 						<!-- Verified BC Housing #52603 Crest & Fiduciary Box -->
 						<div class="founder-fiduciary-crest-box">
 							<div class="fiduciary-crest-media">
 								<img src="<?php echo esc_url( $child_assets . '/keystone_possibilities_crest.png' ); ?>"
-								     alt="Keystone Possibilities Ltd — BC Housing Licensed Builder #52603 Crest"
+								     alt="Keystone Possibilities Ltd — BC Housing Licensed Developer &amp; General Contractor #52603 Crest"
 								     class="fiduciary-crest-img"
 								     width="88" height="88"
 								     loading="lazy" />
 							</div>
 							<div class="fiduciary-crest-copy">
-								<span class="fiduciary-crest-kicker">GOVERNMENT-VERIFIED FIDUCIARY CREDENTIAL</span>
-								<h3 class="fiduciary-crest-title">Keystone Possibilities Ltd &bull; BC Housing Builder #52603</h3>
+								<span class="fiduciary-crest-kicker">GOVERNMENT-VERIFIED FIDUCIARY CREDENTIAL &bull; 305 VERIFIED CPD POINTS</span>
+								<h3 class="fiduciary-crest-title">Keystone Possibilities Ltd. &bull; Licensed Developer &amp; General Contractor #52603</h3>
 								<p class="fiduciary-crest-desc">
-									Active licensed residential builder in good standing with BC Housing Licensing &amp; Consumer Services—specializing in custom mountain &amp; coastal estates, Bill 44 multiplex developments, and civil infrastructure.
+									Active licensed residential developer &amp; general contractor in 100% active-term CPD compliance (<strong>305 Verified CPD Points</strong> &bull; 20.00/20.00 active term) with <strong>WBI Home Warranty #230088</strong>, <strong>BC Hydro Civil Contractor List ES54</strong>, and <strong>BC Corp #BC1408830</strong>.
 								</p>
 							</div>
 						</div>
@@ -258,6 +258,141 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					</div>
 				</article>
 
+			</div>
+		</section>
+
+		<!-- =====================================================================
+		     2B. VERIFIED MUSIC & ENGINEERING CREDENTIALS SHOWCASE (DIPLOMA + #52603)
+		     ===================================================================== -->
+		<section id="founder-verified-credentials" class="kr-verified-creds-section" aria-label="Verified Music and Engineering Credentials">
+			<div class="kr-verified-creds-header">
+				<div class="kr-verified-creds-kicker">VERIFIED CREDENTIALS VAULT // DIPLOMA, CORPORATE &amp; STATUTORY REGISTRATIONS</div>
+				<h2 class="kr-verified-creds-title">
+					Verified <span class="cyan-gold-gradient-text">Music &amp; Engineering</span> Credentials
+				</h2>
+				<p class="kr-verified-creds-sub">
+					Primary-source documentation across both operating corporations: <strong>Keystone Recomposition Ltd. (BC Corp #BC1573685)</strong> for original 24-bit studio mastering, Musixmatch metadata curation, and sovereign AI software, alongside <strong>Keystone Possibilities Ltd. (BC Corp #BC1408830)</strong> for licensed residential development and civil contracting.
+				</p>
+			</div>
+
+			<div class="kr-verified-creds-grid">
+				<!-- Left Card: Certified Musixmatch Graduate Diploma & Music Authority -->
+				<article class="kr-cred-card">
+					<div>
+						<div class="kr-cred-card-top">
+							<span class="kr-cred-badge-pill">MUSIXMATCH ACADEMY &bull; CLASS OF FEBRUARY 2026</span>
+							<span class="kr-cred-status-tag">&#10003; DEAN-SIGNED DIPLOMA</span>
+						</div>
+						<h3 class="kr-cred-h3">Certified Musixmatch Graduate</h3>
+						<p class="kr-cred-desc">
+							Conferred upon Curtis (Wayne) Stevenson (<em>Musixmatch Academy &bull; Class of February 2026</em>) and signed by <strong>Vanessa Hurst, Dean of Musixmatch Academy</strong>—paired with verified artist, label, and corporate registrations across global DSPs.
+						</p>
+					</div>
+
+					<button type="button"
+					        class="kr-diploma-preview-btn"
+					        data-kr-lightbox="1"
+					        data-kr-lightbox-open="<?php echo esc_url( $child_assets . '/musixmatch-academy-graduate-2026.jpg' ); ?>"
+					        data-kr-src="<?php echo esc_url( $child_assets . '/musixmatch-academy-graduate-2026.jpg' ); ?>"
+					        data-kr-title="Certified Musixmatch Graduate — Musixmatch Academy (Class of February 2026)"
+					        data-kr-subtitle="Conferred upon Curtis (Wayne) Stevenson • Signed by Vanessa Hurst, Dean of Musixmatch Academy • Musixmatch Pro #72648585"
+					        data-kr-alt="Certified Musixmatch Graduate Diploma — Musixmatch Academy Class of February 2026"
+					        aria-label="Click to zoom Certified Musixmatch Graduate Diploma">
+						<img src="<?php echo esc_url( $child_assets . '/musixmatch-academy-graduate-2026.jpg' ); ?>"
+						     alt="Certified Musixmatch Graduate Diploma — Musixmatch Academy Class of February 2026, signed by Dean Vanessa Hurst"
+						     class="kr-diploma-preview-img"
+						     width="1600"
+						     height="1107"
+						     loading="lazy"
+						     decoding="async" />
+						<span class="kr-diploma-zoom-bar">
+							<span>🎓 MUSIXMATCH ACADEMY &bull; CLASS OF FEB 2026</span>
+							<span class="kr-diploma-zoom-cta">&#128269; Click to Zoom Full Diploma &nearr;</span>
+						</span>
+					</button>
+
+					<div class="kr-cred-meta-list">
+						<div class="kr-cred-meta-box kr-cred-meta-box--gold">
+							<span class="kr-cred-meta-lbl">Musixmatch Pro Roster</span>
+							<span class="kr-cred-meta-val"><a href="https://pro.musixmatch.com/roster/artist/72648585" target="_blank" rel="noopener noreferrer">#72648585 &nearr;</a></span>
+						</div>
+						<div class="kr-cred-meta-box">
+							<span class="kr-cred-meta-lbl">Spotify Verified OAC</span>
+							<span class="kr-cred-meta-val"><a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer">52v3Qe6Jo0hg764driOl5Y &nearr;</a></span>
+						</div>
+						<div class="kr-cred-meta-box">
+							<span class="kr-cred-meta-lbl">MusicBrainz Artist MBID</span>
+							<span class="kr-cred-meta-val"><a href="https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0" target="_blank" rel="noopener noreferrer">1a30328b-20b2-48bd-8e56-2884d3b040c0 &nearr;</a></span>
+						</div>
+						<div class="kr-cred-meta-box kr-cred-meta-box--gold">
+							<span class="kr-cred-meta-lbl">Corporate Entity</span>
+							<span class="kr-cred-meta-val">Keystone Recomposition Ltd. &bull; BC Corp #BC1573685</span>
+						</div>
+					</div>
+
+					<div class="kr-cred-actions-row">
+						<a href="https://pro.musixmatch.com/roster/artist/72648585" target="_blank" rel="noopener noreferrer" class="kr-cred-pill-cta">
+							Verify Musixmatch Pro #72648585 &nearr;
+						</a>
+						<a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-cred-pill-cta kr-cred-pill-cta--cyan">
+							Open 25-Release Sonic Universe &rarr;
+						</a>
+					</div>
+				</article>
+
+				<!-- Right Card: Sister Principal Infrastructure Credentials (Keystone Possibilities Ltd.) -->
+				<article class="kr-cred-card kr-cred-card--cyan">
+					<div>
+						<div class="kr-cred-card-top">
+							<span class="kr-cred-badge-pill kr-cred-badge-pill--cyan">SISTER PRINCIPAL INFRASTRUCTURE &bull; #52603</span>
+							<span class="kr-cred-status-tag">100% ACTIVE-TERM COMPLIANT</span>
+						</div>
+						<h3 class="kr-cred-h3">BC Housing Licensed Developer &amp; General Contractor #52603</h3>
+						<p class="kr-cred-desc">
+							Statutory construction and civil engineering credentials held by Wayne Stevenson through sister corporation <strong>Keystone Possibilities Ltd. (BC Corp #BC1408830)</strong> across the Sea-to-Sky Corridor and Greater Vancouver.
+						</p>
+					</div>
+
+					<div class="kr-cred-spec-stack">
+						<div class="kr-cred-spec-row">
+							<span class="kr-cred-spec-dot"></span>
+							<div class="kr-cred-spec-copy">
+								<strong>BC Housing Licensed Developer &amp; General Contractor #52603</strong>
+								Official <em>Developer and General Contractor</em> classification in continuous good standing with BC Housing Licensing &amp; Consumer Services (#47248 &rarr; #52603).
+							</div>
+						</div>
+						<div class="kr-cred-spec-row kr-cred-spec-row--cyan">
+							<span class="kr-cred-spec-dot"></span>
+							<div class="kr-cred-spec-copy">
+								<strong>305 Verified CPD Points (100% Active-Term Compliant)</strong>
+								20.00 / 20.00 active-term points achieved across all 7 of 7 BC Housing core competency categories (building code, thermal/moisture envelope, construction law, financial management, and project supervision).
+							</div>
+						</div>
+						<div class="kr-cred-spec-row">
+							<span class="kr-cred-spec-dot"></span>
+							<div class="kr-cred-spec-copy">
+								<strong>WBI Home Warranty #230088</strong>
+								Statutory 2-5-10 Year Home Warranty Insurance registration backing custom luxury residences and Bill 44 SSMUH multiplexes.
+							</div>
+						</div>
+						<div class="kr-cred-spec-row kr-cred-spec-row--cyan">
+							<span class="kr-cred-spec-dot"></span>
+							<div class="kr-cred-spec-copy">
+								<strong>BC Hydro Civil Contractor List ES54 &amp; BC Corp #BC1408830</strong>
+								Registered underground civil utility and high-voltage trenching/substation contractor under <strong>Keystone Possibilities Ltd. (BC Corp #BC1408830)</strong>.
+							</div>
+						</div>
+					</div>
+
+					<div class="kr-cred-actions-row">
+						<a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" class="kr-cred-pill-cta">
+							Visit KeystonePossibilities.ca &nearr;
+						</a>
+						<a href="https://www.bchousing.org/licensing-consumer-disclosure/licencee-search" target="_blank" rel="noopener noreferrer" class="kr-cred-pill-cta kr-cred-pill-cta--cyan">
+							BC Housing Public Registry &nearr;
+						</a>
+					</div>
+				</article>
 			</div>
 		</section>
 
@@ -561,7 +696,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 				</div>
 
 				<div class="cta-fiduciary-note founder-portal-fiduciary-footer">
-					🏛️ <strong>Principal Fiduciary Standard:</strong> BC Housing Licensed Builder #52603 &bull; Keystone Possibilities Ltd &bull; Direct Founder Review Within 24 Hours
+					🏛️ <strong>Principal Fiduciary Standard:</strong> Keystone Recomposition Ltd. (BC Corp #BC1573685) &bull; Keystone Possibilities Ltd. (BC Corp #BC1408830 &bull; BC Housing Licensed Developer &amp; General Contractor #52603 &bull; 305 Verified CPD Points &bull; WBI #230088) &bull; Direct Founder Review Within 24 Hours
 				</div>
 
 			</div>

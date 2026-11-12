@@ -844,7 +844,7 @@ add_action( 'wp_head', 'keystone_recomposition_child_geo_citation_meta', 3 );
  * Synchronizes theme-authoritative llms.txt, llms-full.txt, deduplicated robots.txt,
  * persistent 32-char lowercase hex IndexNow key verification file, and LiteSpeed/Apache
  * .htaccess AI-bot challenge bypass + HTTP 410/301 rules to ABSPATH.
- * Runs automatically once on init when keystone_recomp_geo_sync_ver !== '2026.11.10.1'
+ * Runs automatically once on init when keystone_recomp_geo_sync_ver !== '2026.11.12.1'
  * AND on-demand via authenticated ?keystone_sync_geo=sovereign_execute.
  */
 if ( ! function_exists( 'keystone_recomp_get_indexnow_key' ) ) {
@@ -992,7 +992,7 @@ if ( ! function_exists( 'keystone_recomp_build_htaccess_geo_block' ) ) {
 if ( ! function_exists( 'keystone_recomp_sync_root_geo_and_htaccess' ) ) {
     function keystone_recomp_sync_root_geo_and_htaccess( bool $run_indexnow_ping = true ): array {
         $telemetry = array(
-            'version'   => '2026.11.10.1',
+            'version'   => '2026.11.12.1',
             'timestamp' => gmdate( 'c' ),
             'files'     => array(),
             'htaccess'  => array(),
@@ -1090,7 +1090,7 @@ if ( ! function_exists( 'keystone_recomp_sync_root_geo_and_htaccess' ) ) {
         $telemetry['htaccess']['preserved_wordpress'] = ( false !== strpos( $new_ht, '# BEGIN WordPress' ) );
 
         // 5. Mark sync version & purge caches
-        update_option( 'keystone_recomp_geo_sync_ver', '2026.11.10.1', false );
+        update_option( 'keystone_recomp_geo_sync_ver', '2026.11.12.1', false );
         delete_transient( 'rank_math_sitemap_cache' );
         if ( class_exists( '\\RankMath\\Sitemap\\Cache' ) ) {
             \RankMath\Sitemap\Cache::invalidate_storage();
@@ -1138,7 +1138,7 @@ add_action( 'init', function(): void {
     }
 
     // Automatic one-time execution on version bump
-    if ( get_option( 'keystone_recomp_geo_sync_ver' ) !== '2026.11.10.1' ) {
+    if ( get_option( 'keystone_recomp_geo_sync_ver' ) !== '2026.11.12.1' ) {
         keystone_recomp_sync_root_geo_and_htaccess( true );
     }
 }, 2 );

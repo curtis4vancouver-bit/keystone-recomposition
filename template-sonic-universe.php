@@ -1,8 +1,8 @@
 <?php
 /**
  * Template Name: Keystone Sonic Universe
- * Description: Master 24-Release Discography, Auto-Loaded 4K Music Video + 9:16 Short, 432Hz Harmonic Graph & Spotify Stream Hub
- * Version: 4.6.1 (PHP 8.2+ Strict Types — Clean Cover Art, Protected Catalog Metadata & Segmented Command Dock)
+ * Description: Master 25-Release Discography, Certified Musixmatch Graduate Diploma, Auto-Loaded 4K Music Video + 9:16 Short, 432Hz Harmonic Graph & Spotify Stream Hub
+ * Version: 4.7.0 (PHP 8.2+ Strict Types — Clean Cover Art, Musixmatch Diploma Lightbox & Statutory Authority)
  */
 
 declare(strict_types=1);
@@ -217,7 +217,7 @@ if ( $su_matched_post instanceof WP_Post ) {
 }
 ?>
 
-<div id="primary" class="content-area primary keystone-sonic-universe-page">
+<div id="primary" class="content-area primary keystone-sonic-universe-page" style="overflow-x: clip;">
     <main id="main" class="site-main">
 
         <!-- 1. HERO HEADER SECTION -->
@@ -558,6 +558,143 @@ if ( $su_matched_post instanceof WP_Post ) {
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- 3B. VERIFIED MUSIC & ENGINEERING CREDENTIALS SHOWCASE (MUSIXMATCH DIPLOMA + SISTER #52603 AUTHORITY) -->
+        <section id="sonic-verified-credentials" class="sonic-credentials-section" style="padding: 12px 0 48px;" aria-label="Verified Music and Engineering Credentials">
+            <div class="ast-container">
+                <div class="kr-verified-creds-section">
+                    <div class="kr-verified-creds-header">
+                        <div class="kr-verified-creds-kicker">VERIFIED MUSIC &amp; ENGINEERING CREDENTIALS // STATUTORY &amp; DSP AUTHORITY</div>
+                        <h2 class="kr-verified-creds-title">
+                            Certified <span class="cyan-gold-gradient-text">Musixmatch Graduate</span> &amp; Principal Builder Pedigree
+                        </h2>
+                        <p class="kr-verified-creds-sub">
+                            Every studio recording and sovereign software system is anchored in auditable credentials—from Musixmatch Academy graduate certification and MusicBrainz/Spotify OAC verification under <strong>Keystone Recomposition Ltd. (BC Corp #BC1573685)</strong> to licensed physical construction under <strong>Keystone Possibilities Ltd. (BC Corp #BC1408830)</strong>.
+                        </p>
+                    </div>
+
+                    <div class="kr-verified-creds-grid">
+                        <!-- Left Card: Certified Musixmatch Graduate Diploma & Music Registry IDs -->
+                        <article class="kr-cred-card">
+                            <div>
+                                <div class="kr-cred-card-top">
+                                    <span class="kr-cred-badge-pill">MUSIXMATCH ACADEMY &bull; CLASS OF FEB 2026</span>
+                                    <span class="kr-cred-status-tag">&#10003; DEAN-SIGNED DIPLOMA</span>
+                                </div>
+                                <h3 class="kr-cred-h3">Certified Musixmatch Graduate</h3>
+                                <p class="kr-cred-desc">
+                                    Official <em>Musixmatch Academy &bull; Class of February 2026</em> diploma conferred upon Curtis (Wayne) Stevenson and signed by <strong>Vanessa Hurst, Dean of Musixmatch Academy</strong>—verifying synchronized lyrics architecture, ISRC metadata governance, and global DSP catalog delivery.
+                                </p>
+                            </div>
+
+                            <button type="button"
+                                    class="kr-diploma-preview-btn"
+                                    data-kr-lightbox="1"
+                                    data-kr-lightbox-open="<?php echo esc_url( $theme_uri . '/assets/images/musixmatch-academy-graduate-2026.jpg' ); ?>"
+                                    data-kr-src="<?php echo esc_url( $theme_uri . '/assets/images/musixmatch-academy-graduate-2026.jpg' ); ?>"
+                                    data-kr-title="Certified Musixmatch Graduate — Musixmatch Academy (Class of February 2026)"
+                                    data-kr-subtitle="Signed by Vanessa Hurst, Dean of Musixmatch Academy • Musixmatch Pro Roster #72648585 • Keystone Recomposition Ltd. (#BC1573685)"
+                                    data-kr-alt="Certified Musixmatch Graduate Diploma — Musixmatch Academy Class of February 2026"
+                                    aria-label="Zoom Certified Musixmatch Graduate Diploma (Class of February 2026)">
+                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/musixmatch-academy-graduate-2026.jpg' ); ?>"
+                                     alt="Certified Musixmatch Graduate Diploma — Musixmatch Academy Class of February 2026, signed by Dean Vanessa Hurst"
+                                     class="kr-diploma-preview-img"
+                                     width="1600"
+                                     height="1107"
+                                     loading="lazy"
+                                     decoding="async" />
+                                <span class="kr-diploma-zoom-bar">
+                                    <span>🎓 MUSIXMATCH ACADEMY &bull; FEB 2026</span>
+                                    <span class="kr-diploma-zoom-cta">&#128269; Click to Zoom Full Diploma &nearr;</span>
+                                </span>
+                            </button>
+
+                            <div class="kr-cred-meta-list">
+                                <div class="kr-cred-meta-box kr-cred-meta-box--gold">
+                                    <span class="kr-cred-meta-lbl">Musixmatch Pro Roster</span>
+                                    <span class="kr-cred-meta-val"><a href="https://pro.musixmatch.com/roster/artist/72648585" target="_blank" rel="noopener noreferrer">#72648585 &nearr;</a></span>
+                                </div>
+                                <div class="kr-cred-meta-box">
+                                    <span class="kr-cred-meta-lbl">Spotify Verified OAC</span>
+                                    <span class="kr-cred-meta-val"><a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer">52v3Qe6Jo0hg764driOl5Y &nearr;</a></span>
+                                </div>
+                                <div class="kr-cred-meta-box">
+                                    <span class="kr-cred-meta-lbl">MusicBrainz Artist MBID</span>
+                                    <span class="kr-cred-meta-val"><a href="https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0" target="_blank" rel="noopener noreferrer">1a30328b-20b2-48bd-8e56-2884d3b040c0 &nearr;</a></span>
+                                </div>
+                                <div class="kr-cred-meta-box kr-cred-meta-box--gold">
+                                    <span class="kr-cred-meta-lbl">Corporate Registration</span>
+                                    <span class="kr-cred-meta-val">Keystone Recomposition Ltd. &bull; BC Corp #BC1573685</span>
+                                </div>
+                            </div>
+
+                            <div class="kr-cred-actions-row">
+                                <a href="https://pro.musixmatch.com/roster/artist/72648585" target="_blank" rel="noopener noreferrer" class="kr-cred-pill-cta">
+                                    Verify Musixmatch Pro #72648585 &nearr;
+                                </a>
+                                <a href="https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0" target="_blank" rel="noopener noreferrer" class="kr-cred-pill-cta kr-cred-pill-cta--cyan">
+                                    Inspect MusicBrainz MBID &nearr;
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Right Card: Sister Principal Infrastructure Credentials (Keystone Possibilities Ltd.) -->
+                        <article class="kr-cred-card kr-cred-card--cyan">
+                            <div>
+                                <div class="kr-cred-card-top">
+                                    <span class="kr-cred-badge-pill kr-cred-badge-pill--cyan">SISTER PRINCIPAL INFRASTRUCTURE &bull; #52603</span>
+                                    <span class="kr-cred-status-tag">305 VERIFIED CPD POINTS</span>
+                                </div>
+                                <h3 class="kr-cred-h3">BC Housing Licensed Developer &amp; General Contractor #52603</h3>
+                                <p class="kr-cred-desc">
+                                    Led by shared principal founder Wayne Stevenson, sister firm <strong>Keystone Possibilities Ltd. (BC Corp #BC1408830)</strong> brings government-inspected civil and residential engineering rigor to the Keystone ecosystem across Squamish, Whistler, and Greater Vancouver.
+                                </p>
+                            </div>
+
+                            <div class="kr-cred-spec-stack">
+                                <div class="kr-cred-spec-row">
+                                    <span class="kr-cred-spec-dot"></span>
+                                    <div class="kr-cred-spec-copy">
+                                        <strong>BC Housing Licensed Developer &amp; General Contractor #52603</strong>
+                                        Active <em>Developer and General Contractor</em> licence in good standing with BC Housing Licensing &amp; Consumer Services (continuous principal record from Licence #47248 to #52603).
+                                    </div>
+                                </div>
+                                <div class="kr-cred-spec-row kr-cred-spec-row--cyan">
+                                    <span class="kr-cred-spec-dot"></span>
+                                    <div class="kr-cred-spec-copy">
+                                        <strong>305 Verified CPD Points (100% Active-Term Compliant)</strong>
+                                        20.00 / 20.00 active-term Continuing Professional Development points achieved across all 7 of 7 BC Housing core competency subjects—building code, thermal envelope, construction law, financial management, and site execution.
+                                    </div>
+                                </div>
+                                <div class="kr-cred-spec-row">
+                                    <span class="kr-cred-spec-dot"></span>
+                                    <div class="kr-cred-spec-copy">
+                                        <strong>WBI Home Warranty #230088</strong>
+                                        Registered 2-5-10 Year statutory home warranty insurance coverage protecting custom mountain estates and Bill 44 residential multiplex builds in British Columbia.
+                                    </div>
+                                </div>
+                                <div class="kr-cred-spec-row kr-cred-spec-row--cyan">
+                                    <span class="kr-cred-spec-dot"></span>
+                                    <div class="kr-cred-spec-copy">
+                                        <strong>BC Hydro Civil Contractor List ES54 &amp; BC Corp #BC1408830</strong>
+                                        Qualified underground electrical civil and high-voltage infrastructure contractor operating as <strong>Keystone Possibilities Ltd. (BC Corp #BC1408830)</strong>.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kr-cred-actions-row">
+                                <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" class="kr-cred-pill-cta">
+                                    Explore Keystone Possibilities #52603 &nearr;
+                                </a>
+                                <a href="https://www.bchousing.org/licensing-consumer-disclosure/licencee-search" target="_blank" rel="noopener noreferrer" class="kr-cred-pill-cta kr-cred-pill-cta--cyan">
+                                    Verify Licence #52603 on BC Housing &nearr;
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
 

@@ -83,6 +83,8 @@ function keystone_recomposition_child_inject_schema() {
             '@type'              => 'Organization',
             '@id'                => 'https://keystonerecomposition.com/#organization',
             'name'               => 'Keystone Recomposition',
+            'legalName'          => 'Keystone Recomposition Ltd.',
+            'taxID'              => 'BC1573685',
             'url'                => 'https://keystonerecomposition.com/',
             'description'        => 'Sovereign autonomous AI systems engineering studio, FastMCP protocol laboratory, and electronic/acoustic music record label founded by Wayne Stevenson in Squamish, British Columbia.',
             'keywords'           => 'Keystone Recomposition, Autonomous AI, FastMCP, DevTools, Deep House Music, Sound Design, Recomposition Architecture',
@@ -146,6 +148,11 @@ function keystone_recomposition_child_inject_schema() {
             'identifier'         => array(
                 array(
                     '@type'      => 'PropertyValue',
+                    'propertyID' => 'BC Incorporation Number',
+                    'value'      => 'BC1573685',
+                ),
+                array(
+                    '@type'      => 'PropertyValue',
                     'propertyID' => 'MusicBrainz Label ID',
                     'value'      => '30027d0e-6aeb-4704-8792-a031c936c62a',
                     'url'        => 'https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a',
@@ -166,15 +173,33 @@ function keystone_recomposition_child_inject_schema() {
         ),
         // 2. Sister Operating Entity (Keystone Possibilities Ltd. — Linked via Shared Founder)
         array(
-            '@type'     => array( 'Organization', 'HomeAndConstructionBusiness' ),
-            '@id'       => 'https://keystonepossibilities.ca/#organization',
-            'name'      => 'Keystone Possibilities Ltd.',
-            'legalName' => 'Keystone Possibilities Ltd.',
-            'url'       => 'https://keystonepossibilities.ca/',
-            'founder'   => array(
+            '@type'      => array( 'Organization', 'HomeAndConstructionBusiness' ),
+            '@id'        => 'https://keystonepossibilities.ca/#organization',
+            'name'       => 'Keystone Possibilities Ltd.',
+            'legalName'  => 'Keystone Possibilities Ltd.',
+            'taxID'      => 'BC1408830',
+            'url'        => 'https://keystonepossibilities.ca/',
+            'identifier' => array(
+                array(
+                    '@type'      => 'PropertyValue',
+                    'propertyID' => 'BC Incorporation Number',
+                    'value'      => 'BC1408830',
+                ),
+                array(
+                    '@type'      => 'PropertyValue',
+                    'propertyID' => 'BC Housing Developer and General Contractor Licence',
+                    'value'      => '52603',
+                ),
+                array(
+                    '@type'      => 'PropertyValue',
+                    'propertyID' => 'WBI Home Warranty Registration',
+                    'value'      => '230088',
+                ),
+            ),
+            'founder'    => array(
                 '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
             ),
-            'sameAs'    => array(
+            'sameAs'     => array(
                 'https://www.youtube.com/@KeystonePossibilitiesLtd',
                 'https://www.instagram.com/keystonepossibilities',
             ),
@@ -344,7 +369,7 @@ function keystone_get_wayne_stevenson_person_schema(): array {
         'hasCredential'             => array(
             array(
                 '@type'              => 'EducationalOccupationalCredential',
-                'name'               => 'BC Housing Licensed Residential Builder (Licence #52603)',
+                'name'               => 'BC Housing Licensed Residential Builder — Developer and General Contractor (Licence #52603 · 305 Verified CPD Points)',
                 'identifier'         => '52603',
                 'credentialCategory' => 'Professional License',
                 'recognizedBy'       => array(
@@ -360,6 +385,18 @@ function keystone_get_wayne_stevenson_person_schema(): array {
             ),
             array(
                 '@type'              => 'EducationalOccupationalCredential',
+                'name'               => 'Certified Musixmatch Graduate (Musixmatch Academy, Class of February 2026)',
+                'identifier'         => '72648585',
+                'credentialCategory' => 'Music Metadata & Lyrics Curation Diploma',
+                'recognizedBy'       => array(
+                    '@type' => 'Organization',
+                    'name'  => 'Musixmatch Academy',
+                    'url'   => 'https://pro.musixmatch.com/roster/artist/72648585',
+                ),
+                'url'                => 'https://keystonerecomposition.com/sonic-universe/#sonic-verified-credentials',
+            ),
+            array(
+                '@type'              => 'EducationalOccupationalCredential',
                 'name'               => 'BC Hydro Registered Civil Utility Contractor (ES54)',
                 'identifier'         => 'ES54',
                 'credentialCategory' => 'Civil Utility Infrastructure Qualification',
@@ -371,7 +408,8 @@ function keystone_get_wayne_stevenson_person_schema(): array {
             ),
             array(
                 '@type'              => 'EducationalOccupationalCredential',
-                'name'               => '2-5-10 Year National Home Warranty Protection',
+                'name'               => 'WBI Home Warranty #230088 (2-5-10 Year National Home Warranty Protection)',
+                'identifier'         => '230088',
                 'credentialCategory' => 'Statutory Residential Construction Warranty',
                 'validIn'            => array(
                     '@type' => 'AdministrativeArea',
@@ -2014,7 +2052,7 @@ function keystone_get_homepage_executive_faqs(): array {
         ),
         array(
             'q' => 'How does Keystone Recomposition connect to Keystone Possibilities Ltd. (#52603)?',
-            'a' => 'Both divisions are led by Wayne Stevenson out of Squamish & Whistler, BC. Keystone Possibilities Ltd. is our licensed BC residential construction and BC Hydro ES54 civil contracting firm (BC Housing Builder #52603), delivering custom homes and Bill 44 multiplexes under open-book CCDC 5B contracts—bringing real-world critical-path engineering discipline to every digital system we ship.',
+            'a' => 'Both Canadian corporations are founded and led by Wayne Stevenson out of Squamish & Whistler, BC: Keystone Recomposition Ltd. (BC Corp #BC1573685) directs AI protocols and our 25-release music catalog, while Keystone Possibilities Ltd. (BC Corp #BC1408830) is our BC Housing Licensed Developer & General Contractor #52603 (305 Verified CPD Points, WBI Home Warranty #230088, and BC Hydro Civil Contractor List ES54)—bringing real-world critical-path engineering discipline to every digital system we ship.',
         ),
     );
 }

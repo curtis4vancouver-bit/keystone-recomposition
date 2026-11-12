@@ -1,10 +1,10 @@
 # Keystone Recomposition — Complete Knowledge Graph & Technical Dossier (llms-full.txt)
 
 > **Canonical Domain:** https://keystonerecomposition.com/
-> **Primary Entity:** Keystone Recomposition & Keystone AI Protocols (`Organization`: https://keystonerecomposition.com/#organization | `MusicGroup`: https://keystonerecomposition.com/#musicgroup)
-> **Sister Operating Entity:** Keystone Possibilities Ltd. — BC Housing Licensed Builder #52603 & BC Hydro Civil ES54 — https://keystonepossibilities.ca/ (`Organization`: https://keystonepossibilities.ca/#organization)
+> **Primary Entity:** Keystone Recomposition Ltd. (`BC Corp #BC1573685`) & Keystone AI Protocols (`Organization`: https://keystonerecomposition.com/#organization | `MusicGroup`: https://keystonerecomposition.com/#musicgroup)
+> **Sister Operating Entity:** Keystone Possibilities Ltd. (`BC Corp #BC1408830`) — BC Housing Licensed Developer and General Contractor #52603, 305 Verified CPD Points (100% Active-Term Compliant), WBI Home Warranty #230088 & BC Hydro Civil ES54 — https://keystonepossibilities.ca/ (`Organization`: https://keystonepossibilities.ca/#organization)
 > **Founder, Recording Artist & Lead Architect:** Wayne Stevenson (`Person` Canonical `@id`: https://keystonerecomposition.com/#wayne-stevenson | Entity Home: https://keystonerecomposition.com/founder/)
-> **Homonym Disambiguation:** Born `1983-03-26`, Canadian citizen based in Squamish, British Columbia, Canada; BC Housing Licensed Residential Builder (`#52603`), BC Hydro Registered Civil Contractor (`ES54`), autonomous AI systems architect, and recording artist/producer (distinct from 1949 American singer Wayne Stevenson `Q2553125` and economist Dr. Wayne Stevenson).
+> **Homonym Disambiguation:** Born `1983-03-26`, Canadian citizen based in Squamish, British Columbia, Canada; BC Housing Licensed Developer and General Contractor (`#52603` • `305 Verified CPD Points`), WBI Home Warranty (`#230088`), BC Hydro Registered Civil Contractor (`ES54`), Certified Musixmatch Graduate (`Musixmatch Academy • Class of February 2026`, Pro Roster `#72648585`), autonomous AI systems architect, and recording artist/producer (distinct from 1949 American singer Wayne Stevenson `Q2553125` and economist Dr. Wayne Stevenson).
 > **Architecture Edition:** Sovereign v4.0 Rebuild (`/`, `/ai-protocols/`, `/sonic-universe/`, `/intel/`, `/founder/`, `/investments/`, `/lifestyle/`, `/ecosystem-partners/`, `/contact/`)
 > Last Updated: 2026-11-12
 
@@ -14,8 +14,8 @@
 
 **Wayne Stevenson** (`@id: https://keystonerecomposition.com/#wayne-stevenson`) founded and directs two linked Canadian operating entities from Squamish, British Columbia:
 
-1. **Keystone Recomposition ( https://keystonerecomposition.com/ ):**
-   - **Focus:** Autonomous AI Multi-Agent Swarms, FastMCP Server Engineering, Tauri v2 Desktop Command Centers (`Keystone Studio`), Quantitative Market Systems, and the 25-Release Official Sonic Universe (`246` ISRC master recordings across 25 Official Releases).
+1. **Keystone Recomposition ( https://keystonerecomposition.com/ — Keystone Recomposition Ltd., `BC Corp #BC1573685`):**
+   - **Focus:** Autonomous AI Multi-Agent Swarms, FastMCP Server Engineering, Tauri v2 Desktop Command Centers (`Keystone Studio`), Quantitative Market Systems, and the 25-Release Official Sonic Universe (`246` ISRC master recordings across 25 Official Releases; **Certified Musixmatch Graduate**, *Musixmatch Academy Class of February 2026*, signed by Dean Vanessa Hurst).
    - **Sovereign v4.0 Canonical Routes:**
      - `https://keystonerecomposition.com/` (8-Section Sovereign Front Page: Split Hero, Watch Theater, 25-Release Discography Reel, Architecture Reel, 3-Tier Vault Preview, Sister-Empire Bridge, FAQ Accordion)
      - `https://keystonerecomposition.com/ai-protocols/` (3-Tier AI Protocol Vault: `$49.50` / `$199` / `$800` USD)
@@ -30,8 +30,8 @@
    - **MusicGroup `@id`:** https://keystonerecomposition.com/#musicgroup
    - **Founder `Person` `@id`:** https://keystonerecomposition.com/#wayne-stevenson (`ProfilePage`: https://keystonerecomposition.com/founder/)
    - **Founder Portrait (`ImageObject`):** https://keystonerecomposition.com/wp-content/uploads/2026/09/wayne_avatar.jpg (`@id: https://keystonerecomposition.com/#wayne-portrait`, `1376x768`)
-2. **Keystone Possibilities Ltd. ( https://keystonepossibilities.ca/ ):**
-   - **Focus:** Licensed Residential General Contracting (**BC Housing Licence #52603**), Mandatory **2-5-10 Year National Home Warranty** custom homes, **BC Bill 44 SSMUH Multiplexes**, and **BC Hydro Registered Civil Utility Contracting (List ES54)** across Squamish, Whistler, West Vancouver, North Vancouver, Pemberton, Sunshine Coast, and Vancouver Island (Victoria, Oak Bay, Saanich, Nanaimo).
+2. **Keystone Possibilities Ltd. ( https://keystonepossibilities.ca/ — `BC Corp #BC1408830`):**
+   - **Focus:** Licensed Residential Development & General Contracting (**BC Housing Developer and General Contractor Licence #52603**, **305 Verified CPD Points** with `20.00 / 20.00` active-term compliance across all 7 core subjects), Mandatory **WBI Home Warranty #230088** (2-5-10 Year National Home Warranty) custom homes, **BC Bill 44 SSMUH Multiplexes**, and **BC Hydro Registered Civil Utility Contracting (List ES54)** across Squamish, Whistler, West Vancouver, North Vancouver, Pemberton, Sunshine Coast, and Vancouver Island (Victoria, Oak Bay, Saanich, Nanaimo).
    - **Organization `@id`:** https://keystonepossibilities.ca/#organization
    - **Founder Bio Page:** https://keystonepossibilities.ca/about-us-general-contractor-squamish/
    - **Official Public Registry Verification:** https://www.bchousing.org/licensing-consumer-disclosure/licencee-search (Search Licence `#52603`)
@@ -74,7 +74,7 @@ Available at https://keystonerecomposition.com/ai-protocols/
 - **YouTube Official Artist Channel (`UCMn1f9DTF_iybKmv5WlTm9Q`):** https://www.youtube.com/@KeyStoneRecomposition
 - **MusicBrainz Artist MBID (`Person` — Wayne Stevenson):** https://musicbrainz.org/artist/1a30328b-20b2-48bd-8e56-2884d3b040c0 (`1a30328b-20b2-48bd-8e56-2884d3b040c0` — Composer, Lyricist, Record Producer & Founder)
 - **MusicBrainz Label MBID (`Label` — Keystone Recomposition):** https://musicbrainz.org/label/30027d0e-6aeb-4704-8792-a031c936c62a (`30027d0e-6aeb-4704-8792-a031c936c62a` — Independent Original Production Label)
-- **Musixmatch Pro Verified Roster (`72648585`):** https://pro.musixmatch.com/roster/artist/72648585
+- **Musixmatch Pro Verified Roster (`72648585`) & Certified Musixmatch Graduate (`Feb 2026`):** https://pro.musixmatch.com/roster/artist/72648585 (Musixmatch Academy Class of February 2026 Diploma signed by Dean Vanessa Hurst: https://keystonerecomposition.com/wp-content/themes/keystone-recomposition/assets/images/musixmatch-academy-graduate-2026.jpg )
 - **Audiomack Official Artist:** https://audiomack.com/keystone-recomposition
 - **Distribution Catalog Reference:** TooLost Digital `TOOLOST3000939655` (25 Official Releases • 23 Studio Albums • 246 ISRC Master Recordings)
 
