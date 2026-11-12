@@ -300,22 +300,182 @@ if ( $matched_sound_post instanceof WP_Post ) {
 
 get_header(); ?>
 
+<style id="kr-v4-intel-hub-css">
+.keystone-intel-archive {
+    background: radial-gradient(circle at 15% 6%, rgba(56, 189, 248, 0.08) 0%, transparent 44%),
+                radial-gradient(circle at 85% 12%, rgba(212, 175, 55, 0.08) 0%, transparent 46%),
+                #04070d;
+    overflow-x: clip;
+}
+.keystone-intel-archive .ast-container {
+    max-width: 1240px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: clamp(1rem, 3vw, 1.75rem);
+    padding-right: clamp(1rem, 3vw, 1.75rem);
+}
+.kr-v4-intel-split-hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+    align-items: stretch;
+    text-align: left !important;
+    background: linear-gradient(145deg, rgba(4, 7, 13, 0.96) 0%, rgba(0, 0, 0, 0.95) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.34);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 3.2vw, 2.5rem);
+    margin: 1.5rem auto 2.5rem auto;
+    box-shadow: 0 22px 52px rgba(0, 0, 0, 0.68), inset 0 1px 0 rgba(212, 175, 55, 0.18);
+}
+.kr-v4-intel-hero-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.kr-v4-intel-hero-main .page-title {
+    margin: 0.35rem 0 0;
+    text-align: left;
+}
+.kr-v4-intel-hero-main .archive-subtitle {
+    margin: 0;
+    text-align: left;
+    max-width: 680px;
+}
+.kr-v4-intel-jump-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding-top: 0.35rem;
+}
+.kr-v4-intel-jump-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 40px;
+    padding: 0.5rem 1.05rem;
+    border-radius: 9999px;
+    background: #000000;
+    border: 1px solid rgba(212, 175, 55, 0.44);
+    color: #f6d365 !important;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+}
+.kr-v4-intel-jump-pill.is-cyan {
+    border-color: rgba(56, 189, 248, 0.48);
+    color: #38bdf8 !important;
+}
+.kr-v4-intel-side-panel {
+    background: #000000;
+    border: 1px solid rgba(212, 175, 55, 0.32);
+    border-radius: 18px;
+    padding: 1.35rem 1.45rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.95rem;
+}
+.kr-v4-intel-mini-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+.kr-v4-intel-stat {
+    background: #04070d;
+    border: 1px solid rgba(56, 189, 248, 0.24);
+    border-radius: 14px;
+    padding: 0.8rem 0.9rem;
+}
+.kr-v4-intel-stat strong {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #38bdf8;
+}
+.kr-v4-intel-stat.is-gold strong {
+    color: #d4af37;
+}
+.kr-v4-intel-stat span {
+    display: block;
+    margin-top: 0.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #94a3b8;
+}
+#recomp-sovereign-builder-bridge > div > div {
+    min-width: min(100%, 260px) !important;
+}
+@media (max-width: 640px) {
+    .kr-v4-intel-mini-stats {
+        grid-template-columns: 1fr;
+    }
+    .kr-v4-intel-jump-pill {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
+
 <div id="primary" class="content-area primary keystone-intel-archive">
     <main id="main" class="site-main">
         <div class="ast-container">
             
-            <!-- 1. Sleek, Centered Top Header Area -->
-            <header class="intel-archive-header text-center" style="margin-bottom: 2.5rem; text-align: center;">
-                <div class="intel-telemetry-pill ks-p3-pill-blue">
-                    <span class="telemetry-pulse"></span>
-                    <span class="telemetry-text ks-wave-text">// 2026 TECHNICAL INTEL &bull; AI SYSTEMS &amp; SONIC ARCHITECTURE</span>
+            <!-- 1. Sovereign v4.0 Split-Hero Header Area -->
+            <header class="intel-archive-header kr-v4-intel-split-hero">
+                <div class="kr-v4-intel-hero-main">
+                    <div>
+                        <div class="intel-telemetry-pill ks-p3-pill-blue" style="margin-bottom: 0.75rem;">
+                            <span class="telemetry-pulse"></span>
+                            <span class="telemetry-text ks-wave-text">// 2026 TECHNICAL INTEL &bull; AI SYSTEMS &amp; SONIC ARCHITECTURE</span>
+                        </div>
+                        <h1 class="page-title">
+                            Technical Intel &amp; <span class="cyan-gold-gradient-text">Video Briefings</span>
+                        </h1>
+                    </div>
+                    <p class="archive-subtitle">
+                        Autonomous multi-agent architectures, Google Flow visual engineering, high-cadence desktop studio builds, and 24-bit somatic frequency premieres across 25 official releases (246 ISRC masters) by Wayne Stevenson.
+                    </p>
+                    <div class="kr-v4-intel-jump-row">
+                        <a href="#recomp-featured-intel-container" class="kr-v4-intel-jump-pill is-cyan">⚡ AI Protocols Theater &darr;</a>
+                        <a href="#recomp-featured-sound-container" class="kr-v4-intel-jump-pill">🎵 4K Music Premiere &darr;</a>
+                        <a href="#recomp-intel-grid" class="kr-v4-intel-jump-pill is-cyan">📚 12-Briefing Archive &darr;</a>
+                    </div>
                 </div>
-                <h1 class="page-title">
-                    Technical Intel &amp; <span class="cyan-gold-gradient-text">Video Briefings</span>
-                </h1>
-                <p class="archive-subtitle">
-                    Autonomous multi-agent architectures, Google Flow visual engineering, high-cadence desktop studio builds, and 24-bit somatic frequency releases by Wayne Stevenson.
-                </p>
+
+                <aside class="kr-v4-intel-side-panel" aria-label="Sovereign Intel Telemetry">
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                        <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; font-weight:700; color:#d4af37; letter-spacing:0.08em; text-transform:uppercase;">SOVEREIGN v4.0 TELEMETRY</span>
+                        <span style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; color:#00ced1; text-transform:uppercase;">LIVE WP-JSON SYNC</span>
+                    </div>
+                    <div class="kr-v4-intel-mini-stats">
+                        <div class="kr-v4-intel-stat">
+                            <strong>16:9 + 9:16</strong>
+                            <span>Dual-Format Video Decks</span>
+                        </div>
+                        <div class="kr-v4-intel-stat is-gold">
+                            <strong>25 Releases</strong>
+                            <span>246 ISRC Studio Masters</span>
+                        </div>
+                        <div class="kr-v4-intel-stat is-gold">
+                            <strong>CDP :9222</strong>
+                            <span>Zero-Cloud Agent Stack</span>
+                        </div>
+                        <div class="kr-v4-intel-stat">
+                            <strong>#52603</strong>
+                            <span>BC Builder Sister Portal</span>
+                        </div>
+                    </div>
+                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.75rem; font-size:0.82rem; color:#94a3b8; line-height:1.5;">
+                        Sister Infrastructure Division: <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#f6d365; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(246,211,101,0.4);">Keystone Possibilities Ltd. (BC #52603 &middot; ES54) &#8599;</a>
+                    </div>
+                </aside>
             </header>
 
             <!-- 2A. Dual-Media Featured Hero Section 1: AI Protocols & Architecture (Blue Theme) -->

@@ -18,6 +18,95 @@ get_header();
 $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 ?>
 
+<style id="kr-v4-founder-hub-css">
+.keystone-founder-page {
+	background: radial-gradient(circle at 16% 6%, rgba(212, 175, 55, 0.08) 0%, transparent 42%),
+	            radial-gradient(circle at 84% 12%, rgba(56, 189, 248, 0.08) 0%, transparent 46%),
+	            #04070d;
+	overflow-x: clip;
+}
+.keystone-founder-page .founder-container {
+	max-width: 1240px;
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: clamp(1rem, 3vw, 1.75rem);
+	padding-right: clamp(1rem, 3vw, 1.75rem);
+}
+.kr-v4-founder-split-hero {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+	gap: clamp(1.5rem, 3vw, 2.4rem);
+	align-items: stretch;
+	text-align: left !important;
+	background: linear-gradient(145deg, rgba(4, 7, 13, 0.96) 0%, rgba(0, 0, 0, 0.95) 100%);
+	border: 1px solid rgba(212, 175, 55, 0.36);
+	border-radius: 20px;
+	padding: clamp(1.5rem, 3.2vw, 2.5rem);
+	margin-bottom: 2.5rem;
+	box-shadow: 0 22px 54px rgba(0, 0, 0, 0.68), inset 0 1px 0 rgba(56, 189, 248, 0.16);
+}
+.kr-v4-founder-hero-copy {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.05rem;
+}
+.kr-v4-founder-hero-copy .founder-main-name,
+.kr-v4-founder-hero-copy .founder-lead-subtitle {
+	text-align: left !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+.kr-v4-founder-hero-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.7rem;
+}
+.kr-v4-founder-pill-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	min-height: 42px;
+	padding: 0.55rem 1.15rem;
+	border-radius: 9999px;
+	background: #000000;
+	border: 1px solid rgba(212, 175, 55, 0.48);
+	color: #f6d365 !important;
+	font-family: 'Outfit', sans-serif;
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	text-decoration: none !important;
+}
+.kr-v4-founder-pill-link.is-cyan {
+	border-color: rgba(56, 189, 248, 0.52);
+	color: #38bdf8 !important;
+}
+.kr-v4-founder-split-hero .founder-telemetry-4grid {
+	display: grid !important;
+	grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+	gap: 0.9rem !important;
+	margin-top: 0 !important;
+}
+.founder-top-profile-grid,
+.founder-domains-2x2-grid,
+.founder-portal-scope-grid,
+.founder-portal-bottom-split {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+@media (max-width: 640px) {
+	.kr-v4-founder-split-hero .founder-telemetry-4grid {
+		grid-template-columns: 1fr !important;
+	}
+	.kr-v4-founder-pill-link {
+		width: 100%;
+		justify-content: center;
+	}
+}
+</style>
+
 <main id="primary" class="site-main keystone-founder-page">
 
 	<div class="founder-ambient-glow-gold"></div>
@@ -26,16 +115,25 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 	<div class="container founder-container">
 
 		<!-- =====================================================================
-		     1. CLEAN CENTERED EXECUTIVE HERO HEADER & 4-CARD BENCHMARK TELEMETRY
+		     1. SOVEREIGN v4.0 SPLIT-HERO HEADER & 4-CARD BENCHMARK TELEMETRY
 		     ===================================================================== -->
-		<section class="founder-hero-header text-center">
-			<div class="founder-hero-kicker">FOUNDER &amp; SYSTEMS ARCHITECT // SQUAMISH &amp; WHISTLER, BC &bull; LICENSED BUILDER #52603</div>
-			<h1 class="founder-main-name">
-				Wayne Stevenson <span class="cyan-gold-gradient-text">// Builder &amp; Systems Architect</span>
-			</h1>
-			<p class="founder-lead-subtitle">
-				Physical recomposition, custom architectural estates, 432Hz sonic production, and multi-agent AI software are governed by the exact same laws of structural engineering: inspect the foundation, eliminate dead weight, and compound verified daily execution.
-			</p>
+		<section class="founder-hero-header kr-v4-founder-split-hero">
+			<div class="kr-v4-founder-hero-copy">
+				<div>
+					<div class="founder-hero-kicker">FOUNDER &amp; SYSTEMS ARCHITECT // SQUAMISH &amp; WHISTLER, BC &bull; LICENSED BUILDER #52603</div>
+					<h1 class="founder-main-name">
+						Wayne Stevenson <span class="cyan-gold-gradient-text">// Builder &amp; Systems Architect</span>
+					</h1>
+				</div>
+				<p class="founder-lead-subtitle">
+					Physical recomposition, custom architectural estates, 432Hz sonic production, and multi-agent AI software are governed by the exact same laws of structural engineering: inspect the foundation, eliminate dead weight, and compound verified daily execution.
+				</p>
+				<div class="kr-v4-founder-hero-links">
+					<a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="kr-v4-founder-pill-link is-cyan">⚡ AI Protocols Vault &rarr;</a>
+					<a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-v4-founder-pill-link">🎵 25-Release Sonic Universe &rarr;</a>
+					<a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" class="kr-v4-founder-pill-link">🏛️ Keystone Possibilities #52603 &#8599;</a>
+				</div>
+			</div>
 
 			<div class="founder-telemetry-4grid">
 				<div class="luxury-metric-card founder-metric-card founder-metric-gold">
@@ -97,7 +195,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 						</div>
 						<div class="founder-quick-stat-box">
 							<span class="quick-stat-val cyan-text">25 RELEASES</span>
-							<span class="quick-stat-lbl">236 STUDIO MASTERS</span>
+							<span class="quick-stat-lbl">246 STUDIO MASTERS</span>
 						</div>
 						<div class="founder-quick-stat-box">
 							<span class="quick-stat-val gold-text">#52603</span>
@@ -131,7 +229,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 						</p>
 
 						<p class="founder-narrative-para">
-							Applying structural engineering discipline to his own biology, Wayne executed a documented <strong>48-pound physical recomposition</strong>—establishing a permanent <strong>205-lb lean athletic set-point</strong> powered by whole-food nutrition, heavy compound strength training, and cold-water recovery—while building a <strong>22-release (216-track) 432Hz music catalog</strong> and our <strong>3-tier AI Protocols &amp; Tauri Desktop software suite</strong>.
+							Applying structural engineering discipline to his own biology, Wayne executed a documented <strong>48-pound physical recomposition</strong>—establishing a permanent <strong>205-lb lean athletic set-point</strong> powered by whole-food nutrition, heavy compound strength training, and cold-water recovery—while building a <strong>25-release (246-track) 432Hz music catalog</strong> and our <strong>3-tier AI Protocols &amp; Tauri Desktop software suite</strong>.
 						</p>
 
 						<!-- Verified BC Housing #52603 Crest & Fiduciary Box -->
@@ -299,13 +397,13 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 
 					<div class="founder-domain-single-media">
 						<img src="<?php echo esc_url( $child_assets . '/sonic_universe_banner.png' ); ?>"
-						     alt="Keystone Recomposition Sonic Universe — 25 Official Releases &amp; 236 Studio Masters"
+						     alt="Keystone Recomposition Sonic Universe — 25 Official Releases &amp; 246 Studio Masters"
 						     class="founder-domain-img"
 						     width="800" height="450"
 						     loading="lazy" />
 					</div>
 
-					<h3 class="founder-domain-title">The Sonic Universe: 25 Official Releases &amp; 236 Studio Masters</h3>
+					<h3 class="founder-domain-title">The Sonic Universe: 25 Official Releases &amp; 246 Studio Masters</h3>
 					<p class="founder-domain-summary">
 						Executive producer and recording artist behind a 25-release catalog (23 studio albums and 2 singles &mdash; 246 master tracks) engineered for deep cognitive focus, physical training, and architectural flow.
 					</p>
@@ -336,7 +434,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 
 					<div class="founder-card-footer">
 						<a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="founder-action-btn ks-p3-btn-blue">
-							<span class="ks-wave-text">🎵 Stream the 24-Release Sonic Universe &rarr;</span>
+							<span class="ks-wave-text">🎵 Stream the 25-Release Sonic Universe &rarr;</span>
 						</a>
 					</div>
 				</article>
@@ -426,7 +524,7 @@ $child_assets = get_stylesheet_directory_uri() . '/assets/images';
 					<div class="founder-scope-item">
 						<span class="founder-scope-pill ks-p3-pill-gold"><span class="ks-wave-text">03 // MUSIC SYNC &amp; CO-INVESTMENT</span></span>
 						<h4>432Hz Catalog Sync &amp; Strategic Ventures</h4>
-						<p>Direct commercial sync licensing across 236 studio masters and private real-asset or technology co-investment inquiries.</p>
+						<p>Direct commercial sync licensing across 246 studio masters and private real-asset or technology co-investment inquiries.</p>
 					</div>
 				</div>
 

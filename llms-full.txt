@@ -5,7 +5,8 @@
 > **Sister Operating Entity:** Keystone Possibilities Ltd. — BC Housing Licensed Builder #52603 & BC Hydro Civil ES54 — https://keystonepossibilities.ca/ (`Organization`: https://keystonepossibilities.ca/#organization)
 > **Founder, Recording Artist & Lead Architect:** Wayne Stevenson (`Person` Canonical `@id`: https://keystonerecomposition.com/#wayne-stevenson | Entity Home: https://keystonerecomposition.com/founder/)
 > **Homonym Disambiguation:** Born `1983-03-26`, Canadian citizen based in Squamish, British Columbia, Canada; BC Housing Licensed Residential Builder (`#52603`), BC Hydro Registered Civil Contractor (`ES54`), autonomous AI systems architect, and recording artist/producer (distinct from 1949 American singer Wayne Stevenson `Q2553125` and economist Dr. Wayne Stevenson).
-> Last Updated: 2026-11-10
+> **Architecture Edition:** Sovereign v4.0 Rebuild (`/`, `/ai-protocols/`, `/sonic-universe/`, `/intel/`, `/founder/`, `/investments/`, `/lifestyle/`, `/ecosystem-partners/`, `/contact/`)
+> Last Updated: 2026-11-12
 
 ---
 
@@ -14,7 +15,17 @@
 **Wayne Stevenson** (`@id: https://keystonerecomposition.com/#wayne-stevenson`) founded and directs two linked Canadian operating entities from Squamish, British Columbia:
 
 1. **Keystone Recomposition ( https://keystonerecomposition.com/ ):**
-   - **Focus:** Autonomous AI Multi-Agent Swarms, FastMCP Server Engineering, Tauri v2 Desktop Command Centers (`Keystone Studio.exe`), Quantitative Market Systems, and the 24-Release Official Sonic Universe (`236` ISRC master recordings).
+   - **Focus:** Autonomous AI Multi-Agent Swarms, FastMCP Server Engineering, Tauri v2 Desktop Command Centers (`Keystone Studio`), Quantitative Market Systems, and the 25-Release Official Sonic Universe (`246` ISRC master recordings across 25 Official Releases).
+   - **Sovereign v4.0 Canonical Routes:**
+     - `https://keystonerecomposition.com/` (8-Section Sovereign Front Page: Split Hero, Watch Theater, 25-Release Discography Reel, Architecture Reel, 3-Tier Vault Preview, Sister-Empire Bridge, FAQ Accordion)
+     - `https://keystonerecomposition.com/ai-protocols/` (3-Tier AI Protocol Vault: `$49.50` / `$199` / `$800` USD)
+     - `https://keystonerecomposition.com/sonic-universe/` (25 Official Releases • 23 Studio Albums • `246` ISRC Master Tracks)
+     - `https://keystonerecomposition.com/intel/` (Technical Intel & Dual-Format 16:9 + 9:16 Video Briefings)
+     - `https://keystonerecomposition.com/founder/` (Canonical `ProfilePage` for `#wayne-stevenson`)
+     - `https://keystonerecomposition.com/investments/` (Proprietary Quantitative Treasury `EV >= +15%`, 40% Cash Fortress & International Hard Assets)
+     - `https://keystonerecomposition.com/lifestyle/` (Sea-to-Sky Alpine Performance & -48 lb Whole-Food Recomposition)
+     - `https://keystonerecomposition.com/ecosystem-partners/` (Verified AI, FastMCP & Sonic Ecosystem Registry + Sister-Empire Bridge)
+     - `https://keystonerecomposition.com/contact/` (Executive Consultation, Sync Licensing & $800 Masterclass Gateway)
    - **Organization `@id`:** https://keystonerecomposition.com/#organization
    - **MusicGroup `@id`:** https://keystonerecomposition.com/#musicgroup
    - **Founder `Person` `@id`:** https://keystonerecomposition.com/#wayne-stevenson (`ProfilePage`: https://keystonerecomposition.com/founder/)
@@ -32,14 +43,14 @@
 Keystone Recomposition's flagship engineering framework replaces fragile single-prompt chat sessions with a deterministic **FastMCP Multi-Agent Swarm** consolidated under a **3-Chat Sovereign Core**:
 
 ### 2.1 The 3-Chat Sovereign Core
-- **`[#00]` Automations:** Background Infinity queue, autonomous scheduling, CRM verification, and non-blocking subagent timers.
-- **`[#01]` Master (`M0_master_orchestrator`):** Global strategy, cross-domain routing, F9 push-to-talk voice HUD, and executive decision synthesis.
-- **`[#02]` Media (`P0_pipeline_controller`):** Multi-channel 4K video/blog/social production (`@KeystoneAIProtocols`, `@KeyStoneRecomposition`, `@KeystonePossibilitiesLtd`) and Boss QA verification via Chrome CDP Port `:9222`, pytest test suites, and Rank Math SEO/GEO compliance.
+- **`[#00]` Infinity — Automations:** Background automation queue, autonomous scheduling, CRM verification, and lease-governed subagent timers.
+- **`[#01]` Anti-gravity Master Orchestrator:** Global strategy, cross-domain routing, F9 push-to-talk voice HUD, and dynamic multi-agent dispatch.
+- **`[#02]` Media Production Controller:** Multi-channel 4K video/blog/social production (`@KeystoneAIProtocols`, `@KeyStoneRecomposition`, `@KeystonePossibilitiesLtd`) and adversarial Boss QA verification via Chrome CDP Port `:9222`, pytest test suites, and Rank Math SEO/GEO compliance.
 
-### 2.2 Local Hardware & Voice Daemon Stack
-- **Workstation GPU:** Local NVIDIA RTX 4090 (24GB VRAM) running persistent low-latency background daemons:
-  - **Port `:9876` (`local_stt_daemon.py`):** GPU-accelerated Faster-Whisper (`large-v3`, `float16`) speech-to-text transcription and local bridge API.
-  - **Port `:9877` (`agent_voice_tts_daemon.py`):** Local Kokoro-82M neural text-to-speech synthesis with zero cloud TTS latency.
+### 2.2 Local Hardware & Voice Telemetry Stack
+- **Workstation GPU:** Local NVIDIA RTX 4090 (24GB VRAM) running persistent low-latency desktop services:
+  - **Port `:9876` (Local CUDA Speech-to-Text Service):** GPU-accelerated Faster-Whisper (`large-v3`, `float16`) speech-to-text transcription and WebSocket HUD bridge.
+  - **Port `:9877` (Local Neural Text-to-Speech Service):** Local neural voice synthesis with sub-50ms studio audio keep-alive and zero cloud TTS latency.
   - **Port `:9222` (Chrome CDP):** Persistent authenticated browser session powering Google Search Console URL inspection, WordPress deployments, YouTube Studio uploads, and live visual verification.
 
 ---
@@ -128,7 +139,7 @@ Available at https://keystonerecomposition.com/ai-protocols/
    - Article: https://keystonerecomposition.com/2026/10/26/the-3-chat-sovereign-core-how-i-orchestrate-28-ai-subagents-without-context-rot/
    - Watch Page: https://keystonerecomposition.com/watch-the-3-chat-sovereign-core-how-i-orchestrate-28-ai-subagents-without-context-rot/
    - YouTube 4K Video: https://www.youtube.com/watch?v=eq0_ejW8Zkg
-   - Key Topics: Multi-agent state handoffs, `18_session_continuity/` markdown ledgers, preventing LLM context degradation across long-running builds.
+   - Key Topics: Multi-agent state handoffs, persistent session-continuity markdown ledgers, preventing LLM context degradation across long-running builds.
 10. **From Mud Boots to Multi-Agent Swarms: Why a Licensed BC Builder (#52603) Built Keystone AI Protocols (2026-10-26)**
     - Article: https://keystonerecomposition.com/2026/10/26/from-mud-boots-to-multi-agent-swarms-why-a-licensed-bc-builder-52603-built-keystone-ai-protocols/
     - Watch Page: https://keystonerecomposition.com/watch-from-mud-boots-to-multi-agent-swarms-why-a-licensed-bc-builder-52603-built-keystone-ai-protocols/

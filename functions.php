@@ -51,3 +51,9 @@ if ( file_exists( __DIR__ . '/inc/protocol-order-fulfillment.php' ) ) {
 	require_once __DIR__ . '/inc/protocol-order-fulfillment.php';
 }
 
+// 12. Sovereign v4.0 SHA-256 Theme Asset Sync, Manifest & Edge Cache Purge Endpoint
+if ( file_exists( __DIR__ . '/inc/sync-theme-endpoint.php' ) ) {
+	require_once __DIR__ . '/inc/sync-theme-endpoint.php';
+}
+
+

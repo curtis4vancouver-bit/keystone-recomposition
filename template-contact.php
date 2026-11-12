@@ -125,6 +125,101 @@ if ( 'POST' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && isset( $_POST['keystone_
 get_header();
 ?>
 
+<style id="kr-v4-contact-hub-css">
+.keystone-contact-page {
+	background: radial-gradient(circle at 18% 6%, rgba(56, 189, 248, 0.08) 0%, transparent 44%),
+	            radial-gradient(circle at 82% 12%, rgba(212, 175, 55, 0.08) 0%, transparent 46%),
+	            #04070d;
+	overflow-x: clip;
+}
+.keystone-contact-page .contact-container {
+	max-width: 1240px;
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: clamp(1rem, 3vw, 1.75rem);
+	padding-right: clamp(1rem, 3vw, 1.75rem);
+}
+.kr-v4-contact-split-hero {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+	gap: clamp(1.5rem, 3vw, 2.35rem);
+	align-items: stretch;
+	text-align: left !important;
+	background: linear-gradient(145deg, rgba(4, 7, 13, 0.96) 0%, rgba(0, 0, 0, 0.95) 100%);
+	border: 1px solid rgba(212, 175, 55, 0.36);
+	border-radius: 20px;
+	padding: clamp(1.5rem, 3.2vw, 2.5rem);
+	margin-bottom: 2.5rem;
+	box-shadow: 0 22px 54px rgba(0, 0, 0, 0.68), inset 0 1px 0 rgba(56, 189, 248, 0.16);
+}
+.kr-v4-contact-hero-copy {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.05rem;
+}
+.kr-v4-contact-hero-copy .contact-main-title,
+.kr-v4-contact-hero-copy .contact-hero-subtitle {
+	text-align: left !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+.kr-v4-contact-hero-copy .contact-network-bar {
+	justify-content: flex-start !important;
+}
+.kr-v4-contact-desk-panel {
+	background: #000000;
+	border: 1px solid rgba(56, 189, 248, 0.32);
+	border-radius: 18px;
+	padding: 1.35rem 1.45rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0.95rem;
+}
+.kr-v4-contact-desk-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.75rem;
+}
+.kr-v4-contact-desk-tile {
+	background: #04070d;
+	border: 1px solid rgba(212, 175, 55, 0.28);
+	border-radius: 14px;
+	padding: 0.85rem 0.95rem;
+}
+.kr-v4-contact-desk-tile strong {
+	display: block;
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.15rem;
+	font-weight: 800;
+	color: #f6d365;
+}
+.kr-v4-contact-desk-tile.is-cyan strong {
+	color: #38bdf8;
+}
+.kr-v4-contact-desk-tile span {
+	display: block;
+	margin-top: 0.22rem;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.66rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #94a3b8;
+}
+.contact-channels-grid,
+.form-grid-two,
+.contact-details-grid {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+@media (max-width: 640px) {
+	.kr-v4-contact-desk-grid {
+		grid-template-columns: 1fr;
+	}
+}
+</style>
+
 <div id="primary" class="content-area primary keystone-contact-page">
 	<main id="main" class="site-main">
 		<div class="ast-container contact-container">
@@ -132,37 +227,70 @@ get_header();
 			<article class="contact-master-article">
 
 				<!-- =====================================================================
-				     1. CLEAN CENTERED EXECUTIVE HERO HEADER (ZERO TOP BUTTON CLUTTER)
+				     1. SOVEREIGN v4.0 SPLIT-HERO EXECUTIVE HEADER
 				     ===================================================================== -->
-				<header class="contact-hero-header text-center">
-					<div class="contact-hero-kicker">DIRECT PRINCIPAL CONSULTATION // SQUAMISH &amp; WHISTLER, BC &bull; LICENSED BUILDER #52603</div>
+				<header class="contact-hero-header kr-v4-contact-split-hero">
+					<div class="kr-v4-contact-hero-copy">
+						<div>
+							<div class="contact-hero-kicker">DIRECT PRINCIPAL CONSULTATION // SQUAMISH &amp; WHISTLER, BC &bull; LICENSED BUILDER #52603</div>
 
-					<h1 class="contact-main-title">
-						Executive Inquiries &amp; <span class="cyan-gold-gradient-text">Private Consultations</span>
-					</h1>
+							<h1 class="contact-main-title">
+								Executive Inquiries &amp; <span class="cyan-gold-gradient-text">Private Consultations</span>
+							</h1>
+						</div>
 
-					<p class="contact-hero-subtitle">
-						Direct principal-to-client engagement for our <strong>$800 Masterclass &amp; Custom Tauri Desktop Command Center</strong>, <strong>$49.50 &amp; $199 AI Protocols</strong>, custom enterprise AI &amp; architectural builds, and global <strong>432Hz music streaming &amp; sync licensing</strong> across Spotify, Apple Music, and YouTube.
-					</p>
+						<p class="contact-hero-subtitle">
+							Direct principal-to-client engagement for our <strong>$800 Masterclass &amp; Custom Tauri Desktop Command Center</strong>, <strong>$49.50 &amp; $199 AI Protocols</strong>, custom enterprise AI &amp; architectural builds, and global <strong>432Hz music streaming &amp; sync licensing</strong> across Spotify, Apple Music, and YouTube.
+						</p>
 
-					<!-- Official Streaming & Network Quick-Launch Bar -->
-					<div class="contact-network-bar" aria-label="Official Streaming &amp; Network Channels">
-						<a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
-							<span class="ks-wave-text">🎵 Spotify Artist Channel &#8599;</span>
-						</a>
-						<a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-blue">
-							<span class="ks-wave-text">🍎 Apple Music Catalog &#8599;</span>
-						</a>
-						<a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
-							<span class="ks-wave-text">▶️ YouTube Music OAC &#8599;</span>
-						</a>
-						<a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-blue">
-							<span class="ks-wave-text">⚡ YouTube AI Protocols &#8599;</span>
-						</a>
-						<a href="https://keystonepossibilities.ca" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
-							<span class="ks-wave-text">🏛️ Keystone Possibilities #52603 &#8599;</span>
-						</a>
+						<!-- Official Streaming & Network Quick-Launch Bar -->
+						<div class="contact-network-bar" aria-label="Official Streaming &amp; Network Channels">
+							<a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
+								<span class="ks-wave-text">🎵 Spotify Artist Channel &#8599;</span>
+							</a>
+							<a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-blue">
+								<span class="ks-wave-text">🍎 Apple Music Catalog &#8599;</span>
+							</a>
+							<a href="https://www.youtube.com/@KeyStoneRecomposition?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
+								<span class="ks-wave-text">▶️ YouTube Music OAC &#8599;</span>
+							</a>
+							<a href="https://www.youtube.com/@KeystoneAIProtocols?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-blue">
+								<span class="ks-wave-text">⚡ YouTube AI Protocols &#8599;</span>
+							</a>
+							<a href="https://keystonepossibilities.ca" target="_blank" rel="noopener noreferrer" class="contact-net-pill ks-p3-btn-gold">
+								<span class="ks-wave-text">🏛️ Keystone Possibilities #52603 &#8599;</span>
+							</a>
+						</div>
 					</div>
+
+					<aside class="kr-v4-contact-desk-panel" aria-label="Principal Dispatch SLA &amp; Sister Portal">
+						<div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+							<span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; font-weight:700; color:#d4af37; letter-spacing:0.08em; text-transform:uppercase;">PRINCIPAL DESK SLA</span>
+							<span style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; color:#00ced1; text-transform:uppercase;">EMAIL-FIRST ROUTING</span>
+						</div>
+						<div class="kr-v4-contact-desk-grid">
+							<div class="kr-v4-contact-desk-tile is-cyan">
+								<strong>24&ndash;48 HRS</strong>
+								<span>Direct Founder Review</span>
+							</div>
+							<div class="kr-v4-contact-desk-tile">
+								<strong>3 AI TIERS</strong>
+								<span>$49.50 &bull; $199 &bull; $800</span>
+							</div>
+							<div class="kr-v4-contact-desk-tile">
+								<strong>25 RELEASES</strong>
+								<span>246 ISRC Sync Masters</span>
+							</div>
+							<div class="kr-v4-contact-desk-tile is-cyan">
+								<strong>#52603</strong>
+								<span>BC Housing Builder</span>
+							</div>
+						</div>
+						<div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.75rem; font-size:0.82rem; color:#94a3b8; line-height:1.5;">
+							BC Custom Estates, Bill 44 Multiplexes &amp; ES54 Civil:
+							<a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#f6d365; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(246,211,101,0.4);">KeystonePossibilities.ca &#8599;</a>
+						</div>
+					</aside>
 				</header>
 
 				<!-- =====================================================================
@@ -454,8 +582,8 @@ get_header();
 
 						<div class="detail-box contact-detail-card contact-detail-blue">
 							<span class="detail-box-pill ks-p3-pill-blue"><span class="ks-wave-text">04 // LICENSED BUILDER</span></span>
-							<h4>Keystone Possibilities Ltd</h4>
-							<p>BC Housing Licensed Residential Builder <strong>#52603</strong> &bull; Custom Estates, Bill 44 Multiplexes &amp; Civil Contracting.</p>
+							<h4><a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#f6d365; text-decoration:none;">Keystone Possibilities Ltd &#8599;</a></h4>
+							<p>BC Housing Licensed Residential Builder <strong>#52603</strong> &bull; Custom Estates, Bill 44 Multiplexes &amp; ES54 Civil Contracting.</p>
 						</div>
 
 					</div>
@@ -502,6 +630,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			budSelect.value = '$3,500 – $7,500 — Custom Enterprise AI & Full-Stack Web Buildout';
 			if (msgInput && !msgInput.value) {
 				msgInput.value = 'Inquiring about a Custom Enterprise AI Workstation & Full-Stack Website Buildout ($3,500–$7,500)' + promoSuffix + '.';
+			}
+		} else if (mode === 'sync-partner' || mode === 'sync') {
+			catSelect.value = '432Hz Commercial Music Sync Licensing (Spotify / Apple / YouTube — 25 Releases)';
+			budSelect.value = '$1,500 – $25,000 — 432Hz Commercial Music Sync Licensing';
+			if (msgInput && !msgInput.value) {
+				msgInput.value = 'Requesting 432Hz commercial master sync clearance / ecosystem partnership review with Wayne Stevenson' + promoSuffix + '.';
 			}
 		}
 	}

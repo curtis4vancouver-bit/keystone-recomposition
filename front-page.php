@@ -1,1434 +1,682 @@
 <?php
 /**
- * Template Name: Keystone Cyber-Celestial Home
- * Description: High-Cadence Autonomous AI Architecture & Electronic Sound Lab Flagship
- * 
- * @package Keystone Recomposition Child
- * @since 3.5.0
+ * Keystone Recomposition — Sovereign v4.0 Flagship Homepage
+ *
+ * 8-Section Quiet-Luxury & Sovereign Tech Architecture mirroring Keystone Possibilities v3.0
+ * in Keystone Recomposition's native Obsidian, Cyan (#38bdf8 / #00ced1), and Sovereign Gold (#d4af37 / #f6d365) palette.
+ *
+ * @package KeystoneRecompositionChild
+ * @version 4.0.0
  */
 
 declare(strict_types=1);
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 get_header();
 
-$theme_uri = get_stylesheet_directory_uri();
+$kr_theme_uri    = trailingslashit( get_stylesheet_directory_uri() );
+$kr_wayne_avatar = $kr_theme_uri . 'assets/images/wayne_avatar.jpg';
+
+$kr_domain_pillars = array(
+	array(
+		'badge' => 'PILLAR 01 · AI PROTOCOLS',
+		'title' => '3-Tier Sovereign AI Vault',
+		'desc'  => 'Deploy the $49.50 Blueprint, $199 28-Agent FastMCP Web Suite, or $800 Native Rust + Tauri Workstation Installer.',
+		'cta'   => 'Open Protocol Vault',
+		'url'   => home_url( '/ai-protocols/' ),
+		'gold'  => true,
+	),
+	array(
+		'badge' => 'PILLAR 02 · SONIC UNIVERSE',
+		'title' => '25 Releases · 246 ISRC Masters',
+		'desc'  => '24-bit studio catalog tuned across 432Hz, 528Hz, deep melodic house, and architectural focus instrumentals.',
+		'cta'   => 'Enter Sonic Universe',
+		'url'   => home_url( '/sonic-universe/' ),
+		'gold'  => false,
+	),
+	array(
+		'badge' => 'PILLAR 03 · TECHNICAL INTEL',
+		'title' => '4K Engineering Briefings',
+		'desc'  => 'Primary-source teardowns on Chrome Port 9222 automation, hybrid vector memory, and multi-agent verification.',
+		'cta'   => 'Read Intel Hub',
+		'url'   => home_url( '/intel/' ),
+		'gold'  => false,
+	),
+	array(
+		'badge' => 'PILLAR 04 · QUANT SYSTEMS',
+		'title' => 'Capital & Microstructure Lab',
+		'desc'  => 'Deterministic spread/fee gating, asymmetric maker execution math, and strict capital-fortress risk governance.',
+		'cta'   => 'Inspect Quant Hub',
+		'url'   => home_url( '/investments/' ),
+		'gold'  => false,
+	),
+	array(
+		'badge' => 'PILLAR 05 · BUILDER PERFORMANCE',
+		'title' => 'Sovereign Builder Lifestyle',
+		'desc'  => 'Evidence-backed physical training, clean nutrition, acoustic recovery, and daily operational discipline for high-output builders.',
+		'cta'   => 'Explore Lifestyle Hub',
+		'url'   => home_url( '/lifestyle/' ),
+		'gold'  => false,
+	),
+	array(
+		'badge' => 'PILLAR 06 · PARTNER NETWORK',
+		'title' => 'Ecosystem & Sync Partners',
+		'desc'  => 'Direct one-stop sync licensing, verified engineering alliances, and cross-empire collaboration channels.',
+		'cta'   => 'View Ecosystem Desk',
+		'url'   => home_url( '/ecosystem-partners/' ),
+		'gold'  => true,
+	),
+);
+
+$staged_drops = array(
+	array(
+		'tag'   => 'AI ARCHITECTURE · 4K BRIEFING',
+		'title' => 'Chrome DevTools Protocol Port 9222: Zero-Wrapper Multi-Agent Browser Execution',
+		'desc'  => 'Why direct JSON-RPC session attachment outperforms brittle cloud browser wrappers for live DOM verification and publishing.',
+		'img'   => 'https://i.ytimg.com/vi/BuGR4MsghGs/hqdefault.jpg',
+		'url'   => home_url( '/intel/' ),
+		'date'  => 'VERIFIED BRIEFING',
+	),
+	array(
+		'tag'   => '4K OFFICIAL FILM · SONIC VAULT',
+		'title' => 'Diesel in the Rain — 4K Cinema Production & 24-Bit Acoustic Mastering',
+		'desc'  => 'Inside our Sea-to-Sky visual pipeline, 2-track DaVinci timeline assembly, and 100% one-stop sync-ready mastering.',
+		'img'   => 'https://i.ytimg.com/vi/nyQwl-7-vH0/hqdefault.jpg',
+		'url'   => home_url( '/sonic-universe/#whiskey-on-a-wednesday' ),
+		'date'  => 'OFFICIAL PREMIERE',
+	),
+	array(
+		'tag'   => 'WORKSTATION ENGINEERING · TAURI',
+		'title' => '3-Tier Sovereign AI Suite: From Folder Brain to Compiled Rust + Tauri Binary',
+		'desc'  => 'How 28 specialized subagents, local CUDA voice telemetry, and deterministic Python execution unite inside one desktop hub.',
+		'img'   => 'https://i.ytimg.com/vi/u1gUjk9xcB4/hqdefault.jpg',
+		'url'   => home_url( '/ai-protocols/' ),
+		'date'  => 'SYSTEMS TEARDOWN',
+	),
+);
 ?>
 
-<div id="primary" class="content-area primary keystone-cyber-home">
-    <main id="main" class="site-main">
-
-        <!-- 1. HERO ORCHESTRATION SECTION (Clean Crisp Top Architecture — Zero Clutter Buttons) -->
-        <section class="cyber-hero-section">
-            <div class="ast-container">
-                <div class="cyber-hero-wrap text-center">
-                    
-                    <!-- Top Telemetry Pill (Kept at Very Top) -->
-                    <div class="cyber-telemetry-pill">
-                        <span class="telemetry-pulse"></span>
-                        <span class="telemetry-text">// 2026 SOVEREIGN AI SUITE • HIGH-CADENCE BUILDER • SQUAMISH &amp; WHISTLER, BC</span>
-                    </div>
-                    
-                    <!-- Primary Hero Headline -->
-                    <h1 class="cyber-hero-title">
-                        Where Autonomous Machine Intelligence<br/>
-                        <span class="cyan-gradient-text">Meets Real-World Building &amp; Sound</span>
-                    </h1>
-
-                    <!-- High-End Founder & 3-Domain Identity Showcase (Positioned Underneath Machine Intelligence Headline) -->
-                    <div class="cyber-founder-showcase-card">
-                        <div class="founder-showcase-top">
-                            <div class="founder-avatar-halo">
-                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar.jpg' ); ?>" 
-                                     alt="Wayne Stevenson — International Music Producer, AI Systems Architect &amp; Licensed Builder" 
-                                     class="founder-chip-avatar" 
-                                     data-recalc-dims="0" loading="eager" decoding="sync" />
-                                <span class="avatar-online-dot" title="Sovereign Systems Online"></span>
-                            </div>
-                            <div class="founder-chip-meta">
-                                <div class="founder-name-row">
-                                    <span class="chip-name">Wayne Stevenson</span>
-                                    <span class="chip-verified-badge">✔ VERIFIED ARCHITECT</span>
-                                </div>
-                                <span class="chip-role">International Music Producer • AI Systems Architect • Licensed Builder #52603</span>
-                            </div>
-                        </div>
-
-                        <div class="founder-triad-pills">
-                            <div class="triad-pill triad-music">
-                                <span class="triad-eq-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                                <div class="triad-copy">
-                                    <span class="triad-title">INTERNATIONAL MUSIC PRODUCER</span>
-                                    <span class="triad-sub">25 Releases • 246 Master Tracks • 96kHz Global Catalog</span>
-                                </div>
-                            </div>
-                            <div class="triad-pill triad-ai">
-                                <span class="triad-node-icon" aria-hidden="true">⚡</span>
-                                <div class="triad-copy">
-                                    <span class="triad-title">AI SYSTEMS &amp; SWARM ARCHITECT</span>
-                                    <span class="triad-sub">28-Agent FastMCP Swarms • Local CUDA &amp; Tauri Workstations</span>
-                                </div>
-                            </div>
-                            <div class="triad-pill triad-builder">
-                                <span class="triad-node-icon" aria-hidden="true">🏛️</span>
-                                <div class="triad-copy">
-                                    <span class="triad-title">LICENSED BUILDER #52603</span>
-                                    <span class="triad-sub">BC Housing Licensed • Multiplex &amp; Heavy Civil Execution</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <p class="cyber-hero-subtitle">
-                        The sovereign digital headquarters of Wayne Stevenson — uniting a 25-release international music catalog, deterministic 28-agent FastMCP engineering, and licensed mountain construction discipline.
-                    </p>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. TWO-COLUMN INTRODUCTORY SECTION: COMPANY AI OPERATIONS & SOUND LAB ON THE SIDE -->
-        <section id="intro-split" class="keystone-intro-split-section">
-            <div class="ast-container">
-                
-                <div class="intro-split-grid">
-                    
-                    <!-- Left Column: How Wayne Uses AI for His Company -->
-                    <div class="company-ai-column">
-                        <div class="company-ai-card">
-                            <div class="company-ai-header">
-                                <span class="cyber-section-tag">// PHYSICAL BUILDING MEETS MACHINE INTELLIGENCE</span>
-                                <h2 class="company-ai-heading">
-                                    How We Run Company Operations with Autonomous AI
-                                </h2>
-                                <div class="builder-badge-row">
-                                    <span class="badge-gold-builder">🏛️ BC HOUSING BUILDER #52603</span>
-                                    <span class="badge-cyan-swarms">⚡ 28-AGENT CONCURRENCY</span>
-                                </div>
-                            </div>
-                            
-                            <p class="company-ai-lead">
-                                On a high-altitude job site in Squamish or Whistler, structural precision is non-negotiable. We bring that exact licensed builder discipline to autonomous software engineering, multi-agent systems, and studio production.
-                            </p>
-                            
-                            <p class="company-ai-body">
-                                Instead of fragile cloud chatbots that drift or lose context, our operations run on <strong>deterministic 28-agent FastMCP swarms</strong>, detached local OS daemons, and direct Chrome Port 9222 pipelines built for <strong>Keystone Possibilities Ltd.</strong> and <strong>Keystone AI Protocols</strong>.
-                            </p>
-
-                            <!-- 3 Operational Pillars -->
-                            <div class="operational-pillars-list" id="operationalPillarsList">
-                                <div class="pillar-item pillar-blue" data-pillar-idx="0" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(0)">
-                                    <div class="pillar-icon">🎬</div>
-                                    <div class="pillar-content">
-                                        <div class="pillar-title-row">
-                                            <h4>Autonomous 4K Video &amp; 3-Force Studio Pipelines</h4>
-                                            <span class="pillar-tag-pill pillar-tag-blue">CORE 01</span>
-                                        </div>
-                                        <p>End-to-end 4K video orchestration, 60fps 3-Force holographic telemetry, and automated DaVinci Resolve master assembly running on local workstation GPUs.</p>
-                                    </div>
-                                </div>
-
-                                <div class="pillar-item pillar-gold" data-pillar-idx="1" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(1)">
-                                    <div class="pillar-icon">🛠️</div>
-                                    <div class="pillar-content">
-                                        <div class="pillar-title-row">
-                                            <h4>FastMCP Tool Servers &amp; Chrome Port 9222 CDP</h4>
-                                            <span class="pillar-tag-pill pillar-tag-gold">CORE 02</span>
-                                        </div>
-                                        <p>Direct JSON-RPC tool contracts connecting autonomous subagents to detached OS daemons, live Port 9222 browser tabs, and instant Search Console indexing.</p>
-                                    </div>
-                                </div>
-
-                                <div class="pillar-item pillar-blue" data-pillar-idx="2" onclick="window.selectKeystoneAiCore && window.selectKeystoneAiCore(2)">
-                                    <div class="pillar-icon">⚡</div>
-                                    <div class="pillar-content">
-                                        <div class="pillar-title-row">
-                                            <h4>28-Agent Swarms &amp; Sovereign Tauri Workstations</h4>
-                                            <span class="pillar-tag-pill pillar-tag-blue">CORE 03</span>
-                                        </div>
-                                        <p>Tier-A Flash Speed Scouts (#01–#04) and Tier-B Argon Specialists (#05–#28) executing in isolated ephemeral contexts with adversarial Boss Checker verification.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="company-ai-cta-row">
-                                <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="btn-cyan-primary">
-                                    ⚡ View Full AI Protocols &amp; Tauri Workstations →
-                                </a>
-                                <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-gold-subtle">
-                                    🎬 Watch 4K Videos &amp; Read Technical Intel →
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Right Column: The Music Sound Lab on the Side -->
-                    <div class="music-lab-column">
-                        <div class="sound-lab-card compact-lab-card">
-                            
-                            <!-- Corner HUD Reticles -->
-                            <div class="hud-corner hud-tl"></div>
-                            <div class="hud-corner hud-tr"></div>
-                            <div class="hud-corner hud-bl"></div>
-                            <div class="hud-corner hud-br"></div>
-
-                            <!-- Hidden HTML5 Audio Element for Real Music Streaming -->
-                            <audio id="cyberAudio" preload="auto" crossorigin="anonymous"></audio>
-
-                            <div class="sound-lab-header">
-                                <div class="sound-lab-meta">
-                                    <span class="lab-live-badge">● LIVE SOUND LAB</span>
-                                    <span class="lab-freq-badge" id="soundLabTopFreqBadge">60Hz SUB • 432Hz MASTER</span>
-                                </div>
-                                <h3 class="sound-lab-title">Bio-Acoustic Synthesizer</h3>
-                                <p class="sound-lab-desc">
-                                    Master electronic recordings from Wayne Stevenson's 25-release catalog with real-time 60Hz sub-harmonic &amp; 432Hz frequency switching.
-                                </p>
-                            </div>
-
-                            <!-- HTML5 60fps HiDPI Multi-Device Music Graph -->
-                            <div class="visualizer-wrapper compact-visualizer" id="cyberVisualizerWrapper">
-                                <div class="music-graph-toolbar" role="toolbar" aria-label="Music Graph Display Modes">
-                                    <div class="graph-mode-pills">
-                                        <button type="button" class="graph-mode-btn active" data-graph-mode="spectrum" onclick="window.setKeystoneGraphMode && window.setKeystoneGraphMode('spectrum')">SPECTRUM + WAVE</button>
-                                        <button type="button" class="graph-mode-btn" data-graph-mode="lattice" onclick="window.setKeystoneGraphMode && window.setKeystoneGraphMode('lattice')">HARMONIC LATTICE</button>
-                                        <button type="button" class="graph-mode-btn" data-graph-mode="scope" onclick="window.setKeystoneGraphMode && window.setKeystoneGraphMode('scope')">OSCILLOSCOPE</button>
-                                    </div>
-                                    <div class="graph-telemetry-readout">
-                                        <span class="telemetry-hz" id="cyberGraphHzBadge">60Hz • 432Hz TUNED</span>
-                                        <span class="telemetry-fps">60FPS HI-DPI</span>
-                                    </div>
-                                </div>
-                                <canvas id="cyberVisualizer" width="640" height="205" title="Click or tap to toggle 60Hz / 432Hz Sovereign Music Stream"></canvas>
-                                <div class="visualizer-hud-overlay">
-                                    <div class="track-info">
-                                        <span class="track-label">NOW STREAMING:</span>
-                                        <span id="currentTrackTitle" class="track-name">Sovereign Reverb (Organic Downtempo • 115 BPM)</span>
-                                    </div>
-                                    <div class="engine-state">
-                                        <span id="engineStateBadge" class="engine-active">60HZ / 432HZ LIVE</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tactile Control Deck -->
-                            <div class="sound-lab-controls">
-                                <div class="sound-lab-playlist-deck">
-                                    <div class="playlist-header">
-                                        <span class="playlist-title">SELECT FREQUENCY STREAM:</span>
-                                        <div class="playlist-header-actions">
-                                            <button type="button" class="playlist-rotate-btn" onclick="window.rotateNextKeystoneTrack && window.rotateNextKeystoneTrack()">↻ ROTATE TRACK</button>
-                                            <span class="playlist-count">6 MASTER TRACKS</span>
-                                        </div>
-                                    </div>
-                                    <div class="playlist-scroll-container">
-                                        <button type="button" class="playlist-track-row active" onclick="switchTrack('Sovereign Reverb', 'Organic Downtempo Chill House • 115 BPM', 0)">
-                                            <span class="track-num">01</span>
-                                            <span class="track-details">
-                                                <span class="track-name-main">Sovereign Reverb</span>
-                                                <span class="track-meta-sub">60Hz Sub-Bass &amp; 432Hz • Organic Chill House • 115 BPM</span>
-                                            </span>
-                                            <span class="track-hz-pill">60Hz / 432Hz</span>
-                                            <span class="track-play-indicator">▶</span>
-                                        </button>
-                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Apollo Protocol', 'Progressive Ambient Melodic • 120 BPM', 1)">
-                                            <span class="track-num">02</span>
-                                            <span class="track-details">
-                                                <span class="track-name-main">Apollo Protocol</span>
-                                                <span class="track-meta-sub">432Hz Harmonic Lattice • Progressive Melodic • 120 BPM</span>
-                                            </span>
-                                            <span class="track-hz-pill">432Hz TUNED</span>
-                                            <span class="track-play-indicator">▶</span>
-                                        </button>
-                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Blue Collar Symphony', 'Deep Melodic House • 122 BPM', 2)">
-                                            <span class="track-num">03</span>
-                                            <span class="track-details">
-                                                <span class="track-name-main">Blue Collar Symphony</span>
-                                                <span class="track-meta-sub">60Hz Analog Moog Drive • Deep Melodic House • 122 BPM</span>
-                                            </span>
-                                            <span class="track-hz-pill">60Hz DRIVE</span>
-                                            <span class="track-play-indicator">▶</span>
-                                        </button>
-                                        <button type="button" class="playlist-track-row" onclick="switchTrack('The Midday Push', 'Organic Cello &amp; Deep Bass • 120 BPM', 3)">
-                                            <span class="track-num">04</span>
-                                            <span class="track-details">
-                                                <span class="track-name-main">The Midday Push</span>
-                                                <span class="track-meta-sub">528Hz Solfeggio Strings • Cello &amp; Deep Bass • 120 BPM</span>
-                                            </span>
-                                            <span class="track-hz-pill">528Hz FOCUS</span>
-                                            <span class="track-play-indicator">▶</span>
-                                        </button>
-                                        <button type="button" class="playlist-track-row" onclick="switchTrack('Kinetic Peace', 'Melodic Downtempo • 115 BPM', 4)">
-                                            <span class="track-num">05</span>
-                                            <span class="track-details">
-                                                <span class="track-name-main">Kinetic Peace</span>
-                                                <span class="track-meta-sub">432Hz Equilibrium • Melodic Downtempo • 115 BPM</span>
-                                            </span>
-                                            <span class="track-hz-pill">432Hz FLOW</span>
-                                            <span class="track-play-indicator">▶</span>
-                                        </button>
-                                        <button type="button" class="playlist-track-row" onclick="switchTrack('The Long Game', 'Progressive Flow • 124 BPM', 5)">
-                                            <span class="track-num">06</span>
-                                            <span class="track-details">
-                                                <span class="track-name-main">The Long Game</span>
-                                                <span class="track-meta-sub">96kHz Studio Reference • Progressive Flow • 124 BPM</span>
-                                            </span>
-                                            <span class="track-hz-pill">96kHz MASTER</span>
-                                            <span class="track-play-indicator">▶</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="company-ai-cta-row music-lab-cta-row">
-                                <button id="cyberPlayBtn" class="cyber-play-button" aria-label="Play or Pause Sound Lab Engine">
-                                    <span id="playIcon">▶</span>
-                                    <span id="playLabel">INITIATE REAL MUSIC STREAM</span>
-                                </button>
-                                <a href="/sonic-universe/" class="btn-gold-subtle">
-                                    🎵 Explore All 25 Official Releases (23 Studio Albums) →
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 3. MASTER STUDIO ALBUMS (RICH PHOTOGRAPHY & ARTWORK) -->
-        <section class="cyber-albums-section">
-            <div class="ast-container">
-                
-                <div class="section-header text-center">
-                    <span class="cyber-section-tag">OFFICIAL ARTIST CATALOG</span>
-                    <h2 class="cyber-section-title">Latest Master <span class="cyan-gold-gradient-text">Studio Releases</span></h2>
-                    <p class="cyber-section-desc">
-                        25 Official Releases • 22 Full Studio Albums • 246 Master Recordings distributed globally via TooLost across Spotify, Apple Music &amp; YouTube Music.
-                    </p>
-                </div>
-
-                <!-- Q4 2026 OFFICIAL 4K RELEASES & STREAMING SPOTLIGHT -->
-                <div id="q4-2026-official-releases" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; margin-bottom: 28px;">
-
-                    <!-- Spotlight 1: Whiskey on a Wednesday + Diesel in the Rain 4K -->
-                    <div class="q4-release-spotlight-card" style="display: flex; align-items: center; gap: 18px; background: rgba(10, 14, 24, 0.94); border: 1px solid rgba(212, 175, 55, 0.42); border-radius: 18px; padding: 18px 20px; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.62);">
-                        <a href="/sonic-universe/#whiskey-on-a-wednesday" style="flex: 0 0 108px; width: 108px; height: 108px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.35); display: block;">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/whiskey_on_a_wednesday.jpg' ); ?>"
-                                 alt="Whiskey on a Wednesday Official Album Cover Art"
-                                 width="108" height="108" loading="lazy" decoding="async"
-                                 style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                        </a>
-                        <div style="flex: 1; min-width: 0;">
-                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; color: #d4af37; text-transform: uppercase; margin-bottom: 4px;">
-                                NEW NOV 2026 LP &bull; 10 TRACKS &bull; 92 BPM
-                            </div>
-                            <h3 style="margin: 0 0 6px 0; font-family: 'Outfit', sans-serif; font-size: 1.16rem; font-weight: 800; color: #f8fafc; line-height: 1.25;">
-                                Whiskey on a Wednesday
-                            </h3>
-                            <p style="margin: 0 0 10px 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.48;">
-                                Modern outlaw country-trap &amp; steel-string acoustic storytelling featuring the official 4K film <em>&ldquo;Diesel in the Rain&rdquo;</em>.
-                            </p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <a href="https://www.youtube.com/watch?v=nyQwl-7-vH0" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
-                                    <span class="ks-wave-text">▶ &ldquo;Diesel in the Rain&rdquo; 4K ↗</span>
-                                </a>
-                                <a href="https://too.fm/qv7jb0e" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-blue" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
-                                    <span class="ks-wave-text">🎧 Stream LP ↗</span>
-                                </a>
-                                <a href="https://music.apple.com/us/artist/keystone-recomposition/1862989452" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-blue" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
-                                    <span class="ks-wave-text">🍎 Apple Music ↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Spotlight 2: Don't Say You're Fine + Late-Night Soul 4K -->
-                    <div class="q4-release-spotlight-card" style="display: flex; align-items: center; gap: 18px; background: rgba(10, 14, 24, 0.94); border: 1px solid rgba(56, 189, 248, 0.36); border-radius: 18px; padding: 18px 20px; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.62);">
-                        <a href="/sonic-universe/#dont-say-youre-fine" style="flex: 0 0 108px; width: 108px; height: 108px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.35); display: block;">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/dont_say_youre_fine.jpg' ); ?>"
-                                 alt="Don't Say You're Fine Official Album Cover Art"
-                                 width="108" height="108" loading="lazy" decoding="async"
-                                 style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                        </a>
-                        <div style="flex: 1; min-width: 0;">
-                            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; color: #38bdf8; text-transform: uppercase; margin-bottom: 4px;">
-                                NEW OCT 2026 LP &bull; 10 TRACKS &bull; 88 BPM
-                            </div>
-                            <h3 style="margin: 0 0 6px 0; font-family: 'Outfit', sans-serif; font-size: 1.16rem; font-weight: 800; color: #f8fafc; line-height: 1.25;">
-                                Don&rsquo;t Say You&rsquo;re Fine
-                            </h3>
-                            <p style="margin: 0 0 10px 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.48;">
-                                1970s soul revival &amp; late-night R&amp;B duets built on warm Rhodes electric piano, analog pocket bass, and live brass swells.
-                            </p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                                <a href="https://www.youtube.com/watch?v=7Cbp8Vhy970" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
-                                    <span class="ks-wave-text">▶ Official 4K Video ↗</span>
-                                </a>
-                                <a href="https://too.fm/6a3aroo" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-blue" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
-                                    <span class="ks-wave-text">🎧 Stream LP ↗</span>
-                                </a>
-                                <a href="https://open.spotify.com/artist/52v3Qe6Jo0hg764driOl5Y" target="_blank" rel="noopener noreferrer" class="ks-p3-btn-gold" style="padding: 6px 12px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; text-decoration: none !important;">
-                                    <span class="ks-wave-text">Spotify OAC ↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="albums-grid">
-                    
-                    <!-- Album 1: Sovereign Reverb -->
-                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(0, 'Sovereign Reverb', 'Organic Downtempo Chill House • 115 BPM')">
-                        <div class="album-media-box">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/sovereign_reverb.jpg' ); ?>" 
-                                 alt="Sovereign Reverb Album Cover Art" 
-                                 class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
-                            <div class="album-media-overlay"></div>
-                            <div class="album-vinyl-preview"></div>
-                        </div>
-                        <div class="album-card-body">
-                            <div class="album-genre-meta">
-                                <span class="genre-tag">ORGANIC DOWNTEMPO CHILL HOUSE • 115 BPM</span>
-                            </div>
-                            <h3 class="album-card-title">Sovereign Reverb</h3>
-                            <p class="album-card-desc">
-                                Deep organic acoustic warmth, soothing chord progressions, and ambient frequencies engineered for restorative nervous system equilibrium.
-                            </p>
-                            <div class="album-action-row">
-                                <span class="album-stream-prompt">⚡ Play Real Stream</span>
-                                <a href="/sonic-universe/#sovereign-reverb" class="album-details-link">Explore Master Release →</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album 2: Apollo Protocol -->
-                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(1, 'Apollo Protocol', 'Progressive Ambient Melodic • 120 BPM')">
-                        <div class="album-media-box">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/apollo_protocol.jpg' ); ?>" 
-                                 alt="Apollo Protocol Album Cover Art" 
-                                 class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
-                            <div class="album-media-overlay"></div>
-                            <div class="album-vinyl-preview"></div>
-                        </div>
-                        <div class="album-card-body">
-                            <div class="album-genre-meta">
-                                <span class="genre-tag">PROGRESSIVE AMBIENT MELODIC • 120 BPM</span>
-                            </div>
-                            <h3 class="album-card-title">Apollo Protocol</h3>
-                            <p class="album-card-desc">
-                                High-cadence kinetic rhythms and soaring synth atmospheres designed for intense multi-agent coding sessions and focus states.
-                            </p>
-                            <div class="album-action-row">
-                                <span class="album-stream-prompt">⚡ Play Real Stream</span>
-                                <a href="/sonic-universe/#apollo-protocol" class="album-details-link">Explore Master Release →</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album 3: Blue Collar Symphony -->
-                    <div class="cyber-album-card" onclick="loadAndPlayAlbum(2, 'Blue Collar Symphony', 'Deep Melodic House • 122 BPM')">
-                        <div class="album-media-box">
-                            <img src="<?php echo esc_url( $theme_uri . '/assets/images/albums/blue_collar_symphony.jpg' ); ?>" 
-                                 alt="Blue Collar Symphony Album Cover Art" 
-                                 class="album-cover-img" loading="eager" fetchpriority="high" decoding="async" />
-                            <div class="album-media-overlay"></div>
-                            <div class="album-vinyl-preview"></div>
-                        </div>
-                        <div class="album-card-body">
-                            <div class="album-genre-meta">
-                                <span class="genre-tag">DEEP MELODIC HOUSE • 122 BPM</span>
-                            </div>
-                            <h3 class="album-card-title">Blue Collar Symphony</h3>
-                            <p class="album-card-desc">
-                                Driving basslines and textured percussive drive reflecting the raw work ethic of high-altitude Pacific Northwest building sites.
-                            </p>
-                            <div class="album-action-row">
-                                <span class="album-stream-prompt">⚡ Play Real Stream</span>
-                                <a href="/sonic-universe/#blue-collar-symphony" class="album-details-link">Explore Master Release →</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="albums-footer-cta text-center">
-                    <a href="/sonic-universe/" class="btn-gold-subtle">
-                        🎵 Explore All 25 Official Releases (23 Studio Albums) in Sonic Universe →
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 4. ROTATING CAROUSEL: TECHNICAL INTEL & ARCHITECTURAL PROTOCOLS -->
-        <section class="cyber-intel-carousel-section">
-            <div class="ast-container">
-                <div class="section-header text-center">
-                    <span class="cyber-section-tag">ENGINEERING DISPATCHES • 2026 ARCHITECTURAL INTEL</span>
-                    <h2 class="cyber-section-title">Technical Intel &amp; <span class="cyan-gold-gradient-text">Architectural Protocols</span></h2>
-                    <p class="cyber-section-desc">
-                        4K architectural teardowns, deterministic 28-agent FastMCP swarm patterns, local OS daemon engineering, and live Chrome Port 9222 automation protocols.
-                    </p>
-                </div>
-
-                <?php
-                // Wayne's 3 Staged Video Drops for fallback/population
-                $staged_drops = array(
-                    array(
-                        'title'    => 'Chrome DevTools Protocol Port 9222: Zero-Wrapper Browser Control & Multi-Agent Execution',
-                        'category' => 'CHROME CDP AUTOMATION',
-                        'date'     => 'NOV 2026',
-                        'excerpt'  => 'Bypassing brittle web drivers: connecting autonomous subagents directly to Chrome Port 9222 for zero-fallback publishing and instant GSC indexing.',
-                        'url'      => home_url( '/2026/11/09/chrome-devtools-protocol-port-9222/' ),
-                        'image'    => 'https://img.youtube.com/vi/BuGR4MsghGs/hqdefault.jpg',
-                    ),
-                    array(
-                        'title'    => 'Diesel in the Rain — Official 4K Music Video | Whiskey on a Wednesday',
-                        'category' => 'OFFICIAL 4K RELEASE',
-                        'date'     => 'NOV 2026',
-                        'excerpt'  => 'Produced in Squamish, BC by Wayne Stevenson — gritty baritone storytelling, fingerpicked steel-string acoustic guitar, crying pedal steel, and warm 808 sub-bass.',
-                        'url'      => home_url( '/2026/11/10/diesel-in-the-rain/' ),
-                        'image'    => 'https://img.youtube.com/vi/nyQwl-7-vH0/hqdefault.jpg',
-                    ),
-                    array(
-                        'title'    => 'Autonomous Multi-Agent Swarms: Architecting 28-Agent Concurrency on Port 9879',
-                        'category' => 'AUTONOMOUS AGENTS',
-                        'date'     => 'OCT 2026',
-                        'excerpt'  => 'How we isolate research scouts, test-driven engineers, and live browsers across detached background daemons without thread collisions.',
-                        'url'      => home_url( '/ai-protocols/' ),
-                        'image'    => $theme_uri . '/assets/images/ai_protocols_banner.png',
-                    ),
-                );
-
-                $carousel_items = array();
-
-                // Query latest 6 published posts via WP_Query
-                $intel_query = new WP_Query( array(
-                    'post_type'           => 'post',
-                    'post_status'         => 'publish',
-                    'posts_per_page'      => 6,
-                    'ignore_sticky_posts' => 1,
-                ) );
-
-                if ( $intel_query->have_posts() ) {
-                    while ( $intel_query->have_posts() ) {
-                        $intel_query->the_post();
-                        $cats      = get_the_category();
-                        $cat_name  = ! empty( $cats ) ? strtoupper( trim( $cats[0]->name, ': ' ) ) : 'ARCHITECTURAL INTEL';
-                        if ( in_array( $cat_name, array( 'THE JOURNEY', 'THE-JOURNEY', 'UNCATEGORIZED' ), true ) ) {
-                            $cat_name = 'ARCHITECTURAL INTEL';
-                        }
-                        $thumb_url = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'large' ) : '';
-                        if ( ! empty( $thumb_url ) && false !== stripos( $thumb_url, 'anabolic-window' ) ) {
-                            $thumb_url = $theme_uri . '/assets/images/sonic_universe_banner.png';
-                        }
-                        if ( empty( $thumb_url ) && function_exists( 'keystone_get_post_video_metadata' ) ) {
-                            $vmeta = keystone_get_post_video_metadata( get_the_ID() );
-                            if ( ! empty( $vmeta['youtube_id'] ) ) {
-                                $thumb_url = 'https://img.youtube.com/vi/' . $vmeta['youtube_id'] . '/hqdefault.jpg';
-                            }
-                        }
-                        if ( empty( $thumb_url ) ) {
-                            $thumb_url = $theme_uri . '/assets/images/ai_protocols_banner.png';
-                        }
-                        $raw_exp   = get_the_excerpt();
-                        if ( empty( $raw_exp ) ) {
-                            $raw_exp = wp_trim_words( wp_strip_all_tags( get_the_content() ), 24, '...' );
-                        }
-                        $raw_exp = str_replace(
-                            array( '196-track', '196 track', '196 cataloged', '18 albums', '18-album', '216-track', '216 track', '22 releases', '22-release' ),
-                            array( '236-track', '236 track', '236 registered', '25 releases', '25-release', '236-track', '236 track', '25 releases', '25-release' ),
-                            $raw_exp
-                        );
-                        $carousel_items[] = array(
-                            'title'    => get_the_title(),
-                            'category' => $cat_name,
-                            'date'     => get_the_date( 'M Y' ),
-                            'excerpt'  => wp_trim_words( wp_strip_all_tags( $raw_exp ), 22, '...' ),
-                            'url'      => get_permalink(),
-                            'image'    => $thumb_url ?: '',
-                        );
-                    }
-                    wp_reset_postdata();
-                }
-
-                // If fewer than 3 posts exist, merge with Wayne's staged video drops so exactly >= 3 cards are populated
-                if ( count( $carousel_items ) < 3 ) {
-                    $needed = 3 - count( $carousel_items );
-                    for ( $i = 0; $i < $needed; $i++ ) {
-                        if ( isset( $staged_drops[ $i ] ) ) {
-                            $carousel_items[] = $staged_drops[ $i ];
-                        }
-                    }
-                }
-                ?>
-
-                <div class="intel-carousel-wrapper" id="intelCarousel">
-                    <!-- Glassmorphic Prev/Next Controls -->
-                    <button type="button" class="intel-carousel-nav-btn prev-btn" id="intelCarouselPrev" aria-label="Previous Slide">‹</button>
-                    <button type="button" class="intel-carousel-nav-btn next-btn" id="intelCarouselNext" aria-label="Next Slide">›</button>
-
-                    <!-- Carousel Viewport & Track -->
-                    <div class="intel-carousel-viewport">
-                        <div class="intel-carousel-track" id="intelCarouselTrack">
-                            <?php foreach ( $carousel_items as $item ) : ?>
-                                <div class="intel-carousel-slide">
-                                    <article class="cyber-intel-card intel-slide-card">
-                                        <!-- 16:9 Widescreen Video Preview Container -->
-                                        <div class="intel-video-preview-slot">
-                                            <a href="<?php echo esc_url( $item['url'] ); ?>" class="video-preview-link" tabindex="-1" aria-label="<?php echo esc_attr( $item['title'] ); ?>">
-                                                <?php if ( ! empty( $item['image'] ) ) : ?>
-                                                    <img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" class="video-preview-thumb" loading="eager" decoding="sync" />
-                                                <?php else : ?>
-                                                    <div class="video-preview-fallback">
-                                                        <div class="fallback-grid-lines"></div>
-                                                    </div>
-                                                <?php endif; ?>
-                                                <div class="video-preview-overlay">
-                                                    <div class="video-play-badge">
-                                                        <span class="play-arrow">▶</span>
-                                                    </div>
-                                                </div>
-                                                <span class="video-runtime-pill">▶ WATCH 4K VIDEO &amp; READ INTEL</span>
-                                            </a>
-                                        </div>
-
-                                        <!-- Card Content -->
-                                        <div class="intel-card-content">
-                                            <div>
-                                                <div class="intel-card-meta">
-                                                    <span class="intel-category"><?php echo esc_html( $item['category'] ); ?></span>
-                                                    <span class="intel-date"><?php echo esc_html( $item['date'] ); ?></span>
-                                                </div>
-                                                <h3 class="intel-title">
-                                                    <a href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a>
-                                                </h3>
-                                                <p class="intel-excerpt">
-                                                    <?php echo esc_html( $item['excerpt'] ); ?>
-                                                </p>
-                                            </div>
-                                            <div class="intel-card-footer">
-                                                <a href="<?php echo esc_url( $item['url'] ); ?>" class="intel-read-more">Watch Video &amp; Read Protocol →</a>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-
-                    <!-- Pagination Dots -->
-                    <div class="intel-carousel-dots" id="intelCarouselDots"></div>
-                </div>
-
-                <div class="albums-footer-cta text-center" style="margin-top: 32px;">
-                    <a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="btn-cyan-primary">
-                        🎬 View All 4K Videos &amp; Technical Intel Posts →
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Embedded JavaScript for Rotating Carousel -->
-        <script>
-        (function() {
-            function initIntelCarousel() {
-                const carousel = document.getElementById('intelCarousel');
-                const track = document.getElementById('intelCarouselTrack');
-                const prevBtn = document.getElementById('intelCarouselPrev');
-                const nextBtn = document.getElementById('intelCarouselNext');
-                const dotsContainer = document.getElementById('intelCarouselDots');
-
-                if (!carousel || !track) return;
-
-                const slides = track.querySelectorAll('.intel-carousel-slide');
-                const totalSlides = slides.length;
-                if (totalSlides === 0) return;
-
-                let currentIndex = 0;
-                let autoSlideTimer = null;
-                const autoSlideDelay = 6000;
-
-                function getVisibleCount() {
-                    if (window.innerWidth < 640) return 1;
-                    if (window.innerWidth < 1024) return 2;
-                    return 3;
-                }
-
-                function getMaxIndex() {
-                    return Math.max(0, totalSlides - getVisibleCount());
-                }
-
-                function renderDots() {
-                    if (!dotsContainer) return;
-                    dotsContainer.innerHTML = '';
-                    const maxIdx = getMaxIndex();
-                    const dotCount = maxIdx + 1;
-                    if (dotCount <= 1) {
-                        dotsContainer.style.display = 'none';
-                        return;
-                    }
-                    dotsContainer.style.display = 'flex';
-
-                    for (let i = 0; i < dotCount; i++) {
-                        const dot = document.createElement('button');
-                        dot.type = 'button';
-                        dot.className = 'dot-btn' + (i === currentIndex ? ' active' : '');
-                        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-                        dot.addEventListener('click', function() {
-                            goToSlide(i);
-                            restartAutoplay();
-                        });
-                        dotsContainer.appendChild(dot);
-                    }
-                }
-
-                function updateDots() {
-                    if (!dotsContainer) return;
-                    const dots = dotsContainer.querySelectorAll('.dot-btn');
-                    dots.forEach(function(dot, idx) {
-                        if (idx === currentIndex) {
-                            dot.classList.add('active');
-                        } else {
-                            dot.classList.remove('active');
-                        }
-                    });
-                }
-
-                function updateSlidePosition() {
-                    const visible = getVisibleCount();
-                    const slidePercent = 100 / visible;
-                    const offset = currentIndex * slidePercent;
-                    track.style.transform = 'translateX(-' + offset + '%)';
-                    updateDots();
-                }
-
-                function goToSlide(index) {
-                    const maxIdx = getMaxIndex();
-                    if (index < 0) {
-                        currentIndex = maxIdx;
-                    } else if (index > maxIdx) {
-                        currentIndex = 0;
-                    } else {
-                        currentIndex = index;
-                    }
-                    updateSlidePosition();
-                }
-
-                function nextSlide() {
-                    const maxIdx = getMaxIndex();
-                    if (currentIndex >= maxIdx) {
-                        currentIndex = 0;
-                    } else {
-                        currentIndex++;
-                    }
-                    updateSlidePosition();
-                }
-
-                function prevSlide() {
-                    const maxIdx = getMaxIndex();
-                    if (currentIndex <= 0) {
-                        currentIndex = maxIdx;
-                    } else {
-                        currentIndex--;
-                    }
-                    updateSlidePosition();
-                }
-
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', function() {
-                        nextSlide();
-                        restartAutoplay();
-                    });
-                }
-
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', function() {
-                        prevSlide();
-                        restartAutoplay();
-                    });
-                }
-
-                function startAutoplay() {
-                    stopAutoplay();
-                    if (getMaxIndex() > 0) {
-                        autoSlideTimer = setInterval(nextSlide, autoSlideDelay);
-                    }
-                }
-
-                function stopAutoplay() {
-                    if (autoSlideTimer) {
-                        clearInterval(autoSlideTimer);
-                        autoSlideTimer = null;
-                    }
-                }
-
-                function restartAutoplay() {
-                    stopAutoplay();
-                    startAutoplay();
-                }
-
-                carousel.addEventListener('mouseenter', stopAutoplay);
-                carousel.addEventListener('mouseleave', startAutoplay);
-
-                // Touch drag / swipe support
-                let startX = 0;
-                let deltaX = 0;
-                let isTouching = false;
-
-                carousel.addEventListener('touchstart', function(e) {
-                    if (!e.touches || e.touches.length === 0) return;
-                    startX = e.touches[0].clientX;
-                    deltaX = 0;
-                    isTouching = true;
-                    stopAutoplay();
-                }, { passive: true });
-
-                carousel.addEventListener('touchmove', function(e) {
-                    if (!isTouching || !e.touches || e.touches.length === 0) return;
-                    deltaX = e.touches[0].clientX - startX;
-                }, { passive: true });
-
-                carousel.addEventListener('touchend', function() {
-                    if (!isTouching) return;
-                    isTouching = false;
-                    const threshold = 40;
-                    if (deltaX < -threshold) {
-                        nextSlide();
-                    } else if (deltaX > threshold) {
-                        prevSlide();
-                    }
-                    startX = 0;
-                    deltaX = 0;
-                    startAutoplay();
-                });
-
-                let resizeTimer = null;
-                window.addEventListener('resize', function() {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(function() {
-                        const maxIdx = getMaxIndex();
-                        if (currentIndex > maxIdx) {
-                            currentIndex = maxIdx;
-                        }
-                        renderDots();
-                        updateSlidePosition();
-                        restartAutoplay();
-                    }, 120);
-                });
-
-                renderDots();
-                updateSlidePosition();
-                startAutoplay();
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initIntelCarousel);
-            } else {
-                initIntelCarousel();
-            }
-        })();
-        </script>
-
-        <!-- 5. FOUNDER PROFILE & DUAL-PILLAR DOSSIER (RETRACTABLE ANCHOR) -->
-        <section id="builder-dossier" class="cyber-founder-section">
-            <div class="ast-container">
-                <div class="founder-profile-card">
-                    
-                    <div class="founder-card-inner">
-                        
-                        <div class="founder-photo-col">
-                            <div class="founder-photo-frame">
-                                <img src="<?php echo esc_url( $theme_uri . '/assets/images/wayne_avatar_9x16.jpg' ); ?>" 
-                                     alt="Wayne Stevenson — Founder &amp; Architect (9:16 Portrait)" 
-                                     class="founder-portrait-img" loading="eager" decoding="sync" />
-                                <div class="founder-photo-glow"></div>
-                            </div>
-                        </div>
-
-                        <div class="founder-bio-col">
-                            <h2 class="founder-name-heading">Wayne Stevenson</h2>
-                            <p class="founder-lead-para">
-                                "Machine intelligence without physical grounding is guesswork. Every autonomous 28-agent swarm, local OS daemon, and 96kHz master recording we engineer is built on the uncompromising discipline of real-world mountain construction."
-                            </p>
-                            <p class="founder-detail-para">
-                                Uniting a 236-track international music catalog with deterministic AI engineering, Wayne Stevenson is the Founder &amp; Principal Architect of <strong>Keystone Possibilities Ltd.</strong> (BC Housing Licensed Builder #52603) — delivering high-performance custom mountain residences, Bill 44 multiplexes, and heavy civil execution across Squamish, Whistler, and the Sea-to-Sky corridor.
-                            </p>
-                            <div class="founder-actions-row">
-                                <a href="/founder/" class="btn-cyan-primary">
-                                    Read Full Founder Dossier →
-                                </a>
-                                <a href="https://keystonepossibilities.ca" target="_blank" rel="noopener" class="btn-gold-subtle">
-                                    Visit Keystone Possibilities Ltd. ↗
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
+<div id="primary" class="content-area primary keystone-cyber-home kr-v4-main">
+	<main id="main" class="site-main">
+
+		<!-- SECTION 1: Split Founder Hero + Interactive Sovereign Quick-Selector + Wayne Portrait Card -->
+		<section id="hero" class="kr-fp-hero" aria-label="Keystone Recomposition Sovereign v4.0 Hero">
+			<div class="kr-v4-container">
+				<div class="kr-fp-hero-grid">
+					<div>
+						<span class="kr-v4-kicker">
+							<span class="kr-v4-kicker-dot"></span>
+							// 2026 SOVEREIGN AI SUITE &middot; 25 MASTER RELEASES &middot; SQUAMISH &amp; WHISTLER, BC
+						</span>
+
+						<h1 class="kr-fp-h1">Where Autonomous Machine Intelligence Meets Real-World Building &amp; Sound</h1>
+
+						<blockquote class="kr-fp-quote">
+							&ldquo;Whether we are supervising critical-path civil infrastructure in coastal British Columbia, mastering 24-bit 432Hz studio records, or orchestrating 28-agent AI workstations—every system we ship is built for permanent ownership, zero SaaS bloat, and measurable execution.&rdquo;
+							<cite>Wayne Stevenson &mdash; AI Systems Architect, Producer &amp; Licensed Builder #52603</cite>
+						</blockquote>
+
+						<div class="kr-fp-quick-card" aria-label="Interactive Sovereign Route and Protocol Quick-Intake">
+							<label for="krHeroObjectiveSelect" class="kr-fp-quick-label">
+								// SELECT YOUR OBJECTIVE OR PROTOCOL TIER
+							</label>
+							<div class="kr-fp-quick-form">
+								<select id="krHeroObjectiveSelect" class="kr-fp-select">
+									<option value="tier-1">Tier 1: $49.50 AI Video &amp; Website Blueprint</option>
+									<option value="tier-2" selected>Tier 2: $199 28-Agent FastMCP Suite</option>
+									<option value="tier-3">Tier 3: $800 Sovereign Workstation Installer</option>
+									<option value="sync-licensing">24-Bit WAV One-Stop Sync Licensing</option>
+									<option value="enterprise-consult">Enterprise AI &amp; Custom Build Consultation</option>
+								</select>
+								<button type="button" id="krHeroObjectiveBtn" class="kr-btn-gold">
+									Launch Route &rarr;
+								</button>
+							</div>
+
+							<div class="kr-fp-chips" aria-label="Direct Scenario Shortcuts">
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-1' ) ); ?>" class="kr-fp-chip">$49.50 Blueprint</a>
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-2' ) ); ?>" class="kr-fp-chip">$199 FastMCP Suite</a>
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-3' ) ); ?>" class="kr-fp-chip">$800 Workstation .EXE</a>
+								<a href="#sonic-vault" class="kr-fp-chip">60fps Sound Lab (25 Releases)</a>
+								<button type="button" class="kr-fp-chip" data-kr-preset-consult="24-Bit WAV One-Stop Sync Licensing">One-Stop Sync Desk</button>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<div class="kr-fp-portrait-card">
+							<img
+								src="<?php echo esc_url( $kr_wayne_avatar ); ?>"
+								alt="Wayne Stevenson — Founder of Keystone Recomposition &amp; Licensed BC Builder #52603"
+								width="720"
+								height="846"
+								fetchpriority="high"
+								decoding="async"
+							/>
+							<div class="kr-fp-floating-badge">
+								<p class="kr-fp-badge-title">Wayne Stevenson &middot; Sovereign Triad Verification</p>
+								<div class="kr-fp-triad-pills">
+									<span class="kr-fp-triad-pill">25 Releases / 246 Tracks</span>
+									<span class="kr-fp-triad-pill">28-Agent FastMCP Swarms</span>
+									<span class="kr-fp-triad-pill kr-fp-triad-pill--gold">BC Builder #52603</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- SECTION 2: 4K Dual-Channel Watch Briefing & Music Video Theater -->
+		<?php get_template_part( 'template-parts/kr-watch-theater' ); ?>
+
+		<!-- SECTION 3: Live 60fps Bio-Acoustic Sound Lab + Interactive 25-Release Discography Cinema Reel -->
+		<?php get_template_part( 'template-parts/kr-discography-reel' ); ?>
+
+		<!-- SECTION 4: Sovereign AI Architecture & 3-Tier Protocol Vault Reel -->
+		<?php get_template_part( 'template-parts/kr-architecture-reel' ); ?>
+
+		<!-- SECTION 5: 6-Pillar Sovereign Domain Matrix Grid + Sister-Empire Bridge -->
+		<section id="domain-matrix" class="kr-v4-section kr-v4-section--obsidian" aria-label="6-Pillar Sovereign Domain Matrix">
+			<div class="kr-v4-container">
+				<div class="kr-v4-section-head">
+					<div>
+						<span class="kr-v4-kicker"><span class="kr-v4-kicker-dot"></span> SIX-PILLAR COMMAND ARCHITECTURE</span>
+						<h2 class="kr-v4-h2">Navigate the Full Keystone Sovereign Ecosystem</h2>
+						<p class="kr-v4-lead">Every hub is engineered with primary-source verification, clean dark-luxury readability, and direct execution paths.</p>
+					</div>
+				</div>
+
+				<div class="kr-matrix-grid">
+					<?php foreach ( $kr_domain_pillars as $pillar ) : ?>
+						<a href="<?php echo esc_url( $pillar['url'] ); ?>" class="kr-matrix-card">
+							<span class="kr-v4-kicker <?php echo ! empty( $pillar['gold'] ) ? 'kr-v4-kicker--gold' : ''; ?>" style="align-self:flex-start;font-size:0.67rem;">
+								<?php echo esc_html( $pillar['badge'] ); ?>
+							</span>
+							<h3 class="kr-card-title" style="font-size:1.16rem;margin-top:4px;"><?php echo esc_html( $pillar['title'] ); ?></h3>
+							<p class="kr-card-sub" style="flex:1;"><?php echo esc_html( $pillar['desc'] ); ?></p>
+							<span style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;font-weight:700;color:<?php echo ! empty( $pillar['gold'] ) ? '#f6d365' : '#38bdf8'; ?>;">
+								<?php echo esc_html( $pillar['cta'] ); ?> &rarr;
+							</span>
+						</a>
+					<?php endforeach; ?>
+				</div>
+
+				<div class="kr-sister-banner">
+					<div>
+						<span class="kr-v4-kicker kr-v4-kicker--gold" style="margin-bottom:8px;">SISTER PHYSICAL ENGINEERING DIVISION &middot; BC HOUSING LICENSED BUILDER #52603</span>
+						<h3 class="kr-card-title" style="font-size:1.22rem;">Keystone Possibilities Ltd. &mdash; Custom Residences, Bill 44 Multiplexes &amp; BC Hydro ES54 Civil</h3>
+						<p class="kr-card-sub" style="margin-top:4px;max-width:780px;">Explore our sister construction division delivering architectural homes and underground civil infrastructure across Squamish, Whistler, West Vancouver, and the Lower Mainland.</p>
+					</div>
+					<a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener noreferrer" class="kr-btn-gold">
+						Visit KeystonePossibilities.ca &nearr;
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- SECTION 6: One-Stop Sync Licensing, Press & Ecosystem Partner Desk Card -->
+		<section id="sync-partner-desk" class="kr-v4-section kr-v4-section--black" aria-label="One-Stop Sync Licensing and Ecosystem Partner Desk">
+			<div class="kr-v4-container">
+				<div class="kr-sync-card">
+					<div>
+						<span class="kr-v4-kicker kr-v4-kicker--gold"><span class="kr-v4-kicker-dot"></span> 100% ONE-STOP MASTER + PUBLISHING &middot; CREATOR &amp; SUPERVISOR DESK</span>
+						<h2 class="kr-v4-h2">24-Bit WAV Sync Clearance &amp; Strategic Partner Desk</h2>
+						<p class="kr-v4-lead">Direct clearance with zero third-party label splits or publishing bottlenecks across all 25 official releases and 246 ISRC-registered studio tracks.</p>
+
+						<ul class="kr-sync-checklist">
+							<li><strong style="color:#38bdf8;">&#10003;</strong> <span><strong>100% One-Stop Control:</strong> Instant Master + Publishing sign-off for film, television, trailers, games, and luxury brand campaigns.</span></li>
+							<li><strong style="color:#d4af37;">&#10003;</strong> <span><strong>24-Bit / 96kHz Delivery:</strong> Full WAV masters, instrumental beds, and loopable 432Hz/122 BPM stems ready for broadcast assembly.</span></li>
+							<li><strong style="color:#38bdf8;">&#10003;</strong> <span><strong>AI Creator &amp; Partner Alliances:</strong> Co-engineered workflows, technical cross-features, and verified partner listings.</span></li>
+						</ul>
+
+						<div style="display:flex;flex-wrap:wrap;gap:12px;">
+							<button type="button" class="kr-btn-gold" data-kr-preset-consult="24-Bit WAV One-Stop Sync Licensing">
+								Request One-Stop Sync Stems &rarr;
+							</button>
+							<a href="<?php echo esc_url( home_url( '/ecosystem-partners/' ) ); ?>" class="kr-btn-cyan">
+								Open Ecosystem Partner Desk &rarr;
+							</a>
+						</div>
+					</div>
+
+					<div class="kr-sync-console">
+						<div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;color:#38bdf8;letter-spacing:0.06em;">
+							// FAST-TRACK CLEARANCE &amp; PARTNER ROUTER
+						</div>
+						<p class="kr-card-sub">Select your brief type below to pre-load the executive desk with your exact clearance or engineering scope:</p>
+						<label for="krSyncScopeSelect" style="font-family:'JetBrains Mono',monospace;font-size:0.69rem;color:#cbd5e1;">SELECT BRIEF CLASSIFICATION</label>
+						<select id="krSyncScopeSelect" class="kr-fp-select">
+							<option value="24-Bit WAV One-Stop Sync Licensing — Film / TV / Trailer">Sync Brief: Film, TV, or Documentary Placement</option>
+							<option value="24-Bit WAV One-Stop Sync Licensing — Commercial / Game">Sync Brief: Brand Campaign or Interactive Game</option>
+							<option value="AI Creator &amp; Sovereign Workstation Collaboration">AI Creator: Multi-Agent Workflow Collaboration</option>
+							<option value="Ecosystem Partner &amp; Press Feature">Ecosystem Partner / Technical Press Inquiry</option>
+						</select>
+						<button type="button" id="krSyncRouteBtn" class="kr-btn-cyan" style="width:100%;">
+							Pre-Fill Consultation Desk Below &darr;
+						</button>
+						<div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#94a3b8;padding-top:4px;">
+							Direct Desk: <a href="mailto:keystonerecomposition@gmail.com" style="color:#f6d365;text-decoration:none;">keystonerecomposition@gmail.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- SECTION 7: Latest Technical Intel & 4K Briefings Row -->
+		<section id="latest-intel" class="kr-v4-section kr-v4-section--obsidian" aria-label="Latest Technical Intel and 4K Briefings">
+			<div class="kr-v4-container">
+				<div class="kr-v4-section-head">
+					<div>
+						<span class="kr-v4-kicker"><span class="kr-v4-kicker-dot"></span> LIVE DISPATCHES &amp; ARCHITECTURAL TEARDOWNS</span>
+						<h2 class="kr-v4-h2">Latest Technical Intel &amp; 4K Briefings</h2>
+						<p class="kr-v4-lead">Recent engineering dispatches, autonomous workflow benchmarks, and studio release notes.</p>
+					</div>
+					<div>
+						<a href="<?php echo esc_url( home_url( '/intel/' ) ); ?>" class="kr-btn-cyan">View All Intel Briefings &rarr;</a>
+					</div>
+				</div>
+
+				<div class="kr-intel-grid">
+					<?php
+					$kr_intel_q = new WP_Query(
+						array(
+							'post_type'           => 'post',
+							'post_status'         => 'publish',
+							'posts_per_page'      => 3,
+							'ignore_sticky_posts' => true,
+							'no_found_rows'       => true,
+						)
+					);
+
+					if ( $kr_intel_q->have_posts() ) :
+						$i_idx = 0;
+						while ( $kr_intel_q->have_posts() ) :
+							$kr_intel_q->the_post();
+							$thumb = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+							if ( empty( $thumb ) ) {
+								$thumb = $staged_drops[ $i_idx % count( $staged_drops ) ]['img'];
+							}
+							$cats     = get_the_category();
+							$cat_name = ! empty( $cats ) ? strtoupper( $cats[0]->name ) : 'TECHNICAL INTEL';
+							$i_idx++;
+							?>
+							<a href="<?php the_permalink(); ?>" class="kr-intel-card">
+								<img src="<?php echo esc_url( $thumb ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="kr-intel-thumb" loading="lazy" decoding="async" />
+								<div class="kr-intel-body">
+									<div class="kr-card-tag-row">
+										<span><?php echo esc_html( $cat_name ); ?></span>
+										<span style="color:#38bdf8;"><?php echo esc_html( get_the_date( 'M j, Y' ) ); ?></span>
+									</div>
+									<h3 class="kr-card-title"><?php the_title(); ?></h3>
+									<p class="kr-card-sub" style="flex:1;"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_excerpt() ), 21, '...' ) ); ?></p>
+									<span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;color:#38bdf8;">Read Full Briefing &rarr;</span>
+								</div>
+							</a>
+							<?php
+						endwhile;
+						wp_reset_postdata();
+					else :
+						foreach ( $staged_drops as $drop ) :
+							?>
+							<a href="<?php echo esc_url( $drop['url'] ); ?>" class="kr-intel-card">
+								<img src="<?php echo esc_url( $drop['img'] ); ?>" alt="<?php echo esc_attr( $drop['title'] ); ?>" class="kr-intel-thumb" loading="lazy" decoding="async" />
+								<div class="kr-intel-body">
+									<div class="kr-card-tag-row">
+										<span><?php echo esc_html( $drop['tag'] ); ?></span>
+										<span style="color:#38bdf8;"><?php echo esc_html( $drop['date'] ); ?></span>
+									</div>
+									<h3 class="kr-card-title"><?php echo esc_html( $drop['title'] ); ?></h3>
+									<p class="kr-card-sub" style="flex:1;"><?php echo esc_html( $drop['desc'] ); ?></p>
+									<span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;color:#38bdf8;">Explore Briefing &rarr;</span>
+								</div>
+							</a>
+							<?php
+						endforeach;
+					endif;
+					?>
+				</div>
+			</div>
+		</section>
+
+		<!-- SECTION 8: Visible Executive FAQ Accordion + Direct Consultation Desk -->
+		<section id="consultation-desk" class="kr-v4-section kr-v4-section--black" aria-label="Executive FAQ and Direct Consultation Desk">
+			<div class="kr-v4-container">
+				<div class="kr-faq-consult-grid">
+					<?php get_template_part( 'template-parts/kr-faq-accordion' ); ?>
+
+					<div class="kr-consult-card">
+						<span class="kr-v4-kicker kr-v4-kicker--gold"><span class="kr-v4-kicker-dot"></span> DIRECT EXECUTIVE CONSULTATION &amp; LICENSING DESK</span>
+						<h2 class="kr-v4-h2" style="font-size:clamp(1.45rem,2.5vw,2rem);margin-bottom:8px;">Start a Protocol Deployment or Sync Brief</h2>
+						<p class="kr-card-sub" style="margin-bottom:18px;">Routed directly to Wayne Stevenson&rsquo;s desk in Squamish, BC (<a href="mailto:keystonerecomposition@gmail.com" style="color:#38bdf8;text-decoration:none;">keystonerecomposition@gmail.com</a>).</p>
+
+						<form class="luxury-inquiry-form kr-consult-form" data-keystone-lead-form="consultation" action="<?php echo esc_url( rest_url( 'keystone/v1/lead-consultation' ) ); ?>" method="post" novalidate>
+							<div class="kr-form-grid-2">
+								<div class="kr-field">
+									<label for="krConsultName">Your Name *</label>
+									<input type="text" id="krConsultName" name="contact_name" required placeholder="Alex Mercer" autocomplete="name" />
+								</div>
+								<div class="kr-field">
+									<label for="krConsultEmail">Direct Email *</label>
+									<input type="email" id="krConsultEmail" name="contact_email" required placeholder="alex@company.com" autocomplete="email" />
+								</div>
+							</div>
+
+							<div class="kr-form-grid-2">
+								<div class="kr-field">
+									<label for="krConsultCategory">Objective / Tier</label>
+									<select id="krConsultCategory" name="contact_category">
+										<option value="Tier 3: $800 Sovereign Workstation Installer">Tier 3: $800 Sovereign Workstation Installer</option>
+										<option value="Tier 2: $199 28-Agent FastMCP Suite">Tier 2: $199 28-Agent FastMCP Suite</option>
+										<option value="Tier 1: $49.50 AI Video &amp; Website Blueprint">Tier 1: $49.50 AI Video &amp; Website Blueprint</option>
+										<option value="24-Bit WAV One-Stop Sync Licensing">24-Bit WAV One-Stop Sync Licensing</option>
+										<option value="Enterprise AI &amp; Custom Build Consultation">Enterprise AI &amp; Custom Build Consultation</option>
+									</select>
+								</div>
+								<div class="kr-field">
+									<label for="krConsultBudget">Estimated Scope</label>
+									<select id="krConsultBudget" name="contact_budget">
+										<option value="$49.50 – $199 Protocol Pack">$49.50 &ndash; $199 Protocol Pack</option>
+										<option value="$800 Sovereign Workstation" selected>$800 Sovereign Workstation</option>
+										<option value="$1,500 – $5,000 Custom AI / Sync License">$1,500 &ndash; $5,000 Custom AI / Sync License</option>
+										<option value="$5,000+ Enterprise Architecture">$5,000+ Enterprise Architecture</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="kr-field">
+								<label for="krConsultMessage">Project, Workstation, or Sync Brief *</label>
+								<textarea id="krConsultMessage" name="contact_message" rows="4" required placeholder="Share your target workflow, operating environment, or sync licensing timeline..."></textarea>
+							</div>
+
+							<label style="display:flex;align-items:flex-start;gap:9px;font-size:0.79rem;color:#94a3b8;margin-bottom:14px;cursor:pointer;">
+								<input type="checkbox" name="consent_agreed" value="1" checked style="margin-top:3px;" />
+								<span>I agree to receive a direct response regarding my protocol deployment, sync clearance, or engineering inquiry.</span>
+							</label>
+
+							<button type="submit" class="kr-btn-gold" style="width:100%;">
+								Transmit Brief to Sovereign Desk &rarr;
+							</button>
+							<div class="lead-form-feedback" aria-live="polite" style="display:none;margin-top:12px;"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
 </div>
 
-<!-- Web Audio API Interactive Sound Lab Engine Script (Real Music Streaming & Reactive Analyser) -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Audio Tracks Configuration (6 Master Studio Tracks)
-    const trackList = [
-        {
-            title: 'Sovereign Reverb',
-            meta: 'Organic Downtempo Chill House • 115 BPM',
-            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track1_steady_incline.mp3" ); ?>',
-            freq: 220
-        },
-        {
-            title: 'Apollo Protocol',
-            meta: 'Progressive Ambient Melodic • 120 BPM',
-            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track2_fluid_dynamics.mp3" ); ?>',
-            freq: 174
-        },
-        {
-            title: 'Blue Collar Symphony',
-            meta: 'Deep Melodic House • 122 BPM',
-            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track3_tier_one_flow.mp3" ); ?>',
-            freq: 528
-        },
-        {
-            title: 'The Midday Push',
-            meta: 'Organic Cello & Deep Bass • 120 BPM',
-            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track4_the_midday_push.mp3" ); ?>',
-            freq: 330
-        },
-        {
-            title: 'Kinetic Peace',
-            meta: 'Melodic Downtempo • 115 BPM',
-            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track5_kinetic_peace.mp3" ); ?>',
-            freq: 440
-        },
-        {
-            title: 'The Long Game',
-            meta: 'Progressive Flow • 124 BPM',
-            url: '<?php echo esc_url( $theme_uri . "/assets/audio/track6_the_long_game.mp3" ); ?>',
-            freq: 260
-        }
-    ];
+(function() {
+	'use strict';
 
-    let currentTrackIdx = 0;
-    let isPlaying = false;
-    let audioCtx = null;
-    let analyser = null;
-    let sourceNode = null;
-    let synthOsc = null;
-    let synthGain = null;
-    let animationId = null;
+	var themeAudioBase = <?php echo wp_json_encode( $kr_theme_uri . 'assets/audio/' ); ?>;
+	var protocolTierUrls = {
+		'tier-1': <?php echo wp_json_encode( home_url( '/ai-protocols/#kr-tier-1' ) ); ?>,
+		'tier-2': <?php echo wp_json_encode( home_url( '/ai-protocols/#kr-tier-2' ) ); ?>,
+		'tier-3': <?php echo wp_json_encode( home_url( '/ai-protocols/#kr-tier-3' ) ); ?>
+	};
 
-    const audioEl = document.getElementById('cyberAudio');
-    const playBtn = document.getElementById('cyberPlayBtn');
-    const playIcon = document.getElementById('playIcon');
-    const playLabel = document.getElementById('playLabel');
-    const trackTitleEl = document.getElementById('currentTrackTitle');
-    const engineBadge = document.getElementById('engineStateBadge');
-    const canvas = document.getElementById('cyberVisualizer');
-    const ctx = canvas ? canvas.getContext('2d') : null;
+	var masterTracks = [
+		{ title: 'Steady Incline', sub: '432Hz Architectural Deep House · 122 BPM', file: 'track1_steady_incline.mp3' },
+		{ title: 'Fluid Dynamics', sub: '528Hz Harmonic Flow & Sub-Bass · 122 BPM', file: 'track2_fluid_dynamics.mp3' },
+		{ title: 'Tier One Flow', sub: 'Sovereign Builder Focus Engine · 124 BPM', file: 'track3_tier_one_flow.mp3' },
+		{ title: 'The Midday Push', sub: 'Organic Cello & Deep Bass · 120 BPM', file: 'track4_the_midday_push.mp3' },
+		{ title: 'Kinetic Peace', sub: 'Melodic Downtempo · 115 BPM', file: 'track5_kinetic_peace.mp3' },
+		{ title: 'The Long Game', sub: 'Late-Night Sea-to-Sky Horizon · 120 BPM', file: 'track6_the_long_game.mp3' }
+	];
 
-    function initAudioContext() {
-        if (!audioCtx) {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            audioCtx = new AudioContext();
-            analyser = audioCtx.createAnalyser();
-            analyser.fftSize = 128;
-            analyser.smoothingTimeConstant = 0.85;
+	var currentTrackIdx = 0;
+	var graphMode = 'spectrum';
+	var audioCtx = null;
+	var analyser = null;
+	var dataArray = null;
+	var sourceConnected = false;
 
-            try {
-                sourceNode = audioCtx.createMediaElementSource(audioEl);
-                sourceNode.connect(analyser);
-                analyser.connect(audioCtx.destination);
-            } catch (err) {
-                console.log('MediaElementSource initialized or fallback active:', err);
-            }
-        }
-        if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
-    }
+	var audioEl = document.getElementById('cyberAudio');
+	var canvas = document.getElementById('cyberVisualizer');
+	var playBtn = document.getElementById('cyberPlayBtn');
+	var playIcon = document.getElementById('playIcon');
+	var playLabel = document.getElementById('playLabel');
+	var titleEl = document.getElementById('currentTrackTitle');
+	var stateEl = document.getElementById('engineStateBadge');
+	var hzBadge = document.getElementById('cyberGraphHzBadge');
+	var topFreqBadge = document.getElementById('soundLabTopFreqBadge');
 
-    function updateRowState(index, playing) {
-        const trackRows = document.querySelectorAll('.playlist-track-row');
-        trackRows.forEach((row, i) => {
-            const indicator = row.querySelector('.track-play-indicator');
-            if (i === index) {
-                row.classList.add('active');
-                if (playing) {
-                    row.classList.add('playing');
-                    if (indicator) indicator.textContent = '⏸';
-                } else {
-                    row.classList.remove('playing');
-                    if (indicator) indicator.textContent = '▶';
-                }
-            } else {
-                row.classList.remove('active', 'playing');
-                if (indicator) indicator.textContent = '▶';
-            }
-        });
-    }
+	function ensureAudioGraph() {
+		if (!audioEl || sourceConnected) return;
+		var AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+		if (!AudioContextCtor) return;
+		try {
+			audioCtx = new AudioContextCtor();
+			analyser = audioCtx.createAnalyser();
+			analyser.fftSize = 128;
+			var src = audioCtx.createMediaElementSource(audioEl);
+			src.connect(analyser);
+			analyser.connect(audioCtx.destination);
+			dataArray = new Uint8Array(analyser.frequencyBinCount);
+			sourceConnected = true;
+		} catch (_e) {}
+	}
 
-    function loadTrack(index) {
-        currentTrackIdx = index;
-        const track = trackList[index];
-        if (!track) return;
-        audioEl.src = track.url;
-        if (trackTitleEl) {
-            trackTitleEl.textContent = track.title + ' (' + track.meta + ')';
-        }
-        updateRowState(index, isPlaying);
-    }
+	function syncPlayUI(playing) {
+		if (playIcon) playIcon.innerHTML = playing ? '&#10074;&#10074;' : '&#9654;';
+		if (playLabel) playLabel.textContent = playing ? 'PAUSE MASTER' : 'PLAY MASTER';
+		if (stateEl) {
+			stateEl.textContent = playing
+				? ('LIVE 60FPS STREAM · ' + masterTracks[currentTrackIdx].sub.toUpperCase())
+				: 'PAUSED · READY FOR PLAYBACK';
+		}
+		var rows = document.querySelectorAll('.playlist-track-row');
+		Array.prototype.forEach.call(rows, function(r, idx) {
+			r.classList.toggle('active-track', idx === currentTrackIdx);
+		});
+	}
 
-    window.switchTrack = function(title, meta, index) {
-        initAudioContext();
-        const vAudio = document.getElementById('kr-vault-audio');
-        if (vAudio && !vAudio.paused) vAudio.pause();
-        if (currentTrackIdx === index && isPlaying) {
-            audioEl.pause();
-            isPlaying = false;
-            if (playIcon) playIcon.textContent = '▶';
-            if (playLabel) playLabel.textContent = 'RESUME REAL MUSIC STREAM';
-            if (engineBadge) {
-                engineBadge.textContent = 'STANDBY';
-                engineBadge.className = 'engine-idle';
-            }
-            updateRowState(index, false);
-            return;
-        }
+	window.switchTrack = function(title, sub, index) {
+		if (!audioEl) return;
+		var idx = (typeof index === 'number' && masterTracks[index]) ? index : 0;
+		currentTrackIdx = idx;
+		var trk = masterTracks[idx];
+		audioEl.src = themeAudioBase + trk.file;
+		if (titleEl) {
+			titleEl.textContent = ('0' + (idx + 1)).slice(-2) + ' \u2022 ' + (title || trk.title);
+		}
+		ensureAudioGraph();
+		if (audioCtx && audioCtx.state === 'suspended') {
+			audioCtx.resume().catch(function() {});
+		}
+		audioEl.play().then(function() {
+			syncPlayUI(true);
+		}).catch(function() {
+			syncPlayUI(false);
+		});
+	};
 
-        loadTrack(index);
-        audioEl.play().then(() => {
-            isPlaying = true;
-            if (playIcon) playIcon.textContent = '⏸';
-            if (playLabel) playLabel.textContent = 'PAUSE REAL MUSIC STREAM';
-            if (engineBadge) {
-                engineBadge.textContent = 'TRANSMITTING';
-                engineBadge.className = 'engine-active';
-            }
-            updateRowState(index, true);
-        }).catch(err => {
-            console.log('Track switch error:', err);
-        });
-    };
+	window.loadAndPlayAlbum = function(albumTitle, genreLabel) {
+		var hash = 0;
+		var str = String(albumTitle || '');
+		for (var i = 0; i < str.length; i++) {
+			hash = (hash + str.charCodeAt(i)) % masterTracks.length;
+		}
+		window.switchTrack(albumTitle, genreLabel || '24-Bit Album Audition', hash);
+		var lab = document.getElementById('sound-lab');
+		if (lab) lab.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	};
 
-    window.loadAndPlayAlbum = function(index, title, meta) {
-        window.switchTrack(title, meta, index);
-        const labSection = document.getElementById('intro-split');
-        if (labSection) {
-            labSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+	window.rotateNextKeystoneTrack = function() {
+		var next = (currentTrackIdx + 1) % masterTracks.length;
+		window.switchTrack(masterTracks[next].title, masterTracks[next].sub, next);
+	};
 
-    if (playBtn) {
-        playBtn.addEventListener('click', function() {
-            initAudioContext();
-            const vAudio = document.getElementById('kr-vault-audio');
-            if (vAudio && !vAudio.paused) vAudio.pause();
-            if (!audioEl.src || audioEl.src === window.location.href) {
-                loadTrack(0);
-            }
-            if (isPlaying) {
-                audioEl.pause();
-                isPlaying = false;
-                playIcon.textContent = '▶';
-                playLabel.textContent = 'RESUME REAL MUSIC STREAM';
-                engineBadge.textContent = 'STANDBY';
-                engineBadge.className = 'engine-idle';
-                updateRowState(currentTrackIdx, false);
-            } else {
-                audioEl.play().then(() => {
-                    isPlaying = true;
-                    playIcon.textContent = '⏸';
-                    playLabel.textContent = 'PAUSE REAL MUSIC STREAM';
-                    engineBadge.textContent = 'TRANSMITTING';
-                    engineBadge.className = 'engine-active';
-                    updateRowState(currentTrackIdx, true);
-                }).catch(err => {
-                    console.log('Autoplay policy caught, starting fallback harmonic:', err);
-                    isPlaying = true;
-                    playIcon.textContent = '⏸';
-                    playLabel.textContent = 'HARMONIC ACTIVE';
-                    engineBadge.textContent = 'SYNTH ACTIVE';
-                    engineBadge.className = 'engine-active';
-                    updateRowState(currentTrackIdx, true);
-                });
-            }
-        });
-    }
+	window.setKeystoneGraphMode = function(mode, btn) {
+		graphMode = mode || 'spectrum';
+		Array.prototype.forEach.call(document.querySelectorAll('.graph-mode-btn'), function(b) {
+			b.classList.toggle('active', b === btn);
+		});
+		if (hzBadge) {
+			hzBadge.textContent = graphMode === 'lattice'
+				? 'HARMONIC LATTICE · 60FPS'
+				: (graphMode === 'scope' ? 'PHASE OSCILLOSCOPE · 60FPS' : 'FFT SPECTRUM · 60FPS');
+		}
+	};
 
-    audioEl.addEventListener('ended', function() {
-        const nextIdx = (currentTrackIdx + 1) % trackList.length;
-        loadTrack(nextIdx);
-        audioEl.play().then(() => {
-            isPlaying = true;
-            if (playIcon) playIcon.textContent = '⏸';
-            if (playLabel) playLabel.textContent = 'PAUSE REAL MUSIC STREAM';
-            if (engineBadge) {
-                engineBadge.textContent = 'TRANSMITTING';
-                engineBadge.className = 'engine-active';
-            }
-            updateRowState(nextIdx, true);
-        }).catch(err => console.log('Auto-advance play error:', err));
-    });
+	window.setKeystoneFreqBand = function(band, btn) {
+		Array.prototype.forEach.call(document.querySelectorAll('.freq-tune-pill'), function(b) {
+			b.classList.toggle('active', b === btn);
+		});
+		if (topFreqBadge) {
+			topFreqBadge.textContent = band === '528'
+				? '528HZ CLARITY HARMONIC LOCK'
+				: (band === '122' ? '122 BPM ARCHITECTURAL HOUSE LOCK' : '432HZ + 528HZ HARMONIC ENGINE');
+		}
+	};
 
-    // 60fps HiDPI Multi-Device 3-Mode Sovereign Music Graph Engine
-    let graphMode = 'spectrum';
-    let logicalW = 640;
-    let logicalH = 220;
-    let impulseBoost = 0;
+	window.selectKeystoneAiCore = function(coreKey) {
+		if (protocolTierUrls[coreKey]) {
+			window.location.href = protocolTierUrls[coreKey];
+		}
+	};
 
-    function syncCanvasResolution() {
-        if (!canvas || !ctx) return;
-        const rect = canvas.getBoundingClientRect();
-        const w = Math.max(260, Math.floor(rect.width || 640));
-        const h = Math.max(170, Math.floor(rect.height || 220));
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
-            canvas.width = Math.floor(w * dpr);
-            canvas.height = Math.floor(h * dpr);
-        }
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        logicalW = w;
-        logicalH = h;
-    }
+	if (playBtn && audioEl) {
+		playBtn.addEventListener('click', function() {
+			if (!audioEl.src) {
+				window.switchTrack(masterTracks[0].title, masterTracks[0].sub, 0);
+				return;
+			}
+			ensureAudioGraph();
+			if (audioCtx && audioCtx.state === 'suspended') {
+				audioCtx.resume().catch(function() {});
+			}
+			if (audioEl.paused) {
+				audioEl.play().then(function() { syncPlayUI(true); }).catch(function() {});
+			} else {
+				audioEl.pause();
+				syncPlayUI(false);
+			}
+		});
+		audioEl.addEventListener('ended', function() {
+			window.rotateNextKeystoneTrack();
+		});
+	}
 
-    syncCanvasResolution();
-    window.addEventListener('resize', syncCanvasResolution, { passive: true });
-    if (typeof ResizeObserver !== 'undefined' && canvas) {
-        const ro = new ResizeObserver(() => syncCanvasResolution());
-        ro.observe(canvas);
-    }
+	// 60fps Hi-DPI Visualizer Loop (Cyan #38bdf8 + Gold #d4af37)
+	if (canvas && canvas.getContext) {
+		var ctx = canvas.getContext('2d');
+		var tick = 0;
+		function renderVisualizer() {
+			tick += 0.035;
+			var dpr = Math.min(window.devicePixelRatio || 1, 2);
+			var w = canvas.clientWidth || 720;
+			var h = canvas.clientHeight || 220;
+			if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+				canvas.width = Math.round(w * dpr);
+				canvas.height = Math.round(h * dpr);
+			}
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, w, h);
 
-    window.setKeystoneGraphMode = function(mode) {
-        graphMode = mode || 'spectrum';
-        impulseBoost = 1.0;
-        document.querySelectorAll('.graph-mode-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-graph-mode') === graphMode);
-        });
-    };
+			var bars = 48;
+			var activeAudio = audioEl && !audioEl.paused && analyser && dataArray;
+			if (activeAudio) {
+				analyser.getByteFrequencyData(dataArray);
+			}
 
-    if (canvas) {
-        canvas.style.cursor = 'pointer';
-        canvas.addEventListener('click', function() {
-            impulseBoost = 1.25;
-            if (playBtn) playBtn.click();
-        });
-    }
+			if (graphMode === 'scope') {
+				ctx.beginPath();
+				ctx.lineWidth = 2.2;
+				ctx.strokeStyle = '#38bdf8';
+				for (var s = 0; s < bars; s++) {
+					var normS = activeAudio ? (dataArray[s] / 255) : (0.22 + 0.14 * Math.sin(tick * 2 + s * 0.28));
+					var xS = (s / (bars - 1)) * w;
+					var yS = h * 0.5 + (normS - 0.35) * h * 0.65 * Math.cos(s * 0.22 + tick);
+					if (s === 0) ctx.moveTo(xS, yS);
+					else ctx.lineTo(xS, yS);
+				}
+				ctx.stroke();
+			} else {
+				var gap = 4;
+				var barW = Math.max(3, (w - gap * bars) / bars);
+				for (var i = 0; i < bars; i++) {
+					var val = activeAudio
+						? (dataArray[i] / 255)
+						: (0.14 + 0.11 * Math.sin(tick + i * 0.24) + 0.06 * Math.cos(tick * 1.7 - i * 0.15));
+					var barH = Math.max(8, val * (h - 28));
+					var x = i * (barW + gap) + 4;
+					var y = h - barH - 8;
+					var grad = ctx.createLinearGradient(0, y, 0, h);
+					if (graphMode === 'lattice' && i % 3 === 0) {
+						grad.addColorStop(0, '#f6d365');
+						grad.addColorStop(1, 'rgba(212, 175, 55, 0.18)');
+					} else {
+						grad.addColorStop(0, '#38bdf8');
+						grad.addColorStop(0.65, '#00ced1');
+						grad.addColorStop(1, 'rgba(56, 189, 248, 0.12)');
+					}
+					ctx.fillStyle = grad;
+					ctx.fillRect(x, y, barW, barH);
+				}
+			}
+			window.requestAnimationFrame(renderVisualizer);
+		}
+		window.requestAnimationFrame(renderVisualizer);
+	}
 
-    const nodes = [];
-    const nodeCount = 28;
-    for (let i = 0; i < nodeCount; i++) {
-        nodes.push({
-            nx: (i + 0.5) / nodeCount,
-            ny: 0.22 + (Math.sin(i * 1.37) * 0.5 + 0.5) * 0.55,
-            vx: ((i % 2 === 0 ? 1 : -1) * (0.00045 + (i % 5) * 0.00012)),
-            vy: ((i % 3 === 0 ? 1 : -1) * (0.00038 + (i % 4) * 0.0001)),
-            baseRadius: 1.8 + (i % 3) * 0.75
-        });
-    }
+	// Hero Quick-Intake & Sync Desk Smooth Routing
+	function routeToConsultWithCategory(catLabel, msgPrefix) {
+		var desk = document.getElementById('consultation-desk');
+		var catSel = document.getElementById('krConsultCategory');
+		var msgBox = document.getElementById('krConsultMessage');
+		if (catSel && catLabel) {
+			for (var i = 0; i < catSel.options.length; i++) {
+				if (catSel.options[i].value.indexOf(catLabel.slice(0, 14)) !== -1) {
+					catSel.selectedIndex = i;
+					break;
+				}
+			}
+		}
+		if (msgBox && msgPrefix && !msgBox.value) {
+			msgBox.value = 'Inquiry regarding: ' + msgPrefix + ' — ';
+		}
+		if (desk) {
+			desk.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+	}
 
-    const barCount = 44;
-    const peakHolds = new Float32Array(barCount);
-    const freqAxisLabels = ['60Hz', '150Hz', '432Hz', '1.2kHz', '4.8kHz', '16kHz'];
+	var heroBtn = document.getElementById('krHeroObjectiveBtn');
+	var heroSel = document.getElementById('krHeroObjectiveSelect');
+	if (heroBtn && heroSel) {
+		heroBtn.addEventListener('click', function() {
+			var v = heroSel.value;
+			if (protocolTierUrls[v]) {
+				window.location.href = protocolTierUrls[v];
+			} else if (v === 'sync-licensing') {
+				routeToConsultWithCategory('24-Bit WAV One-Stop Sync Licensing', '24-Bit WAV One-Stop Sync Licensing');
+			} else {
+				routeToConsultWithCategory('Enterprise AI & Custom Build Consultation', 'Enterprise AI & Custom Build Consultation');
+			}
+		});
+	}
 
-    function renderVisualizer() {
-        if (!ctx || !canvas) return;
-        const W = logicalW;
-        const H = logicalH;
-        ctx.clearRect(0, 0, W, H);
+	Array.prototype.forEach.call(document.querySelectorAll('[data-kr-preset-consult]'), function(btn) {
+		btn.addEventListener('click', function() {
+			var preset = btn.getAttribute('data-kr-preset-consult') || '';
+			routeToConsultWithCategory(preset, preset);
+		});
+	});
 
-        const t = performance.now() * 0.001;
-        if (impulseBoost > 0.01) impulseBoost *= 0.94;
-        else impulseBoost = 0;
-
-        const vaultAudio = document.getElementById('kr-vault-audio');
-        const vaultPlaying = !!(vaultAudio && !vaultAudio.paused);
-        const activeStream = isPlaying || vaultPlaying;
-
-        let freqData = new Uint8Array(64);
-        let hasLiveBins = false;
-        if (analyser && isPlaying) {
-            analyser.getByteFrequencyData(freqData);
-            for (let k = 0; k < 16; k++) {
-                if (freqData[k] > 8) { hasLiveBins = true; break; }
-            }
-        }
-
-        // 1. Subtle Obsidian-Cyan Engineering Grid + dB Guide Lines
-        ctx.save();
-        ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
-        ctx.lineWidth = 1;
-        const hLines = 4;
-        for (let r = 1; r < hLines; r++) {
-            const gy = Math.floor((H / hLines) * r) + 0.5;
-            ctx.beginPath();
-            ctx.moveTo(0, gy);
-            ctx.lineTo(W, gy);
-            ctx.stroke();
-        }
-        const vLines = 6;
-        ctx.font = '600 9px "JetBrains Mono", monospace';
-        ctx.fillStyle = 'rgba(148, 163, 184, 0.55)';
-        for (let c = 0; c < vLines; c++) {
-            const gx = Math.floor((W / vLines) * c + (W / (vLines * 2)));
-            ctx.beginPath();
-            ctx.moveTo(gx, 26);
-            ctx.lineTo(gx, H - 28);
-            ctx.stroke();
-            if (W > 340) {
-                ctx.fillText(freqAxisLabels[c] || '', Math.max(6, gx - 16), 38);
-            }
-        }
-        ctx.restore();
-
-        // Synthesize rich 432Hz harmonic envelope (used in standby or when CORS/WebAudio bins are quiet)
-        const synthBins = new Float32Array(barCount);
-        const energyMult = activeStream ? 1.18 : 0.88;
-        for (let i = 0; i < barCount; i++) {
-            const norm = i / (barCount - 1);
-            const bassBell = Math.exp(-Math.pow((norm - 0.18) / 0.16, 2)) * 0.55;
-            const midBell = Math.exp(-Math.pow((norm - 0.48) / 0.22, 2)) * 0.48;
-            const highBell = Math.exp(-Math.pow((norm - 0.78) / 0.18, 2)) * 0.34;
-            const waveA = Math.sin(t * 2.8 + i * 0.32) * 0.18;
-            const waveB = Math.cos(t * 4.3 - i * 0.21) * 0.12;
-            const waveC = Math.sin(t * 1.6 + i * 0.55) * 0.09;
-            let val = (0.28 + bassBell + midBell + highBell + waveA + waveB + waveC) * energyMult + impulseBoost * 0.25;
-            if (hasLiveBins) {
-                const liveNorm = (freqData[i % freqData.length] / 255);
-                val = Math.max(val * 0.55, liveNorm * 0.95);
-            }
-            synthBins[i] = Math.max(0.16, Math.min(0.92, val));
-            if (synthBins[i] > peakHolds[i]) {
-                peakHolds[i] = synthBins[i];
-            } else {
-                peakHolds[i] = Math.max(synthBins[i], peakHolds[i] - 0.0045);
-            }
-        }
-
-        const usableBottom = H - 30;
-        const maxBarSpan = Math.max(70, usableBottom - 42);
-
-        if (graphMode === 'spectrum') {
-            // 2A. 44 Sovereign Gold -> Luminous Baby Blue Harmonic Bars + Peak Caps
-            const barWidth = W / barCount;
-            for (let i = 0; i < barCount; i++) {
-                const barH = synthBins[i] * maxBarSpan;
-                const x = i * barWidth;
-                const y = usableBottom - barH;
-                const bw = Math.max(2, barWidth - (W < 450 ? 2 : 3.5));
-
-                const grad = ctx.createLinearGradient(0, y, 0, usableBottom);
-                grad.addColorStop(0, '#f6d365');
-                grad.addColorStop(0.28, '#d4af37');
-                grad.addColorStop(0.68, '#38bdf8');
-                grad.addColorStop(1, 'rgba(56, 189, 248, 0.12)');
-
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                if (ctx.roundRect) {
-                    ctx.roundRect(x + 1, y, bw, barH, [3, 3, 0, 0]);
-                } else {
-                    ctx.rect(x + 1, y, bw, barH);
-                }
-                ctx.fill();
-
-                // Peak-hold floating cap
-                const peakY = usableBottom - peakHolds[i] * maxBarSpan - 4;
-                ctx.fillStyle = (i % 3 === 0) ? '#f6d365' : '#38bdf8';
-                ctx.fillRect(x + 1, Math.max(28, peakY), bw, 2.2);
-            }
-
-            // Overlay mid-plane 432Hz Sine-Wave Ribbon
-            ctx.save();
-            ctx.beginPath();
-            for (let x = 0; x <= W; x += 6) {
-                const idx = Math.min(barCount - 1, Math.floor((x / W) * barCount));
-                const amp = (synthBins[idx] - 0.35) * 32;
-                const y = (H * 0.46) + Math.sin(x * 0.024 + t * 3.6) * 14 + Math.cos(x * 0.011 - t * 2.2) * amp;
-                if (x === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.strokeStyle = 'rgba(246, 211, 101, 0.85)';
-            ctx.lineWidth = 2;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = '#d4af37';
-            ctx.stroke();
-            ctx.restore();
-        } else if (graphMode === 'scope') {
-            // 2B. Dual-Channel Stereo Time-Domain Oscilloscope Ribbons
-            const midY = H * 0.50;
-            for (let ch = 0; ch < 2; ch++) {
-                ctx.save();
-                ctx.beginPath();
-                for (let x = 0; x <= W; x += 4) {
-                    const norm = x / W;
-                    const idx = Math.min(barCount - 1, Math.floor(norm * barCount));
-                    const env = Math.sin(norm * Math.PI) * (0.45 + synthBins[idx] * 0.75);
-                    const phase = ch === 0 ? t * 4.2 : -t * 3.4 + 1.1;
-                    const y = midY + (
-                        Math.sin(norm * 18 + phase) * 26 +
-                        Math.cos(norm * 37 - phase * 1.3) * 14
-                    ) * env;
-                    if (x === 0) ctx.moveTo(x, y);
-                    else ctx.lineTo(x, y);
-                }
-                ctx.strokeStyle = ch === 0 ? '#38bdf8' : '#d4af37';
-                ctx.lineWidth = ch === 0 ? 2.6 : 2.0;
-                ctx.shadowBlur = 12;
-                ctx.shadowColor = ch === 0 ? '#38bdf8' : '#d4af37';
-                ctx.stroke();
-                ctx.restore();
-            }
-        } else {
-            // 2C. Harmonic Lattice Mode: Concentric Acoustic Rings + Radial Frequency Vectors
-            const cx = W * 0.5;
-            const cy = H * 0.48;
-            const maxR = Math.min(W, H) * 0.34;
-            ctx.save();
-            for (let r = 1; r <= 3; r++) {
-                ctx.beginPath();
-                ctx.arc(cx, cy, (maxR / 3) * r + Math.sin(t * 2 + r) * 3, 0, Math.PI * 2);
-                ctx.strokeStyle = r === 2 ? 'rgba(212, 175, 55, 0.32)' : 'rgba(56, 189, 248, 0.24)';
-                ctx.lineWidth = 1.2;
-                ctx.stroke();
-            }
-            for (let i = 0; i < barCount; i++) {
-                const ang = (i / barCount) * Math.PI * 2 + t * 0.35;
-                const innerR = maxR * 0.32;
-                const outerR = innerR + synthBins[i] * maxR * 0.85;
-                ctx.beginPath();
-                ctx.moveTo(cx + Math.cos(ang) * innerR, cy + Math.sin(ang) * innerR);
-                ctx.lineTo(cx + Math.cos(ang) * outerR, cy + Math.sin(ang) * outerR);
-                ctx.strokeStyle = (i % 2 === 0) ? '#38bdf8' : '#d4af37';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
-            ctx.restore();
-        }
-
-        // 3. Acoustic Constellation Nodes & Proximity Mesh
-        const speedMult = activeStream ? 1.45 : 0.95;
-        ctx.save();
-        ctx.lineWidth = 1;
-        for (let i = 0; i < nodes.length; i++) {
-            const node = nodes[i];
-            node.nx += node.vx * speedMult;
-            node.ny += node.vy * speedMult;
-            if (node.nx < 0.04 || node.nx > 0.96) node.vx *= -1;
-            if (node.ny < 0.16 || node.ny > 0.82) node.vy *= -1;
-
-            const px = node.nx * W;
-            const py = node.ny * H;
-            const boost = synthBins[i % barCount] * 2.2;
-
-            for (let j = i + 1; j < nodes.length; j++) {
-                const other = nodes[j];
-                const ox = other.nx * W;
-                const oy = other.ny * H;
-                const dx = ox - px;
-                const dy = oy - py;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const maxDist = W < 500 ? 68 : 92;
-                if (dist < maxDist) {
-                    const alpha = (1 - dist / maxDist) * ( graphMode === 'lattice' ? 0.52 : 0.28 );
-                    ctx.strokeStyle = (i % 3 === 0)
-                        ? `rgba(212, 175, 55, ${alpha.toFixed(3)})`
-                        : `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
-                    ctx.beginPath();
-                    ctx.moveTo(px, py);
-                    ctx.lineTo(ox, oy);
-                    ctx.stroke();
-                }
-            }
-
-            ctx.beginPath();
-            ctx.arc(px, py, node.baseRadius + boost * 0.65, 0, Math.PI * 2);
-            ctx.fillStyle = (i % 4 === 0) ? '#f6d365' : '#38bdf8';
-            ctx.shadowBlur = activeStream ? 10 : 5;
-            ctx.shadowColor = (i % 4 === 0) ? '#d4af37' : '#38bdf8';
-            ctx.fill();
-            ctx.shadowBlur = 0;
-        }
-        ctx.restore();
-
-        animationId = requestAnimationFrame(renderVisualizer);
-    }
-
-    // 4. Interactive 60Hz / 432Hz / 528Hz / 96kHz Frequency Tuning & Track Rotation Engine
-    const freqBands = [
-        { id: '60hz', label: '60Hz • SUB-BASS DRIVE', topBadge: '60Hz SUB • 432Hz MASTER', engineText: '60HZ SUB-HARMONIC LIVE', mode: 'spectrum' },
-        { id: '432hz', label: '432Hz • HARMONIC TUNED', topBadge: '432Hz BIO-ACOUSTIC', engineText: '432HZ HARMONIC LIVE', mode: 'lattice' },
-        { id: '528hz', label: '528Hz • SOLFEGGIO FOCUS', topBadge: '528Hz SOLFEGGIO LATTICE', engineText: '528HZ SOLFEGGIO LIVE', mode: 'scope' },
-        { id: '96khz', label: '96kHz • STUDIO MASTER', topBadge: '96kHz LOSSLESS MASTER', engineText: '96KHZ STUDIO MASTER', mode: 'spectrum' }
-    ];
-    let currentFreqBandIdx = 0;
-    let freqAutoRotateEnabled = true;
-
-    window.setKeystoneFreqBand = function(bandId, fromAuto) {
-        const idx = freqBands.findIndex(b => b.id === bandId);
-        if (idx !== -1) currentFreqBandIdx = idx;
-        const activeBand = freqBands[currentFreqBandIdx];
-        impulseBoost = 1.15;
-
-        document.querySelectorAll('.freq-tune-pill[data-freq-band]').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-freq-band') === activeBand.id);
-        });
-
-        const hzBadge = document.getElementById('cyberGraphHzBadge');
-        if (hzBadge) {
-            const w = hzBadge.querySelector('.ks-wave-text');
-            if (w) w.textContent = activeBand.label;
-            else hzBadge.textContent = activeBand.label;
-        }
-        const topFreqBadge = document.getElementById('soundLabTopFreqBadge');
-        if (topFreqBadge) {
-            const w = topFreqBadge.querySelector('.ks-wave-text');
-            if (w) w.textContent = activeBand.topBadge;
-            else topFreqBadge.textContent = activeBand.topBadge;
-        }
-        if (engineBadge && !isPlaying) {
-            engineBadge.textContent = activeBand.engineText;
-        }
-        if (!fromAuto && window.setKeystoneGraphMode) {
-            window.setKeystoneGraphMode(activeBand.mode);
-        }
-    };
-
-    window.rotateNextKeystoneTrack = function() {
-        const nextIdx = (currentTrackIdx + 1) % trackList.length;
-        const nextTrack = trackList[nextIdx];
-        if (isPlaying) {
-            window.switchTrack(nextTrack.title, nextTrack.meta, nextIdx);
-        } else {
-            loadTrack(nextIdx);
-            impulseBoost = 1.1;
-        }
-    };
-
-    // Ensure all 3 left-column operational pillars maintain uniform black styling at rest
-    document.querySelectorAll('#operationalPillarsList .pillar-item').forEach(item => {
-        item.classList.remove('active-pillar');
-        item.style.opacity = '1';
-    });
-
-    renderVisualizer();
-    loadTrack(0);
-});
+	var syncBtn = document.getElementById('krSyncRouteBtn');
+	var syncSel = document.getElementById('krSyncScopeSelect');
+	if (syncBtn && syncSel) {
+		syncBtn.addEventListener('click', function() {
+			routeToConsultWithCategory('24-Bit WAV One-Stop Sync Licensing', syncSel.value);
+		});
+	}
+})();
 </script>
 
 <?php

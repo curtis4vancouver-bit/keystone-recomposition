@@ -7,7 +7,8 @@
 > **Entity Disambiguation:** Canadian entrepreneur, BC Housing Licensed Residential Builder (#52603), autonomous AI systems architect, and recording artist/record producer born `1983-03-26`, based in Squamish, British Columbia, Canada (distinct from 1949 US singer Wayne Stevenson and economist Dr. Wayne Stevenson).
 > **Headquarters:** Sea-to-Sky Corridor, Squamish, British Columbia, Canada (Serving Global AI/FastMCP Developers & North American Luxury Construction)
 > **Full Knowledge Graph Dossier:** https://keystonerecomposition.com/llms-full.txt
-> Last Updated: 2026-11-10
+> **Architecture Edition:** Sovereign v4.0 Rebuild
+> Last Updated: 2026-11-12
 
 ---
 
@@ -42,20 +43,20 @@ Operating alongside its sister physical construction corporation, **Keystone Pos
 
 ---
 
-## 3. Core Architecture & Navigation Hubs
+## 3. Sovereign v4.0 Route Architecture & Primary Hubs
 
-- **[Home — Autonomous AI Systems & Sonic Architecture](https://keystonerecomposition.com/):** Flagship command overview of the FastMCP multi-agent swarm, Keystone Studio desktop app, and 25-release Sonic Universe.
-- **[AI Protocols — 3-Tier Builder Blueprints ($49.50 / $199 / $800 USD)](https://keystonerecomposition.com/ai-protocols/):**
-  - *Tier 01 ($49.50 USD — AI Brain & Google Flow Starter):* 4-folder AI Brain workspace in Google Antigravity, ~20-word Google Flow video prompts, 4 step-by-step PDF guides, and 7-day guided setup support.
+- **[Home (`/`) — Sovereign v4.0 AI Systems, Watch Theater & Sonic Architecture](https://keystonerecomposition.com/):** Flagship 8-section command hub uniting the FastMCP multi-agent swarm, interactive 4K Watch Theater, 25-release Discography Reel, Architecture Reel, and 3-Tier AI Protocol Vault.
+- **[AI Protocols (`/ai-protocols/`) — 3-Tier Builder Protocol Vault ($49.50 / $199 / $800 USD)](https://keystonerecomposition.com/ai-protocols/):**
+  - *Tier 01 ($49.50 USD — AI Brain & Google Flow Starter):* 4-folder AI Brain workspace in Google Antigravity, ~20-word Google Flow video prompts, 4 step-by-step PDF guides, and guided setup support.
   - *Tier 02 ($199.00 USD — Custom Website Build & Multi-Agent Swarms):* Includes Tier 01 plus custom dark-luxury WordPress engineering, YouTube Brand Channel tag stacks, multi-agent swarm role prompts, 3-source research gate, and 5 advanced PDF guides.
-  - *Tier 03 ($800.00 USD — Custom Tauri v2 Desktop App Build `.EXE`):* Complete sovereign tech stack: Tiers 01 & 02 plus Rust/Tauri v2 desktop application scaffolding, custom HUD tabs, Windows `.EXE` compilation, all 12 breakdown PDF guides, and 14-day direct architectural review.
-- **[INTEL & Videos — Technical Briefings & Benchmarks](https://keystonerecomposition.com/intel/):** First-person engineering teardowns, LLM/agent benchmarks, and 4K sonic video premieres.
-- **[Sonic Universe — 25 Official Releases & 246 Master Tracks](https://keystonerecomposition.com/sonic-universe/):** Interactive discography with Spotify & Apple Music links, canonical ISRCs, BPM/key telemetry, and acoustic architecture notes.
-- **[Investments — Quantitative Systems & Real Assets](https://keystonerecomposition.com/investments/):** Capital allocation framework combining quantitative EV modeling, 40% liquidity reserves, and Sea-to-Sky / Riviera Nayarit real estate development.
-- **[Lifestyle — Mountain Living & High-Performance Routines](https://keystonerecomposition.com/lifestyle/):** Sea-to-Sky corridor operations, acoustic flow states, and evidence-based physical longevity.
-- **[Founder — Wayne Stevenson Sovereign Blueprint](https://keystonerecomposition.com/founder/):** Canonical biography and verified credentials of Wayne Stevenson (BC Builder #52603, AI Architect, Recording Artist & Producer).
-- **[Verified Ecosystem Partners Registry](https://keystonerecomposition.com/ecosystem-partners/):** Accredited AI/FastMCP protocol registries, DSP metadata partners, and sister licensed engineering entities.
-- **[Contact — Executive Consultation Gateway](https://keystonerecomposition.com/contact/):** Direct inquiry desk for AI protocol builds, enterprise multi-agent consulting, and sync licensing.
+  - *Tier 03 ($800.00 USD — Custom Tauri v2 Desktop App Build `.EXE`):* Complete sovereign tech stack: Tiers 01 & 02 plus Rust/Tauri v2 desktop application scaffolding, custom HUD tabs, Windows `.EXE` compilation, all 12 breakdown PDF guides, and direct architectural review.
+- **[Sonic Universe (`/sonic-universe/`) — 25 Official Releases & 246 ISRC Master Tracks](https://keystonerecomposition.com/sonic-universe/):** Interactive discography with Spotify & Apple Music links, canonical ISRCs, BPM/key telemetry, and 432Hz acoustic architecture notes.
+- **[INTEL & Videos (`/intel/`) — Technical Briefings & Dual-Format Video Decks](https://keystonerecomposition.com/intel/):** First-person engineering teardowns, LLM/agent benchmarks, 16:9 + 9:16 video briefings, and 4K sonic video premieres.
+- **[Founder (`/founder/`) — Wayne Stevenson Sovereign Blueprint (`#wayne-stevenson`)](https://keystonerecomposition.com/founder/):** Canonical `ProfilePage` biography and verified credentials of Wayne Stevenson (BC Housing Builder #52603, BC Hydro ES54, AI Architect, Recording Artist & Producer).
+- **[Investments (`/investments/`) — Quantitative Systems & International Sovereign Assets](https://keystonerecomposition.com/investments/):** Proprietary balance-sheet capital framework combining quantitative EV (`EV >= +15%`) modeling, 40% Cash Fortress liquidity reserves, and Mexico / EU real-asset development.
+- **[Lifestyle (`/lifestyle/`) — Sea-to-Sky Mountain Living & Physical Recomposition](https://keystonerecomposition.com/lifestyle/):** Squamish & Whistler alpine operations, 432Hz flow states, -48 lb whole-food physical recomposition (205-lb set-point), and daily builder cadence.
+- **[Ecosystem Partners (`/ecosystem-partners/`) — Verified AI, FastMCP & Sonic Registry](https://keystonerecomposition.com/ecosystem-partners/):** Accredited AI/FastMCP protocol registries, MusicBrainz/DSP metadata authorities, Sync/Creator/Press inquiry gateway, and Sister-Empire bridge to https://keystonepossibilities.ca/ (air-gapped from physical civil subcontractor rosters).
+- **[Contact (`/contact/`) — Executive Consultation & Masterclass Gateway](https://keystonerecomposition.com/contact/):** Direct principal inquiry desk (`keystonerecomposition@gmail.com`) for Tier 01–03 AI protocol builds, enterprise multi-agent consulting, 432Hz commercial sync licensing, and BC #52603 referrals.
 
 ---
 

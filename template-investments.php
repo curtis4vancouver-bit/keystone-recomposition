@@ -19,6 +19,80 @@ get_header();
 $theme_uri = get_stylesheet_directory_uri();
 ?>
 
+<style id="kr-v4-investments-hub-css">
+.keystone-investments-page {
+    background: radial-gradient(circle at 16% 6%, rgba(212, 175, 55, 0.08) 0%, transparent 44%),
+                radial-gradient(circle at 84% 12%, rgba(56, 189, 248, 0.08) 0%, transparent 46%),
+                #04070d;
+    overflow-x: clip;
+}
+.keystone-investments-page .ast-container {
+    max-width: 1240px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: clamp(1rem, 3vw, 1.75rem);
+    padding-right: clamp(1rem, 3vw, 1.75rem);
+}
+.kr-v4-inv-split-hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: clamp(1.5rem, 3vw, 2.35rem);
+    align-items: stretch;
+    text-align: left !important;
+    background: linear-gradient(145deg, rgba(4, 7, 13, 0.96) 0%, rgba(0, 0, 0, 0.95) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.36);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 3.2vw, 2.5rem);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.68), inset 0 1px 0 rgba(56, 189, 248, 0.16);
+}
+.kr-v4-inv-hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.05rem;
+}
+.kr-v4-inv-hero-copy .hero-badge-row {
+    justify-content: flex-start !important;
+}
+.kr-v4-inv-hero-copy .investments-main-title,
+.kr-v4-inv-hero-copy .investments-hero-subtitle {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.kr-v4-inv-side-box {
+    background: #000000;
+    border: 1px solid rgba(56, 189, 248, 0.32);
+    border-radius: 18px;
+    padding: 1.35rem 1.45rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.95rem;
+}
+.kr-v4-inv-side-box .inv-hero-quicknav-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    margin-top: 0 !important;
+}
+.inv-quant-4grid,
+.inv-three-pillars-grid,
+.inv-business-two-grid,
+.inv-risk-4grid,
+.inv-portal-scope-grid,
+.inv-portal-bottom-split {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 640px) {
+    .kr-v4-inv-side-box .inv-hero-quicknav-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+</style>
+
 <div id="primary" class="content-area primary keystone-investments-page">
     <main id="main" class="site-main">
         <div class="ast-container">
@@ -26,39 +100,55 @@ $theme_uri = get_stylesheet_directory_uri();
             <article class="investments-master-article">
                 
                 <!-- ==============================================================
-                     1. HERO HEADER: STRATEGIC CAPITAL ALLOCATION
+                     1. SOVEREIGN v4.0 SPLIT-HERO HEADER: STRATEGIC CAPITAL ALLOCATION
                      ============================================================== -->
-                <header class="investments-hero-header text-center">
-                    <div class="hero-badge-row">
-                        <span class="ks-p3-pill-gold inv-hero-top-pill">
-                            <span class="ks-wave-text">🏛️ CAPITAL ALLOCATION &bull; AI PROTOCOLS, QUANTITATIVE TREASURY &amp; HARD ASSETS</span>
-                        </span>
+                <header class="investments-hero-header kr-v4-inv-split-hero">
+                    <div class="kr-v4-inv-hero-copy">
+                        <div>
+                            <div class="hero-badge-row">
+                                <span class="ks-p3-pill-gold inv-hero-top-pill">
+                                    <span class="ks-wave-text">🏛️ CAPITAL ALLOCATION &bull; AI PROTOCOLS, QUANTITATIVE TREASURY &amp; HARD ASSETS</span>
+                                </span>
+                            </div>
+
+                            <h1 class="investments-main-title">
+                                High-Conviction Capital &amp;<br>
+                                <span class="cyan-gold-gradient-text">Sovereign Asset Expansion</span>
+                            </h1>
+                        </div>
+
+                        <p class="investments-hero-subtitle">
+                            Deploying balance-sheet capital across quantitative market intelligence, one-time AI Brain &amp; desktop workstation architectures, 25 official studio master releases (246 tracks), and international architectural footholds in Mexico and the European Union.
+                        </p>
                     </div>
 
-                    <h1 class="investments-main-title">
-                        High-Conviction Capital &amp;<br>
-                        <span class="cyan-gold-gradient-text">Sovereign Asset Expansion</span>
-                    </h1>
+                    <aside class="kr-v4-inv-side-box" aria-label="Sovereign Capital Navigation &amp; Sister Builder">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                            <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; font-weight:700; color:#d4af37; letter-spacing:0.08em; text-transform:uppercase;">CAPITAL COMMAND MATRIX</span>
+                            <span style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; color:#00ced1; text-transform:uppercase;">40% CASH FORTRESS</span>
+                        </div>
 
-                    <p class="investments-hero-subtitle">
-                        Deploying balance-sheet capital across quantitative market intelligence, one-time AI Brain &amp; desktop workstation architectures, 24 official studio master releases, and international architectural footholds in Mexico and the European Union.
-                    </p>
+                        <!-- 4 Equal Parallel Quick-Jump Navigation Buttons -->
+                        <div class="inv-hero-quicknav-grid">
+                            <a href="#quantitative-spotlight" class="ks-p3-btn-blue inv-quicknav-btn">
+                                <span class="ks-wave-text">📈 Quantitative Treasury</span>
+                            </a>
+                            <a href="#real-estate-pillars" class="ks-p3-btn-gold inv-quicknav-btn">
+                                <span class="ks-wave-text">⚡ 3 Sovereign Pillars</span>
+                            </a>
+                            <a href="#business-investments" class="ks-p3-btn-blue inv-quicknav-btn">
+                                <span class="ks-wave-text">🏗️ Strategic Investments</span>
+                            </a>
+                            <a href="#executive-gateway" class="ks-p3-btn-gold inv-quicknav-btn">
+                                <span class="ks-wave-text">🏛️ Principal Gateway</span>
+                            </a>
+                        </div>
 
-                    <!-- 4 Equal Parallel Quick-Jump Navigation Buttons -->
-                    <div class="inv-hero-quicknav-grid">
-                        <a href="#quantitative-spotlight" class="ks-p3-btn-blue inv-quicknav-btn">
-                            <span class="ks-wave-text">📈 Quantitative Treasury</span>
-                        </a>
-                        <a href="#real-estate-pillars" class="ks-p3-btn-gold inv-quicknav-btn">
-                            <span class="ks-wave-text">⚡ 3 Sovereign Pillars</span>
-                        </a>
-                        <a href="#business-investments" class="ks-p3-btn-blue inv-quicknav-btn">
-                            <span class="ks-wave-text">🏗️ Strategic Investments</span>
-                        </a>
-                        <a href="#executive-gateway" class="ks-p3-btn-gold inv-quicknav-btn">
-                            <span class="ks-wave-text">🏛️ Principal Gateway</span>
-                        </a>
-                    </div>
+                        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.75rem; font-size:0.82rem; color:#94a3b8; line-height:1.5;">
+                            Canadian Physical Estates &amp; Bill 44 Multiplexes:
+                            <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#f6d365; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(246,211,101,0.4);">Keystone Possibilities Ltd. (BC #52603 &middot; ES54) &#8599;</a>
+                        </div>
+                    </aside>
                 </header>
 
                 <!-- ==============================================================
@@ -162,7 +252,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <span class="cyan-gold-gradient-text">International Sovereign Assets</span>
                         </h2>
                         <p class="pillars-section-desc">
-                            Combining high-margin digital intellectual property—our 3-Tier AI Brain, Multi-Agent Swarm &amp; Custom Tauri Desktop App Vault plus 24 official studio releases—with international real estate footholds across Mexico and the European Union.
+                            Combining high-margin digital intellectual property—our 3-Tier AI Brain, Multi-Agent Swarm &amp; Custom Tauri Desktop App Vault plus 25 official studio releases (246 ISRC masters)—with international real estate footholds across Mexico and the European Union.
                         </p>
                     </div>
 
@@ -206,7 +296,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                         <span class="detail-icon">🖥️</span>
                                         <div>
                                             <strong>$800 Tauri Desktop App &amp; 432Hz Music IP:</strong>
-                                            <span>Custom Rust &amp; WebView2 desktop command center build guide plus 100% master ownership across 24 official studio releases.</span>
+                                            <span>Custom Rust &amp; WebView2 desktop command center build guide plus 100% master ownership across 25 official studio releases (246 tracks).</span>
                                         </div>
                                     </div>
                                 </div>
@@ -424,7 +514,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <span class="inv-principle-icon">⚖️</span>
                                 </div>
                                 <h4>Sovereign IP Ownership</h4>
-                                <p>100% direct principal ownership across our AI Brain blueprints, multi-agent software architectures, custom desktop studio builds, and 24 official studio master releases.</p>
+                                <p>100% direct principal ownership across our AI Brain blueprints, multi-agent software architectures, custom desktop studio builds, and 25 official studio master releases (246 ISRC tracks).</p>
                             </div>
                             <div class="risk-principle-item inv-equal-principle-card">
                                 <div class="inv-principle-top-row">
@@ -483,7 +573,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="inv-scope-item">
                                 <span class="ks-p3-pill-gold inv-scope-pill"><span class="ks-wave-text">02 // 432HZ COMMERCIAL IP</span></span>
                                 <h4>Direct Master Sync Licensing</h4>
-                                <p>100% direct master and publishing clearance across 25 official releases (236 studio tracks) for film, brand, and creator media.</p>
+                                <p>100% direct master and publishing clearance across 25 official releases (246 studio tracks) for film, brand, and creator media.</p>
                             </div>
                             <div class="inv-scope-item">
                                 <span class="ks-p3-pill-blue inv-scope-pill"><span class="ks-wave-text">03 // INTERNATIONAL ASSETS</span></span>

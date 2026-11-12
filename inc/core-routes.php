@@ -184,6 +184,33 @@ function keystone_dynamic_core_template_router( string $template ): string {
         }
     }
 
+    // Route: /ecosystem-partners/ (Preserves live WP page post_content backlinks inside Sovereign v4.0 shell)
+    if ( $slug === 'ecosystem-partners' ) {
+        $file = get_stylesheet_directory() . '/template-ecosystem-partners.php';
+        if ( file_exists( $file ) ) {
+            global $wp_query, $post;
+            $eco_page = get_page_by_path( 'ecosystem-partners', OBJECT, 'page' );
+            if ( $eco_page instanceof WP_Post ) {
+                $post = $eco_page;
+                setup_postdata( $post );
+            }
+            if ( $wp_query ) {
+                $wp_query->is_404      = false;
+                $wp_query->is_page     = true;
+                $wp_query->is_singular = true;
+                if ( $eco_page instanceof WP_Post ) {
+                    $wp_query->queried_object    = $eco_page;
+                    $wp_query->queried_object_id = (int) $eco_page->ID;
+                    $wp_query->posts             = array( $eco_page );
+                    $wp_query->post_count        = 1;
+                    $wp_query->post              = $eco_page;
+                }
+            }
+            status_header( 200 );
+            return $file;
+        }
+    }
+
     // Route: /intel/ & /blog/ archive
     if ( $slug === 'intel' || $slug === 'blog' ) {
         $file = get_stylesheet_directory() . '/home.php';
@@ -221,12 +248,7 @@ function keystone_ensure_core_pages_exist(): void {
         'sonic-universe' => array(
             'title'    => 'Keystone Sonic Universe — Sovereign Reverb Discography & ISRC Registry',
             'template' => 'template-sonic-universe.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Sonic Universe: Complete 22-Release Discography and Canonical ISRC Registry by Wayne Stevenson.</p><!-- /wp:paragraph -->',
-        ),
-        'about-the-founder' => array(
-            'title'    => 'About the Founder — Wayne Stevenson Builder Blueprint',
-            'template' => 'template-founder-story.php',
-            'content'  => '<!-- wp:paragraph --><p>Wayne Stevenson: Licensed Residential Builder #52603, Electronic Music Producer &amp; Systems Architect.</p><!-- /wp:paragraph -->',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Sonic Universe: Complete 25-Release Discography and Canonical 246-Track ISRC Registry by Wayne Stevenson.</p><!-- /wp:paragraph -->',
         ),
         'founder' => array(
             'title'    => 'About the Founder — Wayne Stevenson Builder Blueprint',
@@ -236,42 +258,27 @@ function keystone_ensure_core_pages_exist(): void {
         'investments' => array(
             'title'    => 'Keystone Investments — High-Conviction Capital & Sovereign Infrastructure',
             'template' => 'template-investments.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: Autonomous AI Workstations, 28-Agent FastMCP Swarms, Algorithmic Risk Models &amp; Sovereign Computational Infrastructure.</p><!-- /wp:paragraph -->',
+            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: High-Conviction Capital Allocation, Autonomous AI Workstations, Multi-Agent FastMCP Swarms, Quantitative Treasury &amp; Sovereign Infrastructure.</p><!-- /wp:paragraph -->',
         ),
         'lifestyle' => array(
             'title'    => 'Keystone Lifestyle — Alpine Performance & Biological Architecture',
             'template' => 'template-lifestyle.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Lifestyle: Sea-to-Sky Mountain Expeditions, 205-lb Set-Point &amp; Sonic Flow.</p><!-- /wp:paragraph -->',
-        ),
-        'contact' => array(
-            'title'    => 'Keystone Contact — Executive Inquiries & Private Consultations',
-            'template' => 'template-contact.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Contact: Executive Consultations, BC Builder #52603 Contracting &amp; TooLost Sync Licensing.</p><!-- /wp:paragraph -->',
-        ),
-        'intel' => array(
-            'title'    => 'Technical Intel & Architectural Protocols',
-            'template' => 'default',
-            'content'  => '',
-        ),
-        'investments' => array(
-            'title'    => 'Strategic Capital & High-Cadence Investments',
-            'template' => 'template-investments.php',
-            'content'  => '<!-- wp:paragraph --><p>Keystone Investments: High-Conviction Capital Allocation, Autonomous AI Workstations &amp; 28-Agent FastMCP Swarms, Algorithmic Markets &amp; Sovereign Infrastructure.</p><!-- /wp:paragraph -->',
-        ),
-        'lifestyle' => array(
-            'title'    => 'Alpine Performance & Biological Architecture',
-            'template' => 'template-lifestyle.php',
             'content'  => '<!-- wp:paragraph --><p>Keystone Lifestyle: High-Performance Alpine Living, Sea-to-Sky Mountain Expeditions, 205-lb Set-Point &amp; Sonic Flow.</p><!-- /wp:paragraph -->',
         ),
-        'founder' => array(
-            'title'    => 'About the Founder — Wayne Stevenson Builder Blueprint',
-            'template' => 'template-founder-story.php',
-            'content'  => '<!-- wp:paragraph --><p>Wayne Stevenson: Licensed Residential Builder #52603, Electronic Music Producer &amp; Systems Architect.</p><!-- /wp:paragraph -->',
+        'ecosystem-partners' => array(
+            'title'    => 'Verified Ecosystem Partners — AI, FastMCP & Sonic Syndication Registry',
+            'template' => 'template-ecosystem-partners.php',
+            'content'  => "<!-- KEYSTONE_PARTNER_CARDS_CONTAINER_START -->\n<!-- KEYSTONE_PARTNER_CARDS_CONTAINER_END -->",
         ),
         'contact' => array(
             'title'    => 'Executive Contact & Consultation Gateway',
             'template' => 'template-contact.php',
             'content'  => '<!-- wp:paragraph --><p>Executive Contact: Direct Consultation, General Contracting BC #52603 &amp; TooLost Licensing Inquiries.</p><!-- /wp:paragraph -->',
+        ),
+        'intel' => array(
+            'title'    => 'Technical Intel & Architectural Protocols',
+            'template' => 'default',
+            'content'  => '',
         ),
     );
 
@@ -418,8 +425,6 @@ function keystone_execute_sovereign_reset_pipeline(): array {
              'investments',
              'lifestyle',
              'founder',
-             'about-the-founder',
-             'about-the-founder-the-keystone-blueprint',
              'contact'
          )"
     );

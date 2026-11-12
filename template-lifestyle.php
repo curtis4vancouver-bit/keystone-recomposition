@@ -19,6 +19,96 @@ get_header();
 $theme_uri = get_stylesheet_directory_uri();
 ?>
 
+<style id="kr-v4-lifestyle-hub-css">
+.keystone-lifestyle-page {
+    background: radial-gradient(circle at 18% 6%, rgba(56, 189, 248, 0.08) 0%, transparent 44%),
+                radial-gradient(circle at 82% 12%, rgba(212, 175, 55, 0.08) 0%, transparent 46%),
+                #04070d;
+    overflow-x: clip;
+}
+.keystone-lifestyle-page .ast-container {
+    max-width: 1240px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: clamp(1rem, 3vw, 1.75rem);
+    padding-right: clamp(1rem, 3vw, 1.75rem);
+}
+.kr-v4-life-split-hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: clamp(1.5rem, 3vw, 2.35rem);
+    align-items: stretch;
+    text-align: left !important;
+    background: linear-gradient(145deg, rgba(4, 7, 13, 0.96) 0%, rgba(0, 0, 0, 0.95) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.36);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 3.2vw, 2.5rem);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.68), inset 0 1px 0 rgba(212, 175, 55, 0.18);
+}
+.kr-v4-life-hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.05rem;
+}
+.kr-v4-life-hero-copy .lifestyle-main-title,
+.kr-v4-life-hero-copy .lifestyle-hero-subtitle {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.kr-v4-life-side-panel {
+    background: #000000;
+    border: 1px solid rgba(212, 175, 55, 0.34);
+    border-radius: 18px;
+    padding: 1.35rem 1.45rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.95rem;
+}
+.kr-v4-life-nav-pills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+}
+.kr-v4-life-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.55rem 0.95rem;
+    border-radius: 9999px;
+    background: #04070d;
+    border: 1px solid rgba(212, 175, 55, 0.44);
+    color: #f6d365 !important;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    text-align: center;
+}
+.kr-v4-life-nav-link.is-cyan {
+    border-color: rgba(56, 189, 248, 0.48);
+    color: #38bdf8 !important;
+}
+.life-six-pillars-grid,
+.life-cadence-4grid,
+.life-portal-scope-grid,
+.life-portal-bottom-split {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 640px) {
+    .kr-v4-life-nav-pills {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
 <div id="primary" class="content-area primary keystone-lifestyle-page">
     <main id="main" class="site-main">
         <div class="ast-container">
@@ -26,17 +116,41 @@ $theme_uri = get_stylesheet_directory_uri();
             <article class="lifestyle-master-article">
                 
                 <!-- ==============================================================
-                     1. CLEAN CENTERED HERO SECTION (ZERO TOP BUTTON CLUTTER)
+                     1. SOVEREIGN v4.0 SPLIT-HERO SECTION
                      ============================================================== -->
-                <header class="lifestyle-hero-header text-center">
-                    <h1 class="lifestyle-main-title">
-                        Sovereign AI Systems &amp;<br>
-                        <span class="cyan-gold-gradient-text">High-Performance Mountain Living</span>
-                    </h1>
+                <header class="lifestyle-hero-header kr-v4-life-split-hero">
+                    <div class="kr-v4-life-hero-copy">
+                        <div>
+                            <span class="ks-p3-pill-blue" style="display:inline-flex; margin-bottom:0.85rem;">
+                                <span class="ks-wave-text">// SEA-TO-SKY CORRIDOR &bull; SQUAMISH &amp; WHISTLER, BC</span>
+                            </span>
+                            <h1 class="lifestyle-main-title">
+                                Sovereign AI Systems &amp;<br>
+                                <span class="cyan-gold-gradient-text">High-Performance Mountain Living</span>
+                            </h1>
+                        </div>
 
-                    <p class="lifestyle-hero-subtitle">
-                        Engineered from the Sea-to-Sky alpine corridor in Squamish and Whistler, British Columbia. We unite local-first AI Brain &amp; custom desktop workstation engineering, 24 official studio releases, automated cinematic video pipelines, disciplined quantitative market execution, and rigorous physical recomposition under one roof.
-                    </p>
+                        <p class="lifestyle-hero-subtitle">
+                            Engineered from the Sea-to-Sky alpine corridor in Squamish and Whistler, British Columbia. We unite local-first AI Brain &amp; custom desktop workstation engineering, 25 master releases (spanning 24 official studio &amp; acoustic editions and 246 ISRC tracks), automated cinematic video pipelines, disciplined quantitative market execution, and rigorous physical recomposition under one roof.
+                        </p>
+                    </div>
+
+                    <aside class="kr-v4-life-side-panel" aria-label="Sovereign Operations Quick Navigation">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                            <span style="font-family:'JetBrains Mono',monospace; font-size:0.7rem; font-weight:700; color:#d4af37; letter-spacing:0.08em; text-transform:uppercase;">OPERATIONAL BLUEPRINT</span>
+                            <span style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; color:#00ced1; text-transform:uppercase;">N=1 VERIFIED</span>
+                        </div>
+                        <div class="kr-v4-life-nav-pills">
+                            <a href="#sovereign-lifestyle-pillars" class="kr-v4-life-nav-link is-cyan">⚡ 6 Sovereign Pillars</a>
+                            <a href="#daily-cadence" class="kr-v4-life-nav-link">🧊 Daily Cadence</a>
+                            <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="kr-v4-life-nav-link">🎵 25 Releases</a>
+                            <a href="<?php echo esc_url( home_url( '/ai-protocols/' ) ); ?>" class="kr-v4-life-nav-link is-cyan">🖥️ AI Vault</a>
+                        </div>
+                        <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.75rem; font-size:0.82rem; color:#94a3b8; line-height:1.5;">
+                            Physical Estates, Bill 44 Multiplexes &amp; ES54 Civil:
+                            <a href="https://keystonepossibilities.ca/" target="_blank" rel="noopener" style="color:#f6d365; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(246,211,101,0.4);">Keystone Possibilities Ltd. (BC #52603) &#8599;</a>
+                        </div>
+                    </aside>
                 </header>
 
                 <!-- ==============================================================
@@ -118,8 +232,8 @@ $theme_uri = get_stylesheet_directory_uri();
                                     <div class="pillar-detail-item life-level-detail-box">
                                         <span class="detail-icon">🎵</span>
                                         <div>
-                                            <strong>25 Official Releases &bull; 236 Studio Masters:</strong>
-                                            <span>22 full-length studio albums and 2 singles distributed globally across Spotify, Apple Music, Amazon Music, and YouTube Music.</span>
+                                            <strong>25 Official Releases &bull; 246 Studio Masters:</strong>
+                                            <span>23 full-length studio albums and 2 singles distributed globally across Spotify, Apple Music, Amazon Music, and YouTube Music.</span>
                                         </div>
                                     </div>
                                     <div class="pillar-detail-item life-level-detail-box">
@@ -139,7 +253,7 @@ $theme_uri = get_stylesheet_directory_uri();
                                 </div>
                                 <div class="pillar-card-footer life-level-pillar-footer">
                                     <a href="<?php echo esc_url( home_url( '/sonic-universe/' ) ); ?>" class="ks-p3-btn-gold life-pillar-cta-btn">
-                                        <span class="ks-wave-text">Stream the 24-Release Sonic Universe &rarr;</span>
+                                        <span class="ks-wave-text">Stream the 25-Release Sonic Universe &rarr;</span>
                                     </a>
                                 </div>
                             </div>
@@ -407,7 +521,7 @@ $theme_uri = get_stylesheet_directory_uri();
                             <div class="life-scope-item">
                                 <span class="ks-p3-pill-gold life-scope-pill"><span class="ks-wave-text">02 // 432HZ AUDIO &amp; MEDIA</span></span>
                                 <h4>Direct Master Sync &amp; Studio Pipelines</h4>
-                                <p>100% direct master clearance across 25 official releases (236 studio tracks) plus automated Google Flow &amp; DaVinci Resolve media systems.</p>
+                                <p>100% direct master clearance across 25 official releases (246 studio tracks) plus automated Google Flow &amp; DaVinci Resolve media systems.</p>
                             </div>
                             <div class="life-scope-item">
                                 <span class="ks-p3-pill-blue life-scope-pill"><span class="ks-wave-text">03 // REAL ESTATE &amp; VENTURES</span></span>
