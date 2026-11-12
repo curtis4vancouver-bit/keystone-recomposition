@@ -24,7 +24,7 @@ $kr_domain_pillars = array(
 	array(
 		'badge' => 'PILLAR 01 · AI PROTOCOLS',
 		'title' => '3-Tier Sovereign AI Vault',
-		'desc'  => 'Deploy the $49.50 Blueprint, $199 28-Agent FastMCP Web Suite, or $800 Native Rust + Tauri Workstation Installer.',
+		'desc'  => 'Deploy the $49.50 AI Brain & Flow Blueprint, $199 6-Agent Role Suite + Multi-Agent Web Architecture, or $800 Runnable Rust + Tauri v2 Desktop Command Center Source + 1-Command .EXE Compiler.',
 		'cta'   => 'Open Protocol Vault',
 		'url'   => home_url( '/ai-protocols/' ),
 		'gold'  => true,
@@ -90,8 +90,8 @@ $staged_drops = array(
 	),
 	array(
 		'tag'   => 'WORKSTATION ENGINEERING · TAURI',
-		'title' => '3-Tier Sovereign AI Suite: From Folder Brain to Compiled Rust + Tauri Binary',
-		'desc'  => 'How 28 specialized subagents, local CUDA voice telemetry, and deterministic Python execution unite inside one desktop hub.',
+		'title' => '3-Tier Sovereign AI Suite: From 4-Folder Brain to Runnable Rust + Tauri v2 Desktop .EXE',
+		'desc'  => 'How our 6-Agent Role Suite + Multi-Agent Architecture, local voice telemetry, and 1-command Windows .EXE compiler unite inside one desktop command center.',
 		'img'   => 'https://i.ytimg.com/vi/u1gUjk9xcB4/hqdefault.jpg',
 		'url'   => home_url( '/ai-protocols/' ),
 		'date'  => 'SYSTEMS TEARDOWN',
@@ -114,8 +114,8 @@ $staged_drops = array(
 
 						<h1 class="kr-fp-h1">Where Autonomous Machine Intelligence Meets Real-World Building &amp; Sound</h1>
 
-						<blockquote class="kr-fp-quote">
-							&ldquo;Whether we are supervising critical-path civil infrastructure in coastal British Columbia, mastering 24-bit 432Hz studio records, or orchestrating 28-agent AI workstations—every system we ship is built for permanent ownership, zero SaaS bloat, and measurable execution.&rdquo;
+						<blockquote class="kr-fp-quote" style="opacity: 1; transform: none;">
+							&ldquo;Whether we are supervising critical-path civil infrastructure in coastal British Columbia, mastering 24-bit 432Hz studio records, or orchestrating multi-agent AI workstations—every system we ship is built for permanent ownership, zero SaaS bloat, and measurable execution.&rdquo;
 							<cite>Wayne Stevenson &mdash; AI Systems Architect, Producer &amp; Licensed Builder #52603</cite>
 						</blockquote>
 
@@ -125,9 +125,9 @@ $staged_drops = array(
 							</label>
 							<div class="kr-fp-quick-form">
 								<select id="krHeroObjectiveSelect" class="kr-fp-select">
-									<option value="tier-1">Tier 1: $49.50 AI Video &amp; Website Blueprint</option>
-									<option value="tier-2" selected>Tier 2: $199 28-Agent FastMCP Suite</option>
-									<option value="tier-3">Tier 3: $800 Sovereign Workstation Installer</option>
+									<option value="tier-1">Tier 1: $49.50 AI Brain &amp; Google Flow Blueprint</option>
+									<option value="tier-2" selected>Tier 2: $199 6-Agent Role Suite + Website Architecture</option>
+									<option value="tier-3">Tier 3: $800 Runnable Rust + Tauri v2 Source (.EXE)</option>
 									<option value="sync-licensing">24-Bit WAV One-Stop Sync Licensing</option>
 									<option value="enterprise-consult">Enterprise AI &amp; Custom Build Consultation</option>
 								</select>
@@ -138,8 +138,8 @@ $staged_drops = array(
 
 							<div class="kr-fp-chips" aria-label="Direct Scenario Shortcuts">
 								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-1' ) ); ?>" class="kr-fp-chip">$49.50 Blueprint</a>
-								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-2' ) ); ?>" class="kr-fp-chip">$199 FastMCP Suite</a>
-								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-3' ) ); ?>" class="kr-fp-chip">$800 Workstation .EXE</a>
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-2' ) ); ?>" class="kr-fp-chip">$199 6-Agent + Web Suite</a>
+								<a href="<?php echo esc_url( home_url( '/ai-protocols/#kr-tier-3' ) ); ?>" class="kr-fp-chip">$800 Tauri v2 .EXE Source</a>
 								<a href="#sonic-vault" class="kr-fp-chip">60fps Sound Lab (25 Releases)</a>
 								<button type="button" class="kr-fp-chip" data-kr-preset-consult="24-Bit WAV One-Stop Sync Licensing">One-Stop Sync Desk</button>
 							</div>
@@ -147,20 +147,22 @@ $staged_drops = array(
 					</div>
 
 					<div>
-						<div class="kr-fp-portrait-card">
+						<div class="kr-fp-portrait-card" style="opacity: 1; transform: none;">
 							<img
 								src="<?php echo esc_url( $kr_wayne_avatar ); ?>"
 								alt="Wayne Stevenson — Founder of Keystone Recomposition &amp; Licensed BC Builder #52603"
 								width="720"
 								height="846"
+								loading="eager"
 								fetchpriority="high"
 								decoding="async"
+								style="opacity: 1;"
 							/>
 							<div class="kr-fp-floating-badge">
 								<p class="kr-fp-badge-title">Wayne Stevenson &middot; Sovereign Triad Verification</p>
 								<div class="kr-fp-triad-pills">
 									<span class="kr-fp-triad-pill">25 Releases / 246 Tracks</span>
-									<span class="kr-fp-triad-pill">28-Agent FastMCP Swarms</span>
+									<span class="kr-fp-triad-pill">6-Agent Multi-Agent Suite</span>
 									<span class="kr-fp-triad-pill kr-fp-triad-pill--gold">BC Builder #52603</span>
 								</div>
 							</div>
@@ -369,9 +371,9 @@ $staged_drops = array(
 								<div class="kr-field">
 									<label for="krConsultCategory">Objective / Tier</label>
 									<select id="krConsultCategory" name="contact_category">
-										<option value="Tier 3: $800 Sovereign Workstation Installer">Tier 3: $800 Sovereign Workstation Installer</option>
-										<option value="Tier 2: $199 28-Agent FastMCP Suite">Tier 2: $199 28-Agent FastMCP Suite</option>
-										<option value="Tier 1: $49.50 AI Video &amp; Website Blueprint">Tier 1: $49.50 AI Video &amp; Website Blueprint</option>
+										<option value="Tier 3: $800 Runnable Rust + Tauri v2 Desktop Source (.EXE)">Tier 3: $800 Runnable Rust + Tauri v2 Desktop Source (.EXE)</option>
+										<option value="Tier 2: $199 6-Agent Role Suite + Multi-Agent Web Architecture">Tier 2: $199 6-Agent Role Suite + Multi-Agent Web Architecture</option>
+										<option value="Tier 1: $49.50 AI Brain &amp; Google Flow Blueprint">Tier 1: $49.50 AI Brain &amp; Google Flow Blueprint</option>
 										<option value="24-Bit WAV One-Stop Sync Licensing">24-Bit WAV One-Stop Sync Licensing</option>
 										<option value="Enterprise AI &amp; Custom Build Consultation">Enterprise AI &amp; Custom Build Consultation</option>
 									</select>

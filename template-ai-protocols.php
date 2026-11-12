@@ -15,7 +15,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$theme_uri = get_stylesheet_directory_uri();
+$theme_uri    = get_stylesheet_directory_uri();
+$kr_visa_live = function_exists( 'keystone_is_stripe_ready' )
+	? (bool) keystone_is_stripe_ready()
+	: ( defined( 'KEYSTONE_VISA_AND_VIDEOS_LIVE' ) && KEYSTONE_VISA_AND_VIDEOS_LIVE );
+
+$kr_video_fallbacks = array(
+	'overview'          => 'u1gUjk9xcB4',
+	'tier1_walkthrough' => '-ZYdbPXenCU',
+	'tier2_walkthrough' => 'LxbjlX_nh2Q',
+	'tier3_walkthrough' => '_bSpYdvm6tc',
+);
+
+$kr_t1_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' )
+	? trim( (string) keystone_get_tier_walkthrough_video_id( '1' ) )
+	: $kr_video_fallbacks['tier1_walkthrough'];
+if ( '' === $kr_t1_vid ) {
+	$kr_t1_vid = $kr_video_fallbacks['tier1_walkthrough'];
+}
+
+$kr_t2_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' )
+	? trim( (string) keystone_get_tier_walkthrough_video_id( '2' ) )
+	: $kr_video_fallbacks['tier2_walkthrough'];
+if ( '' === $kr_t2_vid ) {
+	$kr_t2_vid = $kr_video_fallbacks['tier2_walkthrough'];
+}
+
+$kr_t3_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' )
+	? trim( (string) keystone_get_tier_walkthrough_video_id( '3' ) )
+	: $kr_video_fallbacks['tier3_walkthrough'];
+if ( '' === $kr_t3_vid ) {
+	$kr_t3_vid = $kr_video_fallbacks['tier3_walkthrough'];
+}
 ?>
 
 <!-- JSON-LD Structured Data Schema: 3 Tier Offers in USD for US, CA, GB, AU Builders -->
@@ -27,7 +58,7 @@ $theme_uri = get_stylesheet_directory_uri();
       "@type": "Product",
       "@id": "https://keystonerecomposition.com/ai-protocols/#tier1",
       "name": "Keystone AI Protocols — Tier 01: AI Brain & Google Flow Starter",
-      "description": "One-time setup access to 4-folder AI Brain architecture in Google Antigravity, ~20-word Google Flow video prompts, step-by-step PDF setup guides, and 7-day guided setup support.",
+      "description": "One-time setup access to 4-folder AI Brain architecture in Google Antigravity, ~20-word Google Flow video prompts, 4 illustrated %PDF-1.7 setup manuals + combined master book, and 7-day guided setup support.",
       "brand": {
         "@type": "Brand",
         "name": "Keystone AI Protocols"
@@ -48,8 +79,8 @@ $theme_uri = get_stylesheet_directory_uri();
     {
       "@type": "Product",
       "@id": "https://keystonerecomposition.com/ai-protocols/#tier2",
-      "name": "Keystone AI Protocols — Tier 02: Custom Website Build & Multi-Agent Swarms",
-      "description": "Includes Tier 01 plus custom dark-luxury WordPress website engineering, YouTube Brand Channel upload defaults, multi-agent swarm role prompts, 3-source research gate, and 7-day guided setup support.",
+      "name": "Keystone AI Protocols — Tier 02: 6-Agent Role Suite + Multi-Agent Website Architecture",
+      "description": "Includes Tier 01 plus the 6-Agent Role Suite + Multi-Agent Architecture, dark-luxury WordPress website engineering, YouTube Brand Channel upload defaults, 3-source research gate, PDFs 01-09, and 7-day guided setup support.",
       "brand": {
         "@type": "Brand",
         "name": "Keystone AI Protocols"
@@ -70,8 +101,8 @@ $theme_uri = get_stylesheet_directory_uri();
     {
       "@type": "Product",
       "@id": "https://keystonerecomposition.com/ai-protocols/#tier3",
-      "name": "Keystone AI Protocols — Tier 03: Custom Tauri Desktop App Build (.EXE)",
-      "description": "Complete sovereign tech stack: Tiers 01 & 02 plus Rust and Tauri desktop application scaffolding, custom dashboard tabs, Windows .EXE compilation, all 12 breakdown PDF guides, and 14-day setup support with direct architectural review.",
+      "name": "Keystone AI Protocols — Tier 03: Complete Runnable Rust + Tauri v2 Desktop Command Center Source (.EXE)",
+      "description": "Complete sovereign tech stack: Tiers 01 & 02 plus the Complete Runnable Rust + Tauri v2 Desktop Command Center Source Project, 1-Command Windows .EXE Compiler, all 12 illustrated %PDF-1.7 manuals, and 14-Day Guided Build Support with architectural review.",
       "brand": {
         "@type": "Brand",
         "name": "Keystone AI Protocols"
@@ -422,7 +453,7 @@ $theme_uri = get_stylesheet_directory_uri();
 						<div id="krHeroIntroVideoCard" style="background: #04070d; border: 1.5px solid #d4af37; border-radius: 18px; overflow: hidden; margin: 14px 0 16px 0; box-shadow: 0 14px 36px rgba(0, 0, 0, 0.78); max-width: 100%; box-sizing: border-box;">
 							<div style="padding: 8px 14px; background: rgba(8, 14, 26, 0.96); border-bottom: 1px solid rgba(212, 175, 55, 0.35); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
 								<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.04em;">🎬 START HERE • 3-TIER AI BUILDER SUITE OVERVIEW</span>
-								<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800;">BRAIN ($49.50) &rarr; WEBSITE ($199) &rarr; TAURI .EXE ($800)</span>
+								<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800;">@KeyStoneRecomposition &bull; AI Protocols Suite</span>
 							</div>
 							<div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #02050a;">
 								<iframe id="krHeroIntroIframe"
@@ -475,17 +506,17 @@ $theme_uri = get_stylesheet_directory_uri();
 							<div class="hero-tier-summary-box hero-tier-blue" style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.65); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: flex-start; gap: 6px;">
 								<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.03em; white-space: nowrap;">TIER 01 • $49.50 USD</div>
 								<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; white-space: nowrap;">🧠 Brain &amp; Flow</div>
-								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42;">Set up your AI Brain folders and run a basic Google Flow video walkthrough (+ 7-day setup support).</div>
+								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42;">4-folder AI Brain setup + ~20-word Google Flow video prompts, 4 PDF manuals &amp; 7-day setup support.</div>
 							</div>
 							<div class="hero-tier-summary-box hero-tier-gold" style="background: #04070d; border: 1.5px solid rgba(212, 175, 55, 0.72); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: flex-start; gap: 6px;">
 								<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.03em; white-space: nowrap;">TIER 02 • $199 USD</div>
-								<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; white-space: nowrap;">🌐 Website &amp; Agents</div>
-								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42;">Includes Tier 01 + custom dark-luxury website build, brand channel, and multi-agent workflows.</div>
+								<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; white-space: nowrap;">🌐 6-Agent + Web</div>
+								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42;">Includes Tier 01 + 6-Agent Role Suite + Multi-Agent Architecture, dark-luxury website &amp; Brand Channel.</div>
 							</div>
 							<div class="hero-tier-summary-box hero-tier-blue" style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.65); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; justify-content: flex-start; gap: 6px;">
 								<div class="summary-tier-tag" style="color: #ffffff; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.03em; white-space: nowrap;">TIER 03 • $800 USD</div>
-								<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; white-space: nowrap;">🖥️ Tauri Desktop App</div>
-								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42;">Includes Tiers 01 &amp; 02 + build and compile your standalone Tauri desktop command center (.exe).</div>
+								<div class="summary-tier-heading" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.84rem; font-weight: 800; white-space: nowrap;">🖥️ Tauri v2 Source</div>
+								<div style="color: #cbd5e1; font-size: 0.74rem; line-height: 1.42;">Includes Tiers 01 &amp; 02 + Runnable Rust + Tauri v2 Source + 1-Command Windows .EXE Compiler + 14-day support.</div>
 							</div>
 						</div>
 					</div>
@@ -500,8 +531,8 @@ $theme_uri = get_stylesheet_directory_uri();
 										💳 VISA / MASTERCARD READY
 									</span>
 								</div>
-								<h3 class="checkout-portal-title">One-Time Setup Access &amp; Direct Delivery</h3>
-								<p class="checkout-portal-sub">Choose your setup tier below to unlock your <strong>Buyer Setup Page</strong> and receive your recorded avatar walkthrough video + step-by-step PDF guides directly by email. Simple one-time payment—get set up during your guided setup window and you are good to go.</p>
+								<h3 class="checkout-portal-title">Instant Visa Checkout &amp; 60-Second Vault Delivery</h3>
+								<p class="checkout-portal-sub">Choose your tier below to go straight to <strong>256-Bit Stripe USD Checkout</strong> and unlock your <strong>Self-Service Buyer Vault</strong>, unlisted 4K walkthrough videos, starter <code class="kr-code-pill-gold">.ZIP</code> packs, and illustrated <code class="kr-code-pill">%PDF-1.7</code> manuals.</p>
 							</div>
 
 							<div class="checkout-tier-selector">
@@ -512,29 +543,29 @@ $theme_uri = get_stylesheet_directory_uri();
 										<span class="btn-tier-name">Brain &amp; Flow</span>
 										<span class="btn-tier-price">$49.50</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
+									<button type="button" class="tier-select-btn" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: 6-Agent Role Suite + Website Architecture" data-url="/contact/?inquiry=tier2_swarm#inquiry-form">
 										<span class="btn-tier-num">TIER 02 • ONE-TIME</span>
-										<span class="btn-tier-name">Website &amp; Agents</span>
+										<span class="btn-tier-name">6-Agent &amp; Web</span>
 										<span class="btn-tier-price">$199</span>
 									</button>
-									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Custom Tauri Desktop App Build" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
+									<button type="button" class="tier-select-btn" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Runnable Rust + Tauri v2 Desktop Source (.EXE)" data-url="/contact/?inquiry=tier3_workstation#inquiry-form">
 										<span class="btn-tier-num">TIER 03 • ONE-TIME</span>
-										<span class="btn-tier-name">Tauri Desktop App</span>
+										<span class="btn-tier-name">Tauri v2 .EXE</span>
 										<span class="btn-tier-price">$800</span>
 									</button>
 								</div>
 							</div>
 
-							<!-- Direct Buyer Details Form (Inline Ready-to-Buy Checkout) -->
+							<!-- Direct Buyer Details Form (1-Click Stripe Checkout — Optional Pre-Fill) -->
 							<form id="heroDirectCheckoutForm" data-keystone-form-ignore="true" style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
 								<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
 									<div>
-										<label for="heroBuyerName" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Full Name *</label>
-										<input type="text" id="heroBuyerName" required placeholder="Alex Mercer" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
+										<label for="heroBuyerName" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Name (Optional)</label>
+										<input type="text" id="heroBuyerName" placeholder="Optional — or enter on Stripe" autocomplete="name" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.82rem; padding: 9px 11px; box-sizing: border-box;" />
 									</div>
 									<div>
-										<label for="heroBuyerEmail" class="checkout-label" style="margin-bottom: 4px; display: block;">Your Email Address *</label>
-										<input type="email" id="heroBuyerEmail" required placeholder="alex@mercerbuilds.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 9px 11px; box-sizing: border-box;" />
+										<label for="heroBuyerEmail" class="checkout-label" style="margin-bottom: 4px; display: block;">Email for Receipt (Optional)</label>
+										<input type="email" id="heroBuyerEmail" placeholder="Optional — or enter on Stripe" autocomplete="email" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 10px; color: #f8fafc; font-size: 0.82rem; padding: 9px 11px; box-sizing: border-box;" />
 									</div>
 								</div>
 								<div>
@@ -558,8 +589,11 @@ $theme_uri = get_stylesheet_directory_uri();
 										💳 PAY WITH VISA / MASTERCARD &amp; UNLOCK VAULT ($49.50 USD) →
 									</button>
 									<div id="heroCheckoutFeedback" style="display: none; margin-top: 8px; padding: 10px 12px; border-radius: 12px; background: rgba(4, 7, 13, 0.96); border: 1px solid #38bdf8; font-size: 0.78rem; color: #f8fafc; line-height: 1.45;"></div>
+									<div class="kr-upgrade-credit-pill" id="heroUpgradeCreditCallout">
+										🛡️ <strong style="color: #f6d365;">100% Upgrade Credit Protected:</strong> Start at <strong>$49.50</strong> today and credit every dollar toward <strong>Tier 02 ($199 &rarr; pay $149.50)</strong> or <strong>Tier 03 ($800 &rarr; pay $750.50)</strong> anytime with your <code class="kr-code-pill">KR-UID</code>.
+									</div>
 									<div class="checkout-payment-methods" style="margin-top: 8px;">
-										<span>💳 256-Bit Stripe USD Checkout</span> • <span>🎬 Unlisted Video + PDFs + .ZIP</span> • <span>🤖 Guided Setup Window</span>
+										<span>💳 256-Bit Stripe USD Checkout</span> • <span>🎬 Unlisted Video + %PDF-1.7 + .ZIP</span> • <span>🤖 Guided Setup Window</span>
 									</div>
 									<div class="checkout-fiduciary-note">
 										🏛️ Direct Release by <strong>Keystone Possibilities Ltd.</strong> • Instant Vault Unlock &amp; Email Receipt
@@ -567,18 +601,24 @@ $theme_uri = get_stylesheet_directory_uri();
 								</div>
 							</form>
 
-							<!-- Returning Buyer KR-UID Instant Vault Unlock Bar -->
-							<div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(56, 189, 248, 0.25);">
-								<label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px; letter-spacing: 0.03em;">
-									🔑 ALREADY PURCHASED? ENTER YOUR BUYER UID TO OPEN VAULT:
-								</label>
-								<div style="display: flex; gap: 8px;">
-									<input type="text" id="existingVaultUidInput" value="" placeholder="KR-UID-..." style="flex: 1; background: #04070d; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 9999px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; padding: 7px 14px;" />
-									<button type="button" id="verifyVaultUidBtn" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
-										OPEN VAULT &rarr;
-									</button>
+							<!-- Collapsed Returning Buyer KR-UID Toggle (Auto-expands on ?session_id=, ?uid=, #kr-self-service-portal, or saved localStorage UID) -->
+							<div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(56, 189, 248, 0.22);">
+								<button type="button" id="krReturningBuyerToggleBtn" class="kr-returning-uid-toggle" aria-expanded="false" aria-controls="krReturningBuyerDrawer">
+									<span>🔑 Existing Buyer? Enter KR-UID to Open Vault</span>
+									<span id="krReturningBuyerChevron" aria-hidden="true">+</span>
+								</button>
+								<div id="krReturningBuyerDrawer" style="display: none; margin-top: 10px;">
+									<label for="existingVaultUidInput" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px; letter-spacing: 0.03em;">
+										ENTER YOUR PERSONAL BUYER KR-UID:
+									</label>
+									<div style="display: flex; gap: 8px;">
+										<input type="text" id="existingVaultUidInput" value="" placeholder="KR-UID-..." style="flex: 1; background: #04070d; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 9999px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; padding: 7px 14px;" />
+										<button type="button" id="verifyVaultUidBtn" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 800; cursor: pointer; white-space: nowrap;">
+											OPEN VAULT &rarr;
+										</button>
+									</div>
+									<div id="vaultUidVerifyFeedback" style="display: none; margin-top: 8px; padding: 10px 12px; border-radius: 12px; background: #04070d; border: 1px solid #d4af37; font-size: 0.76rem;"></div>
 								</div>
-								<div id="vaultUidVerifyFeedback" style="display: none; margin-top: 8px; padding: 10px 12px; border-radius: 12px; background: #04070d; border: 1px solid #d4af37; font-size: 0.76rem;"></div>
 							</div>
 						</div>
 					</div>
@@ -588,16 +628,6 @@ $theme_uri = get_stylesheet_directory_uri();
 		</section>
 
 		<!-- 1B. DEDICATED BUYER LEAD PAGE / SELF-SERVICE VAULT (HIDDEN ON PUBLIC SALES PAGE UNTIL PAYMENT / UID VERIFICATION) -->
-		<?php
-
-		$kr_t1_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '1' ) : '-ZYdbPXenCU';
-
-		$kr_t2_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '2' ) : 'LxbjlX_nh2Q';
-
-		$kr_t3_vid = function_exists( 'keystone_get_tier_walkthrough_video_id' ) ? keystone_get_tier_walkthrough_video_id( '3' ) : '_bSpYdvm6tc';
-
-		?>
-
 		<section id="kr-self-service-portal" style="display: none; padding: 36px 0 48px 0; background: linear-gradient(180deg, #04070d 0%, #070d19 100%); border-top: 1px solid rgba(212, 175, 55, 0.35); border-bottom: 1px solid rgba(56, 189, 248, 0.28);">
 			<div class="ast-container">
 				<div style="background: rgba(8, 13, 24, 0.96); border: 1.5px solid #d4af37; border-radius: 22px; padding: 28px 26px; box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85);">
@@ -606,24 +636,30 @@ $theme_uri = get_stylesheet_directory_uri();
 					<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid rgba(212, 175, 55, 0.28);">
 						<div>
 							<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.14); border: 1px solid #d4af37; color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; margin-bottom: 8px;">
-								💎 VERIFIED BUYER VAULT UNLOCKED • UNLISTED WALKTHROUGHS, STARTER .ZIPS &amp; 12 PDFS READY
+								💎 VERIFIED BUYER VAULT UNLOCKED • UNLISTED WALKTHROUGHS, STARTER .ZIPS &amp; 12 %PDF-1.7 MANUALS READY
 							</div>
 							<h2 style="font-family: 'Outfit', sans-serif; font-size: 1.65rem; font-weight: 900; color: #ffffff; margin: 0;">
 								Your Unlocked AI Brain, ~20-Word Google Flow Video &amp; Website Implementation Vault
 							</h2>
 							<p style="color: #cbd5e1; font-size: 0.88rem; margin: 6px 0 0 0; line-height: 1.55;">
-								Everything is unlocked below and a copy has been sent to your email: watch your <strong>Step-by-Step Walkthrough Videos</strong>, follow the <strong>Visual Brain Setup Diagram</strong>, copy-paste the exact prompts into your Antigravity workspace and <strong>Google Flow</strong>, download your <strong>Step-by-Step PDF Setup Guides (<code class="kr-code-pill">%PDF-1.4</code>)</strong>, or use the <strong>Guided Setup Assistant</strong> during your active setup window.
+								Everything is unlocked below and a copy has been sent to your email: watch your <strong>Step-by-Step Walkthrough Videos</strong>, follow the <strong>Visual Brain Setup Diagram</strong>, copy-paste the exact prompts into your Antigravity workspace and <strong>Google Flow</strong>, download your <strong>Illustrated Server PDF Manuals (<code class="kr-code-pill">%PDF-1.7</code>) &amp; Combined Master Quickstart Books</strong>, or use the <strong>Guided Setup Assistant</strong> during your active setup window.
 							</p>
 						</div>
 						<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
 							<button type="button" id="backToSalesPageBtn" style="background: rgba(11, 17, 30, 0.92); border: 1px solid rgba(212, 175, 55, 0.55); color: #f6d365; border-radius: 9999px; padding: 10px 16px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
 								← Back to Product Overview
 							</button>
+							<button type="button" id="portalMasterBookQuickBtn" onclick="krDownloadMasterBook(window.krVerifiedBuyerTier || 1)" style="background: rgba(56, 189, 248, 0.16); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 10px 16px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+								📘 DOWNLOAD COMBINED MASTER BOOK (%PDF-1.7)
+							</button>
 							<a href="?vault_download=tier1_blueprint_pack" id="portalQuickZipBtn" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 10px 18px; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 900; text-decoration: none;">
 								📦 DOWNLOAD COPY-PASTE PROMPT PACK (.ZIP)
 							</a>
 						</div>
 					</div>
+
+					<!-- Dynamic 100% Dollar-for-Dollar Upgrade Credit Banner inside Verified Buyer Vault -->
+					<div id="krVaultUpgradeCreditBanner" style="display: none; margin-bottom: 20px; padding: 14px 18px; border-radius: 16px; background: linear-gradient(145deg, rgba(212, 175, 55, 0.13) 0%, rgba(4, 7, 13, 0.96) 100%); border: 1.5px solid rgba(212, 175, 55, 0.55); align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;"></div>
 
 					<!-- 6-Tab Navigation Bar -->
 					<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px;" role="tablist">
@@ -748,7 +784,7 @@ $theme_uri = get_stylesheet_directory_uri();
 										👁️ View PDF-01 On Screen
 									</button>
 									<button type="button" onclick="krDownloadRealPdf('PDF-01')" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 900; cursor: pointer;">
-										⬇ Download PDF-01 (%PDF-1.4)
+										⬇ Download PDF-01 (%PDF-1.7)
 									</button>
 								</div>
 							</div>
@@ -998,7 +1034,7 @@ $theme_uri = get_stylesheet_directory_uri();
 										👁️ View PDF-02 On Screen
 									</button>
 									<button type="button" onclick="krDownloadRealPdf('PDF-02')" style="background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8010 100%); color: #04070d !important; border: none; border-radius: 9999px; padding: 7px 14px; font-family: 'Outfit', sans-serif; font-size: 0.74rem; font-weight: 900; cursor: pointer;">
-										⬇ Download PDF-02 (%PDF-1.4)
+										⬇ Download PDF-02 (%PDF-1.7)
 									</button>
 								</div>
 							</div>
@@ -1180,19 +1216,21 @@ Rules for every scene prompt:
 					</div>
 
 					<!-- ========================================================================= -->
-					<!-- TAB 4: MULTI-AGENT ROLE PROMPTS & B2B OUTREACH (PDF-06 TO PDF-09)         -->
+					<!-- TAB 4: 6-AGENT ROLE SUITE & B2B OUTREACH (PDF-06 TO PDF-09)               -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab4" class="kr-portal-tab-pane">
 						<div style="background: #04070d; border: 1px solid rgba(56, 189, 248, 0.45); border-radius: 18px; padding: 20px;">
-							<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULES V04–V05 &bull; SPEC SHEETS PDF-06 TO PDF-09 // TIER 02 MULTI-AGENT &amp; B2B SUITE</span>
+							<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULES V04–V05 &bull; SPEC SHEETS PDF-06 TO PDF-09 // TIER 02 6-AGENT ROLE SUITE + MULTI-AGENT ARCHITECTURE</span>
 							<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; margin: 4px 0 10px 0;">
-								Multi-Agent Role Prompts, 3-Source Fact Verification &amp; B2B Outreach Templates
+								6-Agent Role Suite + Multi-Agent Architecture, 3-Source Fact Verification &amp; B2B Outreach Templates
 							</h3>
 							<p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.6; margin: 0 0 14px 0;">
-								Instead of overloading one chat window until it forgets your instructions, Tier 02 gives you dedicated <strong>Subagent Role Prompts</strong> (Researcher, Scriptwriter, Web Builder, Quality Checker, and B2B Outreach Specialist) plus our <strong>Locked Top-and-Bottom Logo HTML Email Template</strong>.
+								Instead of overloading one chat window until it forgets your instructions, Tier 02 unlocks the <strong>6-Agent Role Suite + Multi-Agent Architecture</strong> (Research Scout, Source Challenger, Video Scriptwriter, Dark-Luxury Web Engineer, B2B Outreach Specialist, and Boss QA Auditor) plus our <strong>Locked Crest HTML Email Template</strong>.
 							</p>
 							<div style="display: flex; gap: 8px; flex-wrap: wrap;">
-								<div style="width: 100%; margin-bottom: 14px; position: relative; padding-bottom: 56.25%; height: 0; background: #02050a; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(56, 189, 248, 0.45);"><iframe id="krVideoPlayerV04" src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t2_vid ); ?>?start=145&amp;rel=0" title="Tier 02 Unlisted Buyer Walkthrough — Multi-Agent Role Prompts, 3-Source Research Gate &amp; B2B Outreach (5m 28s)" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div><button type="button" onclick="krOpenSpecModal('PDF-06')" class="kr-copy-btn">👁️ PDF-06: Subagent Role Prompts</button>
+								<div style="width: 100%; margin-bottom: 14px; position: relative; padding-bottom: 56.25%; height: 0; background: #02050a; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(56, 189, 248, 0.45);"><iframe id="krVideoPlayerV04" src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t2_vid ); ?>?start=145&amp;rel=0" title="Tier 02 Unlisted Buyer Walkthrough — 6-Agent Role Suite, 3-Source Research Gate &amp; B2B Outreach (5m 28s)" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+								<button type="button" onclick="krDownloadMasterBook(2)" class="kr-copy-btn">📘 Download All 5 Tier 02 Guides Combined (%PDF-1.7)</button>
+								<button type="button" onclick="krOpenSpecModal('PDF-06')" class="kr-copy-btn">👁️ PDF-06: 6-Agent Role Suite</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-07')" class="kr-copy-btn">👁️ PDF-07: 3-Source Research Gate</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-08')" class="kr-copy-btn">👁️ PDF-08: B2B Outreach &amp; DNS Gate</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-09')" class="kr-copy-btn">👁️ PDF-09: Branded HTML Email Shell</button>
@@ -1201,27 +1239,30 @@ Rules for every scene prompt:
 					</div>
 
 					<!-- ========================================================================= -->
-					<!-- TAB 5: CUSTOM TAURI DESKTOP APP BUILD & COMMAND CENTER (PDF-10..12)       -->
+					<!-- TAB 5: COMPLETE RUNNABLE RUST + TAURI v2 SOURCE & .EXE COMPILER           -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab5" class="kr-portal-tab-pane">
 						<div style="background: #04070d; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 18px; padding: 20px;">
-							<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULE V06 &bull; SPEC SHEETS PDF-10 TO PDF-12 // TIER 03 TAURI DESKTOP APP BUILD</span>
+							<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800;">MODULE V06 &bull; SPEC SHEETS PDF-10 TO PDF-12 // TIER 03 RUNNABLE RUST + TAURI v2 DESKTOP SOURCE (.EXE)</span>
 							<h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 900; margin: 4px 0 10px 0;">
-								Building &amp; Compiling Your Custom Tauri Desktop App (.exe) Connected to Your AI Brain
+								Complete Runnable Rust + Tauri v2 Desktop Command Center Source Project + 1-Command Windows .EXE Compiler
 							</h3>
 							<p style="color: #cbd5e1; font-size: 0.86rem; line-height: 1.6; margin: 0 0 14px 0;">
-								Set up your local Rust + Tauri + React desktop app project inside your AI Brain workspace, design custom dashboard tabs and one-click action buttons, and compile your standalone Windows <code class="kr-code-pill-gold">.exe</code> command center.
+								Unpack the complete runnable <code class="kr-code-pill">src-tauri/</code> Rust + Tauri v2 desktop command center project inside your AI Brain workspace, customize your dark-luxury dashboard tabs and action buttons, and run the 1-command Windows <code class="kr-code-pill-gold">.exe</code> compiler with 14-Day Guided Build Support.
 							</p>
 							<div style="display: flex; gap: 8px; flex-wrap: wrap;">
-								<div style="width: 100%; margin-bottom: 14px; position: relative; padding-bottom: 56.25%; height: 0; background: #02050a; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(212, 175, 55, 0.45);"><iframe id="krVideoPlayerV05" src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t3_vid ); ?>?rel=0" title="Tier 03 Unlisted Buyer Walkthrough — Standalone Windows .EXE Tauri v2 Desktop Command Center (6m 00s)" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div><a href="?vault_download=tier3_workstation_pack" class="kr-copy-btn" style="text-decoration: none;">📦 Download Tier 03 Tauri v2 Starter (.ZIP)</a><button type="button" onclick="krOpenSpecModal('PDF-10')" class="kr-copy-btn">👁️ PDF-10: Tauri App Project Setup</button>
+								<div style="width: 100%; margin-bottom: 14px; position: relative; padding-bottom: 56.25%; height: 0; background: #02050a; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(212, 175, 55, 0.45);"><iframe id="krVideoPlayerV05" src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $kr_t3_vid ); ?>?rel=0" title="Tier 03 Unlisted Buyer Walkthrough — Complete Runnable Rust + Tauri v2 Desktop Command Center Source &amp; .EXE Compiler (5m 54s)" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+								<a href="?vault_download=tier3_workstation_pack" id="portalTab5ZipBtn" onclick="return krHandleVaultAnchorClick(event, 'tier3_workstation_pack', 3)" class="kr-copy-btn" style="text-decoration: none;">📦 Download Runnable Tauri v2 Source (.ZIP)</a>
+								<button type="button" onclick="krDownloadMasterBook(3)" class="kr-copy-btn">📘 Download All 3 Tier 03 Guides Combined (%PDF-1.7)</button>
+								<button type="button" onclick="krOpenSpecModal('PDF-10')" class="kr-copy-btn">👁️ PDF-10: Tauri v2 Source Setup</button>
 								<button type="button" onclick="krOpenSpecModal('PDF-11')" class="kr-copy-btn">👁️ PDF-11: Custom Tabs &amp; Buttons UI</button>
-								<button type="button" onclick="krOpenSpecModal('PDF-12')" class="kr-copy-btn">👁️ PDF-12: Compiling Your .EXE Release</button>
+								<button type="button" onclick="krOpenSpecModal('PDF-12')" class="kr-copy-btn">👁️ PDF-12: 1-Command .EXE Compiler</button>
 							</div>
 						</div>
 					</div>
 
 					<!-- ========================================================================= -->
-					<!-- TAB 6: GUIDED SETUP ASSISTANT + ALL 12 BREAKDOWN SPEC PDFs                -->
+					<!-- TAB 6: GUIDED SETUP ASSISTANT + COMBINED MASTER BOOKS + ALL 12 PDFs       -->
 					<!-- ========================================================================= -->
 					<div id="kr-portal-pane-tab6" class="kr-portal-tab-pane">
 						<div id="krAiTutorPanel" style="background: linear-gradient(145deg, #0b1324 0%, #050911 100%); border: 1.5px solid #38bdf8; border-radius: 18px; padding: 22px; margin-bottom: 20px;">
@@ -1263,10 +1304,39 @@ Rules for every scene prompt:
 							<div id="krTutorAnswerBox" style="display: none; margin-top: 14px; background: #04070d; border: 1px solid #d4af37; border-radius: 14px; padding: 16px;"></div>
 						</div>
 
+						<!-- Combined Master Quickstart Books (%PDF-1.7) -->
+						<div style="background: #04070d; border: 1.5px solid rgba(56, 189, 248, 0.42); border-radius: 18px; padding: 18px 20px; margin-bottom: 16px;">
+							<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+								<div>
+									<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.69rem; font-weight: 800;">📘 COMBINED MASTER QUICKSTART BOOKS // ILLUSTRATED SERVER %PDF-1.7 EDITION</span>
+									<h4 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 1.06rem; font-weight: 900; margin: 3px 0 0 0;">
+										Download All Guides for Each Tier in One Printable Master Book
+									</h4>
+								</div>
+							</div>
+							<div id="krMasterPdfBooksRow" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px;">
+								<a href="?vault_download=tier1_pdf_master" data-master-slug="tier1_pdf_master" onclick="return krHandleMasterBookClick(event, 1)" style="display: flex; flex-direction: column; gap: 4px; background: #081020; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 14px; padding: 12px 14px; text-decoration: none; color: #f8fafc;">
+									<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800;">TIER 01 MASTER BOOK • %PDF-1.7</span>
+									<strong style="font-family: 'Outfit', sans-serif; font-size: 0.86rem; color: #ffffff;">All 4 Tier 01 Guides Combined</strong>
+									<span style="color: #cbd5e1; font-size: 0.74rem;">Brain Setup + ~20-Word Flow + YouTube + Website Starter</span>
+								</a>
+								<a href="?vault_download=tier2_pdf_master" data-master-slug="tier2_pdf_master" onclick="return krHandleMasterBookClick(event, 2)" style="display: flex; flex-direction: column; gap: 4px; background: #081020; border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 14px; padding: 12px 14px; text-decoration: none; color: #f8fafc;">
+									<span style="color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800;">TIER 02 MASTER BOOK • %PDF-1.7</span>
+									<strong style="font-family: 'Outfit', sans-serif; font-size: 0.86rem; color: #ffffff;">All 5 Tier 02 Guides Combined</strong>
+									<span style="color: #cbd5e1; font-size: 0.74rem;">SEO Schema + 6-Agent Suite + 3-Source Gate + B2B &amp; Email</span>
+								</a>
+								<a href="?vault_download=tier3_pdf_master" data-master-slug="tier3_pdf_master" onclick="return krHandleMasterBookClick(event, 3)" style="display: flex; flex-direction: column; gap: 4px; background: #081020; border: 1px solid rgba(56, 189, 248, 0.42); border-radius: 14px; padding: 12px 14px; text-decoration: none; color: #f8fafc;">
+									<span style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800;">TIER 03 MASTER BOOK • %PDF-1.7</span>
+									<strong style="font-family: 'Outfit', sans-serif; font-size: 0.86rem; color: #ffffff;">All 3 Tier 03 Guides Combined</strong>
+									<span style="color: #cbd5e1; font-size: 0.74rem;">Tauri v2 Source + Custom Dashboard Tabs + .EXE Compiler</span>
+								</a>
+							</div>
+						</div>
+
 						<!-- All 12 Breakdown Spec PDFs Grid -->
 						<div style="background: #04070d; border: 1px solid rgba(212, 175, 55, 0.35); border-radius: 18px; padding: 20px;">
 							<h4 style="color: #f6d365; font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 900; margin: 0 0 12px 0;">
-								📄 Complete 12-PDF Breakdown Library (View Copy-Paste Prompts On Screen or Download Real <code class="kr-code-pill">%PDF-1.4</code>)
+								📄 Complete 12-PDF Breakdown Library (View Copy-Paste Prompts On Screen or Download Real Illustrated Server <code class="kr-code-pill">%PDF-1.7</code>)
 							</h4>
 							<div id="krPdfLibraryGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px;"></div>
 						</div>
@@ -1277,12 +1347,50 @@ Rules for every scene prompt:
 		</section>
 
 		<div id="krPublicSalesSections">
+		<!-- 1C. COLD PAID-AD TAKEAWAY STRIP: WHAT HAPPENS IN 60 SECONDS AFTER VISA CHECKOUT + PREREQUISITES -->
+		<section id="krSixtySecondTakeawayStrip" style="padding: 28px 0 8px 0; background: #04070d; border-top: 1px solid rgba(56, 189, 248, 0.20);">
+			<div class="ast-container">
+				<div style="margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+					<div>
+						<span class="kr-v4-kicker"><span class="kr-v4-kicker-dot"></span> WHAT HAPPENS IN 60 SECONDS AFTER VISA CHECKOUT &middot; PREREQUISITES</span>
+						<h2 class="kr-v4-h2" style="font-size: clamp(1.3rem, 2.2vw, 1.75rem); margin-bottom: 4px;">Zero Subscriptions, Instant Delivery &amp; 100% Upgrade Credit Protected</h2>
+					</div>
+					<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800; color: #f6d365; background: rgba(212, 175, 55, 0.12); border: 1px solid rgba(212, 175, 55, 0.45); border-radius: 9999px; padding: 6px 14px;">
+						🛡️ $49.50 Credits 100% Toward $199 or $800 Anytime
+					</span>
+				</div>
+				<div class="kr-takeaway-strip-grid">
+					<div class="kr-takeaway-card kr-takeaway-card--gold">
+						<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; color: #f6d365;">01 // 0–60 SECONDS AFTER VISA</span>
+						<strong style="font-family: 'Outfit', sans-serif; font-size: 1rem; color: #ffffff;">Instant On-Screen &amp; Email Delivery</strong>
+						<span style="color: #cbd5e1; font-size: 0.82rem; line-height: 1.52;">Stripe redirects right back here, unlocks your personal <code class="kr-code-pill">KR-UID</code> Buyer Vault, streams your unlisted 4K walkthroughs, and emails your <code class="kr-code-pill-gold">.ZIP</code> + <code class="kr-code-pill">%PDF-1.7</code> manuals.</span>
+					</div>
+					<div class="kr-takeaway-card">
+						<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; color: #38bdf8;">02 // ZERO KEYSTONE MONTHLY FEES</span>
+						<strong style="font-family: 'Outfit', sans-serif; font-size: 1rem; color: #ffffff;">One-Time USD Payment + Full Credit</strong>
+						<span style="color: #cbd5e1; font-size: 0.82rem; line-height: 1.52;">Pay once ($49.50, $199, or $800 USD)—never a monthly SaaS fee to Keystone. Start at Tier 01 and credit 100% ($49.50) toward Tier 02 ($149.50 net) or Tier 03 ($750.50 net) anytime.</span>
+					</div>
+					<div class="kr-takeaway-card kr-takeaway-card--gold">
+						<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; color: #f6d365;">03 // PREREQUISITES &amp; OS SUPPORT</span>
+						<strong style="font-family: 'Outfit', sans-serif; font-size: 1rem; color: #ffffff;">No Coding Needed &bull; Mac &amp; Windows</strong>
+						<span style="color: #cbd5e1; font-size: 0.82rem; line-height: 1.52;">Tiers 01 &amp; 02 run on macOS, Windows, or Linux inside your own Google Antigravity + Google Flow workspace. Compiling the Tier 03 standalone <code class="kr-code-pill-gold">.EXE</code> uses Windows 10/11 + free Rust/Node tools.</span>
+					</div>
+					<div class="kr-takeaway-card">
+						<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 900; color: #38bdf8;">04 // GUIDED SETUP SUPPORT</span>
+						<strong style="font-family: 'Outfit', sans-serif; font-size: 1rem; color: #ffffff;">7-to-14 Day Guided Build Window</strong>
+						<span style="color: #cbd5e1; font-size: 0.82rem; line-height: 1.52;">Includes interactive AI Setup Assistant access plus direct follow-up support: 7-day window on Tiers 01–02, and 14-Day Guided Build Support + architectural review on Tier 03.</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- 2. THE 3 DEDICATED PRODUCT SHOWCASE BLOCKS -->
 		<section class="protocols-showcase-section">
 			<div class="ast-container protocols-portal-grid-container">
 
 				<!-- PRODUCT 1: $49.50 AI BRAIN & BASIC GOOGLE FLOW STARTER -->
 				<div id="tier-blueprint" class="protocol-product-block">
+					<span id="kr-tier-1" aria-hidden="true"></span>
 					<div class="product-grid">
 
 						<div class="product-media-col">
@@ -1295,6 +1403,7 @@ Rules for every scene prompt:
 											allowfullscreen loading="lazy"></iframe>
 								</div>
 								<div class="video-card-meta">
+									<div style="font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #38bdf8; margin-bottom: 4px;">@KeyStoneRecomposition &bull; AI Protocols Suite</div>
 									<span class="video-title">Wayne's Recorded Walkthrough: Setting Up Your AI Brain &amp; Basic Google Flow Example</span>
 									<span class="video-desc">Watch a clean, step-by-step walkthrough of how we organize an AI Brain inside Google Antigravity and run a basic example in Google Flow to create and export 10-second MP4 video clips.</span>
 									<span style="display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 9999px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(212, 175, 55, 0.45); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">🔓 Full 4:26 Unlisted Tier 01 Setup Walkthrough unlocks inside the Buyer Vault</span>
@@ -1312,9 +1421,9 @@ Rules for every scene prompt:
 									<span>See how to pair short scene prompts with reference images to export clean MP4 video clips.</span>
 								</div>
 								<div class="t1-highlight-pill t1-pill-gold">
-									<span class="t1-hl-tag">03 • DIRECT PDF GUIDES</span>
-									<strong>Emailed Straight to You</strong>
-									<span>Step-by-step written setup guides and starter prompts sent directly to your inbox and buyer page.</span>
+									<span class="t1-hl-tag">03 • ILLUSTRATED %PDF-1.7 BOOKS</span>
+									<strong>4 Manuals + Master Book</strong>
+									<span>Illustrated PDF setup manuals, combined quickstart book, and starter .ZIP sent straight to you.</span>
 								</div>
 								<div class="t1-highlight-pill t1-pill-blue">
 									<span class="t1-hl-tag">04 • GUIDED SETUP WINDOW</span>
@@ -1327,7 +1436,7 @@ Rules for every scene prompt:
 						<div class="product-info-col">
 							<div class="product-badge-row">
 								<span class="badge-tier-cyan">TIER 01 // FOUNDATION: AI BRAIN &amp; GOOGLE FLOW</span>
-								<span class="badge-discount-gold">ONE-TIME PAYMENT • ZERO MONTHLY FEES</span>
+								<span class="badge-discount-gold">ONE-TIME PAYMENT • 100% UPGRADE CREDIT</span>
 							</div>
 							<h2 class="product-title">AI Brain Setup &amp; Basic Google Flow Video Walkthrough</h2>
 							<div class="product-price-row">
@@ -1337,25 +1446,25 @@ Rules for every scene prompt:
 								<span class="price-original"><del>$99.00</del></span>
 							</div>
 							<p class="product-lead-copy">
-								Every build starts with a clean foundation. In Tier 01, we go over the basics to get your <strong>AI Brain</strong> organized inside Google Antigravity so it remembers your projects, and walk you through a <strong>basic example of Google Flow</strong> so you can generate and export clean 10-second video clips. One payment—we help you get set up during your 7-day setup window, and you are ready to run.
+								Every build starts with a clean foundation. In Tier 01, we organize your <strong>4-Folder AI Brain</strong> inside Google Antigravity so it remembers your projects, and walk you through a <strong>practical Google Flow video workflow</strong> (~20-word scene prompts + 3 reference chips) so you can generate and export clean 10-second MP4 clips.
 							</p>
 
 							<div class="product-deliverables-box">
 								<h4>📋 The Basics We Cover Together in Tier 01:</h4>
 								<ul>
-									<li><strong>🧠 Step 1 — Setting Up Your AI Brain:</strong> How to organize a clean AI Brain workspace in Google Antigravity so your AI remembers your voice, rules, and project files.</li>
-									<li><strong>🎬 Step 2 — Basic Google Flow Video Example:</strong> A simple walkthrough showing how to write short scene prompts, attach reference images, and export 10-second MP4 video clips.</li>
-									<li><strong>📄 Step 3 — Step-by-Step Setup Guides &amp; Starter Prompts:</strong> Clear written PDF setup guides and starter prompts sent straight to your email and buyer page.</li>
-									<li><strong>🤖 Step 4 — 7-Day Guided Setup Support (Up to 3 Follow-Up Questions):</strong> Access to our automated Setup Assistant during your 7-day setup window plus up to 3 follow-up questions—get set up once and done.</li>
+									<li><strong>🧠 Step 1 — Setting Up Your 4-Folder AI Brain:</strong> Organize a persistent AI Brain workspace (<code class="kr-code-pill">AGENTS.md</code>) in Google Antigravity so your AI remembers your voice, rules, and project files.</li>
+									<li><strong>🎬 Step 2 — ~20-Word Google Flow Video Walkthrough:</strong> Pair 18–24 word scene prompts with 3 reference images and export 1080p 10-second MP4 video clips cleanly.</li>
+									<li><strong>📄 Step 3 — 4 Illustrated %PDF-1.7 Guides + Combined Master Book:</strong> Full printable manuals (<code class="kr-code-pill">PDF-01..04</code> + combined Tier 01 Master Book) and starter <code class="kr-code-pill-gold">.ZIP</code> pack unlocked immediately.</li>
+									<li><strong>🤖 Step 4 — 7-Day Guided Setup Support (Up to 3 Follow-Ups):</strong> Automated Setup Assistant + up to 3 follow-up questions, with 100% of your $49.50 credited if you upgrade later.</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
 								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="1" data-price="49.50" data-name="Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter" style="cursor: pointer; width: 100%;">
-									⚡ GET TIER 01 ONE-TIME ACCESS &amp; START SETUP →
+									⚡ GET TIER 01 ONE-TIME ACCESS &amp; START SETUP ($49.50 USD) →
 								</button>
 								<div class="checkout-trust-line">
-									💎 One-Time Payment • Recorded Walkthrough + PDF Guides • 7-Day Setup Window (3 Follow-Ups)
+									💎 One-Time Payment • 100% Credit Toward Tier 02 ($149.50 net) or Tier 03 ($750.50 net) Anytime
 								</div>
 							</div>
 						</div>
@@ -1365,22 +1474,24 @@ Rules for every scene prompt:
 
 				<!-- 2-COLUMN SIDE-BY-SIDE PORTAL GRID FOR TIER 02 ($199) & TIER 03 ($800) -->
 				<div class="portal-two-col-grid">
-				<!-- PRODUCT 2: $199 CUSTOM WEBSITE BUILD, MULTI-AGENT WORKFLOWS & BRAND CHANNEL -->
+				<!-- PRODUCT 2: $199 6-AGENT ROLE SUITE + MULTI-AGENT WEBSITE ARCHITECTURE -->
 				<div id="tier-swarm" class="protocol-product-block portal-half-card">
+					<span id="kr-tier-2" aria-hidden="true"></span>
 					<div class="product-grid">
 
 						<div class="product-media-col">
 							<div class="video-preview-card">
 								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
 									<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?start=80&amp;rel=0&amp;modestbranding=1"
-											title="Custom Website Build, Multi-Agent Workflows & Brand Channel Setup"
+											title="Tier 02: 6-Agent Role Suite + Multi-Agent Website Architecture"
 											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
 											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 											allowfullscreen loading="lazy"></iframe>
 								</div>
 								<div class="video-card-meta">
-									<span class="video-title">Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</span>
-									<span class="video-desc">How we connect your Tier 01 AI Brain to build and launch a custom dark-luxury website, set up your YouTube Brand Channel, and run multi-agent workflows.</span>
+									<div style="font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #38bdf8; margin-bottom: 4px;">@KeyStoneRecomposition &bull; AI Protocols Suite</div>
+									<span class="video-title">6-Agent Role Suite + Custom Website &amp; Brand Channel</span>
+									<span class="video-desc">Connect your Tier 01 AI Brain to launch a dark-luxury website, configure your YouTube Brand Channel, and orchestrate our 6-Agent Role Suite + Multi-Agent Architecture.</span>
 									<span style="display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 9999px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(212, 175, 55, 0.45); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">🔓 Full 5:28 Unlisted Tier 02 Multi-Agent Walkthrough unlocks inside the Buyer Vault</span>
 								</div>
 							</div>
@@ -1388,35 +1499,35 @@ Rules for every scene prompt:
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 02 // EXPANSION: WEBSITE &amp; MULTI-AGENT</span>
+								<span class="badge-tier-cyan">TIER 02 // EXPANSION: 6-AGENT SUITE &amp; WEBSITE</span>
 								<span class="badge-discount-gold">ONE-TIME PAYMENT • INCLUDES TIER 01</span>
 							</div>
-							<h2 class="product-title">Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</h2>
+							<h2 class="product-title">6-Agent Role Suite + Multi-Agent Website &amp; Brand Channel</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">199</span>
 								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
-								Builds directly on Tier 01. Once your AI Brain is organized, Tier 02 walks you through using that Brain to build and launch your <strong>custom dark-luxury website</strong>, set up your <strong>YouTube Brand Channel</strong>, and run <strong>multi-agent workflows</strong> for research, writing, and SEO—all for a single one-time payment.
+								Builds directly on Tier 01. Deploy our <strong>6-Agent Role Suite + Multi-Agent Architecture</strong> alongside your <strong>custom dark-luxury website templates</strong>, Rank Math 100/100 JSON-LD SEO schema, 3-source fact verification gate, and <strong>YouTube Brand Channel</strong> defaults.
 							</p>
 
 							<div class="product-deliverables-box">
 								<h4>📋 What We Cover in Tier 02 (Includes Everything in Tier 01):</h4>
 								<ul>
-									<li><strong>🌐 Step 1 — Custom Website Build &amp; Pages:</strong> Guided setup to build and style your dark-luxury website, landing pages, and clean SEO structure using your AI Brain.</li>
-									<li><strong>🤝 Step 2 — Multi-Agent Role Workflows:</strong> Setting up specialized AI agents for research, scriptwriting, and page building so your AI never loses context.</li>
-									<li><strong>📺 Step 3 — YouTube Brand Channel Setup:</strong> Configuring your Brand Channel structure, upload defaults, and search tags to connect your videos to your site.</li>
-									<li><strong>🤖 Step 4 — 7-Day Guided Setup Support (Up to 5 Follow-Up Questions):</strong> Step-by-step PDF guides plus 7-day setup support and up to 5 follow-up questions to get your website and agents running.</li>
+									<li><strong>🤝 Step 1 — 6-Agent Role Suite + Multi-Agent Architecture:</strong> Dedicated specialist roles (Research Scout, Source Challenger, Scriptwriter, Web Engineer, B2B Outreach, and Boss QA) that keep context clean.</li>
+									<li><strong>🌐 Step 2 — Custom Dark-Luxury Website &amp; Rank Math SEO:</strong> Build high-converting Obsidian/Gold/Cyan pages, JSON-LD schema, and Google Search Console indexing workflows.</li>
+									<li><strong>📺 Step 3 — YouTube Brand Channel &amp; B2B Outreach Shell:</strong> 480-char SEO tag stacks, Upload Defaults, MX verification workflow, and Locked Crest HTML email shell (<code class="kr-code-pill">PDF-05..09</code> + Master Book).</li>
+									<li><strong>🤖 Step 4 — 7-Day Guided Setup Support (Up to 5 Follow-Ups):</strong> Includes Tier 01 + 7-day setup support (or upgrade from Tier 01 for just <strong>$149.50 USD</strong>).</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: Website Build & Multi-Agent Suite" style="cursor: pointer; width: 100%;">
-									🚀 GET TIER 02 WEBSITE &amp; MULTI-AGENT ACCESS →
+								<button type="button" class="btn-cyan-buy js-open-automated-order" data-tier="2" data-price="199" data-name="Tier 02 — $199 USD One-Time: 6-Agent Role Suite + Website Architecture" style="cursor: pointer; width: 100%;">
+									🚀 GET TIER 02 6-AGENT &amp; WEBSITE ACCESS ($199 USD) →
 								</button>
 								<div class="checkout-trust-line">
-									💎 One-Time Payment • Includes Tier 01 + Website Setup • 7-Day Setup Window (5 Follow-Ups)
+									💎 Includes Tier 01 • Tier 01 Buyers Pay Only $149.50 • Credits $199 Toward Tier 03 ($601 net)
 								</div>
 							</div>
 						</div>
@@ -1424,58 +1535,61 @@ Rules for every scene prompt:
 					</div>
 				</div>
 
-				<!-- PRODUCT 3: $800 CUSTOM TAURI DESKTOP APP BUILD & COMMAND CENTER -->
+				<!-- PRODUCT 3: $800 COMPLETE RUNNABLE RUST + TAURI v2 DESKTOP SOURCE (.EXE) -->
 				<div id="tier-workstation" class="protocol-product-block featured-product portal-half-card">
+					<span id="kr-tier-3" aria-hidden="true"></span>
 					<div class="product-grid">
 
 						<div class="product-media-col">
 							<div class="video-preview-card">
-								<div class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
-									<iframe src="https://www.youtube-nocookie.com/embed/<?php echo esc_attr( $hero_intro_vid ); ?>?start=120&amp;rel=0&amp;modestbranding=1"
-											title="Custom Tauri Desktop App Build & AI Command Center"
-											style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-											allowfullscreen loading="lazy"></iframe>
+								<div id="krTier3PreviewFacade" data-yt-preview-id="<?php echo esc_attr( $kr_t3_vid ); ?>" class="video-thumb-wrap" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px 14px 0 0; background: #04070d;">
+									<button type="button" onclick="krActivateTierVideoFacade('krTier3PreviewFacade', '<?php echo esc_js( $kr_t3_vid ); ?>')" aria-label="Play 4K Tier 03 Rust + Tauri v2 Desktop Command Center Walkthrough Preview" style="position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #04070d; cursor: pointer; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+										<img src="https://i.ytimg.com/vi/<?php echo esc_attr( $kr_t3_vid ); ?>/hqdefault.jpg" alt="Tier 03 Preview — Runnable Rust + Tauri v2 Desktop Command Center (.EXE)" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.82;" />
+										<span style="position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f6d365 0%, #d4af37 55%, #b8860b 100%); color: #04070d; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 900; padding: 11px 20px; border-radius: 9999px; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.82);">
+											▶ PREVIEW TIER 03 TAURI v2 .EXE WALKTHROUGH (5:54)
+										</span>
+									</button>
 								</div>
 								<div class="video-card-meta">
-									<span class="video-title">Custom Tauri Desktop App Build (.EXE Command Center)</span>
-									<span class="video-desc">Watch how we take your AI Brain and Website setup and build a standalone Tauri desktop application with custom dashboard tabs and one-click action buttons.</span>
-									<span style="display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 9999px; background: rgba(212, 175, 55, 0.14); border: 1px solid rgba(212, 175, 55, 0.55); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">🔓 Full 5:54 Unlisted Tier 03 Tauri .EXE Walkthrough unlocks inside the Buyer Vault</span>
+									<div style="font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; font-weight: 800; color: #f6d365; margin-bottom: 4px;">@KeyStoneRecomposition &bull; AI Protocols Suite</div>
+									<span class="video-title">Complete Runnable Rust + Tauri v2 Desktop Command Center (.EXE)</span>
+									<span class="video-desc">Click above to preview Wayne's 5:54 walkthrough of the runnable Rust + Tauri v2 desktop source project, custom dark-luxury tabs, and 1-command Windows .EXE compiler.</span>
+									<span style="display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 9999px; background: rgba(212, 175, 55, 0.14); border: 1px solid rgba(212, 175, 55, 0.55); color: #f6d365; font-family: 'JetBrains Mono', monospace; font-size: 0.70rem; font-weight: 800;">🔓 Unlocks All 3 Tiers + Runnable src-tauri Source ZIP + All 12 %PDF-1.7 Manuals</span>
 								</div>
 							</div>
 						</div>
 
 						<div class="product-info-col">
 							<div class="product-badge-row">
-								<span class="badge-tier-cyan">TIER 03 // CAPSTONE: TAURI DESKTOP APP BUILD</span>
+								<span class="badge-tier-cyan">TIER 03 // CAPSTONE: RUNNABLE RUST + TAURI v2 SOURCE</span>
 								<span class="badge-capacity-alert">ONE-TIME PAYMENT • INCLUDES TIERS 01 &amp; 02</span>
 							</div>
-							<h2 class="product-title">Custom Tauri Desktop App Build &amp; Standalone .EXE Command Center</h2>
+							<h2 class="product-title">Complete Runnable Rust + Tauri v2 Desktop Source &amp; 1-Command .EXE Compiler</h2>
 							<div class="product-price-row">
 								<span class="price-symbol">$</span>
 								<span class="price-val">800</span>
 								<span class="price-currency">USD • ONE-TIME PAYMENT</span>
 							</div>
 							<p class="product-lead-copy">
-								The flagship desktop capstone that ties your whole system together. Includes everything in Tiers 01 and 02, plus we walk you through building and compiling your own standalone <strong>Tauri Desktop App (<code class="kr-code-pill-gold">.exe</code>)</strong>—giving you a custom desktop control panel with tabs and action buttons wired to your AI Brain and Website.
+								The complete sovereign desktop stack. Includes everything in Tiers 01 and 02 plus the <strong>Complete Runnable Rust + Tauri v2 Desktop Command Center Source Project</strong> (<code class="kr-code-pill">Cargo.toml</code>, <code class="kr-code-pill">src-tauri/</code>, dark-luxury UI tabs) and our <strong>1-Command Windows <code class="kr-code-pill-gold">.EXE</code> Compiler</strong> with <strong>14-Day Guided Build Support</strong>.
 							</p>
 
 							<div class="product-deliverables-box">
 								<h4>🖥️ What We Cover in Tier 03 (Includes Tiers 01 &amp; 02):</h4>
 								<ul>
-									<li><strong>🖥️ Step 1 — Tauri Desktop App Project Setup:</strong> How to initialize a clean Rust + Tauri + React desktop app project directly inside your Google Antigravity AI Brain workspace.</li>
-									<li><strong>🎛️ Step 2 — Custom Dashboard Tabs &amp; Action Buttons:</strong> Designing a dark-luxury desktop UI with custom navigation tabs, status badges, and one-click workflow buttons.</li>
-									<li><strong>⚙️ Step 3 — Compiling Your Standalone Windows .EXE:</strong> Step-by-step walkthrough to compile and launch your finished desktop app on your own computer.</li>
-									<li><strong>🤖 Step 4 — 14-Day Guided Setup Support (Up to 8 Follow-Up Questions):</strong> Unlocks all 3 tiers of walkthroughs and PDF guides plus a 14-day setup window and up to 8 follow-up questions.</li>
+									<li><strong>🖥️ Step 1 — Complete Runnable Rust + Tauri v2 Source Project:</strong> Ready-to-build <code class="kr-code-pill">src-tauri/</code> Rust backend + dark-luxury command center frontend inside your AI Brain workspace.</li>
+									<li><strong>🎛️ Step 2 — Custom Dashboard Tabs &amp; One-Click Action Buttons:</strong> Wire custom navigation tabs, status telemetry, and 1-click workflow buttons to your AI Brain and Website.</li>
+									<li><strong>⚙️ Step 3 — 1-Command Windows .EXE Compiler + All 12 PDFs:</strong> Run the included PowerShell release compiler to build your standalone Windows <code class="kr-code-pill-gold">.exe</code> binary (<code class="kr-code-pill">PDF-10..12</code> + Master Books).</li>
+									<li><strong>🤖 Step 4 — 14-Day Guided Build Support (Up to 8 Follow-Ups):</strong> Direct setup &amp; architectural review window (Tier 01 buyers upgrade for <strong>$750.50</strong>; Tier 02 buyers upgrade for <strong>$601.00</strong>).</li>
 								</ul>
 							</div>
 
 							<div class="product-checkout-box">
-								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Custom Tauri Desktop App Build" style="cursor: pointer; width: 100%;">
-									🖥️ GET TIER 03 TAURI DESKTOP APP ACCESS →
+								<button type="button" class="btn-gold-buy js-open-automated-order" data-tier="3" data-price="800" data-name="Tier 03 — $800 USD One-Time: Runnable Rust + Tauri v2 Desktop Source (.EXE)" style="cursor: pointer; width: 100%;">
+									🖥️ GET TIER 03 TAURI v2 SOURCE &amp; .EXE ACCESS ($800 USD) →
 								</button>
 								<div class="checkout-trust-line">
-									🏛️ One-Time Payment • Unlocks All 3 Tiers • 14-Day Setup Window (8 Follow-Ups)
+									🏛️ Unlocks All 3 Tiers • 14-Day Guided Build Support • Upgrade Credit Eligible ($750.50 / $601 net)
 								</div>
 							</div>
 						</div>
@@ -1493,7 +1607,7 @@ Rules for every scene prompt:
 				<div class="competitive-matrix-card">
 					<div class="matrix-header">
 						<span class="matrix-tag">THE 3-TIER SYNERGY BENCHMARK</span>
-						<h3 class="matrix-title">How Your AI Brain, Custom Website &amp; Tauri Desktop App Fit Together</h3>
+						<h3 class="matrix-title">How Your AI Brain, 6-Agent Website Suite &amp; Tauri v2 Desktop App Fit Together</h3>
 						<p class="matrix-desc">
 							"When you pour concrete or frame high-load timber structures, every phase builds on a level foundation. In our 3-tier AI system, your Brain powers your Website, and your Tauri Desktop App controls it all." — Wayne Stevenson
 						</p>
@@ -1501,20 +1615,79 @@ Rules for every scene prompt:
 					<div class="matrix-grid">
 						<div class="matrix-col matrix-col-blue">
 							<h4>🧠 1. AI Brain &amp; Flow ($49.50)</h4>
-							<p>Start by organizing your AI Brain folders in Google Antigravity and learning how to generate and export clean 10-second MP4 video clips in Google Flow.</p>
+							<p>Organize your 4-folder AI Brain in Google Antigravity and generate clean ~20-word 10-second MP4 video clips in Google Flow.</p>
 						</div>
 						<div class="matrix-col matrix-col-gold">
-							<h4>🌐 2. Website &amp; Agents ($199)</h4>
-							<p>Use your organized AI Brain to build and launch a custom dark-luxury website, set up your YouTube Brand Channel, and run multi-agent workflows.</p>
+							<h4>🌐 2. 6-Agent + Website ($199)</h4>
+							<p>Deploy the 6-Agent Role Suite + Multi-Agent Architecture, launch a dark-luxury website, and configure your YouTube Brand Channel.</p>
 						</div>
 						<div class="matrix-col matrix-col-blue">
-							<h4>🖥️ 3. Tauri Desktop App ($800)</h4>
-							<p>Build and compile your own standalone Tauri desktop executable (.exe) with custom dashboard tabs and buttons connected to your AI Brain and Website.</p>
+							<h4>🖥️ 3. Tauri v2 Source ($800)</h4>
+							<p>Unpack the Complete Runnable Rust + Tauri v2 Desktop Command Center Source Project and compile your standalone Windows .EXE binary.</p>
 						</div>
 						<div class="matrix-col matrix-col-gold">
-							<h4>🤖 Guided Setup Window</h4>
-							<p>Every tier is a single one-time payment with recorded walkthrough videos, PDF guides, and a dedicated 7-to-14 day Guided Setup Window with follow-up Q&amp;A.</p>
+							<h4>🛡️ 100% Upgrade Credit</h4>
+							<p>Every dollar paid toward Tier 01 ($49.50) or Tier 02 ($199) credits 100% toward higher tiers anytime, backed by 7-to-14 day Guided Support.</p>
 						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 3B. VISIBLE 7-QUESTION EXECUTIVE BUYER FAQ ACCORDION (SYNCED 1:1 WITH /ai-protocols/#faq JSON-LD) -->
+		<?php
+		$kr_ai_buyer_faqs = function_exists( 'keystone_get_ai_protocols_buyer_faqs' )
+			? keystone_get_ai_protocols_buyer_faqs()
+			: array(
+				array(
+					'q' => 'What happens in the first 60 seconds after I pay with Visa or Mastercard?',
+					'a' => 'Within seconds of completing 256-bit Stripe USD checkout, you are redirected back to /ai-protocols/ where your personal Buyer KR-UID unlocks the Self-Service Buyer Vault on screen—giving you immediate access to your unlisted 4K recorded walkthrough videos, downloadable .ZIP starter packs, illustrated %PDF-1.7 setup books, and an automated backup receipt emailed straight to your inbox.',
+				),
+				array(
+					'q' => 'Do I need prior coding or terminal experience to set up Tier 01 or Tier 02?',
+					'a' => 'No prior coding is required. Every module uses copy-paste starter prompts, ready-to-drop Markdown rule files (AGENTS.md), timestamped 4K walkthrough chapters, and illustrated %PDF-1.7 manuals designed so Google Antigravity writes and organizes your folders, prompts, and website layouts step by step.',
+				),
+				array(
+					'q' => 'How does the 100% dollar-for-dollar Tier Upgrade Credit work if I start at $49.50?',
+					'a' => 'Every dollar you spend on an earlier tier is credited 100% toward higher tiers at any time using your Buyer KR-UID. Starting at Tier 01 ($49.50 USD) means upgrading later to Tier 02 ($199 USD) costs only $149.50 USD, or upgrading to Tier 03 ($800 USD) costs only $750.50 USD (and upgrading from Tier 02 to Tier 03 costs $601.00 USD).',
+				),
+				array(
+					'q' => 'Are there any recurring monthly fees or subscriptions charged by Keystone?',
+					'a' => 'Zero recurring fees to Keystone. Each tier ($49.50, $199, or $800 USD) is a single one-time purchase with permanent ownership of your downloaded .ZIP starter files and %PDF-1.7 books. You simply run the workflows inside your own Google Antigravity and Google Flow workspace.',
+				),
+				array(
+					'q' => 'Does the AI Builder Suite work on both Mac and Windows, and what are the Tier 03 .EXE prerequisites?',
+					'a' => 'Yes—Tier 01 (4-Folder AI Brain & Google Flow ~20-word video workflow) and Tier 02 (Dark-Luxury Website, SEO Schema & 6-Agent Role Suite) work identically on macOS, Windows, and Linux. Compiling the standalone Windows .EXE binary in Tier 03 uses Windows 10/11 (64-bit) with the free Microsoft WebView2, Node.js LTS, and Rust (rustup) toolchain guided step by step.',
+				),
+				array(
+					'q' => 'What exactly is inside Tier 03 ($800 USD) — is it a locked binary or runnable Rust + Tauri v2 source code?',
+					'a' => 'Tier 03 gives you the Complete Runnable Rust + Tauri v2 Desktop Command Center Source Project (Cargo.toml, src-tauri/src/main.rs, tauri.conf.json, dark-luxury UI dashboard, and 1-command Windows .EXE compiler script), plus everything in Tiers 01 and 02, all 12 illustrated %PDF-1.7 manuals, and 14-Day Guided Build Support so you own and customize your own desktop executable.',
+				),
+				array(
+					'q' => 'Can I apply a promo code at Visa checkout, and what is included in the Guided Setup Support window?',
+					'a' => 'Yes—enter a valid promo code (such as BUILDER10) on the Express Checkout card or order modal before clicking Pay with Visa / Mastercard and the discounted USD total is passed directly to Stripe. Tier 01 includes a 7-day Guided Setup Window (up to 3 follow-up questions), Tier 02 includes 7 days (up to 5 follow-ups), and Tier 03 includes 14 days of Guided Build Support (up to 8 follow-ups plus architectural review).',
+				),
+			);
+		?>
+		<section id="ai-protocols-faq" style="padding: 28px 0 40px 0; background: #04070d; border-top: 1px solid rgba(56, 189, 248, 0.18);" aria-label="AI Protocols Buyer Frequently Asked Questions">
+			<div class="ast-container">
+				<div class="kr-faq-wrap" style="max-width: 980px; margin: 0 auto;">
+					<span class="kr-v4-kicker kr-v4-kicker--gold"><span class="kr-v4-kicker-dot"></span> EXECUTIVE BUYER FAQ &middot; DELIVERY, PREREQUISITES &amp; UPGRADE CREDIT</span>
+					<h2 class="kr-v4-h2">Direct Answers Before You Unlock Your Vault</h2>
+					<p class="kr-v4-lead" style="margin-bottom: 22px;">Clear specifications on 60-second Visa delivery, Mac &amp; Windows compatibility, 100% dollar-for-dollar tier upgrade credit, and runnable Tauri v2 source ownership.</p>
+
+					<div class="kr-faq-list">
+						<?php foreach ( $kr_ai_buyer_faqs as $b_idx => $bfaq ) : ?>
+							<details class="kr-faq-item" <?php echo 0 === $b_idx ? 'open' : ''; ?>>
+								<summary>
+									<span><?php echo esc_html( $bfaq['q'] ); ?></span>
+									<span class="kr-faq-plus" aria-hidden="true">+</span>
+								</summary>
+								<div class="kr-faq-answer">
+									<?php echo esc_html( $bfaq['a'] ); ?>
+								</div>
+							</details>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
@@ -1523,7 +1696,7 @@ Rules for every scene prompt:
 	</main>
 </div>
 
-<!-- 4. ON-SCREEN BREAKDOWN SPEC PDF VIEWER MODAL (WITH 1-CLICK COPY PROMPTS & %PDF-1.4 DOWNLOAD) -->
+<!-- 4. ON-SCREEN BREAKDOWN SPEC PDF VIEWER MODAL (WITH 1-CLICK COPY PROMPTS & %PDF-1.7 SERVER DOWNLOAD) -->
 <div id="krSpecPdfModal" style="display: none; position: fixed; inset: 0; z-index: 10060; background: rgba(4, 7, 13, 0.94); align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
 	<div style="background: linear-gradient(145deg, #0b111e 0%, #050911 100%); border: 1.5px solid #d4af37; border-radius: 22px; max-width: 780px; width: 100%; padding: 26px; box-shadow: 0 24px 64px rgba(0,0,0,0.95); position: relative; color: #f8fafc; max-height: 90vh; overflow-y: auto;">
 		<button type="button" onclick="document.getElementById('krSpecPdfModal').style.display='none'" style="position: absolute; top: 16px; right: 16px; width: 34px !important; height: 34px !important; min-width: 34px !important; padding: 0 !important; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: #04070d; border: 1px solid #d4af37; color: #f6d365; font-weight: 900; cursor: pointer;">✕</button>
@@ -1532,7 +1705,7 @@ Rules for every scene prompt:
 		<div id="krSpecPdfModalBody" style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6;"></div>
 		<div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(212, 175, 55, 0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
 			<button type="button" id="krSpecPdfDownloadBtn" class="kr-copy-btn" style="padding: 10px 20px; font-size: 0.80rem;">
-				⬇ DOWNLOAD PRINTABLE PDF (%PDF-1.4)
+				⬇ DOWNLOAD ILLUSTRATED SERVER PDF (%PDF-1.7)
 			</button>
 			<button type="button" onclick="document.getElementById('krSpecPdfModal').style.display='none'" style="background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 9999px; padding: 9px 18px; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
 				Close Spec Viewer
@@ -1541,7 +1714,7 @@ Rules for every scene prompt:
 	</div>
 </div>
 
-<!-- 5. INTERACTIVE AUTOMATED INSTANT ORDER / LAUNCH RATE RESERVATION & UID VERIFICATION MODAL -->
+<!-- 5. INTERACTIVE VISA / MASTERCARD CHECKOUT & UPGRADE CREDIT MODAL -->
 <div id="automatedOrderModal" style="display: none; position: fixed; inset: 0; z-index: 10050; background: rgba(4, 7, 13, 0.92); align-items: center; justify-content: center; padding: 20px; overflow-y: auto;">
 	<div style="background: linear-gradient(145deg, #0b111e 0%, #060a12 100%); border: 1.5px solid #38bdf8; border-radius: 22px; max-width: 660px; width: 100%; padding: 28px 26px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(56, 189, 248, 0.25); position: relative; color: #f8fafc;">
 		<button type="button" id="closeAutomatedOrderModal" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-size: 1rem; font-weight: 800; cursor: pointer;">✕</button>
@@ -1553,9 +1726,11 @@ Rules for every scene prompt:
 		<h3 id="modalTierHeadline" style="font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 900; color: #ffffff; margin: 0 0 8px 0;">
 			Complete Your Order — Tier 01 ($49.50 USD: AI Brain &amp; Google Flow Starter)
 		</h3>
-		<p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.55; margin: 0 0 18px 0;">
-			Enter your full name and email below to complete secure <strong>USD Visa / Mastercard Checkout</strong> and immediately unlock your <strong>Verified Buyer UID (<code class="kr-code-pill">KR-UID-...</code>), Unlisted 4K Avatar Walkthrough Video, Printable <code class="kr-code-pill">%PDF-1.4</code> Guides, Clean-Room <code class="kr-code-pill-gold">.ZIP</code> Starter Pack &amp; Guided Setup Window</strong>—delivered on screen and straight to your inbox.
+		<p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.55; margin: 0 0 14px 0;">
+			Proceed directly to <strong>256-Bit Stripe USD Visa / Mastercard Checkout</strong> (pre-fill below or enter your email right on Stripe) to immediately unlock your <strong>Verified Buyer UID (<code class="kr-code-pill">KR-UID-...</code>), Unlisted 4K Walkthrough Video, Illustrated Server <code class="kr-code-pill">%PDF-1.7</code> Books, Clean-Room <code class="kr-code-pill-gold">.ZIP</code> Starter Pack &amp; Guided Setup Window</strong>.
 		</p>
+
+		<div id="modalUpgradeCreditBanner" style="display: none; margin-bottom: 12px; padding: 10px 14px; border-radius: 12px; background: rgba(212, 175, 55, 0.14); border: 1px solid #d4af37; color: #f8fafc; font-size: 0.78rem; line-height: 1.45;"></div>
 
 		<form id="automatedProtocolOrderForm" data-keystone-form-ignore="true" style="display: flex; flex-direction: column; gap: 12px;">
 			<input type="hidden" id="orderTierInput" name="tier" value="1" />
@@ -1563,34 +1738,45 @@ Rules for every scene prompt:
 				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #f6d365; margin-bottom: 5px;">SELECTED PROTOCOL TIER</label>
 				<select id="modalTierSelect" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 10px; color: #f8fafc; font-family: 'Outfit', sans-serif; font-size: 0.86rem; font-weight: 700; padding: 10px 12px;">
 					<option value="1">Tier 01 — $49.50 USD One-Time: AI Brain Setup &amp; Basic Google Flow Walkthrough</option>
-					<option value="2">Tier 02 — $199.00 USD One-Time: Custom Website Build, Multi-Agent Workflows &amp; Brand Channel</option>
-					<option value="3">Tier 03 — $800.00 USD One-Time: Custom Tauri Desktop App Build (.EXE Command Center)</option>
+					<option value="2">Tier 02 — $199.00 USD One-Time: 6-Agent Role Suite + Multi-Agent Website Architecture</option>
+					<option value="3">Tier 03 — $800.00 USD One-Time: Complete Runnable Rust + Tauri v2 Desktop Source (.EXE)</option>
 				</select>
 			</div>
 			<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
 				<div>
-					<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUR FULL NAME *</label>
-					<input type="text" id="orderBuyerName" required placeholder="Alex Mercer" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.86rem; padding: 10px 12px; box-sizing: border-box;" />
+					<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUR NAME (OPTIONAL)</label>
+					<input type="text" id="orderBuyerName" placeholder="Optional — or enter on Stripe" autocomplete="name" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 10px 12px; box-sizing: border-box;" />
 				</div>
 				<div>
-					<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUR EMAIL ADDRESS *</label>
-					<input type="email" id="orderBuyerEmail" required placeholder="alex@mercerbuilds.com" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.86rem; padding: 10px 12px; box-sizing: border-box;" />
+					<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">EMAIL FOR RECEIPT (OPTIONAL)</label>
+					<input type="email" id="orderBuyerEmail" placeholder="Optional — or enter on Stripe" autocomplete="email" style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 10px 12px; box-sizing: border-box;" />
 				</div>
 			</div>
+			<div style="display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: end;">
+				<div>
+					<label for="modalPromoInput" style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">PROMO CODE (OPTIONAL)</label>
+					<input type="text" id="modalPromoInput" placeholder="e.g. BUILDER10" style="width: 100%; background: #04070d; border: 1px solid rgba(212, 175, 55, 0.42); border-radius: 10px; color: #f8fafc; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; padding: 10px 12px; box-sizing: border-box;" />
+				</div>
+				<button type="button" id="modalApplyPromoBtn" style="background: rgba(212, 175, 55, 0.18); border: 1px solid #d4af37; color: #f6d365; border-radius: 10px; padding: 10px 16px; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 800; cursor: pointer;">APPLY</button>
+			</div>
+			<div id="modalPromoFeedback" style="display: none; font-size: 0.76rem; font-weight: 700;"></div>
 			<div>
-				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUTUBE CHANNEL OR WEBSITE GOALS (OPTIONAL)</label>
+				<label style="display: block; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 700; color: #cbd5e1; margin-bottom: 5px;">YOUTUBE CHANNEL OR WEBSITE GOALS (OPTIONAL)</label>
 				<input type="text" id="orderBuyerNotes" placeholder="Tell us your channel niche or website domain..." style="width: 100%; background: #04070d; border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; color: #f8fafc; font-size: 0.84rem; padding: 10px 12px; box-sizing: border-box;" />
 			</div>
 			<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
 				<button type="button" id="submitStripeCardBtn" style="background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8010 100%); color: #04070d !important; font-family: 'Outfit', sans-serif; font-size: 0.94rem; font-weight: 900; letter-spacing: 0.04em; padding: 14px 22px; border-radius: 9999px; border: none; cursor: pointer; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4); display: flex; align-items: center; justify-content: center; gap: 8px;">
 					<span>💳</span> <span id="stripeCardBtnText">PAY WITH VISA / MASTERCARD &amp; UNLOCK VAULT ($49.50 USD) →</span>
 				</button>
+				<?php if ( ! $kr_visa_live ) : ?>
 				<button type="submit" id="submitAutomatedOrderBtn" style="background: rgba(11, 17, 30, 0.9); border: 1px solid rgba(56, 189, 248, 0.5); color: #38bdf8; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.04em; padding: 11px 18px; border-radius: 9999px; cursor: pointer;">
-					🔒 OR RESERVE LAUNCH RATE WITH ZERO PAYMENT TODAY →
+					🔒 DEV FALLBACK: RESERVE LAUNCH RATE →
 				</button>
+				<?php endif; ?>
+				<div id="modalCheckoutFeedback" style="display: none; margin-top: 4px; padding: 10px 12px; border-radius: 12px; background: rgba(4, 7, 13, 0.96); border: 1px solid #38bdf8; font-size: 0.78rem; color: #f8fafc; line-height: 1.45;"></div>
 			</div>
-			<div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; margin-top: 4px;">
-				<span>🛡️ 256-Bit Encrypted Stripe Hosted Checkout</span> &bull; <span>🇺🇸 USD Funds</span> &bull; <span>⚡ Immediate Vault Unlock</span>
+			<div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.72rem; color: #94a3b8; font-family: 'JetBrains Mono', monospace; margin-top: 4px; flex-wrap: wrap;">
+				<span>🛡️ 256-Bit Encrypted Stripe Checkout</span> &bull; <span>🇺🇸 USD Funds</span> &bull; <span>💎 100% Upgrade Credit Protected</span>
 			</div>
 		</form>
 
@@ -1617,13 +1803,40 @@ Rules for every scene prompt:
 	</div>
 </div>
 
-<!-- 6. SELF-SERVICE PORTAL, 12 SPEC PDF ENGINE (%PDF-1.4), COPY-PASTE HELPERS, INTAKE FORM & GUIDED SETUP ASSISTANT SCRIPT -->
+<!-- 6. SELF-SERVICE PORTAL, REAL SERVER %PDF-1.7 DOWNLOAD ENGINE, UPGRADE CREDIT & GUIDED SETUP ASSISTANT SCRIPT -->
 <script>
+window.KR_VISA_LIVE = <?php echo $kr_visa_live ? 'true' : 'false'; ?>;
+
+window.krActivateTierVideoFacade = function(containerId, videoId) {
+	const wrap = document.getElementById(containerId);
+	if (!wrap || !videoId) return;
+	wrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0&modestbranding=1" title="Tier 03 Walkthrough Preview" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+};
+
+const KR_PDF_SERVER_SLUGS = {
+	'PDF-01': 'tier1_pdf_01',
+	'PDF-02': 'tier1_pdf_02',
+	'PDF-03': 'tier1_pdf_03',
+	'PDF-04': 'tier1_pdf_04',
+	'PDF-05': 'tier2_pdf_05',
+	'PDF-06': 'tier2_pdf_06',
+	'PDF-07': 'tier2_pdf_07',
+	'PDF-08': 'tier2_pdf_08',
+	'PDF-09': 'tier2_pdf_09',
+	'PDF-10': 'tier3_pdf_10',
+	'PDF-11': 'tier3_pdf_11',
+	'PDF-12': 'tier3_pdf_12',
+	'MASTER-T1': 'tier1_pdf_master',
+	'MASTER-T2': 'tier2_pdf_master',
+	'MASTER-T3': 'tier3_pdf_master'
+};
+
 const KR_SPEC_PDF_CATALOG = {
 	'PDF-01': {
 		id: 'PDF-01',
+		serverSlug: 'tier1_pdf_01',
 		tier: 'Tier 01 ($49.50)',
-		filename: 'KR_01_Antigravity_30_Plan_And_Visual_Brain_Setup_Diagram.pdf',
+		filename: 'KR_T1_01_Antigravity_Brain_Architecture_Guide.pdf',
 		title: 'PDF-01: $30 Antigravity Plan & Visual 4-Folder AI Brain Setup Diagram',
 		steps: [
 			'Step 1: Subscribe to the $30/mo Google Antigravity plan and open a new local folder named My_AI_Brain.',
@@ -1636,8 +1849,9 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-02': {
 		id: 'PDF-02',
+		serverSlug: 'tier1_pdf_02',
 		tier: 'Tier 01 ($49.50)',
-		filename: 'KR_02_Google_Flow_20_Word_Video_Prompt_And_Export_Guide.pdf',
+		filename: 'KR_T1_02_Google_Flow_20_Word_Video_Manual.pdf',
 		title: 'PDF-02: Generating ~20-Word (18-24 Word) Google Flow Video Prompts & Exporting MP4s',
 		steps: [
 			'Step 1: Open Google Flow and upload 3 reference images (1 Headshot photo, 1 Outfit photo, 1 Studio Room photo).',
@@ -1650,8 +1864,9 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-03': {
 		id: 'PDF-03',
+		serverSlug: 'tier1_pdf_03',
 		tier: 'Tier 01 ($49.50)',
-		filename: 'KR_03_YouTube_Brand_Channel_Upload_Defaults_And_Tags.pdf',
+		filename: 'KR_T1_03_YouTube_Brand_Channel_480Tag_Guide.pdf',
 		title: 'PDF-03: YouTube Brand Channel Setup, Upload Defaults & 480-Character Tag Stack',
 		steps: [
 			'Step 1: Visit youtube.com/channel_switcher and create a dedicated Brand Account for your business channel.',
@@ -1664,8 +1879,9 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-04': {
 		id: 'PDF-04',
+		serverSlug: 'tier1_pdf_04',
 		tier: 'Tier 01 ($49.50)',
-		filename: 'KR_04_Copy_Paste_Antigravity_Website_Builder_Prompts.pdf',
+		filename: 'KR_T1_04_Dark_Luxury_Website_Starter_Guide.pdf',
 		title: 'PDF-04: Copy-Paste Antigravity Website Builder Prompts (#04070d Dark-Luxury UI)',
 		steps: [
 			'Step 1: Open your 03_Website_Builder folder inside Google Antigravity.',
@@ -1678,8 +1894,9 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-05': {
 		id: 'PDF-05',
+		serverSlug: 'tier2_pdf_05',
 		tier: 'Tier 02 ($199)',
-		filename: 'KR_05_SEO_Article_Generator_RankMath_And_GSC_Indexing.pdf',
+		filename: 'KR_T2_05_RankMath_100_SEO_Schema_GSC_Guide.pdf',
 		title: 'PDF-05: Turning Video Scripts into SEO Articles, JSON-LD Schema & Google Search Console',
 		steps: [
 			'Step 1: Paste your video script into Antigravity using the Video-to-Article Prompt below.',
@@ -1692,21 +1909,23 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-06': {
 		id: 'PDF-06',
+		serverSlug: 'tier2_pdf_06',
 		tier: 'Tier 02 ($199)',
-		filename: 'KR_06_Multi_Agent_Role_Templates_And_Workflow.pdf',
-		title: 'PDF-06: Multi-Agent Role Prompt Templates (Researcher, Scriptwriter, Builder, QA)',
+		filename: 'KR_T2_06_Multi_Agent_Role_Templates_Manual.pdf',
+		title: 'PDF-06: 6-Agent Role Suite + Multi-Agent Architecture Templates',
 		steps: [
-			'Step 1: Create dedicated role files inside 01_Brain_Rules/roles/ so each specialist has a clean job description.',
-			'Step 2: Use the Speed Researcher role for fact discovery and the Builder role for clean HTML/CSS/PHP output.',
-			'Step 3: Run a final QA Reviewer pass before publishing any video script or landing page.'
+			'Step 1: Create dedicated role files inside 01_Brain_Rules/roles/ for all 6 specialist roles.',
+			'Step 2: Pair the Research Scout and Source Challenger before invoking the Scriptwriter and Website Engineer.',
+			'Step 3: Run the Boss QA Auditor pass before publishing any video script, outreach batch, or landing page.'
 		],
-		copyPromptLabel: 'COPY-PASTE MULTI-AGENT ROLE INITIALIZER PROMPT',
-		copyPrompt: 'Create 4 specialized subagent role prompt files in 01_Brain_Rules/roles/: 01_Researcher.md, 02_Video_Scriptwriter.md, 03_Website_Engineer.md, and 04_QA_Auditor.md with strict input/output checklists for each role.'
+		copyPromptLabel: 'COPY-PASTE 6-AGENT ROLE SUITE INITIALIZER PROMPT',
+		copyPrompt: 'Create 6 specialized subagent role prompt files in 01_Brain_Rules/roles/: 01_Research_Scout.md, 02_Source_Challenger.md, 03_Video_Scriptwriter.md, 04_Website_Engineer.md, 05_B2B_Outreach_Specialist.md, and 06_Boss_QA_Auditor.md with strict input/output checklists.'
 	},
 	'PDF-07': {
 		id: 'PDF-07',
+		serverSlug: 'tier2_pdf_07',
 		tier: 'Tier 02 ($199)',
-		filename: 'KR_07_Three_Source_Fact_Verification_Protocol.pdf',
+		filename: 'KR_T2_07_Three_Source_Verification_Protocol.pdf',
 		title: 'PDF-07: The 3-Source Fact Verification Protocol (Zero Hallucinations)',
 		steps: [
 			'Step 1: Require every statistic, code snippet, or industry regulation to be confirmed across 3 independent sources.',
@@ -1717,9 +1936,10 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-08': {
 		id: 'PDF-08',
+		serverSlug: 'tier2_pdf_08',
 		tier: 'Tier 02 ($199)',
-		filename: 'KR_08_B2B_Lead_Verification_And_Outreach_Workflow.pdf',
-		title: 'PDF-08: B2B Client Outreach & Domain Email Verification Workflow',
+		filename: 'KR_T2_08_B2B_MX_Outreach_Pipeline_Manual.pdf',
+		title: 'PDF-08: B2B Client Outreach & Domain MX Email Verification Workflow',
 		steps: [
 			'Step 1: Build a clean prospect list with company name, decision-maker role, and website domain.',
 			'Step 2: Verify the recipient domain has valid MX mail records before sending outreach.',
@@ -1730,8 +1950,9 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-09': {
 		id: 'PDF-09',
+		serverSlug: 'tier2_pdf_09',
 		tier: 'Tier 02 ($199)',
-		filename: 'KR_09_Locked_Crest_Logo_HTML_Email_Template.pdf',
+		filename: 'KR_T2_09_Locked_Crest_HTML_Email_Guide.pdf',
 		title: 'PDF-09: Locked Top-and-Bottom Logo HTML Email Shell (#04070d & #d4af37)',
 		steps: [
 			'Step 1: Wrap every automated welcome email and client reply in a consistent Obsidian & Gold HTML table.',
@@ -1742,39 +1963,42 @@ const KR_SPEC_PDF_CATALOG = {
 	},
 	'PDF-10': {
 		id: 'PDF-10',
+		serverSlug: 'tier3_pdf_10',
 		tier: 'Tier 03 ($800)',
-		filename: 'KR_10_Custom_Tauri_Desktop_App_Project_Setup.pdf',
-		title: 'PDF-10: Custom Tauri Desktop App Architecture & Project Setup',
+		filename: 'KR_T3_10_Tauri_v2_Rust_Architecture_Setup.pdf',
+		title: 'PDF-10: Runnable Rust + Tauri v2 Desktop Command Center Source Setup',
 		steps: [
-			'Step 1: Install Rust and Node.js prerequisites and initialize your Tauri + React desktop app folder inside your AI Brain workspace.',
+			'Step 1: Install Rust and Node.js prerequisites and unpack the runnable src-tauri/ desktop source folder inside your AI Brain workspace.',
 			'Step 2: Configure tauri.conf.json with your custom window title, dark-luxury dimensions, and desktop app icon.'
 		],
-		copyPromptLabel: 'COPY-PASTE TAURI PROJECT INITIALIZATION PROMPT',
-		copyPrompt: 'Initialize a clean Tauri + React desktop application inside my AI Brain workspace with a dark-luxury #04070d theme, custom window header, and modular tab navigation.'
+		copyPromptLabel: 'COPY-PASTE TAURI v2 SOURCE INITIALIZATION PROMPT',
+		copyPrompt: 'Initialize and verify my runnable Rust + Tauri v2 desktop command center source project inside my AI Brain workspace with a dark-luxury #04070d theme, custom window header, and modular tab navigation.'
 	},
 	'PDF-11': {
 		id: 'PDF-11',
+		serverSlug: 'tier3_pdf_11',
 		tier: 'Tier 03 ($800)',
-		filename: 'KR_11_Tauri_Dashboard_Tabs_And_Action_Buttons.pdf',
+		filename: 'KR_T3_11_Dark_Luxury_Dashboard_Tabs_UI_Guide.pdf',
 		title: 'PDF-11: Building Custom Dashboard Tabs & One-Click Action Buttons',
 		steps: [
 			'Step 1: Create dedicated dashboard tabs for your AI Brain workspace, Website links, and daily workflow checklists.',
-			'Step 2: Wire one-click action buttons in your Tauri UI to launch your key project folders, prompts, and browser tools.'
+			'Step 2: Wire one-click action buttons in your Tauri v2 UI to launch your key project folders, prompts, and browser tools.'
 		],
 		copyPromptLabel: 'COPY-PASTE TAURI DASHBOARD UI PROMPT',
 		copyPrompt: 'Build a 3-tab dark-luxury command center UI in my Tauri desktop app featuring pure-black #04070d cards, gold #d4af37 and blue #38bdf8 borders, and one-click action buttons.'
 	},
 	'PDF-12': {
 		id: 'PDF-12',
+		serverSlug: 'tier3_pdf_12',
 		tier: 'Tier 03 ($800)',
-		filename: 'KR_12_Compiling_Your_Standalone_Windows_EXE_App.pdf',
-		title: 'PDF-12: Compiling & Launching Your Standalone Windows .EXE Desktop App',
+		filename: 'KR_T3_12_Windows_EXE_Release_Compiler_Manual.pdf',
+		title: 'PDF-12: Running the 1-Command Windows .EXE Release Compiler',
 		steps: [
-			'Step 1: Run the production build command inside Google Antigravity to verify zero TypeScript or Rust compiler warnings.',
-			'Step 2: Package your standalone Windows .exe binary and pin your custom desktop command center to your taskbar.'
+			'Step 1: Run the included 1-command Windows .EXE compiler script inside Google Antigravity to verify zero Rust or frontend warnings.',
+			'Step 2: Launch your compiled standalone Windows .exe binary and pin your custom desktop command center to your taskbar.'
 		],
 		copyPromptLabel: 'COPY-PASTE TAURI .EXE RELEASE BUILD PROMPT',
-		copyPrompt: 'Verify all frontend and Rust dependencies in my Tauri project and run a clean production release build to output my standalone Windows .exe application.'
+		copyPrompt: 'Verify all frontend and Rust dependencies in my runnable Tauri v2 source project and execute the 1-command production release build to output my standalone Windows .exe application.'
 	}
 };
 
@@ -2072,9 +2296,82 @@ function krDownloadCustomSetupTxt() {
 	krTriggerTextFileDownload('Keystone_4_Custom_Setup_Prompts_' + safeSlug + '.txt', txtContent, 'text/plain;charset=utf-8');
 }
 
-function krEscapePdfText(str) {
-	return String(str || '').replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)').replace(/[^\x20-\x7E]/g, ' ');
+function krGetActiveBuyerUid() {
+	const inputEl = document.getElementById('existingVaultUidInput');
+	const fromInput = inputEl ? inputEl.value.trim() : '';
+	return String(window.krVerifiedBuyerUid || fromInput || '').trim();
 }
+
+function krBuildVaultDownloadUrl(packSlug) {
+	const slug = String(packSlug || 'tier1_pdf_01').trim();
+	const activeUid = krGetActiveBuyerUid();
+	return '?vault_download=' + encodeURIComponent(slug) + (activeUid ? '&uid=' + encodeURIComponent(activeUid) : '');
+}
+
+function krComputeUpgradeNetPrice(fromTier, toTier) {
+	const tierPrices = { 1: 49.50, 2: 199.00, 3: 800.00 };
+	const baseTarget = tierPrices[toTier] || 199.00;
+	const credit = (fromTier >= 1 && fromTier < toTier) ? (tierPrices[fromTier] || 0) : 0;
+	const net = Math.max(0, Math.round((baseTarget - credit) * 100) / 100);
+	return { base: baseTarget, credit: credit, net: net };
+}
+
+function krFormatUsd(val) {
+	const rounded = Math.round(Number(val || 0) * 100) / 100;
+	return rounded % 1 === 0 ? rounded.toFixed(2) : rounded.toFixed(2);
+}
+
+window.krStartCreditUpgradeCheckout = function(targetTier) {
+	const t = parseInt(targetTier, 10) || 2;
+	const activeUid = krGetActiveBuyerUid();
+	if (!activeUid) {
+		if (typeof window.krOpenOrderModalForTier === 'function') {
+			window.krOpenOrderModalForTier(t);
+		}
+		return;
+	}
+	const pCode = (document.getElementById('modalPromoInput')?.value || document.getElementById('promoInput')?.value || '').trim().toUpperCase();
+	const bName = (document.getElementById('setupBuyerName')?.value || document.getElementById('heroBuyerName')?.value || document.getElementById('orderBuyerName')?.value || '').trim();
+	const bEmail = (document.getElementById('setupBuyerEmail')?.value || document.getElementById('heroBuyerEmail')?.value || document.getElementById('orderBuyerEmail')?.value || '').trim();
+
+	fetch('/wp-json/keystone/v1/create-checkout-session', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			tier: String(t),
+			upgrade_from_uid: activeUid,
+			buyer_name: bName,
+			buyer_email: bEmail,
+			promo_code: pCode
+		})
+	})
+	.then(r => r.json())
+	.then(data => {
+		if (data && data.success && data.checkout_url) {
+			window.location.href = data.checkout_url;
+		} else if (typeof window.krOpenOrderModalForTier === 'function') {
+			window.krOpenOrderModalForTier(t);
+		}
+	})
+	.catch(() => {
+		if (typeof window.krOpenOrderModalForTier === 'function') {
+			window.krOpenOrderModalForTier(t);
+		}
+	});
+};
+
+window.krPromptTierUpgrade = function(requiredTier) {
+	const t = parseInt(requiredTier, 10) || 2;
+	const activeUid = krGetActiveBuyerUid();
+	const uTier = parseInt(window.krVerifiedBuyerTier || 0, 10);
+	if (activeUid && uTier >= 1 && uTier < t) {
+		window.krStartCreditUpgradeCheckout(t);
+		return;
+	}
+	if (typeof window.krOpenOrderModalForTier === 'function') {
+		window.krOpenOrderModalForTier(t);
+	}
+};
 
 function krDownloadRealPdf(pdfId) {
 	const spec = KR_SPEC_PDF_CATALOG[pdfId] || KR_SPEC_PDF_CATALOG['PDF-01'];
@@ -2084,63 +2381,70 @@ function krDownloadRealPdf(pdfId) {
 		window.krPromptTierUpgrade(reqTier);
 		return;
 	}
-	const lines = [
-		'KEYSTONE AI PROTOCOLS // OFFICIAL BREAKDOWN SPEC SHEET',
-		spec.id + ' - ' + spec.title,
-		'Author: Wayne Stevenson (BC Licensed Builder #52603)',
-		'Portal: https://keystonerecomposition.com/ai-protocols/',
-		'----------------------------------------------------------------------',
-		'VISUAL BRAIN SETUP DIAGRAM FLOW (PDF-01 ARCHITECTURE):',
-		'[Step 1: $30 Antigravity Plan] -> [Step 2: Paste Brain Setup Prompt #1]',
-		'-> [Creates 01_Brain_Rules, 02_Video_Prompts, 03_Website_Builder, 04_YouTube_Channel]',
-		'-> [Step 3: ~20-Word Google Flow Prompts & Export MP4] -> [Step 4: Website & YouTube]',
-		'----------------------------------------------------------------------',
-		'STEP-BY-STEP CHECKLIST:'
-	];
-	spec.steps.forEach(s => {
-		lines.push('  * ' + s.slice(0, 88));
-		if (s.length > 88) lines.push('    ' + s.slice(88, 176));
-	});
-	lines.push('----------------------------------------------------------------------');
-	lines.push(spec.copyPromptLabel + ':');
-	const promptStr = spec.copyPrompt || '';
-	for (let i = 0; i < promptStr.length; i += 82) {
-		lines.push('  ' + promptStr.slice(i, i + 82));
-	}
-
-	let streamCmds = 'BT\n/F1 10 Tf\n50 750 Td\n14 TL\n';
-	lines.forEach((ln, idx) => {
-		const escaped = krEscapePdfText(ln);
-		if (idx === 0) {
-			streamCmds += `(${escaped}) Tj\n`;
-		} else {
-			streamCmds += `T* (${escaped}) Tj\n`;
-		}
-	});
-	streamCmds += 'ET\n';
-
-	const obj1 = '1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n';
-	const obj2 = '2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n';
-	const obj3 = '3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n';
-	const obj4 = `4 0 obj\n<< /Length ${streamCmds.length} >>\nstream\n${streamCmds}endstream\nendobj\n`;
-	const obj5 = '5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n';
-
-	const header = '%PDF-1.4\n';
-	const body = obj1 + obj2 + obj3 + obj4 + obj5;
-	const fullPdf = header + body + 'xref\n0 6\n0000000000 65535 f \ntrailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n' + (header.length + body.length) + '\n%%EOF';
-
-	const blob = new Blob([fullPdf], { type: 'application/pdf' });
-	const url = URL.createObjectURL(blob);
-	const a = document.createElement('a');
-	a.href = url;
-	a.download = spec.filename || (spec.id + '.pdf');
-	document.body.appendChild(a);
-	a.click();
-	document.body.removeChild(a);
-	setTimeout(() => URL.revokeObjectURL(url), 3000);
+	const serverSlug = spec.serverSlug || KR_PDF_SERVER_SLUGS[spec.id] || 'tier1_pdf_01';
+	window.location.href = krBuildVaultDownloadUrl(serverSlug);
 }
 
+window.krDownloadMasterBook = function(tierNum) {
+	const reqTier = Math.max(1, Math.min(3, parseInt(tierNum, 10) || 1));
+	const userTier = parseInt(window.krVerifiedBuyerTier || 1, 10);
+	if (userTier < reqTier) {
+		window.krPromptTierUpgrade(reqTier);
+		return;
+	}
+	const slugMap = { 1: 'tier1_pdf_master', 2: 'tier2_pdf_master', 3: 'tier3_pdf_master' };
+	window.location.href = krBuildVaultDownloadUrl(slugMap[reqTier] || 'tier1_pdf_master');
+};
+
+window.krHandleMasterBookClick = function(ev, tierNum) {
+	if (ev && ev.preventDefault) ev.preventDefault();
+	window.krDownloadMasterBook(tierNum);
+	return false;
+};
+
+window.krHandleVaultAnchorClick = function(ev, packSlug, reqTier) {
+	if (ev && ev.preventDefault) ev.preventDefault();
+	const userTier = parseInt(window.krVerifiedBuyerTier || 1, 10);
+	if (userTier < (parseInt(reqTier, 10) || 1)) {
+		window.krPromptTierUpgrade(reqTier);
+		return false;
+	}
+	window.location.href = krBuildVaultDownloadUrl(packSlug);
+	return false;
+};
+
 document.addEventListener('DOMContentLoaded', function() {
+	function renderVaultUpgradeBanner(buyerTier) {
+		const banner = document.getElementById('krVaultUpgradeCreditBanner');
+		if (!banner) return;
+		const uTier = parseInt(buyerTier || 0, 10);
+		if (!window.krVerifiedBuyerUid || uTier <= 0 || uTier >= 3) {
+			banner.style.display = 'none';
+			return;
+		}
+		banner.style.display = 'flex';
+		if (uTier === 1) {
+			banner.innerHTML = `
+				<div>
+					<div style="color:#f6d365;font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:900;">🛡️ 100% UPGRADE CREDIT ACTIVE ON YOUR KR-UID ($49.50 USD CREDITED)</div>
+					<div style="color:#cbd5e1;font-size:0.82rem;margin-top:2px;">Your $49.50 Tier 01 purchase applies dollar-for-dollar toward Tier 02 or Tier 03 at Stripe checkout:</div>
+				</div>
+				<div style="display:flex;gap:8px;flex-wrap:wrap;">
+					<button type="button" onclick="window.krStartCreditUpgradeCheckout(2)" class="kr-copy-btn" style="padding:9px 16px;font-size:0.76rem;">🔓 Upgrade to Tier 02 &rarr; Pay Only $149.50 USD</button>
+					<button type="button" onclick="window.krStartCreditUpgradeCheckout(3)" style="background:rgba(56,189,248,0.16);border:1px solid #38bdf8;color:#38bdf8;border-radius:9999px;padding:9px 16px;font-family:'Outfit',sans-serif;font-size:0.76rem;font-weight:800;cursor:pointer;">🖥️ Upgrade to Tier 03 &rarr; Pay Only $750.50 USD</button>
+				</div>`;
+		} else if (uTier === 2) {
+			banner.innerHTML = `
+				<div>
+					<div style="color:#f6d365;font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:900;">🛡️ 100% UPGRADE CREDIT ACTIVE ON YOUR KR-UID ($199.00 USD CREDITED)</div>
+					<div style="color:#cbd5e1;font-size:0.82rem;margin-top:2px;">Your $199.00 Tier 02 purchase applies dollar-for-dollar toward the Complete Runnable Rust + Tauri v2 Desktop Source:</div>
+				</div>
+				<div>
+					<button type="button" onclick="window.krStartCreditUpgradeCheckout(3)" class="kr-copy-btn" style="padding:9px 18px;font-size:0.78rem;">🖥️ Upgrade to Tier 03 Tauri v2 Source &rarr; Pay Only $601.00 USD</button>
+				</div>`;
+		}
+	}
+
 	function renderPdfLibraryGrid(buyerTier) {
 		const pdfGrid = document.getElementById('krPdfLibraryGrid');
 		if (!pdfGrid) return;
@@ -2149,12 +2453,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			const item = KR_SPEC_PDF_CATALOG[key];
 			const reqTier = krGetRequiredTierForPdf(item.id);
 			const isLocked = uTier < reqTier;
-			const tierPriceStr = reqTier === 3 ? '$800 USD' : '$199 USD';
+			const upg = krComputeUpgradeNetPrice(uTier, reqTier);
+			const priceLabel = (window.krVerifiedBuyerUid && upg.credit > 0)
+				? ('Pay $' + krFormatUsd(upg.net) + ' w/ Credit')
+				: (reqTier === 3 ? '$800 USD' : '$199 USD');
 			const actionHtml = isLocked
-				? `<button type="button" onclick="window.krPromptTierUpgrade(${reqTier})" style="width:100%;background:rgba(212,175,55,0.14);border:1px solid #d4af37;color:#f6d365;border-radius:9999px;padding:6px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;">🔒 Locked — Upgrade to Tier 0${reqTier} (${tierPriceStr}) &rarr;</button>`
+				? `<button type="button" onclick="window.krPromptTierUpgrade(${reqTier})" style="width:100%;background:rgba(212,175,55,0.14);border:1px solid #d4af37;color:#f6d365;border-radius:9999px;padding:6px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;">🔒 Locked — Upgrade to Tier 0${reqTier} (${priceLabel}) &rarr;</button>`
 				: `<div style="display:flex;gap:6px;flex-wrap:wrap;">
 						<button type="button" onclick="krOpenSpecModal('${item.id}')" style="background:rgba(56,189,248,0.16);border:1px solid #38bdf8;color:#38bdf8;border-radius:9999px;padding:5px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;">👁️ View &amp; Copy Prompts</button>
-						<button type="button" onclick="krDownloadRealPdf('${item.id}')" style="background:rgba(212,175,55,0.18);border:1px solid #d4af37;color:#f6d365;border-radius:9999px;padding:5px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;">⬇ %PDF-1.4</button>
+						<a href="${krBuildVaultDownloadUrl(item.serverSlug)}" onclick="krDownloadRealPdf('${item.id}'); return false;" style="background:rgba(212,175,55,0.18);border:1px solid #d4af37;color:#f6d365;border-radius:9999px;padding:5px 10px;font-size:0.70rem;font-weight:800;cursor:pointer;text-decoration:none;">⬇ %PDF-1.7</a>
 					</div>`;
 			return `
 				<div data-pdf-card="${item.id}" data-required-tier="${reqTier}" data-locked="${isLocked ? '1' : '0'}" style="background:#081020;border:1px solid ${isLocked ? 'rgba(212,175,55,0.28)' : 'rgba(56,189,248,0.32)'};border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;opacity:${isLocked ? '0.78' : '1'};">
@@ -2171,11 +2478,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		const uTier = Math.max(1, Math.min(3, parseInt(buyerTier || 1, 10) || 1));
 		window.krVerifiedBuyerTier = uTier;
 		renderPdfLibraryGrid(uTier);
+		renderVaultUpgradeBanner(uTier);
+
+		const upgT2 = krComputeUpgradeNetPrice(uTier, 2);
+		const upgT3 = krComputeUpgradeNetPrice(uTier, 3);
+		const t2CtaPrice = (window.krVerifiedBuyerUid && upgT2.credit > 0) ? (`$${krFormatUsd(upgT2.net)} USD WITH $${krFormatUsd(upgT2.credit)} CREDIT`) : '$199 USD';
+		const t3CtaPrice = (window.krVerifiedBuyerUid && upgT3.credit > 0) ? (`$${krFormatUsd(upgT3.net)} USD WITH $${krFormatUsd(upgT3.credit)} CREDIT`) : '$800 USD';
 
 		const paneConfigs = [
-			{ tabId: 'tab3', reqTier: 2, price: '$199 USD', title: 'Tier 02 — Custom Website Build & YouTube Brand Channel', desc: 'Your current Tier 01 ($49.50 USD) pass unlocks Tab 1 (AI Brain Setup), Tab 2 (~20-Word Google Flow Prompts), and PDF-01 to PDF-04. Upgrade to Tier 02 ($199 USD) to unlock the Custom Dark-Luxury Website Builder, YouTube Brand Channel module, and PDF-05 to PDF-09.' },
-			{ tabId: 'tab4', reqTier: 2, price: '$199 USD', title: 'Tier 02 — Multi-Agent Role Prompts & B2B Outreach Suite', desc: 'Your current Tier 01 ($49.50 USD) pass unlocks Tab 1 & Tab 2. Upgrade to Tier 02 ($199 USD) to unlock the 5:28 Unlisted Multi-Agent Walkthrough Video, Subagent Role Prompts, B2B DNS Outreach Gate, and PDF-05 to PDF-09.' },
-			{ tabId: 'tab5', reqTier: 3, price: '$800 USD', title: 'Tier 03 — Standalone Custom Tauri Desktop App Build (.EXE Command Center)', desc: 'This flagship module is exclusive to Tier 03 ($800 USD). Upgrade to Tier 03 to unlock the 6:00 Unlisted Tauri v2 Desktop App Walkthrough, the Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip Starter Pack, and PDF-10 to PDF-12.' }
+			{ tabId: 'tab3', reqTier: 2, price: '$199 USD', ctaLabel: t2CtaPrice, title: 'Tier 02 — Custom Dark-Luxury Website & YouTube Brand Channel', desc: 'Your Tier 01 ($49.50 USD) pass applies 100% dollar-for-dollar toward Tier 02 ($199 USD — pay only $149.50 USD) to unlock the Custom Dark-Luxury Website Builder, YouTube Brand Channel module, and PDF-05 to PDF-09.' },
+			{ tabId: 'tab4', reqTier: 2, price: '$199 USD', ctaLabel: t2CtaPrice, title: 'Tier 02 — 6-Agent Role Suite + Multi-Agent Architecture & B2B Outreach', desc: 'Your Tier 01 ($49.50 USD) pass applies 100% dollar-for-dollar toward Tier 02 ($199 USD — pay only $149.50 USD) to unlock the 5:28 Unlisted Multi-Agent Walkthrough Video, 6-Agent Role Suite, B2B MX Outreach Gate, and PDF-05 to PDF-09.' },
+			{ tabId: 'tab5', reqTier: 3, price: '$800 USD', ctaLabel: t3CtaPrice, title: 'Tier 03 — Complete Runnable Rust + Tauri v2 Desktop Source (.EXE)', desc: 'Upgrade with 100% dollar-for-dollar credit from your current tier to unlock the 5:54 Unlisted Tauri v2 Walkthrough, the Complete Runnable Rust + Tauri v2 Desktop Command Center Source (.ZIP), 1-Command Windows .EXE Compiler, all 12 %PDF-1.7 manuals, and 14-Day Guided Build Support.' }
 		];
 
 		paneConfigs.forEach(cfg => {
@@ -2193,7 +2506,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				pane.innerHTML = `
 					<div style="background:linear-gradient(145deg,#09101f 0%,#04070d 100%);border:1.5px solid #d4af37;border-radius:18px;padding:32px 26px;text-align:center;max-width:680px;margin:12px auto;">
 						<div style="display:inline-block;background:rgba(212,175,55,0.16);border:1px solid #d4af37;color:#f6d365;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:900;padding:5px 14px;border-radius:9999px;margin-bottom:12px;">
-							🔒 LOCKED MODULE • REQUIRES TIER 0${cfg.reqTier} (${cfg.price} ONE-TIME)
+							🔒 LOCKED MODULE • 100% UPGRADE CREDIT ELIGIBLE
 						</div>
 						<h3 style="color:#ffffff;font-family:'Outfit',sans-serif;font-size:1.38rem;font-weight:900;margin:0 0 10px 0;">
 							${cfg.title}
@@ -2201,8 +2514,8 @@ document.addEventListener('DOMContentLoaded', function() {
 						<p style="color:#cbd5e1;font-size:0.88rem;line-height:1.6;margin:0 0 20px 0;">
 							${cfg.desc}
 						</p>
-						<button type="button" onclick="window.krPromptTierUpgrade(${cfg.reqTier})" style="background:linear-gradient(135deg,#f3e5ab 0%,#d4af37 50%,#aa8010 100%);color:#04070d !important;border:none;border-radius:9999px;padding:12px 26px;font-family:'Outfit',sans-serif;font-size:0.88rem;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(212,175,55,0.38);">
-							🔓 UPGRADE TO TIER 0${cfg.reqTier} (${cfg.price}) TO UNLOCK THIS MODULE &rarr;
+						<button type="button" onclick="window.krPromptTierUpgrade(${cfg.reqTier})" style="background:linear-gradient(135deg,#f3e5ab 0%,#d4af37 50%,#aa8010 100%);color:#04070d !important;border:none;border-radius:9999px;padding:12px 26px;font-family:'Outfit',sans-serif;font-size:0.86rem;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(212,175,55,0.38);">
+							🔓 UPGRADE TO TIER 0${cfg.reqTier} (${cfg.ctaLabel}) &rarr;
 						</button>
 					</div>`;
 				if (btn) {
@@ -2356,34 +2669,25 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 
-	// Checkout & UID Verification Logic
+	// Checkout, Promo Code, 100% Upgrade Credit & Returning-Buyer Toggle Logic
 	const tierBtns = document.querySelectorAll('.tier-select-btn');
 	const expressBuyBtn = document.getElementById('portalExpressBuyBtn');
 	const stripeCardBtn = document.getElementById('submitStripeCardBtn');
 	const stripeCardBtnText = document.getElementById('stripeCardBtnText');
 
-	function computeFinalUsdPrice(baseUsd, pctOff) {
-		if (!pctOff || pctOff <= 0) return baseUsd;
-		const baseCents = Math.round(baseUsd * 100);
-		const discCents = Math.round((baseCents * pctOff) / 100);
-		return Math.max(0, (baseCents - discCents) / 100);
-	}
-
-	function updateStripeButtonText() {
-		const finalPrice = computeFinalUsdPrice(activePrice, discountPct);
-		if (stripeCardBtnText) {
-			stripeCardBtnText.textContent = `PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(finalPrice)} USD) →`;
-		}
-	}
-
 	const promoInput = document.getElementById('promoInput');
 	const applyPromoBtn = document.getElementById('applyPromoBtn');
 	const promoFeedback = document.getElementById('promoFeedback');
+	const modalPromoInput = document.getElementById('modalPromoInput');
+	const modalApplyPromoBtn = document.getElementById('modalApplyPromoBtn');
+	const modalPromoFeedback = document.getElementById('modalPromoFeedback');
 
 	const modal = document.getElementById('automatedOrderModal');
 	const closeModalBtn = document.getElementById('closeAutomatedOrderModal');
 	const modalTierSelect = document.getElementById('modalTierSelect');
 	const modalTierHeadline = document.getElementById('modalTierHeadline');
+	const modalUpgradeCreditBanner = document.getElementById('modalUpgradeCreditBanner');
+	const modalCheckoutFeedback = document.getElementById('modalCheckoutFeedback');
 	const orderTierInput = document.getElementById('orderTierInput');
 	const orderForm = document.getElementById('automatedProtocolOrderForm');
 	const successBox = document.getElementById('orderFulfillmentSuccessBox');
@@ -2394,10 +2698,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	const fulfilledDownloadsList = document.getElementById('fulfilledDownloadsList');
 
 	const vaultUidStatusBadge = document.getElementById('vaultUidStatusBadge');
+	const returningToggleBtn = document.getElementById('krReturningBuyerToggleBtn');
+	const returningDrawer = document.getElementById('krReturningBuyerDrawer');
+	const returningChevron = document.getElementById('krReturningBuyerChevron');
 	const existingVaultUidInput = document.getElementById('existingVaultUidInput');
 	const verifyVaultUidBtn = document.getElementById('verifyVaultUidBtn');
 	const vaultUidVerifyFeedback = document.getElementById('vaultUidVerifyFeedback');
-	const launchDemoPortalBtn = document.getElementById('launchDemoPortalBtn');
 
 	let activeTier = 1;
 	let activePrice = 49.50;
@@ -2413,34 +2719,129 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	const tierNames = {
 		1: 'Tier 01 — $49.50 USD One-Time: AI Brain & Google Flow Starter',
-		2: 'Tier 02 — $199 USD One-Time: Custom Website Build & Multi-Agent Suite',
-		3: 'Tier 03 — $800 USD One-Time: Custom Tauri Desktop App Build (.EXE)'
+		2: 'Tier 02 — $199 USD One-Time: 6-Agent Role Suite + Website Architecture',
+		3: 'Tier 03 — $800 USD One-Time: Runnable Rust + Tauri v2 Desktop Source (.EXE)'
 	};
+
+	function setReturningDrawerOpen(openState) {
+		if (!returningDrawer || !returningToggleBtn) return;
+		returningDrawer.style.display = openState ? 'block' : 'none';
+		returningToggleBtn.setAttribute('aria-expanded', openState ? 'true' : 'false');
+		if (returningChevron) {
+			returningChevron.textContent = openState ? '−' : '+';
+		}
+	}
+
+	if (returningToggleBtn) {
+		returningToggleBtn.addEventListener('click', function() {
+			const isOpen = returningDrawer && returningDrawer.style.display !== 'none';
+			setReturningDrawerOpen(!isOpen);
+		});
+	}
 
 	function formatPrice(val) {
 		const rounded = Math.round(val * 100) / 100;
 		return rounded % 1 === 0 ? rounded.toFixed(0) : rounded.toFixed(2);
 	}
 
+	function computeFinalUsdPrice(baseUsd, pctOff) {
+		if (!pctOff || pctOff <= 0) return baseUsd;
+		const baseCents = Math.round(baseUsd * 100);
+		const discCents = Math.round((baseCents * pctOff) / 100);
+		return Math.max(0, (baseCents - discCents) / 100);
+	}
+
+	function getEffectiveCheckoutPricing(targetTierNum) {
+		const t = parseInt(targetTierNum, 10) || activeTier || 1;
+		const baseUsd = tierBasePrices[t] || 49.50;
+		const activeUid = krGetActiveBuyerUid();
+		const uTier = parseInt(window.krVerifiedBuyerTier || 0, 10);
+		if (window.krVerifiedBuyerUid && activeUid && uTier >= 1 && uTier < t) {
+			const upg = krComputeUpgradeNetPrice(uTier, t);
+			return {
+				isUpgrade: true,
+				upgradeUid: activeUid,
+				creditUsd: upg.credit,
+				finalUsd: computeFinalUsdPrice(upg.net, discountPct)
+			};
+		}
+		return {
+			isUpgrade: false,
+			upgradeUid: '',
+			creditUsd: 0,
+			finalUsd: computeFinalUsdPrice(baseUsd, discountPct)
+		};
+	}
+
+	function updateStripeButtonText() {
+		const modalTarget = modalTierSelect ? (parseInt(modalTierSelect.value, 10) || activeTier) : activeTier;
+		const pricing = getEffectiveCheckoutPricing(modalTarget);
+		if (stripeCardBtnText) {
+			stripeCardBtnText.textContent = pricing.isUpgrade
+				? `PAY WITH VISA / MASTERCARD — UPGRADE W/ $${formatPrice(pricing.creditUsd)} CREDIT ($${formatPrice(pricing.finalUsd)} USD) →`
+				: `PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(pricing.finalUsd)} USD) →`;
+		}
+		if (modalUpgradeCreditBanner) {
+			if (pricing.isUpgrade) {
+				modalUpgradeCreditBanner.style.display = 'block';
+				modalUpgradeCreditBanner.innerHTML = `🛡️ <strong style="color:#f6d365;">100% Upgrade Credit Applied (${pricing.upgradeUid}):</strong> Crediting <strong>$${formatPrice(pricing.creditUsd)} USD</strong> from your existing tier — your net upgrade total is <strong>$${formatPrice(pricing.finalUsd)} USD</strong>.`;
+			} else {
+				modalUpgradeCreditBanner.style.display = 'none';
+			}
+		}
+	}
+
 	function updateCTA() {
 		updateStripeButtonText();
 		if (!expressBuyBtn) return;
-		const finalPrice = computeFinalUsdPrice(activePrice, discountPct);
+		const pricing = getEffectiveCheckoutPricing(activeTier);
 		const labelText = activeTier === 3
-			? `💳 PAY WITH VISA / MASTERCARD — TIER 03 TAURI .EXE ($${formatPrice(finalPrice)} USD) →`
+			? `💳 PAY WITH VISA / MASTERCARD — TIER 03 TAURI v2 .EXE ($${formatPrice(pricing.finalUsd)} USD) →`
 			: (activeTier === 2
-				? `💳 PAY WITH VISA / MASTERCARD — TIER 02 WEBSITE & AGENTS ($${formatPrice(finalPrice)} USD) →`
-				: `💳 PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(finalPrice)} USD) →`);
+				? `💳 PAY WITH VISA / MASTERCARD — TIER 02 6-AGENT & WEB ($${formatPrice(pricing.finalUsd)} USD) →`
+				: `💳 PAY WITH VISA / MASTERCARD & UNLOCK VAULT ($${formatPrice(pricing.finalUsd)} USD) →`);
 		expressBuyBtn.innerHTML = `<span class="ks-wave-text">${labelText}</span>`;
+	}
+
+	function applySharedPromoCode(rawCode) {
+		const code = String(rawCode || '').trim().toUpperCase();
+		if (promoInput && promoInput.value.trim().toUpperCase() !== code) promoInput.value = code;
+		if (modalPromoInput && modalPromoInput.value.trim().toUpperCase() !== code) modalPromoInput.value = code;
+
+		if (promoCodes[code]) {
+			discountPct = promoCodes[code];
+			const pricing = getEffectiveCheckoutPricing(activeTier);
+			const msg = `✔ Promo code ${code} applied: ${discountPct}% OFF ($${formatPrice(pricing.finalUsd)} USD)!`;
+			[promoFeedback, modalPromoFeedback].forEach(el => {
+				if (!el) return;
+				el.style.display = 'block';
+				el.style.color = '#38bdf8';
+				el.textContent = msg;
+			});
+		} else if (code === '') {
+			discountPct = 0;
+			[promoFeedback, modalPromoFeedback].forEach(el => { if (el) el.style.display = 'none'; });
+		} else {
+			discountPct = 0;
+			const errMsg = '✖ Invalid promo code (try BUILDER10).';
+			[promoFeedback, modalPromoFeedback].forEach(el => {
+				if (!el) return;
+				el.style.display = 'block';
+				el.style.color = '#f87171';
+				el.textContent = errMsg;
+			});
+		}
+		updateCTA();
 	}
 
 	function openOrderModal(tierNum) {
 		activeTier = parseInt(tierNum, 10) || 1;
 		activePrice = tierBasePrices[activeTier] || 49.50;
-		updateCTA();
 		if (modalTierSelect) modalTierSelect.value = String(activeTier);
 		if (orderTierInput) orderTierInput.value = String(activeTier);
 		if (modalTierHeadline) modalTierHeadline.textContent = 'Complete Your Order — ' + (tierNames[activeTier] || tierNames[1]);
+		if (modalCheckoutFeedback) modalCheckoutFeedback.style.display = 'none';
+		updateCTA();
 		if (modal) modal.style.display = 'flex';
 	}
 	window.krOpenOrderModalForTier = openOrderModal;
@@ -2455,6 +2856,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 
+	function isValidOptionalEmail(emailStr) {
+		if (!emailStr) return true;
+		return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailStr);
+	}
+
 	const heroDirectForm = document.getElementById('heroDirectCheckoutForm');
 	const heroFeedback = document.getElementById('heroCheckoutFeedback');
 	if (heroDirectForm) {
@@ -2464,14 +2870,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			const bEmail = (document.getElementById('heroBuyerEmail')?.value || '').trim();
 			const bNotes = (document.getElementById('heroBuyerNotes')?.value || '').trim();
 			const pCode = promoInput ? promoInput.value.trim().toUpperCase() : '';
-			if (!bName || !bEmail) {
+			if (!isValidOptionalEmail(bEmail)) {
 				if (heroFeedback) {
 					heroFeedback.style.display = 'block';
 					heroFeedback.style.borderColor = '#f87171';
-					heroFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">Please enter your full name and email address above to proceed to checkout.</span>';
+					heroFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">Please enter a valid email address or leave it blank to enter directly on Stripe Checkout.</span>';
 				}
 				return;
 			}
+			const pricing = getEffectiveCheckoutPricing(activeTier);
 			if (expressBuyBtn) {
 				expressBuyBtn.disabled = true;
 				expressBuyBtn.style.opacity = '0.75';
@@ -2480,18 +2887,22 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (heroFeedback) {
 				heroFeedback.style.display = 'block';
 				heroFeedback.style.borderColor = '#38bdf8';
-				heroFeedback.innerHTML = '<span style="color:#38bdf8;font-weight:700;">Initializing encrypted Stripe Visa / Mastercard session...</span>';
+				heroFeedback.innerHTML = '<span style="color:#38bdf8;font-weight:700;">Initializing 256-bit encrypted Stripe Visa / Mastercard session...</span>';
+			}
+			const reqBody = {
+				tier: String(activeTier),
+				buyer_name: bName,
+				buyer_email: bEmail,
+				notes: bNotes,
+				promo_code: pCode
+			};
+			if (pricing.isUpgrade && pricing.upgradeUid) {
+				reqBody.upgrade_from_uid = pricing.upgradeUid;
 			}
 			fetch('/wp-json/keystone/v1/create-checkout-session', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					tier: String(activeTier),
-					buyer_name: bName,
-					buyer_email: bEmail,
-					notes: bNotes,
-					promo_code: pCode
-				})
+				body: JSON.stringify(reqBody)
 			})
 			.then(r => r.json())
 			.then(data => {
@@ -2499,13 +2910,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					if (expressBuyBtn) expressBuyBtn.textContent = '✔ REDIRECTING TO STRIPE CHECKOUT...';
 					window.location.href = data.checkout_url;
 				} else {
-					// Pre-copy details into order modal / direct priority order endpoint so buyer never hits a dead end
-					const mName = document.getElementById('orderBuyerName');
-					const mEmail = document.getElementById('orderBuyerEmail');
-					const mNotes = document.getElementById('orderBuyerNotes');
-					if (mName) mName.value = bName;
-					if (mEmail) mEmail.value = bEmail;
-					if (mNotes) mNotes.value = bNotes;
 					if (expressBuyBtn) {
 						expressBuyBtn.disabled = false;
 						expressBuyBtn.style.opacity = '1';
@@ -2513,27 +2917,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					}
 					if (heroFeedback) {
 						heroFeedback.style.display = 'block';
-						heroFeedback.style.borderColor = '#d4af37';
-						heroFeedback.innerHTML = '<div style="color:#f6d365;font-weight:800;margin-bottom:6px;">⚡ Instant Priority Access Ready</div><div style="color:#cbd5e1;">' + ((data && data.message) ? data.message : 'Live card gateway is in final key-activation mode.') + ' Locking in your Priority Buyer UID &amp; emailing your Vault link now...</div>';
+						heroFeedback.style.borderColor = '#f87171';
+						heroFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">' + ((data && data.message) ? data.message : 'Unable to start Stripe Checkout right now. Please try again in a moment or email keystonerecomposition@gmail.com.') + '</span>';
 					}
-					fetch('/wp-json/keystone/v1/protocol-order', {
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify({
-							tier: String(activeTier),
-							buyer_name: bName,
-							buyer_email: bEmail,
-							notes: bNotes,
-							promo_code: pCode
-						})
-					})
-					.then(r2 => r2.json())
-					.then(d2 => {
-						if (d2 && d2.success) {
-							applyVerifiedVaultState({ valid: true, uid: d2.user_uid, tier: d2.tier || String(activeTier), tier_name: d2.tier_name, walkthrough_video_url: d2.walkthrough_video_url, unlocked_downloads: d2.unlocked_downloads });
-						}
-					})
-					.catch(() => {});
 				}
 			})
 			.catch(() => {
@@ -2541,6 +2927,11 @@ document.addEventListener('DOMContentLoaded', function() {
 					expressBuyBtn.disabled = false;
 					expressBuyBtn.style.opacity = '1';
 					updateCTA();
+				}
+				if (heroFeedback) {
+					heroFeedback.style.display = 'block';
+					heroFeedback.style.borderColor = '#f87171';
+					heroFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">Network error connecting to Stripe Checkout. Please check your connection and click Pay with Visa / Mastercard again.</span>';
 				}
 			});
 		});
@@ -2576,23 +2967,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	if (applyPromoBtn && promoInput) {
 		applyPromoBtn.addEventListener('click', function() {
-			const code = promoInput.value.trim().toUpperCase();
-			if (promoCodes[code]) {
-				discountPct = promoCodes[code];
-				const newPrice = computeFinalUsdPrice(activePrice, discountPct);
-				promoFeedback.style.display = 'block';
-				promoFeedback.style.color = '#38bdf8';
-				promoFeedback.textContent = `✔ Promo code ${code} applied: ${discountPct}% OFF ($${formatPrice(newPrice)} USD)!`;
-			} else if (code === '') {
-				discountPct = 0;
-				promoFeedback.style.display = 'none';
-			} else {
-				discountPct = 0;
-				promoFeedback.style.display = 'block';
-				promoFeedback.style.color = '#f87171';
-				promoFeedback.textContent = '✖ Invalid promo code (try BUILDER10).';
-			}
-			updateCTA();
+			applySharedPromoCode(promoInput.value);
+		});
+	}
+
+	if (modalApplyPromoBtn && modalPromoInput) {
+		modalApplyPromoBtn.addEventListener('click', function() {
+			applySharedPromoCode(modalPromoInput.value);
 		});
 	}
 
@@ -2628,7 +3009,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			else if (/Tier\s*0?2|199/i.test(tName)) resolvedTier = 2;
 			else resolvedTier = 1;
 		}
-		krEnforceTierPortalLocks(resolvedTier);
+		setReturningDrawerOpen(true);
 		try { localStorage.setItem('kr_user_vault_uid', data.uid); } catch (e) {}
 		if (vaultUidStatusBadge) {
 			vaultUidStatusBadge.textContent = '✔ TIER 0' + resolvedTier + ' UID UNLOCKED: ' + data.uid;
@@ -2643,11 +3024,22 @@ document.addEventListener('DOMContentLoaded', function() {
 			const packSlug = resolvedTier >= 3 ? 'tier3_workstation_pack' : (resolvedTier === 2 ? 'tier2_swarm_pack' : 'tier1_blueprint_pack');
 			zipBtn.href = '?vault_download=' + packSlug + '&uid=' + encodeURIComponent(data.uid);
 		}
+		const tab5ZipBtn = document.getElementById('portalTab5ZipBtn');
+		if (tab5ZipBtn) {
+			tab5ZipBtn.href = '?vault_download=tier3_workstation_pack&uid=' + encodeURIComponent(data.uid);
+		}
+		document.querySelectorAll('[data-master-slug]').forEach(linkEl => {
+			const mSlug = linkEl.getAttribute('data-master-slug');
+			if (mSlug) linkEl.href = '?vault_download=' + encodeURIComponent(mSlug) + '&uid=' + encodeURIComponent(data.uid);
+		});
+		krEnforceTierPortalLocks(resolvedTier);
+		updateCTA();
 		openBuyerLeadVaultView();
 	}
 
 	function verifyUidWithServer(uidToVerify, showFeedbackBox) {
 		if (!uidToVerify) return;
+		setReturningDrawerOpen(true);
 		fetch('/wp-json/keystone/v1/verify-vault-uid?uid=' + encodeURIComponent(uidToVerify))
 			.then(r => r.json())
 			.then(data => {
@@ -2657,7 +3049,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						vaultUidVerifyFeedback.style.display = 'block';
 						vaultUidVerifyFeedback.style.borderColor = '#d4af37';
 						let dlLinks = (data.unlocked_downloads || []).map(d => `<div style="margin-top:4px;"><a href="${d.url}" target="_blank" style="color:#38bdf8;font-weight:700;text-decoration:none;">${d.label}</a></div>`).join('');
-						vaultUidVerifyFeedback.innerHTML = `<div style="color:#f6d365;font-weight:800;margin-bottom:4px;">✔ UID VERIFIED (${data.uid}) — ${data.tier_name || 'Buyer Lead Page Unlocked'}</div><div style="color:#cbd5e1;margin-bottom:6px;">${data.message || ''}</div><div><a href="${data.walkthrough_video_url}" target="_blank" style="color:#ffffff;font-weight:800;text-decoration:underline;">▶ Watch Wayne's Recorded Walkthrough Video</a></div>${dlLinks}`;
+						vaultUidVerifyFeedback.innerHTML = `<div style="color:#f6d365;font-weight:800;margin-bottom:4px;">✔ UID VERIFIED (${data.uid}) — ${data.tier_name || 'Buyer Vault Unlocked'}</div><div style="color:#cbd5e1;margin-bottom:6px;">${data.message || ''}</div><div><a href="${data.walkthrough_video_url}" target="_blank" style="color:#ffffff;font-weight:800;text-decoration:underline;">▶ Watch Wayne's Recorded Walkthrough Video</a></div>${dlLinks}`;
 					}
 				} else if (showFeedbackBox && vaultUidVerifyFeedback) {
 					vaultUidVerifyFeedback.style.display = 'block';
@@ -2668,12 +3060,19 @@ document.addEventListener('DOMContentLoaded', function() {
 			.catch(() => {});
 	}
 
-	
-	// Detect Stripe Checkout Return (?session_id=cs_...)
+	// Auto-expand Returning Buyer Drawer & Detect Stripe Checkout Return (?session_id=cs_..., ?uid=..., #kr-self-service-portal, or saved localStorage UID)
+	let initialUid = '';
+	let hasSessionReturn = false;
 	try {
 		const urlParams = new URLSearchParams(window.location.search);
 		const stripeSessionId = urlParams.get('session_id');
+		initialUid = urlParams.get('uid') || '';
+		if (window.location.hash === '#kr-self-service-portal') {
+			setReturningDrawerOpen(true);
+		}
 		if (stripeSessionId && stripeSessionId.indexOf('cs_') === 0) {
+			hasSessionReturn = true;
+			setReturningDrawerOpen(true);
 			const returnNotice = document.createElement('div');
 			returnNotice.id = 'stripeReturnNotice';
 			returnNotice.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:99999;background:#04070d;border:2px solid #d4af37;border-radius:12px;padding:14px 24px;box-shadow:0 12px 36px rgba(0,0,0,0.85);color:#f8fafc;font-family:\'Outfit\',sans-serif;font-weight:800;display:flex;align-items:center;gap:12px;';
@@ -2713,13 +3112,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	} catch (e) {}
 
-	let initialUid = '';
-	try {
-		const urlParams = new URLSearchParams(window.location.search);
-		initialUid = urlParams.get('uid') || '';
-	} catch (e) {}
 	if (initialUid) {
 		verifyUidWithServer(initialUid, true);
+	} else if (!hasSessionReturn) {
+		try {
+			const savedUid = (localStorage.getItem('kr_user_vault_uid') || localStorage.getItem('kr_vault_uid') || '').trim();
+			if (savedUid) {
+				if (existingVaultUidInput) existingVaultUidInput.value = savedUid;
+				setReturningDrawerOpen(true);
+				if (window.location.hash === '#kr-self-service-portal') {
+					verifyUidWithServer(savedUid, false);
+				}
+			}
+		} catch (e) {}
 	}
 
 	if (verifyVaultUidBtn && existingVaultUidInput) {
@@ -2729,84 +3134,107 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 
-	
-	if (stripeCardBtn) {
-		stripeCardBtn.addEventListener('click', function(e) {
-			e.preventDefault();
-			const buyerNameInput = document.getElementById('orderBuyerName');
-			const buyerEmailInput = document.getElementById('orderBuyerEmail');
-			const buyerName = buyerNameInput ? buyerNameInput.value.trim() : '';
-			const buyerEmail = buyerEmailInput ? buyerEmailInput.value.trim() : '';
-			const promoCode = promoInput ? promoInput.value.trim().toUpperCase() : '';
+	function runModalStripeCheckout() {
+		if (!stripeCardBtn) return;
+		const buyerNameInput = document.getElementById('orderBuyerName');
+		const buyerEmailInput = document.getElementById('orderBuyerEmail');
+		const buyerNotesInput = document.getElementById('orderBuyerNotes');
+		const buyerName = buyerNameInput ? buyerNameInput.value.trim() : '';
+		const buyerEmail = buyerEmailInput ? buyerEmailInput.value.trim() : '';
+		const buyerNotes = buyerNotesInput ? buyerNotesInput.value.trim() : '';
+		const promoCode = (modalPromoInput?.value || promoInput?.value || '').trim().toUpperCase();
 
-			if (!buyerName || !buyerEmail) {
-				alert('Please enter your full name and email address to continue to secure Visa / Mastercard checkout.');
-				if (buyerNameInput && !buyerName) buyerNameInput.focus();
-				else if (buyerEmailInput && !buyerEmail) buyerEmailInput.focus();
-				return;
+		if (!isValidOptionalEmail(buyerEmail)) {
+			if (modalCheckoutFeedback) {
+				modalCheckoutFeedback.style.display = 'block';
+				modalCheckoutFeedback.style.borderColor = '#f87171';
+				modalCheckoutFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">Please enter a valid email address or leave it blank to enter directly on Stripe Checkout.</span>';
 			}
+			if (buyerEmailInput) buyerEmailInput.focus();
+			return;
+		}
 
-			stripeCardBtn.disabled = true;
-			stripeCardBtn.style.opacity = '0.7';
-			if (stripeCardBtnText) stripeCardBtnText.textContent = 'CONNECTING TO STRIPE HOSTED CHECKOUT...';
+		const targetT = modalTierSelect ? (parseInt(modalTierSelect.value, 10) || activeTier) : activeTier;
+		const pricing = getEffectiveCheckoutPricing(targetT);
 
-			const payload = {
-				tier: modalTierSelect ? modalTierSelect.value : String(activeTier),
-				buyer_name: buyerName,
-				buyer_email: buyerEmail,
-				promo_code: promoCode
-			};
+		stripeCardBtn.disabled = true;
+		stripeCardBtn.style.opacity = '0.7';
+		if (stripeCardBtnText) stripeCardBtnText.textContent = 'CONNECTING TO STRIPE HOSTED CHECKOUT...';
+		if (modalCheckoutFeedback) {
+			modalCheckoutFeedback.style.display = 'block';
+			modalCheckoutFeedback.style.borderColor = '#38bdf8';
+			modalCheckoutFeedback.innerHTML = '<span style="color:#38bdf8;font-weight:700;">Initializing 256-bit encrypted Stripe Visa / Mastercard session...</span>';
+		}
 
-			fetch('/wp-json/keystone/v1/create-checkout-session', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload)
-			})
-			.then(r => r.json())
-			.then(data => {
-				if (data && data.success && data.checkout_url) {
-					if (stripeCardBtnText) stripeCardBtnText.textContent = 'REDIRECTING TO STRIPE...';
-					window.location.href = data.checkout_url;
-				} else {
-					stripeCardBtn.disabled = false;
-					stripeCardBtn.style.opacity = '1';
-					updateStripeButtonText();
-					const msg = (data && data.message) ? data.message : 'Stripe live checkout is initializing. Falling back to Launch Reservation.';
-					alert(msg);
-					// Fallback: trigger standard reservation
-					if (orderForm) {
-						const submitBtn = document.getElementById('submitAutomatedOrderBtn');
-						if (submitBtn) submitBtn.click();
-					}
-				}
-			})
-			.catch(err => {
+		const payload = {
+			tier: String(targetT),
+			buyer_name: buyerName,
+			buyer_email: buyerEmail,
+			notes: buyerNotes,
+			promo_code: promoCode
+		};
+		if (pricing.isUpgrade && pricing.upgradeUid) {
+			payload.upgrade_from_uid = pricing.upgradeUid;
+		}
+
+		fetch('/wp-json/keystone/v1/create-checkout-session', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(payload)
+		})
+		.then(r => r.json())
+		.then(data => {
+			if (data && data.success && data.checkout_url) {
+				if (stripeCardBtnText) stripeCardBtnText.textContent = 'REDIRECTING TO STRIPE...';
+				window.location.href = data.checkout_url;
+			} else {
 				stripeCardBtn.disabled = false;
 				stripeCardBtn.style.opacity = '1';
 				updateStripeButtonText();
-				alert('Network error connecting to Stripe. Submitting priority launch reservation instead.');
-				if (orderForm) {
-					const submitBtn = document.getElementById('submitAutomatedOrderBtn');
-					if (submitBtn) submitBtn.click();
+				if (modalCheckoutFeedback) {
+					modalCheckoutFeedback.style.display = 'block';
+					modalCheckoutFeedback.style.borderColor = '#f87171';
+					modalCheckoutFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">' + ((data && data.message) ? data.message : 'Unable to start Stripe Checkout right now. Please try again or email keystonerecomposition@gmail.com.') + '</span>';
 				}
-			});
+			}
+		})
+		.catch(() => {
+			stripeCardBtn.disabled = false;
+			stripeCardBtn.style.opacity = '1';
+			updateStripeButtonText();
+			if (modalCheckoutFeedback) {
+				modalCheckoutFeedback.style.display = 'block';
+				modalCheckoutFeedback.style.borderColor = '#f87171';
+				modalCheckoutFeedback.innerHTML = '<span style="color:#f87171;font-weight:800;">Network error connecting to Stripe Checkout. Please check your connection and try again.</span>';
+			}
+		});
+	}
+
+	if (stripeCardBtn) {
+		stripeCardBtn.addEventListener('click', function(e) {
+			e.preventDefault();
+			runModalStripeCheckout();
 		});
 	}
 
 	if (orderForm) {
 		orderForm.addEventListener('submit', function(e) {
 			e.preventDefault();
+			if (window.KR_VISA_LIVE) {
+				runModalStripeCheckout();
+				return;
+			}
 			const submitBtn = document.getElementById('submitAutomatedOrderBtn');
 			if (submitBtn) {
 				submitBtn.disabled = true;
-				submitBtn.textContent = '⏳ LOCKING IN LAUNCH RATE & UNLOCKING PORTAL...';
+				submitBtn.textContent = '⏳ LOCKING IN DEV RESERVATION...';
 			}
 			const payload = {
 				tier: modalTierSelect ? modalTierSelect.value : String(activeTier),
 				buyer_name: document.getElementById('orderBuyerName').value.trim(),
 				buyer_email: document.getElementById('orderBuyerEmail').value.trim(),
 				notes: document.getElementById('orderBuyerNotes').value.trim(),
-				promo_code: promoInput ? promoInput.value.trim().toUpperCase() : ''
+				promo_code: (modalPromoInput?.value || promoInput?.value || '').trim().toUpperCase()
 			};
 			fetch('/wp-json/keystone/v1/protocol-order', {
 				method: 'POST',
@@ -2817,7 +3245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			.then(data => {
 				if (submitBtn) {
 					submitBtn.disabled = false;
-					submitBtn.textContent = '✔ LAUNCH RATE LOCKED IN & PRIORITY UID SAVED';
+					submitBtn.textContent = '✔ DEV RESERVATION SAVED';
 				}
 				if (data && data.success) {
 					applyVerifiedVaultState({ valid: true, uid: data.user_uid, tier: data.tier || (modalTierSelect ? modalTierSelect.value : String(activeTier)), tier_name: data.tier_name, walkthrough_video_url: data.walkthrough_video_url, unlocked_downloads: data.unlocked_downloads });
@@ -2836,7 +3264,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			.catch(() => {
 				if (submitBtn) {
 					submitBtn.disabled = false;
-					submitBtn.textContent = '⚡ LOCK IN LAUNCH RATE & UNLOCK PORTAL →';
+					submitBtn.textContent = '🔒 DEV FALLBACK: RESERVE LAUNCH RATE →';
 				}
 			});
 		});

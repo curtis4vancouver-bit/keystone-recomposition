@@ -1989,58 +1989,140 @@ add_action( 'template_redirect', 'keystone_recomposition_child_404_redirect' );
  */
 
 /**
- * 14. Inject 2026 SoftwareApplication & FAQPage Schema for AI Protocols Page
- * Maximizes global Google Rich Results for high-intent AI workstation queries.
+ * Canonical 5-Question Homepage Executive FAQ Source of Truth
+ * Shared 1:1 between template-parts/kr-faq-accordion.php (#faq) and homepage FAQPage JSON-LD.
+ *
+ * @return array<int, array{q: string, a: string}>
+ */
+function keystone_get_homepage_executive_faqs(): array {
+    return array(
+        array(
+            'q' => 'What is Keystone Recomposition and what does the Sovereign v4.0 ecosystem unite?',
+            'a' => 'Founded by AI systems architect, music producer, and licensed BC builder Wayne Stevenson (#52603) in Squamish, British Columbia, Keystone Recomposition unites two sovereign disciplines under one command center: (1) zero-SaaS autonomous multi-agent AI engineering, dark-luxury web systems, and native Rust + Tauri desktop workstations, and (2) an official 25-release / 246-track 24-bit sonic catalog engineered in 432Hz, 528Hz, and deep melodic house.',
+        ),
+        array(
+            'q' => 'Which AI Protocol Vault tier should I choose: $49.50, $199, or $800?',
+            'a' => 'Tier 1 ($49.50 USD) delivers the foundational 4-folder AI Brain architecture, ~20-word Google Flow video prompt workflow, and 4 illustrated PDF setup manuals. Tier 2 ($199 USD) unlocks the 6-Agent Role Suite + Multi-Agent Architecture, 3-source fact verification gates, YouTube Brand Channel defaults, and dark-luxury Rank Math 100/100 web templates. Tier 3 ($800 USD) provides the Complete Runnable Rust + Tauri v2 Desktop Command Center Source Project + 1-Command Windows .EXE Compiler + all 12 PDF manuals + 14-Day Guided Build Support.',
+        ),
+        array(
+            'q' => 'Are all 25 releases and 246 tracks cleared for 100% One-Stop Sync Licensing?',
+            'a' => 'Yes. Keystone Recomposition holds 100% of both the Master Recording and Publishing rights across all 25 official releases and 246 ISRC-registered tracks. Music supervisors, film studios, game developers, and luxury brands receive rapid one-stop clearance with 24-bit / 96kHz WAV masters and instrumental stems directly from our licensing desk.',
+        ),
+        array(
+            'q' => 'Why does Keystone build on Chrome Port 9222 and local hardware instead of cloud SaaS wrappers?',
+            'a' => 'Cloud browser wrappers trigger bot gates, leak session context, and charge recurring monthly markups. By attaching directly to authenticated browser sessions over Chrome DevTools Protocol Port 9222 and running local CUDA voice/vector engines, you retain 100% data sovereignty, sub-second responsiveness, and zero recurring SaaS lock-in.',
+        ),
+        array(
+            'q' => 'How does Keystone Recomposition connect to Keystone Possibilities Ltd. (#52603)?',
+            'a' => 'Both divisions are led by Wayne Stevenson out of Squamish & Whistler, BC. Keystone Possibilities Ltd. is our licensed BC residential construction and BC Hydro ES54 civil contracting firm (BC Housing Builder #52603), delivering custom homes and Bill 44 multiplexes under open-book CCDC 5B contracts—bringing real-world critical-path engineering discipline to every digital system we ship.',
+        ),
+    );
+}
+
+/**
+ * Canonical 7-Question AI Protocols Buyer FAQ Source of Truth
+ * Shared 1:1 between template-ai-protocols.php (#ai-protocols-faq) and /ai-protocols/#faq FAQPage JSON-LD.
+ *
+ * @return array<int, array{q: string, a: string}>
+ */
+function keystone_get_ai_protocols_buyer_faqs(): array {
+    return array(
+        array(
+            'q' => 'What happens in the first 60 seconds after I pay with Visa or Mastercard?',
+            'a' => 'Within seconds of completing 256-bit Stripe USD checkout, you are redirected back to /ai-protocols/ where your personal Buyer KR-UID unlocks the Self-Service Buyer Vault on screen—giving you immediate access to your unlisted 4K recorded walkthrough videos, downloadable .ZIP starter packs, illustrated %PDF-1.7 setup books, and an automated backup receipt emailed straight to your inbox.',
+        ),
+        array(
+            'q' => 'Do I need prior coding or terminal experience to set up Tier 01 or Tier 02?',
+            'a' => 'No prior coding is required. Every module uses copy-paste starter prompts, ready-to-drop Markdown rule files (AGENTS.md), timestamped 4K walkthrough chapters, and illustrated %PDF-1.7 manuals designed so Google Antigravity writes and organizes your folders, prompts, and website layouts step by step.',
+        ),
+        array(
+            'q' => 'How does the 100% dollar-for-dollar Tier Upgrade Credit work if I start at $49.50?',
+            'a' => 'Every dollar you spend on an earlier tier is credited 100% toward higher tiers at any time using your Buyer KR-UID. Starting at Tier 01 ($49.50 USD) means upgrading later to Tier 02 ($199 USD) costs only $149.50 USD, or upgrading to Tier 03 ($800 USD) costs only $750.50 USD (and upgrading from Tier 02 to Tier 03 costs $601.00 USD).',
+        ),
+        array(
+            'q' => 'Are there any recurring monthly fees or subscriptions charged by Keystone?',
+            'a' => 'Zero recurring fees to Keystone. Each tier ($49.50, $199, or $800 USD) is a single one-time purchase with permanent ownership of your downloaded .ZIP starter files and %PDF-1.7 books. You simply run the workflows inside your own Google Antigravity and Google Flow workspace.',
+        ),
+        array(
+            'q' => 'Does the AI Builder Suite work on both Mac and Windows, and what are the Tier 03 .EXE prerequisites?',
+            'a' => 'Yes—Tier 01 (4-Folder AI Brain & Google Flow ~20-word video workflow) and Tier 02 (Dark-Luxury Website, SEO Schema & 6-Agent Role Suite) work identically on macOS, Windows, and Linux. Compiling the standalone Windows .EXE binary in Tier 03 uses Windows 10/11 (64-bit) with the free Microsoft WebView2, Node.js LTS, and Rust (rustup) toolchain guided step by step.',
+        ),
+        array(
+            'q' => 'What exactly is inside Tier 03 ($800 USD) — is it a locked binary or runnable Rust + Tauri v2 source code?',
+            'a' => 'Tier 03 gives you the Complete Runnable Rust + Tauri v2 Desktop Command Center Source Project (Cargo.toml, src-tauri/src/main.rs, tauri.conf.json, dark-luxury UI dashboard, and 1-command Windows .EXE compiler script), plus everything in Tiers 01 and 02, all 12 illustrated %PDF-1.7 manuals, and 14-Day Guided Build Support so you own and customize your own desktop executable.',
+        ),
+        array(
+            'q' => 'Can I apply a promo code at Visa checkout, and what is included in the Guided Setup Support window?',
+            'a' => 'Yes—enter a valid promo code (such as BUILDER10) on the Express Checkout card or order modal before clicking Pay with Visa / Mastercard and the discounted USD total is passed directly to Stripe. Tier 01 includes a 7-day Guided Setup Window (up to 3 follow-up questions), Tier 02 includes 7 days (up to 5 follow-ups), and Tier 03 includes 14 days of Guided Build Support (up to 8 follow-ups plus architectural review).',
+        ),
+    );
+}
+
+/**
+ * 14. Inject 2026 SoftwareApplication & FAQPage Schema for AI Protocols & Homepage
+ * Maximizes global Google Rich Results with AggregateOffer ($49.50–$800.00 USD) and 1:1 visible FAQ parity.
  */
 add_action( 'wp_head', 'keystone_inject_ai_protocols_software_schema', 15 );
 function keystone_inject_ai_protocols_software_schema() {
     global $post;
     $slug     = ( $post && isset( $post->post_name ) ) ? $post->post_name : '';
     $template = ( $post && isset( $post->ID ) ) ? (string) get_page_template_slug( $post->ID ) : '';
+    $is_ai_protocols_page = is_page() && ( 'ai-protocols' === $slug || false !== strpos( $template, 'ai-protocols' ) );
 
-    if ( is_front_page() || is_home() || ( is_page() && ( 'ai-protocols' === $slug || false !== strpos( $template, 'ai-protocols' ) ) ) ) {
+    if ( is_front_page() || is_home() || $is_ai_protocols_page ) {
+        $graph_nodes = array(
+            array(
+                '@type'               => 'SoftwareApplication',
+                '@id'                 => home_url( '/ai-protocols/#software' ),
+                'name'                => 'Keystone AI Protocols & Multi-Agent Builder Suite',
+                'alternateName'       => 'Keystone Sovereign AI Brain, 6-Agent Role Suite & Tauri v2 Desktop Command Center',
+                'url'                 => home_url( '/ai-protocols/' ),
+                'description'         => '3-Tier Sovereign AI Builder Suite engineered by Wayne Stevenson: 4-Folder AI Brain & Google Flow starter ($49.50 USD), 6-Agent Role Suite + Dark-Luxury Website Architecture ($199 USD), and Complete Runnable Rust + Tauri v2 Desktop Command Center Source + 1-Command Windows .EXE Compiler ($800 USD).',
+                'applicationCategory' => 'DeveloperApplication',
+                'operatingSystem'     => 'Windows, macOS, Linux',
+                'offers'              => array(
+                    '@type'         => 'AggregateOffer',
+                    'lowPrice'      => '49.50',
+                    'highPrice'     => '800.00',
+                    'priceCurrency' => 'USD',
+                    'offerCount'    => 3,
+                    'availability'  => 'https://schema.org/InStock',
+                    'url'           => home_url( '/ai-protocols/' ),
+                ),
+                'author'              => array(
+                    '@id' => 'https://keystonerecomposition.com/#wayne-stevenson',
+                ),
+                'publisher'           => array(
+                    '@id' => 'https://keystonerecomposition.com/#organization',
+                ),
+            ),
+        );
+
+        if ( $is_ai_protocols_page || is_front_page() ) {
+            $faq_rows = $is_ai_protocols_page
+                ? keystone_get_ai_protocols_buyer_faqs()
+                : keystone_get_homepage_executive_faqs();
+            $faq_entities = array();
+            foreach ( $faq_rows as $row ) {
+                $faq_entities[] = array(
+                    '@type'          => 'Question',
+                    'name'           => $row['q'],
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text'  => $row['a'],
+                    ),
+                );
+            }
+            $graph_nodes[] = array(
+                '@type'      => 'FAQPage',
+                '@id'        => $is_ai_protocols_page ? home_url( '/ai-protocols/#faq' ) : home_url( '/#faq' ),
+                'mainEntity' => $faq_entities,
+            );
+        }
+
         $ai_schema = array(
             '@context' => 'https://schema.org',
-            '@graph' => array(
-                array(
-                    '@type' => 'SoftwareApplication',
-                    '@id' => home_url( '/ai-protocols/#software' ),
-                    'name' => 'Keystone AI Protocols & Autonomous Multi-Agent Swarms',
-                    'alternateName' => 'Keystone FastMCP Agentic Execution Engine',
-                    'url' => home_url( '/ai-protocols/' ),
-                    'description' => 'Autonomous multi-agent swarms, FastMCP tools, Google Antigravity orchestration, and Chrome CDP desktop automation systems engineered by Wayne Stevenson.',
-                    'applicationCategory' => 'DeveloperApplication',
-                    'operatingSystem' => 'Windows, Linux, macOS',
-                    'author' => array(
-                        '@id' => 'https://keystonerecomposition.com/#wayne-stevenson'
-                    ),
-                    'publisher' => array(
-                        '@id' => 'https://keystonerecomposition.com/#organization'
-                    )
-                ),
-                array(
-                    '@type' => 'FAQPage',
-                    '@id' => home_url( '/ai-protocols/#faq' ),
-                    'mainEntity' => array(
-                        array(
-                            '@type' => 'Question',
-                            'name' => 'What is the Keystone Autonomous Multi-Agent Swarm architecture?',
-                            'acceptedAnswer' => array(
-                                '@type' => 'Answer',
-                                'text' => 'Keystone AI Protocols deploy parallel specialized child subagents orchestrated via Google Antigravity and FastMCP tool contracts, enforcing isolated ephemeral contexts, strict TDD red-to-green test gates, and continuous desktop Chrome CDP automation.'
-                            )
-                        ),
-                        array(
-                            '@type' => 'Question',
-                            'name' => 'How does Keystone integrate music production and multi-channel video pipelines?',
-                            'acceptedAnswer' => array(
-                                '@type' => 'Answer',
-                                'text' => 'Audio architecture generated across 25 official releases is dynamically synchronized with Google Flow Box 2 and DaVinci Resolve automated 2-track master timeline assembly.'
-                            )
-                        )
-                    )
-                )
-            )
+            '@graph'   => $graph_nodes,
         );
 
         echo "\n<!-- Keystone 2026 AI Protocols SoftwareApplication & FAQPage JSON-LD Schema -->\n";

@@ -216,8 +216,8 @@ function keystone_verify_tier_download_access( string $pack_slug, string $uid ):
 		return false;
 	}
 	$user_tier   = (int) ( $verification['tier'] ?? 1 );
-	$tier3_packs = array( 'tier3_zip', 'tier3_workstation_pack', 'tier3_pdf_10', 'tier3_pdf_11', 'tier3_pdf_12' );
-	$tier2_packs = array( 'tier2_zip', 'tier2_swarm_pack', 'tier2_pdf_05', 'tier2_pdf_06', 'tier2_pdf_07', 'tier2_pdf_08', 'tier2_pdf_09' );
+	$tier3_packs = array( 'tier3_zip', 'tier3_workstation_pack', 'tier3_pdf_master', 'tier3_pdf_10', 'tier3_pdf_11', 'tier3_pdf_12' );
+	$tier2_packs = array( 'tier2_zip', 'tier2_swarm_pack', 'tier2_pdf_master', 'tier2_pdf_05', 'tier2_pdf_06', 'tier2_pdf_07', 'tier2_pdf_08', 'tier2_pdf_09' );
 
 	if ( in_array( $pack_slug, $tier3_packs, true ) ) {
 		return $user_tier >= 3;
@@ -226,6 +226,53 @@ function keystone_verify_tier_download_access( string $pack_slug, string $uid ):
 		return $user_tier >= 2;
 	}
 	return $user_tier >= 1;
+}
+
+/**
+ * Resolve a logical vault deliverable path against:
+ *  1. Unguessable HMAC-salted private uploads vault (`wp-content/uploads/kr-vault-<hmac40>/<hmac64>.bin`)
+ *  2. Local workspace private directory (`09_Keystone_websites/vault_packs_private/<rel>`)
+ *  3. Legacy fallback (`assets/vault_packs/<rel>`) only if still present.
+ *
+ * Returns empty string if no readable physical file is found.
+ */
+function keystone_resolve_private_vault_file( string $logical_rel_path ): string {
+	$norm = ltrim( str_replace( '\\', '/', trim( $logical_rel_path ) ), '/' );
+	if ( '' === $norm || false !== strpos( $norm, '..' ) || false !== strpos( $norm, "\0" ) ) {
+		return '';
+	}
+
+	$candidates = array();
+
+	if ( function_exists( 'kr_v4_get_private_vault_bin_path' ) ) {
+		$bin_candidate = kr_v4_get_private_vault_bin_path( $norm );
+		if ( '' !== $bin_candidate ) {
+			$candidates[] = $bin_candidate;
+		}
+	} else {
+		$uploads = function_exists( 'wp_upload_dir' ) ? wp_upload_dir() : array();
+		$basedir = ( is_array( $uploads ) && ! empty( $uploads['basedir'] ) )
+			? rtrim( str_replace( '\\', '/', (string) $uploads['basedir'] ), '/' )
+			: ( defined( 'WP_CONTENT_DIR' ) ? rtrim( str_replace( '\\', '/', (string) WP_CONTENT_DIR ), '/' ) . '/uploads' : '' );
+		if ( '' !== $basedir ) {
+			$salt         = function_exists( 'wp_salt' ) ? (string) wp_salt( 'auth' ) : 'kr_private_vault_fallback_salt';
+			$vault_dir    = $basedir . '/kr-vault-' . substr( hash_hmac( 'sha256', 'kr_private_vault_v4', $salt ), 0, 40 );
+			$candidates[] = $vault_dir . '/' . hash_hmac( 'sha256', $norm, $salt ) . '.bin';
+		}
+	}
+
+	$theme_dir = rtrim( str_replace( '\\', '/', get_stylesheet_directory() ), '/' );
+	// Local workspace private vault (`09_Keystone_websites/vault_packs_private/`)
+	$candidates[] = dirname( $theme_dir, 2 ) . '/vault_packs_private/' . $norm;
+	// Legacy theme directory fallback
+	$candidates[] = $theme_dir . '/assets/vault_packs/' . $norm;
+
+	foreach ( $candidates as $fp ) {
+		if ( '' !== $fp && is_file( $fp ) && is_readable( $fp ) ) {
+			return $fp;
+		}
+	}
+	return '';
 }
 
 /**
@@ -274,28 +321,22 @@ function keystone_generate_fallback_pdf_bytes( string $title, string $uid ): str
 }
 
 /**
- * Return file attachments (the .ZIP starter pack + 4 printable PDF setup guides) for wp_mail() delivery.
+ * Return the single lightweight (~0.9–1.2 MB) Combined Master PDF Book for wp_mail() delivery
+ * resolved from the HMAC private vault so Tier 03 never hits WP Cloud's 10 MB MIME ceiling.
  */
 function keystone_get_tier_email_attachments( string $tier ): array {
-	$vault_dir   = get_stylesheet_directory() . '/assets/vault_packs/';
-	$attachments = array();
-
-	// Use lightweight Combined Master PDF Guidebooks (0.9 MB - 3.1 MB total) so wp_mail() stays well under WordPress.com's 10MB SMTP ceiling
-	$candidate_files = array(
-		$vault_dir . 'tier01_pdfs/KR_T1_00_ALL_4_GUIDES_COMBINED.pdf',
-	);
-	if ( '2' === $tier || '3' === $tier ) {
-		$candidate_files[] = $vault_dir . 'tier02_pdfs/KR_T2_00_ALL_5_TIER02_GUIDES_COMBINED.pdf';
-	}
+	$master_rel = 'tier01_pdfs/KR_T1_00_ALL_4_GUIDES_COMBINED.pdf';
 	if ( '3' === $tier ) {
-		$candidate_files[] = $vault_dir . 'tier03_pdfs/KR_T3_00_ALL_3_TIER03_GUIDES_COMBINED.pdf';
+		$master_rel = 'tier03_pdfs/KR_T3_00_ALL_3_TIER03_GUIDES_COMBINED.pdf';
+	} elseif ( '2' === $tier ) {
+		$master_rel = 'tier02_pdfs/KR_T2_00_ALL_5_TIER02_GUIDES_COMBINED.pdf';
 	}
-	foreach ( $candidate_files as $fp ) {
-		if ( file_exists( $fp ) && is_readable( $fp ) ) {
-			$attachments[] = $fp;
-		}
+
+	$resolved = keystone_resolve_private_vault_file( $master_rel );
+	if ( '' !== $resolved ) {
+		return array( $resolved );
 	}
-	return $attachments;
+	return array();
 }
 
 /**
@@ -359,8 +400,12 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 				'url'   => home_url( '/ai-protocols/?vault_download=tier1_zip' ),
 			),
 			array(
-				'label' => '🌐 Keystone_Tier01_AI_Video_Website_Blueprint_Pack.zip (AI Video, Channel & Luxury Website Blueprint Pack)',
+				'label' => '🌐 Keystone_Tier01_AI_Video_Website_Blueprint_Pack.zip (Dark-Luxury Gutenberg Blocks, CSS Tokens, Rank Math 100/100 Schema & YouTube Funnel Pack)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier1_website_channel_pack' ),
+			),
+			array(
+				'label' => '📚 Combined Master Book: KR_T1_00_ALL_4_GUIDES_COMBINED.pdf (All 4 Tier 01 Setup Guides in 1 Printable Book)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier1_pdf_master' ),
 			),
 			array(
 				'label' => '📄 PDF-01: Setting Up Your 4-Folder AI Brain Workspace in Google Antigravity (%PDF-1.4)',
@@ -389,27 +434,31 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 	$t2_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
-				'label' => '📦 Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip (Copy-Paste Subagent Role Prompt Templates + B2B Outreach & DNS Verification Starter Kit)',
+				'label' => '📦 Keystone_Tier02_28_Agent_Swarm_FastMCP_Suite.zip (6 Specialist Multi-Agent Role Prompts + Cumulative Tier 01/02 PDFs + B2B MX Outreach Kit)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier2_zip' ),
 			),
 			array(
-				'label' => '📄 PDF-05: Turning Video Scripts into Rank Math 100/100 SEO Articles & GSC Indexing (%PDF-1.4)',
+				'label' => '📚 Combined Master Book: KR_T2_00_ALL_5_TIER02_GUIDES_COMBINED.pdf (All 5 Tier 02 Swarm, SEO & Outreach Guides Combined)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_master' ),
+			),
+			array(
+				'label' => '📄 PDF-05: Website Builder, JSON-LD Schema & Rank Math 100/100 SEO Articles (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_05' ),
 			),
 			array(
-				'label' => '📄 PDF-06: Multi-Agent Role Prompt Templates (Researcher, Scriptwriter, Web Builder, QA) (%PDF-1.4)',
+				'label' => '📄 PDF-06: YouTube Brand Channel Setup, Upload Defaults & 480-Character Tag Stack (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_06' ),
 			),
 			array(
-				'label' => '📄 PDF-07: The 3-Source Fact Verification Protocol (Zero Hallucinations) (%PDF-1.4)',
+				'label' => '📄 PDF-07: 6-Role Multi-Agent Swarm Prompts & 3-Source Fact Verification Protocol (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_07' ),
 			),
 			array(
-				'label' => '📄 PDF-08: B2B Client Outreach & Domain Email Verification Workflow (%PDF-1.4)',
+				'label' => '📄 PDF-08: B2B Domain DNS/MX Lead Verification & Locked Crest Email Shell (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_08' ),
 			),
 			array(
-				'label' => '📄 PDF-09: Locked Top-and-Bottom Logo HTML Email Shell Architecture (%PDF-1.4)',
+				'label' => '📄 PDF-09: 30-Day Omnichannel Publishing & Authority Compounding Blueprint (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier2_pdf_09' ),
 			),
 			array(
@@ -423,19 +472,23 @@ function keystone_get_protocol_tier_catalog( string $uid = '' ): array {
 	$t3_downloads = keystone_append_uid_to_downloads(
 		array(
 			array(
-				'label' => '🖥️ Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip (Custom Tauri Desktop App Setup + Dashboard UI Templates + .EXE Build Guide)',
+				'label' => '🖥️ Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip (Runnable Rust + Tauri v2 Starter + All 12 PDFs + 5 Diagrams + .EXE Build Prompts)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier3_zip' ),
 			),
 			array(
-				'label' => '📄 PDF-10: Custom Tauri Desktop App Architecture & Project Setup (%PDF-1.4)',
+				'label' => '📚 Combined Master Book: KR_T3_00_ALL_3_TIER03_GUIDES_COMBINED.pdf (All 3 Tier 03 Tauri v2 Desktop App & .EXE Guides Combined)',
+				'url'   => home_url( '/ai-protocols/?vault_download=tier3_pdf_master' ),
+			),
+			array(
+				'label' => '📄 PDF-10: Custom Tauri v2 Desktop Toolchain & Project Scaffold (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier3_pdf_10' ),
 			),
 			array(
-				'label' => '📄 PDF-11: Building Custom Dashboard Tabs & One-Click Action Buttons (%PDF-1.4)',
+				'label' => '📄 PDF-11: Command Center Dashboard Tabs & Type-Safe Rust IPC Handlers (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier3_pdf_11' ),
 			),
 			array(
-				'label' => '📄 PDF-12: Compiling & Launching Your Standalone Windows .EXE Desktop App (%PDF-1.4)',
+				'label' => '📄 PDF-12: Compiling, Signing & Packaging Your Standalone Windows .EXE (%PDF-1.4)',
 				'url'   => home_url( '/ai-protocols/?vault_download=tier3_pdf_12' ),
 			),
 			array(
@@ -503,8 +556,24 @@ function keystone_generate_user_vault_uid( string $email, string $tier ): string
 }
 
 /**
+ * Retrieve or provision the non-autoloaded 32-character high-entropy Owner Master UID secret.
+ */
+function keystone_get_owner_master_secret_uid(): string {
+	$secret = trim( (string) get_option( 'keystone_owner_master_uid_secret', '' ) );
+	if ( strlen( $secret ) < 28 ) {
+		$rand   = function_exists( 'wp_generate_password' )
+			? strtoupper( (string) wp_generate_password( 32, false, false ) )
+			: strtoupper( bin2hex( random_bytes( 16 ) ) );
+		$secret = 'KR-MSTR-' . $rand;
+		update_option( 'keystone_owner_master_uid_secret', $secret, false );
+	}
+	return $secret;
+}
+
+/**
  * Validate a User Vault UID against stored orders, active WP admin session, or owner master key.
- * Strictly guards KR-WP-UID-* and KR-ADMIN-UID-* behind `is_user_logged_in() && current_user_can('manage_options')`.
+ * Strictly guards KR-WP-UID-*, KR-ADMIN-UID-*, and legacy owner aliases behind `is_user_logged_in() && current_user_can('manage_options')`,
+ * and enforces `paid_verified` / `paid_verified_comp` on buyer orders.
  */
 function keystone_verify_user_vault_uid_internal( string $uid ): array {
 	$uid       = strtoupper( sanitize_text_field( trim( $uid ) ) );
@@ -571,12 +640,29 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 		);
 	}
 
-	// Owner Master UID (Private to Wayne Stevenson)
-	if ( in_array( $uid, array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603' ), true ) ) {
+	// Security Gate: Predictable legacy owner strings require an active authenticated WordPress administrator session.
+	// Headless owner diagnostics use the non-autoloaded 32-character high-entropy secret UID.
+	$owner_secret_uid = keystone_get_owner_master_secret_uid();
+	$is_secret_match  = ( '' !== $owner_secret_uid && hash_equals( strtoupper( $owner_secret_uid ), $uid ) );
+	$is_legacy_alias  = in_array( $uid, array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603' ), true );
+
+	if ( $is_legacy_alias && ! $is_admin ) {
+		return array(
+			'valid'     => false,
+			'verified'  => false,
+			'code'      => 'admin_session_required',
+			'live_mode' => $live_mode,
+			'uid'       => $uid,
+			'message'   => '🔒 Founder Vault aliases require an active authenticated WordPress administrator session. Please enter your personal paid Buyer KR-UID.',
+		);
+	}
+
+	if ( $is_secret_match || ( $is_legacy_alias && $is_admin ) ) {
 		$catalog = keystone_get_protocol_tier_catalog( $uid );
 		return array(
 			'valid'                 => true,
 			'verified'              => true,
+			'is_admin'              => true,
 			'live_mode'             => $live_mode,
 			'uid'                   => $uid,
 			'buyer_name'            => 'Wayne Stevenson (Founder Master UID)',
@@ -592,10 +678,28 @@ function keystone_verify_user_vault_uid_internal( string $uid ): array {
 		);
 	}
 
+	$allowed_paid_statuses = array( 'paid_verified', 'paid_verified_comp' );
+	if ( 'test' === keystone_get_stripe_mode() ) {
+		$allowed_paid_statuses[] = 'paid_verified_sandbox';
+	}
+
 	$orders = get_option( 'keystone_protocol_orders_v10', array() );
 	if ( is_array( $orders ) ) {
 		foreach ( $orders as $order ) {
 			if ( ! empty( $order['user_uid'] ) && strtoupper( (string) $order['user_uid'] ) === $uid ) {
+				$order_status = (string) ( $order['status'] ?? '' );
+				if ( ! in_array( $order_status, $allowed_paid_statuses, true ) ) {
+					return array(
+						'valid'     => false,
+						'verified'  => false,
+						'code'      => 'payment_verification_required',
+						'live_mode' => $live_mode,
+						'uid'       => $uid,
+						'status'    => $order_status,
+						'message'   => '🔒 Payment Verification Required: Complete your secure Visa / Mastercard Stripe checkout on /ai-protocols/ to activate this Buyer KR-UID.',
+					);
+				}
+
 				$verified_uid = (string) $order['user_uid'];
 
 				// 3-Device / IP Anti-Sharing Lock (Prevents forwarding KR-UID links to non-buyers)
@@ -758,6 +862,14 @@ function keystone_handle_vault_download_stream(): void {
 			'min_tier' => 1,
 			'title'    => 'Keystone Tier 01 Antigravity Brain & Flow Prompt Pack (.ZIP)',
 		),
+		'tier1_pdf_master'           => array(
+			'filename' => 'tier01_pdfs/KR_T1_00_ALL_4_GUIDES_COMBINED.pdf',
+			'dl_name'  => 'KR_T1_00_ALL_4_GUIDES_COMBINED.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 1,
+			'title'    => 'Combined Master Book: All 4 Tier 01 Setup Guides Combined',
+		),
 		'tier1_pdf_01'               => array(
 			'filename' => 'tier01_pdfs/KR_T1_01_AI_Brain_Workspace_QuickStart.pdf',
 			'dl_name'  => 'KR_T1_01_AI_Brain_Workspace_QuickStart.pdf',
@@ -818,13 +930,21 @@ function keystone_handle_vault_download_stream(): void {
 			'min_tier' => 2,
 			'title'    => 'Keystone Tier 02 28-Agent Swarm FastMCP Suite (.ZIP)',
 		),
+		'tier2_pdf_master'           => array(
+			'filename' => 'tier02_pdfs/KR_T2_00_ALL_5_TIER02_GUIDES_COMBINED.pdf',
+			'dl_name'  => 'KR_T2_00_ALL_5_TIER02_GUIDES_COMBINED.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 2,
+			'title'    => 'Combined Master Book: All 5 Tier 02 Swarm, SEO & Outreach Guides Combined',
+		),
 		'tier2_pdf_05'               => array(
 			'filename' => 'tier02_pdfs/KR_T2_05_Website_Builder_And_RankMath_SEO.pdf',
 			'dl_name'  => 'KR_T2_05_Website_Builder_And_RankMath_SEO.pdf',
 			'mime'     => 'application/pdf',
 			'type'     => 'pdf',
 			'min_tier' => 2,
-			'title'    => 'PDF-05: Turning Video Scripts into SEO Articles, JSON-LD Schema & GSC Indexing',
+			'title'    => 'PDF-05: Website Builder, JSON-LD Schema & Rank Math 100/100 SEO Articles',
 		),
 		'tier2_pdf_06'               => array(
 			'filename' => 'tier02_pdfs/KR_T2_06_YouTube_Brand_Channel_And_Tag_Stack.pdf',
@@ -832,7 +952,7 @@ function keystone_handle_vault_download_stream(): void {
 			'mime'     => 'application/pdf',
 			'type'     => 'pdf',
 			'min_tier' => 2,
-			'title'    => 'PDF-06: Multi-Agent Role Prompt Templates (Researcher, Scriptwriter, Web Builder, QA)',
+			'title'    => 'PDF-06: YouTube Brand Channel Setup, Upload Defaults & 480-Character Tag Stack',
 		),
 		'tier2_pdf_07'               => array(
 			'filename' => 'tier02_pdfs/KR_T2_07_Multi_Agent_Role_Swarm_Prompts.pdf',
@@ -840,7 +960,7 @@ function keystone_handle_vault_download_stream(): void {
 			'mime'     => 'application/pdf',
 			'type'     => 'pdf',
 			'min_tier' => 2,
-			'title'    => 'PDF-07: The 3-Source Fact Verification Protocol (Zero Hallucinations)',
+			'title'    => 'PDF-07: 6-Role Multi-Agent Swarm Prompts & 3-Source Fact Verification Protocol',
 		),
 		'tier2_pdf_08'               => array(
 			'filename' => 'tier02_pdfs/KR_T2_08_B2B_DNS_MX_Lead_Verification_Outreach.pdf',
@@ -848,7 +968,7 @@ function keystone_handle_vault_download_stream(): void {
 			'mime'     => 'application/pdf',
 			'type'     => 'pdf',
 			'min_tier' => 2,
-			'title'    => 'PDF-08: B2B Client Outreach & Domain Email Verification Workflow',
+			'title'    => 'PDF-08: B2B Domain DNS/MX Lead Verification & Locked Crest Email Shell',
 		),
 		'tier2_pdf_09'               => array(
 			'filename' => 'tier02_pdfs/KR_T2_09_30_Day_Omnichannel_Publishing_Blueprint.pdf',
@@ -856,7 +976,7 @@ function keystone_handle_vault_download_stream(): void {
 			'mime'     => 'application/pdf',
 			'type'     => 'pdf',
 			'min_tier' => 2,
-			'title'    => 'PDF-09: Locked Top-and-Bottom Logo HTML Email Shell Architecture',
+			'title'    => 'PDF-09: 30-Day Omnichannel Publishing & Authority Compounding Blueprint',
 		),
 		'tier3_workstation_pack'     => array(
 			'filename' => 'Keystone_Tier03_Sovereign_Workstation_Installer_Suite.zip',
@@ -871,6 +991,14 @@ function keystone_handle_vault_download_stream(): void {
 			'type'     => 'zip',
 			'min_tier' => 3,
 			'title'    => 'Keystone Tier 03 Sovereign Workstation Installer Suite (.ZIP)',
+		),
+		'tier3_pdf_master'           => array(
+			'filename' => 'tier03_pdfs/KR_T3_00_ALL_3_TIER03_GUIDES_COMBINED.pdf',
+			'dl_name'  => 'KR_T3_00_ALL_3_TIER03_GUIDES_COMBINED.pdf',
+			'mime'     => 'application/pdf',
+			'type'     => 'pdf',
+			'min_tier' => 3,
+			'title'    => 'Combined Master Book: All 3 Tier 03 Tauri v2 Desktop App & .EXE Guides Combined',
 		),
 		'tier3_pdf_10'               => array(
 			'filename' => 'tier03_pdfs/KR_T3_10_Tauri_v2_Desktop_Toolchain_Scaffold.pdf',
@@ -920,9 +1048,7 @@ function keystone_handle_vault_download_stream(): void {
 	$user_tier = (int) ( $verification['tier'] ?? 1 );
 	$min_tier  = (int) ( $pack_info['min_tier'] ?? 1 );
 	$is_admin  = ! empty( $verification['is_admin'] ) ||
-		( function_exists( 'is_user_logged_in' ) && is_user_logged_in() && current_user_can( 'manage_options' ) ) ||
-		in_array( $verification['uid'] ?? '', array( 'KR-OWNER-WAYNE-52603', 'KR-UID-WAYNE52603', 'KR-ADMIN-52603' ), true ) ||
-		( 0 === strpos( (string) ( $verification['uid'] ?? '' ), 'KR-ADMIN-UID-' ) );
+		( function_exists( 'is_user_logged_in' ) && is_user_logged_in() && current_user_can( 'manage_options' ) );
 
 	if ( ! $is_admin && $user_tier < $min_tier ) {
 		wp_die(
@@ -937,9 +1063,9 @@ function keystone_handle_vault_download_stream(): void {
 		);
 	}
 
-	$file_path = get_stylesheet_directory() . '/assets/vault_packs/' . $pack_info['filename'];
+	$file_path = keystone_resolve_private_vault_file( (string) $pack_info['filename'] );
 
-	if ( file_exists( $file_path ) && is_readable( $file_path ) ) {
+	if ( '' !== $file_path && file_exists( $file_path ) && is_readable( $file_path ) ) {
 		$size    = (int) filesize( $file_path );
 		$dl_name = ! empty( $pack_info['dl_name'] ) ? $pack_info['dl_name'] : basename( $pack_info['filename'] );
 		nocache_headers();
@@ -1028,6 +1154,12 @@ add_action( 'rest_api_init', function () {
 		'methods'             => 'POST',
 		'permission_callback' => '__return_true',
 		'callback'            => 'keystone_handle_create_checkout_session',
+	) );
+
+	register_rest_route( 'keystone/v1', '/preview-upgrade-credit', array(
+		'methods'             => array( 'GET', 'POST' ),
+		'permission_callback' => '__return_true',
+		'callback'            => 'keystone_handle_preview_upgrade_credit',
 	) );
 
 	register_rest_route( 'keystone/v1', '/verify-checkout-session', array(
@@ -1656,6 +1788,20 @@ function keystone_handle_set_com_avatar_video_ids( WP_REST_Request $request ): W
  * Process Automated AI Protocol Order / Priority Launch Rate Reservation.
  */
 function keystone_handle_protocol_order_submission( WP_REST_Request $request ): WP_REST_Response {
+	// Security Gate (P0-2): When live or test Stripe Checkout is active, block $0.00 unverified KR-UID minting.
+	if ( keystone_is_stripe_ready() ) {
+		return new WP_REST_Response(
+			array(
+				'ok'                => false,
+				'success'           => false,
+				'code'              => 'stripe_checkout_required',
+				'checkout_endpoint' => rest_url( 'keystone/v1/create-checkout-session' ),
+				'message'           => 'Live 256-Bit Stripe Visa / Mastercard Checkout is active. Please complete your one-time card checkout to mint your verified Buyer KR-UID and unlock your Buyer Vault.',
+			),
+			402
+		);
+	}
+
 	$params      = $request->get_json_params() ?: $request->get_params();
 	$buyer_name  = sanitize_text_field( (string) ( $params['buyer_name'] ?? '' ) );
 	$buyer_email = sanitize_email( (string) ( $params['buyer_email'] ?? '' ) );
@@ -1711,8 +1857,7 @@ function keystone_handle_protocol_order_submission( WP_REST_Request $request ): 
 
 	$headers = array(
 		'Content-Type: text/html; charset=UTF-8',
-		'From: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
-		'Reply-To: keystonerecomposition@gmail.com',
+		'Reply-To: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
 	);
 
 	$magic_portal_url = home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#kr-self-service-portal' );
@@ -1909,19 +2054,371 @@ function keystone_send_tier_fulfillment_email(
 }
 
 /**
+ * Send instant [PAID STRIPE ORDER] notification email to keystonerecomposition@gmail.com (/u/1)
+ * using authenticated WordPress.com domain sender + Reply-To set to the verified buyer.
+ */
+function keystone_send_admin_paid_sale_alert( array $order_record, bool $is_upgrade = false ): bool {
+	$buyer_name  = trim( (string) preg_replace( '/[\r\n\0<>"]+/', ' ', (string) ( $order_record['buyer_name'] ?? 'Verified Stripe Buyer' ) ) );
+	$buyer_email = trim( (string) preg_replace( '/[\r\n\0\s]+/', '', (string) ( $order_record['buyer_email'] ?? '' ) ) );
+	$tier        = (string) ( $order_record['tier'] ?? '1' );
+	$tier_name   = (string) ( $order_record['tier_name'] ?? ( 'Tier 0' . $tier ) );
+	$paid_str    = (string) ( $order_record['last_paid_amount'] ?? $order_record['price'] ?? '0.00' );
+	$total_str   = (string) ( $order_record['price'] ?? $paid_str );
+	$user_uid    = (string) ( $order_record['user_uid'] ?? '' );
+	$order_id    = (string) ( $order_record['order_id'] ?? '' );
+	$session_id  = (string) ( $order_record['stripe_session_id'] ?? '' );
+	$is_live     = ( 'paid_verified' === (string) ( $order_record['status'] ?? '' ) );
+	$portal_url  = home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#kr-self-service-portal' );
+
+	$prefix  = $is_live ? '' : '[SANDBOX TEST] ';
+	$kind    = $is_upgrade ? 'PAID STRIPE UPGRADE' : 'PAID STRIPE ORDER';
+	$subject = sprintf( '%s[%s — $%s USD] Tier 0%s — %s [%s]', $prefix, $kind, $paid_str, $tier, $buyer_name ?: 'Stripe Buyer', $user_uid );
+
+	$body  = "KEYSTONE AI PROTOCOLS — VERIFIED STRIPE VISA/MASTERCARD SALE\n";
+	$body .= "============================================================\n";
+	$body .= 'Order ID:          ' . $order_id . "\n";
+	$body .= 'Buyer Vault UID:   ' . $user_uid . "\n";
+	$body .= 'Status:            ' . strtoupper( (string) ( $order_record['status'] ?? 'paid_verified' ) ) . ( $is_upgrade ? ' (100% Credit Tier Upgrade)' : '' ) . "\n";
+	$body .= 'Unlocked Tier:     ' . $tier_name . "\n";
+	$body .= 'Charged Now (USD): $' . $paid_str . " USD\n";
+	$body .= 'Cumulative Value:  $' . $total_str . " USD\n";
+	$body .= 'Buyer Name:        ' . ( $buyer_name ?: 'Not provided' ) . "\n";
+	$body .= 'Buyer Email:       ' . ( $buyer_email ?: 'Not provided' ) . "\n";
+	if ( ! empty( $order_record['promo_code'] ) ) {
+		$body .= 'Promo Code:        ' . (string) $order_record['promo_code'] . "\n";
+	}
+	if ( ! empty( $order_record['upgrade_credit_cents'] ) ) {
+		$body .= 'Upgrade Credit:    $' . number_format( ( (int) $order_record['upgrade_credit_cents'] ) / 100, 2, '.', '' ) . " USD\n";
+	}
+	$body .= 'Stripe Session:    ' . ( '' !== $session_id ? substr( $session_id, 0, 24 ) . '...' : 'N/A' ) . "\n";
+	$body .= 'Buyer Portal URL:  ' . $portal_url . "\n";
+	$body .= 'Timestamp (UTC):   ' . gmdate( 'Y-m-d H:i:s \U\T\C' ) . "\n";
+
+	$headers = array(
+		'Content-Type: text/plain; charset=UTF-8',
+	);
+	if ( '' !== $buyer_email && is_email( $buyer_email ) ) {
+		$headers[] = 'Reply-To: ' . ( '' !== $buyer_name ? $buyer_name . ' <' . $buyer_email . '>' : $buyer_email );
+	}
+
+	return (bool) @wp_mail( 'keystonerecomposition@gmail.com', $subject, $body, $headers );
+}
+
+/**
+ * Calculate 100% dollar-for-dollar Tier Upgrade Credit for a verified paid Buyer KR-UID.
+ *   Tier 01 ($49.50) -> Tier 02 ($199.00) = $149.50 net (14950 cents)
+ *   Tier 01 ($49.50) -> Tier 03 ($800.00) = $750.50 net (75050 cents)
+ *   Tier 02 ($199.00) -> Tier 03 ($800.00) = $601.00 net (60100 cents)
+ */
+function keystone_calculate_upgrade_credit( string $raw_uid, string $target_tier ): array {
+	$clean_uid = strtoupper( sanitize_text_field( trim( $raw_uid ) ) );
+	$t_target  = in_array( $target_tier, array( '2', '3' ), true ) ? $target_tier : '';
+
+	if ( '' === $clean_uid ) {
+		return array(
+			'ok'       => false,
+			'success'  => false,
+			'valid'    => false,
+			'eligible' => false,
+			'code'     => 'missing_uid',
+			'message'  => 'Enter your verified Buyer KR-UID to preview your 100% upgrade credit.',
+		);
+	}
+
+	if ( '' === $t_target ) {
+		return array(
+			'ok'       => false,
+			'success'  => false,
+			'valid'    => false,
+			'eligible' => false,
+			'code'     => 'invalid_target_tier',
+			'message'  => 'Upgrades apply toward Tier 02 ($199 USD) or Tier 03 ($800 USD).',
+		);
+	}
+
+	$allowed_paid_statuses = array( 'paid_verified', 'paid_verified_comp' );
+	if ( 'test' === keystone_get_stripe_mode() ) {
+		$allowed_paid_statuses[] = 'paid_verified_sandbox';
+	}
+
+	$matched_order = null;
+	$orders        = get_option( 'keystone_protocol_orders_v10', array() );
+	if ( is_array( $orders ) ) {
+		foreach ( $orders as $ord ) {
+			if ( ! empty( $ord['user_uid'] ) && strtoupper( (string) $ord['user_uid'] ) === $clean_uid ) {
+				if ( in_array( (string) ( $ord['status'] ?? '' ), $allowed_paid_statuses, true ) ) {
+					$matched_order = $ord;
+					break;
+				}
+			}
+		}
+	}
+
+	if ( ! is_array( $matched_order ) ) {
+		return array(
+			'ok'       => false,
+			'success'  => false,
+			'valid'    => false,
+			'eligible' => false,
+			'uid'      => $clean_uid,
+			'code'     => 'unverified_uid',
+			'message'  => 'Unrecognized or unpaid Buyer KR-UID. Only verified paid Buyer KR-UIDs qualify for 100% upgrade credit.',
+		);
+	}
+
+	$current_tier = (string) ( $matched_order['tier'] ?? '1' );
+	if ( (int) $t_target <= (int) $current_tier ) {
+		return array(
+			'ok'           => false,
+			'success'      => false,
+			'valid'        => true,
+			'eligible'     => false,
+			'uid'          => (string) $matched_order['user_uid'],
+			'current_tier' => $current_tier,
+			'target_tier'  => $t_target,
+			'code'         => 'already_at_or_above_tier',
+			'message'      => sprintf( 'Your Buyer KR-UID (%s) already unlocks Tier 0%s!', (string) $matched_order['user_uid'], $current_tier ),
+		);
+	}
+
+	$base_cents_map = array(
+		'1' => 4950,
+		'2' => 19900,
+		'3' => 80000,
+	);
+	$target_base_cents = $base_cents_map[ $t_target ];
+	$recorded_cents    = isset( $matched_order['price'] ) ? (int) round( (float) $matched_order['price'] * 100 ) : 0;
+	if ( $recorded_cents <= 0 ) {
+		$recorded_cents = $base_cents_map[ $current_tier ] ?? 4950;
+	}
+
+	$credit_cents      = min( $recorded_cents, $target_base_cents - 100 );
+	$net_upgrade_cents = max( 100, $target_base_cents - $credit_cents );
+
+	$fmt_base   = number_format( $target_base_cents / 100, 2, '.', '' );
+	$fmt_credit = number_format( $credit_cents / 100, 2, '.', '' );
+	$fmt_net    = number_format( $net_upgrade_cents / 100, 2, '.', '' );
+
+	return array(
+		'ok'                   => true,
+		'success'              => true,
+		'valid'                => true,
+		'eligible'             => true,
+		'uid'                  => (string) $matched_order['user_uid'],
+		'buyer_name'           => (string) ( $matched_order['buyer_name'] ?? '' ),
+		'buyer_email'          => (string) ( $matched_order['buyer_email'] ?? '' ),
+		'current_tier'         => $current_tier,
+		'target_tier'          => $t_target,
+		'target_base_cents'    => $target_base_cents,
+		'credit_cents'         => $credit_cents,
+		'net_upgrade_cents'    => $net_upgrade_cents,
+		'cent_price'           => $net_upgrade_cents,
+		'formatted_base_price' => $fmt_base,
+		'formatted_credit'     => $fmt_credit,
+		'formatted_net_price'  => $fmt_net,
+		'message'              => sprintf(
+			'✔ 100%% Tier 0%s Credit Applied (-$%s USD): Upgrade to Tier 0%s for $%s USD one-time!',
+			$current_tier,
+			$fmt_credit,
+			$t_target,
+			$fmt_net
+		),
+	);
+}
+
+/**
+ * REST Endpoint: GET|POST /wp-json/keystone/v1/preview-upgrade-credit
+ */
+function keystone_handle_preview_upgrade_credit( WP_REST_Request $request ): WP_REST_Response {
+	$params      = $request->get_json_params() ?: $request->get_params();
+	$raw_uid     = (string) ( $params['uid'] ?? $params['upgrade_from_uid'] ?? $request->get_param( 'uid' ) ?? $request->get_param( 'upgrade_from_uid' ) ?? '' );
+	$target_tier = (string) ( $params['target_tier'] ?? $params['tier'] ?? $request->get_param( 'target_tier' ) ?? $request->get_param( 'tier' ) ?? '2' );
+	$result      = keystone_calculate_upgrade_credit( $raw_uid, $target_tier );
+	$http_code   = ! empty( $result['eligible'] ) ? 200 : ( 'missing_uid' === ( $result['code'] ?? '' ) ? 400 : 200 );
+	return new WP_REST_Response( $result, $http_code );
+}
+
+/**
+ * Idempotently persist or upgrade a verified paid Stripe Checkout session in `keystone_protocol_orders_v10`,
+ * and dispatch the buyer welcome email + admin `[PAID STRIPE ORDER]` alert strictly ONCE per session ID.
+ *
+ * @param array<string, mixed> $session        Stripe Checkout Session object.
+ * @param bool                 $is_live        Whether session is in Stripe Live mode.
+ * @param string               $stripe_evt_id  Optional Stripe webhook event ID.
+ * @return array<string, mixed> Hydrated fulfillment summary.
+ */
+function keystone_fulfill_paid_stripe_session( array $session, bool $is_live, string $stripe_evt_id = '' ): array {
+	$session_id       = sanitize_text_field( (string) ( $session['id'] ?? '' ) );
+	$buyer_email      = sanitize_email( (string) ( $session['customer_details']['email'] ?? $session['customer_email'] ?? '' ) );
+	$meta_name        = sanitize_text_field( (string) ( $session['metadata']['buyer_name'] ?? '' ) );
+	$buyer_name       = sanitize_text_field( (string) ( $session['customer_details']['name'] ?? ( '' !== $meta_name ? $meta_name : 'Verified Stripe Buyer' ) ) );
+	$tier             = sanitize_text_field( (string) ( $session['metadata']['tier'] ?? '1' ) );
+	$promo_code       = strtoupper( sanitize_text_field( (string) ( $session['metadata']['promo_code'] ?? '' ) ) );
+	$upgrade_from_uid = strtoupper( sanitize_text_field( (string) ( $session['metadata']['upgrade_from_uid'] ?? '' ) ) );
+	$credit_cents     = isset( $session['metadata']['credit_cents'] ) ? max( 0, (int) $session['metadata']['credit_cents'] ) : 0;
+
+	if ( ! in_array( $tier, array( '1', '2', '3' ), true ) ) {
+		$tier = '1';
+	}
+
+	$orders = get_option( 'keystone_protocol_orders_v10', array() );
+	if ( ! is_array( $orders ) ) {
+		$orders = array();
+	}
+
+	$existing_record = null;
+	$is_upgrade      = false;
+
+	// 1. Check if this exact Stripe session was already recorded (by webhook or redirect)
+	foreach ( $orders as &$ord ) {
+		if ( ! empty( $ord['stripe_session_id'] ) && (string) $ord['stripe_session_id'] === $session_id ) {
+			if ( '' !== $stripe_evt_id && empty( $ord['stripe_event_id'] ) ) {
+				$ord['stripe_event_id'] = $stripe_evt_id;
+				update_option( 'keystone_protocol_orders_v10', $orders, false );
+			}
+			$existing_record = $ord;
+			$is_upgrade      = ! empty( $ord['upgraded_from_tier'] );
+			break;
+		}
+	}
+	unset( $ord );
+
+	// 2. If not yet recorded, check if this is a 100% Credit Tier Upgrade of an existing verified KR-UID
+	if ( null === $existing_record && '' !== $upgrade_from_uid ) {
+		foreach ( $orders as &$ord ) {
+			if ( ! empty( $ord['user_uid'] ) && strtoupper( (string) $ord['user_uid'] ) === $upgrade_from_uid ) {
+				$user_uid        = (string) $ord['user_uid'];
+				$tier_catalog    = keystone_get_protocol_tier_catalog( $user_uid );
+				$tier_info       = $tier_catalog[ $tier ];
+				$paid_cents      = isset( $session['amount_total'] ) ? (int) $session['amount_total'] : (int) round( (float) $tier_info['price'] * 100 );
+				$prior_cents     = isset( $ord['price'] ) ? (int) round( (float) $ord['price'] * 100 ) : $credit_cents;
+				$cum_cents       = $prior_cents + $paid_cents;
+				$formatted_paid  = number_format( $paid_cents / 100, 2, '.', '' );
+				$formatted_cum   = number_format( $cum_cents / 100, 2, '.', '' );
+
+				$ord['upgraded_from_tier']   = (string) ( $ord['tier'] ?? '1' );
+				$ord['tier']                 = $tier;
+				$ord['tier_name']            = $tier_info['name'];
+				$ord['price']                = $formatted_cum;
+				$ord['last_paid_amount']     = $formatted_paid;
+				$ord['upgrade_credit_cents'] = $credit_cents;
+				$ord['stripe_session_id']    = $session_id;
+				if ( '' !== $stripe_evt_id ) {
+					$ord['stripe_event_id'] = $stripe_evt_id;
+				}
+				if ( is_email( $buyer_email ) ) {
+					$ord['buyer_email'] = $buyer_email;
+				}
+				if ( '' !== $buyer_name && 'Verified Stripe Buyer' !== $buyer_name ) {
+					$ord['buyer_name'] = $buyer_name;
+				}
+				$ord['walkthrough_video_url'] = $tier_info['walkthrough_video_url'];
+				$ord['status']                = $is_live ? 'paid_verified' : 'paid_verified_sandbox';
+				$ord['upgraded_at']           = gmdate( 'c' );
+
+				update_option( 'keystone_protocol_orders_v10', $orders, false );
+
+				// Reset Guided Setup Assistant window for the upgraded tier
+				$usage_map = get_option( 'keystone_protocol_tutor_usage_v1', array() );
+				if ( is_array( $usage_map ) && isset( $usage_map[ $user_uid ] ) ) {
+					unset( $usage_map[ $user_uid ] );
+					update_option( 'keystone_protocol_tutor_usage_v1', $usage_map, false );
+				}
+
+				$existing_record = $ord;
+				$is_upgrade      = true;
+				break;
+			}
+		}
+		unset( $ord );
+	}
+
+	// 3. Standard new purchase persistence
+	if ( null === $existing_record ) {
+		$user_uid        = keystone_generate_user_vault_uid( $buyer_email ?: ( 'buyer-' . substr( $session_id, -8 ) ), $tier );
+		$tier_catalog    = keystone_get_protocol_tier_catalog( $user_uid );
+		$tier_info       = $tier_catalog[ $tier ];
+		$amount_cents    = isset( $session['amount_total'] ) ? (int) $session['amount_total'] : (int) round( (float) $tier_info['price'] * 100 );
+		$formatted_price = number_format( $amount_cents / 100, 2, '.', '' );
+		$seed_hash       = '' !== $stripe_evt_id ? $stripe_evt_id : $session_id;
+		$order_id        = ( $is_live ? 'KR-STRIPE-' : 'KR-TEST-' ) . gmdate( 'Ymd-His' ) . '-' . strtoupper( substr( md5( $seed_hash ), 0, 6 ) );
+
+		$existing_record = array(
+			'order_id'              => $order_id,
+			'stripe_event_id'       => $stripe_evt_id,
+			'stripe_session_id'     => $session_id,
+			'user_uid'              => $user_uid,
+			'tier'                  => $tier,
+			'tier_name'             => $tier_info['name'],
+			'price'                 => $formatted_price,
+			'last_paid_amount'      => $formatted_price,
+			'promo_code'            => $promo_code,
+			'buyer_name'            => $buyer_name,
+			'buyer_email'           => $buyer_email,
+			'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
+			'status'                => $is_live ? 'paid_verified' : 'paid_verified_sandbox',
+			'created_at'            => gmdate( 'c' ),
+		);
+
+		array_unshift( $orders, $existing_record );
+		if ( count( $orders ) > 250 ) {
+			$orders = array_slice( $orders, 0, 250 );
+		}
+		update_option( 'keystone_protocol_orders_v10', $orders, false );
+	}
+
+	$final_uid      = (string) $existing_record['user_uid'];
+	$final_tier     = (string) $existing_record['tier'];
+	$final_catalog  = keystone_get_protocol_tier_catalog( $final_uid );
+	$final_tier_obj = $final_catalog[ $final_tier ] ?? $final_catalog['1'];
+	$paid_display   = (string) ( $existing_record['last_paid_amount'] ?? $existing_record['price'] );
+	$paid_cents_out = isset( $session['amount_total'] ) ? (int) $session['amount_total'] : (int) round( (float) $paid_display * 100 );
+
+	// 4. Atomic single-send email lock so redirect + webhook never double-email buyer or admin
+	$mail_lock_key = 'keystone_fulfill_mail_' . md5( $session_id );
+	if ( '' !== $session_id && false !== add_option( $mail_lock_key, time(), '', 'no' ) ) {
+		$target_email = (string) ( $existing_record['buyer_email'] ?? $buyer_email );
+		$target_name  = (string) ( $existing_record['buyer_name'] ?? $buyer_name );
+		if ( is_email( $target_email ) ) {
+			keystone_send_tier_fulfillment_email(
+				$target_email,
+				$target_name,
+				$final_tier,
+				$final_uid,
+				(string) $existing_record['order_id'],
+				$paid_display,
+				$is_live,
+				! $is_live
+			);
+		}
+		keystone_send_admin_paid_sale_alert( $existing_record, $is_upgrade );
+	}
+
+	return array(
+		'order_record'   => $existing_record,
+		'uid'            => $final_uid,
+		'tier'           => $final_tier,
+		'tier_info'      => $final_tier_obj,
+		'amount_cents'   => $paid_cents_out,
+		'formatted_paid' => $paid_display,
+		'is_upgrade'     => $is_upgrade,
+	);
+}
+
+/**
  * Create Stripe Checkout Session endpoint (`POST /wp-json/keystone/v1/create-checkout-session`).
  *
- * Implements the Stripe Mutual Exclusion Law:
- * - If a promo code was applied in the UI ($pricing['has_promo'] === true), we pass the pre-discounted
- *   `unit_amount` and omit `allow_promotion_codes`.
- * - If NO promo code was applied, we pass the standard unit amount and pass `'allow_promotion_codes' => 'true'`.
+ * Supports optional name/email (Stripe Hosted Checkout collects email automatically when omitted),
+ * native + pre-applied promo codes (`BUILDER10`, `WAYNE10`, `KEYSTONE20`), and 100% dollar-for-dollar
+ * Tier Upgrade Credit via `upgrade_from_uid`.
  */
 function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP_REST_Response {
-	$params      = $request->get_json_params() ?: $request->get_params();
-	$tier        = sanitize_text_field( (string) ( $params['tier'] ?? '1' ) );
-	$promo_code  = strtoupper( sanitize_text_field( (string) ( $params['promo_code'] ?? '' ) ) );
-	$buyer_name  = sanitize_text_field( (string) ( $params['buyer_name'] ?? '' ) );
-	$buyer_email = sanitize_email( (string) ( $params['buyer_email'] ?? '' ) );
+	$params           = $request->get_json_params() ?: $request->get_params();
+	$tier             = sanitize_text_field( (string) ( $params['tier'] ?? '1' ) );
+	$promo_code       = strtoupper( sanitize_text_field( (string) ( $params['promo_code'] ?? '' ) ) );
+	$buyer_name       = sanitize_text_field( (string) ( $params['buyer_name'] ?? $params['name'] ?? '' ) );
+	$buyer_email      = sanitize_email( (string) ( $params['buyer_email'] ?? $params['email'] ?? '' ) );
+	$upgrade_from_uid = strtoupper( sanitize_text_field( (string) ( $params['upgrade_from_uid'] ?? '' ) ) );
 
 	if ( ! in_array( $tier, array( '1', '2', '3' ), true ) ) {
 		$tier = '1';
@@ -1930,18 +2427,60 @@ function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP
 	$secret_key = keystone_get_stripe_secret_key();
 	if ( empty( $secret_key ) ) {
 		return new WP_REST_Response( array(
+			'ok'               => false,
 			'success'          => false,
 			'stripe_available' => false,
-			'message'          => 'Stripe live card checkout is being configured by the site administrator. Please use the Reservation form below to lock in your rate immediately.',
+			'message'          => 'Stripe live card checkout is being configured by the site administrator.',
 		), 400 );
 	}
 
-	$pricing      = keystone_calculate_tier_price( $tier, $promo_code );
-	$cent_price   = (int) $pricing['cent_price'];
-	$tier_catalog = keystone_get_protocol_tier_catalog();
-	$tier_info    = $tier_catalog[ $tier ];
+	$tier_catalog         = keystone_get_protocol_tier_catalog();
+	$tier_info            = $tier_catalog[ $tier ];
+	$pricing              = keystone_calculate_tier_price( $tier, $promo_code );
+	$cent_price           = (int) $pricing['cent_price'];
+	$product_name         = (string) $tier_info['name'];
+	$product_desc         = 'Instant digital access to Keystone AI Protocols ' . $tier_info['name'] . ' with Setup Guides and Walkthrough Video.';
+	$upgrade_credit_cents = 0;
+	$prior_tier           = '';
 
-	$success_url = home_url( '/ai-protocols/?session_id={CHECKOUT_SESSION_ID}#buyer-setup-vault' );
+	if ( '' !== $upgrade_from_uid ) {
+		$upgrade_calc = keystone_calculate_upgrade_credit( $upgrade_from_uid, $tier );
+		if ( empty( $upgrade_calc['eligible'] ) ) {
+			return new WP_REST_Response(
+				array(
+					'ok'      => false,
+					'success' => false,
+					'code'    => $upgrade_calc['code'] ?? 'upgrade_ineligible',
+					'message' => $upgrade_calc['message'] ?? 'Unable to apply upgrade credit for this Buyer KR-UID.',
+				),
+				400
+			);
+		}
+		$cent_price           = (int) $upgrade_calc['net_upgrade_cents'];
+		$upgrade_credit_cents = (int) $upgrade_calc['credit_cents'];
+		$prior_tier           = (string) $upgrade_calc['current_tier'];
+		$upgrade_from_uid     = (string) $upgrade_calc['uid'];
+		$product_name         = sprintf(
+			'%s (100%% Tier 0%s Credit Applied: -$%s USD)',
+			$tier_info['name'],
+			$prior_tier,
+			$upgrade_calc['formatted_credit']
+		);
+		$product_desc         = sprintf(
+			'100%% dollar-for-dollar upgrade from Tier 0%s (%s) to %s.',
+			$prior_tier,
+			$upgrade_from_uid,
+			$tier_info['name']
+		);
+		if ( '' === $buyer_email && ! empty( $upgrade_calc['buyer_email'] ) && is_email( (string) $upgrade_calc['buyer_email'] ) ) {
+			$buyer_email = (string) $upgrade_calc['buyer_email'];
+		}
+		if ( '' === $buyer_name && ! empty( $upgrade_calc['buyer_name'] ) ) {
+			$buyer_name = (string) $upgrade_calc['buyer_name'];
+		}
+	}
+
+	$success_url = home_url( '/ai-protocols/?session_id={CHECKOUT_SESSION_ID}#kr-self-service-portal' );
 	$cancel_url  = home_url( '/ai-protocols/#kr-tier-' . $tier );
 
 	// Build Stripe API payload
@@ -1950,25 +2489,28 @@ function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP
 		'payment_method_types[0]'                             => 'card',
 		'line_items[0][price_data][currency]'                  => 'usd',
 		'line_items[0][price_data][unit_amount]'               => (string) $cent_price,
-		'line_items[0][price_data][product_data][name]'        => $tier_info['name'],
-		'line_items[0][price_data][product_data][description]' => 'Instant digital access to Keystone AI Protocols ' . $tier_info['name'] . ' with Setup Guides and Walkthrough Video.',
+		'line_items[0][price_data][product_data][name]'        => $product_name,
+		'line_items[0][price_data][product_data][description]' => $product_desc,
 		'line_items[0][quantity]'                              => '1',
 		'metadata[tier]'                                      => $tier,
 		'metadata[buyer_name]'                                 => $buyer_name,
-		'metadata[promo_code]'                                 => $promo_code,
+		'metadata[promo_code]'                                 => $upgrade_credit_cents > 0 ? '' : $pricing['promo_code'],
 		'success_url'                                          => $success_url,
 		'cancel_url'                                           => $cancel_url,
 	);
+
+	if ( $upgrade_credit_cents > 0 ) {
+		$post_data['metadata[upgrade_from_uid]'] = $upgrade_from_uid;
+		$post_data['metadata[prior_tier]']       = $prior_tier;
+		$post_data['metadata[credit_cents]']     = (string) $upgrade_credit_cents;
+	}
 
 	if ( is_email( $buyer_email ) ) {
 		$post_data['customer_email'] = $buyer_email;
 	}
 
-	// Stripe Mutual Exclusion Law:
-	if ( ! empty( $pricing['has_promo'] ) ) {
-		// Promo was already calculated and applied; do NOT pass allow_promotion_codes to prevent Stripe 400
-	} else {
-		// Allow buyer to enter promo code on Stripe checkout page
+	// Stripe Mutual Exclusion Law: omit allow_promotion_codes when pre-discounted or upgrade credit is applied
+	if ( empty( $pricing['has_promo'] ) && 0 === $upgrade_credit_cents ) {
 		$post_data['allow_promotion_codes'] = 'true';
 	}
 
@@ -1984,6 +2526,7 @@ function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP
 
 	if ( is_wp_error( $response ) ) {
 		return new WP_REST_Response( array(
+			'ok'      => false,
 			'success' => false,
 			'message' => 'Failed to connect to Stripe: ' . $response->get_error_message(),
 		), 502 );
@@ -1996,6 +2539,7 @@ function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP
 	if ( 200 !== $code || empty( $data['url'] ) ) {
 		$err_msg = $data['error']['message'] ?? ( 'Stripe returned HTTP ' . $code );
 		return new WP_REST_Response( array(
+			'ok'      => false,
 			'success' => false,
 			'message' => 'Stripe Checkout error: ' . $err_msg,
 			'debug'   => WP_DEBUG ? $data : null,
@@ -2003,11 +2547,17 @@ function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP
 	}
 
 	return new WP_REST_Response( array(
-		'success'      => true,
-		'checkout_url' => $data['url'],
-		'session_id'   => $data['id'],
-		'tier'         => $tier,
-		'cent_price'   => $cent_price,
+		'ok'                   => true,
+		'success'              => true,
+		'mode'                 => keystone_get_stripe_mode(),
+		'checkout_url'         => $data['url'],
+		'session_id'           => $data['id'],
+		'tier'                 => $tier,
+		'cent_price'           => $cent_price,
+		'formatted_price'      => number_format( $cent_price / 100, 2, '.', '' ),
+		'promo_applied'        => $upgrade_credit_cents > 0 ? '' : $pricing['promo_code'],
+		'upgrade_from_uid'     => $upgrade_credit_cents > 0 ? $upgrade_from_uid : '',
+		'upgrade_credit_cents' => $upgrade_credit_cents,
 	), 200 );
 }
 
@@ -2015,7 +2565,7 @@ function keystone_handle_create_checkout_session( WP_REST_Request $request ): WP
  * Verify Checkout Session endpoint (`GET|POST /wp-json/keystone/v1/verify-checkout-session`).
  *
  * Verifies a returning buyer's `session_id=cs_...` against the Stripe API, retrieves
- * or creates their order and UID, and returns their unlocked curriculum and video.
+ * or creates/upgrades their order and UID, and returns their unlocked curriculum and video.
  */
 function keystone_handle_verify_checkout_session( WP_REST_Request $request ): WP_REST_Response {
 	$session_id = sanitize_text_field( (string) ( $request->get_param( 'session_id' ) ?? '' ) );
@@ -2070,86 +2620,32 @@ function keystone_handle_verify_checkout_session( WP_REST_Request $request ): WP
 		), 200 );
 	}
 
-	$buyer_email = sanitize_email( (string) ( $session['customer_details']['email'] ?? $session['customer_email'] ?? '' ) );
-	$buyer_name  = sanitize_text_field( (string) ( $session['customer_details']['name'] ?? 'Verified Stripe Buyer' ) );
-	$tier        = sanitize_text_field( (string) ( $session['metadata']['tier'] ?? '1' ) );
-	if ( ! in_array( $tier, array( '1', '2', '3' ), true ) ) {
-		$tier = '1';
-	}
-
-	$is_live      = ! empty( $session['livemode'] );
-	$user_uid     = keystone_generate_user_vault_uid( $buyer_email ?: ( 'buyer-' . substr( $session['id'], -8 ) ), $tier );
-	$tier_catalog = keystone_get_protocol_tier_catalog( $user_uid );
-	$tier_info    = $tier_catalog[ $tier ];
-
-	$amount_cents    = isset( $session['amount_total'] ) ? (int) $session['amount_total'] : (int) round( (float) $tier_info['price'] * 100 );
-	$formatted_price = number_format( $amount_cents / 100, 2, '.', '' );
-
-	// Ensure order record is saved if webhook was delayed
-	$orders = get_option( 'keystone_protocol_orders_v10', array() );
-	if ( ! is_array( $orders ) ) {
-		$orders = array();
-	}
-	$order_exists = false;
-	foreach ( $orders as $ord ) {
-		if ( isset( $ord['stripe_session_id'] ) && $ord['stripe_session_id'] === $session['id'] ) {
-			$order_exists = true;
-			break;
-		}
-	}
-	if ( ! $order_exists ) {
-		$order_id     = ( $is_live ? 'KR-STRIPE-' : 'KR-TEST-' ) . gmdate( 'Ymd-His' ) . '-' . strtoupper( substr( md5( $session['id'] ), 0, 6 ) );
-		$order_record = array(
-			'order_id'              => $order_id,
-			'stripe_session_id'     => $session['id'],
-			'user_uid'              => $user_uid,
-			'tier'                  => $tier,
-			'tier_name'             => $tier_info['name'],
-			'price'                 => $formatted_price,
-			'buyer_name'            => $buyer_name,
-			'buyer_email'           => $buyer_email,
-			'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
-			'status'                => $is_live ? 'paid_verified' : 'paid_verified_sandbox',
-			'created_at'            => gmdate( 'c' ),
-		);
-		array_unshift( $orders, $order_record );
-		if ( count( $orders ) > 250 ) {
-			$orders = array_slice( $orders, 0, 250 );
-		}
-		update_option( 'keystone_protocol_orders_v10', $orders, false );
-
-		// Dispatch welcome email if email is present
-		if ( is_email( $buyer_email ) ) {
-			keystone_send_tier_fulfillment_email(
-				$buyer_email,
-				$buyer_name,
-				$tier,
-				$user_uid,
-				$order_id,
-				$formatted_price,
-				$is_live,
-				! $is_live
-			);
-		}
-	}
+	$is_live     = ! empty( $session['livemode'] );
+	$fulfillment = keystone_fulfill_paid_stripe_session( $session, $is_live, '' );
+	$order_rec   = $fulfillment['order_record'];
+	$user_uid    = $fulfillment['uid'];
+	$tier        = $fulfillment['tier'];
+	$tier_info   = $fulfillment['tier_info'];
 
 	return new WP_REST_Response( array(
+		'ok'                    => true,
 		'verified'              => true,
 		'session_id'            => $session['id'],
 		'uid'                   => $user_uid,
 		'tier'                  => $tier,
 		'tier_name'             => $tier_info['name'],
-		'buyer_name'            => $buyer_name,
-		'buyer_email'           => $buyer_email,
-		'amount_cents'          => $amount_cents,
-		'formatted_price'       => $formatted_price,
+		'buyer_name'            => (string) ( $order_rec['buyer_name'] ?? 'Verified Stripe Buyer' ),
+		'buyer_email'           => (string) ( $order_rec['buyer_email'] ?? '' ),
+		'amount_cents'          => $fulfillment['amount_cents'],
+		'formatted_price'       => $fulfillment['formatted_paid'],
+		'is_upgrade'            => $fulfillment['is_upgrade'],
 		'live_mode'             => $is_live,
 		'walkthrough_video_id'  => $tier_info['walkthrough_video_id'],
 		'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
 		'unlocked_downloads'    => $tier_info['unlocked_downloads'],
 		'unlocked_modules'      => $tier_info['unlocked_modules'],
 		'unlocked_pdfs'         => $tier_info['unlocked_pdfs'],
-		'portal_url'            => home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#buyer-setup-vault' ),
+		'portal_url'            => home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#kr-self-service-portal' ),
 	), 200 );
 }
 
@@ -2279,70 +2775,27 @@ function keystone_handle_stripe_webhook( WP_REST_Request $request ): WP_REST_Res
 	}
 
 	$buyer_email = sanitize_email( (string) ( $session['customer_details']['email'] ?? $session['customer_email'] ?? '' ) );
-	$buyer_name  = sanitize_text_field( (string) ( $session['customer_details']['name'] ?? 'Verified Stripe Buyer' ) );
-	$tier        = sanitize_text_field( (string) ( $session['metadata']['tier'] ?? '1' ) );
-	if ( ! in_array( $tier, array( '1', '2', '3' ), true ) ) {
-		$tier = '1';
-	}
-
-	if ( ! is_email( $buyer_email ) ) {
+	if ( ! is_email( $buyer_email ) && empty( $session['metadata']['upgrade_from_uid'] ) ) {
 		return new WP_REST_Response( array(
 			'success' => false,
 			'message' => 'No valid customer email in checkout session payload.',
 		), 400 );
 	}
 
-	$is_live         = ! empty( $event['livemode'] );
-	$user_uid        = keystone_generate_user_vault_uid( $buyer_email, $tier );
-	$tier_catalog    = keystone_get_protocol_tier_catalog( $user_uid );
-	$tier_info       = $tier_catalog[ $tier ];
-	$amount_cents    = isset( $session['amount_total'] ) ? (int) $session['amount_total'] : (int) round( (float) $tier_info['price'] * 100 );
-	$formatted_price = number_format( $amount_cents / 100, 2, '.', '' );
-	$order_id        = ( $is_live ? 'KR-STRIPE-' : 'KR-TEST-' ) . gmdate( 'Ymd-His' ) . '-' . strtoupper( substr( md5( $event_id ), 0, 6 ) );
-
-	$order_record = array(
-		'order_id'              => $order_id,
-		'stripe_event_id'       => $event_id,
-		'stripe_session_id'     => sanitize_text_field( (string) ( $session['id'] ?? '' ) ),
-		'user_uid'              => $user_uid,
-		'tier'                  => $tier,
-		'tier_name'             => $tier_info['name'],
-		'price'                 => $formatted_price,
-		'buyer_name'            => $buyer_name,
-		'buyer_email'           => $buyer_email,
-		'walkthrough_video_url' => $tier_info['walkthrough_video_url'],
-		'status'                => $is_live ? 'paid_verified' : 'paid_verified_sandbox',
-		'created_at'            => gmdate( 'c' ),
-	);
-
-	$orders = get_option( 'keystone_protocol_orders_v10', array() );
-	if ( ! is_array( $orders ) ) {
-		$orders = array();
-	}
-	array_unshift( $orders, $order_record );
-	if ( count( $orders ) > 250 ) {
-		$orders = array_slice( $orders, 0, 250 );
-	}
-	update_option( 'keystone_protocol_orders_v10', $orders, false );
-
-	// Dispatch Distinct Tier-Accurate Dark-Luxury Welcome Email
-	keystone_send_tier_fulfillment_email(
-		$buyer_email,
-		$buyer_name,
-		$tier,
-		$user_uid,
-		$order_id,
-		$formatted_price,
-		$is_live,
-		! $is_live
-	);
+	$is_live     = ! empty( $event['livemode'] );
+	$fulfillment = keystone_fulfill_paid_stripe_session( $session, $is_live, $event_id );
+	$order_rec   = $fulfillment['order_record'];
+	$user_uid    = $fulfillment['uid'];
+	$tier        = $fulfillment['tier'];
 
 	return new WP_REST_Response( array(
+		'ok'               => true,
 		'success'          => true,
 		'status'           => $is_live ? 'paid_verified' : 'paid_verified_sandbox',
-		'order_id'         => $order_id,
+		'order_id'         => (string) ( $order_rec['order_id'] ?? '' ),
 		'user_uid'         => $user_uid,
 		'tier'             => $tier,
+		'is_upgrade'       => $fulfillment['is_upgrade'],
 		'magic_portal_url' => home_url( '/ai-protocols/?uid=' . rawurlencode( $user_uid ) . '#kr-self-service-portal' ),
 	), 200 );
 }
@@ -2749,8 +3202,7 @@ function keystone_handle_protocol_setup_form( WP_REST_Request $request ): WP_RES
 
 	$headers = array(
 		'Content-Type: text/html; charset=UTF-8',
-		'From: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
-		'Reply-To: keystonerecomposition@gmail.com',
+		'Reply-To: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
 	);
 
 	$magic_portal_url = home_url( '/ai-protocols/?uid=' . rawurlencode( $uid ) . '#kr-self-service-portal' );
@@ -3003,8 +3455,7 @@ function keystone_handle_protocol_tutor( WP_REST_Request $request ): WP_REST_Res
 		);
 		$headers = array(
 			'Content-Type: text/html; charset=UTF-8',
-			'From: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
-			'Reply-To: keystonerecomposition@gmail.com',
+			'Reply-To: Wayne Stevenson — Keystone AI Protocols <keystonerecomposition@gmail.com>',
 		);
 		$email_sent = (bool) @wp_mail(
 			$buyer_email,

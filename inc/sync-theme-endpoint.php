@@ -519,6 +519,337 @@ if ( ! function_exists( 'kr_v4_handle_sync_root_static' ) ) {
 	}
 }
 
+if ( ! function_exists( 'kr_v4_get_private_vault_dir' ) ) {
+	/**
+	 * Returns the unguessable HMAC-salted private vault directory inside wp-content/uploads/.
+	 * WP Cloud Nginx cannot enumerate directories, and each file inside is stored under a
+	 * 64-hex HMAC-SHA256 `.bin` filename so direct static URL scraping returns 404.
+	 */
+	function kr_v4_get_private_vault_dir(): string {
+		$uploads = function_exists( 'wp_upload_dir' ) ? wp_upload_dir() : array();
+		$basedir = ( is_array( $uploads ) && ! empty( $uploads['basedir'] ) )
+			? rtrim( str_replace( '\\', '/', (string) $uploads['basedir'] ), '/' )
+			: rtrim( str_replace( '\\', '/', (string) WP_CONTENT_DIR ), '/' ) . '/uploads';
+		$salt    = function_exists( 'wp_salt' ) ? (string) wp_salt( 'auth' ) : 'kr_private_vault_fallback_salt';
+		return $basedir . '/kr-vault-' . substr( hash_hmac( 'sha256', 'kr_private_vault_v4', $salt ), 0, 40 );
+	}
+}
+
+if ( ! function_exists( 'kr_v4_normalize_private_vault_rel_path' ) ) {
+	/**
+	 * Validates and normalizes a logical relative path for private vault storage.
+	 * Returns empty string if invalid or outside allowed deliverable extensions.
+	 */
+	function kr_v4_normalize_private_vault_rel_path( string $logical_rel_path ): string {
+		$rel = trim( str_replace( '\\', '/', $logical_rel_path ) );
+		$rel = ltrim( $rel, '/' );
+		if (
+			'' === $rel ||
+			false !== strpos( $rel, "\0" ) ||
+			false !== strpos( $rel, '..' ) ||
+			false !== strpos( $rel, ':' ) ||
+			0 === strpos( $rel, '.' ) ||
+			false !== strpos( $rel, '/.' )
+		) {
+			return '';
+		}
+		if ( 1 !== preg_match( '/^[a-zA-Z0-9_\/.-]+\.(zip|pdf|png|svg|json|md)$/i', $rel ) ) {
+			return '';
+		}
+		return $rel;
+	}
+}
+
+if ( ! function_exists( 'kr_v4_get_private_vault_bin_path' ) ) {
+	/**
+	 * Computes the full on-disk `.bin` path for a normalized logical relative path.
+	 */
+	function kr_v4_get_private_vault_bin_path( string $logical_rel_path ): string {
+		$norm = kr_v4_normalize_private_vault_rel_path( $logical_rel_path );
+		if ( '' === $norm ) {
+			return '';
+		}
+		$salt = function_exists( 'wp_salt' ) ? (string) wp_salt( 'auth' ) : 'kr_private_vault_fallback_salt';
+		return kr_v4_get_private_vault_dir() . '/' . hash_hmac( 'sha256', $norm, $salt ) . '.bin';
+	}
+}
+
+if ( ! function_exists( 'kr_v4_purge_public_theme_vault_binaries' ) ) {
+	/**
+	 * Purges all paid deliverable files from the public child-theme `assets/vault_packs/`
+	 * directory on WP Cloud, keeping only `.htaccess` and `index.php` guards.
+	 *
+	 * @return array{purged_count: int, purged_files: array<int, string>, remaining_public_binaries: int}
+	 */
+	function kr_v4_purge_public_theme_vault_binaries(): array {
+		$public_dir   = rtrim( str_replace( '\\', '/', get_stylesheet_directory() ), '/' ) . '/assets/vault_packs';
+		$purged_files = array();
+		if ( ! is_dir( $public_dir ) ) {
+			return array(
+				'purged_count'              => 0,
+				'purged_files'              => array(),
+				'remaining_public_binaries' => 0,
+			);
+		}
+
+		$iter = new RecursiveIteratorIterator(
+			new RecursiveDirectoryIterator( $public_dir, FilesystemIterator::SKIP_DOTS ),
+			RecursiveIteratorIterator::CHILD_FIRST
+		);
+
+		$remaining = 0;
+		foreach ( $iter as $item ) {
+			$full_path = str_replace( '\\', '/', $item->getPathname() );
+			$rel_name  = ltrim( substr( $full_path, strlen( $public_dir ) ), '/' );
+			if ( $item->isDir() ) {
+				@rmdir( $full_path );
+				continue;
+			}
+			if ( '.htaccess' === $rel_name || 'index.php' === $rel_name ) {
+				continue;
+			}
+			if ( @unlink( $full_path ) ) {
+				$purged_files[] = $rel_name;
+			} elseif ( file_exists( $full_path ) ) {
+				$remaining += 1;
+			}
+		}
+
+		return array(
+			'purged_count'              => count( $purged_files ),
+			'purged_files'              => $purged_files,
+			'remaining_public_binaries' => $remaining,
+		);
+	}
+}
+
+if ( ! function_exists( 'kr_v4_handle_sync_private_vault_asset' ) ) {
+	/**
+	 * POST /wp-json/keystone/v1/sync-private-vault-asset
+	 * Writes base64-encoded paid `.zip` / `.pdf` / diagram deliverables into the
+	 * unguessable HMAC private vault directory and purges public theme copies.
+	 */
+	function kr_v4_handle_sync_private_vault_asset( WP_REST_Request $request ): WP_REST_Response {
+		$params     = $request->get_json_params() ?: $request->get_params();
+		$purge_only = ! empty( $params['purge_only'] );
+		$do_purge   = ! array_key_exists( 'purge_public_theme_copies', (array) $params ) || ! empty( $params['purge_public_theme_copies'] );
+
+		if ( $purge_only ) {
+			$purge_report = kr_v4_purge_public_theme_vault_binaries();
+			return new WP_REST_Response(
+				array(
+					'ok'            => true,
+					'success'       => true,
+					'purge_only'    => true,
+					'purged_public' => $purge_report,
+				),
+				200
+			);
+		}
+
+		$raw_rel = (string) ( $params['logical_rel_path'] ?? $params['rel_path'] ?? $params['file'] ?? '' );
+		$norm    = kr_v4_normalize_private_vault_rel_path( $raw_rel );
+		if ( '' === $norm ) {
+			return new WP_REST_Response(
+				array(
+					'ok'      => false,
+					'success' => false,
+					'code'    => 'invalid_logical_rel_path',
+					'message' => 'Invalid or disallowed logical_rel_path for private vault asset.',
+				),
+				400
+			);
+		}
+
+		$raw_b64 = (string) ( $params['content_base64'] ?? $params['content_b64'] ?? $params['content'] ?? '' );
+		if ( '' === $raw_b64 ) {
+			return new WP_REST_Response(
+				array(
+					'ok'      => false,
+					'success' => false,
+					'code'    => 'missing_content_base64',
+					'message' => 'Missing content_base64 payload.',
+				),
+				400
+			);
+		}
+
+		$bytes = base64_decode( $raw_b64, true );
+		if ( false === $bytes || '' === $bytes ) {
+			return new WP_REST_Response(
+				array(
+					'ok'      => false,
+					'success' => false,
+					'code'    => 'invalid_base64',
+					'message' => 'Failed to decode content_base64 payload.',
+				),
+				400
+			);
+		}
+
+		$actual_sha   = hash( 'sha256', $bytes );
+		$expected_sha = strtolower( trim( (string) ( $params['sha256'] ?? '' ) ) );
+		if ( '' !== $expected_sha && ! hash_equals( $expected_sha, $actual_sha ) ) {
+			return new WP_REST_Response(
+				array(
+					'ok'          => false,
+					'success'     => false,
+					'code'        => 'sha256_mismatch',
+					'expected'    => $expected_sha,
+					'actual'      => $actual_sha,
+					'message'     => 'SHA-256 verification failed for private vault asset.',
+				),
+				400
+			);
+		}
+
+		$vault_dir = kr_v4_get_private_vault_dir();
+		if ( ! is_dir( $vault_dir ) ) {
+			if ( function_exists( 'wp_mkdir_p' ) ) {
+				wp_mkdir_p( $vault_dir );
+			} else {
+				@mkdir( $vault_dir, 0750, true );
+			}
+		}
+		if ( ! is_dir( $vault_dir ) ) {
+			return new WP_REST_Response(
+				array(
+					'ok'      => false,
+					'success' => false,
+					'code'    => 'vault_mkdir_failed',
+					'message' => 'Unable to create private vault directory in uploads.',
+				),
+				500
+			);
+		}
+
+		$ht_guard = $vault_dir . '/.htaccess';
+		if ( ! file_exists( $ht_guard ) ) {
+			@file_put_contents(
+				$ht_guard,
+				"Order deny,allow\nDeny from all\n<IfModule mod_authz_core.c>\n    Require all denied\n</IfModule>\n",
+				LOCK_EX
+			);
+		}
+		$idx_guard = $vault_dir . '/index.php';
+		if ( ! file_exists( $idx_guard ) ) {
+			@file_put_contents( $idx_guard, "<?php\nhttp_response_code( 403 );\nexit;\n", LOCK_EX );
+		}
+
+		$bin_path = kr_v4_get_private_vault_bin_path( $norm );
+		$tmp_path = $bin_path . '.tmp.' . uniqid( '', true );
+		$written  = @file_put_contents( $tmp_path, $bytes, LOCK_EX );
+		if ( false === $written || (int) $written !== strlen( $bytes ) ) {
+			@unlink( $tmp_path );
+			return new WP_REST_Response(
+				array(
+					'ok'      => false,
+					'success' => false,
+					'code'    => 'vault_write_failed',
+					'message' => 'Failed writing temporary private vault binary.',
+				),
+				500
+			);
+		}
+		if ( ! @rename( $tmp_path, $bin_path ) ) {
+			$copied = @copy( $tmp_path, $bin_path );
+			@unlink( $tmp_path );
+			if ( ! $copied ) {
+				return new WP_REST_Response(
+					array(
+						'ok'      => false,
+						'success' => false,
+						'code'    => 'vault_atomic_rename_failed',
+						'message' => 'Failed finalizing private vault binary on disk.',
+					),
+					500
+				);
+			}
+		}
+
+		$manifest = get_option( 'keystone_private_vault_manifest_v4', array() );
+		if ( ! is_array( $manifest ) ) {
+			$manifest = array();
+		}
+		$manifest[ $norm ] = array(
+			'logical_rel_path' => $norm,
+			'stored_bin_name'  => basename( $bin_path ),
+			'bytes'            => strlen( $bytes ),
+			'sha256'           => $actual_sha,
+			'updated_at'       => gmdate( 'c' ),
+		);
+		update_option( 'keystone_private_vault_manifest_v4', $manifest, false );
+
+		$purge_report = $do_purge
+			? kr_v4_purge_public_theme_vault_binaries()
+			: array( 'purged_count' => 0, 'purged_files' => array(), 'remaining_public_binaries' => -1 );
+
+		return new WP_REST_Response(
+			array(
+				'ok'               => true,
+				'success'          => true,
+				'logical_rel_path' => $norm,
+				'stored_bin_name'  => basename( $bin_path ),
+				'bytes'            => strlen( $bytes ),
+				'sha256'           => $actual_sha,
+				'purged_public'    => $purge_report,
+			),
+			200
+		);
+	}
+}
+
+if ( ! function_exists( 'kr_v4_handle_private_vault_manifest' ) ) {
+	/**
+	 * GET /wp-json/keystone/v1/private-vault-manifest
+	 * Admin-only verification endpoint reporting private vault parity and public theme cleanliness.
+	 */
+	function kr_v4_handle_private_vault_manifest(): WP_REST_Response {
+		$manifest = get_option( 'keystone_private_vault_manifest_v4', array() );
+		if ( ! is_array( $manifest ) ) {
+			$manifest = array();
+		}
+		$verified_items = array();
+		foreach ( $manifest as $rel => $meta ) {
+			$bin_path               = kr_v4_get_private_vault_bin_path( (string) $rel );
+			$exists                 = ( '' !== $bin_path && is_file( $bin_path ) && is_readable( $bin_path ) );
+			$entry                  = is_array( $meta ) ? $meta : array();
+			$entry['exists_on_disk'] = $exists;
+			$entry['disk_bytes']    = $exists ? (int) filesize( $bin_path ) : 0;
+			$verified_items[ $rel ] = $entry;
+		}
+
+		$public_dir  = rtrim( str_replace( '\\', '/', get_stylesheet_directory() ), '/' ) . '/assets/vault_packs';
+		$public_left = array();
+		if ( is_dir( $public_dir ) ) {
+			$iter = new RecursiveIteratorIterator(
+				new RecursiveDirectoryIterator( $public_dir, FilesystemIterator::SKIP_DOTS )
+			);
+			foreach ( $iter as $item ) {
+				if ( $item->isFile() ) {
+					$full = str_replace( '\\', '/', $item->getPathname() );
+					$rel  = ltrim( substr( $full, strlen( $public_dir ) ), '/' );
+					if ( '.htaccess' !== $rel && 'index.php' !== $rel ) {
+						$public_left[] = $rel;
+					}
+				}
+			}
+		}
+
+		return new WP_REST_Response(
+			array(
+				'ok'                        => true,
+				'vault_dir_basename'        => basename( kr_v4_get_private_vault_dir() ),
+				'asset_count'               => count( $verified_items ),
+				'public_theme_leaked_count' => count( $public_left ),
+				'public_theme_leaked_files' => $public_left,
+				'assets'                    => $verified_items,
+			),
+			200
+		);
+	}
+}
+
 if ( ! function_exists( 'kr_v4_register_theme_sync_routes' ) ) {
 	/**
 	 * Registers Sovereign v4.0 sync and manifest routes at priority 30 with $override = true
@@ -553,6 +884,28 @@ if ( ! function_exists( 'kr_v4_register_theme_sync_routes' ) ) {
 			array(
 				'methods'             => WP_REST_Server::CREATABLE,
 				'callback'            => 'kr_v4_handle_sync_root_static',
+				'permission_callback' => 'kr_v4_verify_admin_sync_permission',
+			),
+			true
+		);
+
+		register_rest_route(
+			'keystone/v1',
+			'/sync-private-vault-asset',
+			array(
+				'methods'             => WP_REST_Server::CREATABLE,
+				'callback'            => 'kr_v4_handle_sync_private_vault_asset',
+				'permission_callback' => 'kr_v4_verify_admin_sync_permission',
+			),
+			true
+		);
+
+		register_rest_route(
+			'keystone/v1',
+			'/private-vault-manifest',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => 'kr_v4_handle_private_vault_manifest',
 				'permission_callback' => 'kr_v4_verify_admin_sync_permission',
 			),
 			true

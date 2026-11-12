@@ -3,3 +3,9 @@
 __pycache__/
 tests/__pycache__/
 *.pyc
+assets/vault_packs/*.zip
+assets/vault_packs/*.pdf
+assets/vault_packs/**/*.pdf
+assets/vault_packs/diagrams/*.png
+assets/vault_packs/diagrams/*.svg
+assets/vault_packs/vault_packs_manifest.json
