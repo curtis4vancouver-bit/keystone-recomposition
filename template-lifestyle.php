@@ -78,15 +78,17 @@ $theme_uri = get_stylesheet_directory_uri();
     align-items: center;
     justify-content: center;
     min-height: 42px;
-    padding: 0.55rem 0.95rem;
+    padding: 8px 12px;
     border-radius: 9999px;
     background: #04070d;
     border: 1px solid rgba(212, 175, 55, 0.44);
     color: #f6d365 !important;
     font-family: 'Outfit', sans-serif;
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+    line-height: 1.25;
+    white-space: normal;
     text-transform: uppercase;
     text-decoration: none !important;
     text-align: center;
@@ -121,7 +123,7 @@ $theme_uri = get_stylesheet_directory_uri();
                 <header class="lifestyle-hero-header kr-v4-life-split-hero">
                     <div class="kr-v4-life-hero-copy">
                         <div>
-                            <span class="ks-p3-pill-blue" style="display:inline-flex; margin-bottom:0.85rem;">
+                            <span class="ks-p3-pill-blue" style="display:inline-flex; align-items:center; padding: 6px 16px !important; max-width: 100%; box-sizing: border-box; margin-bottom:0.85rem;">
                                 <span class="ks-wave-text">// SEA-TO-SKY CORRIDOR &bull; SQUAMISH &amp; WHISTLER, BC</span>
                             </span>
                             <h1 class="lifestyle-main-title">

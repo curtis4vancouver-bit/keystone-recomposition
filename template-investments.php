@@ -77,6 +77,20 @@ $theme_uri = get_stylesheet_directory_uri();
     gap: 0.75rem !important;
     margin-top: 0 !important;
 }
+body .keystone-investments-page .kr-v4-inv-side-box .inv-quicknav-btn {
+    height: auto !important;
+    min-height: 44px !important;
+    padding: 8px 12px !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.025em !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+    text-align: center !important;
+}
+body .keystone-investments-page .kr-v4-inv-side-box .inv-quicknav-btn .ks-wave-text {
+    white-space: normal !important;
+    line-height: 1.25 !important;
+}
 .inv-quant-4grid,
 .inv-three-pillars-grid,
 .inv-business-two-grid,
