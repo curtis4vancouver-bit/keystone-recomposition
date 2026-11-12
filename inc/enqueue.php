@@ -140,19 +140,23 @@ function astra_child_keystone_header_overrides(): void {
     html,body,body.keystone-recomposition-dark-luxury{background-color:#04070d!important;color:#f8fafc!important;margin:0;padding:0;overflow-x:clip!important}
     .kr-skip-link{position:absolute;left:-9999px;top:10px;z-index:100050}.kr-skip-link:focus{left:16px}
     .kr-utility-bar{background:#000000;border-bottom:1px solid rgba(56,189,248,0.22);font-size:0.72rem}
-    .kr-utility-inner{max-width:1420px;margin:0 auto;padding:4px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .kr-utility-inner{max-width:1480px;margin:0 auto;padding:4px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
     .kr-utility-left,.kr-utility-right{display:flex;align-items:center;gap:8px}.kr-utility-pill .kr-util-label-short{display:none}
     .site-nav-header{position:sticky;top:0;z-index:10000;background:#000000!important;border-bottom:1px solid rgba(212,175,55,0.26)}
-    .site-nav-header .nav-container{max-width:1420px;margin:0 auto;padding:0 20px;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    body .site-nav-header .nav-container{max-width:1480px!important;margin:0 auto;padding:0 clamp(14px,2.4vw,28px);min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px}
     .brand-edge-logo{display:inline-flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0}
     .kp-badge-mark{width:44px;height:44px;border-radius:10px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
     .kp-badge-img{width:44px;height:44px;max-width:44px;max-height:44px;object-fit:contain;display:block}
-    .nav-links-menu{display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0}
-    .nav-right-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}.mobile-hamburger{display:none}
+    body .site-nav-header nav{position:static!important;left:auto!important;right:auto!important;transform:none!important;display:flex!important;align-items:center!important;justify-content:center!important;flex:1 1 auto!important;min-width:0!important;margin:0!important}
+    body .site-nav-header .nav-links-menu,.nav-links-menu{display:flex;align-items:center;gap:6px!important;list-style:none;margin:0;padding:0;flex-wrap:nowrap!important}
+    .nav-right-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}body .site-nav-header .nav-right-actions .social-icon-btn{display:none!important}.mobile-hamburger{display:none}
     #mobileDrawer:not(.active),.kr-drawer-backdrop:not(.active),#krLightboxModal:not(.is-open){display:none!important}
     #kr-master-luxury-footer{background-color:#000000!important;background:#000000!important}
     #rank-math-analytics-stats-wrapper,#rank-math-analytics-stats-bar,.rank-math-analytics-stats-wrapper,.rank-math-analytics-stats-bar,.rank-math-skeleton,#rank-math-analytic-bar,#wpadminbar,#zip-ai-sidebar-admin-trigger,#zip-ai-sidebar{display:none!important;height:0!important;max-height:0!important;overflow:hidden!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
-    @media(max-width:1180px){.site-nav-header nav,.nav-links-menu{display:none!important}.mobile-hamburger,#kpMobileNavToggle{display:inline-flex!important}}
+    @media(max-width:1460px){body .site-nav-header .nav-container{gap:10px!important;padding:0 18px!important}body .site-nav-header .nav-links-menu{gap:2px!important}}
+    @media(max-width:1220px){body .site-nav-header nav,body .site-nav-header .nav-links-menu,.nav-links-menu{display:none!important}.mobile-hamburger,#kpMobileNavToggle{display:inline-flex!important}}
+    @media(max-width:1040px){.kr-utility-left{display:none!important}}
+    @media(max-width:640px){.kr-utility-pill .kr-util-label-long{display:none!important}.kr-utility-pill .kr-util-label-short{display:inline!important}body .site-nav-header .nav-container{min-height:58px!important;padding:0 12px!important;gap:8px!important}}
     </style>
     <script id="keystone-header-route-sync">
     document.addEventListener('DOMContentLoaded', function() {

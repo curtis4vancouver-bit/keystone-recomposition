@@ -22,7 +22,7 @@
   --kr-text-secondary: #94a3b8;
   --kr-radius-card: 18px;
   --kr-radius-pill: 9999px;
-  --kr-container-max: 1420px;
+  --kr-container-max: 1480px;
 }
 
 /* =========================================================================
@@ -117,7 +117,7 @@ body.kr-sovereign-v4 {
   min-height: 36px;
   padding-top: 4px;
   padding-bottom: 4px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .kr-utility-left {
@@ -129,7 +129,17 @@ body.kr-sovereign-v4 {
   font-weight: 600;
   letter-spacing: 0.04em;
   color: #cbd5e1;
+  flex: 1 1 auto;
   min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kr-utility-left > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .kr-utility-dot {
@@ -157,7 +167,8 @@ body.kr-sovereign-v4 {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .kr-utility-pill {
@@ -257,8 +268,8 @@ body.kr-sovereign-v4 {
   box-sizing: border-box !important;
 }
 
-.site-nav-header .nav-container {
-  max-width: var(--kr-container-max) !important;
+body .site-nav-header .nav-container {
+  max-width: 1480px !important;
   margin: 0 auto !important;
   padding: 0 clamp(14px, 2.4vw, 28px) !important;
   min-height: 68px !important;
@@ -331,21 +342,26 @@ body.kr-sovereign-v4 {
   white-space: nowrap !important;
 }
 
-.site-nav-header nav {
+body .site-nav-header nav {
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex: 1 1 auto !important;
   min-width: 0 !important;
+  margin: 0 !important;
 }
 
-.site-nav-header .nav-links-menu {
+body .site-nav-header .nav-links-menu {
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
   display: flex !important;
   align-items: center !important;
-  gap: 4px !important;
+  gap: 6px !important;
   flex-wrap: nowrap !important;
 }
 
@@ -399,6 +415,10 @@ body.kr-sovereign-v4 {
   align-items: center !important;
   gap: 8px !important;
   flex-shrink: 0 !important;
+}
+
+body .site-nav-header .nav-right-actions .social-icon-btn {
+  display: none !important;
 }
 
 .site-nav-header .header-protocols-cta-pill {
@@ -918,25 +938,52 @@ body.kr-sovereign-v4 {
 /* =========================================================================
    6. RESPONSIVE NON-COLLISION BREAKPOINTS (1920x1080 / 1280x800 / 390x844)
    ========================================================================= */
-@media (max-width: 1420px) {
-  .site-nav-header .nav-right-actions .social-icon-btn {
+@media (min-width: 960px) {
+  #kr-bottom-streaming-vault .kr-vault-track-readout {
+    min-width: 200px !important;
+    flex: 0 1 auto !important;
+  }
+}
+
+@media (max-width: 1460px) {
+  body .site-nav-header .nav-container {
+    gap: 10px !important;
+    padding: 0 18px !important;
+  }
+  body .site-nav-header .brand-title-wrap .title-main {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.04em !important;
+  }
+  body .site-nav-header .brand-title-wrap .title-sub {
+    font-size: 0.56rem !important;
+    letter-spacing: 0.055em !important;
+  }
+  body .site-nav-header .nav-right-actions .social-icon-btn {
     display: none !important;
   }
-  .site-nav-header .nav-links-menu {
+  body .site-nav-header .nav-links-menu {
     gap: 2px !important;
   }
-  .site-nav-header .nav-links-menu .nav-link-item {
-    padding: 6px 7px !important;
+  body .site-nav-header .nav-links-menu .nav-link-item {
+    padding: 6px 6.5px !important;
+    font-size: 0.70rem !important;
+    letter-spacing: 0.025em !important;
+  }
+  body .site-nav-header .nav-links-menu .nav-link-intel-highlight {
+    padding: 5px 9px !important;
+  }
+  body .site-nav-header .header-protocols-cta-pill {
+    padding: 6px 12px !important;
     font-size: 0.71rem !important;
   }
 }
 
-@media (max-width: 1180px) {
-  .site-nav-header nav,
-  .site-nav-header .nav-links-menu {
+@media (max-width: 1220px) {
+  body .site-nav-header nav,
+  body .site-nav-header .nav-links-menu {
     display: none !important;
   }
-  .site-nav-header .mobile-hamburger,
+  body .site-nav-header .mobile-hamburger,
   #kpMobileNavToggle {
     display: inline-flex !important;
   }
@@ -944,7 +991,7 @@ body.kr-sovereign-v4 {
 
 @media (max-width: 1040px) {
   .kr-utility-left {
-    display: none;
+    display: none !important;
   }
   .kr-utility-inner {
     justify-content: center;
@@ -971,16 +1018,16 @@ body.kr-sovereign-v4 {
     font-size: 0.65rem;
   }
   .kr-utility-pill .kr-util-label-long {
-    display: none;
+    display: none !important;
   }
   .kr-utility-pill .kr-util-label-short {
-    display: inline;
+    display: inline !important;
   }
   .kr-utility-vault-pill {
     padding: 3px 9px;
     font-size: 0.66rem;
   }
-  .site-nav-header .nav-container {
+  body .site-nav-header .nav-container {
     min-height: 58px !important;
     padding: 0 12px !important;
     gap: 8px !important;
